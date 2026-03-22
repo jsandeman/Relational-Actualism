@@ -1,0 +1,9 @@
+# Lean 4
+/build/
+/lake-packages/
+/.lake/
+
+# Python / Data
+__pycache__/
+*.pyc
+.DS_Store
