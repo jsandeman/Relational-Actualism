@@ -1,0 +1,1453 @@
+\documentclass[11pt,a4paper]{article}
+
+% ── Packages ─────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{textcomp}
+% mathptmx drops \hbar — restore it from the amsfonts glyph
+\usepackage{amsfonts}
+\AtBeginDocument{\let\hbar\relax
+  \DeclareMathSymbol{\hbar}{\mathord}{AMSb}{"7E}}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{natbib}
+
+\geometry{top=1.1in, bottom=1.1in, left=1.15in, right=1.15in}
+
+% ── Section heading style ─────────────────────────────────────────────────────
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{14pt}{4pt}
+\titlespacing*{\subsection}{0pt}{10pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{2pt}
+
+% ── Abstract style ────────────────────────────────────────────────────────────
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+\setlength{\absleftindent}{0.5cm}
+\setlength{\absrightindent}{0.5cm}
+
+% ── Theorem environments ──────────────────────────────────────────────────────
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── Hyperref ─────────────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black,
+  pdftitle={The Relational Universe: Interaction and the Transition of
+            the Possible to the Actual},
+  pdfauthor={Joshua F. Sandeman}
+}
+
+% ── Macros ───────────────────────────────────────────────────────────────────
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\expect}[1]{\langle #1 \rangle}
+\newcommand{\rhoS}{\rho_{S}}
+\newcommand{\inst}{\mathcal{J}}          % quantum instrument
+\newcommand{\OA}{\hat{O}_{A}}
+\newcommand{\OB}{\hat{O}_{B}}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── Title block ───────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries The Relational Universe: Interaction and the\\[4pt]
+   Transition of the Possible to the Actual\par}
+  \vspace{10pt}
+  {\large Joshua F.\ Sandeman$^{1*}$\par}
+  \vspace{4pt}
+  {\normalsize $^{1}$Independent Researcher, Salem, OR, USA.\par}
+  {\normalsize $^{*}$Corresponding author: sansuikyo@gmail.com\par}
+  \vspace{8pt}
+  {\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19174380}{doi.org/10.5281/zenodo.19174380}
+  (concept DOI: \href{https://doi.org/10.5281/zenodo.19174379}{doi.org/10.5281/zenodo.19174379})\par}
+  \vspace{14pt}
+\end{center}
+
+% ── Abstract ─────────────────────────────────────────────────────────────────
+\begin{abstract}
+We argue that quantum randomness is a logical necessity arising from the nature of
+intrinsically relational properties---properties lacking definite states outside
+specific contexts of causal interaction. This motivates Relational Actualism
+(RAQM), an ontological framework classifying physical properties as invariant,
+classical, or intrinsically relational. RAQM grounds wave function actualization
+in physical interaction rather than observer-relative facts. The actualization
+criterion is physically grounded and mathematically precise: an interaction
+constitutes an actualization event when it produces an irreversible increase in
+the quantum relative entropy of the system with respect to the vacuum reference
+state, $\Delta S(\rho\|\sigma_0) > 0$, generating a robust, redundant causal
+record. The on-shell condition $p^{\mu}p_{\mu} = m^{2}c^{2}$ is the
+implementation of this entropic criterion in weakly coupled perturbative QFT;
+it is not the fundamental definition and does not constitute a claim of sharp
+spacetime localization (see Section~\ref{sec:localization} for the explicit
+response to Reeh-Schlieder and LSZ concerns).
+This criterion is basis-independent, non-perturbative, and requires no new
+fundamental constants. To reconcile a globally consistent wave function with
+special relativity, the Tomonaga-Schwinger equation establishes a
+foliation-independent global update mechanism. We derive a consistency condition
+demonstrating that RAQM's actualization map preserves identical observable
+statistics at spacelike-separated points regardless of hypersurface choice---a
+derived result, not a postulate---strictly forbidding superluminal signaling via
+algebraic microcausality. The no-signaling result applies rigorously to the
+non-selective (outcome-averaged) actualization map; conditioned branches are
+treated explicitly. Three specific, discriminating empirical predictions are
+stated: a finite actualization propagation velocity bounded by the Lieb-Robinson
+speed, an environment-dependent transition duration scaling as $\hbar/\Delta
+E_{\mathrm{env}}$, and a sharp reversibility threshold at the actualization
+criterion. RAQM is distinguished from Relational Quantum Mechanics (which
+relativizes facts), dynamical collapse models (which ground collapse in
+stochastic gravitational thresholds rather than causal interaction),
+decoherence-only models (which leave the outcome problem open), and Everettian
+Many-Worlds (which denies definite events). Classical behavior emerges dynamically
+when continuous actualization events eliminate all unconstrained degrees of
+freedom. The companion papers RAGC and RACI extend these results to gravity,
+cosmology, and biological complexity; RAHC~\citep{Sandeman2026RAHC} extends
+the framework to the emergence of agentic intelligence. Recent results:
+the Einstein field equations are the unique consistent macroscopic description
+of the RA causal graph by Lovelock's theorem~\citep{Sandeman2026RAGC};
+$c = l_P/t_P$ is derived as the maximum causal bandwidth rate and
+$E = \gamma mc^2$ from discrete counting alone; the Causal Firewall
+threshold is proved via the Erd\H{o}s-R\'{e}nyi percolation theorem;
+and the Poisson-CSG generative measure makes the causal graph
+dynamics local and environment-dependent for the first time in any
+sequential-growth formulation. Key theorems have been formally verified
+in Lean~4/Mathlib. A second Lean~4 file
+(\texttt{RA\_AQFT\_Proofs\_v10.lean}) formalises the finite-dimensional AQFT
+proof program and proves the frame-independence and Rindler stationarity
+theorems; see the note on formal verification in the companion paper
+RAGC~\citep{Sandeman2026RAGC}.
+
+\medskip\noindent
+\textbf{Keywords:} Relational Quantum Mechanics \textperiodcentered{} Wave
+Function Collapse \textperiodcentered{} Microcausality \textperiodcentered{}
+Decoherence \textperiodcentered{} Determinism \textperiodcentered{} Phase Space
+\textperiodcentered{} Objective Collapse \textperiodcentered{} Entanglement
+Entropy \textperiodcentered{} Lean~4 Verification \textperiodcentered{}
+Causal DAG \textperiodcentered{} Actualization Criterion \textperiodcentered{}
+Kinematic Snap \textperiodcentered{} Poisson-CSG
+\end{abstract}
+
+\hrule
+\vspace{8pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+
+If the universe is, at least under certain circumstances, random, then it is
+impossible, even in principle, to build a deterministic model of it. In the best
+case, it can yield possible outcomes and their probabilities of occurring. What
+actually happens must be added to the model. As far as we know, there are indeed
+circumstances in which the universe is truly random. Furthermore, randomness in
+the universe is not some vexing and curious add-on; it is, in fact, logically
+necessary---a consequence, as we shall see, of the relational nature of the
+universe.
+
+The paper proceeds as follows. Section~\ref{sec:landscape} situates the view
+philosophically, distinguishing it from other interpretations including Relational
+Quantum Mechanics, dynamical collapse models, and decoherence-based approaches.
+Section~\ref{sec:formalism} develops the mathematical formalism in terms of
+density matrices, decoherence, and the reduced density matrix.
+Section~\ref{sec:experiment} walks through the key experimental evidence.
+Section~\ref{sec:discussion} discusses the broader implications for determinism,
+causality, the reality of the wave function, and empirical falsifiability.
+Section~\ref{sec:conclusion} concludes.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Rethinking Quantum Theory: Interpretive Landscape}
+\label{sec:landscape}
+
+Erwin Schr\"{o}dinger once said of Quantum Theory, ``I don't like it, and I'm
+sorry I ever had anything to do with it.'' What Schr\"{o}dinger objected
+to---which inspired his famous thought experiment involving a hapless cat---was
+randomness. Einstein shared his concerns. Quantum Theory has the dubious
+distinction of being one of the most powerful and accurate models of the world
+ever developed, while also being the source of considerable controversy,
+bewilderment, and confusion. The root of the problem is that, under certain
+circumstances, Nature appears to be truly random, which necessitates a significant
+shift in thinking about how it can be modeled and how it evolves.
+
+\subsection{A Taxonomy of Properties}
+
+Phenomena in nature have a set of possible states, only one of which can be
+actualized (manifest, measurable) at any given point in spacetime. Properties can
+be categorized as follows:
+
+\textbf{Invariant properties} are those that can only ever have one possible
+state---e.g., the charge of an electron. Their probability of measurement in the
+one state is unity.
+
+\textbf{Classical properties} are either fixed or vary deterministically as the
+result of deterministic interactions. They are actualized as a state of being. The
+trajectory of a planet orbiting in a gravitational field is a paradigm case.
+
+\textbf{Intrinsically relational properties} cannot assume definite values outside
+a specific context of interaction. Examples include the location or spin of newly
+created particles whose spins are correlated. Crucially, after undergoing an
+appropriate interaction, intrinsically relational properties can become
+classical---they become actualized and behave the same as invariant properties, so
+long as the context of interactions eliminates all other possibilities.
+
+The Special and General Theory of Relativity introduced the world to the concept
+of relational properties, demonstrating that there is no absolute coordinate
+system for spacetime. Quantum mechanics goes further, showing that intrinsically
+relational properties, prior to an interaction that restricts the state space, are
+multivalued. In Quantum Theory this is modeled as a linear combination of
+amplitudes which, via the Born Rule, correspond with very high accuracy to the
+probability that a certain state will be actualized given a particular type of
+interaction.
+
+\subsection{Positioning: Relational Actualism vs.\ Relational Quantum Mechanics}
+
+Carlo Rovelli's Relational Quantum Mechanics (RQM) shares with the present
+framework the conviction that quantum states are not absolute but are defined
+relative to an observer or reference system \citep{Rovelli1996}. In RQM, there
+are no observer-independent facts about the values of physical quantities; every
+fact is a fact relative to some system.
+
+The present view, Relational Actualism, agrees that quantum properties are
+relational and context-dependent but diverges from RQM in three important
+respects. First, where RQM relativizes facts to observers, Relational Actualism
+grounds actualization specifically in causal interaction: a property becomes actual
+when an interaction permanently entangles the system with its asymptotic
+environment and generates an irreversible causal record. The notion of `observer'
+is not doing fundamental work here---every physical interaction that meets this
+threshold constitutes an actualization event.
+
+Second, RQM is comfortable with different observers assigning incompatible wave
+functions to the same system. The present view holds, by contrast, that there is a
+single globally consistent wave function for the universe---following Hartle and
+Hawking \citep{HartleHawking1983}---and that apparent perspectival differences
+reflect the local availability of information rather than genuine ontological
+relativity.
+
+Third, Relational Actualism makes a stronger ontological claim about Hilbert
+space: the amplitudes and their interference structure are physically real, not
+merely predictive bookkeeping. This claim is supported by the Berry phase,
+interference washout experiments, and the results of the quantum eraser discussed
+in Section~\ref{sec:experiment}.
+
+% ── Table 1 ──────────────────────────────────────────────────────────────────
+\begin{table}[ht]
+\centering
+\caption{Interpretive landscape: Comparing RAQM with major alternatives.}
+\label{tab:landscape}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Framework} & \textbf{Global State} & \textbf{Facts} &
+\textbf{Actualization} & \textbf{Randomness}\\
+\midrule
+Everett \citep{Everett1957}
+  & Yes & Relative to branch & None (unitary branching) & Epistemic\\[2pt]
+Zurek \citep{Zurek2003}
+  & Yes & Left ambiguous & Apparent (einselection) & Epistemic\\[2pt]
+GRW/CSL \citep{Bassi2013}
+  & Yes & Objective
+  & \parbox[t]{3cm}{Stochastic gravitational/\\noise threshold} & Ontic\\[6pt]
+Rovelli \citep{Rovelli1996}
+  & No & Relative to observer & Perspectival interaction & Ontic\\[2pt]
+\textbf{RAQM (This)}
+  & Yes & Objective (post-event)
+  & \parbox[t]{3cm}{Causal pruning\\(entropy criterion)} & Ontic\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Decoherence and Zurek's Einselection: Engagement and Distinction}
+
+Decoherence theory, developed most systematically by Zurek et al., provides the
+dominant technical framework for explaining the quantum-to-classical
+transition~\citep{Zurek1981,Zurek2003,JoosZeh1985}. The central idea is that
+quantum systems interact with environmental degrees of freedom, causing the reduced
+density matrix to rapidly lose its off-diagonal coherences in a preferred
+basis---the pointer basis. This process---einselection---explains why macroscopic
+objects appear classical.
+
+Decoherence theory is mathematically rigorous and empirically well-confirmed.
+However, it faces a residual interpretive problem: decoherence explains why
+interference terms become practically unobservable, but it does not explain why a
+single outcome occurs. The full density matrix of system-plus-environment remains
+in a superposition; only the reduced density matrix loses coherence. Relational
+Actualism offers a resolution: the loss of coherence tracked by decoherence
+reflects a genuine causal process in which environmental interactions eliminate
+possibilities from Hilbert space. Decoherence theory correctly describes the
+mathematical structure of this process; the present view adds the ontological
+interpretation that possibility-elimination is real and that the resulting
+actualized state is genuinely definite, not merely effectively so. The wave
+function of the universe is not branching, but pruning.
+
+\subsection{Positioning Against Dynamical Collapse Models}
+\label{sec:collapse}
+
+Dynamical collapse models---most prominently the Ghirardi-Rimini-Weber (GRW)
+theory, Continuous Spontaneous Localization (CSL), and the gravity-induced
+collapse models of Di\'{o}si and Penrose---share RAQM's commitment to objective,
+physical collapse~\citep{Bassi2013}. In these frameworks, collapse is a real
+physical event, not merely an epistemic update. RAQM is in broad agreement with
+this ontological commitment and regards these models as pointing in the right
+direction.
+
+However, RAQM diverges from dynamical collapse models in two important respects.
+First, the collapse trigger: GRW and CSL invoke a stochastic noise field with a
+new fundamental constant (the collapse rate), while Di\'{o}si-Penrose invoke a
+gravitational threshold. RAQM instead grounds actualization in the causal
+structure of physical interaction itself---specifically, in the irreversible
+increase of entanglement entropy with the asymptotic environment produced by an
+on-shell interaction. This criterion requires no new fundamental constant and is
+basis-independent by construction (defined at the level of the density matrix, not
+a perturbative expansion). A full claim of gauge-invariance requires additional
+care in theories with constrained Hilbert spaces and edge modes, as discussed in
+Section~\ref{sec:criterion}; this is an open refinement.
+
+Second, the domain of application: dynamical collapse models are designed to solve
+the measurement problem by modifying the Schr\"{o}dinger equation at a specific
+scale. RAQM does not modify the dynamics; it provides an ontological
+interpretation of what the existing formalism tracks. The entropy criterion is not
+an additional term in the Hamiltonian but a physical condition distinguishing
+actualizing from non-actualizing interactions within the existing QFT framework.
+For a comprehensive review of dynamical collapse models and their experimental
+status, see Bassi et al.\ \citep{Bassi2013}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Mathematical Formalism}
+\label{sec:formalism}
+
+\subsection{Pure States, Superposition, and the Born Rule}
+
+A quantum system is described by a state vector $\ket{\psi}$ in a Hilbert space
+$\mathcal{H}$. For a two-state system:
+\begin{equation}
+  \ket{\psi} = \alpha\ket{x_1} + \beta\ket{x_2},\qquad
+  \alpha,\beta \in \mathbb{C},\quad |\alpha|^2 + |\beta|^2 = 1.
+\end{equation}
+The coefficients $\alpha$ and $\beta$ are probability amplitudes. By the Born
+Rule, the probability of finding the system in state $\ket{x_i}$ upon measurement
+is $|\braket{x_i}{\psi}|^2$. Prior to a context-defining interaction, both terms
+in the superposition are physically real in the sense that they contribute to
+interference phenomena. The double-slit experiment exemplifies this directly: the
+detection probability $|\psi(y)|^2$ contains an interference term
+$2\operatorname{Re}(\braket{y}{A}\braket{B}{y})$ responsible for the fringe
+pattern, which vanishes exactly when which-path information is available in the
+environment.
+
+\subsection{Density Matrices and the Reduced Density Matrix}
+
+The density matrix formalism is essential for describing open quantum systems. For
+a pure state $\ket{\psi}$, the density matrix is $\rho = \ket{\psi}\!\bra{\psi}$.
+The off-diagonal terms $\alpha\beta^{*}$, $\alpha^{*}\beta$ are the
+coherences---the mathematical signature of genuine quantum superposition. Consider
+the total system: particle $S$ plus environment $E$. If the environment records
+which-path information, the composite state evolves as:
+\begin{equation}
+  \ket{\Psi_{\mathrm{total}}} = \alpha\ket{x_1}\ket{\varepsilon_1}
+  + \beta\ket{x_2}\ket{\varepsilon_2},
+\end{equation}
+where $\ket{\varepsilon_1}$, $\ket{\varepsilon_2}$ are environmental states
+correlated with paths $x_1$, $x_2$. The reduced density matrix of $S$ is obtained
+by tracing over $E$:
+\begin{equation}
+  \rhoS = \operatorname{Tr}_{E}\!\bigl(\ket{\Psi_{\mathrm{total}}}\!
+           \bra{\Psi_{\mathrm{total}}}\bigr)
+  = |\alpha|^2\ket{x_1}\!\bra{x_1}
+  + |\beta|^2\ket{x_2}\!\bra{x_2}
+  + \alpha\beta^{*}\braket{\varepsilon_2}{\varepsilon_1}\ket{x_1}\!\bra{x_2}
+  + \mathrm{c.c.}
+\end{equation}
+The off-diagonal terms are suppressed by $\braket{\varepsilon_2}{\varepsilon_1}$---the
+overlap between environmental states. When $\braket{\varepsilon_2}{\varepsilon_1}
+= 0$, the reduced density matrix becomes diagonal---indistinguishable from a
+classical probability distribution. Relational Actualism interprets this as
+follows: the environmental interaction has eliminated the non-local path
+possibilities from the particle's portion of Hilbert space. The coherences
+$\braket{\varepsilon_2}{\varepsilon_1} \to 0$ is the mathematical signature of a
+genuine actualization event.
+
+\subsubsection{The Actualization Criterion}
+\label{sec:criterion}
+
+For Relational Actualism, the actualization criterion is: \emph{an interaction
+constitutes an actualization event when it produces an irreversible increase in
+the entanglement entropy of the system with its asymptotic environment}---generating
+a robust, redundant causal record recoverable in principle by any future observer
+in the causal future of the interaction. This criterion is \emph{sufficient} for
+actualization across all regimes treated here. It is also \emph{necessary} in
+specific well-controlled models---Markovian open systems and perturbative QFT with
+on-shell emission into the far field---where the connection between environmental
+orthogonality and irreversible record formation can be made explicit. Whether
+necessity holds in full generality is an open problem; a complete proof would
+require a factorization-independent, algebraic-QFT formulation of
+irreversibility---for instance, via relative entropy monotones on local von Neumann
+algebras.
+
+This criterion is basis-independent: entanglement entropy $S(A) = -\operatorname{Tr}(\rho_A
+\log \rho_A)$ does not depend on the choice of computational basis for the
+system's Hilbert space, and it is defined at the level of the density matrix
+rather than the Feynman diagram expansion, making it non-perturbative. A stronger
+claim of full gauge-invariance requires additional care. In gauge theories,
+Hilbert-space factorization and entanglement depend on the choice of operator
+algebra and the treatment of edge modes at the boundary between system and
+environment---so `basis-independent' does not automatically entail `gauge-invariant'
+in constrained systems. The criterion is gauge-invariant in the sense that it does
+not depend on a choice of perturbative gauge fixing or bookkeeping; extending it
+rigorously to theories with non-trivial edge mode structure (electrodynamics,
+non-Abelian gauge theories) is an open refinement, likely requiring the
+algebraic-QFT formulation noted above.
+
+In weakly coupled QFT, on-shell emission into the asymptotic environment is a
+\emph{sufficient} condition for actualization: a real, on-shell excitation
+satisfying $p^{\mu}p_{\mu} = m^{2}c^{2}$ propagates into the far field, producing
+environmental states that are orthogonal (or near-orthogonal) and thereby
+generating a lasting, redundant entanglement record. Purely virtual (off-shell)
+exchanges---which mediate van der Waals forces, the Casimir effect, and similar
+phenomena---typically leave the environment in its ground state and produce only
+reversible dynamic shifts (such as the Lamb shift) without generating a persistent
+causal record. However, the on-shell condition is \emph{not} asserted to be
+necessary: near-field couplings and many-body scattering processes can in
+principle produce robust environmental distinguishability without a single
+propagating on-shell quantum, and the physically relevant question in all regimes
+is whether environmental degrees of freedom end in near-orthogonal states that
+persist. The on-shell condition is the clean limiting expression of the
+actualization criterion in radiative perturbative regimes, not its general
+definition.
+
+This reformulation also handles cases where the on-shell language becomes
+ambiguous. In strongly correlated condensed matter systems, a quasiparticle
+excitation---a phonon, magnon, or polariton---constitutes an actualization event
+when it produces an irreversible entanglement increase in the condensed matter
+environment, regardless of whether it maps cleanly onto a fundamental gauge boson.
+Similarly, contact interactions and near-field couplings actualize when they
+satisfy the entropy criterion, even in the absence of propagating radiation. The
+deeper requirement in all regimes is irreversible environmental entanglement.
+
+\paragraph{The Kinematic Snap: the microscopic mechanism of irreversibility.}
+The precise physical mechanism that converts reversible potentia into irreversible
+actuality can be stated in standard QFT terms without appeal to thermodynamic
+avalanches or statistical thresholds. We call this the \emph{Kinematic Snap}.
+
+When two fundamental particles interact, their wavefunctions (potentia) overlap.
+At short range, this overlap is mediated by virtual, off-shell bosons satisfying
+$p^{\mu}p_{\mu} \neq m^{2}c^{2}$. Virtual bosons are off-shell precisely because
+they represent the universe's provisional, reversible exploration of possible
+states: they cannot propagate to the asymptotic environment, so they cannot
+balance the Local Ledger, and they write no vertex to the DAG. The interaction
+remains reversible for as long as only virtual exchange occurs.
+
+Actualization occurs at the kinematic threshold: the precise moment at which the
+interaction possesses sufficient energy-momentum to elevate a mediating boson to
+the mass shell. At this threshold, the boson transitions to an on-shell real
+excitation satisfying $p^{\mu}p_{\mu} = m^{2}c^{2}$. An on-shell boson can
+propagate to infinity. The Local Ledger Condition then demands permanent recording:
+the energy-momentum transfer is inscribed as an irreversible vertex on the causal
+DAG. The continuous, reversible hum of virtual off-shell potentia snaps into a
+discrete, permanent causal fact.
+
+\paragraph{Relationship to QFT localization theorems.}
+\label{sec:localization}
+A natural technical concern is whether identifying actualization with the on-shell
+threshold contradicts the Reeh-Schlieder theorem or the failure of Newton-Wigner
+localization at sub-Compton scales. It does not, for two reasons.
+
+First, the RA actualization criterion is \emph{not} a sharp spacetime localization
+claim. The primary criterion is an irreversible increase in quantum relative
+entropy $\Delta S(\rho \| \sigma_0) > 0$ with respect to the vacuum reference
+state (Section~\ref{sec:criterion}). The on-shell condition $p^{\mu}p_{\mu} =
+m^2 c^2$ is the implementation of this entropic criterion in the perturbative
+regime --- it is the signature of an excitation that can propagate to the
+asymptotic environment and generate a redundant causal record. It is explicitly
+\emph{not} a claim that the interaction is localized at a mathematical point
+$x_0^\mu$.
+
+Second, the LSZ reduction formula places asymptotic external states on-shell
+at $t \to \pm\infty$. RA uses the on-shell condition as an effective diagnostic
+of whether a given exchange has crossed the threshold for environmental
+entanglement --- not as a claim that LSZ applies locally at each vertex in a
+finite interaction region. The physically relevant object is the $S$-matrix
+pole, which is frame-independent and well-defined. What RA adds is the
+identification of pole-crossing with the writing of a causal DAG vertex: a
+metaphysical claim about what the $S$-matrix pole \emph{means}, not a departure
+from the mathematics of interacting QFT.
+
+In strongly coupled regimes where the quasi-particle picture breaks down, the
+entropic criterion takes over directly: actualization is the irreversible
+increase in $\Delta S(\rho \| \sigma_0)$, and the on-shell language becomes an
+approximation. This is an open refinement addressed in RAGC
+Derivation~2 (\citep{Sandeman2026RAGC}, Derivation~2),
+not a contradiction: the entropic criterion is the fundamental definition,
+and the on-shell condition is its exact perturbative implementation.
+
+This mechanism has four immediate consequences:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Irreversibility is kinematic, not statistical.} The threshold is
+  the dispersion relation $p^{\mu}p_{\mu} = m^{2}c^{2}$---a binary condition
+  grounded in standard QFT, not a probabilistic or thermodynamic criterion. The
+  snap is sharp and objective.
+
+  \item \textbf{No observer is required.} An electron and a proton do not require
+  a scientist to actualize their binding. Once their interaction produces a real
+  on-shell photon carrying away the binding energy ($\sim 13.6$~eV for hydrogen),
+  the vertex is written regardless of whether anyone is watching. The mechanism
+  is entirely relational and causal.
+
+  \item \textbf{Finite decoherence time is explained.} Decoherence takes a finite
+  duration not because of a fuzzy statistical process, but because it takes
+  physical time for emitted on-shell bosons to propagate outward and entangle with
+  the surrounding environmental degrees of freedom. The decoherence timescale
+  $\tau_D \sim \hbar / \Delta E_{\mathrm{env}}$ (Prediction~P2) is precisely the
+  light-travel time for on-shell radiation to reach the environmental boundary,
+  scaled by the interaction strength.
+
+  \item \textbf{Virtual exchanges are not actualized.} Van der Waals forces, the
+  Casimir effect, the Lamb shift---all mediated by off-shell virtual
+  exchange---produce no DAG vertices. They are genuine physical effects, but they
+  are effects of the potentia, not actualities. This is consistent with the RA
+  vacuum prescription: the Casimir energy difference (arising from the actualized
+  boundary conditions imposed by the plates) gravitates; the absolute virtual
+  zero-point energy does not.
+\end{enumerate}
+
+\paragraph{The Unruh vacuum and the stationarity criterion.}
+The Kinematic Snap also resolves the Unruh frame-dependence question precisely.
+A uniformly accelerated (Rindler) observer detects a stationary thermal bath at
+temperature $T_U = \hbar a / (2\pi c k_B)$. This bath is in thermal equilibrium:
+its relative entropy with respect to the Rindler vacuum is constant in time
+($\Delta S_{\mathrm{rel}} = 0$). No irreversible increase in relative entropy
+occurs; no on-shell bosons are being emitted into the asymptotic environment at
+a net rate that exceeds absorption. The Rindler thermal bath represents the
+universe's stationary potentia as seen by the accelerated observer---it is not
+generating new actualization events. Both the inertial and the accelerated
+observer therefore agree: in the empty Minkowski vacuum, no actualization is
+occurring. The apparent disagreement on particle content is a modal decomposition
+artefact, not a disagreement about physical causal facts.
+
+This becomes dramatic at the extreme limit. As acceleration---or equivalently,
+by the Einstein Equivalence Principle, gravitational mass-density---approaches
+the bandwidth limit $R_{\mathrm{max}}$, the local actualization density of the
+DAG saturates. The graph cannot accept further causal links. At this limit, the
+kinematic threshold is reached at every interaction simultaneously: the graph
+geometrically shears, producing a causal severance. This is the RA account of
+what standard GR calls a singularity. There is no infinity; there is a graph cut,
+governed by the same Ledger Partition Theorem verified in Lean~4/Mathlib, forcing
+the nucleation of a new, causally isolated causal ledger. Recent experiments
+measuring the finite duration of quantum transitions~\citep{Minev2019} are
+uniquely positioned to probe the kinematic snap mechanism at the laboratory scale,
+as discussed in Section~\ref{sec:falsify}.
+
+\paragraph{Frame-independence of the actualization criterion.}
+A subtle but important point concerns the Lorentz covariance of the criterion.
+If actualization were defined in terms of particle number---``an on-shell particle
+is emitted''---it would be frame-dependent: an accelerated (Rindler) observer
+detects a thermal bath of particles in the Minkowski vacuum, while an inertial
+observer detects none. This would make actualization observer-dependent, which
+is precisely what RA rejects.
+
+The entropy criterion resolves this. Relative entropy $S(\rho \| \sigma)$
+between states is a diffeomorphism-invariant scalar. A strictly irreversible
+increase in relative entropy with respect to the vacuum state is an objective,
+coordinate-independent fact. An accelerated and an inertial observer may disagree
+on the particle content of an interaction, but they must agree on whether an
+irreversible thermodynamic event occurred, because irreversibility is encoded in
+the monotone properties of relative entropy---a frame-independent quantity.
+The on-shell particle language is the clean limiting expression of this criterion
+in weakly coupled, perturbative regimes; the fundamental criterion is the relative
+entropy increase, which is covariant in all regimes. The formal proof that
+$\mathcal{P}_{\mathrm{act}}$, reformulated in terms of local algebras and modular objects rather than
+Fock-space particles, produces a frame-independent set of actualization events is
+pursued in the companion paper RAGC~\citep{Sandeman2026RAGC}.
+
+\subsubsection{Lemma: Conservation of Probability under Actualization}
+
+When an actualizing interaction occurs, the continuous pruning of the state space
+must strictly conserve total probability. We establish this in two steps,
+distinguishing the unconditional update from the post-selection formula.
+
+\textbf{Step 1: The unconditional update.} Let $\{M_k\}$ be the set of Kraus
+operators representing the environmental scattering channels, satisfying the
+completeness relation $\sum_k M_k^{\dagger}M_k = I$. The unconditional
+(pre-selection) state after the interaction is:
+\begin{equation}
+  \rho_{\mathrm{after}} = \sum_k M_k\,\rho_{\mathrm{before}}\,M_k^{\dagger}.
+\end{equation}
+Probability conservation follows directly from the completeness relation:
+\begin{equation}
+  \operatorname{Tr}(\rho_{\mathrm{after}})
+  = \operatorname{Tr}\!\Bigl(\sum_k M_k\,\rho_{\mathrm{before}}\,M_k^{\dagger}\Bigr)
+  = \operatorname{Tr}\!\Bigl(\rho_{\mathrm{before}}\sum_k M_k^{\dagger}M_k\Bigr)
+  = \operatorname{Tr}(\rho_{\mathrm{before}})
+  = 1.
+\end{equation}
+This establishes that the total probability is preserved \emph{across all possible
+outcomes}. No probability leaks from the system during the transition from the
+possible to the actual.
+
+\textbf{Step 2: The post-selection formula.} Once a specific outcome $k$ is
+realized---i.e., once actualization selects a particular environmental
+channel---the updated state is renormalized to reflect the realized branch:
+\begin{equation}
+  \rho_{\mathrm{after}|k}
+  = \frac{M_k\,\rho_{\mathrm{before}}\,M_k^{\dagger}}
+         {\operatorname{Tr}(M_k\,\rho_{\mathrm{before}}\,M_k^{\dagger})}.
+\end{equation}
+The denominator $\operatorname{Tr}(M_k\,\rho_{\mathrm{before}}\,M_k^{\dagger}) =
+p_k$ is exactly the probability of outcome $k$, as given by the Born Rule. The
+post-selection formula geometrically rescales the remaining phase space to the
+realized branch, guaranteeing $\operatorname{Tr}(\rho_{\mathrm{after}|k}) = 1$.
+The laws of probability remain strictly intact. The unconditional update (Step~1)
+establishes conservation across all outcomes; the post-selection formula (Step~2)
+gives the state conditional on a specific actualization having occurred.
+
+\subsection{Decoherence Timescales}
+
+The decoherence timescale $\tau_D$ quantifies how rapidly a superposition loses
+coherence through environmental interaction. For a particle of mass $m$ in thermal
+contact with an environment at temperature $T$:
+\begin{equation}
+  \tau_D \approx \tau_R \left(\frac{\lambda_{dB}}{\Delta x}\right)^{\!2},
+\end{equation}
+where $\tau_R$ is the relaxation time, $\lambda_{dB} = \hbar/\sqrt{2mkT}$ is the
+thermal de Broglie wavelength, and $\Delta x$ is the spatial separation of the
+superposed states. For macroscopic systems, $\Delta x \gg \lambda_{dB}$, and
+$\tau_D \ll \tau_R$---decoherence occurs many orders of magnitude faster than
+dissipation. For a buckyball (C$_{60}$, mass $\approx 1.2 \times 10^{-24}$\,kg)
+at room temperature with path separation $\Delta x \approx 1\,\mu$m, $\tau_D$ is
+of order $10^{-19}$\,s.
+
+\subsection{Entanglement Entropy as a Measure of Relationality}
+
+The entanglement entropy provides a quantitative measure of how `relational' a
+bipartite system is. For a bipartite state $\rho_{AB}$, the entanglement entropy
+of subsystem $A$ is:
+\begin{equation}
+  S(A) = -\operatorname{Tr}(\rho_A \log \rho_A),
+\end{equation}
+where $\rho_A = \operatorname{Tr}_B(\rho_{AB})$. $S(A) = 0$ if and only if the
+global state is a product state ($A$'s properties are intrinsic). $S(A)$ is
+maximized for a maximally entangled state, in which $A$'s properties are entirely
+relational---undefined without reference to $B$. This gives precise mathematical
+content to the taxonomy of Section~\ref{sec:landscape}: invariant properties
+correspond to $S = 0$ for the relevant degree of freedom; intrinsically relational
+properties correspond to high-$S(A)$ states. The decoherence process continuously
+drives $S(A)$ upward through entanglement with the environment while reducing
+local superposition---this is the Hilbert space picture of classicalization.
+The formal account of how recursive coarse-graining over the microscopic DAG
+generates successive levels of classical description — from chemistry to biology
+to agentic intelligence — is developed in the companion paper
+RAHC~\citep{Sandeman2026RAHC}.
+
+We can map this process directly onto the geometry of a dynamical phase space. In
+Relational Actualism, entanglement entropy functions as the precise quantitative
+measure of accumulated causal constraints. Each actualization event physically
+constrains the system, binding its future evolution to the state of the
+environment. As $S(A)$ increases, the unconstrained volume of the local quantum
+state shrinks, funneling the system's trajectory until it is strictly bounded by
+its relational network.
+
+\subsection{The Berry Phase as Evidence for the Reality of Hilbert Space}
+
+The Berry phase provides particularly compelling evidence that the geometry of
+Hilbert space has physical consequences. When a quantum system's Hamiltonian is
+slowly varied along a closed path $C$ in parameter space, the state acquires a
+geometric phase:
+\begin{equation}
+  \gamma_n(C) = i \oint_C \bra{n(\mathbf{R})}\nabla_{\mathbf{R}}\ket{n(\mathbf{R})}
+  \cdot d\mathbf{R}.
+\end{equation}
+This geometric phase depends only on the geometry of the path in parameter
+space---specifically, on the solid angle subtended by $C$ in the projective
+Hilbert space---not on the rate of traversal or the energy of the state. It has
+been experimentally confirmed in systems ranging from photon polarization to
+neutron interferometry to topological insulators~\citep{Cohen2019}. The Berry
+curvature $\Omega_n = \nabla_{\mathbf{R}} \times \mathbf{A}_n$ (where
+$\mathbf{A}_n = i\bra{n}\nabla_{\mathbf{R}}\ket{n}$ is the Berry connection) is
+physically real and measurable, strongly supporting the central ontological claim
+of Relational Actualism: Hilbert space amplitudes represent real structures whose
+geometry constrains and shapes physical processes.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Experimental Analysis}
+\label{sec:experiment}
+
+\subsection{The Double-Slit Experiment}
+
+The double-slit experiment and its variants provide the central experimental
+scaffold for the present argument. In the scenario with one open slit, the pattern
+on the detection screen is consistent with point-like entities. With two slits, a
+wave interference pattern appears. In the density matrix framework, this is
+precisely the situation of non-zero off-diagonal coherences:
+$\braket{\varepsilon_2}{\varepsilon_1} \approx 1$, because no which-path
+information has been recorded in the environment. When a detector is placed at one
+slit, the environment acquires which-path information,
+$\braket{\varepsilon_2}{\varepsilon_1} \to 0$, and the interference pattern
+vanishes. Whether the detector `fires' or not is irrelevant---what matters is
+whether the environmental entanglement entropy has increased irreversibly.
+
+\subsection{The Buckyball Experiment and the Washout Effect}
+
+The buckyball (C$_{60}$) interference experiment of Hackerm\"{u}ller et
+al.~\citep{Hackermuller2004} is particularly illuminating because it demonstrates
+that the transition from quantum to classical behavior is continuous, not
+discontinuous, and is governed by information content. At low temperatures,
+buckyballs exhibit clear wave interference through a nanograting. As temperature
+increases, the buckyballs emit thermal radiation---photons whose wavelength encodes
+which-path information. At a critical temperature the interference pattern washes
+out entirely. A variation by Hornberger et al.~\citep{Hornberger2003} achieved the
+same washout by degrading the vacuum.
+
+The key physical quantity is the overlap $\braket{\varepsilon_2}{\varepsilon_1}$
+between environmental states correlated with the possible paths. The washout is
+continuous and quantitative, matching the gradual reduction of off-diagonal
+elements in the reduced density matrix. The energy threshold $E_{\mathrm{wash}}
+\approx hc/d$ (for slit separation $d \approx 100$\,nm gives $E_{\mathrm{wash}}
+\approx 12.4$\,eV) is consistent with experimental results.
+
+\subsection{Delayed-Choice and Quantum Eraser Experiments}
+
+The delayed-choice experiment (Wheeler) demonstrates that the presence or absence
+of an interference pattern is determined by the total informational state of the
+system at the moment of detection---the relevant quantity is
+$\braket{\varepsilon_2}{\varepsilon_1}$ evaluated over the full system history.
+This explains why there is no retrocausal signaling.
+
+The quantum eraser experiment~\citep{ScullyDruhl1982} completes the picture: by
+destroying which-path information (via a second polarizer), coherence is
+restored---the off-diagonal terms re-emerge in the reduced density matrix of the
+signal photons. This demonstrates bidirectionality: actualization can be `undone'
+if the environmental record is erased \emph{before} a macroscopic thermodynamic
+record is irreversibly established. This is critical: the quantum eraser does not
+reverse an actualization; it reveals that no actualization had yet occurred,
+because the thermodynamic horizon had not been crossed. This is strong evidence
+that irreversible environmental entanglement---not the physical presence of a
+detector---is the operative quantity.
+
+\subsection{Quantum Maze: Entanglement and Nonlocal Constraints}
+
+The quantum maze experiment uses parametric down-conversion to produce entangled
+photon pairs. Because the pairs are entangled, they constitute a single quantum
+system; a measurement on the idler photon instantaneously constrains the state of
+the signal photon regardless of spatial separation. The present framework
+interprets this as follows: the entangled pair has a joint wave function that is
+non-separable. When the idler is detected, the actualization criterion is satisfied
+and the signal photon's reduced density matrix loses its off-diagonal terms. This
+nonlocality is not a violation of relativity because no information is transmitted
+faster than light; both photons belong to a single nonlocal quantum system whose
+wave function is defined in the configuration space of both particles jointly.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{The Many-Worlds Rebuttal}
+
+The Everettian Many-Worlds Interpretation
+(MWI)~\citep{Everett1957,SaundersEtAl2010} holds that the universal wave function
+never collapses and evolves unitarily always. MWI has notable virtues: it takes
+the formalism of quantum mechanics at face value and requires no additional
+collapse postulate. However, it faces several serious difficulties.
+
+First, the preferred basis problem. While einselection provides a basis-selection
+mechanism via decoherence, branching must occur in some basis. The pointer basis
+selected by decoherence depends on the structure of the environment, which must be
+specified. The branches of MWI are not fundamental features of the wave function
+but artifacts of a particular factorization of Hilbert space.
+
+Second, the probability problem. Deriving the Born rule probabilities within MWI
+is notoriously difficult. If all branches occur, in what sense are some outcomes
+more probable than others? Deutsch-Wallace decision-theoretic arguments and
+branch-counting approaches both face objections~\citep{SaundersEtAl2010}.
+
+Third, and most fundamentally: MWI denies that anything actually happens. No
+branch is more real than any other; the appearance of a definite outcome is an
+illusion relative to our branch. This conflicts with the most basic datum of
+experience---that something, specifically, occurs---and with the scientific
+methodology that requires comparing theory with a definite observational record.
+Relational Actualism preserves the ontological primacy of actual events: something
+happens, with probability given by the Born rule, and this happening dynamically
+eliminates specific possibilities. The wave function prunes rather than branches.
+
+Fourth, the ontological parsimony argument cuts both ways. MWI is often praised
+for positing only one entity (the wave function) with no collapse. But it
+proliferates universes---an ontological cost not obviously lower than positing a
+single universe with genuine randomness.
+
+\subsection{Ontic Randomness, the Equal-Rate Limit, and the Kinematic Snap}
+\label{sec:ontic}
+
+The framework developed here implies that the determinism/indeterminism distinction
+is not fundamental but contextual. Nature is deterministic when the causal and
+logical context has reduced the possibilities for a variable to exactly one; it is
+irreducibly random when multiple possibilities remain viable.
+
+It is crucial to note that while classical chaos in phase space represents purely
+epistemic uncertainty about a fully determined trajectory, the randomness in RAQM
+is \emph{ontic}: the trajectory itself is physically undetermined until
+actualization dynamically prunes the space. This distinction between epistemic and
+ontic randomness is load-bearing for the framework and must not be elided.
+
+\paragraph{The Kinematic Snap grounds ontic randomness precisely.}
+The competing Poisson process derivation of the Born rule (Section~\ref{sec:criterion})
+makes the locus of randomness explicit. Each volume element $d^3x$ in the wavefunction
+support independently races to cross the kinematic threshold $p^\mu p_\mu = m^2c^2$.
+The time at which any given volume element crosses the threshold is governed by the
+quantum amplitude for the mediating boson to go on-shell --- itself an underdetermined
+quantity until it occurs. This is not ignorance of a hidden variable. There is no
+fact of the matter, in the prior causal history, about when the threshold will be
+crossed at any specific location. The snap time at each location is ontic, not
+epistemic.
+
+\paragraph{The equal-rate limiting case.}
+A natural question arises: if two locations have exactly equal virtual exchange
+rates --- as in a perfectly symmetric double-slit experiment or an equal-amplitude
+two-state superposition --- is there a fact of the matter about which location fires
+first? And if not, has determinism been smuggled back in through the back door?
+
+The answer is no, and the argument is precise. In the equal-rate case, the
+competing Poisson process assigns $P(x_1) = P(x_2) = 1/2$. Neither location is
+favoured by the prior causal history. The snap at $x_1$ versus $x_2$ is not
+determined by any prior fact --- it is a genuinely new, uncaused addition to the
+causal DAG. This is not a failure of the framework; it is the framework's central
+claim. The actualization event at $x_0$ is ontologically primitive: the transition
+from possible to actual is the irreducible locus of contingency in the universe.
+
+To ask ``but why $x_0$ rather than $x_1$?'' is to ask for a prior cause of an
+event that, by definition, is the first link in a new causal chain. The question
+presupposes that every event must have a prior determining cause --- which is
+precisely the deterministic assumption that ontic randomness rejects. In RA, the
+actualization event is not caused by prior events in the sense of being logically
+entailed by them. Prior events determine only the probability distribution over
+possible actualization locations. Which possibility becomes actual is the
+universe's irreducible freedom --- the only place where the possible genuinely
+outstrips the determined.
+
+\paragraph{Is perfect symmetry physically realizable?}
+In practice, no experimental setup achieves perfect equality of virtual exchange
+rates at two locations. Environmental asymmetries, vacuum fluctuations, and the
+dense causal history of the laboratory break the symmetry at some level. This is
+not a loophole that restores determinism. Even with arbitrarily small asymmetry
+$\epsilon$, the outcome at the less-favoured location occurs with probability
+$1/2 - \epsilon/2$ --- which approaches $1/2$ but never reaches zero. The
+randomness is not resolved by the asymmetry; it is merely shifted. The fundamental
+ontic randomness of the snap survives in every physically realizable case.
+
+\paragraph{Comparison: why classical chaos is different.}
+Classical chaos is deterministic at the level of individual trajectories. Given
+perfect initial conditions, the trajectory is fixed; only our ignorance of those
+conditions produces apparent randomness. In the RA Kinematic Snap, there are no
+hidden initial conditions that would determine the snap location if we knew them.
+The quantum amplitudes governing the threshold crossing time at each location are
+not waiting to be discovered --- they are underdetermined until the snap occurs.
+The randomness is in the world, not in our description of it.
+
+This is the distinction Bohr was groping toward but could not state precisely
+without the ontological framework RA provides. The wave function is not a
+description of our ignorance; it is a description of the universe's genuine
+openness. Actualization is the moment that openness closes.
+
+Classical behavior is the dense-graph regime of the same discrete dynamics:
+as $\tau_D \to 0$ and $\braket{\varepsilon_2}{\varepsilon_1} \to 0$,
+the Poisson-CSG parameter $\mu \gg 1$ and the graph is so densely
+actualized that quantum indeterminacy has been eliminated at every scale
+of interest. Large, warm, complex systems are classical not because they
+are fundamentally different from quantum systems but because their causal
+graph is far above the Causal Firewall threshold. This resolves the
+Heisenberg cut without invoking a cut at all: there is no boundary between
+quantum and classical regimes, only a gradient in $\mu(x)$.%
+\footnote{Schr\"{o}dinger's cat deserves a brief defense---of the cat. The genuine
+locus of quantum indeterminacy in the thought experiment is the isotope: a small,
+isolated system whose decay is irreducibly random in exactly the sense RAQM
+identifies. A real cat is continuously actualizing---metabolizing, moving, emitting
+heat---a dense internal network of on-shell interactions that pins it firmly in the
+classical limit regardless of what the isotope is doing. RAQM rescues the world we
+actually see: the cat remains alive and indignant in its box until the decay event
+propagates through the mechanism and ends the matter. The paradox dissolves not
+because observation collapses a superposition, but because the cat was never in
+one.}
+
+\subsection{The Global Wave Function, Relativistic Causality, and Microcausality}
+\label{sec:relativity}
+
+There is one wave function for the
+universe~\citep{HartleHawking1983}. Every interaction updates it. However,
+positing a global update to the wave function immediately invites a relativistic
+critique: a simultaneous global update seemingly requires a preferred universal
+`now,' which would violate Lorentz invariance. This tension is resolved by
+formalizing the global wave function using the Tomonaga-Schwinger equation. Rather
+than evolving according to a single global time parameter $t$, the universal
+quantum state is defined as a functional $\Psi[\sigma]$ on an arbitrary spacelike
+hypersurface $\sigma$:
+\begin{equation}
+  i\hbar\,\frac{\delta\Psi[\sigma]}{\delta\sigma(x)} = H(x)\,\Psi[\sigma].
+\end{equation}
+An actualizing interaction updates the state functional along any valid spacelike
+hypersurface passing through $x$; the sequence of actualization events remains
+globally consistent regardless of how an observer slices spacetime.
+
+The prohibition on superluminal signaling is established rigorously through
+algebraic microcausality. For any two spacelike-separated regions $A$ and $B$,
+where $(x_A - x_B)^2 < 0$:
+\begin{equation}
+  [\hat{O}_A,\,\hat{O}_B] = 0.
+\end{equation}
+An actualization event at $A$ instantly restricts the joint probability
+distribution---pruning possibilities within the global configuration space---but
+microcausality ensures that the \emph{non-selective} (outcome-averaged)
+actualization map cannot causally force a measurable change in the expectation
+values of observables at spacelike-separated $B$. For a \emph{conditioned}
+(post-selected) branch, the remote conditional state can in general differ from the
+pre-actualization state; however, because the specific outcome at $A$ is not
+controllable from $B$, this conditional difference cannot be exploited to transmit
+information superluminally. There are genuine nonlocal constraints that are
+enforced whenever results are compared, a process that requires classical signaling
+at sub-luminal speeds.
+
+A further complementary bound for non-relativistic systems: the Lieb-Robinson
+bound~\citep{LiebRobinson1972} establishes that in quantum lattice systems, the
+speed of propagation of correlations is bounded by an effective `speed of light'
+determined by local interaction strength. This points toward a natural extension of
+the present framework to non-relativistic quantum systems---a direction pursued in
+the companion paper (Section~\ref{sec:future}), where the Causal Firewall defines
+the non-relativistic limit in which the local actualization history is universally
+agreed upon.
+
+\subsubsection{Consistency Condition for Actualization Events}
+\label{sec:consistency}
+
+The Tomonaga-Schwinger equation guarantees foliation-independence for unitary
+evolution: for any two spacelike-separated points $x$ and $y$,
+\begin{equation}
+  \left[\frac{\delta}{\delta\sigma(x)},\,
+        \frac{\delta}{\delta\sigma(y)}\right]\Psi[\sigma] = 0,
+  \qquad (x-y)^2 < 0,
+\end{equation}
+follows from microcausality. In free field theory this is the statement $[H(x),
+H(y)] = 0$ for $(x-y)^2 < 0$; in interacting, renormalized QFT the Hamiltonian
+density $H(x)$ must be understood as an operator-valued distribution whose local
+commutativity is one of the Wightman/Haag-Kastler axioms of algebraic
+QFT~\citep{HaagKastler1964}, not an automatic consequence of naive density
+expressions. For the purposes of RAQM, we work within the framework of locally
+covariant QFT where local commutativity is assumed as an axiom; a fully
+constructive proof in specific interacting models (e.g., an Unruh-DeWitt detector
+coupled to a free scalar field) can be made explicit and would constitute a
+valuable concrete verification. What requires independent argument beyond this
+unitary foundation is whether RAQM's actualization map---the non-unitary operation
+that selects an outcome and updates $\Psi[\sigma]$ at an interaction vertex---also
+satisfies an appropriate consistency condition.
+
+Let an actualization event occur at spacetime point $x$, and let $\sigma_1$ and
+$\sigma_2$ be any two spacelike hypersurfaces both passing through $x$, related by
+a local deformation in the causal future of $x$. The RAQM consistency condition
+requires that the probability distributions over all observable outcomes at any
+point $y$ with $(x-y)^2 < 0$ be identical whether computed from $\Psi[\sigma_1]$
+or $\Psi[\sigma_2]$ following actualization at $x$.
+
+The argument proceeds in two steps. First, unitary evolution prior to actualization:
+the standard T-S consistency condition guarantees that $\Psi[\sigma_1]$ and
+$\Psi[\sigma_2]$ encode identical physical content up to and including the
+actualization vertex at $x$. Second, the actualization map: RAQM's actualization
+is grounded in a local interaction at $x$ satisfying the irreversible entanglement
+criterion, and therefore acts exclusively on the degrees of freedom in a
+neighbourhood of $x$. For any observable $\hat{O}_B$ supported in a region $B$
+spacelike-separated from $x$, algebraic microcausality gives $[\hat{O}_A,
+\hat{O}_B] = 0$, where $\hat{O}_A$ is any operator supported near $x$. It follows
+that the \emph{non-selective} (outcome-averaged) actualization map---formally
+$\sum_k \inst_k$ where $\{\inst_k\}$ is the localized quantum
+instrument---leaves the expectation value of every observable at
+spacelike-separated $B$ unchanged:
+\begin{equation}
+  \operatorname{Tr}\!\left[\hat{O}_B \left(\sum_k \inst_k\right)\!(\rho)\right]
+  = \operatorname{Tr}[\hat{O}_B\,\rho].
+  \label{eq:nosig}
+\end{equation}
+This is the rigorous no-signaling statement. It should be noted that for a
+\emph{conditioned} (post-selected) outcome $k$, the remote conditional state
+$\rho_{B|k}$ can in principle differ from the pre-actualization $\rho_B$;
+no-signaling is preserved because the outcome $k$ is not locally controllable from
+$B$. The foliation-invariance claim applies strictly to the non-selective map and
+to the resulting observable statistics, not to individual conditioned branches.
+
+One further clarification. This argument establishes that observable statistics at
+spacelike-separated points are foliation-independent: no measurement at $B$ can
+distinguish which hypersurface was used to carry the actualization at $x$. It does
+not establish that the global state functional $\Psi[\sigma]$ is literally
+identical on $\sigma_1$ and $\sigma_2$ following actualization---since actualization
+is a non-unitary operation, the global descriptions will in general differ. What
+is invariant is the empirical content: the full set of outcome probabilities
+accessible to any observer in the causal future of an actualization event. This is
+the physically relevant notion of foliation-independence for RAQM.
+
+\subsubsection{Foliation-Independence of the Kinematic Snap}
+\label{sec:foliation-snap}
+
+The Kinematic Snap mechanism raises a sharpened version of the
+foliation-independence question. The competing Poisson process runs simultaneously
+across the entire wavefunction support: every volume element $d^3x$ where
+$|\psi(\mathbf{x})|^2 > 0$ is independently racing to cross the kinematic
+threshold. Different spacelike hypersurfaces will slice this distributed,
+simultaneous process differently. We must verify that the snap location and the
+Born probabilities are hypersurface-independent.
+
+\paragraph{The snap event is a spacetime point, not a hypersurface event.}
+The first and most important observation is that the Kinematic Snap, when it
+occurs, is a local event at a specific spacetime point $x_0^\mu$. A virtual
+exchange at $x_0^\mu$ crosses the threshold $p^\mu p_\mu = m^2c^2$ and an
+on-shell boson is emitted from $x_0^\mu$. This is a pointlike event in
+spacetime --- it has a definite location in all reference frames, because spacetime
+points are covariant. Different observers may assign different spatial coordinates
+and different times to $x_0^\mu$, but they agree that the snap occurred there.
+
+The snap is therefore not ``which location fires first on a given hypersurface''
+but rather ``which spacetime point is the first to emit an on-shell boson.'' The
+ordering is causal, not hypersurface-dependent.
+
+\paragraph{The competing Poisson process in covariant form.}
+The snap rate at spacetime point $x^\mu$ is proportional to the local probability
+density in the rest frame of the interaction. For a Dirac field with conserved
+four-current $j^\mu = \bar{\psi}\gamma^\mu\psi$, the timelike component
+$j^0 = \psi^\dagger\psi = |\psi(x)|^2$ gives the probability density in the local
+rest frame. The Lorentz-covariant snap rate is
+\begin{equation}
+  r(x^\mu) \;\propto\; j^\mu(x)\,u_\mu(x),
+\end{equation}
+where $u^\mu(x)$ is the future-directed unit timelike vector of the local rest
+frame. In the rest frame, $u^\mu = (1,\mathbf{0})$ and $r \propto j^0 = |\psi(x)|^2$.
+Note that the contracted scalar $j^\mu j_\mu$ is a Lorentz invariant but does not
+equal $|\psi|^2$ in general; the physically relevant quantity is the rest-frame
+probability density $j^\mu u_\mu$.
+
+The competing process is therefore between spacetime volume elements $d^4x$, not
+between spatial volume elements $d^3x$ on a preferred hypersurface. The
+probability that the snap occurs in $d^4x$ at $x^\mu$ before it occurs anywhere
+else in the support of the wavefunction is:
+\begin{equation}
+  dP(\text{snap at } x^\mu) = \frac{r(x^\mu)\,d^4x}{\int_{\mathrm{supp}(\psi)} r(x'^\mu)\,d^4x'},
+\end{equation}
+where the denominator integrates over the spacetime support of $\psi$, ensuring
+the normalisation is finite and well-defined. The snap location is determined by
+the four-dimensional local probability density, not by a preferred time coordinate.
+
+\paragraph{Born rule is foliation-independent.}
+For a non-relativistic wavepacket localized in time (a pulse of finite duration),
+the integration over $dt$ in the denominator is the same for all observers up to
+time-dilation factors that cancel in the ratio. For each spatial location, the
+probability of snap at $\mathbf{x}$ integrates to $|\psi(\mathbf{x})|^2$
+regardless of which spacelike hypersurface is used to evaluate it, because the
+time-integrated rate at each spatial location is proportional to $|\psi(\mathbf{x})|^2$
+in every frame. The Born rule is therefore foliation-independent.
+
+\paragraph{The snap time is frame-dependent; the snap event is not.}
+Different observers will assign different times $t_0$ to the snap event at
+$x_0^\mu$. An observer moving relative to the apparatus will see the snap as
+occurring earlier or later. But they will agree on: (a) that the snap occurred at
+$x_0^\mu$; (b) that the Born probability for $x_0^\mu$ is $|\psi(x_0)|^2$; and
+(c) that the wavefunction evolves from $x_0^\mu$ onward. The snap time is
+frame-dependent in the same sense that any spacetime coordinate is
+frame-dependent. The physical content of the snap --- the vertex written to the
+DAG, the on-shell emission, the irreversible entanglement record --- is a
+covariant fact.
+
+\paragraph{What remains open.}
+The argument above establishes foliation-independence for the snap location and
+Born probabilities in perturbative QFT where the competing Poisson process
+approximation is valid. Two refinements require further work:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Entangled multi-particle snaps.} When two entangled particles
+  interact with separate detectors at spacelike separation, the snap at detector 1
+  and the snap at detector 2 must be shown to be consistent regardless of which
+  snap is described as occurring ``first'' in any given frame. The no-signaling
+  result (Section~\ref{sec:consistency}) guarantees that observable statistics are
+  frame-independent, but the joint snap probability for entangled pairs requires a
+  careful treatment using the covariant four-current density for the joint system
+  rather than individual single-particle currents.
+
+  \item \textbf{Non-perturbative regime.} The Poisson process approximation
+  assumes the snap events are rare and independent. In strongly coupled regimes,
+  the snap events may not be statistically independent, and the covariant rate
+  formula requires the full AQFT formulation. The finite-dimensional version of
+  the required frame-independence result has now been formally verified in
+  Lean~4: the theorem \texttt{frame\_independence} in
+  \texttt{RA\_AQFT\_Proofs\_v10.lean} establishes that
+  $S(U\rho U^\dagger \| \sigma_0) = S(\rho \| \sigma_0)$ for any unitary $U$,
+  using the unitary-invariance of relative entropy together with
+  Poincar\'{e}-invariance of the vacuum as a physics axiom. The proof uses the
+  \texttt{Matrix.cfc\_conj\_unitary} lemma from the Lean-QuantumInfo
+  library~\citep{Meiburg2025LQI}. The remaining target is the
+  infinite-dimensional extension: showing that
+  $\mathcal{P}_{\mathrm{act}}$, defined via local algebras, commutes with wedge
+  algebra modular flow in the Tomita-Takesaki sense.
+\end{enumerate}
+
+The second open item (non-perturbative regime / full AQFT extension) has been
+partially resolved: the frame-independence claim is now a proved theorem in finite
+dimensions. The physical picture is established and the finite-dimensional
+Lean verification is complete; the remaining target is the infinite-dimensional
+algebraic QFT extension to type~III$_1$ von Neumann algebras. A collaborator
+with expertise in Tomita-Takesaki modular theory would be well-positioned to
+complete this step.
+
+\subsection{Free Will, Creativity, and the Constrained Observer}
+
+A provocative implication of the framework deserves careful treatment. RAQM
+forecloses libertarian free will as causally incoherent. An uncaused cause would
+be a causal contradiction in a universe whose consistency is guaranteed by the
+relational structure of actualization. Every actualizable property is intrinsically
+relational: it has no determinate value except in the context of a specific causal
+interaction. A choice that was causally independent of all prior context would be a
+property with a determinate value independent of all relational context---which is
+exactly what RAQM rules out as ontologically incoherent.
+
+What RAQM does preserve is genuine creativity. The universe described by RAQM is
+not a clockwork in which all outcomes are fixed in advance. At the quantum level,
+actualization outcomes are irreducibly random when multiple possibilities remain
+viable. This randomness is not mere noise---it is the universe's genuine openness
+to novelty. Each new actualization event adds to the causal record of the universe
+in ways that were not fixed by prior history. Freedom, understood as the genuine
+openness of the future and the real causal efficacy of minds in shaping which
+possibilities are actualized, is not merely compatible with RAQM---it is demanded
+by it.
+
+\subsection{Empirical Support and Falsifiability}
+\label{sec:falsify}
+
+A foundational critique often leveled at ontological interpretations of quantum
+mechanics is the problem of empirical equivalence. Relational Actualism goes beyond
+empirical equivalence by positing that actualization is a continuous, physical
+process of possibility-elimination occurring over a finite duration, driven by
+causal interactions, rather than an instantaneous mathematical discontinuity.
+
+This prediction is actively supported by recent experimental breakthroughs.
+Measurements of artificial atoms in superconducting circuits have demonstrated
+that quantum jumps are not instantaneous, discontinuous events, but continuous and
+even reversible transitions occurring over finite timescales~\citep{Minev2019}.
+Similarly, attosecond chronoscopy of photoemission~\citep{Pazourek2015} has shown
+that the duration of an electron's transition is strictly governed by the local
+structural and interaction environment. These results align with RAQM's mechanism,
+where actualization is governed by the continuous decay of off-diagonal coherences
+($\braket{\varepsilon_2}{\varepsilon_1} \to 0$) and bounded by local interaction
+strengths.
+
+By anchoring the transition of the possible to the actual in these measurable,
+finite dynamics, Relational Actualism distinguishes itself empirically from
+instantaneous collapse models. We now state the specific predictions more
+precisely.
+
+\paragraph{Prediction 1: Finite actualization propagation velocity.}
+RAQM predicts that the actualization front --- the boundary between the superposed
+and actualized regions of a many-body system --- propagates at a finite velocity
+bounded by the local interaction strength, not instantaneously. In a quantum
+lattice system with nearest-neighbor coupling $J$, the Lieb-Robinson
+bound~\citep{LiebRobinson1972} establishes that correlations propagate at most at
+velocity $v_{\mathrm{LR}} \sim J \cdot \ell / \hbar$, where $\ell$ is the lattice
+spacing. RAQM predicts that the actualization front propagates at or below this
+bound. The testable deviation from instantaneous collapse models: in a spatially
+extended many-body system, the decoherence of a distant site $B$ following an
+actualization event at site $A$ should exhibit a time delay $\Delta t \geq |r_A -
+r_B| / v_{\mathrm{LR}}$ before the off-diagonal coherences at $B$ begin to
+collapse. Instantaneous collapse models predict no such delay.
+
+\paragraph{Prediction 2: Environment-dependence of transition duration.}
+RAQM predicts that the duration of a quantum transition is not an intrinsic
+property of the system alone, but is governed by the local environmental coupling
+strength. Specifically, the actualization timescale $\tau_{\mathrm{act}}$ should
+scale as $\tau_{\mathrm{act}} \sim \hbar / \Delta E_{\mathrm{env}}$, where
+$\Delta E_{\mathrm{env}}$ is the characteristic energy scale of the environmental
+interaction driving the entanglement. This is consistent with the Pazourek et al.\
+attosecond chronoscopy results~\citep{Pazourek2015}, where the ionization duration
+depends on the local Coulomb environment, and with Minev et al.'s demonstration
+that the jump duration depends on the coupling to the measurement apparatus. The
+prediction is that systematically varying the environmental coupling in a controlled
+superconducting circuit experiment should produce a proportional variation in
+transition duration --- a clean, quantitative test.
+
+\paragraph{Prediction 3: Reversibility as a diagnostic of actualization threshold.}
+RAQM distinguishes pre-actualization dynamics (reversible, because the
+thermodynamic horizon has not been crossed) from post-actualization dynamics
+(irreversible, because a permanent causal record has been established). The quantum
+eraser experiments~\citep{ScullyDruhl1982} and the Minev et al.\ jump-reversal
+results~\citep{Minev2019} both demonstrate that what appears to be a collapse can
+be reversed if the environmental record is erased before thermodynamic
+irreversibility is established. RAQM predicts a sharp threshold between these two
+regimes, determined by the environmental entanglement entropy crossing a critical
+value. Below threshold: the transition is reversible in principle. Above threshold:
+the causal record is permanent and the transition cannot be reversed regardless of
+intervention. Identifying this threshold experimentally --- the precise point at
+which reversal becomes impossible --- would constitute a direct measurement of the
+actualization criterion.
+
+\paragraph{Distinguishing RAQM from competing interpretations.}
+All three predictions above are shared by RAQM and \emph{not} by the following
+alternatives: (a) instantaneous collapse models (GRW, CSL) predict no propagation
+delay and no environment-dependence of the collapse threshold beyond the stochastic
+rate parameter; (b) Everettian Many-Worlds predicts no sharp threshold and no
+genuine irreversibility --- only apparent irreversibility from within a branch; (c)
+decoherence-only models predict environment-dependence of decoherence timescales
+but deny that a sharp actualization threshold exists. RAQM's predictions are
+therefore genuinely discriminating, not merely reframings of existing results.
+
+\subsection{Future Directions: Curved Spacetime and the Arrow of Time}
+\label{sec:future}
+
+While the present framework resolves the measurement problem within the domain of
+flat Minkowski spacetime, grounding actualization in irreversible environmental
+entanglement naturally invites extension into non-inertial reference frames and
+curved spacetime. Because the definition of an on-shell excitation is
+frame-dependent via the Unruh and Hawking effects, RAQM implies that the rate and
+physical reality of wave function pruning must be inherently frame-dependent,
+deeply tying the structure of actualization to the causal horizons of the observer.
+
+Furthermore, by defining actualization as the irreversible elimination of
+possibilities, this framework provides a purely ontological grounding for the arrow
+of time. The formal extension of Relational Actualism to causal severance at event
+horizons and non-inertial thermodynamics is developed in the companion paper
+\emph{Relational Actualism Gravity and Cosmology} (RAGC)~\citep{Sandeman2026RAGC}.
+That paper proves two results that flow directly from the actualization criterion
+established in Section~\ref{sec:criterion} of the present work: first, that the
+RA-modified stress-energy operator has zero vacuum expectation value, structurally
+eliminating the vacuum energy contribution to the metric source term; and second,
+that for any causal severance of the spacetime DAG, the local conservation
+condition holds independently on each disconnected subgraph, formally establishing
+the energy bookkeeping dissolution across event horizons. The second result---the
+Ledger Partition Theorem---has been \textbf{formally verified in Lean~4/Mathlib},
+establishing the logical soundness of its discrete graph-theoretic core.
+
+RAGC further makes three empirical predictions that follow structurally from the
+actualization criterion established here: that the inferred value of $H_0$
+correlates with the mean actualization density along the line of sight (providing
+a geometric mechanism for the Hubble Tension without dark energy); that the vacuum
+energy contribution to the metric is structurally zero rather than fine-tuned; and
+that daughter spacetimes nucleated at causal severances inherit an effective
+cosmological constant determined by the local actualization flux at nucleation.
+
+The companion paper \emph{Relational Actualism Complexity and Intelligence}
+(RACI)~\citep{Sandeman2026RACI} extends the framework to biological complexity and
+agency, proving that the Markov blanket isomorphism and the thermodynamic steering
+cost bound are structurally grounded in the same actualization criterion, and
+making four empirical predictions including a physically derived constraint on the
+distribution of life in the universe. Core theorems in RACI have been formally
+verified in Lean~4/Mathlib. The load-bearing Condition C1$'$ of the Assembly Index
+Correspondence theorem---that each JOIN operation in molecular assembly corresponds
+to at least one irreversible actualization event (a coarse-grained lower bound
+robust to condensed-phase polymer chemistry)---has been established by a variational
+argument (the variational principle guarantees all stable covalent bond formation is
+exothermic, mandating irreversible energy dissipation to satisfy the Local Ledger
+Condition) and confirmed by B3LYP/6-311+G* density functional calculations across
+the five primary bond types of biological assembly (C-C, C-N, C-O, S-S, P-O), all
+verified exothermic. The Assembly Index Correspondence theorem therefore holds
+across the full chemical alphabet of biological complexity.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+
+Einstein put himself on the path to significant discoveries by accepting that the
+speed of light is a constant of Nature and working out the consequences. What he
+could not accept was a universe where true randomness is possible. Yet this is what
+nature really seems to be like. Relational Actualism accepts indeterminacy and
+works out its consequences.
+
+Properties are of three kinds: invariant (always actualized), classical (actualized
+deterministically through interaction), and intrinsically relational (actualized
+only in specific contexts of interaction, with genuine ontic randomness when more
+than one possibility remains). Crucially, accepting this intrinsic randomness does
+not require abandoning relativistic causality.
+
+By formalizing the global wave function using the Tomonaga-Schwinger equation
+within the Hartle-Hawking framework, the wave function of the universe is real,
+dwelling in a Hilbert space whose geometry (as evidenced by the Berry phase) is
+physically meaningful. Possibilities and actualities are both real; manifest
+reality is the constant process of the possible becoming actual through
+interaction---a dynamic breathing of the local phase space volume, where degrees of
+freedom are physically pruned and, prior to thermodynamic irreversibility, can be
+restored.
+
+Because this global actualization is foliation-independent---as established by a
+derived consistency condition showing that RAQM's actualization map leaves
+observable statistics at spacelike-separated points invariant under hypersurface
+choice (equation~\ref{eq:nosig}), applying rigorously to the non-selective
+map---and rigorously bounded by microcausality, it enforces nonlocal logical
+constraints in configuration space without ever permitting superluminal signaling
+in Minkowski spacetime.
+
+This framework distinguishes itself from Relational Quantum Mechanics by grounding
+actualization in causal interaction rather than perspectival observation. It
+distinguishes itself from dynamical collapse models by grounding the collapse
+trigger in irreversible environmental entanglement rather than a stochastic
+threshold or new fundamental constant. It distinguishes itself from
+decoherence-only approaches by adding the ontological claim that
+possibility-elimination is genuine, not merely apparent. And it distinguishes
+itself from Many-Worlds by preserving the primacy of actual events and the reality
+of a single history.
+
+The universe may not always know what it is going to do, but it always knows what
+it has done---and this non-locally constrains what is then possible, progressively
+funneling its unconstrained degrees of freedom into a definitive, classical record.
+There is a simple, if profound, logic to all of it. One would think that Einstein
+would have liked that.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Acknowledgements}
+The author acknowledges the use of Anthropic's Claude and Google's Gemini during
+the preparation of this manuscript. These AI tools were utilized as conversational
+assistants to help with structural editing, prose refinement, brainstorming
+conceptual analogies, and generating the overall formatting of the manuscript. The
+author takes full and sole responsibility for the original theoretical framework,
+the accuracy of the physical arguments, and the final intellectual content of the
+paper.
+
+\section*{Declarations}
+\textbf{Funding:} Not applicable.\quad
+\textbf{Competing interests:} The author declares no competing interests.
+
+\textbf{Preprint availability:} This manuscript is available as a preprint at
+\href{https://doi.org/10.5281/zenodo.19174380}{doi.org/10.5281/zenodo.19174380}
+(concept DOI: \href{https://doi.org/10.5281/zenodo.19174379}{doi.org/10.5281/zenodo.19174379}).
+Companion papers: RAGC~\href{https://doi.org/10.5281/zenodo.19197999}{doi.org/10.5281/zenodo.19197999}, EB~\href{https://doi.org/10.5281/zenodo.19198120}{doi.org/10.5281/zenodo.19198120}, RAHC~\href{https://doi.org/10.5281/zenodo.19198171}{doi.org/10.5281/zenodo.19198171}, RACI~\href{https://doi.org/10.5281/zenodo.19198224}{doi.org/10.5281/zenodo.19198224}, RAQI~\href{https://doi.org/10.5281/zenodo.19198285}{doi.org/10.5281/zenodo.19198285}, RADM~\href{https://doi.org/10.5281/zenodo.19198513}{doi.org/10.5281/zenodo.19198513}.
+
+\textbf{Code availability:} The Lean~4 formal proof files
+(\texttt{RA\_AQFT\_Proofs\_v10.lean} and \texttt{RA\_Proofs\_Lean4.lean}),
+Python computational scripts, and all companion paper source files are publicly
+available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}.
+
+\textbf{Data availability:} This paper presents theoretical work. No datasets
+were generated or analysed. All formal verification results are contained in the
+Lean~4 source files available at the repository above.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem[Rovelli(1996)]{Rovelli1996}
+Rovelli, C. (1996).
+\newblock Relational quantum mechanics.
+\newblock \emph{International Journal of Theoretical Physics}, 35(8):1637--1678.
+
+\bibitem[Hartle and Hawking(1983)]{HartleHawking1983}
+Hartle, J.~B. and Hawking, S.~W. (1983).
+\newblock Wave function of the universe.
+\newblock \emph{Physical Review D}, 28:2960--2975.
+
+\bibitem[Zurek(1981)]{Zurek1981}
+Zurek, W.~H. (1981).
+\newblock Pointer basis of quantum apparatus: into what mixture does the wave packet collapse?
+\newblock \emph{Physical Review D}, 24(6):1516--1525.
+
+\bibitem[Zurek(2003)]{Zurek2003}
+Zurek, W.~H. (2003).
+\newblock Decoherence, einselection, and the quantum origins of the classical.
+\newblock \emph{Reviews of Modern Physics}, 75(3):715--775.
+
+\bibitem[Joos and Zeh(1985)]{JoosZeh1985}
+Joos, E. and Zeh, H.~D. (1985).
+\newblock The emergence of classical properties through interaction with the environment.
+\newblock \emph{Zeitschrift f\"{u}r Physik B}, 59(2):223--243.
+
+\bibitem[Minev et~al.(2019)]{Minev2019}
+Minev, Z.~K., Mundhada, S.~O., Shankar, S., Reinhold, P.,
+  Guti\'{e}rrez-J\'{a}uregui, R., Schoelkopf, R.~J., Mirrahimi, M.,
+  Carmichael, H.~J., and Devoret, M.~H. (2019).
+\newblock To catch and reverse a quantum jump mid-flight.
+\newblock \emph{Nature}, 570:200--204.
+
+\bibitem[Cohen et~al.(2019)]{Cohen2019}
+Cohen, E., Larocque, H., Bouchard, F., Nejadsattari, F., Gefen, Y., and
+  Karimi, E. (2019).
+\newblock Geometric phase from Aharonov--Bohm to Pancharatnam--Berry and beyond.
+\newblock \emph{Nature Reviews Physics}, 1(7):437--449.
+
+\bibitem[Hackerm\"{u}ller et~al.(2004)]{Hackermuller2004}
+Hackerm\"{u}ller, L., Hornberger, K., Brezger, B., Zeilinger, A., and Arndt, M.
+  (2004).
+\newblock Decoherence of matter waves by thermal emission of radiation.
+\newblock \emph{Nature}, 427:711--714.
+
+\bibitem[Hornberger et~al.(2003)]{Hornberger2003}
+Hornberger, K., Uttenthaler, S., Brezger, B., Hackerm\"{u}ller, L., Arndt, M.,
+  and Zeilinger, A. (2003).
+\newblock Collisional decoherence observed in matter wave interferometry.
+\newblock \emph{Physical Review Letters}, 90:160401.
+
+\bibitem[Scully and Dr\"{u}hl(1982)]{ScullyDruhl1982}
+Scully, M.~O. and Dr\"{u}hl, K. (1982).
+\newblock Quantum eraser: a proposed photon correlation experiment concerning
+  observation and `delayed choice' in quantum mechanics.
+\newblock \emph{Physical Review A}, 25(4):2208--2213.
+
+\bibitem[Everett(1957)]{Everett1957}
+Everett, H. (1957).
+\newblock Relative state formulation of quantum mechanics.
+\newblock \emph{Reviews of Modern Physics}, 29(3):454--462.
+
+\bibitem[Saunders et~al.(2010)]{SaundersEtAl2010}
+Saunders, S., Barrett, J., Kent, A., and Wallace, D., editors (2010).
+\newblock \emph{Many Worlds? Everett, Quantum Theory, and Reality}.
+\newblock Oxford University Press.
+
+\bibitem[Lieb and Robinson(1972)]{LiebRobinson1972}
+Lieb, E.~H. and Robinson, D.~W. (1972).
+\newblock The finite group velocity of quantum spin systems.
+\newblock \emph{Communications in Mathematical Physics}, 28(3):251--257.
+
+\bibitem[Pazourek et~al.(2015)]{Pazourek2015}
+Pazourek, R., Nagele, S., and Burgd\"{o}rfer, J. (2015).
+\newblock Attosecond chronoscopy of photoemission.
+\newblock \emph{Reviews of Modern Physics}, 87:765--802.
+
+\bibitem[Bassi et~al.(2013)]{Bassi2013}
+Bassi, A., Lochan, K., Satin, S., Singh, T.~P., and Ulbricht, H. (2013).
+\newblock Models of wave-function collapse, underlying theories, and experimental
+  tests.
+\newblock \emph{Reviews of Modern Physics}, 85(2):471--527.
+
+\bibitem[Haag and Kastler(1964)]{HaagKastler1964}
+Haag, R. and Kastler, D. (1964).
+\newblock An algebraic approach to quantum field theory.
+\newblock \emph{Journal of Mathematical Physics}, 5(7):848--861.
+
+\bibitem[Sandeman(2026d)]{Sandeman2026RAHC}
+J.~F.~Sandeman.
+\newblock Algorithmic Causal Dynamics: A Unified Framework for Emergence and
+  Complexity in Relational Actualism ({RAHC}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198171}{doi.org/10.5281/zenodo.19198171}.
+
+\bibitem[Sandeman(2026b)]{Sandeman2026RAGC}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Gravity and Cosmology ({RAGC}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19197999}{doi.org/10.5281/zenodo.19197999}.
+
+\bibitem[Sandeman(2026c)]{Sandeman2026RACI}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Complexity and Intelligence ({RACI}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198224}{doi.org/10.5281/zenodo.19198224}.
+
+
+\bibitem[Meiburg et~al.(2025)]{Meiburg2025LQI}
+A.~Meiburg, L.~A.~Lessa, and R.~R.~Soldati.
+\newblock A formalization of the generalized quantum {Stein's} lemma in {Lean}.
+\newblock \textit{arXiv}:2510.08672, 2025.
+\newblock Lean-QuantumInfo library: \url{https://github.com/Timeroot/Lean-QuantumInfo}.
+
+\end{thebibliography}
+
+\end{document}

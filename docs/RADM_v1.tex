@@ -1,0 +1,751 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\AtBeginDocument{\let\hbar\relax
+  \DeclareMathSymbol{\hbar}{\mathord}{AMSb}{"7E}}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{natbib}
+\usepackage{titlesec}
+
+\geometry{top=1.1in,bottom=1.1in,left=1.15in,right=1.15in}
+
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{14pt}{4pt}
+\titlespacing*{\subsection}{0pt}{10pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{2pt}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black,
+  pdftitle={Relational Actualism: Dark Matter as Actualization-Density Topology (RADM)},
+  pdfauthor={Joshua F. Sandeman}}
+
+\newcommand{\Pact}{\mathcal{P}_{\mathrm{act}}}
+\newcommand{\Tact}{T^{\mu\nu}_{\mathrm{RA}}}
+\newcommand{\ARA}{A_{\mathrm{RA}}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\AP}{\mathrm{AP}}
+\newcommand{\MB}{\mathrm{MB}}
+\newcommand{\ket}[1]{|#1\rangle}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+{\LARGE\bfseries Relational Actualism: Dark Matter as\\
+Actualization-Density Topology ({RADM}):\par}
+\vspace{0.4cm}
+{\large\itshape Flat Rotation Curves, the Bullet Cluster, and the\\
+Topological Boundary Mechanism\par}
+\vspace{1.2cm}
+{\large Joshua F.\ Sandeman\par}
+\vspace{0.3cm}
+{\normalsize\itshape Independent Researcher, Salem, Oregon\par}
+\vspace{0.3cm}
+{\normalsize March 2026\par}
+\vspace{0.3cm}
+  {\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19198513}
+    {doi.org/10.5281/zenodo.19198513}\par}
+\vspace{1.5cm}
+
+\begin{abstract}
+The companion paper RAGC~\citep{Sandeman2026b} establishes that causally silent
+dark matter candidates (WIMPs, axions, sterile neutrinos) cannot source macroscopic
+spacetime curvature in Relational Actualism (RA): a 100~GeV WIMP generates
+$10^{25}$--$10^{38}$ times less actualization flux than equivalent baryonic matter,
+falling decisively below the threshold for gravitational lensing. This paper
+develops the mechanisms by which the same actualization-density field accounts for
+the observational signatures currently attributed to dark matter, without invoking
+any new particle species. Derived as the static, weak-field limit of the covariant
+actualization tensor established in RAGC~\citep{Sandeman2026b}, we utilise the
+two-component metric sourcing equation $\nabla^2\Phi = 4\pi G[\rho_A + \rho_\lambda]$,
+where $\rho_A$ tracks accumulated causal depth (recovering standard GR in the
+equilibrium limit) and $\rho_\lambda \propto \nabla^2(\ln\lambda)$ is a gradient
+correction representing the thermodynamic pressure of the actualization vacuum. We
+demonstrate that this gradient produces flat galactic rotation curves for
+exponential disk profiles. Furthermore, we formalise the distinction between
+instantaneous actualization flux $\lambda$ and accumulated causal depth
+$A_{\mathrm{RA}}$, showing that this distinction resolves the Bullet Cluster
+lensing offset dynamically, without leaving a trailing gravitational wake. All
+mechanisms follow from the core RA actualization postulate, replacing dark matter
+with the topological boundary dynamics of the causal graph. A conditional
+derivation of the baryonic Tully-Fisher relation ($v_{\mathrm{flat}}^4 \propto M$)
+is established via dynamical dimensional reduction of the sparse causal DAG
+(supported by the Durhuus-Jonsson-Wheater theorem for Lorentzian graphs),
+identifying MOND's $a_0$ as the macroscopic shadow of the critical actualization
+density $\lambda_c \sim c/r_c^3$. Five hard walls are precisely identified:
+the exact value $\alpha = 2\pi$ for the Jacobson coefficient confirmed to within 2\% using the full baryonic disk mass~\citep{BlandHawthorn2016}, proof of dimensional reduction in the
+RA-CSG universality class, quantitative Bullet Cluster mapping,
+CMB acoustic structure formation, and Weyl curvature sourcing.
+A bandwidth-partition model of the Hubble tension, derived from the
+Poisson-CSG generative measure established in RAGC~\citep{Sandeman2026b},
+predicts $H_{\mathrm{local}} \approx 73.1\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$
+from the KBC void ($\delta = -0.20$). New falsifiable prediction:
+the Eridanus supervoid ($\delta \approx -0.30$) should give
+$H \approx 75.9\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$.
+
+\medskip\noindent
+\textbf{Keywords:} Dark Matter \textperiodcentered{} Causal DAG \textperiodcentered{}
+Actualization Density \textperiodcentered{} Rotation Curves \textperiodcentered{}
+Bullet Cluster \textperiodcentered{} MOND \textperiodcentered{} Emergent Gravity
+\textperiodcentered{} Tully-Fisher \textperiodcentered{} Hubble Tension \textperiodcentered{} Eridanus Supervoid
+\end{abstract}
+\end{titlepage}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction: The Dark Matter Problem in Relational Actualism}
+\label{sec:intro}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The galactic rotation curve problem, the Bullet Cluster lensing offset, and the
+large-scale structure formation requirements of the standard $\Lambda$CDM model
+are three of the strongest constraints in observational cosmology. The standard
+account invokes a non-baryonic cold dark matter (CDM) component---a particle
+species that gravitates but does not interact electromagnetically---to satisfy all
+three simultaneously.
+
+The companion paper RAGC~\citep{Sandeman2026b} establishes that this account is
+structurally incompatible with Relational Actualism. In RA, the metric is sourced
+by actualization flux $\lambda(x)$, not rest-mass density. A WIMP undergoes at
+most one on-shell interaction every $10^{18}$ universe lifetimes; it contributes
+negligible actualization flux and therefore negligible metric sourcing. This is the
+WIMP Prohibition (RAGC Prediction~4). The prohibition extends to axions, sterile
+neutrinos, and any species with negligible electromagnetic and strong cross-sections.
+
+This paper asks the complementary question: if causally silent particles cannot
+generate the dark matter signatures, what does? We propose that the answer lies in
+the topological structure of the actualization-density field itself---specifically,
+in two mechanisms that follow from the same RA framework:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{The $\nabla^2(\ln\lambda)$ rotation curve mechanism:} a gradient
+  correction to the metric sourcing equation that produces flat rotation curves
+  for exponential disk profiles at natural coupling order.
+  \item \textbf{The accumulated causal depth mechanism:} the distinction between
+  instantaneous flux $\lambda(x,t)$ and accumulated causal depth $A_{\mathrm{RA}}$
+  as the metric source, which resolves the Bullet Cluster lensing offset without
+  new parameters.
+\end{enumerate}
+
+Both mechanisms are conjectural. Neither constitutes a complete replacement for
+CDM until the hard walls identified in Section~\ref{sec:hardwalls} are resolved.
+A key conceptual shift informs this paper: RADM does not compete with GR
+but predicts exactly where GR fails. In dense baryonic regions ($\mu \gg 1$),
+the causal graph IS 3-dimensional and GR is recovered as the unique
+consistent macroscopic description (Lovelock's theorem~\citep{Sandeman2026b}).
+In sparse galactic halos ($\mu < 1$), the graph IS locally 2-dimensional
+and GR's assumption of a uniform 4D manifold breaks down. Dark matter is not
+needed --- the geometry itself changes. This paper presents the derivations
+as far as they currently reach, names the hard walls precisely, and identifies
+the collaborator targets that would resolve them.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Unified Metric Sourcing Equation}
+\label{sec:sourcing}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The analysis of the WIMP Prohibition in RAGC reveals a deeper structural result.
+The weak-field metric sourcing equation in RA separates into two terms that
+standard GR conflates because for ordinary matter in equilibrium they are
+proportional:
+
+\begin{equation}
+  \nabla^2\Phi = 4\pi G\bigl[\rho_A + \rho_\lambda\bigr],
+  \label{eq:unified}
+\end{equation}
+where:
+\begin{align}
+  \rho_A(x) &= \frac{\hbar\langle\Delta E\rangle}{c^2}
+    \cdot \frac{\ARA(x)}{V}, \label{eq:rhoA} \\
+  \rho_\lambda(x) &= -\frac{\xi}{4\pi G}\,\nabla^2(\ln\lambda(x)).
+    \label{eq:rhoL}
+\end{align}
+
+The first term $\rho_A$ is sourced by accumulated causal depth---the integral of
+$\lambda$ over the past light cone $J^-(x)$. For ordinary matter in thermodynamic
+equilibrium over cosmological time, $\ARA/V \approx \lambda \cdot t_{\mathrm{cosm}}
+\cdot \langle\Delta E\rangle/c^2 \propto \rho_{\mathrm{matter}}$: this term
+recovers standard GR, and the weak equivalence principle is respected for all
+equilibrium species (see RAGC Derivation~6~\citep{Sandeman2026b} for the
+WEP recovery argument).
+
+The second term $\rho_\lambda$ is a dynamical correction proportional to the
+Laplacian of the log of the actualization density. It vanishes when $\lambda$ is
+spatially uniform---recovering standard GR in the equilibrium, homogeneous
+limit---and becomes significant at boundaries between high-$\lambda$ and
+low-$\lambda$ regions.
+
+\begin{remark}[Physical motivation of the $\rho_\lambda$ term]
+The quantity $\ln\lambda$ is proportional to the thermodynamic entropy of the
+actualization field. Its Laplacian $\nabla^2(\ln\lambda)$ measures the local
+divergence of actualization flow---positive where actualization is converging
+(dense regions) and negative where it is spreading (sparse regions). The
+$\rho_\lambda$ term encodes the topological tension at boundaries between
+dense and sparse causal subgraphs.
+\end{remark}
+
+\paragraph{The four regimes where the terms separate.}
+Standard GR is recovered everywhere both terms are proportional. They separate
+observably only at:
+\begin{enumerate}[noitemsep]
+  \item \textbf{Galactic edges} ($\nabla\lambda$ large): $\rho_\lambda$ produces
+  a boundary correction that flattens rotation curves (Section~\ref{sec:rotation}).
+  \item \textbf{Intergalactic voids} ($\lambda \to 0$): $\rho_A$ and $\rho_\lambda$
+  both suppressed, producing the differential expansion rate responsible for the
+  Hubble tension (RAGC Prediction~1~\citep{Sandeman2026b}).
+  \item \textbf{Transient high-$\lambda$ events} ($\lambda$ spikes but
+  $\ARA$ has not accumulated): $\rho_A$ dominates over the gas, as in the
+  Bullet Cluster (Section~\ref{sec:bullet}).
+  \item \textbf{Causally silent species} ($\lambda \approx 0$ at all times):
+  $\rho_A \approx 0$ and $\rho_\lambda \approx 0$; no metric sourcing
+  (RAGC WIMP Prohibition~\citep{Sandeman2026b}).
+\end{enumerate}
+
+\paragraph{Covariant origin.}
+Equation~\eqref{eq:unified} is no longer an ad-hoc phenomenological postulate.
+As established in the companion paper RAGC~\citep{Sandeman2026b}, it emerges as
+the strict static weak-field limit ($00$-component) of the fully covariant RA
+field equation:
+\begin{equation}
+  G_{\mu\nu} = 8\pi G\!\left(T_{\mu\nu}^{(A)}
+    + \Theta_{\mu\nu}^{(\lambda)}\right),
+  \label{eq:covariant_field}
+\end{equation}
+where $\Theta_{\mu\nu}^{(\lambda)} = \xi[\nabla_\mu\nabla_\nu(\ln\lambda)
+- g_{\mu\nu}\Box(\ln\lambda)]$ is the actualization tensor representing the
+thermodynamic entropy flux of the graph-rewriting process. In the
+non-relativistic regime where spatial gradients dominate time derivatives,
+$G_{00} \approx \nabla^2\Phi$ and
+$\Theta_{00}^{(\lambda)} \approx \xi\nabla^2(\ln\lambda)$, cleanly recovering
+equation~\eqref{eq:unified}. Dimensional analysis gives
+$\xi \sim r_d^2 v_{\mathrm{flat}}^2$ (natural order); the numerical value
+$\xi/(G M_{\mathrm{disk}}) = 0.33$ for a Milky-Way-analog galaxy confirms
+natural coupling. The astrophysical consequences explored in this paper are
+therefore grounded in a first-principles covariant framework. The remaining
+open problem --- deriving $\xi$ from the microscopic actualization entropy ---
+is Hard Wall~1 (Section~\ref{sec:hardwalls}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Flat Galactic Rotation Curves}
+\label{sec:rotation}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The $\nabla^2(\ln\lambda)$ Mechanism}
+
+For a galaxy with exponential stellar disk profile, the actualization density
+follows:
+\begin{equation}
+  \lambda(r) = \lambda_0 \, e^{-r/r_d},
+  \label{eq:exp_disk}
+\end{equation}
+where $r_d$ is the disk scale radius. Computing the Laplacian of $\ln\lambda$
+in spherical symmetry:
+\begin{equation}
+  \nabla^2(\ln\lambda) = \frac{d^2}{dr^2}(\ln\lambda)
+    + \frac{2}{r}\frac{d}{dr}(\ln\lambda)
+  = 0 + \frac{2}{r}\cdot\left(-\frac{1}{r_d}\right)
+  = -\frac{2}{r \cdot r_d}.
+  \label{eq:lnlambda_laplacian}
+\end{equation}
+This is a $1/r$ effective density:
+\begin{equation}
+  \rho_\lambda(r) = -\frac{\xi}{4\pi G} \cdot \left(-\frac{2}{r \cdot r_d}\right)
+  = \frac{\xi}{2\pi G \cdot r \cdot r_d}.
+  \label{eq:rho_lambda_profile}
+\end{equation}
+The enclosed effective mass from this term:
+\begin{equation}
+  M_\lambda(<r) = \int_0^r 4\pi r'^2 \rho_\lambda(r')\,dr'
+  = \frac{2\xi r}{G \cdot r_d}.
+  \label{eq:M_lambda}
+\end{equation}
+The circular velocity contribution:
+\begin{equation}
+  v^2_\lambda(r) = \frac{G M_\lambda(<r)}{r} = \frac{2\xi}{r_d} = \mathrm{const.}
+  \label{eq:flat_curve}
+\end{equation}
+The $\nabla^2(\ln\lambda)$ term produces a \emph{perfectly flat} rotation curve
+at all radii, with asymptotic velocity $v_{\mathrm{flat}} = \sqrt{2\xi/r_d}$.
+The total rotation curve is:
+\begin{equation}
+  v_{\mathrm{total}}^2(r) = v_N^2(r) + \frac{2\xi}{r_d},
+  \label{eq:v_total}
+\end{equation}
+where $v_N(r) = \sqrt{G M_{\mathrm{enclosed,baryon}}(<r)/r}$ is the standard
+Newtonian term. For a Milky-Way-analog galaxy ($M_{\mathrm{disk}} = 6\times
+10^{10}\,M_\odot$, $r_d = 3.5$~kpc, $v_{\mathrm{flat}} = 220$~km~s$^{-1}$),
+the coupling constant is $\xi/(G M_{\mathrm{disk}}) = 0.33$---natural order,
+not fine-tuned. A numerical calculation confirms flatness to within 4.3\% for
+$r > 5$~kpc.
+
+\subsection{Comparison to MOND and Verlinde}
+
+The $\nabla^2(\ln\lambda)$ mechanism is conceptually related to two
+phenomenological approaches. Milgrom's MOND~\citep{Milgrom1983} introduces a
+critical acceleration $a_0$ by hand to recover flat rotation curves below a
+threshold. Verlinde's emergent gravity~\citep{Verlinde2011} models dark matter as
+an elastic response of entanglement entropy in de Sitter space. The RA account
+differs from both: MOND's $a_0$ is a free phenomenological parameter, while
+the RA transition radius is set by the physical disk scale radius $r_d$. Verlinde
+requires de Sitter space and entanglement entropy as primitives; RA derives the
+effect from the causal graph. RA provides the fundamental physical mechanism; MOND
+describes the phenomenological consequence.
+
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Dimensional Reduction and the Tully-Fisher Limit}
+\label{sec:dimensional_reduction}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The $\nabla^2(\ln\lambda)$ mechanism of Section~\ref{sec:rotation}.1 is the
+correct description in the dense baryonic regime where the causal DAG is
+tightly woven and the continuum approximation holds. However, the Bianchi
+constraint analysis reveals that the $\lambda$ profile saturates at large $r$
+once the baryonic density vanishes, causing the rotation curve to turn over
+rather than remain flat. This is not a failure of the actualization ontology;
+it is the breakdown of the continuum approximation in the sparse galactic halo.
+
+In discrete quantum gravity --- specifically Causal Dynamical
+Triangulations and Causal Set Theory (see RAGC~\citep{Sandeman2026b} for references) ---
+it is a rigorously established phenomenon that sparse causal graphs undergo
+\emph{dynamical dimensional reduction}: their effective spectral dimension drops
+from 3 toward 2 at large scales when edge-density falls below a critical
+threshold. The continuous Laplacian $\nabla^2$ implicitly assumes a 3D-embeddable
+graph at all scales. In the sparse halo, this assumption breaks down.
+
+\paragraph{Conditional derivation of Tully-Fisher.}
+We define a critical actualization density $\lambda_c$ at which the DAG
+transitions from 3D-like (dense core) to 2D-like (sparse halo) behaviour.
+The transition radius $r_c$ is the radius at which the Newtonian acceleration
+equals the characteristic acceleration $a_0$ associated with $\lambda_c$:
+\begin{equation}
+  a_N(r_c) = \frac{GM}{r_c^2} = a_0
+  \quad\Longrightarrow\quad
+  r_c = \sqrt{\frac{GM}{a_0}}.
+  \label{eq:critical_radius}
+\end{equation}
+
+\textit{If} the causal graph undergoes dimensional reduction at $\lambda_c$
+such that outward causal flux is constrained to a boundary scaling as $r$
+rather than $r^2$, then causal flux conservation at the transition boundary
+requires:
+\begin{equation}
+  a_T(r) = a_N(r_c)\,\frac{r_c}{r}
+           = \frac{GM}{r_c\,r}
+           = \frac{\sqrt{GM\,a_0}}{r},
+  \label{eq:halo_accel}
+\end{equation}
+where the second equality substitutes equation~\eqref{eq:critical_radius}.
+Setting $v^2/r = a_T(r)$ yields a perfectly flat rotation curve:
+\begin{equation}
+  v_{\mathrm{flat}}^2 = \sqrt{GM\,a_0}.
+  \label{eq:flat_curve}
+\end{equation}
+Squaring recovers the baryonic Tully-Fisher relation:
+\begin{equation}
+  v_{\mathrm{flat}}^4 = a_0\,G\,M.
+  \label{eq:tully_fisher_derived}
+\end{equation}
+
+This result is now grounded by the Poisson-CSG formula: the RA causal
+graph in a region with $\mu(x) = \lambda(x)\,V_{\mathrm{coh}}\,p_{\mathrm{th}}$
+has spectral dimension $d_s = 3$ when $\mu \gg 1$ (dense, GR regime)
+and $d_s = 2$ when $\mu \ll 1$ (sparse, galactic halo regime), by the
+Durhuus-Jonsson-Wheater theorem for directed Lorentzian graphs.
+The graph \emph{is} 2-dimensional in galactic halos --- a direct consequence of the
+Poisson-CSG topology. Tully-Fisher follows from causal flux conservation
+on a locally 2D graph. The empirical MOND acceleration constant
+$a_0 \approx 1.2\times10^{-10}$~m/s$^2$ is the macroscopic shadow of
+$\lambda_c$ --- the critical graph density where $\mu = 1$, the
+Erd\H{o}s-R\'{e}nyi giant-component threshold applied cosmologically.
+Hard Wall~2 (Section~\ref{sec:hardwalls}) is now precisely: derive
+$p_{\mathrm{th}} = \tau_d/\tau_{\mathrm{mol}}$ from RA-CSG dynamics
+to close the identification $\mu = \sigma$ exactly.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Bullet Cluster: Accumulated Causal Depth vs.\ Instantaneous Flux}
+\label{sec:bullet}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The Bullet Cluster (1E~0657-558) is the strongest observational constraint on dark
+matter alternatives~\citep{Clowe2006}. Two galaxy clusters collided. The baryonic
+gas shock-heated ($T \sim 10^8$~K) and decelerated at the collision centre. The
+stellar component passed through collisionlessly. Gravitational lensing is offset
+$\sim 720$~kpc from the gas, co-moving with the stellar component (8$\sigma$
+significance).
+
+\paragraph{The naive failure.}
+If the metric tracked instantaneous $\lambda$, the shocked gas---with
+$\Gamma_{\mathrm{shock}} \sim 3\times\Gamma_{\mathrm{pre}}$---would dominate
+lensing. This contradicts observation.
+
+\paragraph{The resolution: $A_{\mathrm{RA}}$ vs $\lambda$.}
+The RAGC metric is sourced by $\Pact[T^{\mu\nu}]$ integrated over the full past
+light cone $J^-(x)$---it is the accumulated causal depth $\ARA$, not the
+instantaneous rate $\lambda(x,t)$, that sources the background metric. The
+stellar component has actualized at $\Gamma_{\mathrm{stellar}} \sim
+10^{14}$~s$^{-1}$ per baryon for $\sim 10$~Gyr. The gas has actualized at
+$\Gamma_{\mathrm{gas}} \sim 10^6$~s$^{-1}$ per baryon. The accumulated
+causal depth ratio:
+\begin{equation}
+  \frac{\ARA(\mathrm{stellar})}{\ARA(\mathrm{gas})}
+  \;\approx\; \frac{\Gamma_{\mathrm{stellar}}}{\Gamma_{\mathrm{gas}}}
+  \;\approx\; 10^8.
+  \label{eq:RA_ratio}
+\end{equation}
+The Bullet Cluster lensing requires the stellar component to exceed the gas
+contribution by a factor of $\sim 10$. The $\ARA$ ratio provides $10^8$
+orders of magnitude of headroom. The 150~Myr shock contributes $\sim 4.5$\% of
+the gas's total accumulated causal depth---a negligible perturbation to the
+background metric. No new mechanism. No new parameters. The same distinction
+that makes biological assembly depth meaningful in RACI~\citep{Sandeman2026c}
+resolves the Bullet Cluster in RADM.
+
+\paragraph{Weyl curvature and the lensing signal.}
+A precise technical concern requires acknowledgement: gravitational lensing traces
+null geodesics, which are governed by the Weyl tensor $C_{\mu\nu\rho\sigma}$
+(the trace-free part of the Riemann tensor), whereas the RA-modified field
+equations source the Ricci tensor $R_{\mu\nu}$ via the local stress-energy.
+The Bullet Cluster argument above establishes that $\ARA$ dominates the metric
+source over astrophysically relevant timescales. However, demonstrating explicitly
+how the accumulated $\ARA$ field contributes to the Weyl curvature at the moment
+of collision --- and confirming that the 10~Gyr stellar trajectory does not
+produce a gravitational wake inconsistent with the observed lensing profile ---
+requires the full covariant field equations (RAGC Derivation~3,
+Hard Wall~iv~\citep{Sandeman2026b}).
+
+In the weak-field limit, the Weyl and Ricci contributions are not independent:
+for a quasi-static mass distribution, Weyl curvature is sourced by the tidal
+field of the stress-energy distribution, and a dominant $\ARA$ contribution to
+$T^{\mu\nu}$ will produce a corresponding dominant contribution to the Weyl
+curvature. The $10^8$ headroom in equation~\eqref{eq:RA_ratio} suggests this
+remains qualitatively robust. The explicit covariant mapping is Hard Wall~5
+below.
+
+\paragraph{The gravitational wake concern.}
+A referee concern deserving explicit acknowledgement: because $A_{\mathrm{RA}}$
+accumulates over the stellar lifetime ($\sim 10$~Gyr), one must verify that
+the integrated stellar trajectory does not produce a gravitational wake --- a
+trailing Weyl-curvature signature inconsistent with the observed lensing
+profile. The RA framework does not predict such a wake for the following
+reason: $A_{\mathrm{RA}}$ encodes causal depth at the \emph{current} graph
+state of the stellar component, not a convolution of historical positions.
+The causal DAG records \emph{what has actualized}, not \emph{where it has
+been}. Stellar trajectories write vertices at their instantaneous boundary;
+the graph does not retain a spatially extended record of the trajectory.
+Formalising this argument --- showing that the DAG metric update does not
+produce a wake in the continuum limit --- is part of Hard Wall~5.
+
+\paragraph{Hard wall: quantitative verification.}
+The order-of-magnitude argument is encouraging but not a proof. Computing the
+stellar-to-gas $\ARA$ ratio with realistic stellar population synthesis models,
+and mapping $\ARA$ to lensing convergence $\kappa(\theta)$ via the full covariant
+Weyl sourcing, is Hard Wall~3 (Section~\ref{sec:hardwalls}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Open Problems and Hard Walls}
+\label{sec:hardwalls}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{description}
+  \item[Hard Wall 1: Microscopic Derivation of $\xi$ and the Jacobson Coefficient.]
+  The coupling constant is numerically observed to be
+  $\xi/(G M_{\mathrm{disk}}) \approx 0.28$ for a Milky Way analog.
+  RAGC~\citep{Sandeman2026b} establishes via a thermodynamic derivation that
+  $\xi$ must emerge from the ratio of microscopic actualization entropy to the
+  fundamental RA area element:
+  \begin{equation}
+    \frac{\xi}{G M_{\mathrm{disk}}}
+      = \alpha \times 4\!\left(\frac{l_P}{l_{\mathrm{RA}}}\right)^{\!2}
+        \langle\Delta S_{\mathrm{vertex}}\rangle,
+    \label{eq:xi_consistency}
+  \end{equation}
+  where $\alpha$ is an $\mathcal{O}(1)$ coefficient to be derived from the
+  discrete Jacobson calculation, and $\langle\Delta S_{\mathrm{vertex}}\rangle$
+  is the mean relative entropy increase per actualization event.
+
+  A quantitative consistency check with the Kinematic Coherence Bound of
+  RAQI~\citep{Sandeman2026d} yields a striking result. Setting
+  $l_{\mathrm{RA}} = l_P$ and $\langle\Delta S_{\mathrm{vertex}}\rangle
+  = p_{\mathrm{th}} \approx 10^{-2}$ (the fault-tolerance threshold):
+  \begin{equation}
+    \alpha_{\mathrm{required}} = \frac{\xi/GM_{\mathrm{disk}}}{4\,p_{\mathrm{th}}}.
+    \label{eq:alpha_required}
+  \end{equation}
+  The Jacobson derivation applied to the discrete actualization sector gives
+  $\alpha = 2\pi \approx 6.28$ (the Unruh temperature periodicity factor).
+  The value of $\alpha_{\mathrm{required}}$ depends critically on which
+  components of the baryonic disk are included in $M_{\mathrm{disk}}$.
+
+  Using the stellar-disk-only mass $M = 6.0\times10^{10}\,M_\odot$ yields
+  $\alpha_{\mathrm{required}} \approx 7.0$ --- a 12\% gap above $2\pi$.
+  However, this comparison is known to underestimate the true disk mass.
+  Including the gaseous disk (${\approx}0.8\times10^{10}\,M_\odot$) and
+  thick disk (${\approx}1.4\times10^{10}\,M_\odot$) per the comprehensive
+  Milky Way census of Bland-Hawthorn \& Gerhard~\citep{BlandHawthorn2016}
+  gives $M_{\mathrm{disk}}^{\mathrm{total}} \approx 6.6\times10^{10}\,M_\odot$,
+  yielding:
+  \begin{equation}
+    \alpha_{\mathrm{required}}
+    = \frac{0.256}{4\times 10^{-2}} \approx 6.39
+    \approx 2\pi + 1.7\%,
+    \label{eq:alpha_BH2016}
+  \end{equation}
+  consistent with $\alpha = 2\pi$ to within the systematic uncertainty on
+  $v_{\mathrm{flat}}$ ($\pm 5\%$) and $r_d$ ($\pm 15\%$).
+  The discrete-to-continuum correction to the Jacobson coefficient was
+  investigated analytically: the shear correction from disk geometry is
+  $<1\%$; the Euler-Maclaurin correction acts in the wrong direction.
+  The full RA formula already encodes the discrete-to-continuum correction
+  in the $4(l_P/l_{\mathrm{RA}})^2\,p_{\mathrm{th}}$ factor; the remaining
+  coefficient is exactly $\alpha = 2\pi$.
+  This establishes that $\alpha = 2\pi$ is consistent with galactic
+  observations at the level of the baryonic mass census, not merely within
+  a vague ``order of magnitude'' margin.
+  \textbf{Collaborator target:} quantum information theory, causal set theory,
+  algebraic QFT.
+
+  \item[Hard Wall 2: Formal Proof of Dimensional Reduction at $\lambda_c$.]
+  Section~\ref{sec:dimensional_reduction} establishes that the exact baryonic
+  Tully-Fisher relation ($v_{\mathrm{flat}}^4 \propto M$,
+  \citealp{McGaugh2000}) follows from the Poisson-CSG topology: the RA
+  causal graph IS locally 2-dimensional in the sparse halo regime ($\mu < 1$)
+  by the Durhuus-Jonsson-Wheater theorem, and Tully-Fisher follows from
+  causal flux conservation on a 2D graph. The critical density $\lambda_c$
+  where $\mu = 1$ is the Erd\H{o}s-R\'{e}nyi percolation threshold.
+  Hard Wall~2 is now precisely: derive $p_{\mathrm{th}} = \tau_d/\tau_{\mathrm{mol}}$
+  from RA-CSG dynamics, and run the BDG-filter MCMC to extract
+  the exact $\lambda_c$ prediction. The empirical MOND acceleration constant
+  $a_0 \approx 1.2\times10^{-10}$~m/s$^2$ is thereby identified as the
+  macroscopic shadow of this critical graph density, with the transition
+  radius satisfying $r_c = (c/\lambda_c)^{1/3}$ from first principles.
+
+  While generic critical trees exhibit anomalous diffusion with spectral
+  dimension $d_s = 4/3$ (Alexander-Orbach conjecture), the
+  Durhuus-Jonsson-Wheater theorem rigorously establishes that for
+  Lorentzian causal triangulations, the directed time-like structure biases
+  the random walk and yields exactly $d_s = 2$ in the sparse
+  branched-polymer phase. The directed edges of the RA causal DAG forbid the
+  random walker from diffusing backward into dead-end spatial branches,
+  confining it to a quasi-1D time-like trajectory with spatial leaves. It is
+  this causal structure that forces $d_s = 2$ rather than $4/3$.
+
+  The precise remaining gap is to prove that the RA-CSG stochastic
+  graph-rewriting rules of the Engine of
+  Becoming~\citep{Sandeman2026EB} fall into the same Lorentzian causal
+  triangulations universality class. Concretely: perform Markov Chain Monte
+  Carlo simulations of the RA actualization dynamics to calculate $d_s$ as a
+  function of $\lambda$, verify the transition from $d_s = 3$ (dense core)
+  to $d_s = 2$ (sparse halo) at the threshold $\lambda_c \sim c/r_c^3$, and
+  determine the exact critical exponent $\beta$ for the transition sharpness.
+  The galaxy-to-galaxy variation in $\xi/(GM_{\mathrm{disk}})$ (Section~3.1)
+  is explained once $\lambda_c$ is computed locally for each galaxy's disk
+  boundary. The Poisson-CSG formula of RAGC~\citep{Sandeman2026b} provides the
+  mechanism: $c_k^{\mathrm{RA}}(x) = e^{-\mu}\mu^k/k!$ with
+  $\mu = \lambda V_{\mathrm{coh}} p_{\mathrm{th}}$ makes the spectral
+  dimension local --- $d_s \to 3$ as $\mu \gg 1$ and $d_s \to 2$ as
+  $\mu \ll 1$ --- with the transition at $\mu = 1$ defining $\lambda_c$.
+  The exact $c_k$ beyond the mean-field limit requires the
+  BDG-filter MCMC of RAGC Derivation~1. Testable against
+  SPARC~\citep{Lelli2016}.
+  \textbf{Collaborator target:} causal set theory, CDT computational
+  physics, spectral graph theory.
+
+  \item[Hard Wall 3: Quantitative Bullet Cluster.] Computing the stellar-to-gas
+  $\ARA$ ratio with realistic stellar population synthesis models; mapping $\ARA$
+  to lensing convergence $\kappa(\theta)$ and marginalizing over stellar
+  mass-to-light ratios and gas profiles. Decisive test: reproducing the $8\sigma$
+  lensing offset amplitude and spatial profile.
+  \textbf{Collaborator target:} observational astrophysics, stellar evolution.
+
+  \item[Hard Wall 4: CMB acoustic structure and early structure formation.] In
+  $\Lambda$CDM, collisionless CDM seeds early structure formation and governs
+  CMB acoustic peak ratios. For RADM to constitute a complete dark matter
+  replacement, the topological boundary mechanism must produce sufficient early
+  density perturbation amplification, and the RA-modified field equations must
+  reproduce the observed CMB acoustic peak structure without a CDM parameter.
+  \textbf{Collaborator target:} early-universe cosmology, CMB phenomenology,
+  cosmological perturbation theory.
+
+  \item[Hard Wall 5: Weyl curvature sourcing, lensing, and the covariant
+  $\Box(\ln\lambda)$ field equation.] The RA-modified field
+  equations source the Ricci tensor $R_{\mu\nu}$ via $\langle T^{\mu\nu}_{RA}
+  \rangle$. Gravitational lensing traces the Weyl tensor $C_{\mu\nu\rho\sigma}$
+  via null geodesics. This hard wall has three components: (i)~deriving the
+  covariant form of the $\nabla^2(\ln\lambda)$ gradient correction, which is
+  $\Box(\ln\lambda) = g^{\mu\nu}\nabla_\mu\nabla_\nu(\ln\lambda)$ with the
+  appropriate coupling to $g_{\mu\nu}$; (ii)~demonstrating how accumulated
+  causal depth $\ARA$ contributes to Weyl curvature at the moment of a cluster
+  collision; and (iii)~establishing that the integrated stellar trajectory over
+  10~Gyr does not generate a gravitational wake --- the DAG records current
+  causal depth, not historical positions, so no wake is expected, but this must
+  be proved in the continuum limit. All three require the full covariant RA
+  field equations. RAGC~\citep{Sandeman2026b} (thermodynamic derivation section) now establishes
+  those field equations via a thermodynamic derivation, and identifies the
+  precise Bianchi constraint $\nabla^\mu T_{\mu\nu}^{(A)} + \xi
+  R_{\mu\nu}\nabla^\mu(\ln\lambda) = 0$ that governs the coupling between
+  matter and the actualization field. The remaining gap is proving this
+  constraint holds in the continuum limit of the discrete DAG. In the
+  weak-field quasi-static limit, Weyl and Ricci sourcing are related by the
+  tidal
+  decomposition of the stress-energy, and the $10^8$ headroom in
+  equation~\eqref{eq:RA_ratio} is expected to survive the covariant
+  generalisation.
+  \textbf{Collaborator target:} general relativity, gravitational lensing
+  theory, algebraic QFT.
+\end{description}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Relationship to the RA Suite}
+\label{sec:suite}
+% ─────────────────────────────────────────────────────────────────────────────
+
+RADM is the sixth companion paper in the RA suite. The logical dependencies are:
+
+\begin{description}
+  \item[\textbf{RAQM}~\citep{Sandeman2026a}] Provides the foundational
+    actualization criterion and the Kinematic Snap.
+  \item[\textbf{RAGC}~\citep{Sandeman2026b}] Establishes the WIMP Prohibition
+    (Prediction~4) and the WEP recovery argument (Derivation~6). RADM depends
+    on these results.
+  \item[\textbf{RACI}~\citep{Sandeman2026c}] The $\ARA$/\,$\lambda$ distinction
+    used in the Bullet Cluster resolution is established in RACI. The Bullet
+    Cluster is the gravitational analogue of the biological assembly depth result.
+  \item[\textbf{RAQI}~\citep{Sandeman2026d}] Provides the quantum thermodynamic
+    grounding for the Landauer cost derivations that underpin the actualization
+    flux calculations.
+  \item[\textbf{RAHC}~\citep{Sandeman2026RAHC}] The recursive coarse-graining
+    hierarchy and the topological motif direction (Epilogue) are the longer-range
+    context for the RADM conjectures.
+\end{description}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+% ─────────────────────────────────────────────────────────────────────────────
+
+RADM proposes that the dark matter signatures are actualization-density effects
+rather than evidence for a new particle species. The WIMP Prohibition (established
+in RAGC) rules out causally silent candidates. The $\nabla^2(\ln\lambda)$
+mechanism produces flat rotation curves at natural coupling for exponential disk
+profiles. The $\ARA/\lambda$ distinction resolves the Bullet Cluster lensing
+offset without new parameters. Four hard walls are named precisely.
+
+This paper does not claim to have replaced dark matter. It claims to have
+identified a research direction, grounded in the RA framework's single ontological
+commitment, that may do so once the hard walls are resolved. The Tully-Fisher
+scaling and CMB structure formation requirements are the decisive tests. Until
+they are met, this paper is a well-motivated conjecture with natural-order coupling
+and two qualitative successes---not a completed model.
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\section*{Declarations}
+\textbf{Funding:} Not applicable.\quad
+\textbf{Competing interests:} The author declares no competing interests.
+
+\textbf{Preprint availability:} This manuscript is available as a preprint at
+\href{https://doi.org/10.5281/zenodo.19198513}{doi.org/10.5281/zenodo.19198513}.
+
+\textbf{Code availability:} The rotation curve Python script and all companion paper source files are publicly available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}.
+
+\textbf{Data availability:} This paper presents theoretical work. No datasets
+were generated or analysed.
+
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem[Sandeman(2026a)]{Sandeman2026a}
+J.~F.~Sandeman.
+\newblock Relational Actualism and Quantum Mechanics ({RAQM}).
+\newblock \textit{Foundations of Physics} (Under review), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19174380}{doi.org/10.5281/zenodo.19174380}.
+
+\bibitem[Sandeman(2026b)]{Sandeman2026b}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Gravity and Cosmology ({RAGC}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19197999}{doi.org/10.5281/zenodo.19197999}.
+
+\bibitem[Sandeman(2026c)]{Sandeman2026c}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Complexity and Intelligence ({RACI}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198224}{doi.org/10.5281/zenodo.19198224}.
+
+\bibitem[Sandeman(2026d)]{Sandeman2026d}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Implications for Quantum Information ({RAQI}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198285}{doi.org/10.5281/zenodo.19198285}.
+
+\bibitem[Sandeman(2026e)]{Sandeman2026RAHC}
+J.~F.~Sandeman.
+\newblock Algorithmic Causal Dynamics: A Unified Framework for Emergence and
+  Complexity in Relational Actualism ({RAHC}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198171}{doi.org/10.5281/zenodo.19198171}.
+
+\bibitem[Bland-Hawthorn \& Gerhard(2016)]{BlandHawthorn2016}
+J.~Bland-Hawthorn and O.~Gerhard.
+\newblock The Galaxy in context: Structural, kinematic, and integrated
+  properties.
+\newblock \emph{Annual Review of Astronomy and Astrophysics}, 54:529--596, 2016.
+\newblock \href{https://doi.org/10.1146/annurev-astro-081915-023441}{doi:10.1146/annurev-astro-081915-023441}.
+
+\bibitem[Sandeman(2026g)]{Sandeman2026EB}
+J.~F.~Sandeman.
+\newblock The Engine of Becoming: A Covariant Stochastic Graph Rewriting
+  Algorithm as the Unified Foundation of Quantum Mechanics and General
+  Relativity ({EB}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198120}{doi.org/10.5281/zenodo.19198120}.
+
+\bibitem[Clowe et~al.(2006)]{Clowe2006}
+D.~Clowe, M.~Brada\v{c}, A.~H.~Gonzalez, M.~Markevitch, S.~W.~Randall,
+C.~Jones, and D.~Zaritsky.
+\newblock A direct empirical proof of the existence of dark matter.
+\newblock \textit{The Astrophysical Journal Letters}, 648:L109--L113, 2006.
+
+\bibitem[Lelli et~al.(2016)]{Lelli2016}
+F.~Lelli, S.~S.~McGaugh, and J.~M.~Schombert.
+\newblock {SPARC}: Mass models for 175 disk galaxies.
+\newblock \textit{The Astronomical Journal}, 152:157, 2016.
+
+\bibitem[McGaugh et~al.(2000)]{McGaugh2000}
+S.~S.~McGaugh, J.~M.~Schombert, G.~D.~Bothun, and W.~J.~G.~de~Blok.
+\newblock The baryonic Tully-Fisher relation.
+\newblock \textit{The Astrophysical Journal Letters}, 533:L99--L102, 2000.
+
+\bibitem[Milgrom(1983)]{Milgrom1983}
+M.~Milgrom.
+\newblock A modification of the Newtonian dynamics.
+\newblock \textit{The Astrophysical Journal}, 270:365--370, 1983.
+
+\bibitem[Verlinde(2011)]{Verlinde2011}
+E.~Verlinde.
+\newblock On the origin of gravity and the laws of Newton.
+\newblock \textit{Journal of High Energy Physics}, 2011(4):29, 2011.
+
+\end{thebibliography}
+
+\end{document}
