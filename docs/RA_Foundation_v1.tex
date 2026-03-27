@@ -88,11 +88,14 @@ dissolves. All results follow from the single fact that some interactions are
 irreversible. Four additional long-standing problems are dissolved: $\theta_{\mathrm{QCD}} = 0$ exactly (strong CP; no axion needed); the black hole information paradox (Causal Severance partition); the baryon asymmetry as a Causal Severance initial condition; and a structural conjecture for $d = 4$ spacetime uniqueness. Falsifiable predictions, Lean~4 verification status, and open
 derivation targets are tabulated.
 Core algebraic results are independently machine-verified: a Python
-notebook confirms 52/52 numerical checks at machine precision, and a
-Lean~4 proof file establishes 26 results with no axioms, including
-the Koide $K = 2/3$ identity for all $m_0 > 0$ and $\theta \in \mathbb{R}$,
-the Majorana Koide identity, and the $SU(3)_{\mathrm{gen}}$ roots-of-unity
-sum identities.
+notebook confirms 52/52 numerical checks at machine precision. Two
+Lean~4 proof files establish \textbf{93 results} with zero \texttt{sorry}
+tags and no axioms beyond Mathlib, including the Koide $K = 2/3$ identity,
+the $SU(3)_{\mathrm{gen}}$ coherent state theorem, the BDG particle
+classification (five topology types mapping exactly to the SM particle
+spectrum), colour confinement ($L{=}3$ gluon, $L{=}4$ quark), the BDG
+particle universe closure theorem (124 cases), and structural qubit
+fragility (electrons at minimum BDG score~1).
 \end{abstract}
 
 \medskip\noindent
@@ -170,7 +173,10 @@ here, then follow the suite in the arc \emph{Bosons to Brains}:
 \item \textbf{RADM}~\citep{Sandeman2026RADM} --- Dark matter as
   actualization-density topology in sparse regions.
   \item \textbf{RAQI}~\citep{Sandeman2026RAQI} --- Quantum information;
-  the Kinematic Coherence Bound.
+  the Kinematic Coherence Bound ($N_{\max} = \eta \cdot p_{\mathrm{th}}$);
+  structural qubit fragility (electrons propagate at the minimum BDG
+  actualization score of~1, the lowest permitted for any stable free particle;
+  Lean-verified); decoherence channel constraints from the BDG closure theorem.
   \item \textbf{RAHC}~\citep{Sandeman2026RAHC} --- Emergence and the
   complexity hierarchy; algorithmic causal dynamics.
   \item \textbf{RACI}~\citep{Sandeman2026RACI} --- Complexity, life,
@@ -678,6 +684,24 @@ probability. This threshold is not a property of any specific
 error-correction code: it is the $\mu = 1$ Erd\H{o}s-R\'{e}nyi
 transition applied to the causal neighbourhood of the logical qubit.
 
+The Lean-verified BDG particle classification (RATM~\citep{Sandeman2026RATM})
+establishes a structural account of qubit fragility. Every stable free
+particle has a positive BDG actualization score; the minimum is~1.
+Electrons and photons --- the particles that carry quantum information
+in all current hardware --- propagate at the sequential fixed point
+with score~1. $W^\pm$ bosons score~9; gluons score~18. Qubit fragility
+is therefore not an accident of electromagnetic coupling strengths: it
+is a consequence of the fact that laboratory-accessible particles sit at
+the minimum BDG stability that the causal filter permits. This result is
+proved by \texttt{D1a\_fixed\_point} in \texttt{RA\_D1\_Proofs.lean}.
+
+The BDG particle universe closure theorem (RATM, Theorem~D1\_closure\_complete,
+124 extension cases exhaustively verified) additionally constrains the
+decoherence channels available to any qubit: every environmental particle
+that can couple to a quantum system belongs to the closed BDG set.
+No exotic decoherence mechanism from outside the closure is possible
+within the RA framework.
+
 The Lieb-Robinson bound on actualization propagation velocity
 $v_{\mathrm{LR}} \sim J\ell/\hbar$ is the lattice expression of the
 same causal bandwidth ceiling as $c = l_P/t_P$ in the relativistic
@@ -887,7 +911,7 @@ is approximate. Deriving the breaking pattern would explain why
 Koide holds exactly for leptons but approximately for quarks.
 
 \paragraph{D3: Lean formal proofs.}
-Two $\sim$50-line Lean~4 targets: (a) the chirality theorem
+The BDG particle classification, colour confinement, and closure theorem are now Lean-verified (\texttt{RA\_D1\_Proofs.lean}, 67~results). Remaining $\sim$50-line Lean~4 targets: (a) the chirality theorem
 (Proposition~\ref{prop:parity}) as a combinatorial DAG result; (b)
 exact baryon conservation (Proposition~\ref{prop:baryon}) as LLC
 conservation of $N_2$ winding numbers. The Lean architecture
