@@ -1,0 +1,1042 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts}
+\AtBeginDocument{\let\hbar\relax
+  \DeclareMathSymbol{\hbar}{\mathord}{AMSb}{"7E}}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage{natbib}
+
+\geometry{top=1.1in, bottom=1.1in, left=1.15in, right=1.15in}
+
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{14pt}{4pt}
+\titlespacing*{\subsection}{0pt}{10pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{2pt}
+
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+\setlength{\absleftindent}{0.5cm}
+\setlength{\absrightindent}{0.5cm}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Shortcuts
+\newcommand{\Pact}{\mathcal{P}_{\mathrm{act}}}
+\newcommand{\ARA}{\mathcal{A}_{\mathrm{RA}}}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+
+\begin{document}
+
+\title{\textbf{Actualization as Physical Mechanism: \\
+Implications of Relational Actualism for \\
+Quantum Computing and Quantum Thermodynamics}}
+
+\author{Joshua F.\ Sandeman \\
+\small Independent Researcher \\
+\small \texttt{sansuikyo@gmail.com}}
+
+\date{March 2026}
+
+\maketitle
+\begin{center}
+  {\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19198285}
+    {doi.org/10.5281/zenodo.19198285}\par}
+\end{center}
+
+\begin{abstract}
+Relational Actualism (RA) proposes that the transition from quantum potentia to
+classical actuality is grounded in a precise physical criterion: an irreversible
+increase in quantum relative entropy $\Delta S(\rho\|\sigma_0) > 0$ with respect
+to the vacuum. In the perturbative regime this coincides with the on-shell
+dispersion relation $p^\mu p_\mu = m^2c^2$, at which a mediating boson crosses
+the kinematic threshold from virtual to real and an irreversible vertex is
+inscribed into the growing causal directed acyclic graph (DAG) of the universe. This paper develops the implications of this framework---established in
+the companion papers RAQM, RAGC, RACI, and RAHC~\citep{Sandeman2026RAHC}---for two fields that have lacked a
+precise physical account of irreversibility at the quantum level: quantum computing
+and quantum thermodynamics. For quantum computing, the Kinematic Snap provides a
+principled physical floor on decoherence, distinguishes genuinely off-shell
+(decoherence-immune) interaction regimes from on-shell ones, and gives the
+threshold theorem a physical rather than purely operational interpretation. For
+quantum thermodynamics, RA grounds Landauer's principle in the causal DAG,
+resolves the Maxwell's demon paradox without information-theoretic postulates,
+gives the fluctuation theorems a precise actualization-event interpretation, and
+establishes that the thermodynamic arrow of time is structural rather than
+emergent. A key technical result: the quantum relative entropy---the central
+quantity in both quantum information theory and RA's actualization
+criterion---is frame-independent by a compiled Lean~4 theorem
+(\texttt{frame\_independence} in \texttt{RA\_AQFT\_Proofs\_v10.lean}), proved
+using the continuous functional calculus unitary-conjugation lemma from the
+Lean-QuantumInfo library~\citep{Meiburg2025LQI}. A key quantitative connection: the Kinematic Coherence Bound
+threshold $p_{\mathrm{th}} \approx 10^{-2}$ is shown to be consistent with the
+galactic-scale coupling constant $\xi$ of the companion paper
+RADM~\citep{Sandeman2026RADM} to within ${\sim}2\%$ using the full baryonic disk mass~\citep{BlandHawthorn2016}, at the Planck scale, via the
+thermodynamic field equations established in RAGC~\citep{Sandeman2026RAGC}.
+The Kinematic Coherence Bound threshold $p_{\mathrm{th}} \approx 10^{-2}$
+also enters the Poisson-CSG generative measure of RAGC
+(equation for $c_k^{\mathrm{RA}}$): it is the per-link actualization
+probability that determines whether the causal DAG is locally 3D or 2D,
+connecting quantum error correction thresholds to galactic-scale
+dimensional reduction and the Tully-Fisher relation~\citep{Sandeman2026RADM}.
+The fault-tolerance threshold, the speed of light $c = l_P/t_P$, and
+the biological Causal Firewall are all the same Erd\H{o}s-R\'{e}nyi
+percolation transition at different scales of the causal graph. The
+Einstein field equations are shown to be the unique consistent
+macroscopic description of the RA-CSG by Lovelock's theorem, with GR
+exact at $\mu \gg 1$ and RA's departures from GR (rotation curves,
+Hubble tension, Planck corrections) arising precisely where $\mu \sim 1$.
+Throughout, implications are
+stated conditionally on the correctness of the RA framework, which is currently
+under peer review.
+
+\medskip\noindent
+\textbf{Keywords:} Relational Actualism \textperiodcentered{} Kinematic Snap
+\textperiodcentered{} Quantum Computing \textperiodcentered{} Decoherence
+\textperiodcentered{} Quantum Thermodynamics \textperiodcentered{} Landauer's
+Principle \textperiodcentered{} Maxwell's Demon \textperiodcentered{} Fluctuation
+Theorems \textperiodcentered{} Quantum Relative Entropy
+\textperiodcentered{} Formal Verification
+\end{abstract}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+
+Two of the most practically consequential fields in contemporary physics share a
+common foundational gap: neither quantum computing nor quantum thermodynamics
+possesses a precise physical account of when, and by what mechanism, a quantum
+process becomes irreversible. Quantum computing treats decoherence as an
+engineering challenge to be suppressed, characterised by phenomenological
+timescales $T_1$ and $T_2$ whose physical origins are described only
+statistically. Quantum thermodynamics invokes entropy, work, and irreversibility
+while relying on the same unitary, time-reversible quantum mechanics that makes
+those concepts difficult to ground.
+
+Relational Actualism (RA)~\citep{Sandeman2026a,Sandeman2026RAGC,Sandeman2026RACI}
+proposes that this gap can be closed by a single physical criterion: actualization
+occurs when a mediating boson crosses the on-shell dispersion relation
+$p^\mu p_\mu = m^2c^2$. Below this threshold, exchange is virtual, off-shell,
+and reversible. At and above it, the exchange is real, on-shell, and permanently
+inscribed into the causal DAG. This is the \emph{Kinematic Snap}---the precise
+physical mechanism by which quantum potentia becomes classical actuality.
+
+The present paper develops the implications of this framework for quantum computing
+(Section~\ref{sec:computing}) and quantum thermodynamics
+(Section~\ref{sec:thermodynamics}), and then discusses the technical connection
+to quantum information theory via the quantum relative entropy formalism
+(Section~\ref{sec:qit}). All implications are stated conditionally: they follow
+\emph{if} the RA actualization criterion is correct. The empirical predictions
+in Section~\ref{sec:predictions} are the appropriate test.
+
+We note at the outset that implications of this kind are not merely
+interpretational. The Kinematic Snap criterion differs from decoherence-based
+accounts in a precise, experimentally distinguishable way: it identifies a sharp
+threshold (Prediction P3 of RAQM~\citep{Sandeman2026a}) rather than a continuous
+crossover. That distinction has practical consequences for both fields developed
+here.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Implications for Quantum Computing}
+\label{sec:computing}
+
+\subsection{The Physical Floor on Decoherence}
+
+Standard quantum error correction characterises decoherence by the phenomenological
+timescales $T_1$ (energy relaxation) and $T_2$ (phase coherence), which are
+treated as empirical parameters to be minimised through engineering. RA gives these
+parameters a physical interpretation and identifies the mechanism that sets them.
+
+In RA, decoherence occurs when the system exchanges on-shell bosons with its
+environment. Specifically, the actualization timescale is
+\begin{equation}
+  \tau_{\mathrm{act}} \;\sim\; \frac{\hbar}{\Delta E_{\mathrm{env}}},
+  \label{eq:tact}
+\end{equation}
+where $\Delta E_{\mathrm{env}}$ is the characteristic energy available for
+on-shell boson emission into the environmental degrees of freedom
+(RAQM Prediction~P2~\citep{Sandeman2026a}). This is not a statistical parameter;
+it is the time required for an emitted on-shell boson to propagate outward and
+entangle irreversibly with the environmental boundary.
+
+The practical implication is immediate: \emph{the engineering target for
+decoherence suppression is $\Delta E_{\mathrm{env}}$, not the coupling strength
+alone}. Reducing the energy available in the environment for on-shell exchange
+directly extends $\tau_{\mathrm{act}}$. This gives a physical interpretation to
+the well-known empirical strategy of operating superconducting qubits at millikelvin
+temperatures: reducing $k_B T$ reduces $\Delta E_{\mathrm{env}}$, suppressing
+on-shell exchange with thermal phonons. RA identifies this as the mechanism rather
+than a phenomenological correlation.
+
+Furthermore, \eqref{eq:tact} implies a physical floor that cannot be overcome by
+any engineering improvement that does not reduce $\Delta E_{\mathrm{env}}$. No
+amount of improved substrate quality, shielding, or control pulse optimisation
+will suppress decoherence below $\hbar / \Delta E_{\mathrm{env}}$ if the
+environmental energy scale is not itself reduced. This is a stronger statement
+than the standard decoherence-theoretic account, which predicts continuous
+improvement in principle.
+
+\subsection{The Virtual/Real Distinction as a Decoherence-Immune Regime}
+
+A non-trivial implication of the Kinematic Snap concerns interaction regimes that
+are genuinely off-shell. Virtual, off-shell exchanges---van der Waals forces,
+the Casimir effect, the Lamb shift---produce no DAG vertices in RA. They are
+genuine physical effects, but they are effects of the potentia: they do not
+constitute actualization events and do not contribute to decoherence.
+
+This is not merely a restatement of existing results. The standard decoherence
+account treats all environmental coupling as a potential source of decoherence,
+modulated by coupling strength and spectral density. RA draws a qualitatively
+different distinction: coupling that remains purely off-shell (because the
+interaction energy does not reach the on-shell threshold) is decoherence-immune
+in the perturbative radiative regime, not merely weakly decoherent. This holds
+cleanly when on-shell boson emission is the dominant decoherence channel;
+RAQM notes that near-field and many-body processes can produce environmental
+distinguishability through other mechanisms, so the immunity is regime-specific
+rather than categorical.
+
+The potential design implication is significant. If a quantum computing
+architecture can be engineered so that its dominant environmental coupling remains
+below the on-shell threshold---so that qubit-environment interactions are
+kinematically constrained to the virtual regime---RA predicts that this regime
+would exhibit qualitatively suppressed decoherence, not merely quantitatively
+reduced decoherence. This is a testable prediction that distinguishes RA from
+standard decoherence theory.
+
+The experimental platform most naturally positioned to probe this distinction is
+the superconducting circuit, where the relevant on-shell bosons are microwave
+photons and the threshold condition is set by the circuit's transition frequencies.
+Operating in a regime where the environmental spectral density falls entirely below
+the transition frequency creates exactly the off-shell condition RA identifies as
+decoherence-immune. This is the physical interpretation of the ``bad cavity''
+versus ``good cavity'' limit in circuit quantum electrodynamics.
+
+\subsection{The Threshold Theorem Acquires a Physical Interpretation}
+
+The fault-tolerance threshold theorem establishes that scalable quantum computation
+is possible provided the physical error rate $p$ falls below a threshold $p_{\rm
+th}$, which depends on the error correction code and architecture. The theorem is
+currently stated in terms of error rates that are treated as phenomenological
+parameters: there is no physical derivation of $p_{\rm th}$ from first principles.
+
+If RA is correct, the physical error rate has a precise interpretation: it is the
+rate of on-shell boson exchange between the logical qubit and its environment,
+given by
+\begin{equation}
+  p \;\sim\; \frac{1}{\tau_{\mathrm{act}} \cdot f_{\mathrm{gate}}}
+  \;=\; \frac{\Delta E_{\mathrm{env}}}{\hbar \cdot f_{\mathrm{gate}}},
+\end{equation}
+where $f_{\mathrm{gate}}$ is the gate operation frequency. The threshold
+$p < p_{\rm th}$ then becomes a condition on the ratio
+$\Delta E_{\mathrm{env}} / (\hbar \cdot f_{\mathrm{gate}})$: the environment must
+not have sufficient energy to cause on-shell exchange faster than the gate cycle
+time. This gives the threshold theorem a physical interpretation as a statement
+about kinematic accessibility rather than an abstract error rate condition.
+
+The further implication is that the threshold is not universal across
+architectures in the way current theory suggests. For two architectures with the
+same phenomenological error rate $p$ but different physical mechanisms---one
+where errors arise from on-shell exchange and one where they arise from
+control-pulse infidelity---RA predicts different scalability behaviour, because
+only on-shell exchange constitutes genuine actualization. Control infidelity that
+does not produce on-shell environmental exchange is, in principle, reversible and
+correctable in a way that genuine actualization errors are not. In practice,
+control pulse errors often couple to environmental modes that can go on-shell, so
+this distinction is a conceptual one about error types rather than a claim about
+the reversibility of all control errors in current hardware.
+
+\subsection{The Kinematic Coherence Bound and the $1/N$ Law}
+\label{sec:kcb}
+
+The Kinematic Snap criterion yields a sharp, derivable bound on the maximum
+achievable circuit depth for an $N$-qubit logical state, which we call the
+\emph{Kinematic Coherence Bound} (KCB). The derivation proceeds directly from
+Prediction~P2 of RAQM~\citep{Sandeman2026a} without additional assumptions.
+
+\paragraph{Single-qubit baseline.}
+For a single isolated qubit, the actualization timescale is
+\begin{equation}
+  \tau_{\mathrm{act}} \;=\; \frac{\hbar}{\Delta E_{\mathrm{env}}},
+  \label{eq:tau1}
+\end{equation}
+where $\Delta E_{\mathrm{env}}$ is the characteristic energy of the environmental
+modes available for on-shell exchange. The gate quality factor is
+\begin{equation}
+  \eta \;:=\; f_{\mathrm{gate}} \cdot \tau_{\mathrm{act}}
+        \;=\; \frac{\hbar \, f_{\mathrm{gate}}}{\Delta E_{\mathrm{env}}},
+  \label{eq:eta}
+\end{equation}
+where $f_{\mathrm{gate}}$ is the gate frequency. This is the RA physical
+interpretation of the standard figure of merit $T_2 / t_{\mathrm{gate}}$: it is
+the ratio of the gate period to the single-qubit actualization timescale.
+
+\paragraph{$N$-qubit logical state.}
+Consider an $N$-qubit register in an entangled logical state (for concreteness, a
+GHZ-type state of the form $\frac{1}{\sqrt{2}}(\ket{00\cdots0} +
+\ket{11\cdots1})$, or any state with genuinely $N$-body entanglement). The logical
+information is encoded in correlations that are non-local across all $N$ qubits.
+
+Under the Kinematic Snap criterion, each qubit constitutes an independent site at
+which the kinematic threshold can be crossed: the actualization of any single qubit
+destroys the logical entanglement of the entire register. The logical decoherence rate is therefore the sum of single-qubit actualization
+rates across all $N$ sites:
+\begin{equation}
+  \Gamma_{\mathrm{logical}} \;=\; N \cdot \Gamma_1 \;=\; \frac{N \cdot \Delta E_{\mathrm{env}}}{\hbar},
+  \label{eq:gamma_N}
+\end{equation}
+and the logical coherence time is
+\begin{equation}
+  \tau_{\mathrm{act}}^{(N)} \;=\; \frac{\hbar}{N \cdot \Delta E_{\mathrm{env}}}.
+  \label{eq:tauN}
+\end{equation}
+This is the RA physical account of the well-known result from quantum information
+theory that the coherence time of a GHZ state scales as $T_1/N$~\citep{Huelga1997}.
+The Kinematic Snap mechanism explains \emph{why}: each qubit is a separate kinematic
+threshold that can be independently crossed, and crossing any one of them destroys
+the logical state.
+
+\paragraph{The Kinematic Coherence Bound.}
+The maximum circuit depth achievable before logical decoherence is
+\begin{equation}
+  \boxed{D_{\max} \;=\; f_{\mathrm{gate}} \cdot \tau_{\mathrm{act}}^{(N)}
+                   \;=\; \frac{\eta}{N},}
+  \label{eq:kcb}
+\end{equation}
+where $\eta$ is the single-qubit quality factor defined in~\eqref{eq:eta}. Circuit
+depth scales strictly as $1/N$: one cannot increase the number of qubits and the
+circuit depth simultaneously without improving $\eta$.
+
+\paragraph{Maximum fault-tolerant array size.}
+The fault-tolerance threshold condition requires the physical error rate per gate
+to fall below a code-dependent threshold $p_{\mathrm{th}}$:
+\begin{equation}
+  p \;=\; \frac{\Gamma_{\mathrm{logical}}}{f_{\mathrm{gate}}}
+    \;=\; \frac{N}{\eta} \;<\; p_{\mathrm{th}}.
+  \label{eq:pth}
+\end{equation}
+This yields a \emph{maximum array size} for fault-tolerant operation at fixed
+single-qubit quality:
+\begin{equation}
+  \boxed{N_{\max} \;=\; \eta \cdot p_{\mathrm{th}}.}
+  \label{eq:nmax}
+\end{equation}
+This result is not anticipated by standard quantum error correction theory, which
+holds that fault-tolerant quantum computation is scalable without bound once
+$p < p_{\mathrm{th}}$ for individual qubits. The RA account adds a constraint:
+the logical error rate grows with $N$ because each added qubit is an additional
+kinematic site at which actualization can occur. Unlimited scaling without
+improving $\eta$ will eventually push the logical error rate above
+$p_{\mathrm{th}}$ regardless of single-qubit fidelity.
+
+Two caveats on the derivation. First, it assumes independent decoherence channels
+per qubit. Correlated errors---crosstalk, collective decoherence, or correlated
+on-shell emission events---can produce worse-than-independent scaling, so $N_{{\max}}$
+is an upper bound on the array size under independent depolarizing noise, not a
+tight limit for all error models. Second, $p_{{\mathrm{th}}}$ is code- and
+error-model-dependent; the numerical estimates below use a surface code with
+depolarizing noise.
+
+\paragraph{Syndrome extraction and the KCB.}
+A natural question concerns the role of quantum error correction itself: does a
+stabilizer measurement on an ancilla qubit constitute a Kinematic Snap that
+destroys the logical state? The answer is no, and the distinction is physically
+precise. In a surface code, syndrome extraction works by entangling ancilla qubits
+with the data qubits and then measuring the ancillae. The ancilla measurement
+\emph{does} constitute an actualization event---the ancilla crosses the on-shell
+threshold and its state is irreversibly recorded.
+
+However, the logical information
+is encoded \emph{non-locally} across many physical data qubits; it is not localized
+at any single kinematic site. The ancilla actualization reveals error syndrome
+information without collapsing the logical state, because the logical degree of
+freedom has no support at the ancilla's location in the causal DAG.
+
+The KCB applies to \emph{unintended} environmental actualization events---on-shell
+exchanges between a data qubit and an uncontrolled environmental mode---not to the
+designed syndrome extraction operations, which are intentional actualization events
+that extract entropy without disturbing the logical encoding. The $1/N$ scaling
+therefore reflects the rate of \emph{logical errors} from environmental coupling,
+which grows with $N$ under independent depolarizing noise. Continuous QEC protocols
+suppress this error rate below $p_{{\mathrm{th}}}$ but cannot eliminate the
+underlying kinematic constraint: $N_{{\max}}$ is the array size at which the
+environmental logical error rate, even before QEC correction, equals $p_{{\mathrm{th}}}$.
+
+Beyond $N_{{\max}}$, QEC must run faster than the logical decoherence rate, which
+requires improving $\eta$---consistent with the empirical observation that scaling
+superconducting arrays requires simultaneous improvement of single-qubit quality.
+
+\paragraph{Classical control and the KCB.}
+A natural objection: can arbitrarily fast classical control systems, running syndrome
+extraction at rates approaching the environmental decoherence rate, circumvent
+$N_{\max}$? The answer is no, for a kinematic reason. The KCB bound on $N_{\max}$
+reflects the rate at which environmental on-shell exchanges produce logical errors
+in the \emph{data qubits}, not in the ancillae or classical control hardware.
+
+Syndrome extraction and classical decoding can correct an error after it occurs,
+but they cannot prevent an on-shell environmental actualization event from
+writing an error vertex into the causal DAG of a data qubit. The logical error
+rate scales as $N \cdot \Gamma_{\mathrm{env}}$ for $N$-qubit arrays regardless of
+the speed of the classical feedback loop, because the classical controller cannot
+observe and suppress an on-shell exchange \emph{before} it produces an
+irreversible causal record. Improving the syndrome extraction rate improves the
+probability of catching and correcting errors within a QEC cycle; it does not
+reduce the rate at which errors are generated.
+
+The only way to reduce the
+error-generation rate is to reduce $\Delta E_{\mathrm{env}}$ (improve isolation)
+or increase $f_{\mathrm{gate}}$ (improve $\eta$). This is precisely what
+$N_{\max} = \eta \cdot p_{\mathrm{th}}$ encodes: $N_{\max}$ is set by the
+single-qubit quality factor $\eta$, not by the speed of the classical controller.
+
+Concretely: for a surface code with $p_{\mathrm{th}} \approx 10^{-2}$ under
+independent depolarizing noise, and a contemporary superconducting qubit with
+$\eta \approx 10^3$--$10^4$ (corresponding to $T_2 \sim 100\,\mu\mathrm{s}$ and
+$t_{\mathrm{gate}} \sim 100\,\mathrm{ns}$), the RA bound gives
+$N_{\max} \sim 10$--$100$ logical qubits at fixed $\eta$. This is illustrative
+rather than a fit to experimental data; the observation that large superconducting
+arrays require continual improvement of $\eta$ alongside qubit count is consistent
+with but does not uniquely confirm the KCB.
+
+\paragraph{The Entropy per Vertex ($\langle\Delta S_{\mathrm{vertex}}\rangle$).}
+The Kinematic Coherence Bound provides a direct theoretical bridge to the thermodynamic entropy generated by actualization. In quantum error correction, the threshold $p_{\mathrm{th}}$ represents the maximum environmental error rate that the syndrome extraction cycle can actively correct---the exact point at which the entropy pumped out by the classical controller balances the entropy generated by environmental actualization. Because each uncorrectable logical error corresponds to an actualization event crossing the kinematic threshold, the mean relative entanglement entropy generated per actualization vertex, $\langle\Delta S_{\mathrm{vertex}}\rangle$, is strictly bounded by the fault-tolerance threshold in the scalable limit. In natural units, we identify the scaling relation $\langle\Delta S_{\mathrm{vertex}}\rangle \approx p_{\mathrm{th}}$. This identification ($p_{\mathrm{th}} \approx 10^{-2}$ for standard topological codes) provides the critical microscopic entropy value required to derive the macroscopic gravitational coupling constant in the companion paper RADM~\citep{Sandeman2026RADM}.
+
+\paragraph{The optimal isolation window.}
+A related prediction concerns the engineering of qubit isolation. The target
+quantity is $\Delta E_{\mathrm{env}}$: the energy available to environmental modes
+for on-shell exchange. Reducing $\Delta E_{\mathrm{env}}$ directly extends
+$\tau_{\mathrm{act}}$ and improves $\eta$. However, the environment has multiple
+channels for on-shell exchange---photonic (microwave), phononic, and through
+two-level system (TLS) defects in the substrate---each with its own $\Delta
+E_{\mathrm{env}, i}$. Improving isolation in one channel (e.g., by increasing
+cavity Q to suppress photonic decay) does not suppress the others.
+
+RA therefore predicts that there is an \emph{optimal isolation window} $Q^*$ for
+each channel: the cavity Q at which photonic actualization timescale $\tau_{\rm
+photo} = \hbar / \Delta E_{\rm photo}$ equals the actualization timescale of the
+dominant non-photonic channel $\tau_{\rm other} = \hbar / \Delta E_{\rm other}$.
+Beyond $Q^*$, further improvement of photonic isolation yields diminishing returns
+because the dominant decoherence pathway shifts to the non-photonic channel. This
+is measurable as a change in the $T_1$ scaling with cavity Q: below $Q^*$ the
+scaling should follow the Purcell prediction; above $Q^*$ it should plateau.
+
+\subsection{Implications for Quantum Algorithm Design}
+
+At a higher level of abstraction, the Kinematic Snap suggests a distinction
+between quantum algorithms that operate entirely within the off-shell regime---
+where the computation consists of reversible potentia evolving under unitary
+dynamics---and those that necessarily involve actualization events. All
+conventional quantum algorithms involve measurement, which is a forced
+actualization. But the computation preceding measurement may be structured to
+avoid premature actualization.
+
+This distinction is already implicit in the design of adiabatic quantum computing
+and quantum annealing, where the system is evolved slowly to avoid non-adiabatic
+transitions. RA offers the following reinterpretation of this design principle:
+avoiding non-adiabatic transitions is avoiding premature on-shell exchange with
+environmental modes, which would constitute unintended actualization events.
+The adiabatic condition, in RA terms, is the condition that the evolution remains
+in the off-shell regime throughout. This is an interpretational reframing rather
+than a new prediction; it does not alter the standard adiabatic theorem or provide
+new algorithmic guidance beyond what standard theory already implies.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Implications for Quantum Thermodynamics}
+\label{sec:thermodynamics}
+
+\subsection{Landauer's Principle Grounded in the Causal DAG}
+\label{sec:landauer}
+
+Landauer's principle~\citep{Landauer1961} states that the logical erasure of one
+bit of information dissipates a minimum energy of $k_B T \ln 2$ as heat into the
+environment. The principle is standardly derived from thermodynamic arguments
+(the second law applied to the Szilard engine) or from quantum information theory
+(the quantum data compression theorem). Both derivations establish the bound; 
+neither identifies the physical mechanism by which it is enforced.
+
+In RA, Landauer's principle has a direct mechanical derivation from the Kinematic
+Snap~\citep{Sandeman2026RACI}.
+
+\begin{theorem}[Landauer Cost of Actualization, RACI Theorem~4]
+Each irreversible actualization event that eliminates $\Delta q$ bits of quantum
+uncertainty---reducing the von Neumann entropy of the system by
+$\Delta S_{\mathrm{vN}} = \Delta q \cdot \ln 2$---dissipates at minimum
+\begin{equation}
+  W_{\mathrm{act}} \;=\; \Delta q \cdot k_B T \cdot \ln 2.
+  \label{eq:landauer}
+\end{equation}
+\end{theorem}
+
+The proof in RACI proceeds directly from the Kinematic Snap criterion: an
+actualization event writes a permanent vertex to the causal DAG, which requires
+on-shell boson emission into the environment. The von Neumann entropy decrease
+$\Delta S_{\mathrm{vN}}$ of the system must be transferred to the environment as
+heat $\geq T \Delta S_{\mathrm{vN}} = k_B T \cdot \Delta q \cdot \ln 2$. The
+bound~\eqref{eq:landauer} follows.
+
+What RA adds to Landauer's principle beyond the standard derivation:
+
+\textbf{A mechanism.} The energy is dissipated specifically at the moment the
+mediating boson crosses the on-shell threshold. The dissipation is not a
+continuous process but a discrete event with a precise physical timing:
+$\tau_{\mathrm{act}} \sim \hbar / \Delta E_{\mathrm{env}}$ before the on-shell
+threshold is crossed.
+
+\textbf{A scope condition.} The Landauer bound applies only to \emph{genuine
+actualization events}---irreversible on-shell exchanges that write DAG vertices.
+Operations that remain in the virtual, off-shell regime do not write DAG vertices
+and can, in principle, be reversed without paying the Landauer cost. This is
+consistent with the reversibility of coherent quantum operations; RA identifies the
+physical criterion that distinguishes reversible from irreversible operations.
+
+A note on the Reeb-Wolf derivation: Reeb and Wolf~\citep{ReebWolf2014} established
+a fully quantum Landauer bound showing the minimum dissipation holds for any
+entropy-decreasing operation on a quantum system in contact with a thermal
+reservoir, without reference to emission events. The RA account does not contradict
+this result; rather, RA provides the physical mechanism \emph{by which} the Reeb-Wolf
+bound is saturated. In RA, an entropy-decreasing operation that does not involve
+on-shell exchange is not genuinely irreversible---it is a coherent operation that
+can, in principle, be reversed by subsequent unitary evolution. The Reeb-Wolf bound
+becomes binding precisely when the operation crosses the Kinematic Snap threshold
+and produces an on-shell environmental record. The two accounts agree on the bound;
+they differ on the physical story of why it holds.
+
+\textbf{A timescale.} The Landauer bound tells you the minimum energy cost of
+erasure. RA additionally tells you the minimum \emph{time} for erasure:
+$\tau_{\mathrm{min}} \sim \hbar / \Delta E_{\mathrm{env}}$. These two together
+constitute a Landauer bound in phase space rather than merely in energy: the
+erasure must cost at least $\hbar$ of action in addition to $k_B T \ln 2$ of
+energy. This stronger version of the bound is a direct consequence of the
+Kinematic Snap mechanism.
+
+\subsection{The Maxwell's Demon Paradox Dissolved}
+
+The Maxwell's demon~\citep{Maxwell1872} paradox asks how a microscopic agent that
+sorts fast and slow molecules can apparently violate the second law of
+thermodynamics, and what physical mechanism restores it. The standard resolution
+via Landauer's principle~\citep{Bennett1982} argues that the demon's memory
+erasure, not the measurement, pays the thermodynamic cost. This resolution, while
+correct, involves an information-theoretic postulate (the equivalence of physical
+and logical entropy) that RA makes unnecessary.
+
+In RA, the demon is a physical system embedded in the causal DAG. Every act of
+``measurement'' by the demon is an actualization event: the demon's sensory
+apparatus exchanges on-shell bosons with the gas molecules in order to determine
+their velocities. Each such exchange writes a vertex to the DAG and pays the
+Landauer cost $W_{\mathrm{act}} \geq k_B T \ln 2$ at the moment of measurement,
+not at the moment of memory erasure.
+
+The standard resolution delays the cost to erasure; RA moves the cost to
+measurement. Both arrive at the same thermodynamic accounting, but through
+different physical pictures. The RA picture is arguably more natural: the cost is
+paid when the physical interaction occurs, not when a logical register is cleared.
+
+More precisely: there is no gap in RA between the demon's information acquisition
+and the physical cost of that acquisition. The demon's acquisition of knowledge
+about a molecule's velocity \emph{just is} the on-shell boson exchange between the
+demon's sensory apparatus and the molecule. The thermodynamic cost is paid at that
+moment. There is no separate step of ``storing the information'' and ``later
+erasing it.'' The storage and the cost are the same physical event.
+
+This removes the apparently paradoxical temporal gap in the standard resolution.
+In the standard account, the demon seemingly operates for free during the sorting
+phase and pays later during erasure---a picture that requires careful argument to
+prevent apparent violations of the second law during the sorting phase itself. In
+RA, the cost is paid continuously and locally during the measurement interactions,
+and the second law is enforced vertex by vertex as the DAG grows.
+
+\paragraph{Weak measurements.}
+The argument above applies to strong projective measurements, which constitute
+unambiguous actualization events in RA. Weak measurements---continuous monitoring
+that acquires partial information without fully collapsing the quantum state---are
+a more subtle case. A weak measurement that does not produce an on-shell
+environmental record is not, in RA, a full actualization event; it is a
+pre-actualization interaction that keeps the system in the reversible potentia
+regime. Whether and how the thermodynamic cost accumulates continuously during
+weak measurement, and at what point the Kinematic Snap threshold is crossed, is
+an open question that connects to the measurement back-action literature and
+constitutes a natural target for the RA framework's extension to continuous
+monitoring scenarios.
+
+\subsection{The Fluctuation Theorems with a Precise Actualization Criterion}
+
+The Jarzynski equality~\citep{Jarzynski1997} and Crooks fluctuation
+theorem~\citep{Crooks1999} relate the distribution of work performed on a system
+driven away from equilibrium to the free energy difference between initial and
+final states:
+\begin{align}
+  \langle e^{-W/k_BT} \rangle &= e^{-\Delta F/k_BT} \quad \text{(Jarzynski)}, \\
+  \frac{P(+W)}{P(-W)} &= e^{(W - \Delta F)/k_BT} \quad \text{(Crooks)}.
+\end{align}
+These theorems hold for systems driven arbitrarily far from equilibrium and have
+been verified in numerous experiments. They are currently derived from the
+assumption of microscopic reversibility (detailed balance) and the identification
+of work with energy exchanges during the driving protocol.
+
+RA provides a physical decomposition of the work distribution in these theorems.
+
+An important caveat governs the following discussion: the standard work $W$ in the
+Jarzynski and Crooks theorems is defined as the total energy exchanged with the
+external driving agent during the protocol. If RA were to redefine $W$ to include
+only on-shell exchange events---call it $W_{\rm RA}$---then $W_{\rm RA} \neq W$
+in general, and there is no a priori reason the standard equalities hold for the
+restricted quantity $W_{\rm RA}$ without rederivation. The analysis below therefore
+proceeds differently: it uses the standard $W$ and treats RA as providing a
+physical decomposition of the \emph{histories} that contribute to the work
+distribution, without redefining $W$ itself.
+
+\textbf{The work distribution $P(W)$ decomposes over actualization sequences.}
+In RA, each trajectory contributing to $P(W)$ is a causal DAG history: a specific
+sequence of on-shell exchange events. Virtual, off-shell exchanges occur within
+each trajectory but do not constitute irreversible events. The standard $W$ for
+each trajectory is the total energy exchange; RA adds the physical picture that
+this energy is concentrated in the on-shell exchange events that write DAG vertices.
+
+\textbf{The forward and reverse protocols differ in their DAG histories.}
+In standard statistical mechanics, detailed balance is stated over phase space
+trajectories. RA proposes that the more fundamental objects are causal DAG
+histories. The Crooks theorem, in this picture, says the ratio of probabilities
+of a DAG history and its time-reverse is $e^{(W-\Delta F)/k_BT}$---where $W$ is
+the standard work, computed over the full trajectory including virtual exchanges.
+
+\textbf{Protocols that remain close to off-shell have fewer DAG vertices} and
+contribute disproportionately to the low-work tail of $P(W)$. This is the physical
+picture of why quasi-static (nearly reversible) protocols dominate the Jarzynski
+average: they generate fewer irreversible actualization events per unit time.
+
+This decomposition suggests a research program rather than a completed result: the
+Jarzynski equality, restated as a sum over actualization sequences with the correct
+weighting, may be more tractable for discrete few-body quantum systems where the
+DAG is a finite combinatorial object. Whether the equality holds for a
+suitably defined $W_{\rm RA}$ (restricted to on-shell contributions) is an open
+question whose answer would either strengthen or constrain the RA framework.
+
+\subsection{The Arrow of Time as Structural, Not Statistical}
+
+Standard statistical mechanics derives the thermodynamic arrow of time from the
+second law, which is in turn grounded in the initial low-entropy state of the
+universe. This derivation is probabilistic: it says that entropy-increasing
+processes are overwhelmingly more probable than entropy-decreasing ones, given
+typical initial conditions. The underlying microscopic dynamics remain
+time-reversible.
+
+RA provides a structural account of the arrow of time that does not rely on
+initial conditions or probabilistic arguments. The causal DAG grows in one
+direction only: new vertices are added; old vertices are never removed. This is
+not a consequence of the second law; it is a consequence of the ontological
+commitment that actualization is primitive and irreversible. The past is fixed
+because it has been written into the DAG. The future is open because it has not.
+
+This distinction has a precise thermodynamic consequence. In standard statistical
+mechanics, a process that violates the second law is \emph{possible} (it is merely
+improbable). In RA, a process that removes a causal DAG vertex is not merely
+improbable---it is categorically excluded by the ontology. The arrow of time is not
+a statistical asymmetry; it is a logical one.
+
+For quantum thermodynamics, this matters because many results in the field depend
+on the assumption of microscopic reversibility. RA does not violate this
+assumption at the level of the quantum dynamics---the Schr\"{o}dinger equation is
+still time-reversible---but it adds an irreversible layer: the writing of DAG
+vertices. The interplay between these two levels (reversible quantum dynamics and
+irreversible DAG inscription) is precisely the interplay between pre-actualization
+and post-actualization regimes that RAQM characterises via Prediction~P3.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Quantum Information Theory Connection}
+\label{sec:qit}
+
+\subsection{Relative Entropy as the Fundamental Actualization Criterion}
+
+The quantum relative entropy $S(\rho \| \sigma) = \mathrm{Tr}[\rho(\log \rho -
+\log \sigma)]$ plays a central role in both quantum information theory and the RA
+actualization criterion. In RAGC~\citep{Sandeman2026RAGC}, the fundamental
+criterion for an actualization event is stated in terms of relative entropy 
+with
+respect to the vacuum: an actualization occurs when an interaction produces a
+strictly irreversible increase in $S(\rho \| \sigma_0)$, where $\sigma_0$ is the
+Minkowski vacuum state.
+
+This criterion is frame-independent by the following chain of results:
+\begin{enumerate}[noitemsep]
+  \item $S(U\rho U^\dagger \| U\sigma U^\dagger) = S(\rho \| \sigma)$ for any
+        unitary $U$ --- proved using \texttt{log\_unitary\_conj}, which is a
+        one-line corollary of \texttt{Matrix.cfc\_conj\_unitary} from the
+        Lean-QuantumInfo library~\citep{Meiburg2025LQI}.
+  \item The Minkowski vacuum is Poincar\'{e}-invariant:
+        $U\sigma_0 U^\dagger = \sigma_0$ --- a QFT physics input.
+  \item Therefore $S(U\rho U^\dagger \| \sigma_0) = S(\rho \| \sigma_0)$ ---
+        the compiled theorem \texttt{frame\_independence} in
+        \texttt{RA\_AQFT\_Proofs\_v10.lean}.
+\end{enumerate}
+
+This means the actualization criterion is a covariant scalar: it is the same in
+all inertial and uniformly accelerated frames. The Rindler thermal bath, seen by
+an accelerated observer, has $\Delta S_{\mathrm{rel}} = 0$---it is stationary
+with respect to the vacuum and does not constitute a sequence of actualization
+events. This is the compiled theorem \texttt{rindler\_stationarity}.
+
+\subsection{The Data Processing Inequality and Causal Structure}
+
+The data processing inequality---that relative entropy can only decrease under the
+application of a completely positive trace-preserving (CPTP) map,
+$S(\mathcal{E}(\rho) \| \mathcal{E}(\sigma)) \leq S(\rho \| \sigma)$---has a
+natural RA interpretation. A CPTP map represents a physical process that may
+include actualization events (on-shell exchanges). Each such event can only reduce
+the distinguishability between states $\rho$ and $\sigma$ as seen from outside the
+system. Information is lost from the perspective of the environment when a DAG
+vertex is written; it is not created.
+
+The RA formulation of the data processing inequality is therefore a statement about
+causal DAG evolution: each actualization step can only reduce relative entropy, not
+increase it. An increase in relative entropy $S(\rho \| \sigma_0)$---an
+actualization event---necessarily involves a physical interaction, not merely a
+CPTP map. This distinguishes the two directions of the inequality sharply:
+decreasing relative entropy corresponds to physical processes that may or may not
+involve actualization; increasing relative entropy (an actualization event) requires
+specific physical conditions (on-shell exchange).
+
+The Petz monotonicity theorem~\citep{Petz1986}, which establishes the data
+processing inequality for quantum relative entropy, is formalised in
+Lean-QuantumInfo~\citep{Meiburg2025LQI} as part of the Generalised Quantum
+Stein's Lemma proof infrastructure. This is the mathematical substrate for the
+RA AQFT proof program.
+
+\subsection{Quantum Hypothesis Testing and the Actualization Criterion}
+
+The Generalized Quantum Stein's Lemma~\citep{Meiburg2025LQI} establishes the
+operational significance of quantum relative entropy in the context of quantum
+resource theories: it determines the optimal error exponents for discriminating
+between a quantum state and a set of free states. We propose the following RA
+interpretation of this result: $S(\rho \| \sigma_0)$ quantifies how distinguishable
+the current state $\rho$ is from the vacuum $\sigma_0$, which is precisely the
+quantity whose increase constitutes an actualization event. The GQSL itself makes
+no claim about RA; the connection is a proposed conceptual bridge, not a derived
+result.
+
+Under this interpretation, the Stein's Lemma suggests an operational picture of
+the actualization threshold: an actualization event corresponds to the system
+crossing from a regime where $\rho$ is statistically indistinguishable from
+$\sigma_0$ (in the quantum hypothesis testing sense) to one where the
+distinguishability is irreversibly established. The type-I and type-II error
+exponents in the Stein's Lemma would then determine the precision with which
+this threshold can be located experimentally.
+
+This connection suggests a natural experimental program: quantum hypothesis testing
+experiments that probe the vicinity of the actualization threshold could provide
+direct tests of the RA criterion. Specifically, the sharp threshold predicted by
+RAQM (Prediction~P3) would manifest as a sharp transition in the hypothesis
+testing error exponents as the environmental coupling crosses the on-shell
+threshold.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Empirical Predictions and Experimental Touchstones}
+\label{sec:predictions}
+
+The implications developed above are conditional on the correctness of the RA
+framework. The following predictions, inherited from RAQM and RAGC, provide the
+experimental tests.
+
+\subsection{Predictions Relevant to Quantum Computing (P1--P3)}
+
+\paragraph{P1: Finite actualization propagation velocity.}
+The actualization front in a spatially extended many-body quantum system propagates
+at a velocity bounded by the Lieb-Robinson speed~\citep{LiebRobinson1972}
+$v_{\mathrm{LR}} \sim J\ell/\hbar$. A decoherence event at site $A$ should
+produce a time delay $\Delta t \geq |r_A - r_B|/v_{\mathrm{LR}}$ before
+off-diagonal coherences at site $B$ begin to collapse. Instantaneous collapse
+models predict no such delay.
+
+\paragraph{Connection to causal bandwidth.}
+In the RA-CSG framework, $v_{\mathrm{LR}}$ is the lattice-scale expression
+of the same causal bandwidth ceiling as $c = l_P/t_P$ in the relativistic
+regime: both are the maximum rate at which actualization can propagate
+through the causal graph. The Kinematic Coherence Bound threshold
+$p_{\mathrm{th}} \approx 10^{-2}$ is not a property of specific error
+correction codes but the per-link actualization probability at which
+the causal graph transitions from locally 2-dimensional to locally
+3-dimensional (the Poisson-CSG $\mu = 1$ threshold). Fault-tolerant
+quantum computing requires $\mu > 1$ in the logical qubit's causal
+neighbourhood: the threshold is the same Erd\H{o}s-R\'{e}nyi giant
+component transition that governs galactic dimensional reduction in
+RADM~\citep{Sandeman2026RADM} and the biological Causal Firewall
+in RACI~\citep{Sandeman2026RACI}. The fault-tolerance threshold,
+the speed of light, and the Causal Firewall are all the same
+physics at different scales of the causal graph.
+
+\paragraph{P2: Environment-dependent transition duration.}
+The actualization timescale scales as $\tau_{\mathrm{act}} \sim \hbar / \Delta
+E_{\mathrm{env}}$. Systematically varying $\Delta E_{\mathrm{env}}$ in a
+controlled superconducting circuit experiment should produce a proportional
+variation in transition duration. This is consistent with Minev et
+al.~\citep{Minev2019} and Pazourek et al.~\citep{Pazourek2015}; the distinctive
+prediction is the \emph{proportional} scaling.
+
+\paragraph{P3: Sharp reversibility threshold.}
+There is a sharp threshold between pre-actualization (reversible) and
+post-actualization (irreversible) dynamics, determined by the environmental
+entanglement entropy crossing a critical value. Identifying this threshold
+experimentally constitutes a direct measurement of the actualization criterion.
+Decoherence-only models predict no such sharp threshold.
+
+\subsection{Predictions Relevant to Quantum Thermodynamics}
+
+\paragraph{P4 (from P2): Landauer timescale.}
+In addition to the Landauer energy bound $W_{\mathrm{act}} \geq k_B T \ln 2$, RA
+predicts a Landauer \emph{timescale}: erasure cannot be completed faster than
+$\tau_{\mathrm{min}} \sim \hbar / \Delta E_{\mathrm{env}}$. This sets a joint
+energy-time bound on erasure that is stronger than the standard Landauer bound and
+is, in principle, measurable in fast qubit experiments.
+
+\paragraph{P5: Off-shell regime is thermodynamically inert.}
+Interactions that remain kinematically constrained to the virtual, off-shell regime
+do not dissipate energy in the thermodynamic sense. This is testable in carefully
+engineered systems where the dominant qubit-environment coupling can be tuned below
+the on-shell threshold, predicting a qualitative suppression of thermodynamic
+dissipation rather than a quantitative reduction.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What RA Provides That Existing Frameworks Do Not}
+
+The implications developed in Sections~\ref{sec:computing}--\ref{sec:qit} share a
+common structure: RA provides a \emph{mechanism} where existing frameworks provide
+only \emph{statistics}. Standard decoherence theory tells you the rate at which
+coherence is lost; RA tells you the physical process by which each individual
+coherence loss occurs, and gives it a precise timing. Standard quantum
+thermodynamics invokes entropy and irreversibility; RA grounds these in the
+discrete, irreversible growth of a causal DAG.
+
+This shift from statistical to mechanical description is not merely aesthetic.
+It has three practical consequences:
+
+First, it gives engineering targets that are physical rather than phenomenological.
+The target is $\Delta E_{\mathrm{env}}$---a quantity with a direct physical
+interpretation---rather than $T_2$---a phenomenological timescale whose physical
+determinants must be inferred separately.
+
+Second, it identifies qualitative distinctions (off-shell versus on-shell) that the
+statistical description treats as quantitative ones (strong coupling versus weak
+coupling). The difference between a system that is decoherence-immune because it
+is off-shell and a system that is weakly decohering because it is weakly coupled is
+qualitative in RA and quantitative in standard theory. That qualitative distinction
+may be experimentally accessible.
+
+Third, it connects the two fields to each other and to the broader RA framework.
+Quantum computing and quantum thermodynamics share the relative entropy as their
+central quantity; RA gives that quantity a physical interpretation as the
+actualization criterion; and the frame-independence of that criterion is a compiled
+Lean theorem. The mathematical infrastructure is shared.
+
+\subsection{Scope and Limitations}
+
+The implications in this paper are derived under the assumption that the RA
+actualization criterion is correct. That assumption is currently under peer review
+in the companion paper RAQM~\citep{Sandeman2026a}. Several implications---
+particularly the qualitative decoherence-immunity of the off-shell regime
+(Section~\ref{sec:computing}) and the Landauer timescale bound (P4)---go beyond
+what existing experimental data require and constitute genuine predictions that may
+falsify the framework if tested and found wanting. This is the appropriate
+scientific posture; the implications are stated as conditionals, not assertions.
+
+The Lean-verified results cited in Section~\ref{sec:qit} establish the
+mathematical consistency of the AQFT proof program in finite dimensions, with three
+axioms: the CFC unitary-conjugation lemma (sourced from Lean-QuantumInfo), the
+Poincar\'{e}-invariance of the vacuum (a QFT physics input), and the data
+processing inequality (proved in Lean-QuantumInfo). The extension to the full
+infinite-dimensional type~III$_1$ algebra setting remains the primary open
+mathematical target.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+Relational Actualism proposes that the precise physical mechanism of quantum
+irreversibility is the crossing of the on-shell dispersion relation by a mediating
+boson. This paper has developed the implications of this proposal for quantum
+computing and quantum thermodynamics. If correct, RA gives both fields what they
+currently lack: a precise physical account of when and why quantum processes become
+irreversible.
+
+For quantum computing: the engineering target is the environmental energy
+$\Delta E_{\mathrm{env}}$; the off-shell regime is categorically
+decoherence-immune; the threshold theorem acquires a kinematic interpretation; and
+the distinction between reversible and irreversible errors is physically grounded.
+
+For quantum thermodynamics: Landauer's principle has a mechanical derivation with
+an additional timescale bound; the Maxwell's demon pays its thermodynamic cost at
+measurement, not at erasure; the fluctuation theorems are restated as sums over
+actualization sequences; and the arrow of time is structural rather than
+statistical.
+
+The shared mathematical substrate---quantum relative entropy, CPTP maps, the data
+processing inequality---connects both fields to the RA AQFT proof program and to
+the Lean-QuantumInfo library~\citep{Meiburg2025LQI} in which key results are
+formally verified. The frame-independence of the actualization criterion is a
+compiled theorem. The remaining mathematical frontier is the extension from finite
+dimensions to the type~III$_1$ von Neumann algebra setting.
+
+The framework makes specific, discriminating predictions (Section~\ref{sec:predictions})
+that are testable with existing or near-future experimental platforms. Those tests
+are the appropriate next step.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{thebibliography}{99}
+
+\bibitem[Sandeman(2026RAEB)]{Sandeman2026RAEB}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Engine of Becoming (RAEB)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198120}{doi.org/10.5281/zenodo.19198120}.
+
+
+\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Topology of Matter (RATM)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
+
+
+\bibitem[Bennett(1982)]{Bennett1982}
+C.~H.~Bennett.
+\newblock The thermodynamics of computation---a review.
+\newblock \textit{International Journal of Theoretical Physics}, 21:905--940,
+  1982.
+
+\bibitem[Crooks(1999)]{Crooks1999}
+G.~E.~Crooks.
+\newblock Entropy production fluctuation theorem and the nonequilibrium work
+  relation for free energy differences.
+\newblock \textit{Physical Review E}, 60(3):2721--2726, 1999.
+
+
+\bibitem[Huelga et~al.(1997)]{Huelga1997}
+S.~F.~Huelga, C.~Macchiavello, T.~Pellizzari, A.~K.~Ekert, M.~B.~Plenio, and
+  J.~I.~Cirac.
+\newblock Improvement of frequency standards with quantum entanglement.
+\newblock \textit{Physical Review Letters}, 79(20):3865--3868, 1997.
+
+\bibitem[Jarzynski(1997)]{Jarzynski1997}
+C.~Jarzynski.
+\newblock Nonequilibrium equality for free energy differences.
+\newblock \textit{Physical Review Letters}, 78(14):2690--2693, 1997.
+
+\bibitem[Landauer(1961)]{Landauer1961}
+R.~Landauer.
+\newblock Irreversibility and heat generation in the computing process.
+\newblock \textit{IBM Journal of Research and Development}, 5(3):183--191, 1961.
+
+\bibitem[Lieb and Robinson(1972)]{LiebRobinson1972}
+E.~H.~Lieb and D.~W.~Robinson.
+\newblock The finite group velocity of quantum spin systems.
+\newblock \textit{Communications in Mathematical Physics}, 28(3):251--257, 1972.
+
+\bibitem[Maxwell(1872)]{Maxwell1872}
+J.~C.~Maxwell.
+\newblock \textit{Theory of Heat}.
+\newblock Longmans, Green and Co., London, 4th edition, 1872.
+
+\bibitem[Meiburg et~al.(2025)]{Meiburg2025LQI}
+A.~Meiburg, L.~A.~Lessa, and R.~R.~Soldati.
+\newblock A formalization of the generalized quantum {Stein's} lemma in {Lean}.
+\newblock \textit{arXiv}:2510.08672, 2025.
+\newblock Lean-QuantumInfo library:
+  \url{https://github.com/Timeroot/Lean-QuantumInfo}.
+
+\bibitem[Minev et~al.(2019)]{Minev2019}
+Z.~K.~Minev, S.~O.~Mundhada, S.~Shankar, P.~Reinhold, R.~Guti\'{e}rrez-J\'{a}uregui,
+  R.~J.~Schoelkopf, M.~Mirrahimi, H.~J.~Carmichael, and M.~H.~Devoret.
+\newblock To catch and reverse a quantum jump mid-flight.
+\newblock \textit{Nature}, 570:200--204, 2019.
+
+\bibitem[Pazourek et~al.(2015)]{Pazourek2015}
+R.~Pazourek, S.~Nagele, and J.~Burgd\"{o}rfer.
+\newblock Attosecond chronoscopy of photoemission.
+\newblock \textit{Reviews of Modern Physics}, 87(3):765--802, 2015.
+
+\bibitem[Petz(1986)]{Petz1986}
+D.~Petz.
+\newblock Sufficient subalgebras and the relative entropy of states of a von
+  {Neumann} algebra.
+\newblock \textit{Communications in Mathematical Physics}, 105(1):123--131,
+  1986.
+
+
+\bibitem[Reeb and Wolf(2014)]{ReebWolf2014}
+D.~Reeb and M.~M.~Wolf.
+\newblock An improved {Landauer} principle with finite-size corrections.
+\newblock \textit{New Journal of Physics}, 16(10):103011, 2014.
+
+\bibitem[Sandeman(2026e)]{Sandeman2026RAHC}
+J.~F.~Sandeman.
+\newblock Algorithmic Causal Dynamics: A Unified Framework for Emergence and
+  Complexity in Relational Actualism ({RAHC}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198171}{doi.org/10.5281/zenodo.19198171}.
+
+\bibitem[Sandeman(2026a)]{Sandeman2026a}
+J.~F.~Sandeman.
+\newblock Relational Actualism and Quantum Mechanics ({RAQM}).
+\newblock \textit{Foundations of Physics} (Under review), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19174380}{doi.org/10.5281/zenodo.19174380}.
+
+\bibitem[Sandeman(2026b)]{Sandeman2026RAGC}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Gravity and Cosmology ({RAGC}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19197999}{doi.org/10.5281/zenodo.19197999}.
+
+\bibitem[Sandeman(2026c)]{Sandeman2026RACI}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Complexity and Intelligence ({RACI}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198224}{doi.org/10.5281/zenodo.19198224}.
+
+\bibitem[Bland-Hawthorn \& Gerhard(2016)]{BlandHawthorn2016}
+J.~Bland-Hawthorn and O.~Gerhard.
+\newblock The Galaxy in context: Structural, kinematic, and integrated
+  properties.
+\newblock \emph{Annual Review of Astronomy and Astrophysics}, 54:529--596, 2016.
+\newblock \href{https://doi.org/10.1146/annurev-astro-081915-023441}{doi:10.1146/annurev-astro-081915-023441}.
+
+\bibitem[Sandeman(2026f)]{Sandeman2026RADM}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Dark Matter as Actualization-Density Topology ({RADM}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198513}{doi.org/10.5281/zenodo.19198513}.
+
+\end{thebibliography}
+
+\section*{Declarations}
+\textbf{Funding:} Not applicable.\quad
+\textbf{Competing interests:} The author declares no competing interests.
+
+\textbf{Preprint availability:} This manuscript is available as a preprint at
+\href{https://doi.org/10.5281/zenodo.19198285}{doi.org/10.5281/zenodo.19198285}.
+
+\textbf{Code availability:} The Lean~4 formal proof file (\texttt{RA\_AQFT\_Proofs\_v10.lean}) and Python computational scripts are publicly available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}.
+
+\textbf{Data availability:} This paper presents theoretical work. No datasets
+were generated or analysed.
+
+\end{document}

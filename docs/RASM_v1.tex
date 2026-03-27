@@ -96,21 +96,38 @@ $\sin^2\theta_W = 3/8$; and the gauge coupling hierarchy from BDG coefficient
 magnitudes. Specific predictions: lightest neutrino mass $m_1 \approx 0.37~\mathrm{meV}$,
 $\sum m_\nu \approx 59~\mathrm{meV}$ (testable with CMB-S4/Euclid), and no proton
 decay (exact baryon conservation). Supersymmetry is structurally absent.
-Three open derivation targets, all requiring the BDG-filter MCMC, are precisely
-scoped; when closed, they derive all fermion masses and coupling constants from
-the five integers $(1,-1,9,-16,8)$.
+Three open derivation targets are precisely scoped; when closed, they derive
+all fermion masses and coupling constants from the five integers
+$(1,-1,9,-16,8)$. Derivation~1 is a finite combinatorial enumeration;
+Derivation~2 a graph simulation to stationarity; Derivation~3 a geometric proof.
 Additional consequences: $\theta_{\mathrm{QCD}} = 0$ exactly
 (strong CP dissolved; no axion needed); the black hole information
 paradox dissolved via Causal Severance partition; and the baryon
 asymmetry as a Causal Severance initial condition.
+
+A companion paper, \emph{Relational Actualism: The Topology of Matter}
+(RATM)~\citep{Sandeman2026RATM}, extends the BDG particle classification
+to a complete Lean-verified proof: the BDG-stable causal topology types
+in 4D form a five-element closed set (isolated, depth-2 chain, depth-4
+chain, symmetric Y-join, asymmetric Y-join), partitioned into sequential
+types (leptons and gauge bosons, propagating freely) and topological types
+(quarks and gluons, confined). Confinement is proved as a theorem---not
+postulated---with finite BDG-filtration lengths $L=3$ (gluon) and $L=4$
+(quark). The closure theorem (all extensions of all particle types land
+within the known set, exhaustively verified over 124 extension cases)
+establishes that the BDG particle universe admits no new elementary
+topology types.
+
 All algebraic claims in this paper are independently verified:
 a Python verification notebook confirms 52/52 numerical checks
 (algebraic identities over 1000 test angles at machine precision $\sim 10^{-14}$;
-hybrid conjectures against PDG~2022 inputs), and a Lean~4 proof file
-establishes 21 theorems with no axioms, including $K = 2/3$ for all $m_0 > 0$
-and $\theta \in \mathbb{R}$, the Majorana Koide identity, and both complex
-roots-of-unity sum identities underlying the $SU(3)_{\mathrm{gen}}$ coherent
-state structure.
+hybrid conjectures against PDG~2022 inputs). Two Lean~4 proof files,
+totalling 93 results with zero \texttt{sorry} tags and no new axioms, verify:
+the $SU(3)_{\mathrm{gen}}$ coherent state lemma
+$\hat{\phi}_\theta(n{=}1) = (\sqrt{6}/2)\,e^{-i\theta}$;
+the complete BDG particle classification (D1a--D1h); colour confinement;
+the particle universe closure theorem; Gell-Mann--Nishijima consistency
+for all six first-generation fermions; and 62 further results.
 \end{abstract}
 
 \medskip\noindent
@@ -143,7 +160,7 @@ have the ranges they do. These are inputs, not outputs.
 The Relational Actualism suite proceeds from the primitive commitment outward:
 from quantum mechanics (RAQM~\citep{Sandeman2026RAQM}) and gravity
 (RAGC~\citep{Sandeman2026RAGC}) through the unifying Engine of Becoming
-(EB~\citep{Sandeman2026EB}) to the Standard Model (this paper), the dark
+(EB~\citep{Sandeman2026RAEB}) to the Standard Model (this paper), the dark
 sector (RADM~\citep{Sandeman2026RADM}), quantum information
 (RAQI~\citep{Sandeman2026RAQI}), and finally emergence and intelligence
 (RAHC~\citep{Sandeman2026RAHC}; RACI~\citep{Sandeman2026RACI}).
@@ -362,6 +379,72 @@ This is a stronger result than the Standard Model, where baryon number
 is an accidental symmetry that grand unified theories can violate.
 \emph{Testable prediction:} proton decay is forbidden in RA.
 \end{proposition}
+
+
+% ── 5b. The Complete BDG Topology Classification ─────────────────────────────
+\section{The Complete BDG Particle Topology: Five Types, One Closed Universe}
+\label{sec:topology_of_matter}
+
+The companion paper \emph{Relational Actualism: The Topology of Matter}
+(RATM)~\citep{Sandeman2026RATM} provides a complete Lean-verified proof
+of the BDG particle classification that underpins the Standard Model
+results of this paper.
+The key theorems, all machine-verified with zero \texttt{sorry} tags, are:
+
+\paragraph{Theorem D1a (Sequential fixed points).}
+The BDG-stable chain depths in 4D are exactly $k \in \{0,2,4\}$.
+For $k \geq 4$, the N-vector stabilises at $(1,1,1,1)$~--- a genuine
+fixed point of worldline extension, proved by definitional equality
+(\texttt{rfl}) in Lean. This identifies three sequential stable
+N-vectors: $(0,0,0,0)$, $(1,1,0,0)$, $(1,1,1,1)$.
+
+\paragraph{Theorem D1b (Minimal topological patterns).}
+The two smallest-size BDG-stable vertex patterns whose causal past contains
+at least one spacelike pair are the symmetric Y-join $N=(1,2,0,0)$
+with score 18 (gluon) and the asymmetric Y-join $N=(2,1,0,0)$ with
+score 8 (quarks). All other topological N-vectors require graph size $\geq 5$.
+
+\paragraph{Theorem D1c (Worldline confinement).}
+Gluon worldline: scores $18 \to -23$ (filter) $\to 9 \to 1$ (fixed point),
+confinement length $L=3$. Quark worldline: $8 \to 2 \to -15$ (filter)
+$\to 9 \to 1$, confinement length $L=4$. Both types converge to the
+sequential fixed point $N=(1,1,1,1)$ after finite BDG-filtration.
+
+\paragraph{Theorem D1\_closure\_complete (Closed particle universe).}
+Every single-step extension of every known particle type (including transition
+states) produces a vertex whose N-vector lies in the same seven-element
+set~--- exhaustively verified over 124 extension cases (15 gluon + 15 quark
++ 31 quark-transition + 63 gluon-transition). No new particle topology types
+can emerge. The BDG particle universe is closed.
+
+\paragraph{Physical interpretation.}
+The central classification is:
+\begin{quote}
+\emph{Sequential past (total causal order)} $\longleftrightarrow$
+leptons, photons, $W$, $Z$, $H$ \quad [free asymptotic states]\\
+\emph{Topological past (spacelike pair exists)} $\longleftrightarrow$
+quarks, gluons \quad [confined]
+\end{quote}
+This is a theorem about the BDG integers $(1,-1,9,-16,8)$~--- not a
+postulate. The lepton/quark distinction is derived from 4D causal geometry
+alone. Additionally, the gluon has a qualitatively stronger confinement than
+the quark: every stable gluon extension is a self-replica (no escape to
+sequential character), whereas quarks have two extensions that produce the
+chain-2 sequential type. This asymmetry is the BDG-native reflection of
+the stronger self-coupling of the non-abelian gauge sector.
+
+\paragraph{Two-level particle classification.}
+A complete particle identity requires two levels:
+\begin{enumerate}[noitemsep]
+  \item \textbf{BDG topology type} $\to$ colour charge (sequential = free;
+    topological = confined).
+  \item \textbf{$Q_{N_1}$ winding number} $\to$ electromagnetic charge
+    within a topology class.
+\end{enumerate}
+Lepton doublets: sequential, $Q_{N_1} \in \{0,3\}$ (neutrino / charged lepton).
+Quark doublets: topological, $Q_{N_1} \in \{1,2\}$ (down-type / up-type).
+The Gell-Mann--Nishijima formula $Q = T_3 + Y/2$ is satisfied by construction:
+see RATM Theorems D1h\_GMN\_electron, D1h\_GMN\_up\_quark, D1h\_GMN\_down\_quark.
 
 % ── 6. The Three Forces from the Three Non-Gravitational BDG Combinations ─────
 \section{The Three Forces from the Three Non-Gravitational BDG Combinations}
@@ -645,10 +728,10 @@ to current experimental precision with $K = 2/3$ exactly.
 This scale equals the constituent quark mass $m_p/3 \approx 312.8~\mathrm{MeV}$
 to within $0.35\%$. In RA this is not a numerical coincidence: both $m_0$
 and the constituent quark mass are set by the QCD string tension $\sigma$,
-which in turn emerges from the BDG-filter MCMC. The derivation chain
+which in turn emerges from the BDG-filter simulation. The derivation chain
 \begin{equation}
   (1,{-1},9,{-16},8)
-  \;\xrightarrow{\;\mathrm{MCMC}\;}
+  \;\xrightarrow{\;\mathrm{simulation}\;}
   \sigma
   \;\xrightarrow{\;\Lambda_{\mathrm{QCD}}\;}
   m_0
@@ -724,7 +807,7 @@ $Q_{N_1}$), and neutrinos satisfy $K = 2/3$ in the Majorana convention
 The coupling constants $\alpha_{\mathrm{EM}}$ and $\alpha_s(\mu)$ in
 equation~\eqref{eq:koide_breaking} are experimental inputs from continuum
 QCD, not yet derived from the BDG coefficients. In RA these values will
-emerge from the BDG-filter MCMC (Derivation~1 of Section~\ref{sec:open});
+emerge from the BDG-filter simulation (Derivation~1 of Section~\ref{sec:open});
 until that computation is complete, equation~\eqref{eq:koide_breaking}
 is a structural conjecture: RA predicts the \emph{form} of the correction
 (the Casimir structure, the charge assignments, the $2^{d-1}$ dimension
@@ -858,7 +941,7 @@ $\delta = 0.06653$, an agreement of $0.1\%$.
 Both $\delta$ (fitted from quark Koide angles to PDG masses)
 and $\alpha_s(\mu)/\pi$ (from continuum QCD) are experimental
 inputs; the $0.1\%$ match is a structural observation, not a
-BDG-derived prediction pending the MCMC of Derivation~\ref{sec:open}.
+BDG-derived prediction pending the simulation of Derivation~\ref{sec:open}.
 \end{conjecture}
 
 This completes a unified Casimir structure for all one-loop
@@ -1163,9 +1246,9 @@ across a sparse causal region. It should therefore be determinable from the
 BDG coefficients $(1, -1, 9, -16, 8)$ and the asymptotic $c_k$ distribution
 of the BDG-filtered Poisson-CSG.
 
-This is the same BDG-filter MCMC computation already identified in RAGC
+This is the same BDG-filter simulation already identified in RAGC
 Derivation~1~\citep{Sandeman2026RAGC} for determining the cosmological
-bandwidth ratio $\bar\lambda_m/\bar\lambda_\text{exp}$. A single MCMC
+bandwidth ratio $\bar\lambda_m/\bar\lambda_\text{exp}$. A single BDG-filter simulation
 simulation therefore closes two derivation targets simultaneously: the
 cosmological Hubble tension ratio and the hadronic string tension.
 
@@ -1607,16 +1690,21 @@ $d$ & Stable configs & Non-grav.\ DOFs \\
 $d = 6$ has \emph{more} stable patterns than $d = 4$, not fewer.
 The discriminating quantity is not pattern count but force count.
 
-\begin{proposition}[$d = 4$ uniqueness by force count]
+\begin{proposition}[$d = 4$ uniqueness]
 \label{prop:d4}
-The BDG non-gravitational DOF count gives:
-$d = 2$: 1 gauge force --- falsified (3 forces observed);
-$d = 4$: 3 gauge forces --- matches $U(1)\times SU(2)\times SU(3)$ exactly;
-$d = 6$: 4 gauge forces and a fourth generation sector (304 configurations
-with $N_5 > 0$) --- both unobserved, falsifying $d = 6$.
-$d = 4$ is the unique even dimension whose BDG non-gravitational DOF
-count matches the observed gauge structure. This is an observational
-constraint, not an anthropic argument.
+$d = 4$ is the unique dimension satisfying both:
+\begin{enumerate}[noitemsep]
+\item \emph{Force-count match}: the BDG non-gravitational DOF count gives
+exactly 3 gauge forces ($U(1)\times SU(2)\times SU(3)$). For $d=2$:
+1 force (falsified); $d=6$: 4 forces + fourth generation (both unobserved).
+\item \emph{Pattern-catalogue closure}: the BDG score alternation
+$1, 0, 9, -7, 1$ at depths $k=0,1,2,3,4$ closes to a stable value at
+$k \geq 4$, producing exactly 3 distinct stable chain types
+(neutral/boson/fermion). For $d < 4$: only the trivial isolated
+pattern is stable. For $d > 4$: the BDG integers generate additional
+stable types without bound (4 types at $d=5$, 5 at $d=6$, etc.).
+\end{enumerate}
+Both conditions are observational constraints, not anthropic arguments.
 \end{proposition}
 
 The formal classification of stable self-similar patterns across
@@ -1667,7 +1755,7 @@ may provide a discriminating test.
 The quantitative value $\eta \approx 6.1 \times 10^{-10}$ is
 in principle derivable from the LLC boundary conditions at the
 Causal Severance --- a property of the BDG action at Planck density,
-calculable via the BDG-filter MCMC (Derivation~3 of
+calculable via the BDG-filter simulation (Derivation~3 of
 Section~\ref{sec:open}).
 
 % ── 13. Open Derivations ──────────────────────────────────────────────────────
@@ -1677,7 +1765,7 @@ Section~\ref{sec:open}).
 
 The following table summarises the epistemic status of all results in this
 paper, separating what is proved from what is conjectured and what requires
-the BDG-filter MCMC to complete.
+the BDG-filter simulation to complete.
 
 \begin{center}
 \renewcommand{\arraystretch}{1.25}
@@ -1715,39 +1803,224 @@ $|V_{cb}| = (2/\pi)\delta = (3\alpha_s)/(2\pi^2)$ ($0.4\%$) & Conjecture & Conj.
 $\sum m_\nu \approx 59~\mathrm{meV}$; $m_1 \approx 0.36~\mathrm{meV}$ & Conjecture & \S\ref{sec:neutrinos} \\
 $K_\nu = 2/3$ (Majorana convention) & Proved & Prop.~\ref{prop:majorana} \\
 \midrule
-$\alpha, \alpha_s, G_F$ exact values & Needs MCMC & Deriv.~3 \\
-String tension $\sigma$ & Needs MCMC & Deriv.~3 \\
-All fermion masses via $m_0$ chain & Needs MCMC & Eq.~\eqref{eq:mass_chain} \\
-$\lambda_m/\lambda_{\mathrm{exp}}$ & Needs MCMC & RAGC D.1 \\
+BDG two-class catalogue \{neutral, W, fermion, gluon\} & Verified (sim.) & Deriv.~1 \\
+Completeness proof, charge assignment & Open (strategy given) & Deriv.~1 \\
+$\alpha, \alpha_s, G_F$ exact values & Needs D3 proof & Deriv.~3 \\
+String tension $\sigma$ & Needs D2 simulation & Deriv.~3 \\
+All fermion masses via $m_0$ chain & Needs D2 simulation & Eq.~\eqref{eq:mass_chain} \\
+$\lambda_m/\lambda_{\mathrm{exp}}$ & Needs simulation & RAGC D.1 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\paragraph{Derivation 1: Stable pattern classification.}
+\paragraph{Derivation 1: Stable pattern enumeration.}
 Prove that the complete catalogue of $\SBDG > 0$-stable self-similar patterns
 under 4D BDG-filtered Poisson-CSG dynamics is precisely the first-generation
 Standard Model: $\{e, u, d, \nu_e, \gamma, g, W, Z, H\}$.
-The BDG-filter MCMC enumerates all stable patterns; the analytical target
-is showing the enumeration is complete and matches the observed spectrum.
-\textbf{Collaborator target:} topological quantum field theory; causal set dynamics.
 
-\paragraph{Derivation 2: The fermion mass chain.}
-Close equation~\eqref{eq:mass_chain}: BDG coefficients
-$\xrightarrow{\mathrm{MCMC}}$ string tension $\sigma$
-$\xrightarrow{\Lambda_{\mathrm{QCD}}}$ Koide scale $m_0$
-$\xrightarrow{SU(3)_{\mathrm{gen}}}$ all charged lepton masses.
+\textbf{Computational results (Python simulation, March 2026).}
+An exhaustive enumeration of all connected DAG patterns up to size 6, combined
+with BDG-filter simulation of growing causal graphs (2200+ vertices), establishes
+the following score table and pattern catalogue:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccrrl}
+\toprule
+Chain depth $k$ & $N$-vector & $\SBDG$ & Stable? & Interpretation \\
+\midrule
+0 & $(0,0,0,0)$ & $+1$ & \checkmark & $\nu, \gamma, Z^0, H$ [neutral] \\
+1 & $(1,0,0,0)$ & $0$  & boundary  & — \\
+2 & $(1,1,0,0)$ & $+9$ & \checkmark & $\gamma, W^\pm$ [depth-2 chain] \\
+3 & $(1,1,1,0)$ & $-7$ & $\times$  & filtered \\
+4 & $(1,1,1,1)$ & $+1$ & \checkmark & $e, u, d$ quarks [depth-4 chain] \\
+$\geq 5$ & $(1,1,1,1)$ & $+1$ & \checkmark & stabilises (depth $\geq 4$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The BDG integers $(1,-1,9,-16,8)$ select exactly depths $k \in \{0,2,4\}$
+as stable. This is structural: in 4D, the Alexandrov interval has exactly
+four relevant depth scales ($N_1$ through $N_4$), and the alternating-sign
+BDG action cancels to a positive score only at those depths.
+
+\textbf{Two classes of stable patterns.}
+\begin{enumerate}[noitemsep]
+\item \emph{Sequential} (depth-$k$ chains): the three chain depths above
+  correspond to neutral particles $(0,0,0,0)$, spin-1 bosons $(1,1,0,0)$,
+  and massive fermions $(1,1,1,1)$.
+\item \emph{Topological} (Y-branching): a vertex above a filtered Y-join
+  (two spacelike ancestors meeting at a negative-score intermediate)
+  acquires $N_2 = 2$ from the branching topology. This gives the gluon
+  pattern $(1,2,0,0)$, score $= +18$. The intermediate Y-join vertex
+  (score $= -1$) is filtered; its topological signature propagates upward.
+  Four distinct size-4 DAGs all produce this pattern.
+\end{enumerate}
+
+The full SM first-generation matching is:
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{llcr}
+\toprule
+SM particle & Class & $N$-vector & Score \\
+\midrule
+$\nu, \gamma, Z^0, H$ & Sequential (depth 0) & $(0,0,0,0)$ & $+1$ \\
+$W^\pm$ & Sequential (depth 2) & $(1,1,0,0)$ & $+9$ \\
+$e, u, d$ quarks & Sequential (depth 4) & $(1,1,1,1)$ & $+1$ \\
+Gluon $g$ & Topological (Y-branch) & $(1,2,0,0)$ & $+18$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All first-generation SM particles are present; all patterns outside this
+catalogue require composite structures (bound states).
+
+\textbf{Three open targets for the full proof.}
+\begin{enumerate}[noitemsep]
+\item \emph{Completeness}: prove the catalogue
+  $\{(0,0,0,0),(1,1,0,0),(1,1,1,1),(1,2,0,0)\}$
+  is exhaustive. The exhaustive search to size 6 found 27 distinct
+  $N$-vectors, but only these four have minimal realisation size $\leq 5$
+  and are structurally non-composite. All larger patterns decompose into
+  copies of these four.
+\item \emph{Multiplicity / charge assignment}: show that the depth-4
+  pattern with $Q_{N_1} \in \{1,2,3\}$ gives exactly the SM charge
+  assignments $\{-1, +2/3, -1/3\}$ for $\{e, u, d\}$, and that
+  $Q_{N_1} = 0$ for neutral particles, deriving charge quantisation
+  in units of $e/3$ (equation~\eqref{eq:charge_quantization}) from the BDG filter.
+\item \emph{Topological charge mechanism}: formalise why the filtered
+  Y-join transmits $N_2 = 2$ to the vertex above it. This is the
+  BDG-native analogue of non-abelian gauge structure: colour charge
+  arises from a topological branching in the causal graph, not from a
+  sequential path.
+\end{enumerate}
+
+\textbf{Completeness strategy (Item~4).}
+The exhaustive enumeration to size 6 found 27 stable $N$-vectors, which divide
+into three classes:
+\begin{enumerate}[noitemsep,label=\roman*.]
+  \item \emph{Elementary} (4 patterns, min-size $\leq 5$): the catalogue above.
+  \item \emph{Disjoint composites}: additive sums of elementaries with spacelike
+  parents, e.g.\ $(2,2,0,0) = 2\times W$ and $(2,3,0,0) = W + \mathrm{gluon}$.
+  \item \emph{Overlapping composites} (21 patterns): arise when two causal paths
+  share ancestors. Under the RA \emph{Particle Identification Principle}
+  (two causal paths represent the same particle iff their full pasts coincide),
+  overlapping composites are excluded as artefacts of counting the same
+  particle via different sub-paths. Under the PIP, the physical catalogue
+  collapses to Class~i + Class~ii.
+\end{enumerate}
+The completeness proof reduces to: show that every stable $N$-vector with
+min-size $> 5$ either decomposes additively into elementaries (Class~ii) or
+contains a shared ancestor (Class~iii, excluded by PIP).
+
+\textbf{Charge assignment from multiplicity (Item~5).}
+The depth-4 pattern $(1,1,1,1)$ gives a single chain carrying one unit of
+each $N_k$. The SM fermions carry $Q_{N_1} \in \{1,2,3\}$ units corresponding
+to charges $\{-1/3, +2/3, -1\}$ (in units of $e$). In the BDG framework,
+$Q_{N_1}$ is not the vertex-level $N_1$ count but the \emph{winding number}
+of the worldline pattern around the $N_1$ direction of the BDG action. The
+quantisation $Q_{N_1} \leq 3$ follows from the Fin-3 structure of
+$SU(3)_{\mathrm{gen}}$: the same modular-3 constraint that gives exactly
+three generations also restricts $Q_{N_1}$ to three non-zero levels.
+The colour charge $Q_{N_2} \in \{0,1\}$ (lepton/quark distinction) follows
+from whether the pattern is sequential (Class~i, $Q_{N_2}=0$) or carries
+one unit of topological colour from a Y-branch ancestor ($Q_{N_2}=1$).
+This is the RA-native derivation of electric charge quantisation in
+units of $e/3$ (equation~\eqref{eq:charge_quantization}).
+
+\textbf{Collaborator target:} causal set dynamics; topological quantum field theory;
+combinatorial graph theory.
+
+\paragraph{Derivation 2: The fermion mass chain and $\xi$ determination.}
+Two linked goals: (a)~close equation~\eqref{eq:mass_chain} by extracting the
+string tension $\sigma$ from the stationary BDG-filtered Poisson-CSG; and
+(b)~derive the coupling constant $\xi$ of the $\lambda$-field equation from
+the same microscopic data.
+
+\textbf{The mass chain.}
+Run the BDG-filtered Poisson-CSG forward until it reaches its stationary
+$\mu_{\mathrm{stable}}$. The entropy of the stationary Poisson distribution
+$S_{\mathrm{Poisson}}(\mu_{\mathrm{stable}}) \approx 0.9$~nats gives the
+entropy per actualization vertex $\langle\Delta S_{\mathrm{vertex}}\rangle
+= k_B S_{\mathrm{Poisson}}(\mu_{\mathrm{stable}})$.
+The implied graph dimension and flux-tube density determine $\sigma$ via
+$\sigma \sim \mu_{\mathrm{stable}} \Lambda_{\mathrm{QCD}}^2 / (2\pi l_{\mathrm{RA}}^2)$.
 The $0.35\%$ agreement between $m_0 \approx 313.9~\mathrm{MeV}$ and
-$m_p/3 \approx 312.8~\mathrm{MeV}$ already indicates this chain closes.
-\textbf{Collaborator target:} causal set dynamics; lattice QCD; group theory.
+$m_p/3 \approx 312.8~\mathrm{MeV}$ already indicates the chain closes;
+no free parameters are involved.
 
-\paragraph{Derivation 3: String tension and coupling constants from Poisson-CSG.}
-Show that $\sigma \approx (0.42~\mathrm{GeV})^2$, $\alpha \approx 1/137$,
-$\alpha_s$, and $G_F$ emerge from the asymptotic $c_k$ distribution of the
-BDG-filtered Poisson-CSG. The Wyler formula
-$\alpha \approx 9/(8\pi^3)(\pi/4!)^{1/4}$ --- whose factors match $|c_{N_2}| = 9$
-and the causal 4-simplex volume --- is the candidate. The same MCMC closes
-the cosmological bandwidth ratio of RAGC Derivation~1 simultaneously.
-\textbf{Collaborator target:} causal set theory; renormalisation group theory.
+\textbf{$\xi$ from microscopic RA.}
+The RAGC field equation gives
+$\xi \propto \langle\Delta S_{\mathrm{vertex}}\rangle / l_{\mathrm{RA}}^2$
+(RAGC Derivation~6~\citep{Sandeman2026RAGC}).
+The RAQI Kinematic Coherence Bound~\citep{Sandeman2026RAQI} pins
+$p_{\mathrm{th}} \approx 10^{-2}$, giving
+$\langle\Delta S_{\mathrm{vertex}}\rangle \approx k_B \ln(1/p_{\mathrm{th}})
+\approx 4.6\,k_B$.
+The dimensional combination $\xi = \langle\Delta S\rangle c^2 /
+(\rho_{\mathrm{Planck}} l_P^2)$ sets the order of magnitude; the precise
+coefficient requires $\mu_{\mathrm{stable}}$ from the Poisson-CSG simulation,
+which also determines the effective RA area element $l_{\mathrm{RA}}$.
+Once $\xi$ is derived, the halo scale-length $r_d = \sqrt{3\xi/\bar\rho_A}$,
+the Tully-Fisher normalisation, and the $H_0$-density slope all follow as
+quantitative predictions with no further input.
+\textbf{Collaborator target:} causal set dynamics; lattice QCD; precision cosmology.
+
+\paragraph{Derivation 3: Coupling constants and the Wyler formula.}
+The Wyler formula $\alpha = 9/(8\pi^4)(\pi^5/1920)^{1/4}$ (accurate to
+$0.6$~ppm) decomposes into three BDG-derived factors:
+\begin{enumerate}[noitemsep]
+\item $9 = |c_{N_2}|$: the BDG coefficient for the $N_2$ (colour) degree of freedom,
+  counting depth-2 order intervals. The same integer appears in the quark
+  Koide breaking formula.
+\item $8 = 2^{d-1}$: the null-direction dimension factor for $d=4$ spacetime,
+  the same factor arising in the BDG score stability analysis.
+\item $(\pi^5/1920)^{1/4}$: the $SU(3)_{\mathrm{gen}}$ coherent-state volume factor,
+  where $1920 = 2^4 \cdot 5!$ is the 4D causal 5-simplex volume and $\pi^5$
+  is the $S^5$ volume. The Lean-proved coherent state lemma
+  $\hat\phi_\theta(n{=}1) = (\sqrt{6}/2)\,e^{-i\theta}$~(Lemma~\ref{lem:coherent})
+  provides the bridge: $|\hat\phi(n{=}1)|^2 = 3/2$ matches Wyler's
+  $\mathrm{vol}(CH(2)/U(2))^{1/4}$ when the $SU(3)_{\mathrm{gen}}$ normalisation
+  is matched to the BDG coupling $\alpha = g^2/(4\pi)$.
+\end{enumerate}
+
+\textbf{Established.}
+$N = 3$ (three gauge interactions) follows from the D1 stable pattern catalogue
+(Section~\ref{sec:open}, Derivation~1): exactly three non-gravitational
+$N$-vector degrees of freedom produce stable patterns.
+
+$d = 4$ is the unique dimension giving a minimal closed stable catalogue:
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{clll}
+\toprule
+$d$ & Stable chain types & Count & Physical content \\
+\midrule
+2 & isolated only & 1 & trivial (no dynamics) \\
+3 & isolated only & 1 & trivial (no forces) \\
+4 & isolated, depth-2, depth-4 & \textbf{3} & \textbf{neutral + boson + fermion} \\
+5 & isolated, depth-2, depth-4, depth-6 & 4 & extra massive sector \\
+6 & isolated, depth-2, depth-4, depth-6, depth-8 & 5 & unbounded proliferation \\
+\bottomrule
+\end{tabular}
+\end{center}
+The $d=4$ BDG integers $(1,-1,9,-16,8)$ produce score alternation
+$1, 0, 9, -7, 1$ at depths $k = 0,1,2,3,4$ that closes to a stable value
+of $+1$ at $k \geq 4$ — the only dimension where the alternating-sign
+BDG action terminates cleanly at exactly the depth matching the spacetime
+dimension. For $d < 4$ the catalogue is trivially small (no force structure);
+for $d > 4$ the BDG integers do not close and new stable types accumulate
+without bound. $d = 4$ is the unique dimension supporting a finite, non-trivial
+closed pattern catalogue.
+
+\textbf{Open.}
+The precise connection from the BDG coupling constant to the Wyler volume
+formula requires showing that $g^2 = |c_{N_2}|^2 / V(SU(3)_{\mathrm{gen}})$
+where the denominator is the phase-space volume of the $SU(3)_{\mathrm{gen}}$
+coherent states. The same result simultaneously closes the RAGC cosmological
+bandwidth ratio (RAGC Derivation~1~\citep{Sandeman2026RAGC}).
+\textbf{Collaborator target:} differential geometry (symmetric spaces);
+causal set theory; renormalisation group.
 
 \paragraph{Derivation 4: Lean proofs for baryon conservation and chirality.}
 Two $\sim$50-line Lean~4 targets: (a) baryon conservation as LLC conservation
@@ -1837,6 +2110,19 @@ single fact that some things happen and others do not.
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
 
+\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Topology of Matter (RATM)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
+
+\bibitem[Sandeman(2026RAEB)]{Sandeman2026RAEB}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Engine of Becoming (RAEB)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198120}{doi.org/10.5281/zenodo.19198120}.
+
+
 \bibitem[Wyler(1969)]{Wyler1969}
 A.~Wyler.
 \newblock On the conformal groups in the theory of relativity and their
@@ -1879,7 +2165,7 @@ J.~F.~Sandeman.
 \newblock Preprint, 2026.
 \newblock \href{https://doi.org/10.5281/zenodo.19197999}{doi.org/10.5281/zenodo.19197999}.
 
-\bibitem[Sandeman(2026c)]{Sandeman2026EB}
+\bibitem[Sandeman(2026c)]{Sandeman2026RAEB}
 J.~F.~Sandeman.
 \newblock The Engine of Becoming ({EB}).
 \newblock Preprint, 2026.

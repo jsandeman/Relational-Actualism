@@ -551,7 +551,7 @@ Weyl sourcing, is Hard Wall~3 (Section~\ref{sec:hardwalls}).
 
   The precise remaining gap is to prove that the RA-CSG stochastic
   graph-rewriting rules of the Engine of
-  Becoming~\citep{Sandeman2026EB} fall into the same Lorentzian causal
+  Becoming~\citep{Sandeman2026RAEB} fall into the same Lorentzian causal
   triangulations universality class. Concretely: perform Markov Chain Monte
   Carlo simulations of the RA actualization dynamics to calculate $d_s$ as a
   function of $\lambda$, verify the transition from $d_s = 3$ (dense core)
@@ -586,32 +586,41 @@ Weyl sourcing, is Hard Wall~3 (Section~\ref{sec:hardwalls}).
   \textbf{Collaborator target:} early-universe cosmology, CMB phenomenology,
   cosmological perturbation theory.
 
-  \item[Hard Wall 5: Weyl curvature sourcing, lensing, and the covariant
-  $\Box(\ln\lambda)$ field equation.] The RA-modified field
-  equations source the Ricci tensor $R_{\mu\nu}$ via $\langle T^{\mu\nu}_{RA}
-  \rangle$. Gravitational lensing traces the Weyl tensor $C_{\mu\nu\rho\sigma}$
-  via null geodesics. This hard wall has three components: (i)~deriving the
-  covariant form of the $\nabla^2(\ln\lambda)$ gradient correction, which is
-  $\Box(\ln\lambda) = g^{\mu\nu}\nabla_\mu\nabla_\nu(\ln\lambda)$ with the
-  appropriate coupling to $g_{\mu\nu}$; (ii)~demonstrating how accumulated
-  causal depth $\ARA$ contributes to Weyl curvature at the moment of a cluster
-  collision; and (iii)~establishing that the integrated stellar trajectory over
-  10~Gyr does not generate a gravitational wake --- the DAG records current
-  causal depth, not historical positions, so no wake is expected, but this must
-  be proved in the continuum limit. All three require the full covariant RA
-  field equations. RAGC~\citep{Sandeman2026b} (thermodynamic derivation section) now establishes
-  those field equations via a thermodynamic derivation, and identifies the
-  precise Bianchi constraint $\nabla^\mu T_{\mu\nu}^{(A)} + \xi
-  R_{\mu\nu}\nabla^\mu(\ln\lambda) = 0$ that governs the coupling between
-  matter and the actualization field. The remaining gap is proving this
-  constraint holds in the continuum limit of the discrete DAG. In the
-  weak-field quasi-static limit, Weyl and Ricci sourcing are related by the
-  tidal
-  decomposition of the stress-energy, and the $10^8$ headroom in
-  equation~\eqref{eq:RA_ratio} is expected to survive the covariant
-  generalisation.
-  \textbf{Collaborator target:} general relativity, gravitational lensing
-  theory, algebraic QFT.
+  \item[Hard Wall 5: Weyl curvature sourcing and the Bullet Cluster lensing
+  prediction.] Gravitational lensing traces the Weyl tensor
+  $C_{\mu\nu\rho\sigma}$ via null geodesics, while the RA-modified field
+  equations source the Ricci tensor $R_{\mu\nu}$ via local actualization
+  density. Three RA-internal targets remain:
+  \begin{enumerate}[noitemsep]
+  \item \textbf{Covariant field equation [resolved in RAGC].}
+  The covariant form $\Box(\ln\lambda) = g^{\mu\nu}\nabla_\mu\nabla_\nu(\ln\lambda)$
+  is proved (RAGC Proposition~9, Corollary~10~\citep{Sandeman2026b}):
+  $\Box(\ln\lambda) = \nabla^2(\ln\lambda) + O(\Phi)$ in the static
+  weak-field limit, and the modified Poisson equation
+  $\nabla^2\Phi = 4\pi G\rho_A + \xi\,\nabla^2(\ln\lambda)$ is derived.
+  The $\lambda$ equation of motion $\nabla^2(\ln\lambda) = -\rho_A/(3\xi)$
+  is established, predicting the dark-matter halo profile from first principles.
+  \item \textbf{Weyl sourcing from $A_{\mathrm{RA}}$ [open].}
+  Demonstrating quantitatively how accumulated causal depth $\ARA$
+  generates the observed $8\sigma$ lensing offset between the
+  gas centroid and the lensing peak in the Bullet Cluster.
+  This requires mapping $\ARA$ to the Weyl potential; the tidal
+  decomposition gives $\Psi - \Phi \propto \nabla^{-2}(\rho_\lambda - \bar\rho_\lambda)$,
+  and the $10^8$ stellar/gas $\ARA$ headroom (equation~\eqref{eq:RA_ratio})
+  is expected to survive. Precise quantitative prediction outstanding.
+  \item \textbf{No-wake prediction [open].}
+  The DAG records current causal depth, not historical spatial trajectories;
+  therefore no gravitational wake from past stellar positions should appear
+  in the Weyl curvature after a cluster collision. This is a
+  \emph{novel falsifiable prediction of RA} distinguishing it from
+  any particle dark matter model. Quantifying the wake amplitude
+  requires the covariant $\lambda$ profile at cluster-collision timescales.
+  \end{enumerate}
+  \textbf{Primary open target:} derive $\xi$ from RA microscopic structure
+  (RAGC Derivation~6~\citep{Sandeman2026b}), then compute the Weyl potential
+  from the predicted $\lambda$ profile.
+  \textbf{Collaborator targets:} gravitational lensing, cluster astrophysics,
+  large-scale structure.
 \end{description}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -674,6 +683,13 @@ were generated or analysed.
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
 
+\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Topology of Matter (RATM)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
+
+
 \bibitem[Sandeman(2026a)]{Sandeman2026a}
 J.~F.~Sandeman.
 \newblock Relational Actualism and Quantum Mechanics ({RAQM}).
@@ -712,7 +728,7 @@ J.~Bland-Hawthorn and O.~Gerhard.
 \newblock \emph{Annual Review of Astronomy and Astrophysics}, 54:529--596, 2016.
 \newblock \href{https://doi.org/10.1146/annurev-astro-081915-023441}{doi:10.1146/annurev-astro-081915-023441}.
 
-\bibitem[Sandeman(2026g)]{Sandeman2026EB}
+\bibitem[Sandeman(2026g)]{Sandeman2026RAEB}
 J.~F.~Sandeman.
 \newblock The Engine of Becoming: A Covariant Stochastic Graph Rewriting
   Algorithm as the Unified Foundation of Quantum Mechanics and General
