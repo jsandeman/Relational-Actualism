@@ -89,13 +89,16 @@ irreversible. Four additional long-standing problems are dissolved: $\theta_{\ma
 derivation targets are tabulated.
 Core algebraic results are independently machine-verified: a Python
 notebook confirms 52/52 numerical checks at machine precision. Two
-Lean~4 proof files establish \textbf{93 results} with zero \texttt{sorry}
+Lean~4 proof files establish \textbf{101 results} with zero \texttt{sorry}
 tags and no axioms beyond Mathlib, including the Koide $K = 2/3$ identity,
 the $SU(3)_{\mathrm{gen}}$ coherent state theorem, the BDG particle
 classification (five topology types mapping exactly to the SM particle
 spectrum), colour confinement ($L{=}3$ gluon, $L{=}4$ quark), the BDG
 particle universe closure theorem (124 cases), and structural qubit
-fragility (electrons at minimum BDG score~1).
+fragility (electrons at minimum BDG score~1); and the
+$\mathcal{P}_{\mathrm{act}}$ conservation theorem and BDG locality
+lemma (RACL), proving $G_{\mu\nu} = 8\pi G\,\mathcal{P}_{\mathrm{act}}
+[T_{\mu\nu}]$ uniquely from the Local Ledger Condition.
 \end{abstract}
 
 \medskip\noindent
@@ -164,7 +167,11 @@ here, then follow the suite in the arc \emph{Bosons to Brains}:
   quantum mechanics and the measurement problem.
   \item \textbf{RAGC}~\citep{Sandeman2026RAGC} --- Gravity and cosmology;
   general relativity as inevitable consequence.
-  \item \textbf{EB}~\citep{Sandeman2026RAEB} --- The Engine of Becoming;
+  \item \textbf{RACL}~\citep{Sandeman2026RACL} --- The Einstein field
+  equations uniquely derived from the Lean-verified LLC, via the
+  $\mathcal{P}_{\mathrm{act}}$ conservation theorem and Lovelock uniqueness;
+  closes RAGC's primary hard wall. 101 Lean-verified results total.
+  \item \textbf{RAEB}~\citep{Sandeman2026RAEB} --- The Engine of Becoming;
   QM and GR unified as approximations to a covariant graph rewriting algorithm.
   \item \textbf{RASM}~\citep{Sandeman2026RASM} --- The Standard Model;
   particles, forces, and generations from BDG topology.
@@ -1119,6 +1126,14 @@ single fact that some things happen and others do not.
 % ─────────────────────────────────────────────────────────────────────────────
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
+
+\bibitem[Sandeman(2026RACL)]{Sandeman2026RACL}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Einstein Field Equations as the Unique
+  Macroscopic Limit of the Actualization Graph (RACL)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}.
+
 
 \bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
 J.~F. Sandeman.
