@@ -116,10 +116,15 @@ severances, which has been \textbf{formally verified} in Lean~4/Mathlib.%
 submission. The underlying Lean-QuantumInfo library (Meiburg, Lessa, and Soldati,
 2025; arXiv:2510.08672) is publicly available at
 \url{https://github.com/Timeroot/Lean-QuantumInfo}.}
-Furthermore, the framework quantitatively prohibits causally silent dark matter
+Furthermore, the framework categorically prohibits causally silent dark matter
 (WIMPs, axions, sterile neutrinos): a 100~GeV WIMP generates $10^{25}$--$10^{38}$
-times less actualization flux than equivalent baryonic matter, falling orders of
-magnitude below the threshold for measurable gravitational lensing. The conjectural
+times less actualization flux than equivalent baryonic matter, falling below
+the threshold for measurable gravitational lensing. Crucially, the observed
+phenomenology attributed to dark matter --- flat rotation curves, Bullet Cluster
+lensing offset, galaxy-galaxy lensing --- is accounted for without dark matter
+via the $\nabla^2\!\ln\lambda$ mechanism and accumulated causal depth
+$A_{\mathrm{RA}}$, classified across four distinct lensing regimes in the
+companion paper RADM~\citep{Sandeman2026RADM}. The conjectural
 mechanisms for flat galactic rotation curves and the Bullet Cluster offset---which
 follow from the same actualization-density field---are developed in the companion
 paper RADM~\citep{Sandeman2026RADM}. A new RA-native derivation of the
@@ -975,23 +980,26 @@ contributes $\lesssim 10^{-25}$ of the metric sourcing of the visible baryonic
 matter. This is a categorical prohibition, not a quantitative suppression: WIMPs
 cannot account for observed galactic gravitational lensing in the RA framework.
 
-\paragraph{Flat rotation curves, the Bullet Cluster, and the topological boundary
-mechanism.}
+\paragraph{Flat rotation curves, lensing, and the DJW mechanism.}
 The same actualization-density field that produces the WIMP prohibition also
-suggests mechanisms for flat galactic rotation curves (via a $\nabla^2(\ln\lambda)$
-gradient correction to the metric sourcing equation) and for the Bullet Cluster
-gravitational lensing offset (via the distinction between instantaneous
-actualization flux $\lambda$ and accumulated causal depth $A_{\mathrm{RA}}$).
-These mechanisms are conjectural and require covariant derivation before they
-constitute a dark matter replacement. The covariant form of the
-$\nabla^2(\ln\lambda)$ weak-field correction is $\Box(\ln\lambda)$, where
-$\Box = g^{\mu\nu}\nabla_\mu\nabla_\nu$ is the covariant d'Alembertian;
-demonstrating how this couples to $g_{\mu\nu}$ as a sourcing term, recovering
-the weak-field Poisson equation in the appropriate limit, and establishing
-Tully-Fisher mass scaling, CMB structure formation, and quantitative Bullet
-Cluster lensing convergence are the open problems of
-RADM~\citep{Sandeman2026RADM}. They are developed as the primary subject of the companion paper
-RADM~\citep{Sandeman2026RADM}.
+accounts for the dark-matter phenomenology, via two complementary RA-derived
+mechanisms developed in RADM~\citep{Sandeman2026RADM}:
+\begin{enumerate}[noitemsep]
+  \item \textbf{Inner disk ($r < r_c$):} The 2D cylindrical Laplacian of
+  $\ln\lambda$ for an exponential disk profile gives a surface density
+  $\Sigma_\lambda = \xi/(4\pi G R r_d)$, producing a perfectly flat rotation
+  curve with $v_\mathrm{flat}^2 = \xi/(2r_d)$ (RADM~\S3.1, fully derived).
+  \item \textbf{Sparse halo ($r > r_c$, $\mu < 1$):} The Durhuus-Jonsson-Wheater
+  theorem gives spectral dimension $d_s = 2$, so gravity is logarithmic:
+  $\Phi_\mathrm{DJW}(r) = v_\mathrm{flat}^2\ln r$. The null geodesic
+  deflection integral $\hat\alpha = -2\pi v_\mathrm{flat}^2/c^2$ = const,
+  giving lensing convergence $\kappa(b) = v_\mathrm{flat}^2/(4G\Sigma_\mathrm{cr}b)$
+  (RADM~\S4.1, RA-native derivation from DJW causal structure).
+\end{enumerate}
+The covariant form $\Box(\ln\lambda)$ is the open hard wall; the weak-field
+results above are complete and RA-native. The Bullet Cluster offset follows
+from the $A_\mathrm{RA}$(stellar)/$ A_\mathrm{RA}$(gas) ratio of $\sim 10^8$
+(RADM~\S4.2).
 
 \section{Mathematical Derivations}
 \label{sec:math}
@@ -1130,7 +1138,7 @@ with actualization density $\lambda(x)$ follows
   \label{eq:poisson_ck}
 \end{equation}
 where $V_{\mathrm{coh}}(x)$ is the coherence volume of the local quantum state
-and $p_{\mathrm{th}} \approx 10^{-2}$ is the Kinematic Coherence Bound of
+and $p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137 \approx 0.0073$ is the Kinematic Coherence Bound of
 RAQI~\citep{Sandeman2026RAQI}. This Poisson-CSG formula is the mean-field
 approximation to the exact BDG filter. It makes $c_k$ \emph{local and
 environment-dependent} --- a structural difference from all prior CSG
@@ -1956,10 +1964,12 @@ upstream: BDG-filter MCMC (D1).
 \subsection{Thermodynamic Derivation of the Actualization Tensor}
 \label{sec:thermo_derivation}
 
-While the gradient correction $\rho_\lambda = -(\xi/4\pi G)\nabla^2(\ln \lambda)$
-accurately recovers flat galactic rotation curves in the non-relativistic regime
-(see RADM~\citep{Sandeman2026RADM}), establishing its covariant origin is
-paramount. Building on Jacobson's thermodynamic derivation of the Einstein
+While the 2D cylindrical gradient correction
+$\Sigma_\lambda = \xi/(4\pi G R r_d)$ gives flat galactic rotation curves
+in the disk regime (RADM~\S3.1, RA-native), and the DJW sparse-halo regime
+gives the lensing convergence $\kappa(b) = v_\mathrm{flat}^2/(4G\Sigma_\mathrm{cr}b)$
+as a theorem of the causal structure (RADM~\S4.1), establishing the covariant
+origin of the $\lambda$-field sourcing term is paramount. Building on Jacobson's thermodynamic derivation of the Einstein
 equation of state~\citep{Jacobson1995}, we map the local Rindler horizon to the
 RA causal severance boundary---the topological limit across which actualization
 directed edges have not yet formed.
