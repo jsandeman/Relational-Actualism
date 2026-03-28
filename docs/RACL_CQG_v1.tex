@@ -54,7 +54,7 @@
   {\normalsize $^{1}$Independent Researcher, Salem, OR, USA.\par}
   {\normalsize $^{*}$sansuikyo@gmail.com\par}
   \vspace{8pt}
-  {\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}\par}
+  {\small\textit{Preprint available at}~\href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}\par}
   \vspace{14pt}
 \end{center}
 
@@ -63,49 +63,43 @@
 We prove that the Einstein field equations with $\Lambda = 0$ are the
 \emph{unique} consistent macroscopic description of the Relational
 Actualism causal graph (RA-CSG), with no free parameters.
-The derivation assembles four ingredients: the Lean~4-verified
-Local Ledger Condition (LLC); a new theorem showing
-$\nabla_\mu(\Pact T^{\mu\nu}) = 0$ for the actualization-projected
-stress tensor; the Benincasa-Dowker theorem that
-$\langle\SBDG\rangle \to (l_P^2/4)R$ in the dense-graph limit; and
-Lovelock's uniqueness theorem. Vacuum energy
-suppression, proved separately via the
-actualization projector $\Pact$, eliminates the cosmological constant
-leaving no free parameter. The Bianchi identity $\nabla_\mu G^{\mu\nu}
-\equiv 0$ holds by geometry, not dynamics.
+The derivation combines four ingredients: the Lean~4-verified
+Local Ledger Condition (LLC); the Benincasa-Dowker theorem
+$\langle\SBDG\rangle \to (l_P^2/4)R$; Lovelock's uniqueness theorem;
+and vacuum energy suppression via the actualization projector $\Pact$,
+which forces $\Lambda = 0$ structurally. The Bianchi identity holds
+by geometry.
 
-Two results are new. First, a \emph{BDG locality lemma}: at Poisson
-vertex density $\lambda$, the BDG score at vertex $v$ depends only
-on ancestors within proper-time window
+Two results are new. First, a \emph{BDG locality lemma}: the BDG
+score depends only on ancestors within proper-time window
 $\tau_{\mathrm{BDG}}(\lambda) = 4\,\Gamma(5/4)\,(12/\pi^2)^{1/4}\,
 \lambda^{-1/4} \to 0$ as $\lambda \to \infty$, confirming locality
-of the continuum limit. Second, the \emph{P$_{\mathrm{act}}$
-conservation theorem}: $\nabla_\mu(\Pact T^{\mu\nu}) = 0$, proved via
-a Leibniz decomposition using the LLC, the vacuum energy suppression
-theorem, and the Lean-verified frame-independence of the relative
-entropy $\Delta S(\rho\|\sigma_0)$.
+of the continuum limit. Second, the \emph{$\Pact$ conservation
+theorem}: $\nabla_\mu(\Pact T^{\mu\nu}) = 0$, proved via Leibniz
+decomposition using the LLC and the Lean-verified frame-independence
+of the relative entropy $\Delta S(\rho\|\sigma_0)$.
 
-The proof is RA-native: it does not take GR as a target to recover
-from a discrete structure. Rather, it shows that the LLC---a
-vertex-level charge balance condition, verified in Lean~4 with zero
-\texttt{sorry} tags---forces the macroscopic field equation to be
-the Einstein equation. GR is an output of RA, not an input.
+The proof is RA-native: the LLC---a vertex-level charge balance
+condition verified in Lean~4 with zero \texttt{sorry} tags---forces
+the macroscopic field equation to be the Einstein equation.
+GR is an output of RA, not an input.
 
-Where RA departs from GR is precisely where the actualization
-projector $\Pact T^{\mu\nu}$ departs from $T^{\mu\nu}$: in sparse
-regions where the on-shell fraction $\lambda_{\rm local}/\lambda_{\rm
-ref} < 1$. This departure \emph{is} the Hubble tension and galactic
-rotation curves. The RA corrections are not quantum-gravitational Planck-scale
-effects; they are classical actualization-density gradient effects at
-cosmological and galactic scales.
+Where RA departs from GR is where $\Pact T^{\mu\nu}$ departs from
+$T^{\mu\nu}$: in sparse regions where the on-shell fraction
+$\lambda_{\rm local}/\lambda_{\rm ref} < 1$. These departures are
+classical actualization-density gradient effects, not
+Planck-scale corrections, and correspond to the Hubble tension
+and galactic rotation curves.
+\end{abstract}
+
+\noindent\textbf{Keywords:} causal sets; Einstein field equations; Local Ledger Condition; Lovelock uniqueness theorem; Relational Actualism; formal verification; Lean 4; quantum gravity; emergent spacetime; cosmological constant
 
 \medskip
-\noindent\textbf{Keywords:} Relational Actualism $\cdot$
-Einstein field equations $\cdot$ Local Ledger Condition $\cdot$
-Lean~4 formal verification $\cdot$ Lovelock theorem $\cdot$
-Benincasa-Dowker action $\cdot$ Actualization projector $\cdot$
-Vacuum energy $\cdot$ BDG locality $\cdot$ Causal set theory
-\end{abstract}
+\noindent\textbf{Ethics statement.}
+This article does not contain any studies with human participants
+or animals performed by the author.
+
+
 
 % ── 1. Introduction ──────────────────────────────────────────────────────────
 \section{Introduction}
@@ -177,7 +171,7 @@ For every vertex $v \in V$:
 
 \noindent
 The LLC is Lean~4-verified with zero \texttt{sorry} tags in
-\texttt{RA\_AQFT\_Proofs\_v2.lean}. The Graph Cut
+\texttt{RA\_Proofs\_Lean4.lean}. The Graph Cut
 Theorem~\citep{Sandeman2026RAGC} shows the LLC holds independently on
 each side of a causal severance, with no \texttt{sorry} in the Lean
 proof.
@@ -193,7 +187,7 @@ Define:
 where $\Theta$ is the Heaviside step function. The operator $\Pact$
 projects onto on-shell (actualized) states and annihilates the vacuum.
 Its frame-independence is Lean~4-proved:
-\texttt{frame\_independence} in \texttt{RA\_AQFT\_Proofs\_v2.lean},
+\texttt{frame\_independence} in \texttt{RA\_Proofs\_Lean4.lean},
 using the continuous functional calculus unitary-conjugation lemma
 from Lean-QuantumInfo~\citep{Meiburg2025LQI}.
 
@@ -378,7 +372,7 @@ The frame-independence of $\dS$ (Lean-proved) is load-bearing: without
 covariance of $\Pact$, the operator $\nabla_\mu\Pact$ would be
 observer-dependent and the decomposition~\eqref{eq:leibniz} would not
 yield a covariant result. The Lean proof of \texttt{frame\_independence}
-in \texttt{RA\_AQFT\_Proofs\_v2.lean} is what makes this step rigorous.
+in \texttt{RA\_Proofs\_Lean4.lean} is what makes this step rigorous.
 \end{remark}
 
 % ── 5. Main Derivation ───────────────────────────────────────────────────────
@@ -509,11 +503,14 @@ These departures from GR are not quantum-gravitational Planck-scale
 effects. They are \emph{classical actualization-density gradient
 effects} at cosmological and galactic scales:
 \begin{itemize}[noitemsep]
-  \item \textbf{Galactic rotation curves}: the exponential stellar
-    disk gives $\nabla^2\ln\lambda = -2/(r\cdot r_d)$, producing a
-    $1/r$ effective density that yields perfectly flat rotation curves.
-    Numerical verification confirms flatness to 4.3\% for $r > 5$~kpc
-    in a Milky Way analog~\citep{Sandeman2026RADM}.
+  \item \textbf{Galactic rotation curves}: two complementary
+    mechanisms give flat curves at all radii. In the disk, the 2D
+    cylindrical Laplacian of $\ln\lambda$ gives $\nabla^2_{\rm 2D}\ln\lambda
+    = -1/(R\,r_d)$, producing a $\Sigma_\lambda \propto 1/R$ surface density
+    that yields a perfectly flat rotation curve with
+    $v_{\rm flat}^2 = \xi/(2r_d)$. In the sparse halo ($\mu < 1$), DJW
+    dimensional reduction gives $\Phi \propto \ln r$, also yielding
+    $v = $ const. Both are RA-native derivations~\citep{Sandeman2026RADM}.
   \item \textbf{Hubble tension}: $H_{\rm eff}(x) \propto 1/\lambda(x)$
     predicts $H_{\rm local} \approx 73.1$~km/s/Mpc from the KBC void
     ($\delta \approx -0.20$), with a falsifiable prediction
@@ -545,9 +542,9 @@ verification status:
 \toprule
 Ingredient & File & Status \\
 \midrule
-LLC (Definition~\ref{def:LLC}) & \texttt{RA\_AQFT\_Proofs\_v2.lean} & Lean-proved, 0 sorry \\
-Graph Cut Theorem & \texttt{RA\_AQFT\_Proofs\_v2.lean} & Lean-proved, 0 sorry \\
-Frame independence of $\dS$ & \texttt{RA\_AQFT\_Proofs\_v2.lean} & Lean-proved, 0 sorry \\
+LLC (Definition~\ref{def:LLC}) & \texttt{RA\_Proofs\_Lean4.lean} & Lean-proved, 0 sorry \\
+Graph Cut Theorem & \texttt{RA\_Proofs\_Lean4.lean} & Lean-proved, 0 sorry \\
+Frame independence of $\dS$ & \texttt{RA\_Proofs\_Lean4.lean} & Lean-proved, 0 sorry \\
 Vacuum suppression~\eqref{eq:vacuum_suppression} & (proved in RAGC) & Theorem \\
 $\Pact$ conservation (Theorem~\ref{thm:P_act}) & \texttt{RA\_D1\_Proofs.lean} §16 & Structural proof \\
 BDG locality (Lemma~\ref{lem:locality}) & \texttt{RA\_BDG\_locality.py} & Numerically verified \\
@@ -572,7 +569,7 @@ axiom in the existing RA Lean files and is standard for mathematical
 physics at this level.
 
 The combined RA Lean~4 corpus now contains \textbf{101 results}
-across \texttt{RA\_AQFT\_Proofs\_v2.lean} (26 results) and
+across \texttt{RA\_Proofs\_Lean4.lean} (26 results) and
 \texttt{RA\_D1\_Proofs.lean} (75 results), with zero \texttt{sorry}
 tags in either file.
 
@@ -648,24 +645,34 @@ curves and the Hubble tension --- are predicted by the same framework
 that derives GR, as leading-order corrections from the spatial
 gradient of the actualization density field.
 
-\bigskip
-\paragraph{Data availability.}
-All Lean~4 proof files, Python verification scripts, and the BDG
-locality computation are available at
+\section*{Acknowledgements}
+
+The author is an independent researcher with no institutional affiliation.
+This research received no external funding.
+The author declares no conflicts of interest.
+
+\smallskip\noindent
+\textbf{AI use disclosure.}
+Claude (Anthropic, model \texttt{claude-sonnet-4-6}) was used in the
+preparation of this manuscript, including drafting and revision of text,
+mathematical derivation assistance and verification scaffolding,
+\LaTeX{} compilation, and Lean~4 proof development.
+The author is solely responsible for all scientific content,
+mathematical claims, and conclusions.
+AI tools were used in accordance with IOP Publishing's generative AI policy.
+Gemini (Google DeepMind, Gemini~2.0~Pro) was used for supplementary
+literature checking and cross-verification of symbolic calculations.
+
+\smallskip\noindent
+\textbf{Data availability.}
+All Lean~4 proof files and Python verification scripts supporting this
+article are openly available at
 \url{https://github.com/jsandeman/Relational-Actualism}.
 
-
-\section*{Declarations}
-\textbf{Funding:} Not applicable.\quad
-\textbf{Competing interests:} The author declares no competing interests.
-
-\textbf{Ethics statement:} This article does not contain any studies with human participants or animals performed by the author.
-
-\textbf{AI use disclosure:} Claude (Anthropic, model \texttt{claude-sonnet-4-6}) was used in the preparation of this manuscript, including drafting and revision of text, mathematical derivation assistance, \LaTeX{} compilation, and Lean~4 proof development. The author is solely responsible for all scientific content, mathematical claims, and conclusions. Gemini (Google DeepMind, Gemini~2.0~Pro) was used for supplementary literature checking and cross-verification of symbolic calculations.
-
-\textbf{Data availability:} All Lean~4 proof files and Python verification scripts are publicly available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}.
-
-\textbf{Preprint availability:} \href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}.
+\smallskip\noindent
+\textbf{Preprint.}
+A preprint version of this article is available at
+\href{https://doi.org/10.5281/zenodo.19270020}{doi:10.5281/zenodo.19270020}.
 
 \begin{thebibliography}{99}
 

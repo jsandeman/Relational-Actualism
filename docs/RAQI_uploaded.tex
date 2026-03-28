@@ -71,7 +71,7 @@ Relational Actualism (RA) proposes that the transition from quantum potentia to
 classical actuality is grounded in a precise physical criterion: an irreversible
 increase in quantum relative entropy $\Delta S(\rho\|\sigma_0) > 0$ with respect
 to the vacuum. The companion paper \emph{Relational Actualism: The Topology of
-Matter} (RATM)~\citep{Sandeman2026RATM} has now established, via 67 Lean-verified
+Matter} (RATM) has now established, via 67 Lean-verified
 theorems, that the BDG-stable causal topology types in 4D correspond exactly to
 the Standard Model particle spectrum --- and that electrons and photons, the
 particles from which qubits are built, propagate at the \emph{minimum} BDG
@@ -80,7 +80,7 @@ no stable particle with lower BDG score exists. In the perturbative regime this 
 dispersion relation $p^\mu p_\mu = m^2c^2$, at which a mediating boson crosses
 the kinematic threshold from virtual to real and an irreversible vertex is
 inscribed into the growing causal directed acyclic graph (DAG) of the universe. This paper develops the implications of this framework---established in
-the companion papers RAQM, RAGC, RACI, and RAHC~\citep{Sandeman2026RAHC}---for two fields that have lacked a
+the companion papers RAQM, RAGC, RACI, and RAHC---for two fields that have lacked a
 precise physical account of irreversibility at the quantum level: quantum computing
 and quantum thermodynamics. For quantum computing, the Kinematic Snap provides a
 principled physical floor on decoherence, distinguishes genuinely off-shell
@@ -95,8 +95,8 @@ quantity in both quantum information theory and RA's actualization
 criterion---is frame-independent by a compiled Lean~4 theorem
 (\texttt{frame\_independence} in \texttt{RA\_AQFT\_Proofs\_v10.lean}), proved
 using the continuous functional calculus unitary-conjugation lemma from the
-Lean-QuantumInfo library~\citep{Meiburg2025LQI}. The RA suite now has
-\textbf{93 Lean-verified results} (zero \texttt{sorry} tags) across
+Lean-QuantumInfo library. The RA suite now has
+\textbf{101 Lean-verified results} (zero \texttt{sorry} tags) across
 \texttt{RA\_AQFT\_Proofs\_v2.lean} and the new \texttt{RA\_D1\_Proofs.lean},
 which proves the BDG particle classification including colour confinement
 and the particle universe closure theorem. The RA suite now has
@@ -104,16 +104,16 @@ and the particle universe closure theorem. The RA suite now has
 (\texttt{RA\_AQFT\_Proofs\_v2.lean}: 26 results;
 \texttt{RA\_D1\_Proofs.lean}: 67 results), all with zero \texttt{sorry} tags
 and no axioms beyond the Mathlib standard library. A key quantitative connection: the Kinematic Coherence Bound
-threshold $p_{\mathrm{th}} \approx 10^{-2}$ is shown to be consistent with the
+threshold $p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137 \approx 7.3\times10^{-3}$ is shown to be consistent with the
 galactic-scale coupling constant $\xi$ of the companion paper
-RADM~\citep{Sandeman2026RADM} to within ${\sim}2\%$ using the full baryonic disk mass~\citep{BlandHawthorn2016}, at the Planck scale, via the
-thermodynamic field equations established in RAGC~\citep{Sandeman2026RAGC}.
-The Kinematic Coherence Bound threshold $p_{\mathrm{th}} \approx 10^{-2}$
+RADM to within ${\sim}2\%$ using the full baryonic disk mass, at the Planck scale, via the
+thermodynamic field equations established in RAGC.
+The Kinematic Coherence Bound threshold $p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137 \approx 7.3\times10^{-3}$
 also enters the Poisson-CSG generative measure of RAGC
 (equation for $c_k^{\mathrm{RA}}$): it is the per-link actualization
 probability that determines whether the causal DAG is locally 3D or 2D,
 connecting quantum error correction thresholds to galactic-scale
-dimensional reduction and the Tully-Fisher relation~\citep{Sandeman2026RADM}.
+dimensional reduction and the Tully-Fisher relation.
 The fault-tolerance threshold, the speed of light $c = l_P/t_P$, and
 the biological Causal Firewall are all the same Erd\H{o}s-R\'{e}nyi
 percolation transition at different scales of the causal graph. The
@@ -461,7 +461,7 @@ or increase $f_{\mathrm{gate}}$ (improve $\eta$). This is precisely what
 $N_{\max} = \eta \cdot p_{\mathrm{th}}$ encodes: $N_{\max}$ is set by the
 single-qubit quality factor $\eta$, not by the speed of the classical controller.
 
-Concretely: for a surface code with $p_{\mathrm{th}} \approx 10^{-2}$ under
+Concretely: for a surface code with $p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137 \approx 7.3\times10^{-3}$ under
 independent depolarizing noise, and a contemporary superconducting qubit with
 $\eta \approx 10^3$--$10^4$ (corresponding to $T_2 \sim 100\,\mu\mathrm{s}$ and
 $t_{\mathrm{gate}} \sim 100\,\mathrm{ns}$), the RA bound gives
@@ -470,8 +470,22 @@ rather than a fit to experimental data; the observation that large superconducti
 arrays require continual improvement of $\eta$ alongside qubit count is consistent
 with but does not uniquely confirm the KCB.
 
+\paragraph{The identification $p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$ (new result).}
+The companion paper RASM~\citep{Sandeman2026RASM} establishes that the per-link
+actualization probability is the fine structure constant:
+\begin{equation}
+  p_{\mathrm{th}} = \frac{\mathrm{Im}(\mathcal{M}_{\mathrm{fwd}})}{|\mathcal{M}|}
+  \approx \alpha_{\mathrm{EM}} \approx \frac{1}{137} \approx 7.3\times10^{-3}.
+\end{equation}
+This is proved via the optical theorem: the fraction of EM interaction candidates
+satisfying the actualization criterion $\Delta S(\rho\|\sigma_0) > 0$ equals
+$\alpha_{\mathrm{EM}}$ at leading order. The value $p_{\mathrm{th}} \approx 0.01$
+used throughout this paper is therefore not a calibrated parameter but an
+identified fundamental constant. The Kinematic Coherence Bound
+$N_{\max} = \eta \cdot p_{\mathrm{th}}$ becomes $N_{\max} = \eta \cdot \alpha_{\mathrm{EM}}$.
+
 \paragraph{The Entropy per Vertex ($\langle\Delta S_{\mathrm{vertex}}\rangle$).}
-The Kinematic Coherence Bound provides a direct theoretical bridge to the thermodynamic entropy generated by actualization. In quantum error correction, the threshold $p_{\mathrm{th}}$ represents the maximum environmental error rate that the syndrome extraction cycle can actively correct---the exact point at which the entropy pumped out by the classical controller balances the entropy generated by environmental actualization. Because each uncorrectable logical error corresponds to an actualization event crossing the kinematic threshold, the mean relative entanglement entropy generated per actualization vertex, $\langle\Delta S_{\mathrm{vertex}}\rangle$, is strictly bounded by the fault-tolerance threshold in the scalable limit. In natural units, we identify the scaling relation $\langle\Delta S_{\mathrm{vertex}}\rangle \approx p_{\mathrm{th}}$. This identification ($p_{\mathrm{th}} \approx 10^{-2}$ for standard topological codes) provides the critical microscopic entropy value required to derive the macroscopic gravitational coupling constant in the companion paper RADM~\citep{Sandeman2026RADM}.
+The Kinematic Coherence Bound provides a direct theoretical bridge to the thermodynamic entropy generated by actualization. In quantum error correction, the threshold $p_{\mathrm{th}}$ represents the maximum environmental error rate that the syndrome extraction cycle can actively correct---the exact point at which the entropy pumped out by the classical controller balances the entropy generated by environmental actualization. Because each uncorrectable logical error corresponds to an actualization event crossing the kinematic threshold, the mean relative entanglement entropy generated per actualization vertex, $\langle\Delta S_{\mathrm{vertex}}\rangle$, is strictly bounded by the fault-tolerance threshold in the scalable limit. In natural units, we identify the scaling relation $\langle\Delta S_{\mathrm{vertex}}\rangle \approx p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$. This identification ($p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137 \approx 7.3\times10^{-3}$ for standard topological codes) provides the critical microscopic entropy value required to derive the macroscopic gravitational coupling constant in the companion paper RADM~\citep{Sandeman2026RADM}.
 
 \paragraph{The optimal isolation window.}
 A related prediction concerns the engineering of qubit isolation. The target
@@ -823,7 +837,7 @@ In the RA-CSG framework, $v_{\mathrm{LR}}$ is the lattice-scale expression
 of the same causal bandwidth ceiling as $c = l_P/t_P$ in the relativistic
 regime: both are the maximum rate at which actualization can propagate
 through the causal graph. The Kinematic Coherence Bound threshold
-$p_{\mathrm{th}} \approx 10^{-2}$ is not a property of specific error
+$p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137 \approx 7.3\times10^{-3}$ is not a property of specific error
 correction codes but the per-link actualization probability at which
 the causal graph transitions from locally 2-dimensional to locally
 3-dimensional (the Poisson-CSG $\mu = 1$ threshold). Fault-tolerant
@@ -990,6 +1004,14 @@ are the appropriate next step.
 % ─────────────────────────────────────────────────────────────────────────────
 \begin{thebibliography}{99}
 
+\bibitem[Sandeman(2026RACL)]{Sandeman2026RACL}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Einstein Field Equations as the Unique
+  Macroscopic Limit of the Actualization Graph (RACL)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}.
+
+
 \bibitem[Sandeman(2026RAEB)]{Sandeman2026RAEB}
 J.~F. Sandeman.
 \newblock {Relational Actualism: The Engine of Becoming (RAEB)}.
@@ -1115,7 +1137,11 @@ J.~F.~Sandeman.
 \end{thebibliography}
 
 \section*{Declarations}
-\textbf{Funding:} Not applicable.\quad
+\textbf{Funding:} Not applicable.
+
+\textbf{Ethics statement:} This article does not contain any studies with human participants or animals performed by the author.
+
+\quad
 \textbf{Competing interests:} The author declares no competing interests.
 
 \textbf{Preprint availability:} This manuscript is available as a preprint at
@@ -1125,5 +1151,8 @@ J.~F.~Sandeman.
 
 \textbf{Data availability:} This paper presents theoretical work. No datasets
 were generated or analysed.
+
+\textbf{AI use disclosure:} Claude (Anthropic, model \texttt{claude-sonnet-4-6}) was used in the preparation of this manuscript, including drafting and revision of text, mathematical derivation assistance, \LaTeX{} compilation, and Lean~4 proof development. The author is solely responsible for all scientific content, mathematical claims, and conclusions. Gemini (Google DeepMind, Gemini~2.0~Pro) was used for supplementary literature checking and cross-verification of symbolic calculations.
+
 
 \end{document}
