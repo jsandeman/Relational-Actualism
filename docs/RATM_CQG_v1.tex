@@ -60,48 +60,43 @@
 % ── Abstract ─────────────────────────────────────────────────────────────────
 \begin{abstract}
 We prove, using Lean~4 formal verification, that the Benincasa-Dowker
-(BDG) causal set action in $d=4$ spacetime dimensions selects exactly
-five self-similar vertex topology classes that correspond precisely to
-the particle content of the Standard Model. The classification is
-topological: causal vertices whose past is totally ordered (sequential)
-correspond to leptons and gauge bosons propagating as free asymptotic
-states; vertices whose past contains a spacelike pair (topological)
-correspond to quarks and gluons. This partition, together with the
-$Q_{N_1}$ winding number encoding electromagnetic charge, gives a
-complete two-level derivation of the SM particle spectrum from
+(BDG) causal set action in $d=4$ selects exactly five self-similar
+vertex topology classes corresponding precisely to the particle content
+of the Standard Model. Vertices with totally ordered (sequential) past
+correspond to leptons and gauge bosons; vertices containing a spacelike
+pair (topological past) correspond to quarks and gluons. Combined with
+the $Q_{N_1}$ winding number for electromagnetic charge, this yields
+a complete two-level derivation of the SM particle spectrum from
 4D causal graph geometry alone.
 
-Three central results are machine-verified:
-\textbf{(D1a)} The BDG-stable sequential chain depths are exactly
-$k \in \{0, 2, 4\}$, with $N{=}(1,1,1,1)$ a genuine fixed point proved
+Three central results are machine-verified.
+\textbf{D1a}: BDG-stable sequential chain depths are exactly
+$k \in \{0,2,4\}$, with $N{=}(1,1,1,1)$ a genuine fixed point proved
 by definitional equality.
-\textbf{(D1c)} Colour confinement is a \emph{theorem}: gluon and quark
-worldlines each encounter a BDG filter event and cannot propagate
-freely as asymptotic states, with finite confinement lengths $L{=}3$
-(gluon) and $L{=}4$ (quark).
-\textbf{D1\_closure\_complete}: The seven-element BDG N-vector set is
-\emph{closed} under all single-step graph extensions~--- verified
-exhaustively over 124 extension cases. No new elementary particle
-topology type can emerge from any local causal move.
+\textbf{D1c}: Colour confinement is a \emph{theorem} --- gluon and
+quark worldlines each encounter a BDG filter event, with finite
+confinement lengths $L{=}3$ (gluon) and $L{=}4$ (quark).
+\textbf{D1\_closure\_complete}: The nine-element BDG N-vector set is
+\emph{closed} under all single-step graph extensions, verified
+exhaustively over 124 cases. No new elementary particle topology
+type can emerge from any local causal move.
 
-The Lean~4 proof file \texttt{RA\_D1\_Proofs.lean} contains 67~results
-(56~theorems, 11~lemmas, 8~definitions) with zero \texttt{sorry} tags
-and no axioms beyond the Mathlib standard library. Combined with the
-26~results of \texttt{RA\_AQFT\_Proofs\_v2.lean}, the Relational
-Actualism suite now has \textbf{93 Lean-verified results}.
-This constitutes the first machine-verified particle classification
-theorem in the causal set theory literature.
+\texttt{RA\_D1\_Proofs.lean} contains 75 results (64 theorems,
+11 lemmas, 8 definitions) with zero \texttt{sorry} tags and no
+axioms beyond the Mathlib standard library. Combined with the
+26 results of \texttt{RA\_AQFT\_Proofs\_v2.lean}~\citep{Meiburg2025LQI},
+the RA suite now has \textbf{101 Lean-verified results} ---
+the first machine-verified particle classification in the
+causal set theory literature.
 
-Additional results: the gluon is strictly more confined than the quark
-(gluon extensions are either self-replicas or filtered; quarks have
-escape routes to sequential character); the boundary between
-propagation vertices and interaction vertices is precisely characterised;
-the Gell-Mann--Nishijima formula is verified for all six first-generation
-fermions in BDG language; and the coherent state Clebsch-Gordan ratio
+Additional results: the gluon is strictly more confined than the
+quark (gluon extensions are either self-replicas or filtered; quarks
+have escape routes to sequential character); the Gell-Mann--Nishijima
+formula is verified for all six first-generation fermions in BDG
+language; and the coherent state ratio
 $|\hat{\phi}(n{=}1)|^2/|\hat{\phi}(n{=}0)|^2 = 1/2$ connects the
-Lean-proved $SU(3)_{\mathrm{gen}}$ coherent state to the
-isospin doublet structure.
-
+Lean-proved $SU(3)_{\mathrm{gen}}$ coherent state to the isospin
+doublet structure.
 \end{abstract}
 
 \noindent\textbf{Keywords:} causal set theory; Standard Model; Benincasa-Dowker action; particle classification; colour confinement; formal verification; Lean 4; quantum gravity; topological field theory; causal graph
@@ -208,7 +203,7 @@ geometry of 4D Minkowski space~\citep{Benincasa2010}.
 
 In Lean~4:
 \begin{verbatim}
-def bdgScore (N1 N2 N3 N4 : \mathbb{Z}) : \mathbb{Z} :=
+def bdgScore (N1 N2 N3 N4 : Int) : Int :=
   1 + (-1)*N1 + 9*N2 + (-16)*N3 + 8*N4
 \end{verbatim}
 
@@ -422,13 +417,16 @@ We extend this to the transition states and assemble:
 
 \begin{theorem}[D1\_closure\_complete]
 \label{thm:closure}
-The seven-element N-vector set
+The nine-element N-vector set
 \[
   \mathcal{U} = \{(0,0,0,0),(1,0,0,0),(1,1,0,0),(2,0,0,0),
                   (1,1,1,1),(1,2,0,0),(2,1,0,0),(1,2,1,0),(1,1,1,2)\}
 \]
 is closed under all single-step graph extensions of all particle types
-in $\mathcal{U}$. Verified exhaustively:
+in $\mathcal{U}$. The set includes 5 stable types (score $>0$), one
+boundary state ($N{=}(1,0,0,0)$, score~$0$), and one filtered state
+($N{=}(2,0,0,0)$, score~$-1$) that appear as intermediate states during
+extensions and are included to make closure complete. Verified exhaustively:
 \begin{itemize}[noitemsep]
   \item 15 extensions of the gluon base (\texttt{Fin 15})
   \item 15 extensions of the quark base (\texttt{Fin 15})
@@ -543,7 +541,7 @@ RASM~\citep{Sandeman2026RASM} and the unique field equation derivation in RACL~\
 \label{sec:D1h}
 
 The Lean-proved theorem \texttt{koide\_coherent\_state}
-(in \texttt{RA\_AQFT\_Proofs\_v2.lean}) establishes:
+(in \texttt{RA\_AQFT\_Proofs\_v2.lean}~\citep{Meiburg2025LQI}) establishes:
 \[
   \hat{\phi}_\theta(n=1) = \frac{\sqrt{6}}{2}\,e^{-i\theta}
 \]
@@ -572,7 +570,7 @@ These results are verified in Section~15 of \texttt{RA\_D1\_Proofs.lean}
 \paragraph{Causal set theory.}
 The Benincasa-Dowker action~\citep{Benincasa2010} was introduced as a
 discrete scalar curvature; it has been applied to cosmological
-constant problems~\citep{Sorkin2012} and path integral
+constant problems~\citep{Sorkin2005} and path integral
 measures~\citep{Dowker2013}. To our knowledge, the particle
 classification role of the BDG score is new to this paper.
 No prior work in causal set theory has formally verified a particle
@@ -588,7 +586,7 @@ classes from graph topology; the BDG approach additionally provides
 confinement as a theorem.
 
 \paragraph{Relational Actualism suite.}
-This paper is part of the nine-paper Relational Actualism suite.
+This paper is part of the eleven-paper Relational Actualism suite.
 RAQM~\citep{Sandeman2026RAQM} establishes the actualization framework.
 RAEB~\citep{Sandeman2026RAEB} gives the covariant dynamics.
 RASM~\citep{Sandeman2026RASM} derives the full Standard Model from the
@@ -622,7 +620,7 @@ The key results are:
 
 These results constitute the first machine-verified particle classification
 in the causal set theory literature. The Lean~4 proof file
-\texttt{RA\_D1\_Proofs.lean} contains 67 results (56 theorems, 11 lemmas)
+\texttt{RA\_D1\_Proofs.lean} contains 75 results (64 theorems, 11 lemmas)
 with zero \texttt{sorry} tags.
 
 The central message is sharp: \emph{colour confinement is not a dynamical
@@ -711,11 +709,17 @@ J.~F. Sandeman.
 \newblock \textit{Preprint}, 2026.
 \newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi:10.5281/zenodo.19229335}.
 
-\bibitem[Sorkin(2012)]{Sorkin2012}
+\bibitem[Meiburg et~al.(2025)]{Meiburg2025LQI}
+J.~Meiburg, E.~Lessa, and G.~Soldati.
+\newblock Lean-QuantumInfo: a library for quantum information in Lean~4.
+\newblock \textit{arXiv:2510.08672}, 2025.
+\newblock \href{https://arxiv.org/abs/2510.08672}{arXiv:2510.08672}.
+
+\bibitem[Sorkin(2005)]{Sorkin2005}
 R.~D. Sorkin.
 \newblock Causal sets: Discrete gravity.
-\newblock In A.~Gomberoff and D.~Marolf, eds., \textit{Lectures on Quantum Gravity}.
-Springer, 2005.
+\newblock In A.~Gomberoff and D.~Marolf, eds., \textit{Lectures on Quantum Gravity},
+pp.\ 305--327. Springer, New York, 2005.
 
 \end{thebibliography}
 
