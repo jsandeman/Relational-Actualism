@@ -35,6 +35,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
 
 \renewcommand{\abstractnamefont}{\normalfont\bfseries}
 \renewcommand{\abstracttextfont}{\normalfont\small}
@@ -58,23 +59,21 @@
 % ─────────────────────────────────────────────────────────────────────────────
 \begin{document}
 
-\begin{titlepage}
-\centering
-\vspace*{1cm}
-{\LARGE\bfseries Relational Actualism: Life, Complexity, and the\par Causal Depth of Biological Systems (RACI):\par}
-\vspace{0.4cm}
-{\large\itshape Empirical Predictions and Mathematical Derivations\\
-in the Emergence of Life and Agency\par}
-\vspace{1.2cm}
-{\large Joshua F.\ Sandeman\par}
-\vspace{0.3cm}
-{\normalsize\itshape Independent Researcher, Salem, Oregon\par}
-\vspace{0.3cm}
-{\normalsize March 2026\par}
-\vspace{0.3cm}
-  {\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19198224}
-    {doi.org/10.5281/zenodo.19198224}\par}
-\vspace{1.5cm}
+% ── Title block ───────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Relational Actualism: Life, Complexity,\\
+  and the Causal Depth of Biological Systems (RACI)\\[4pt]
+  \large\itshape Empirical Predictions and Mathematical Derivations\\
+  in the Emergence of Life and Agency\par}
+  \vspace{14pt}
+  {\large Joshua F.\ Sandeman$^{1*}$\par}
+  \vspace{4pt}
+  {\normalsize $^{1}$Independent Researcher, Salem, OR, USA.\par}
+  {\normalsize $^{*}$sansuikyo@gmail.com\par}
+  \vspace{8pt}
+  {\small\textit{Preprint available at}~\href{https://doi.org/10.5281/zenodo.19198224}{doi.org/10.5281/zenodo.19198224}\par}
+  \vspace{14pt}
+\end{center}
 
 \begin{abstract}
 The origin and persistence of biological complexity presents one of the deepest
@@ -91,19 +90,23 @@ primary bond types of life; (2)~the Causal Firewall as the physical phase
 transition that separates abiotic chemistry from stable biological complexity;
 (3)~the thermodynamic grounding of natural selection as simultaneous optimization
 of causal assembly depth, edge-of-chaos operation, and Markov blanket fidelity;
-and (4)~the categorical impossibility of Boltzmann Brains. Four empirical
-predictions follow, spanning astrobiology, origin-of-life chemistry, and
-evolutionary biology. A new result: the Causal Firewall threshold
-$\sigma = \lambda\tau_d\ell^3 = 1$ is proved (not merely conjectured)
+and (4)~the categorical impossibility of Boltzmann Brains. Five empirical
+predictions follow, spanning astrobiology, origin-of-life chemistry, evolutionary
+biology, and the universal search for life. A new result: the Causal Firewall
+threshold $\sigma = \lambda\tau_d\ell^3 = 1$ is proved (not merely conjectured)
 via the directed Erd\H{o}s-R\'{e}nyi percolation theorem applied to the
 Poisson-CSG causal graph, identifying the Firewall with the onset of a giant
 strongly connected component and universal causal ledger agreement.
 \end{abstract}
 
-\medskip\noindent
-\textbf{Keywords:} Relational Actualism \textperiodcentered{} Causal Directed Acyclic Graph \textperiodcentered{} Assembly Theory \textperiodcentered{} Actualism Assembly Index \textperiodcentered{} Causal Firewall \textperiodcentered{} Erd\H{o}s-R\'{e}nyi Percolation \textperiodcentered{} Origin of Life \textperiodcentered{} Natural Selection \textperiodcentered{} Causal Assembly Depth \textperiodcentered{} Edge of Chaos \textperiodcentered{} Markov Blanket \textperiodcentered{} Quantum Darwinism \textperiodcentered{} Boltzmann Brain \textperiodcentered{} Density Functional Theory \textperiodcentered{} Poisson-CSG
+\noindent\textbf{Keywords:} Relational Actualism; Causal Directed Acyclic Graph;
+Assembly Theory; Actualism Assembly Index; Causal Firewall; Erd\H{o}s-R\'{e}nyi
+Percolation; Origin of Life; Natural Selection; Causal Assembly Depth; Edge of
+Chaos; Markov Blanket; Quantum Darwinism; Boltzmann Brain; Poisson-CSG
 
-\end{titlepage}
+\medskip
+\noindent\textbf{Ethics statement.}
+This article does not contain any studies with human participants or animals.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Introduction: The Thermodynamic Anomaly}
@@ -217,7 +220,8 @@ chaos''---the critical phase boundary ($\sigma = 1$) of the molecular subgraph's
 branching parameter $\sigma$ (average out-degree). Below criticality ($\sigma <
 1$), causal lineages die out; above ($\sigma > 1$), they fragment explosively. The
 formal derivation of the threshold equation connecting $\sigma$ to physical
-parameters is developed in Section~\ref{sec:firewall-math}.
+parameters is developed in Section~\ref{sec:firewall-math}, where $\sigma$ is
+shown to equal the mean-field parameter $\mu = \lambda\tau_d\ell^3$.
 
 The thermodynamic work required to maintain this far-from-equilibrium regime is
 formally grounded in dissipative adaptation theory~\citep{England2013}. We
@@ -257,7 +261,7 @@ are the foundation on which that treatment rests.
 \section{Empirical Predictions}
 \label{sec:predictions}
 
-The framework makes four empirical predictions testable against observation and
+The framework makes five empirical predictions testable against observation and
 experiment, independently of whether all mathematical derivations in
 Section~\ref{sec:math} are complete. The qualitative character and distinguishing
 signature of each prediction follows from the core postulates and proved theorems.
@@ -278,6 +282,27 @@ maintaining a universally agreed-upon causal ledger. Where they fail, the ledger
 fragments and sequential molecular assembly of arbitrary depth cannot be
 completed.
 
+\paragraph{Substrate-independence.}
+The Causal Firewall conditions F1 and F2 make no reference to molecular class,
+solvent chemistry, temperature range, or biological alphabet. The Quantum Darwinism
+redundancy condition (F1) requires only that actualized states are redundantly
+encoded in environmental degrees of freedom --- it does not specify what those
+degrees of freedom are. The non-relativistic condition (F2) requires only that
+$T_U \ll T_{\mathrm{env}}$ --- it does not specify whether the environment is
+aqueous, gaseous, crystalline, or plasma-based. This substrate-independence is not
+an assumption of the framework; it follows from the fact that the Causal Firewall
+is defined at the level of the actualization graph, which is prior to any
+specification of chemistry.
+
+The practical consequence is that RA provides a habitability criterion genuinely
+more fundamental than liquid water, carbon chemistry, or circumstellar habitable
+zones. Those criteria are proxies for conditions that happen to satisfy the Causal
+Firewall on Earth; they are not the underlying physical requirement. Wherever in
+the universe the conditions $R \geq R_{\min}$, $T_U \ll T_{\mathrm{env}}$, and
+$\sigma = \lambda\tau_d\ell^3 \geq 1$ are simultaneously satisfied, the RA
+framework places no prohibition on biological complexity --- regardless of what
+chemistry fills those roles.
+
 \paragraph{Observational signature.}
 The distribution of life in the universe should correlate with the Causal Firewall
 conditions: life is found on planetary surfaces around stable main-sequence stars
@@ -291,9 +316,17 @@ water or temperature ranges. It predicts that:
   in jets) regardless of energy availability.
   \item The boundary of the life-permitting regime is set by the Unruh temperature
   $T_U = \hbar a / (2\pi c k_B)$ relative to the environmental temperature
-  $T_{\mathrm{env}}$ --- a measurable condition for any astrophysical environment.
+  $T_{\mathrm{env}}$ --- a measurable astrophysical observable for any candidate
+  environment, calculable from the local gravitational acceleration and ambient
+  radiation temperature.
   \item SETI searches should be weighted toward environments satisfying both F1
-  and F2, not merely toward energy-rich or chemically favorable environments.
+  and F2 --- not merely toward energy-rich or chemically favorable environments
+  --- and specifically toward environments where $\lambda\tau_d\ell^3 \approx 1$,
+  the $\mu = 1$ edge-of-chaos condition, regardless of substrate.
+  \item Non-carbon-based life is not prohibited by RA, but is subject to the same
+  Causal Firewall constraints: wherever it exists, it must reside near the $\mu=1$
+  percolation threshold of its local causal graph, with a critical path satisfying
+  equation~\eqref{eq:cgara_firewall}.
 \end{itemize}
 
 \subsection{Prediction 2: Natural Selection Optimizes Causal Assembly Depth}
@@ -342,7 +375,28 @@ that the winning replicator was the one with minimal $\ARA$, and that evolutiona
 pressure has driven biological systems progressively toward deeper assembly
 processes only as the Causal Firewall conditions were stably satisfied.
 
-\subsection{Prediction 4: The Categorical Impossibility of the Boltzmann Brain}
+\paragraph{The sandwich bound.}
+The coarse-grained assembly depth result of
+Section~\ref{sec:cgara_firewall} sharpens this prediction quantitatively.
+The proto-metabolic network $\mathcal{N}_0$ of the first replicators must satisfy
+both the Assembly Index lower bound (from Theorem~\ref{thm:assembly}) and the
+Causal Firewall upper bound (Proposition~\ref{prop:cgara_firewall}):
+\begin{equation}
+  A(M^*_0) \;\leq\; \tilde{A}_{\mathrm{RA}}(\mathcal{N}_0)
+  \;\leq\; \frac{\tau_{\mathrm{cycle},0}}{\tau_{\mathrm{irrev}}},
+  \label{eq:origin_sandwich}
+\end{equation}
+where $M^*_0$ is the most assembly-complex essential molecule of the first
+replicator and $\tau_{\mathrm{cycle},0}$ is its replication cycle time.
+This double bound is a quantitative, falsifiable constraint on origin-of-life
+models: a proposed first replicator is physically inadmissible under RA if its
+$A(M^*_0)$ value cannot be accommodated within a realistic cycle time.
+Combined with Assembly Theory's existing toolkit for computing $A(M)$, this
+constraint is evaluable for any specific origin-of-life candidate --- RNA,
+peptides, autocatalytic sets, or others --- without requiring new experimental
+data.
+
+ The Categorical Impossibility of the Boltzmann Brain}
 
 Standard statistical cosmology treats the Boltzmann Brain as improbable but not
 impossible: given infinite time, any configuration will fluctuate into existence.
@@ -373,8 +427,92 @@ observe, in which observers are embedded in a $\sim 13.8$ billion year causal
 history, is exactly what RA requires. This is not an anthropic coincidence but a
 structural necessity.
 
-% ─────────────────────────────────────────────────────────────────────────────
-\section{Mathematical Derivations}
+\subsection{Prediction 5: Universal Biosignatures and the Substrate-Independent
+Search for Life}
+\label{sec:prediction5}
+
+Predictions~1--3 imply a specific programme for the search for life beyond
+Earth that differs substantively from existing astrobiology frameworks. The
+standard habitability paradigm prioritises liquid water, a narrow temperature
+range, and carbon-based chemistry because these are the conditions under which
+terrestrial life evolved. The RA framework replaces this terrestrial proxy
+with a substrate-independent physical criterion. Life, wherever it exists, is
+constituted by an unbroken causal lineage of irreversible actualizations
+operating near the $\mu = 1$ percolation threshold of its local causal graph.
+This is a universal structural constraint, not a geochemical one.
+
+\paragraph{Three universal biosignature criteria.}
+The Causal Firewall conditions translate directly into astrophysical observables:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{Non-relativistic causal regime ($T_U \ll T_{\mathrm{env}}$).}
+  The Unruh temperature $T_U = \hbar a / (2\pi c k_B)$ is directly calculable
+  for any astrophysical environment from the local proper acceleration $a$ and
+  measurable from the ambient radiation temperature $T_{\mathrm{env}}$. RA
+  predicts that life is impossible wherever $T_U \gtrsim T_{\mathrm{env}}$
+  regardless of chemistry. This excludes environments near neutron stars
+  ($a \sim 10^{12}$~m/s$^2$), in relativistic jets, and in the immediate
+  vicinity of stellar remnants --- not because they lack the right chemistry,
+  but because the causal ledger cannot be maintained.
+
+  \item \textbf{Decoherence redundancy (Quantum Darwinism threshold).}
+  The condition $R \geq R_{\min} \sim \mathcal{O}(10)$ requires that the
+  environment supports redundant encoding of actualized states. This is
+  satisfied in matter-dense, low-radiation environments (planetary surfaces,
+  subsurface oceans) and violated in high-radiation, low-density environments
+  (interstellar space, inner radiation belts). An environment's fitness for life
+  is partially encodable in its decoherence properties --- measurable via
+  radiation flux density and matter density --- independently of its
+  chemistry.
+
+  \item \textbf{Causal coherence density ($\lambda\tau_d\ell^3 \approx 1$).}
+  The $\mu = 1$ condition~\eqref{eq:firewall} requires sufficient actualization
+  flux density to maintain the giant causal component but not so much as to
+  fragment the causal ledger. Any metabolic network sustaining life must
+  additionally satisfy the critical-path constraint~\eqref{eq:cgara_firewall}.
+  This is a Goldilocks condition on the local actualization
+  rate, not on temperature or chemistry. In practice it is satisfied in
+  environments with moderate thermodynamic flux --- sufficient to drive
+  far-from-equilibrium chemistry, but not so extreme as to overwhelm causal
+  coherence. The condition is in principle computable from the matter density,
+  temperature, and interaction cross-sections of candidate environments.
+\end{enumerate}
+
+\paragraph{How this differs from existing habitability frameworks.}
+The circumstellar habitable zone (CHZ) is defined by the temperature range
+permitting liquid water. The RA biosignature criteria make no reference to
+water or temperature \emph{per se}; they refer to causal coherence conditions
+that liquid water happens to support on Earth. An environment with a different
+solvent --- ammonia, liquid methane, or hypothetically a dense plasma ---
+satisfies the RA criteria if and only if it supports $T_U \ll T_{\mathrm{env}}$,
+$R \geq R_{\min}$, and $\lambda\tau_d\ell^3 \approx 1$. The question is not
+``does it have the right chemistry?'' but ``can it maintain a causal ledger?''
+
+This is not a minor reframing. It changes which environments are worth
+searching. The subsurface oceans of Europa and Enceladus satisfy the RA
+criteria on grounds of causal coherence independently of their chemistry.
+Dense molecular clouds and hot Jupiters likely do not, for causal reasons
+rather than chemical ones. The RA criterion is more discriminating in some
+directions and more permissive in others than the CHZ framework.
+
+\paragraph{Falsifiability.}
+The framework makes two falsifiable predictions at the scale of astrobiology:
+\begin{itemize}[noitemsep]
+  \item If life is discovered in an environment that demonstrably violates
+  Condition F2 ($T_U \gtrsim T_{\mathrm{env}}$), the RA framework is falsified
+  as a universal theory of biological complexity.
+  \item If all discovered extraterrestrial life is found in environments
+  satisfying Conditions F1 and F2, this constitutes evidence for the RA
+  account of life's physical basis, even if the chemistry differs
+  entirely from Earth life.
+\end{itemize}
+These predictions are not accessible to current observation, but they will
+become testable as the search for extraterrestrial life matures. They define
+a programme of measurement --- the Unruh temperature and decoherence
+redundancy of candidate environments --- that is physically motivated and
+substrate-independent.
+
+
 \label{sec:math}
 
 The following derivations develop the biological and chemical content of the RA
@@ -730,6 +868,95 @@ prediction about the \emph{physical character} of the first replicators: they we
 not merely the simplest, but the causally shallowest --- the molecules whose
 self-assembly required the fewest sequential irreversible steps.
 
+\subsubsection{Connecting $\tilde{A}_{\mathrm{RA}}$ to the Causal Firewall Threshold}
+\label{sec:cgara_firewall}
+
+The coarse-grained assembly depth $\tilde{A}_{\mathrm{RA}}(\mathcal{N})$
+introduced in RAHC~\citep{Sandeman2026RAHC} (Definition~5.4) is not merely a
+convenient measure of metabolic complexity. It is directly connected to whether a
+metabolic network can maintain the $\sigma \geq 1$ condition of the Causal Firewall.
+
+\begin{proposition}[Critical path and Causal Firewall compatibility]
+\label{prop:cgara_firewall}
+A metabolic network $\mathcal{N}$ can operate at the Causal Firewall threshold
+$\sigma = \lambda\,\tau_d\,\ell^3 = 1$ only if its coarse-grained assembly depth
+satisfies:
+\begin{equation}
+  \tilde{A}_{\mathrm{RA}}(\mathcal{N}) \;\leq\;
+  \frac{\tau_{\mathrm{cycle}}}{\tau_{\mathrm{irrev}}},
+  \label{eq:cgara_firewall}
+\end{equation}
+where $\tau_{\mathrm{cycle}}$ is the cell cycle time and
+$\tau_{\mathrm{irrev}}$ is the mean time per irreversible reaction step.
+\end{proposition}
+
+\begin{proof}
+By assumption, $M^*$ is essential to division --- the network cannot complete
+replication without producing $M^*$. By the critical path definition of
+RAHC~\citep{Sandeman2026RAHC}, producing $M^*$ requires traversing at least
+$\tilde{A}_{\mathrm{RA}}(\mathcal{N})$ sequential irreversible steps, each taking
+time $\tau_{\mathrm{irrev}}$. Therefore
+$\tau_{\mathrm{cycle}} \geq \tilde{A}_{\mathrm{RA}}(\mathcal{N}) \cdot \tau_{\mathrm{irrev}}$,
+which rearranges to~\eqref{eq:cgara_firewall}.
+For the Causal Firewall threshold $\sigma = 1$ to hold, the system requires
+exactly one new actualization event per coherence volume per decoherence time
+$\tau_d$. If $\tilde{A}_{\mathrm{RA}} \cdot \tau_{\mathrm{irrev}} > \tau_{\mathrm{cycle}}$,
+the system cannot sustain the $\sigma = 1$ causal flux, and the network
+falls below the Causal Firewall. The bound~\eqref{eq:cgara_firewall} is
+therefore necessary for Firewall compatibility.
+\end{proof}
+
+\medskip\noindent
+This proposition gives the Causal Firewall a direct operational interpretation
+in terms of metabolic network structure. It says: a cell can live near the
+edge of chaos only if its most causal-depth-intensive pathway fits inside its
+cell cycle. Cells whose critical path is too long relative to their cycle time
+cannot maintain the causal coherence required for biological complexity.
+
+\paragraph{Three consequences.}
+
+\medskip\noindent
+\textbf{(i) The Firewall selects for short critical paths.}
+Organisms near the Causal Firewall threshold are simultaneously under selection
+pressure to minimise $\tilde{A}_{\mathrm{RA}}(\mathcal{N})$, since a shorter
+critical path both increases replication rate (Proposition~5.5(iii) of RAHC)
+and relaxes the constraint~\eqref{eq:cgara_firewall}. The two selection
+pressures --- for fast replication and for Firewall compatibility --- are
+\emph{the same pressure expressed at different scales}. At the molecular scale,
+it is selection on $\ARA(M)$; at the network scale, it is selection on
+$\tilde{A}_{\mathrm{RA}}(\mathcal{N})$; at the organism scale, it is
+selection on cell cycle time. One causal mechanism drives all three.
+
+\medskip\noindent
+\textbf{(ii) A quantitative origin-of-life constraint.}
+The first self-replicating systems must have satisfied both $\sigma \geq 1$
+(the Causal Firewall) and equation~\eqref{eq:cgara_firewall}. Combined with
+the exponential suppression of replication rate by $\ARA(M)$ (equation from
+§\ref{sec:firewall-math}), this gives a joint constraint on the space of viable
+first replicators --- the sandwich bound of equation~\eqref{eq:origin_sandwich}
+(proved as Proposition~\ref{prop:cgara_firewall}):
+\begin{equation*}
+  A(M^*_0) \;\leq\;
+  \tilde{A}_{\mathrm{RA}}(\mathcal{N}_0) \;\leq\;
+  \frac{\tau_{\mathrm{cycle},0}}{\tau_{\mathrm{irrev}}},
+\end{equation*}
+where $\mathcal{N}_0$ is the proto-metabolic network and $M^*_0$ is its
+most complex essential product. This double bound
+bounds the Assembly Index of the first replicators from both above and below ---
+a quantitative, falsifiable constraint on the character of the origin of life.
+
+\medskip\noindent
+\textbf{(iii) Unification of the $\mu = 1$ transitions.}
+The same $\mu = 1$ Erd\H{o}s-R\'{e}nyi transition governs QCD
+confinement, galactic rotation curve onset, the quantum fault-tolerance
+threshold, and --- now via equation~\eqref{eq:cgara_firewall} --- the Causal
+Firewall. In each case the transition is between a regime where causal
+connectivity is insufficient to maintain coherent structure ($\mu < 1$) and
+one where a giant causal component exists ($\mu > 1$). The biological Causal
+Firewall is the $\mu = 1$ transition applied to the molecular causal graph.
+The coarse-grained assembly depth is the quantity that determines how close a
+given metabolic network sits to this universal threshold.
+
 \subsubsection{Resolution via Erd\H{o}s-R\'{e}nyi: Hard Wall 1 is Proved}
 \label{sec:firewall_proof}
 
@@ -1022,7 +1249,7 @@ where the causal DAG transitions from 3D-embeddable (dense, structured) to
 tree-like (sparse, dimensionally reduced). Both thresholds are phase transitions
 in the same causal graph, at different scales of coarse-graining.
 
-The four empirical predictions of Section~\ref{sec:predictions} follow from this
+The five empirical predictions of Section~\ref{sec:predictions} follow from this
 framework and are testable now, independently of whether the remaining mathematical
 derivations are complete:
 
@@ -1034,9 +1261,13 @@ derivations are complete:
   minimal causal assembly depth, measurable across metabolic networks using
   Assembly Theory tools.
   \item The first replicators were the causally shallowest self-replicating systems
-  possible --- a constraint on origin-of-life models.
+  possible --- a constraint evaluable with existing Assembly Theory tools via the
+  sandwich bound.
   \item Boltzmann Brains are categorically, not merely statistically, impossible:
   the RA account replaces a probabilistic suppression with a causal impossibility.
+  \item The search for extraterrestrial life should be weighted toward environments
+  satisfying the substrate-independent Causal Firewall criteria, not merely toward
+  chemically favourable circumstellar habitable zones.
 \end{enumerate}
 
 The universe builds its history one irreversible actualization at a time. Life is
@@ -1047,6 +1278,12 @@ and operate at the precise edge where actualization rate and environmental
 disruption balance. What those organisms then do with that stability --- how they
 model, predict, and steer the causal ledger that made them --- is the subject of
 the companion paper RAHC~\citep{Sandeman2026RAHC}.
+
+The complete RA suite also includes the Engine of Becoming paper
+(RAEB~\citep{Sandeman2026RAEB}), the particle classification and Standard Model
+topology paper (RATM~\citep{Sandeman2026RATM}), the field equation uniqueness
+paper (RACL~\citep{Sandeman2026RACL}), and the programme overview
+(Foundation~\citep{Sandeman2026Foundation}).
 
 % ─────────────────────────────────────────────────────────────────────────────
 

@@ -20,6 +20,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{claim}[theorem]{Claim}
 \theoremstyle{remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{remark}[theorem]{Remark}
 
 % ── Macros ──────────────────────────────────────────────────────────────────
@@ -728,6 +729,178 @@ coarse-graining rule and the linear scaling $\ARA(M) \approx \kappa \cdot A(M)$
 in condensed phases, is given in RACI~\citep{Sandeman2026c}.
 \end{remark}
 
+% ── Network-level: Coarse-Grained Assembly Depth ─────────────────────────────
+\subsection{Coarse-Grained Assembly Depth for Metabolic Networks}
+\label{sec:cgara}
+
+The Assembly Index Correspondence (Theorem~\ref{thm:assembly}) characterises
+the causal depth of assembling a \emph{single molecule} from elementary
+constituents. Living systems, however, are not single molecules: they are
+metabolic networks in which hundreds of molecules are produced by
+interconnected pathways. Applying $\ARA$ directly to a cell would require
+enumerating all causal paths through the full intracellular DAG, which is
+computationally intractable for realistic systems. This section develops a
+network-level generalisation that is computationally tractable and yields a
+new class of predictions.
+
+\begin{definition}[Network critical path]
+\label{def:critical_path}
+Let $\mathcal{N} = (R, S, \prec)$ be a metabolic network, where $R$ is the set
+of reactions, $S$ the set of metabolite species, and $\prec$ the causal ordering
+induced by substrate-product relationships. A reaction $r \in R$ is
+\emph{irreversible} if it satisfies Condition~C1$'$: the net free energy change
+$\Delta G < 0$ under physiological conditions, ensuring the reaction constitutes
+at least one actualization event. The \emph{critical path}
+$\mathcal{P}^* \subseteq R$ is the longest directed path through irreversible
+reactions from the network's primary input substrate to its essential output.
+\end{definition}
+
+\begin{definition}[Coarse-grained RA assembly depth]
+\label{def:cgara}
+For a metabolic network $\mathcal{N}$, the \emph{coarse-grained RA assembly
+depth} is:
+\begin{equation}
+  \tilde{A}_{\mathrm{RA}}(\mathcal{N})
+  \;:=\; \mathrm{depth}(\mathcal{P}^*)
+  \;=\; \text{number of irreversible reactions on the critical path.}
+  \label{eq:cgara}
+\end{equation}
+\end{definition}
+
+Three properties follow directly from the definitions and
+Theorem~\ref{thm:assembly}:
+
+\begin{proposition}[Properties of $\tilde{A}_{\mathrm{RA}}$]
+\label{prop:cgara}
+\leavevmode
+\begin{enumerate}[label=\emph{(\roman*)},noitemsep]
+  \item \textbf{Lower bound:}
+  $\tilde{A}_{\mathrm{RA}}(\mathcal{N}) \geq A(M^*)$, where $M^*$ is the
+  most assembly-complex essential product of $\mathcal{N}$. The network
+  cannot shortcut below the Assembly Theory floor for its hardest product.
+  \item \textbf{Upper bound:}
+  $\tilde{A}_{\mathrm{RA}}(\mathcal{N}) \leq \ARA(M^*)$. The network
+  finds shorter causal paths to $M^*$ than isolated single-molecule synthesis
+  by reusing intermediates.
+  \item \textbf{Selection pressure:}
+  Under replication competition, organisms with smaller
+  $\tilde{A}_{\mathrm{RA}}(\mathcal{N})$ replicate faster, since a
+  shorter critical path corresponds to fewer sequential bottlenecks
+  in the cell cycle. Natural selection acts to minimise
+  $\tilde{A}_{\mathrm{RA}}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Property~(i) follows because the critical path must pass through the
+production of $M^*$, and Theorem~\ref{thm:assembly} requires at least
+$A(M^*)$ irreversible steps to assemble $M^*$. Property~(ii) follows because
+the network can reuse earlier intermediates as sub-assemblies, reducing the
+number of fresh sequential steps relative to de novo synthesis (with equality
+when no intermediate on the critical path to $M^*$ is shared with a shallower
+network route). Property~(iii)
+follows because the cell cycle time is bounded below by the critical path
+length of the metabolic network: a cell cannot complete division faster
+than it can complete its slowest irreversible sequential dependency.
+\end{proof}
+
+\subsubsection{Worked Example: Glycolysis}
+\label{sec:glycolysis_example}
+
+Glycolysis --- the ten-step conversion of glucose to pyruvate --- is the
+universal core metabolic pathway and provides a worked example of
+$\tilde{A}_{\mathrm{RA}}$ that can be compared against the Assembly Theory
+toolkit. The pathway has the following structure relevant to the critical
+path analysis~\citep{Meyerhof1945}:
+
+\medskip\noindent
+\textbf{Step graph.} Let $G_{\mathrm{glyc}} = (V_{\mathrm{glyc}},
+E_{\mathrm{glyc}})$ where vertices are the ten enzymatic reactions and
+directed edges point from substrate to product. Three reactions are
+\emph{strongly irreversible} under physiological conditions (i.e., satisfy
+C1$'$ with $\Delta G \ll 0$):
+\begin{itemize}[noitemsep]
+  \item $r_1$: Glucose $\to$ Glucose-6-phosphate \hfill (hexokinase,
+    $\Delta G \approx -16.7~\mathrm{kJ/mol}$)
+  \item $r_3$: Fructose-6-phosphate $\to$ Fructose-1,6-bisphosphate
+    \hfill (PFK-1, $\Delta G \approx -14.2~\mathrm{kJ/mol}$)
+  \item $r_{10}$: Phosphoenolpyruvate $\to$ Pyruvate \hfill (pyruvate kinase,
+    $\Delta G \approx -31.4~\mathrm{kJ/mol}$)
+\end{itemize}
+The remaining seven reactions are near-equilibrium ($|\Delta G| < 5~\mathrm{kJ/mol}$)
+and are thermodynamically reversible under physiological conditions; they do
+not satisfy C1$'$ and are not counted as committed actualization steps.
+
+\medskip\noindent
+\textbf{Branching structure.} At reaction $r_4$ (aldolase), fructose-1,6-bisphosphate
+is cleaved into two 3-carbon species (DHAP and G3P), which are interconverted
+by triose phosphate isomerase and then proceed in parallel through reactions
+$r_6$--$r_{10}$. The causal DAG therefore has a \emph{fork} at $r_4$ and a
+\emph{join} at the output (two molecules of pyruvate). The critical path runs
+through the longest sequential chain of irreversible steps:
+\begin{equation}
+  \mathcal{P}^*_{\mathrm{glyc}} = r_1 \to r_3 \to r_{10},
+  \quad
+  \tilde{A}_{\mathrm{RA}}(\mathrm{glycolysis}) = 3.
+  \label{eq:glycolysis_cgara}
+\end{equation}
+
+\medskip\noindent
+\textbf{Interpretation.} The coarse-grained assembly depth of glycolysis is
+3: there are three sequential irreversible commitments between glucose input
+and pyruvate output, with the intermediate seven reactions forming a
+near-equilibrium buffer that can run in either direction. This has a concrete
+biological meaning: the rate-limiting bottleneck of glycolysis is not any
+single enzyme's catalytic speed but the three points of irreversible commitment
+--- the two ATP-investment phosphorylations and the final energy-recovery step.
+Allosteric regulation of glycolysis concentrates at exactly these three
+enzymes (hexokinase, PFK-1, and pyruvate kinase), consistent with the
+prediction that selection pressure acts at the irreversible nodes.
+
+\medskip\noindent
+\textbf{Comparison with full $\ARA$.} For isolated pyruvate synthesis from
+scratch, $\ARA(\mathrm{pyruvate})$ would count every actualization event
+involved in assembling the pyruvate molecule from atoms --- a much larger
+number, bounded below by $A(\mathrm{pyruvate})$ as established by
+Theorem~\ref{thm:assembly}. The glycolytic network achieves
+$\tilde{A}_{\mathrm{RA}} = 3$ by leveraging the pre-assembled glucose
+molecule as a starting point and routing most of the transformation through
+reversible near-equilibrium steps, confirming Property~(ii) of
+Proposition~\ref{prop:cgara}.
+
+\subsubsection{Prediction: Cross-Organism Scaling}
+\label{sec:scaling}
+
+Proposition~\ref{prop:cgara}(iii) generates a testable prediction:
+
+\begin{conjecture}[Evolutionary minimisation of $\tilde{A}_{\mathrm{RA}}$]
+\label{conj:evolution}
+Across evolutionary lineages, organisms should exhibit systematic reduction
+in $\tilde{A}_{\mathrm{RA}}(\mathcal{N})$ for their core metabolic pathways
+over evolutionary time, independently of thermodynamic pathway efficiency.
+The ratio
+\begin{equation}
+  \rho_{12} = \frac{\tilde{A}_{\mathrm{RA}}(\mathcal{N}_1)}
+                    {\tilde{A}_{\mathrm{RA}}(\mathcal{N}_2)}
+  \label{eq:ratio}
+\end{equation}
+for two organisms $\mathcal{N}_1$, $\mathcal{N}_2$ should correlate with
+their phylogenetic distance and metabolic complexity, measurable with
+standard KEGG~\citep{KEGG2000} or BiGG metabolic network databases.
+\end{conjecture}
+
+This conjecture is testable immediately using existing data: the KEGG
+metabolic database contains curated pathway graphs for thousands of
+organisms, each reaction annotated with thermodynamic reversibility data.
+Computing $\tilde{A}_{\mathrm{RA}}$ for core pathways (glycolysis, the
+citric acid cycle, fatty acid synthesis) across organisms spanning the
+phylogenetic tree is a graph-algorithmic computation requiring no new
+experimental data. The prediction is that organisms with more ancient
+metabolic networks (archaea, early-branching bacteria) will exhibit higher
+$\tilde{A}_{\mathrm{RA}}$ for equivalent pathways than their more derived
+counterparts, reflecting evolutionary pressure toward shorter irreversible
+commitment chains.
+
 % ── Tier 2/3: Markov Blanket ─────────────────────────────────────────────────
 \subsection{The Markov Blanket Isomorphism (Tier 2/3 Boundary)}
 \label{sec:markov_rahc}
@@ -1215,6 +1388,13 @@ relationship to the four companion papers is as follows:
     problem for RA's CSG dynamics.
 \end{description}
 
+\noindent
+The eleven-paper suite also includes the particle classification and Standard
+Model topology paper (RATM~\citep{Sandeman2026RATM}), the field equation
+uniqueness paper (RACL~\citep{Sandeman2026RACL}), the Standard Model gauge
+structure and Koide formula paper (RASM~\citep{Sandeman2026RASM}), and the
+programme overview (Foundation~\citep{Sandeman2026Foundation}).
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Open Problems and Hard Walls}
 \label{sec:hardwalls}
@@ -1412,10 +1592,21 @@ H.~R.~Maturana and F.~J.~Varela.
 \newblock \textit{Autopoiesis and Cognition: The Realization of the Living}.
 \newblock D.~Reidel, Dordrecht, 1980.
 
+\bibitem[Meyerhof(1945)]{Meyerhof1945}
+O.~Meyerhof.
+\newblock The origin of the reaction of Harden and Young in cell-free
+  fermentation.
+\newblock \textit{J.\ Biol.\ Chem.}, 157:105--119, 1945.
+
 \bibitem[Murray et~al.(2023)]{Murray2023}
 J.~Murray et al.
 \newblock Assembly theory explains and quantifies selection and evolution.
 \newblock \textit{Nature}, 622:321--328, 2023.
+
+\bibitem[Kanehisa \& Goto(2000)]{KEGG2000}
+M.~Kanehisa and S.~Goto.
+\newblock KEGG: Kyoto Encyclopedia of Genes and Genomes.
+\newblock \textit{Nucleic Acids Res.}, 28:27--30, 2000.
 
 \bibitem[Pearl(1988)]{Pearl1988}
 J.~Pearl.
