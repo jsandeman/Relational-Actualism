@@ -71,53 +71,32 @@ Relational Actualism (RA) proposes that the transition from quantum potentia to
 classical actuality is grounded in a precise physical criterion: an irreversible
 increase in quantum relative entropy $\Delta S(\rho\|\sigma_0) > 0$ with respect
 to the vacuum. In the perturbative regime this coincides with the on-shell
-dispersion relation $p^\mu p_\mu = m^2c^2$, at which a mediating boson crosses
-the kinematic threshold from virtual to real and an irreversible vertex is
-inscribed into the growing causal directed acyclic graph (DAG) of the universe. This paper develops the implications of this framework---established in
-the companion papers RAQM, RAGC, RACI, and RAHC~\citep{Sandeman2026RAHC}---for two fields that have lacked a
-precise physical account of irreversibility at the quantum level: quantum computing
-and quantum thermodynamics. For quantum computing, the Kinematic Snap provides a
-principled physical floor on decoherence, distinguishes genuinely off-shell
-(decoherence-immune) interaction regimes from on-shell ones, and gives the
-threshold theorem a physical rather than purely operational interpretation. For
-quantum thermodynamics, RA grounds Landauer's principle in the causal DAG,
-resolves the Maxwell's demon paradox without information-theoretic postulates,
+condition $p^\mu p_\mu = m^2c^2$, at which a mediating boson crosses the
+kinematic threshold from virtual to real and an irreversible vertex is inscribed
+into the growing causal DAG. This paper develops the implications for quantum
+computing and quantum thermodynamics.
+\nFor quantum computing, the Kinematic Snap provides a principled physical floor
+on decoherence and yields the \emph{Kinematic Coherence Bound}: the maximum
+fault-tolerant array size is $N_{\max} = \eta \cdot p_{\mathrm{th}}$,
+where $\eta$ is the single-qubit quality factor and $p_{\mathrm{th}}$ is the
+fault-tolerance threshold. This is a structural constraint not anticipated by
+standard quantum error correction theory: logical error rates grow with $N$
+because each added qubit is an additional kinematic site at which actualization
+can occur. Unlimited scaling without improving $\eta$ will eventually push the
+logical error rate above $p_{\mathrm{th}}$ regardless of single-qubit fidelity.
+\nFor quantum thermodynamics, RA grounds Landauer\'s principle in the causal DAG
+structure, resolves Maxwell\'s demon without information-theoretic postulates,
 gives the fluctuation theorems a precise actualization-event interpretation, and
-establishes that the thermodynamic arrow of time is structural rather than
-emergent. A key technical result: the quantum relative entropy---the central
-quantity in both quantum information theory and RA's actualization
-criterion---is frame-independent by a compiled Lean~4 theorem
-(\texttt{frame\_independence} in \texttt{RA\_AQFT\_Proofs\_v10.lean}), proved
-using the continuous functional calculus unitary-conjugation lemma from the
-Lean-QuantumInfo library~\citep{Meiburg2025LQI}. A key quantitative connection: the Kinematic Coherence Bound
-threshold $p_{\mathrm{th}} \approx 10^{-2}$ is shown to be consistent with the
-galactic-scale coupling constant $\xi$ of the companion paper
-RADM~\citep{Sandeman2026RADM} to within ${\sim}2\%$ using the full baryonic disk mass~\citep{BlandHawthorn2016}, at the Planck scale, via the
-thermodynamic field equations established in RAGC~\citep{Sandeman2026RAGC}.
-The Kinematic Coherence Bound threshold $p_{\mathrm{th}} \approx 10^{-2}$
-also enters the Poisson-CSG generative measure of RAGC
-(equation for $c_k^{\mathrm{RA}}$): it is the per-link actualization
-probability that determines whether the causal DAG is locally 3D or 2D,
-connecting quantum error correction thresholds to galactic-scale
-dimensional reduction and the Tully-Fisher relation~\citep{Sandeman2026RADM}.
-The fault-tolerance threshold, the speed of light $c = l_P/t_P$, and
-the biological Causal Firewall are all the same Erd\H{o}s-R\'{e}nyi
-percolation transition at different scales of the causal graph. The
-Einstein field equations are shown to be the unique consistent
-macroscopic description of the RA-CSG by Lovelock's theorem, with GR
-exact at $\mu \gg 1$ and RA's departures from GR (rotation curves,
-Hubble tension, Planck corrections) arising precisely where $\mu \sim 1$.
-Throughout, implications are
-stated conditionally on the correctness of the RA framework, which is currently
-under peer review.
-
-\medskip\noindent
-\textbf{Keywords:} Relational Actualism \textperiodcentered{} Kinematic Snap
-\textperiodcentered{} Quantum Computing \textperiodcentered{} Decoherence
-\textperiodcentered{} Quantum Thermodynamics \textperiodcentered{} Landauer's
-Principle \textperiodcentered{} Maxwell's Demon \textperiodcentered{} Fluctuation
-Theorems \textperiodcentered{} Quantum Relative Entropy
-\textperiodcentered{} Formal Verification
+establishes that the thermodynamic arrow of time is structural rather than emergent.
+\nA key technical result: the quantum relative entropy is frame-independent by a
+machine-verified Lean~4 theorem (\texttt{frame\_independence} in
+\texttt{RA\_AQFT\_Proofs\_v10.lean}), proved using the continuous functional
+calculus unitary-conjugation lemma of the Lean-QuantumInfo library. The
+fault-tolerance threshold, the speed of light $c = l_P/t_P$, and the biological
+Causal Firewall are all the same Erd\H{o}s-R\'{e}nyi percolation transition
+at different scales of the causal graph.
+\nThroughout, implications are stated conditionally on the correctness of the RA
+framework, which is currently under peer review.
 \end{abstract}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -973,13 +952,6 @@ D.~Reeb and M.~M.~Wolf.
 \newblock An improved {Landauer} principle with finite-size corrections.
 \newblock \textit{New Journal of Physics}, 16(10):103011, 2014.
 
-\bibitem[Sandeman(2026e)]{Sandeman2026RAHC}
-J.~F.~Sandeman.
-\newblock Algorithmic Causal Dynamics: A Unified Framework for Emergence and
-  Complexity in Relational Actualism ({RAHC}).
-\newblock Preprint, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19198171}{doi.org/10.5281/zenodo.19198171}.
-
 \bibitem[Sandeman(2026a)]{Sandeman2026a}
 J.~F.~Sandeman.
 \newblock Relational Actualism and Quantum Mechanics ({RAQM}).
@@ -998,12 +970,6 @@ J.~F.~Sandeman.
 \newblock Preprint, 2026.
 \newblock \href{https://doi.org/10.5281/zenodo.19198224}{doi.org/10.5281/zenodo.19198224}.
 
-\bibitem[Bland-Hawthorn \& Gerhard(2016)]{BlandHawthorn2016}
-J.~Bland-Hawthorn and O.~Gerhard.
-\newblock The Galaxy in context: Structural, kinematic, and integrated
-  properties.
-\newblock \emph{Annual Review of Astronomy and Astrophysics}, 54:529--596, 2016.
-\newblock \href{https://doi.org/10.1146/annurev-astro-081915-023441}{doi:10.1146/annurev-astro-081915-023441}.
 
 \bibitem[Sandeman(2026f)]{Sandeman2026RADM}
 J.~F.~Sandeman.

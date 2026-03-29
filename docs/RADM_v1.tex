@@ -48,25 +48,29 @@
 % ─────────────────────────────────────────────────────────────────────────────
 \begin{document}
 
-\begin{titlepage}
-\centering
-\vspace*{1cm}
-{\LARGE\bfseries Relational Actualism: Dark Matter as\\
-Actualization-Density Topology ({RADM}):\par}
-\vspace{0.4cm}
-{\large\itshape Flat Rotation Curves, the Bullet Cluster, and the\\
-Topological Boundary Mechanism\par}
-\vspace{1.2cm}
-{\large Joshua F.\ Sandeman\par}
-\vspace{0.3cm}
-{\normalsize\itshape Independent Researcher, Salem, Oregon\par}
-\vspace{0.3cm}
-{\normalsize March 2026\par}
-\vspace{0.3cm}
-  {\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19198513}
-    {doi.org/10.5281/zenodo.19198513}\par}
-\vspace{1.5cm}
-
+% ── Title block ─────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Relational Actualism: Dark Matter as\\
+  Actualization-Density Topology (RADM)\\[4pt]
+  \large\itshape Flat Rotation Curves, the Bullet Cluster,\\
+  and the Topological Boundary Mechanism\par}
+  \vspace{14pt}
+  {\large Joshua F.\ Sandeman$^{1*}$\par}
+  \vspace{4pt}
+  {\normalsize $^{1}$Independent Researcher, Salem, OR, USA.\par}
+  {\normalsize $^{*}$sansuikyo@gmail.com\par}
+  \vspace{8pt}
+  {\small\textit{Preprint available at}~\href{https://doi.org/10.5281/zenodo.19198513}{doi.org/10.5281/zenodo.19198513}\par}
+  \vspace{14pt}
+\end{center}
+\noindent\textbf{Ethics statement.}
+This article does not contain any studies with human participants or animals.
+\medskip
+\noindent\textbf{AI use disclosure.}
+Claude (Anthropic, \texttt{claude-sonnet-4-6}) and Gemini (Google DeepMind)
+were used in manuscript preparation. The author is solely responsible for all
+scientific content and conclusions.
+\medskip
 \begin{abstract}
 The companion paper RAGC establishes that causally silent
 dark matter candidates (WIMPs, axions, sterile neutrinos) cannot source macroscopic
@@ -88,8 +92,9 @@ surface-density correction from the 2D cylindrical Laplacian of $\ln\lambda$
 for a disk geometry. We demonstrate that this term produces flat galactic rotation
 curves for exponential disk profiles (calibrating $\xi = 2v_{\mathrm{flat}}^2 r_d$),
 and that in the sparse halo regime DJW dimensional reduction gives an SIS-equivalent
-lensing profile with Einstein radius $\theta_E = 0.93$~arcsec, consistent with
-observations. Furthermore, we formalise the distinction between
+lensing profile with Einstein radius $\theta_E \approx 0.47$~arcsec for a Milky-Way
+analog ($v_{\mathrm{flat}} = 220$~km\,s$^{-1}$), rising to $0.9$--$1.4$~arcsec for
+massive early-type lenses, consistent with observed strong-lensing Einstein radii. Furthermore, we formalise the distinction between
 instantaneous actualization flux $\lambda$ and accumulated causal depth
 $A_{\mathrm{RA}}$, showing that this distinction resolves the Bullet Cluster
 lensing offset dynamically, without leaving a trailing gravitational wake. All
@@ -103,9 +108,11 @@ density $\lambda_c \sim c/r_c^3$. Five hard walls are precisely identified:
 the exact value $\alpha = 2\pi$ for the Jacobson coefficient confirmed to within 2\% using the full baryonic disk mass, proof of dimensional reduction in the
 RA-CSG universality class, quantitative Bullet Cluster mapping,
 CMB acoustic structure formation, and Weyl curvature sourcing.
-A bandwidth-partition model of the Hubble tension, derived from the
-Poisson-CSG generative measure established in RAGC,
-predicts $H_{\mathrm{local}} \approx 73.1\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$
+A bandwidth-partition model of the Hubble tension---derived from the
+Poisson-CSG generative measure of RAGC (Section~4.3 therein) via
+$H_{\mathrm{eff}} = H_{\mathrm{CMB}}(1 + f_b|\delta|)$ where $f_b \approx 0.42$
+is the void-filling baryon fraction---predicts
+$H_{\mathrm{local}} \approx 73.1\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$
 from the KBC void ($\delta = -0.20$). New falsifiable prediction:
 the Eridanus supervoid ($\delta \approx -0.30$) should give
 $H \approx 75.9\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$.
@@ -116,7 +123,6 @@ Actualization Density \textperiodcentered{} Rotation Curves \textperiodcentered{
 Bullet Cluster \textperiodcentered{} MOND \textperiodcentered{} Emergent Gravity
 \textperiodcentered{} Tully-Fisher \textperiodcentered{} Hubble Tension \textperiodcentered{} Eridanus Supervoid
 \end{abstract}
-\end{titlepage}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Introduction: The Dark Matter Problem in Relational Actualism}
@@ -383,7 +389,7 @@ where the second equality substitutes equation~\eqref{eq:critical_radius}.
 Setting $v^2/r = a_T(r)$ yields a perfectly flat rotation curve:
 \begin{equation}
   v_{\mathrm{flat}}^2 = \sqrt{GM\,a_0}.
-  \label{eq:flat_curve}
+  \label{eq:tully_fisher}
 \end{equation}
 Squaring recovers the baryonic Tully-Fisher relation:
 \begin{equation}
@@ -592,12 +598,12 @@ For isolated galaxies the primary lensing mechanism is the
 At radii $r > r_c$ where the actualization density $\mu < 1$, the
 causal graph is locally 2-dimensional by the Durhuus-Jonsson-Wheater theorem,
 and the gravitational force law becomes $F \propto 1/r$ rather than $1/r^2$.
-This is mathematically equivalent to a Singular Isothermal Sphere (SIS)
+This has the same $\kappa \propto 1/b$ convergence profile as a Singular Isothermal Sphere (SIS), but with half the deflection angle: the RA-native derivation (equation~\eqref{eq:kappa_DJW}) gives $\hat\alpha_{\mathrm{RA}} = 2\pi v^2/c^2$ vs.\ $\hat\alpha_{\mathrm{SIS}} = 4\pi\sigma^2/c^2$
 within the baryon distribution, giving:
 \begin{equation}
-  \kappa_{\mathrm{RA}}(b) = \frac{v_{\mathrm{flat}}^2}{2\pi G\,\Sigma_{\mathrm{cr}}\,b},
+  \kappa_{\mathrm{RA}}(b) = \frac{v_{\mathrm{flat}}^2}{4 G\,\Sigma_{\mathrm{cr}}\,b},
   \qquad
-  \theta_E = \frac{4\pi v_{\mathrm{flat}}^2}{c^2}\frac{D_{LS}}{D_S}.
+  \theta_E = \frac{2\pi v_{\mathrm{flat}}^2}{c^2}\frac{D_{LS}}{D_S}.
   \label{eq:SIS_kappa}
 \end{equation}
 For a Milky-Way analog ($v_{\mathrm{flat}} = 220$~km~s$^{-1}$,
@@ -718,7 +724,7 @@ causal depth ratio:
   \frac{\ARA(\mathrm{stellar})}{\ARA(\mathrm{gas})}
   \;\approx\; \frac{\Gamma_{\mathrm{stellar}}}{\Gamma_{\mathrm{gas}}}
   \;\approx\; 10^8.
-  \label{eq:RA_ratio}
+  \label{eq:RA_ratio_simplified}
 \end{equation}
 The Bullet Cluster lensing requires the stellar component to exceed the gas
 contribution by a factor of $\sim 10$. The $\ARA$ ratio provides $10^8$
@@ -966,6 +972,14 @@ RADM is the sixth companion paper in the RA suite. The logical dependencies are:
     context for the RADM conjectures.
 \end{description}
 
+\noindent
+The suite also includes the Standard Model gauge structure paper
+(RASM~\citep{Sandeman2026RASM}), the particle classification
+paper (RATM~\citep{Sandeman2026RATM}), and the programme overview
+(Foundation~\citep{Sandeman2026Foundation}), and the astrobiology
+habitability paper (RACF~\citep{Sandeman2026RACF}).
+
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusion}
 \label{sec:conclusion}
@@ -1114,6 +1128,15 @@ E.~Verlinde.
 \bibitem[Sandeman(2026h)]{Sandeman2026RASM}J.~F.~Sandeman.\newblock Relational Actualism and the Standard Model ({RASM}).\newblock Preprint, 2026.\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}
 
 \bibitem[Sandeman(2026i)]{Sandeman2026Foundation}J.~F.~Sandeman.\newblock Relational Actualism: A Foundation Paper.\newblock Preprint, 2026.\newblock \href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}
+
+
+\bibitem[Sandeman(2026RACF)]{Sandeman2026RACF}
+J.~F.~Sandeman.
+\newblock The Causal Firewall: Substrate-Independent Physical Constraints
+  on the Distribution of Life in the Universe (RACF).
+\newblock \textit{Int.\ J.\ Astrobiol.} (submitted), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19319374}%
+  {doi:10.5281/zenodo.19319374}.
 
 \end{thebibliography}
 

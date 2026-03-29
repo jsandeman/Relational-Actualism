@@ -86,8 +86,8 @@ Quantum mechanics is exact at the discrete level; the Schr\"{o}dinger equation
 is its large-density macroscopic approximation, and the measurement problem
 dissolves. All results follow from the single fact that some interactions are
 irreversible. Four additional long-standing problems are dissolved: $\theta_{\mathrm{QCD}} = 0$ exactly (strong CP; no axion needed); the black hole information paradox (Causal Severance partition); the baryon asymmetry as a Causal Severance initial condition; and a structural conjecture for $d = 4$ spacetime uniqueness. Falsifiable predictions, Lean~4 verification status, and open
-derivation targets are tabulated. The programme comprises eleven papers;
-two are in peer review (\emph{Foundations of Physics}; \emph{Classical
+derivation targets are tabulated. The programme comprises twelve papers;
+three are in peer review (\emph{Foundations of Physics}; \emph{Classical
 and Quantum Gravity}).
 Core algebraic results are independently machine-verified: a Python
 notebook confirms 52/52 numerical checks at machine precision.
@@ -193,6 +193,9 @@ here, then follow the suite in the arc \emph{Bosons to Brains}:
   complexity hierarchy; algorithmic causal dynamics.
   \item \textbf{RACI}~\citep{Sandeman2026RACI} --- Complexity, life,
   and intelligence; the causal graph grows until it models itself.
+  \item \textbf{RACF}~\citep{Sandeman2026RACF} --- The Causal Firewall
+  as a substrate-independent habitability criterion; universal
+  biosignatures and the SETI programme.
 \end{enumerate}
 This paper presents the logical structure; the companions provide the proofs.
 
@@ -826,19 +829,40 @@ mathematical transition, four physical manifestations.
 
 Assembly Theory~\citep{Walker2023} independently arrived at
 the concept of causal depth as the measure of biological complexity.
-In RA, causal depth $A_{\mathrm{RA}}(v)$ --- the minimum path length
-from the beginning of the graph to vertex $v$ --- is the fundamental
-quantity. The convergence of two independent frameworks on the same
-mathematical structure supports both.
+In RA, causal depth $A_{\mathrm{RA}}(v)$ --- the length of the longest
+directed path to vertex $v$ --- is the fundamental quantity. The
+convergence of two independent frameworks on the same mathematical
+structure supports both.
 
-Causal depth is a selection pressure in biological evolution: organisms
-that maintain and extend their causal depth have more stable and more
-complex internal causal structure, and therefore greater capacity for
-adaptive response. Intelligence is recursive causal closure: the
-capacity of a system to model its own actualization history and use
-that model to guide future actualization~\citep{Sandeman2026RAHC}.
 
-% ─────────────────────────────────────────────────────────────────────────────
+New results in RAHC and RACI~\citep{Sandeman2026RAHC,Sandeman2026RACI}
+extend this to metabolic networks via the \emph{coarse-grained assembly
+depth} $\tilde{A}_{\mathrm{RA}}(\mathcal{N})$: the number of irreversible
+reactions on the critical path through the network. For glycolysis
+$\tilde{A}_{\mathrm{RA}} = 3$ (hexokinase, PFK-1, pyruvate kinase),
+with allosteric regulation concentrating at exactly these three nodes ---
+independent biological confirmation. The \emph{origin-of-life sandwich}
+$A(M^*_0) \leq \tilde{A}_{\mathrm{RA}}(\mathcal{N}_0) \leq
+\tau_{\mathrm{cycle},0}/\tau_{\mathrm{irrev}}$
+brackets the causal depth of the first replicators from both sides.
+\nCausal depth is a selection pressure: replication rate is exponentially
+suppressed by $A_{\mathrm{RA}}(M)$ (England bound), so natural selection
+for replication speed is simultaneously selection for minimal causal depth.
+Intelligence is recursive causal closure: the capacity of a system to
+model its own actualization history and use that model to guide future
+actualization~\citep{Sandeman2026RAHC}.
+
+\subsection{Substrate-Independent Habitability (RACF)}
+\nThe Causal Firewall criterion is substrate-independent: neither Condition
+F1 (Quantum Darwinism redundancy $R \geq R_{\min}$) nor Condition F2
+(Unruh temperature $T_U = \hbar a/2\pi c k_B \ll T_{\mathrm{env}}$) makes
+reference to molecular class, solvent chemistry, or biological alphabet.
+The circumstellar habitable zone is a terrestrial proxy for these deeper
+physical conditions, not the physical criterion itself.
+RACF~\citep{Sandeman2026RACF} develops three universal biosignature
+observables and two falsifiable predictions for the distribution of life,
+submitted to \emph{International Journal of Astrobiology}.
+\n% ─────────────────────────────────────────────────────────────────────────────
 \section{Quantum Information}
 \label{sec:QI}
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1306,10 +1330,12 @@ single fact that some things happen and others do not.
 \medskip
 The programme as it stands in early 2026:
 \begin{itemize}[noitemsep]
-  \item Two papers in peer review: RAQM at \emph{Foundations of Physics}
+  \item Three papers in peer review: RAQM at \emph{Foundations of Physics}
   (past desk rejection, in editor assignment); RACL submitted to
-  \emph{Classical and Quantum Gravity}.
-  \item Eleven companion papers on Zenodo with permanent DOIs.
+  \emph{Classical and Quantum Gravity}; RATM submitted to
+  \emph{Physical Review D}.
+  \item Twelve papers in the suite; eleven on Zenodo with permanent
+  DOIs (RACF submitted to \emph{International Journal of Astrobiology}).
   \item 101 Lean-verified results across two proof files, zero
   \texttt{sorry} tags.
   \item 52/52 independent numerical checks at machine precision.
@@ -1452,6 +1478,14 @@ J.~F.~Sandeman.
 \newblock Preprint, 2026.
 \newblock \href{https://doi.org/10.5281/zenodo.19198224}%
   {doi:10.5281/zenodo.19198224}.
+
+\bibitem[Sandeman(2026e2)]{Sandeman2026RACF}
+J.~F.~Sandeman.
+\newblock The Causal Firewall: Substrate-Independent Physical Constraints
+  on the Distribution of Life in the Universe (RACF).
+\newblock \textit{Int.\ J.\ Astrobiol.} (submitted), 2026.
+
+ewblock \href{https://doi.org/10.5281/zenodo.19319374}{doi:10.5281/zenodo.19319374}.
 
 \bibitem[Sandeman(2026f)]{Sandeman2026RAQI}
 J.~F.~Sandeman.
