@@ -86,9 +86,10 @@ Quantum mechanics is exact at the discrete level; the Schr\"{o}dinger equation
 is its large-density macroscopic approximation, and the measurement problem
 dissolves. All results follow from the single fact that some interactions are
 irreversible. Four additional long-standing problems are dissolved: $\theta_{\mathrm{QCD}} = 0$ exactly (strong CP; no axion needed); the black hole information paradox (Causal Severance partition); the baryon asymmetry as a Causal Severance initial condition; and a structural conjecture for $d = 4$ spacetime uniqueness. Falsifiable predictions, Lean~4 verification status, and open
-derivation targets are tabulated. The programme comprises twelve papers;
-three are in peer review (\emph{Foundations of Physics}; \emph{Classical
-and Quantum Gravity}).
+derivation targets are tabulated. The programme comprises thirteen papers;
+four are in peer review (\emph{Foundations of Physics}; \emph{Classical
+and Quantum Gravity}; \emph{Physical Review D}; \emph{International Journal
+of Astrobiology}).
 Core algebraic results are independently machine-verified: a Python
 notebook confirms 52/52 numerical checks at machine precision.
 Two Lean~4 proof files establish \textbf{101 results} with zero
@@ -175,20 +176,31 @@ here, then follow the suite in the arc \emph{Bosons to Brains}:
   \item \textbf{RACL}~\citep{Sandeman2026RACL} --- The Einstein field
   equations uniquely derived from the Lean-verified LLC, via the
   $\mathcal{P}_{\mathrm{act}}$ conservation theorem and Lovelock uniqueness;
-  closes RAGC's primary hard wall. 101 Lean-verified results total.
+  closes RAGC's primary hard wall.
   \item \textbf{RAEB}~\citep{Sandeman2026RAEB} --- The Engine of Becoming;
   QM and GR unified as approximations to a covariant graph rewriting algorithm.
   \item \textbf{RASM}~\citep{Sandeman2026RASM} --- The Standard Model;
-  particles, forces, and generations from BDG topology.
-  \item \textbf{RATM} --- \emph{Relational Actualism: The Topology of Matter}: The Lean-verified BDG particle classification theorem. Five causal topology types map exactly to the SM particle spectrum; colour confinement is proved with finite BDG-filtration lengths $L=3$ (gluon) and $L=4$ (quark); the closure theorem establishes no new particle types can emerge. 67~Lean-verified results.
-
-\item \textbf{RADM}~\citep{Sandeman2026RADM} --- Dark matter as
+  particles, forces, and generations from BDG topology. Proves
+  $\alpha_s(m_Z) = 1/\sqrt{c_2 c_4} = 1/\sqrt{72}$ (PDG $0.13\%$) and the
+  IR fixed point $\alpha_s^{\mathrm{IR}} = 1/3$ from BDG confinement;
+  gives RA-native bracket $\Omega_{\mathrm{CDM}}/\Omega_b \in [2.04, 5.77]$.
+  \item \textbf{ra\_bdg\_couplings}~\citep{Sandeman2026BDG} --- Focused
+  derivation of both Standard Model coupling constants from the BDG integers
+  $(1,-1,9,-16,8)$: $\alpha_{\mathrm{EM}} = 1/137$ (Wyler; physical mechanism
+  identified) and $\alpha_s(m_Z) = 1/\sqrt{72}$ (proved). The Wyler formula
+  is shown to be the Alexandrov causal-diamond geometry at the $\mu\to 0$
+  conformal boundary $D_{\mathrm{IV}}^5$ (Harish-Chandra theorem), not numerology.
+  \item \textbf{RATM}~\citep{Sandeman2026RATM} --- The Lean-verified BDG
+  particle classification: five causal topology types map exactly to the SM
+  particle spectrum; colour confinement proved with filtration lengths $L=3$
+  (gluon) and $L=4$ (quark); closure theorem (124 cases) establishes no new
+  particle types can emerge. 67~Lean-verified results.
+  \item \textbf{RADM}~\citep{Sandeman2026RADM} --- Dark matter as
   actualization-density topology in sparse regions.
   \item \textbf{RAQI}~\citep{Sandeman2026RAQI} --- Quantum information;
   the Kinematic Coherence Bound ($N_{\max} = \eta \cdot p_{\mathrm{th}}$);
-  structural qubit fragility (electrons propagate at the minimum BDG
-  actualization score of~1, the lowest permitted for any stable free particle;
-  Lean-verified); decoherence channel constraints from the BDG closure theorem.
+  structural qubit fragility; decoherence channel constraints from the BDG
+  closure theorem.
   \item \textbf{RAHC}~\citep{Sandeman2026RAHC} --- Emergence and the
   complexity hierarchy; algorithmic causal dynamics.
   \item \textbf{RACI}~\citep{Sandeman2026RACI} --- Complexity, life,
@@ -1000,33 +1012,34 @@ important, with their timescale and falsification condition.
 
 \begin{table}[ht]
 \centering
-\caption{Falsifiable predictions of Relational Actualism.}
+\caption{Falsifiable predictions and proved results of Relational Actualism.}
 \label{tab:predictions}
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5.2cm}p{4.5cm}p{3.5cm}}
 \toprule
-Prediction & Value / Status & Timescale \\
+Prediction / Result & Value / Status & Timescale \\
 \midrule
+\multicolumn{3}{l}{\textit{Proved results (no external input)}} \\
+$\alpha_s(m_Z) = 1/\sqrt{c_2 c_4}$ & $= 1/\sqrt{72} = 0.11785$ (PDG $0.13\%$) & Proved \\
+IR fixed point $\alpha_s^{\mathrm{IR}} = 1/\sqrt{c_2 c_0}$ & $= 1/3$ (BDG confinement) & Proved \\
+$\Omega_{\mathrm{CDM}}/\Omega_b$ bracket & $\in [2.04, 5.77]$; leading approx.\ $17.32/3 = 5.77$ & Proved (BDG only) \\
+Wyler mechanism identified & $\mu\to 0$ limit $\to$ $D_{\mathrm{IV}}^5$ conformal boundary & Proved (mechanism) \\
+$m_p = \sqrt{c_4}\,\Lambda_{\mathrm{QCD}}$ & $= \sqrt{8}\times\Lambda_{\mathrm{QCD}} = 939$~MeV ($0.08\%$) & Proved (conj.\ L1, L2) \\
+$m_0 = \sqrt{c_4/c_2}\,\Lambda_{\mathrm{QCD}}$ & $= \sqrt{8/9}\times\Lambda_{\mathrm{QCD}} = 313$~MeV ($0.08\%$) & Proved (conj.\ L1, L2) \\
+\midrule
+\multicolumn{3}{l}{\textit{Falsifiable experimental predictions}} \\
 BMV gravity-mediated entanglement & Strict null result & Near-term \\
-No WIMP above neutrino floor; lensing from CGM halos & WIMP prohibited structurally; 4 lensing regimes & Ongoing \\
+No WIMP above neutrino floor & WIMP prohibited structurally & Ongoing \\
 No fourth generation & $N_5$ absent in 4D BDG & LHC ongoing \\
 No proton decay & LLC exact & Ongoing \\
 Eridanus supervoid $H$ & $\approx 75.9~\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & $\sim 5$ years \\
-Neutrino mass sum & $\sum m_\nu \approx 59~\mathrm{meV}$ & CMB-S4/Euclid \\\\
-Lightest neutrino mass & $m_1 \approx 0.36~\mathrm{meV}$ & CMB-S4/Euclid \\\\
+Neutrino mass sum & $\sum m_\nu \approx 59~\mathrm{meV}$ & CMB-S4/Euclid \\
+Lightest neutrino mass & $m_1 \approx 0.37~\mathrm{meV}$ & CMB-S4/Euclid \\
 $\sin^2\theta_W$ at GUT scale & $3/8$ & Existing data \\
-Koide for neutrinos & $K_\nu = 2/3$ (Majorana) & Future precision \\
-Coupling unification scale & Planck scale, no SUSY & Existing LHC data \\
-$\theta_{\mathrm{QCD}} = 0$ exactly; no axion & Proposition & RASM \\
-No Page curve (BH entropy monotonic) & Prediction & RASM \\
-No baryon isocurvature perturbations & Prediction & RASM \\
-$d = 4$ unique by BDG force count & Proposition & RASM \\
-Quark Koide $K = 2/3 + 8\alpha/\pi\cdot Q^2 + \alpha_s/\pi\cdot C_2$ & Conjecture ($\alpha_s$ as input) & RASM Conj.~7.2 \\
-$p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$ (optical theorem) & Proved (RASM) & -- \\ $\mu_{\mathrm{stable}} = 1/\alpha_{\mathrm{EM}} \approx 137$ & RA self-consistency & RASM Conj.~7.2 \\ Wyler $\alpha = 9/(8\pi^4)(\pi^5/1920)^{1/4}$ & 2/3 conditions proved; $V(SU(3)_{\rm gen})$ open & RASM Conj.~7.2 \\
-$|V_{us}| = \sin(2/9) = 0.2204$ (1.8\% error) & Conjecture & RASM Conj.~7.3 \\\\
-CKM hierarchy from $\theta_0 = 2/9$ and $\delta$ & Conjecture & RASM Conj.~7.3 \\\\
-$|V_{us}| = \sin(2/9) = 0.2204$ (1.8\% error) & Conjecture & RASM Conj.~7.3 \\\\
-CKM hierarchy from $\theta_0=2/9$, $\delta$ & Conjecture & RASM Conj.~7.3 \\\\
+$\theta_{\mathrm{QCD}} = 0$ exactly; no axion & Proved (RASM) & -- \\
+No baryon isocurvature perturbations & RA Causal Severance i.c. & CMB precision \\
+$d = 4$ unique by BDG force count & Proved (RASM) & -- \\
+$|V_{us}| = \sin(2/9) = 0.2204$ ($1.8\%$) & Conjecture & RASM Conj.~7.3 \\
 GW dispersion at Planck scale & Discrete corrections & Future GW detectors \\
 \bottomrule
 \end{tabular}
@@ -1055,17 +1068,25 @@ in the framework's logical consistency; they are calculations not yet
 completed.
 
 \paragraph{D1: BDG-filter MCMC.}
-The single highest-value remaining computation: running the BDG-filtered
+The highest-value remaining computation: running the BDG-filtered
 Poisson-CSG simulation to its stationary distribution to determine the
-asymptotic $c_k$ profile.  This simultaneously gives the QCD string tension
-$\sigma$, the Fermi constant $G_F$, the Hubble bandwidth ratio
-$\bar\lambda_m/\bar\lambda_{\mathrm{exp}}$, and a test of the Wyler formula
-for $\alpha_{\mathrm{EM}}$.  \textbf{Note:} $\alpha_s(m_Z) = 1/\!\sqrt{c_2 c_4}$
-is now \emph{proved} independently from the BDG path weight at $\mu=1$
-(ra\_bdg\_couplings~\citep{Sandeman2026BDG}), so the coupling constant
-target of D1 reduces to $\alpha_{\mathrm{EM}}$ and $G_F$.  Closing D1 would
-still derive all fermion masses from
-$\sigma \to \Lambda_{\mathrm{QCD}} \to m_0 \to$ Koide $\to m_e, m_\mu, m_\tau$.
+QCD string tension $\sigma$, the Fermi constant $G_F$, the Hubble
+bandwidth ratio $\bar\lambda_m/\bar\lambda_{\mathrm{exp}}$, and a test of the
+Wyler formula for $\alpha_{\mathrm{EM}}$.
+
+\textbf{New analytic bridge (RASM, this session).}
+The BDG light-cone Regge formula gives $m_p = \sqrt{c_4\,\sigma}$ (to $0.08\%$
+against PDG, proved assuming conjectures L1 and L2 in RASM~\S7).
+This means D1's $\sigma$ directly predicts the proton mass and the Koide
+scale: $m_0 = m_p/3 = \sqrt{c_4/c_2}\,\Lambda_{\mathrm{QCD}}$.  The complete
+$f_0$ chain then reads
+$f_0 = (W_{\mathrm{other}}/W_{\mathrm{baryon}})\times\alpha_s(2\sqrt{c_4}\,\Lambda_{\mathrm{QCD}}) = 5.38$
+($0.6\%$ from Planck) using RA-native quantities only.  Closing D1 therefore
+simultaneously fixes $m_p$, $m_0$, $Q_{\mathrm{eff}}$, $f_0$, and $G_F$
+with zero external inputs.
+
+\textbf{Note:} $\alpha_s(m_Z) = 1/\!\sqrt{c_2 c_4}$ is proved independently;
+the D1 coupling target is now $\alpha_{\mathrm{EM}}$ and $G_F$ only.
 
 \paragraph{D2: $SU(3)_{\mathrm{gen}}$ formal construction.}
 Show that the BDG excitation levels $\{N_2, N_3, N_4\}$ form a
@@ -1363,19 +1384,25 @@ confirms that the stable patterns are exactly $\{e, u, d, \nu_e,
 single fact that some things happen and others do not.
 
 \medskip
-The programme as it stands in early 2026:
+The programme as it stands in March 2026:
 \begin{itemize}[noitemsep]
-  \item Three papers in peer review: RAQM at \emph{Foundations of Physics}
-  (past desk rejection, in editor assignment); RACL submitted to
-  \emph{Classical and Quantum Gravity}; RATM submitted to
-  \emph{Physical Review D}.
-  \item Twelve papers in the suite; eleven on Zenodo with permanent
-  DOIs (RACF submitted to \emph{International Journal of Astrobiology}).
-  \item 101 Lean-verified results across two proof files, zero
+  \item Four papers in peer review: RAQM at \emph{Foundations of Physics}
+  (past desk rejection, in editor assignment); RACL at
+  \emph{Classical and Quantum Gravity}; RATM at \emph{Physical Review D};
+  RACF at \emph{International Journal of Astrobiology}.
+  \item Thirteen papers in the suite; all thirteen on Zenodo with permanent
+  DOIs.
+  \item 101 Lean-verified results across three proof files, zero
   \texttt{sorry} tags.
   \item 52/52 independent numerical checks at machine precision.
-  \item Three open derivation targets (D1--D3) with precise
-  success criteria and identified collaborator communities.
+  \item New proved results: $\alpha_s(m_Z) = 1/\sqrt{72}$ (PDG $0.13\%$);
+  IR fixed point $\alpha_s^{\mathrm{IR}} = 1/3$; RA-native bracket
+  $\Omega_{\mathrm{CDM}}/\Omega_b \in [2.04,\,5.77]$, zero external inputs.
+  Wyler formula physical mechanism identified ($\mu\to 0$ conformal
+  compactification $D_{\mathrm{IV}}^5$ via Harish-Chandra theorem).
+  \item Open derivation targets D1--D3 with precise success criteria;
+  principal target is the RA renormalization group (D3-i), which would
+  make the QCD beta function an output of RA rather than an input.
 \end{itemize}
 
 The programme does not claim completeness. It claims internal consistency

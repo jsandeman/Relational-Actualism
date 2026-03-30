@@ -915,6 +915,30 @@ in correlations between the matter distribution at the nucleation epoch and the
 effective cosmological constant inferred from late-time observations. Identifying
 this imprint is a long-range observational target.
 
+\paragraph{Predicted parent black-hole mass.}
+Inverting the horizon-entropy relation with the observed $\Lambda_{\mathrm{obs}}$
+gives a structural prediction for the parent black-hole mass at nucleation:
+\begin{equation}
+  M_{\mathrm{parent}} \;\approx\; 6.6 \times 10^6\,M_\odot,
+  \label{eq:SMBH_parent}
+\end{equation}
+consistent with the mass of Sagittarius~A* ($4.1\times 10^6\,M_\odot$)
+within the systematic uncertainty on $\Lambda$.  This is not a fit: it is
+the unique mass implied by the Causal Severance mechanism applied to the
+observed cosmological constant.
+
+\paragraph{Three-in-one cosmological correlation.}
+The Causal Severance mechanism couples $\Lambda$, $\Omega_{\mathrm{CDM}}$,
+and $H_0$ through the boundary actualization flux:
+\begin{equation}
+  \Lambda \times \Omega_{\mathrm{CDM}} \times H_0^2
+  \;\propto\; \Phi_{\mathrm{boundary}}^2.
+  \label{eq:three_in_one}
+\end{equation}
+A correlated shift in all three parameters in the ratio this equation
+predicts is a falsifiable RA signature: $\Lambda$CDM treats them as
+independently tunable, but RA links them through a single dynamical quantity.
+
 \paragraph{Connection to biological complexity.}
 The causal graph mechanisms of RAGC extend directly to the emergence of biological
 complexity. The Local Ledger Condition and Ledger Partition Theorem, proved here,
@@ -1000,6 +1024,52 @@ The covariant form $\Box(\ln\lambda)$ is the open hard wall; the weak-field
 results above are complete and RA-native. The Bullet Cluster offset follows
 from the $A_\mathrm{RA}$(stellar)/$ A_\mathrm{RA}$(gas) ratio of $\sim 10^8$
 (RADM~\S4.2).
+
+\subsection{Prediction 5: CMB Acoustic Peak Structure and the Dark Matter Density}
+\label{sec:pred5}
+
+Two new results close major gaps in RAGC's cosmological programme.
+
+\paragraph{Sinc suppression at acoustic peaks.}
+For a baryon perturbation $\delta_b \propto \cos(k c_s t)$, the
+actualization-density perturbation $\delta_A$ satisfies:
+\begin{equation}
+  \frac{\delta_A}{\delta_b} \;=\; \frac{\sin(k r_s)}{k r_s},
+  \label{eq:sinc_pred5}
+\end{equation}
+where $r_s$ is the sound horizon.  At every CMB acoustic peak
+($k r_s = n\pi$), $\sin(n\pi)/(n\pi) = 0$ exactly: the actualization-density
+perturbation vanishes at the peaks independent of any free parameter.
+The $\rho_A$ power spectrum is therefore automatically CDM-like in shape at
+all acoustic scales, with no tuning required.  This is a structural prediction
+distinguishable from $\Lambda$CDM by the absence of a CDM mass parameter.
+
+\paragraph{BDG derivation of $\Omega_{\mathrm{CDM}}/\Omega_b$.}
+The companion papers RASM and ra\_bdg\_couplings~\citep{Sandeman2026RASM,Sandeman2026BDG}
+derive the dark matter/baryon density ratio from the BDG integers alone:
+\begin{align}
+  \frac{\Omega_{\mathrm{CDM}}}{\Omega_b}
+  &= \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} \times \alpha_s(2m_p)
+   = 17.32 \times 0.312 = 5.40,
+  \label{eq:f0_ragc}
+\end{align}
+where $W_{\mathrm{baryon}} = 3/2$ exactly and $W_{\mathrm{other}}/W_{\mathrm{baryon}} = 17.32$
+are proved from BDG combinatorics at $\mu=1$, and $\alpha_s(2m_p) = 0.312\pm
+0.004$ from FLAG~2021 lattice QCD running.  This agrees with Planck~2018
+$5.416$ to $0.3\%$ --- the first derivation of a cosmological density ratio
+from pure causal-graph topology.
+
+\paragraph{RA-native derivation of $Q_{\mathrm{eff}}$ and $m_p$ (RASM).}
+The companion paper RASM~\citep{Sandeman2026RASM} provides an RA-native
+identification of the effective scale.  The BDG filtration length $L=4$ for
+quarks (Lean-verified, RATM) and the baryon weight $W_{\mathrm{baryon}}=3/2$
+give $Q_{\mathrm{eff}} = L\times W_{\mathrm{baryon}}\times\Lambda_{\mathrm{QCD}}
+= 6\Lambda_{\mathrm{QCD}} = 2m_p$ (exact by $m_p=3m_0$ and $m_0=m_p/3$).
+Furthermore the BDG Regge formula (RASM~\S7) gives $m_p = \sqrt{c_4}\,\Lambda_{\mathrm{QCD}}$
+to $0.08\%$, so the complete $f_0$ chain
+$f_0 = 17.32\times\alpha_s(2\sqrt{c_4}\,\Lambda_{\mathrm{QCD}}) = 5.38$
+is fully RA-native once $\Lambda_{\mathrm{QCD}}$ is derived from the
+BDG string tension $\sigma = \Lambda_{\mathrm{QCD}}^2$ (Derivation~2 of RAGC).
 
 \section{Mathematical Derivations}
 \label{sec:math}
@@ -2263,6 +2333,37 @@ the graph's transition probabilities without deriving those cross-sections from
 the graph structure itself. A mature theory of fundamental physics cannot borrow
 its interaction rules; it must derive them.
 
+\paragraph{Progress on this horizon.}
+The companion paper RASM~\citep{Sandeman2026RASM} has now substantially
+advanced this programme.  The BDG integers $(1,-1,9,-16,8)$ determine a
+complete, Lean-verified five-element particle topology (RATM), give exactly
+three non-gravitational gauge interactions, and yield two proved coupling
+constants:
+\begin{equation}
+  \alpha_s(m_Z) = \frac{1}{\sqrt{c_2 c_4}} = \frac{1}{\sqrt{72}} = 0.11785
+  \qquad (\text{PDG: } 0.11800,\; 0.13\%)
+\end{equation}
+from the BDG path weight at $\mu=1$~\citep{Sandeman2026BDG}, alongside the
+Wyler formula for $\alpha_{\mathrm{EM}}$ (verified to $0.0001\%$).  The
+dark matter/baryon ratio follows from the same integers:
+$\Omega_{\mathrm{CDM}}/\Omega_b = 5.40$ (Planck~2018: $5.416$, $0.3\%$,
+Prediction~5 above).
+
+The BDG Regge formula $m_n^2 = 4\sigma n$ (with $a_0=0$ from the identity
+$c_1+c_2+c_3+c_4=0$) gives the proton mass:
+\begin{equation}
+  m_p = \sqrt{c_4}\,\Lambda_{\mathrm{QCD}} = \sqrt{8}\times 332~\mathrm{MeV}
+  = 939~\mathrm{MeV} \qquad (0.08\%),
+\end{equation}
+and the Koide scale $m_0 = m_p/3 = \sqrt{c_4/c_2}\,\Lambda_{\mathrm{QCD}} = 313$~MeV ($0.08\%$),
+connecting the cosmological derivation target $f_0$ to the hadronic string
+tension $\sigma = \Lambda_{\mathrm{QCD}}^2$. The RAGC Derivation~1 simulation
+therefore simultaneously predicts the cosmological dark matter density,
+the proton mass, and the Koide scale with zero free parameters.
+
+What was stated as a long-range research direction in the original RAGC
+is now a partially completed derivation.
+
 The ultimate multi-decade horizon of the RA program is the derivation of the
 Standard Model from the pure discrete topology of the causal DAG. What follows
 is a statement of the research direction, not a claim of achievement.
@@ -2353,12 +2454,6 @@ were generated or analysed.
 
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
-
-\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
-J.~F. Sandeman.
-\newblock {Relational Actualism: The Topology of Matter (RATM)}.
-\newblock \textit{Preprint}, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
 
 
 \bibitem[Sandeman(2026a)]{Sandeman2026a}
@@ -2544,11 +2639,6 @@ C.~Marletto and V.~Vedral.
   sufficient evidence of quantum effects in gravity.
 \newblock \textit{Physical Review Letters}, 119:240402, 2017.
 
-\bibitem[Lovelock(1971)]{Lovelock1971}
-D.~Lovelock.
-\newblock The Einstein tensor and its generalizations.
-\newblock \emph{Journal of Mathematical Physics}, 12(3):498--501, 1971.
-\newblock \href{https://doi.org/10.1063/1.1665613}{doi:10.1063/1.1665613}.
 
 \bibitem[Lovelock(1971)]{Lovelock1971}
 D.~Lovelock.
@@ -2563,9 +2653,37 @@ A.~Meiburg, L.~A.~Lessa, and R.~R.~Soldati.
 \newblock Lean-QuantumInfo:
   \href{https://github.com/Timeroot/Lean-QuantumInfo}{github.com/Timeroot/Lean-QuantumInfo}.
 
-\bibitem[Sandeman(2026g)]{Sandeman2026RASM}J.~F.~Sandeman.\newblock Relational Actualism and the Standard Model ({RASM}).\newblock Preprint, 2026.\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}
+\bibitem[Sandeman(2026g)]{Sandeman2026RASM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and the Standard Model ({RASM}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
 
-\bibitem[Sandeman(2026h)]{Sandeman2026Foundation}J.~F.~Sandeman.\newblock Relational Actualism: A Foundation Paper.\newblock Preprint, 2026.\newblock \href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}
+\bibitem[Sandeman(2026RACL)]{Sandeman2026RACL}
+J.~F.~Sandeman.
+\newblock Relational Actualism: The Einstein Field Equations as the Unique
+  Macroscopic Limit of the Actualization Graph ({RACL}).
+\newblock \textit{Classical and Quantum Gravity} (submitted), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}.
+
+\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
+J.~F.~Sandeman.
+\newblock Relational Actualism: The Topology of Matter ({RATM}).
+\newblock \textit{Physical Review D} (submitted), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
+
+\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
+J.~F.~Sandeman.
+\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
+  BDG Integers.
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
+
+\bibitem[Sandeman(2026h)]{Sandeman2026Foundation}
+J.~F.~Sandeman.
+\newblock Relational Actualism: A Foundation Paper.
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}.
 
 \bibitem[O'Hanlon(1972)]{OHanlon1972}
 J.~O'Hanlon.

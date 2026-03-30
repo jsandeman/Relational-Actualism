@@ -524,6 +524,34 @@ This mechanism has four immediate consequences:
   vacuum prescription: the Casimir energy difference (arising from the actualized
   boundary conditions imposed by the plates) gravitates; the absolute virtual
   zero-point energy does not.
+
+  \item \textbf{Consistency with loop corrections to physical particle masses.}
+  A question naturally arises: if virtual exchanges do not actualize, why do
+  loop corrections (e.g., pion cloud contributions to the proton mass) shift the
+  physical mass of an observable particle? The answer lies in the distinction between
+  two types of virtual process.
+
+  \emph{Kind~1 (vacuum sector):} Spontaneous virtual pair creation and annihilation
+  with no external particles. These occur in the zero-particle sector, where
+  $\mathcal{P}_{\mathrm{act}}|0\rangle = 0$. No actualization ever selects the
+  vacuum as its outcome; its energy contributes nothing to the metric source. This
+  is the origin of RA's vacuum catastrophe resolution.
+
+  \emph{Kind~2 (particle sector):} Off-shell intermediate states in the propagation
+  of a physical external particle. The external particle \emph{does} actualize.
+  When it does, it carries its full quantum eigenvalue---including all loop
+  contributions from Kind~2 virtuals---into the DAG. These corrections modify
+  the energy eigenvalue of the state that actualizes; they are not sources of
+  independent DAG vertices.
+
+  The two kinds are separated cleanly by external particle number. Quantum field
+  theory conflates them in dimensional regularization, where both appear as formally
+  identical loop integrals. RA's physical regulator (the Planck-scale causal
+  diamond) makes the separation manifest: a closed vacuum loop with no external
+  legs has no actualization event to attach to. A self-energy loop attached to a
+  propagating particle's worldline is part of that particle's actualized eigenvalue.
+  There is no structural inconsistency between the vacuum catastrophe resolution
+  and the physical mass spectrum.
 \end{enumerate}
 
 \paragraph{The Unruh vacuum and the stationarity criterion.}
@@ -1270,7 +1298,23 @@ BDG causal topology types in 4D correspond exactly to the SM particle
 spectrum: the sequential/topological causal past partition equals the
 lepton/quark distinction, and colour confinement follows as a theorem
 with finite confinement lengths $L=3$ (gluon) and $L=4$ (quark).
-Ninety-three Lean-verified results now underpin the RA suite.
+
+A further recent result demonstrates the full scope of the programme:
+the strong coupling constant is now proved directly from the BDG path weight
+at the self-dual point~\citep{Sandeman2026BDG}:
+\begin{equation}
+  \alpha_s(m_Z) = \frac{1}{\sqrt{c_2 c_4}} = \frac{1}{\sqrt{72}} = 0.11785
+  \quad (\text{PDG: } 0.11800,\; 0.13\%),
+  \label{eq:alphas_raqm}
+\end{equation}
+using only the four BDG integers and the same Alexandrov causal-diamond
+geometry that underpins the actualization criterion central to this paper.
+Together with the Wyler formula for $\alpha_{\mathrm{EM}}$, both Standard
+Model coupling constants --- and the dark matter/baryon ratio
+$\Omega_{\mathrm{CDM}}/\Omega_b = 5.40$ (Planck~2018: $5.416$) --- follow
+from the integers that encode why spacetime is four-dimensional.
+The same ontological commitment that dissolves the measurement problem
+also constrains the particle physics of the universe.
 
 
 
@@ -1484,6 +1528,19 @@ A.~Meiburg, L.~A.~Lessa, and R.~R.~Soldati.
 \newblock A formalization of the generalized quantum {Stein's} lemma in {Lean}.
 \newblock \textit{arXiv}:2510.08672, 2025.
 \newblock Lean-QuantumInfo library: \url{https://github.com/Timeroot/Lean-QuantumInfo}.
+
+\bibitem[Sandeman(2026RASM)]{Sandeman2026RASM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and the Standard Model ({RASM}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
+
+\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
+J.~F.~Sandeman.
+\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
+  BDG Integers.
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
 
 \end{thebibliography}
 

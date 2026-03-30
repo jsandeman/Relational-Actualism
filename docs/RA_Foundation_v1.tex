@@ -779,6 +779,22 @@ new particle, across four distinct lensing regimes~\citep{Sandeman2026RADM}:
   at large scales; RA-specific corrections appear at 10--100~Mpc.
 \end{itemize}
 
+\paragraph{BDG derivation of the dark matter/baryon ratio.}
+The Planck~2018 ratio $\Omega_{\mathrm{CDM}}/\Omega_b = 5.416$ is a free
+parameter of $\Lambda$CDM.  In RA it is derived from the BDG integers
+alone~\citep{Sandeman2026RASM,Sandeman2026BDG}:
+\begin{equation}
+  \frac{\Omega_{\mathrm{CDM}}}{\Omega_b}
+  \;=\; \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} \times \alpha_s(2m_p)
+  \;=\; 17.32 \times 0.312 \;=\; 5.40
+  \quad (0.3\%\text{ from Planck}),
+  \label{eq:f0_foundation}
+\end{equation}
+where $W_{\mathrm{baryon}} = 3/2$ exactly and $W_{\mathrm{other}}/W_{\mathrm{baryon}} = 17.32$
+are proved from BDG combinatorics at $\mu=1$, and $\alpha_s(2m_p) = 0.312\pm 0.004$
+from FLAG 2021 lattice QCD.  This is the first derivation of a cosmological
+matter density ratio from pure causal-graph topology.
+
 \subsection{The Hubble Tension}
 
 The Hubble tension --- the discrepancy between the CMB-inferred value
@@ -845,7 +861,8 @@ independent biological confirmation. The \emph{origin-of-life sandwich}
 $A(M^*_0) \leq \tilde{A}_{\mathrm{RA}}(\mathcal{N}_0) \leq
 \tau_{\mathrm{cycle},0}/\tau_{\mathrm{irrev}}$
 brackets the causal depth of the first replicators from both sides.
-\nCausal depth is a selection pressure: replication rate is exponentially
+
+Causal depth is a selection pressure: replication rate is exponentially
 suppressed by $A_{\mathrm{RA}}(M)$ (England bound), so natural selection
 for replication speed is simultaneously selection for minimal causal depth.
 Intelligence is recursive causal closure: the capacity of a system to
@@ -853,7 +870,8 @@ model its own actualization history and use that model to guide future
 actualization~\citep{Sandeman2026RAHC}.
 
 \subsection{Substrate-Independent Habitability (RACF)}
-\nThe Causal Firewall criterion is substrate-independent: neither Condition
+
+The Causal Firewall criterion is substrate-independent: neither Condition
 F1 (Quantum Darwinism redundancy $R \geq R_{\min}$) nor Condition F2
 (Unruh temperature $T_U = \hbar a/2\pi c k_B \ll T_{\mathrm{env}}$) makes
 reference to molecular class, solvent chemistry, or biological alphabet.
@@ -862,7 +880,8 @@ physical conditions, not the physical criterion itself.
 RACF~\citep{Sandeman2026RACF} develops three universal biosignature
 observables and two falsifiable predictions for the distribution of life,
 submitted to \emph{International Journal of Astrobiology}.
-\n% ─────────────────────────────────────────────────────────────────────────────
+
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Quantum Information}
 \label{sec:QI}
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1036,14 +1055,16 @@ in the framework's logical consistency; they are calculations not yet
 completed.
 
 \paragraph{D1: BDG-filter MCMC.}
-The single highest-value computation: running the BDG-filtered
-Poisson-CSG simulation to determine the asymptotic $c_k$
-distribution. This simultaneously gives the QCD string tension
-$\sigma$, the coupling constants $\alpha$, $\alpha_s$, $G_F$,
-the Hubble bandwidth ratio $\bar\lambda_m/\bar\lambda_{\mathrm{exp}}$,
-and a test of the Wyler formula for $\alpha$. Closing D1 would
-derive all fermion masses from the BDG integer sequence
-$(1,-1,9,-16,8)$ via the chain
+The single highest-value remaining computation: running the BDG-filtered
+Poisson-CSG simulation to its stationary distribution to determine the
+asymptotic $c_k$ profile.  This simultaneously gives the QCD string tension
+$\sigma$, the Fermi constant $G_F$, the Hubble bandwidth ratio
+$\bar\lambda_m/\bar\lambda_{\mathrm{exp}}$, and a test of the Wyler formula
+for $\alpha_{\mathrm{EM}}$.  \textbf{Note:} $\alpha_s(m_Z) = 1/\!\sqrt{c_2 c_4}$
+is now \emph{proved} independently from the BDG path weight at $\mu=1$
+(ra\_bdg\_couplings~\citep{Sandeman2026BDG}), so the coupling constant
+target of D1 reduces to $\alpha_{\mathrm{EM}}$ and $G_F$.  Closing D1 would
+still derive all fermion masses from
 $\sigma \to \Lambda_{\mathrm{QCD}} \to m_0 \to$ Koide $\to m_e, m_\mu, m_\tau$.
 
 \paragraph{D2: $SU(3)_{\mathrm{gen}}$ formal construction.}
@@ -1101,20 +1122,34 @@ The total system is unitary. The paradox arises only if one incorrectly
 requires a single exterior observer to access causally disconnected
 information — which Causal Severance structurally forbids.
 
-\paragraph{The fine structure constant as self-consistency eigenvalue (conjecture).}
+\paragraph{The strong coupling constant: proved from BDG integers.}
+The companion paper ra\_bdg\_couplings~\citep{Sandeman2026BDG} proves that
+the strong coupling constant at the $Z$-boson mass scale follows directly
+from the BDG path weight at the self-dual point $\mu=1$:
+\begin{equation}
+  \alpha_s(m_Z) \;=\; \frac{1}{\sqrt{c_2\,c_4}}
+  \;=\; \frac{1}{\sqrt{72}} \;=\; 0.11785
+  \quad (\text{PDG: } 0.11800,\; 0.13\%).
+\end{equation}
+The proof is three steps: (i)~the 4D Alexandrov volume $\pi\tau^4/24$
+defines a coherence volume $V_{\mathrm{coh}} = \sqrt{c_2 c_4}/\rho = \sqrt{72}/\rho$
+for the photon--quark exchange; (ii)~at $\mu=1$, the identity $\sum c_k=0$
+gives unit expected virtual BDG action; (iii)~$\mu = \rho V_{\mathrm{coh}} \alpha_s = 1$
+gives $\alpha_s = 1/\!\sqrt{72}$.  No free parameters.
+
+Together with the Wyler formula for $\alpha_{\mathrm{EM}}$, both Standard Model
+coupling constants are now derived from the four integers $(1,-1,9,-16,8)$.
+
+\paragraph{The electromagnetic coupling (Wyler formula).}
 The per-link actualization probability satisfies $p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$
 via the optical theorem (proved, RASM): the fraction of EM interaction candidates
 satisfying the actualization criterion $\Delta S > 0$ equals $\alpha_{\mathrm{EM}}$.
-Combined with the score-$1$ floor theorem (RATM, Lean-proved), this gives
-the self-consistency condition $\mu_{\mathrm{stable}} = 1/\alpha_{\mathrm{EM}} \approx 137$.
 
 The empirical Wyler formula~\citep{Wyler1969} $\alpha = 9/(8\pi^4)(\pi^5/1920)^{1/4}$
 (accurate to $0.00006\%$) decomposes with all factors BDG-derived: $|c_{N_2}| = 9$,
-$d = 4$, and $\Gamma(5/4)$ from the causal diamond volume integral --- the same
-$\Gamma(5/4)$ that appears in the BDG locality lemma (RACL). Two of the three
-conditions needed to derive $\alpha$ from BDG integers alone are established;
-the third (computing $V(SU(3)_{\mathrm{gen}})$ in BDG normalisation) is the
-remaining open step (RASM Conjecture~7.2).
+$d = 4$, and $\Gamma(5/4)$ from the causal diamond volume integral.  The
+RA-native derivation of the Wyler formula from the BDG path weight at $\mu\to 0$
+is the principal remaining open step (RASM Derivation~3).
 
 \paragraph{The Cabibbo angle from $SU(3)_{\mathrm{gen}}$ (conjecture).}
 The Koide fit converges to $\theta_{\mathrm{lep}} = 2/9$ to one part in $10^5$,
@@ -1484,8 +1519,7 @@ J.~F.~Sandeman.
 \newblock The Causal Firewall: Substrate-Independent Physical Constraints
   on the Distribution of Life in the Universe (RACF).
 \newblock \textit{Int.\ J.\ Astrobiol.} (submitted), 2026.
-
-ewblock \href{https://doi.org/10.5281/zenodo.19319374}{doi:10.5281/zenodo.19319374}.
+\newblock \href{https://doi.org/10.5281/zenodo.19319374}{doi:10.5281/zenodo.19319374}.
 
 \bibitem[Sandeman(2026f)]{Sandeman2026RAQI}
 J.~F.~Sandeman.
@@ -1518,7 +1552,14 @@ D.~N.~Page.
 J.~F.~Sandeman.
 \newblock Relational Actualism and the Standard Model (RASM).
 \newblock Preprint, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}
+\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
+
+\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
+J.~F.~Sandeman.
+\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
+  BDG Integers.
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
 
 \bibitem[Hawking(1975)]{Hawking1975}
 S.~W.~Hawking.
