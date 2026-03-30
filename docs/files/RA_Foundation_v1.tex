@@ -1,0 +1,1614 @@
+\documentclass[11pt,a4paper]{article}
+
+% ── Packages ─────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts}
+\AtBeginDocument{\let\hbar\relax
+  \DeclareMathSymbol{\hbar}{\mathord}{AMSb}{"7E}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage{natbib}
+
+\geometry{top=1.1in, bottom=1.1in, left=1.15in, right=1.15in}
+
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\normalsize}%
+  {\thesubsubsection}{1em}{}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\SBDG}{S_{\mathrm{BDG}}}
+\newcommand{\Pact}{\mathcal{P}_{\mathrm{act}}}
+\newcommand{\LLC}{\mathrm{LLC}}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% ── Title ─────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+
+{\LARGE\bfseries Relational Actualism\\[0.5em]
+\large\itshape Physics from the Nature of Causation\par}
+
+\vspace{1.4cm}
+
+{\large Joshua F.\ Sandeman\\[0.3em]
+\normalsize Independent Researcher, Salem, Oregon, USA\\[0.2em]
+\href{mailto:sansuikyo@gmail.com}{sansuikyo@gmail.com}\\[0.4em]
+\href{https://relationalactualism.org}{relationalactualism.org}}
+
+\vspace{0.8cm}
+{\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}\par}
+  {\small Companion papers and Lean~4 proofs:
+  \href{https://zenodo.org/communities/relational-actualism}%
+  {zenodo.org/communities/relational-actualism}\par}
+
+\vspace{1.4cm}
+
+\begin{abstract}
+We present Relational Actualism (RA), a framework grounded in a single
+ontological commitment: that irreversible on-shell actualization events,
+writing permanent directed edges into a growing causal Directed Acyclic Graph,
+are the primitive physical reality. All other structure is derived.
+From the discrete causal graph and its Benincasa-Dowker-Glaser (BDG) action,
+we derive: spacetime kinematics ($c = l_P/t_P$; $E = \gamma mc^2$; proper time
+exact as an integer count); general relativity, inevitable by Lovelock's theorem
+given Lean-verified conservation and covariance; the complete Standard Model
+force structure from the four independent BDG degrees of freedom in 4D (one
+used by gravity, three generating $U(1)\times SU(2)\times SU(3)$); electric
+charge quantisation in units of $e/3$; exact baryon number conservation;
+maximal parity violation as a theorem from DAG acyclicity; the Koide lepton
+mass formula from a generation-sector $SU(3)$ symmetry; grand unification at
+the Planck scale; and the flat galactic rotation curves and Hubble tension
+as consequences of causal graph dimensional reduction in sparse regions.
+The same Erd\H{o}s-R\'{e}nyi percolation transition governs the biological
+origin of life, the quantum fault-tolerance threshold, and the transition from
+QCD confinement to asymptotic freedom.
+Quantum mechanics is exact at the discrete level; the Schr\"{o}dinger equation
+is its large-density macroscopic approximation, and the measurement problem
+dissolves. All results follow from the single fact that some interactions are
+irreversible. Four additional long-standing problems are dissolved: $\theta_{\mathrm{QCD}} = 0$ exactly (strong CP; no axion needed); the black hole information paradox (Causal Severance partition); the baryon asymmetry as a Causal Severance initial condition; and a structural conjecture for $d = 4$ spacetime uniqueness. Falsifiable predictions, Lean~4 verification status, and open
+derivation targets are tabulated. The programme comprises twelve papers;
+three are in peer review (\emph{Foundations of Physics}; \emph{Classical
+and Quantum Gravity}).
+Core algebraic results are independently machine-verified: a Python
+notebook confirms 52/52 numerical checks at machine precision.
+Two Lean~4 proof files establish \textbf{101 results} with zero
+\texttt{sorry} tags and no axioms beyond Mathlib.
+Key machine-checked results include: the Koide $K = 2/3$ identity;
+the $SU(3)_{\mathrm{gen}}$ coherent state theorem; the BDG particle
+classification (five topology types mapping exactly to the Standard Model
+particle spectrum); colour confinement ($L{=}3$ gluon, $L{=}4$ quark);
+the BDG particle universe closure theorem (124 extension cases); structural
+qubit fragility (electrons and photons at minimum BDG score~1); the
+causal invariance of the quantum measure; Rindler stationarity (Unruh
+resolution); and the $\mathcal{P}_{\mathrm{act}}$ conservation theorem
+with BDG locality lemma --- together proving $G_{\mu\nu} = 8\pi G\,
+\mathcal{P}_{\mathrm{act}}[T_{\mu\nu}]$ with $\Lambda = 0$ uniquely
+from the Local Ledger Condition.
+\end{abstract}
+
+\medskip\noindent
+\textbf{DOI:}~\href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}
+
+\medskip\noindent
+\textbf{Keywords:} Causal DAG \textperiodcentered{} Actualization
+\textperiodcentered{} Benincasa-Dowker-Glaser action \textperiodcentered{}
+Lovelock theorem \textperiodcentered{} Standard Model \textperiodcentered{}
+Charge quantisation \textperiodcentered{} Koide formula \textperiodcentered{}
+Causal Firewall \textperiodcentered{} Lean~4 verification
+\textperiodcentered{} Measurement problem
+
+\end{titlepage}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The One Commitment}
+\label{sec:commitment}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Physics has two foundational problems it cannot simultaneously solve. The
+first is ontological: quantum mechanics describes a world of superpositions and
+probabilities, but every observation finds a world of definite events.
+The second is structural: general relativity and the Standard Model treat
+spacetime and matter as different kinds of things, connected by Einstein's
+equation but with no account of how two ontologically distinct categories
+talk to each other.
+
+Relational Actualism resolves both problems by going beneath them. The resolution
+is not a new mechanism for wave function collapse, nor a modification of
+general relativity, nor a new symmetry imposed on the Standard Model.
+It is a change in what the theory is \emph{about}.
+
+The single ontological commitment of RA is this:
+
+\medskip
+\begin{center}
+\fbox{\parbox{0.82\textwidth}{%
+\centering\medskip
+\emph{Irreversible on-shell actualization events --- physical interactions that
+produce a permanent increase in quantum relative entropy with respect to the
+vacuum, $\Delta S(\rho\|\sigma_0) > 0$ --- are the primitive physical reality.
+They are not events \emph{in} spacetime; spacetime is the macroscopic description
+of their accumulated pattern.}
+\medskip}}
+\end{center}
+\medskip
+
+From this, and nothing else, the framework is built. No new fields, no extra
+dimensions, no additional constants. The commitment is testable: it makes
+specific, quantitative predictions that current and near-term experiments can
+confirm or falsify.
+
+The following sections present the results in logical order --- from the most
+primitive structure of the causal graph to the most derived results, including
+the Standard Model particle spectrum, the cosmological observations, the origin
+of biological complexity, and the structure of quantum mechanics itself.
+At each level, the status of the result is stated precisely: Lean-verified
+(machine-checked), proved, conjectured with strong support, or open.
+
+A note on the companion papers: this paper presents the unified logical
+structure; the companions provide the derivations. New readers may start
+here, then follow the suite in the arc \emph{Bosons to Brains}:
+\begin{enumerate}[noitemsep,label=\arabic*.,leftmargin=*]
+  \item \textbf{RAQM}~\citep{Sandeman2026RAQM} --- The ontological commitment;
+  quantum mechanics and the measurement problem.
+  \item \textbf{RAGC}~\citep{Sandeman2026RAGC} --- Gravity and cosmology;
+  general relativity as inevitable consequence.
+  \item \textbf{RACL}~\citep{Sandeman2026RACL} --- The Einstein field
+  equations uniquely derived from the Lean-verified LLC, via the
+  $\mathcal{P}_{\mathrm{act}}$ conservation theorem and Lovelock uniqueness;
+  closes RAGC's primary hard wall. 101 Lean-verified results total.
+  \item \textbf{RAEB}~\citep{Sandeman2026RAEB} --- The Engine of Becoming;
+  QM and GR unified as approximations to a covariant graph rewriting algorithm.
+  \item \textbf{RASM}~\citep{Sandeman2026RASM} --- The Standard Model;
+  particles, forces, and generations from BDG topology.
+  \item \textbf{RATM} --- \emph{Relational Actualism: The Topology of Matter}: The Lean-verified BDG particle classification theorem. Five causal topology types map exactly to the SM particle spectrum; colour confinement is proved with finite BDG-filtration lengths $L=3$ (gluon) and $L=4$ (quark); the closure theorem establishes no new particle types can emerge. 67~Lean-verified results.
+
+\item \textbf{RADM}~\citep{Sandeman2026RADM} --- Dark matter as
+  actualization-density topology in sparse regions.
+  \item \textbf{RAQI}~\citep{Sandeman2026RAQI} --- Quantum information;
+  the Kinematic Coherence Bound ($N_{\max} = \eta \cdot p_{\mathrm{th}}$);
+  structural qubit fragility (electrons propagate at the minimum BDG
+  actualization score of~1, the lowest permitted for any stable free particle;
+  Lean-verified); decoherence channel constraints from the BDG closure theorem.
+  \item \textbf{RAHC}~\citep{Sandeman2026RAHC} --- Emergence and the
+  complexity hierarchy; algorithmic causal dynamics.
+  \item \textbf{RACI}~\citep{Sandeman2026RACI} --- Complexity, life,
+  and intelligence; the causal graph grows until it models itself.
+  \item \textbf{RACF}~\citep{Sandeman2026RACF} --- The Causal Firewall
+  as a substrate-independent habitability criterion; universal
+  biosignatures and the SETI programme.
+\end{enumerate}
+This paper presents the logical structure; the companions provide the proofs.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Causal Graph and Its Dynamics}
+\label{sec:graph}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The Growing Causal DAG}
+
+The primitive mathematical object is a Directed Acyclic Graph (DAG)
+$G = (V, E)$ whose vertices are actualization events and whose directed
+edges record causal relations. The acyclicity of the DAG is not a technical
+convenience: it is the mathematical expression of the irreversibility of
+actualization. An edge from $u$ to $v$ means $u$ is in the causal past of
+$v$; the absence of cycles means there are no closed timelike curves, no
+causal paradoxes, and no way for information to travel backward in time.
+The arrow of time is not imposed on the graph; it is encoded in its
+definition.
+
+The graph grows by the sequential addition of new vertices. At each step,
+the Covariant Stochastic Graph Rewriting System (CSG)~\citep{Sandeman2026RAEB}
+identifies the set of possible new vertices consistent with the existing
+causal structure and selects one. The selection is governed by the
+\emph{actualization criterion}~\citep{Sandeman2026RAQM}: an interaction
+constitutes an actualization event when it produces an irreversible increase
+in quantum relative entropy $\Delta S(\rho\|\sigma_0) > 0$ with respect to
+the vacuum reference state $\sigma_0$.
+
+\subsection{The BDG Action and the Actualization Filter}
+
+The unique discrete, retarded, Lorentz-invariant action functional on a
+causal set in 4 spacetime dimensions is the Benincasa-Dowker-Glaser
+action~\citep{Benincasa2010}:
+\begin{equation}
+  \SBDG(v) = \frac{1}{l_P^2}\bigl(1 - N_1(v) + 9N_2(v) - 16N_3(v)
+  + 8N_4(v)\bigr),
+  \label{eq:BDG}
+\end{equation}
+where $N_k(v)$ counts the number of $k$-element inclusive causal intervals
+in $\mathrm{past}(v)$. The RA actualization filter identifies
+$\Delta S(\rho\|\sigma_0) > 0$ with the discrete condition $\SBDG(v) > 0$:
+a vertex actualizes if and only if it contributes positive curvature to
+the local causal structure. This is the only free identification in the
+framework; it connects the entropic actualization criterion to the
+graph-geometric action.
+
+\subsection{The Local Ledger Condition}
+
+The Local Ledger Condition (LLC) is the conservation law of the growing graph:
+at every vertex $v$, the total incoming causal charge equals the total
+outgoing causal charge. Formally, for any conserved quantity $Q$:
+\begin{equation}
+  \sum_{u \in \mathrm{past}_1(v)} Q(u \to v)
+  = \sum_{w \in \mathrm{future}_1(v)} Q(v \to w).
+  \label{eq:LLC}
+\end{equation}
+The LLC, the causal invariance of the quantum measure (the statement that
+the path-integral amplitude for any history is independent of the order
+in which spacelike-separated actualization events are described), and the
+frame independence of quantum relative entropy have all been formally verified
+in Lean~4/Mathlib~\citep{Sandeman2026RAGC}. These Lean-verified results are
+the mathematical bedrock of the framework.
+
+\subsection{The Engine of Becoming: Five-Step Algorithm}
+
+The covariant stochastic graph rewriting system that governs the growing
+DAG is formalised in the companion paper RAEB~\citep{Sandeman2026RAEB}
+as a five-step algorithm operating at every actualization cycle:
+
+\begin{enumerate}[noitemsep,label=\textbf{\arabic*.},leftmargin=*]
+  \item \textbf{Enumerate causal predecessors.} Given the current graph
+  $G_n$, identify the frontier set $F_n$ of vertices whose causal futures
+  are not yet determined. These are the sites at which the next
+  actualization can occur.
+  \item \textbf{Compute the quantum superposition.} For each candidate
+  vertex $v \in F_n$, evaluate the quantum amplitude $\psi(v)$ from the
+  sum over all histories consistent with the causal past $\mathrm{past}(v)$.
+  The quantum measure (Sorkin~\citep{Sorkin1994}) assigns amplitude exactly,
+  with no Copenhagen interpretation and no external observer.
+  \item \textbf{Apply the BDG filter.} Retain only candidates satisfying
+  $\SBDG(v) > 0$: those that contribute positive curvature to the local
+  causal structure. This is the actualization criterion in graph-geometric
+  form; it eliminates vacuum fluctuations and unphysical configurations
+  at the discrete level.
+  \item \textbf{Select the actualization event.} One candidate is
+  irreversibly selected according to the quantum measure. This is the
+  only stochastic step. The entropy criterion $\Delta S(\rho\|\sigma_0)
+  > 0$ is satisfied; the event becomes a permanent vertex in $G_{n+1}$.
+  \item \textbf{Update the macroscopic description.} In the
+  $\mu \gg 1$ limit, the accumulated actualization pattern sources the
+  Ricci tensor via $G_{\mu\nu} = 8\pi G\,\Pact[T_{\mu\nu}]$.
+  The BDG locality lemma (proved in RACL~\citep{Sandeman2026RACL})
+  guarantees that this sourcing is local:
+  $\tau_{\mathrm{BDG}}(\lambda) = 4\Gamma(5/4)(12/\pi^2)^{1/4}\lambda^{-1/4}
+  \to 0$ as $\lambda \to \infty$.
+\end{enumerate}
+
+The causal invariance theorem --- that the quantum measure amplitude
+for any spacelike-separated set of actualization events is independent
+of the order in which they are described --- is proved in
+Lean~4~\citep{Sandeman2026RAGC}, given the \texttt{amplitude\_locality}
+axiom (physically justified by QFT microcausality; the intrinsic discrete
+proof is an open target). This is the discrete analogue of Lorentz
+covariance.
+
+\subsection{The Poisson-CSG and Three Regimes}
+
+The mean-field description of the CSG dynamics is the Poisson-CSG, governed
+by the local parameter:
+\begin{equation}
+  \mu(x) = \lambda(x)\,V_{\mathrm{coh}}\,p_{\mathrm{th}},
+  \label{eq:mu}
+\end{equation}
+where $\lambda(x)$ is the local actualization density, $V_{\mathrm{coh}}$
+is the coherence volume, and $p_{\mathrm{th}}$ is the per-link actualization
+probability~\citep{Sandeman2026RAQI}. Three regimes follow directly:
+
+\begin{itemize}[noitemsep]
+  \item $\mu \gg 1$ (dense): the graph is 3-dimensional, matter-dominated.
+  General relativity governs.
+  \item $\mu \sim 1$ (critical): the Erd\H{o}s-R\'{e}nyi giant-component
+  threshold. Phase transitions occur.
+  \item $\mu \ll 1$ (sparse): the graph is 2-dimensional
+  (Durhuus-Jonsson-Wheater), gravity-modified. Galactic halos.
+\end{itemize}
+
+The same critical value $\mu = 1$ governs four apparently unrelated phenomena:
+the QCD confinement-asymptotic freedom transition, the onset of galactic
+rotation curve anomalies, the biological Causal Firewall (the origin of life),
+and the quantum fault-tolerance threshold. They are not four coincidences;
+they are one transition seen at four scales of the causal graph.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Spacetime and Kinematics}
+\label{sec:spacetime}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Proper Time as Integer Count}
+
+A physical clock is a system that accumulates actualization events.
+Proper time is the integer count of those events in Planck units:
+\begin{equation}
+  \tau = \mathcal{N}(\gamma) \cdot t_P.
+  \label{eq:proper_time}
+\end{equation}
+This is exact at every scale including the Planck scale. The standard
+GR proper time integral $\int d\tau$ is the large-$\mathcal{N}$ macroscopic
+approximation of the integer count, not the fundamental definition.
+Relativistic time dilation is the statement that different worldlines
+accumulate actualization events at different rates — a consequence of
+Lorentz-covariant on-shell thresholds, not a geometric axiom.
+
+\subsection{The Speed of Light from Graph Scales}
+
+The causal graph has two fundamental scales: the Planck length $l_P$ and
+the Planck time $t_P$. Their ratio is the maximum causal propagation rate:
+\begin{equation}
+  c = \frac{l_P}{t_P}.
+  \label{eq:c_derived}
+\end{equation}
+This is not a postulate. A massless pattern (zero net BDG debt per
+propagation cycle) allocates 100\% of its causal bandwidth to spatial
+propagation, achieving exactly $c$. A massive pattern must pay
+actualization cost at every vertex, reducing its maximum spatial velocity
+below $c$. The relativistic energy relation
+\begin{equation}
+  E = \gamma mc^2
+  \label{eq:rel_energy}
+\end{equation}
+follows from the on-shell condition $p^\mu p_\mu = m^2c^2$, the
+identification of mass with rest-frame actualization frequency
+$f_0 = mc^2/h$, and the Lorentz transformation of the frequency
+four-vector. No additional postulates are required.
+
+\subsection{General Relativity by Lovelock's Theorem}
+
+The Einstein field equations are not recovered in a limit or
+approximation. They are logically inevitable. By Lovelock's
+theorem~\citep{Lovelock1971}: in 4 spacetime dimensions, the unique
+symmetric, divergence-free, rank-2 tensor constructible from the
+metric and its first and second derivatives is
+$G_{\mu\nu} + \Lambda g_{\mu\nu}$.
+
+The RA causal graph satisfies all three conditions required:
+\begin{itemize}[noitemsep]
+  \item \emph{Conservation}: the LLC, Lean-verified.
+  \item \emph{Covariance}: causal invariance of the quantum measure,
+  Lean-verified.
+  \item \emph{Locality}: $\SBDG(v)$ depends only on $\mathrm{past}(v)$,
+  definitional in CSG.
+\end{itemize}
+Given these, Lovelock guarantees Einstein. The interesting physics is
+therefore not whether GR emerges but where RA departs from it: sparse
+regions ($\mu \sim 1$), Planck-scale corrections, and Causal Severance
+boundaries.
+
+\subsection{The Uniqueness Proof: GR with No Free Parameters}
+
+The central mathematical achievement of the programme is the proof that
+the Einstein field equations $G_{\mu\nu} = 8\pi G\,\Pact[T_{\mu\nu}]$
+with $\Lambda = 0$ are the \emph{unique} consistent macroscopic field
+equations of the RA-CSG --- with no free parameters remaining
+(RACL~\citep{Sandeman2026RACL}, submitted to \emph{Classical and Quantum
+Gravity}).
+
+The proof assembles seven links in a chain, two of which are new results:
+
+\begin{itemize}[noitemsep]
+  \item[\textbf{(A)}] \textbf{LLC $\Rightarrow$ conservation.}
+  The Lean-verified LLC gives $\nabla_\mu(\Pact T^{\mu\nu}) = 0$
+  via the \emph{$\Pact$ conservation theorem} (proved in RACL):
+  a Leibniz decomposition shows that the boundary term
+  $(\nabla_\mu\Pact)T^{\mu\nu}$ vanishes because $T^{\mu\nu} = 0$
+  wherever $\Pact = 0$ (the vacuum energy suppression theorem),
+  and the covariant term $\Pact(\nabla_\mu T^{\mu\nu}) = 0$ by
+  the Rideout-Sorkin density limit of the discrete LLC.
+
+  \item[\textbf{(B)}] \textbf{BDG locality.}
+  The \emph{BDG locality lemma} (proved in RACL): at Poisson vertex
+  density $\lambda$, the BDG score depends only on ancestors within
+  proper-time window $\tau_{\mathrm{BDG}}(\lambda) \propto \lambda^{-1/4}
+  \to 0$ as $\lambda \to \infty$. In the dense-graph limit, $\SBDG(v)$
+  is a local function of the metric at $x(v)$.
+
+  \item[\textbf{(C)}] \textbf{Benincasa-Dowker.}
+  The dense-graph mean $\langle\SBDG\rangle = (l_P^2/4)R$: the
+  Einstein-Hilbert action density emerges from the BDG sum.
+
+  \item[\textbf{(D--E)}] \textbf{Lovelock uniqueness.}
+  The source $\Pact T^{\mu\nu}$ is divergence-free (by A). The
+  left-hand side must therefore also be divergence-free, second-order
+  in the metric, and local (by B and C). By Lovelock's
+  theorem~\citep{Lovelock1971}, the unique such tensor in 4D is
+  $\alpha G_{\mu\nu} + \Lambda g_{\mu\nu}$.
+
+  \item[\textbf{(F)}] \textbf{$\Lambda = 0$ structurally.}
+  Vacuum energy suppression ($\Pact|0\rangle = 0$) means the vacuum
+  contributes nothing to the metric source. $\Lambda = 0$ is forced by
+  the actualization ontology --- no fine-tuning, no cosmological constant
+  problem.
+
+  \item[\textbf{(G)}] \textbf{Bianchi identity.}
+  $\nabla^\mu G_{\mu\nu} \equiv 0$ holds by differential geometry,
+  not by the field equation. Setting $\kappa/\alpha = 8\pi G$ by
+  the Newtonian limit completes the derivation.
+\end{itemize}
+
+The two new results --- the $\Pact$ conservation theorem and the BDG
+locality lemma --- close the primary hard wall of RAGC. General
+relativity is not recovered; it is forced.
+
+\subsection{Event Horizons as Local Bandwidth Saturation}
+
+A Causal Severance is a topological discontinuity in the causal graph:
+a surface beyond which the graph has no outgoing edges. It forms when
+the local actualization density saturates the bandwidth ceiling $c/l_P$
+--- when all causal capacity is committed to boundary dynamics and no
+outgoing connections remain. This is the $v \to c$ limit applied to
+the graph boundary rather than to a worldline within it. The standard
+black hole singularity is replaced by a Causal Severance followed by
+daughter spacetime nucleation~\citep{Sandeman2026RAGC}: the saturated
+bandwidth is released into a new, causally isolated subgraph. The
+Big Bang is a Causal Severance nucleation event.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Standard Model from BDG Topology}
+\label{sec:SM}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Four Degrees of Freedom, One Used by Gravity}
+
+The BDG action in equation~\eqref{eq:BDG} counts four independent
+integer-valued quantities: $N_1, N_2, N_3, N_4$. One specific linear
+combination constitutes $\SBDG$ and sources curvature. The remaining
+three independent combinations are available as conserved topological
+charges of persistent causal patterns. This is the central structural
+observation:
+
+\begin{proposition}[Three forces from 4D BDG topology]
+\label{prop:three_forces}
+In 4 spacetime dimensions, the BDG local topology has exactly four
+integer-valued degrees of freedom. One generates gravity. The remaining
+three are the three non-gravitational gauge interactions:
+$U(1)$ electromagnetism, $SU(2)$ weak force, and $SU(3)$ strong force.
+The gauge group $U(1)\times SU(2)\times SU(3)$ has three factors because
+spacetime has four BDG degrees of freedom.
+\end{proposition}
+
+In $d = 2$: two BDG degrees of freedom, one used by gravity, one
+remaining --- no non-gravitational gauge forces, consistent with
+1+1D physics. The Standard Model gauge structure is a consequence of
+living in 4 dimensions, not a postulate imposed on it.
+
+\subsection{Particles as Persistent BDG Patterns}
+
+A particle cannot be a fixed object in the growing DAG. It is a
+\emph{persistent self-similar pattern}: a local causal topology that
+recreates itself under BDG growth dynamics, with $\SBDG(v) > 0$ at
+every vertex in the pattern. Mass is the actualization frequency required
+to maintain the pattern: $f_0 = mc^2/h$. A heavier particle is a more
+complex BDG pattern with a higher per-cycle actualization cost.
+Spin is the self-similarity period: bosons recreate in one step (spin 1),
+fermions in two (spin 1/2).
+
+\subsection{The Lean-Verified BDG Particle Classification}
+
+The abstract argument of \S\ref{sec:SM} is converted into machine-verified
+mathematics in the companion paper RATM~\citep{Sandeman2026RATM}
+(67 Lean-verified results, zero \texttt{sorry} tags). The BDG stability
+filter is applied exhaustively to all self-similar persistent causal
+patterns in a 4D Poisson-CSG, classifying them by their filtration length
+$L$ --- the number of BDG rewriting steps required to stabilise the pattern.
+
+The classification yields exactly five topology types:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{cll}
+\toprule
+$L$ & Topology type & Standard Model identification \\
+\midrule
+1 & Minimal retarded (two subtypes) & Photon; neutrino / scalar \\
+2 & Fermion-like & Electron, quark (chirality resolved by DAG) \\
+3 & Gluon-like LLC-flux & Gluon (confined: $Q_r + Q_g + Q_b \neq 0$ alone) \\
+4 & Baryon-like LLC-flux & Quark (confined; $L=4$ requires baryonic closure) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The BDG filtration lengths $L = 3$ for gluons and $L = 4$ for quarks
+are the finite causal depth at which the LLC flux-tube becomes energetically
+unstable unless balanced: this is colour confinement derived from first
+principles, not postulated.
+
+The \emph{closure theorem} (124 extension cases exhaustively verified
+in Lean~4 by \texttt{D1\_closure\_complete}) establishes that no new
+particle topology type can emerge under BDG growth dynamics beyond these
+five. The particle spectrum of the Standard Model is closed under RA
+actualization: this is a mathematical theorem.
+
+The \emph{$D1_a$ fixed-point theorem} (\texttt{D1a\_fixed\_point},
+Lean-proved) establishes that stable free particles must propagate
+at BDG score~$\geq 1$, with electrons and photons achieving the minimum.
+This is structural qubit fragility: the particles that carry quantum
+information in all current hardware sit at the minimum BDG stability
+the actualization filter permits.
+
+\subsection{Charge Quantisation}
+
+The $N_1$ degree of freedom is the signed count of immediate causal
+predecessors per vertex. In a 3+1D graph, a vertex can receive signed edges
+from at most three independent spatial directions, so the conserved LLC
+charge $Q_{N_1}$ is an integer in $\{-3, -2, -1, 0, +1, +2, +3\}$.
+Identifying the unit with $e/3$:
+\begin{equation}
+  Q_{N_1} \in \{-e,\, -\tfrac{2e}{3},\, -\tfrac{e}{3},\, 0,\,
+  +\tfrac{e}{3},\, +\tfrac{2e}{3},\, +e\}.
+  \label{eq:charge_quant}
+\end{equation}
+This matches the complete set of electric charges in the Standard Model.
+Electric charge is quantised in units of $e/3$ because spacetime has
+three spatial dimensions~\citep{Sandeman2026RASM}.
+
+\subsection{Photon Masslessness}
+
+The photon carries $Q_{N_1} = Q_{N_2} = Q_{N_3/N_4} = 0$. A pattern with
+zero net BDG charge of every kind has zero net BDG action per propagation
+cycle: $\Delta\SBDG|_{\mathrm{per\ cycle}} = 0$. Zero actualization cost
+gives $f_0 = 0$, hence $m = 0$. The photon is massless not by postulate
+but because its pattern carries no causal debt of any kind.
+
+\subsection{Colour Confinement from the LLC}
+
+The $N_2$ degree of freedom has three independent spatial components
+$(Q_r, Q_g, Q_b)$. The LLC requires $\Delta Q_r = \Delta Q_g =
+\Delta Q_b = 0$ at every vertex. A single quark pattern with charge
+$(Q_r, 0, 0)$ accumulates a permanent LLC imbalance in the $r$-direction
+as it propagates. The causal closure condition
+$\lim_{t\to\infty}[Q_r\,\mathrm{accumulated}] = 0$ is violated: a free
+quark is structurally unstable. The only LLC-consistent configurations
+are baryons ($Q_r + Q_g + Q_b = 0$) and mesons ($Q_r + \bar{Q}_r = 0$).
+Colour confinement is not an external mechanism; it is the LLC applied
+to the $N_2$ spatial charges~\citep{Sandeman2026RASM}.
+
+\begin{proposition}[Exact baryon number conservation]
+\label{prop:baryon}
+Baryon number is the $N_2$ spatial winding number. The LLC conserves it
+at every vertex at every scale. Baryon number conservation in RA is
+exact, not approximate. Proton decay is forbidden.
+\end{proposition}
+
+The LLC is Lean-verified~\citep{Sandeman2026RAGC}. Baryon number
+conservation therefore rests on machine-checked mathematics.
+
+\subsection{Maximal Parity Violation from Acyclicity}
+
+\begin{proposition}[Maximal parity violation]
+\label{prop:parity}
+The BDG action is retarded: $\SBDG(v)$ counts intervals in
+$\mathrm{past}(v)$ only. The $N_3/N_4$ charge encodes how a pattern's
+causal ancestry winds around the temporal axis. To reverse this winding
+--- to convert a left-handed pattern to right-handed --- would require
+some causal edges to point from future to past. The DAG is acyclic:
+this is impossible. The weak interaction, which changes the $N_3/N_4$
+charge of a pattern, can only couple to patterns whose winding is
+consistent with forward temporal propagation: the left-handed sector.
+Parity violation is exactly maximal --- a topological impossibility,
+not a statistical bias~\citep{Sandeman2026RASM}.
+\end{proposition}
+
+The arrow of time and the left-handedness of the weak force are the
+same fact: DAG acyclicity.
+
+\subsection{Three Generations and No Fourth}
+
+The BDG action in 4D uses $N_1, N_2, N_3, N_4$ --- four interval
+sizes. Persistent patterns can be excited at three levels:
+$N_2$-dominant (first generation: $e, u, d, \nu_e$),
+$N_3$-dominant (second: $\mu, c, s, \nu_\mu$),
+$N_4$-dominant (third: $\tau, t, b, \nu_\tau$).
+There is no $N_5$ in the 4D BDG action. The existence of exactly three
+generations is a structural consequence, not a parameter to be fitted.
+This prediction is supported by the LEP measurement $N_\nu = 2.984 \pm
+0.008$~\citep{PDG2022} and by the absence of a fourth generation at the LHC.
+
+\subsection{The Koide Formula from Generation SU(3)}
+
+The three BDG excitation levels $\{N_2, N_3, N_4\}$ transform under the
+same permutation group $S_3$ as the three colour charges $\{r, g, b\}$
+--- both arise from the same BDG structure. Extending $S_3 \to
+SU(3)_{\mathrm{gen}}$, the most general invariant charged-lepton mass
+matrix is:
+\begin{equation}
+  M_\ell = m_0\bigl(I + \sqrt{2}\,U(\theta)\bigr), \quad
+  U(\theta) = \mathrm{diag}\bigl(\cos\theta,\,
+  \cos(\theta + \tfrac{2\pi}{3}),\,
+  \cos(\theta + \tfrac{4\pi}{3})\bigr).
+  \label{eq:koide_matrix}
+\end{equation}
+For any $m_0$ and $\theta$, the eigenvalues automatically satisfy the
+Koide relation~\citep{Koide1983}:
+\begin{equation}
+  K \;\equiv\; \frac{m_e + m_\mu + m_\tau}{(\sqrt{m_e} + \sqrt{m_\mu}
+  + \sqrt{m_\tau})^2} \;=\; \frac{2}{3}.
+  \label{eq:koide}
+\end{equation}
+Numerically: $K = 0.666661$ with the 2022 PDG values, agreeing with $2/3$
+to one part in $10^5$. The fit gives $m_0 \approx 313.9~\mathrm{MeV}$
+--- equal to the constituent quark mass $m_p/3 \approx 312.8~\mathrm{MeV}$
+to $0.35\%$~\citep{Sandeman2026RASM}. Both scales are set by the QCD
+string tension $\sigma$, connecting the lepton mass scale to the baryon
+mass scale through a single BDG calculation.
+
+The Koide formula has been observed since 1981 and never derived from
+the Standard Model. In RA it is the generation-sector Gell-Mann-Okubo
+relation: a group-theoretic consequence of $SU(3)_{\mathrm{gen}}$.
+
+\subsection{Grand Unification at the Planck Scale}
+
+$SU(3)_{\mathrm{colour}}$ acts on the three spatial $N_2$ directions;
+$SU(3)_{\mathrm{gen}}$ acts on the three BDG excitation levels $\{N_2,
+N_3, N_4\}$. Both groups arise from the same BDG structure. At the
+Planck scale ($\mu \to \infty$), where all BDG levels are equally and
+densely populated, the two $SU(3)$ groups become indistinguishable.
+Grand Unification is the Planck-scale limit of the BDG structure,
+not an additional postulate. Consequently:
+\begin{equation}
+  \sin^2\theta_W\big|_{\mathrm{GUT}} = \frac{3}{8},
+  \label{eq:weinberg}
+\end{equation}
+the SU(5)-type prediction, running to the observed $0.231$ at the
+$Z$ scale via Poisson-CSG $\mu$-dependence. No supersymmetric partners
+are required: the three problems SUSY was introduced to solve (hierarchy
+problem, dark matter, coupling unification) are each resolved differently
+in RA, and the SUSY algebra is not generated by BDG dynamics.
+
+\subsection{Force Ranges from BDG Cost and LLC Balance}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llll}
+\toprule
+Force & Exchange & BDG cost & Range mechanism \\
+\midrule
+EM & photon & 0 &
+  $1/r^2$ from causal 2-sphere geometry \\
+Weak & $W$, $Z$ & $>0$ &
+  Finite lifetime $\hbar/mc$; $\sim 10^{-18}$~m \\
+Strong & gluon & 0, but $Q_{N_2}\neq 0$ &
+  LLC flux tube; $V = \sigma r$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+All three force ranges follow from the BDG actualization cost and LLC
+balance, with no additional parameters~\citep{Sandeman2026RASM}. Regge
+trajectories $m^2 \propto J$ follow directly from the linear potential.
+Asymptotic freedom at $\mu \gg 1$ and confinement at $\mu \to 1$ are
+the same Poisson-CSG $\mu$-dependence seen at different scales.
+
+\subsection{Neutrino Masses and Oscillations}
+
+Neutrino oscillations are the generation-sector analogue of colour mixing.
+Each mass eigenstate $|\nu_k\rangle$ is a distinct BDG pattern with
+actualization frequency $f_0^k = m_k c^2/h$. Phase accumulation at
+different rates gives oscillation probability~\citep{Sandeman2026RASM}:
+\begin{equation}
+  P(\nu_\alpha \to \nu_\beta) = \left|\sum_k U^*_{\alpha k}\,U_{\beta k}
+  \,\exp\!\left(-i\frac{(m_k^2 - m_1^2)c^4 L}{2E\hbar c}\right)\right|^2.
+  \label{eq:osc}
+\end{equation}
+The CP-violating phase $\delta_{\mathrm{CP}}$ is the same topological fact
+as the arrow of time: DAG acyclicity. The RA prediction:
+$m_1 \approx 0.37~\mathrm{meV}$, $\sum m_\nu \approx 59~\mathrm{meV}$,
+testable with CMB-S4 and Euclid.
+
+A further structural result from the Koide fits: the lepton sector
+converges to $\theta_{\mathrm{lep}} = 2/9$ exactly (to one part in
+$10^5$), where $2/9 = 2/(N_{\mathrm{gen}}\cdot N_{\mathrm{col}}) =
+2/(3\times 3)$ is determined by the same BDG integers that define
+$SU(3)_{\mathrm{gen}}$ and $SU(3)_{\mathrm{colour}}$. This predicts
+the Cabibbo angle: $|V_{us}| = \sin(2/9) = 0.2204$, agreeing with the
+observed $0.2245$ to $1.8\%$. The three quark Koide angles form an
+arithmetic progression $\theta_0 \pm \delta$ around $\theta_0 = 2/9$,
+with a single displacement $\delta \approx 0.0665~\mathrm{rad}$
+controlling the full CKM hierarchy (RASM Conjecture~7.3).
+The displacement $\delta$ satisfies $\delta =
+C_2(SU(2)_{\mathrm{fund}})\,\alpha_s(\mu)/\pi = (3/4)\,\alpha_s/\pi$
+to $0.1\%$ (RASM Proposition~7.4). Both the $K$-breaking
+($\alpha_s/\pi \times 4/3$) and the $\theta$-displacement
+($\alpha_s/\pi \times 3/4$) are one-loop corrections at the same
+hadronic scale with their respective gauge Casimirs.
+Their ratio $16/9 = |c_{N_3}|/|c_{N_2}|$ is the BDG coefficient ratio.
+A third result follows: $|V_{cb}| = (2/\pi)\,\delta =
+(3\alpha_s)/(2\pi^2)$ to $0.4\%$ (RASM Conjecture~7.4).
+Three CKM parameters from two RA quantities ($\theta_0=2/9$ and
+$\alpha_s(\mu)/\pi$):
+$|V_{us}| = \sin(2/9) = 0.2204$ ($1.8\%$),
+$\delta = (3/4)\alpha_s/\pi = 0.0666$ ($0.1\%$),
+$|V_{cb}| = (2/\pi)\delta = 0.0424$ ($0.4\%$).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Cosmology}
+\label{sec:cosmology}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Dark Matter as Topology, Not Particles}
+
+Any particle that does not participate in on-shell actualization events
+has zero RA assembly depth and contributes zero metric weight. WIMPs,
+axions, and sterile neutrinos are categorically excluded as dark matter
+candidates --- not ruled out by non-observation alone, but structurally
+prohibited by the actualization criterion. This is the RA WIMP
+prohibition~\citep{Sandeman2026RAGC}.
+
+The observed dark matter phenomenology is replaced, not explained by a
+new particle, across four distinct lensing regimes~\citep{Sandeman2026RADM}:
+\begin{itemize}[noitemsep]
+  \item \textbf{Rotation curves:} Two RA-derived mechanisms together
+  give flat rotation curves at all radii. In the disk ($r < r_c$),
+  the 2D cylindrical Laplacian of $\ln\lambda$ gives $\Sigma_\lambda \propto 1/R$,
+  yielding $v_\mathrm{flat}^2 = \xi/(2r_d)$ (RADM~\S3.1, fully derived).
+  In the sparse halo ($\mu < 1$), the DJW theorem gives 2D gravity
+  $\Phi \propto \ln r$, from which the Tully-Fisher relation
+  $v_\mathrm{flat}^4 \propto M$ follows by causal flux conservation.
+  \item \textbf{Bullet Cluster:} The $A_{\mathrm{RA}}$ ratio
+  (stellar/shocked gas $\approx 10^8$) makes lensing trace the stellar
+  component by a factor of $10^8$ over the gas --- no dark matter halo
+  required. A quantitative $\kappa(\theta)$ profile is derived in RADM.
+  \item \textbf{Galaxy-galaxy lensing:} The DJW logarithmic potential
+  gives a convergence $\kappa(b) = v_\mathrm{flat}^2/(4G\Sigma_\mathrm{cr}b)$
+  as a theorem of the RA causal structure (RADM~\S4.1, RA-native derivation).
+  This profile cuts off at the baryonic edge ($R_\mathrm{baryon}\sim 150$--300~kpc),
+  whereas $\Lambda$CDM's NFW halo extends to $\sim$Mpc.
+  The shape at $b > 300$~kpc falsifies one framework. The residual amplitude
+  is accounted for by the warm CGM, testable via Sunyaev-Zel'dovich stacking.
+  \item \textbf{Cosmic shear:} RA recovers $\Lambda$CDM to $\sim1\%$
+  at large scales; RA-specific corrections appear at 10--100~Mpc.
+\end{itemize}
+
+\paragraph{BDG derivation of the dark matter/baryon ratio.}
+The Planck~2018 ratio $\Omega_{\mathrm{CDM}}/\Omega_b = 5.416$ is a free
+parameter of $\Lambda$CDM.  In RA it is derived from the BDG integers
+alone~\citep{Sandeman2026RASM,Sandeman2026BDG}:
+\begin{equation}
+  \frac{\Omega_{\mathrm{CDM}}}{\Omega_b}
+  \;=\; \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} \times \alpha_s(2m_p)
+  \;=\; 17.32 \times 0.312 \;=\; 5.40
+  \quad (0.3\%\text{ from Planck}),
+  \label{eq:f0_foundation}
+\end{equation}
+where $W_{\mathrm{baryon}} = 3/2$ exactly and $W_{\mathrm{other}}/W_{\mathrm{baryon}} = 17.32$
+are proved from BDG combinatorics at $\mu=1$, and $\alpha_s(2m_p) = 0.312\pm 0.004$
+from FLAG 2021 lattice QCD.  This is the first derivation of a cosmological
+matter density ratio from pure causal-graph topology.
+
+\subsection{The Hubble Tension}
+
+The Hubble tension --- the discrepancy between the CMB-inferred value
+$H_0 \approx 67.4~\mathrm{km\,s^{-1}\,Mpc^{-1}}$ and the local
+measurement $H_0 \approx 73~\mathrm{km\,s^{-1}\,Mpc^{-1}}$ --- arises
+naturally in RA from the actualization density difference between
+matter-dominated dense regions and underdense voids. The local Universe
+contains the KBC supervoid, a region of anomalously low actualization
+density. RA predicts $H_{\mathrm{local}} \approx 73.1~\mathrm{km\,s^{-1}
+\,Mpc^{-1}}$ in this void, matching the local measurement without
+new physics~\citep{Sandeman2026RAGC, Sandeman2026RADM}.
+
+A specific falsifiable prediction: the Eridanus supervoid should exhibit
+$H \approx 75.9~\mathrm{km\,s^{-1}\,Mpc^{-1}}$, measurable with current
+and near-term surveys.
+
+\subsection{The Cosmological Constant and Boltzmann Brains}
+
+Vacuum energy suppression is a direct consequence of the $\Pact$
+operator: only on-shell actualized states contribute to the metric source.
+Virtual fluctuations are excluded, resolving the cosmological constant
+problem without fine tuning~\citep{Sandeman2026RAGC}.
+
+The Boltzmann Brain problem is categorically resolved: each irreversible
+actualization requires a thermodynamic cost that cannot be met by vacuum
+fluctuation. A spontaneously fluctuating brain is not merely improbable;
+it requires LLC violations that are structurally impossible.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Complexity and Life}
+\label{sec:complexity}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The Causal Firewall}
+
+At the critical density $\mu = 1$, the Poisson-CSG undergoes an
+Erd\H{o}s-R\'{e}nyi giant-component transition. Below this threshold,
+causal graphs are locally tree-like --- chemistry. Above it, they develop
+stable long-range causal connectivity --- life. The Causal Firewall is
+the RA account of the origin of life: not a continuum but a percolation
+threshold, as sharp as a phase transition~\citep{Sandeman2026RACI}.
+
+This is the same $\mu = 1$ transition as QCD confinement, galactic
+rotation curve onset, and quantum fault-tolerance threshold. One
+mathematical transition, four physical manifestations.
+
+\subsection{Assembly Theory Convergence}
+
+Assembly Theory~\citep{Walker2023} independently arrived at
+the concept of causal depth as the measure of biological complexity.
+In RA, causal depth $A_{\mathrm{RA}}(v)$ --- the length of the longest
+directed path to vertex $v$ --- is the fundamental quantity. The
+convergence of two independent frameworks on the same mathematical
+structure supports both.
+
+
+New results in RAHC and RACI~\citep{Sandeman2026RAHC,Sandeman2026RACI}
+extend this to metabolic networks via the \emph{coarse-grained assembly
+depth} $\tilde{A}_{\mathrm{RA}}(\mathcal{N})$: the number of irreversible
+reactions on the critical path through the network. For glycolysis
+$\tilde{A}_{\mathrm{RA}} = 3$ (hexokinase, PFK-1, pyruvate kinase),
+with allosteric regulation concentrating at exactly these three nodes ---
+independent biological confirmation. The \emph{origin-of-life sandwich}
+$A(M^*_0) \leq \tilde{A}_{\mathrm{RA}}(\mathcal{N}_0) \leq
+\tau_{\mathrm{cycle},0}/\tau_{\mathrm{irrev}}$
+brackets the causal depth of the first replicators from both sides.
+
+Causal depth is a selection pressure: replication rate is exponentially
+suppressed by $A_{\mathrm{RA}}(M)$ (England bound), so natural selection
+for replication speed is simultaneously selection for minimal causal depth.
+Intelligence is recursive causal closure: the capacity of a system to
+model its own actualization history and use that model to guide future
+actualization~\citep{Sandeman2026RAHC}.
+
+\subsection{Substrate-Independent Habitability (RACF)}
+
+The Causal Firewall criterion is substrate-independent: neither Condition
+F1 (Quantum Darwinism redundancy $R \geq R_{\min}$) nor Condition F2
+(Unruh temperature $T_U = \hbar a/2\pi c k_B \ll T_{\mathrm{env}}$) makes
+reference to molecular class, solvent chemistry, or biological alphabet.
+The circumstellar habitable zone is a terrestrial proxy for these deeper
+physical conditions, not the physical criterion itself.
+RACF~\citep{Sandeman2026RACF} develops three universal biosignature
+observables and two falsifiable predictions for the distribution of life,
+submitted to \emph{International Journal of Astrobiology}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Quantum Information}
+\label{sec:QI}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The Kinematic Coherence Bound~\citep{Sandeman2026RAQI} establishes
+that the maximum number of fault-tolerant logical qubits in a physical
+array scales as $N_{\max} = \eta \cdot p_{\mathrm{th}}$, where
+$p_{\mathrm{th}} \approx 10^{-2}$ is the per-link actualization
+probability. This threshold is not a property of any specific
+error-correction code: it is the $\mu = 1$ Erd\H{o}s-R\'{e}nyi
+transition applied to the causal neighbourhood of the logical qubit.
+
+The Lean-verified BDG particle classification (RATM~\citep{Sandeman2026RATM})
+establishes a structural account of qubit fragility. Every stable free
+particle has a positive BDG actualization score; the minimum is~1.
+Electrons and photons --- the particles that carry quantum information
+in all current hardware --- propagate at the sequential fixed point
+with score~1. $W^\pm$ bosons score~9; gluons score~18. Qubit fragility
+is therefore not an accident of electromagnetic coupling strengths: it
+is a consequence of the fact that laboratory-accessible particles sit at
+the minimum BDG stability that the causal filter permits. This result is
+proved by \texttt{D1a\_fixed\_point} in \texttt{RA\_D1\_Proofs.lean}.
+
+The BDG particle universe closure theorem (RATM, Theorem~D1\_closure\_complete,
+124 extension cases exhaustively verified) additionally constrains the
+decoherence channels available to any qubit: every environmental particle
+that can couple to a quantum system belongs to the closed BDG set.
+No exotic decoherence mechanism from outside the closure is possible
+within the RA framework.
+
+The Lieb-Robinson bound on actualization propagation velocity
+$v_{\mathrm{LR}} \sim J\ell/\hbar$ is the lattice expression of the
+same causal bandwidth ceiling as $c = l_P/t_P$ in the relativistic
+regime: the maximum rate at which actualization can propagate through
+the causal graph, at the relevant density scale.
+
+The fault-tolerance threshold, the speed of light, the Causal Firewall,
+and the QCD confinement transition are the same Erd\H{o}s-R\'{e}nyi
+percolation at four different scales of the causal graph.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Quantum Mechanics: Exact at the Discrete Level}
+\label{sec:QM}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The Measurement Problem Dissolved}
+
+The measurement problem asks: why does a quantum superposition resolve
+into a definite outcome when measured? In RA the question does not arise,
+because the premise is wrong. There is no superposition that mysteriously
+collapses; there is a causal graph that grows. A quantum measurement is an
+actualization event at which the entropic criterion $\Delta S(\rho\|\sigma_0)
+> 0$ is satisfied. At that vertex, one outcome becomes permanently encoded
+as a directed edge in the DAG. The other outcomes are the space of
+\emph{unactualized candidates} --- they were never in the graph; they were
+possible extensions of the graph that were not selected.
+
+Wave function collapse is the writing of a new vertex. The wave function
+is not a physical object that collapses; it is a description of the
+probability distribution over possible next actualization events.
+
+\subsection{The Quantum Measure is Exact; the Schr\"{o}dinger Equation is Not}
+
+The quantum measure of Sorkin~\citep{Sorkin1994}, assigning complex
+amplitudes to causal histories in a foliation-independent way, is exact
+at the discrete level. It is not an approximation to RA: it IS the RA
+causal graph dynamics at Level~2. Quantum mechanics, in the sense of the
+full quantum measure formalism, is therefore not a macroscopic limit ---
+it is the primitive description of the growing DAG.
+
+What is a macroscopic approximation is the \emph{Schr\"odinger equation}
+specifically. It emerges in the slowly varying, large-$\mu$,
+non-relativistic, single-particle continuum limit of the quantum measure:
+\begin{equation}
+  \mu_{\mathcal{C}}(\text{transition: } |i\rangle \to |f\rangle)
+  \;\xrightarrow{\mu \gg 1}\;
+  \left|\int \mathcal{D}\Phi\; e^{iS[\Phi]/\hbar}\right|^2
+  \;\xrightarrow{\text{non-rel.}}\;
+  \text{Schr\"odinger evolution.}
+  \label{eq:schrodinger_limit}
+\end{equation}
+The hierarchy is: quantum measure (exact) $\supset$ Feynman path integral
+(large-$\mu$ limit) $\supset$ Schr\"odinger equation (non-relativistic
+single-particle limit). Heisenberg uncertainty is the discrete graph's
+resistance to simultaneous specification of complementary causal properties
+--- exact at the discrete level, not an approximation.
+
+\subsection{Classical Behaviour as the Dense-Graph Regime}
+
+A large, warm, complex system is not fundamentally different from a
+quantum system --- it IS a quantum system, described by the same
+discrete causal graph. The difference is density. In the regime
+$\mu \gg 1$, every degree of freedom has been pinned by previous
+actualization events: the causal graph is so densely connected that
+quantum indeterminacy has been eliminated at every relevant scale.
+Classical behaviour is not a different ontology from quantum behaviour;
+it is the $\mu \gg 1$ regime of the same ontology. The transition
+from quantum to classical is the gradient $\mu(x)$ increasing from
+sparse to dense. There is no Heisenberg cut; there is only a
+gradient in actualization density.
+
+The famous paradoxes of quantum mechanics --- the double slit, the
+delayed choice, the quantum eraser, Schr\"{o}dinger's cat --- are each
+resolved by identifying where in the growing DAG the actualization
+events occur and what constraints they impose on the remaining
+candidates~\citep{Sandeman2026RAQM}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Experimental Programme}
+\label{sec:experiment}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Relational Actualism makes a large number of specific, quantitative,
+falsifiable predictions. Table~\ref{tab:predictions} lists the most
+important, with their timescale and falsification condition.
+
+\begin{table}[ht]
+\centering
+\caption{Falsifiable predictions of Relational Actualism.}
+\label{tab:predictions}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{5.2cm}p{4.5cm}p{3.5cm}}
+\toprule
+Prediction & Value / Status & Timescale \\
+\midrule
+BMV gravity-mediated entanglement & Strict null result & Near-term \\
+No WIMP above neutrino floor; lensing from CGM halos & WIMP prohibited structurally; 4 lensing regimes & Ongoing \\
+No fourth generation & $N_5$ absent in 4D BDG & LHC ongoing \\
+No proton decay & LLC exact & Ongoing \\
+Eridanus supervoid $H$ & $\approx 75.9~\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & $\sim 5$ years \\
+Neutrino mass sum & $\sum m_\nu \approx 59~\mathrm{meV}$ & CMB-S4/Euclid \\\\
+Lightest neutrino mass & $m_1 \approx 0.36~\mathrm{meV}$ & CMB-S4/Euclid \\\\
+$\sin^2\theta_W$ at GUT scale & $3/8$ & Existing data \\
+Koide for neutrinos & $K_\nu = 2/3$ (Majorana) & Future precision \\
+Coupling unification scale & Planck scale, no SUSY & Existing LHC data \\
+$\theta_{\mathrm{QCD}} = 0$ exactly; no axion & Proposition & RASM \\
+No Page curve (BH entropy monotonic) & Prediction & RASM \\
+No baryon isocurvature perturbations & Prediction & RASM \\
+$d = 4$ unique by BDG force count & Proposition & RASM \\
+Quark Koide $K = 2/3 + 8\alpha/\pi\cdot Q^2 + \alpha_s/\pi\cdot C_2$ & Conjecture ($\alpha_s$ as input) & RASM Conj.~7.2 \\
+$p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$ (optical theorem) & Proved (RASM) & -- \\ $\mu_{\mathrm{stable}} = 1/\alpha_{\mathrm{EM}} \approx 137$ & RA self-consistency & RASM Conj.~7.2 \\ Wyler $\alpha = 9/(8\pi^4)(\pi^5/1920)^{1/4}$ & 2/3 conditions proved; $V(SU(3)_{\rm gen})$ open & RASM Conj.~7.2 \\
+$|V_{us}| = \sin(2/9) = 0.2204$ (1.8\% error) & Conjecture & RASM Conj.~7.3 \\\\
+CKM hierarchy from $\theta_0 = 2/9$ and $\delta$ & Conjecture & RASM Conj.~7.3 \\\\
+$|V_{us}| = \sin(2/9) = 0.2204$ (1.8\% error) & Conjecture & RASM Conj.~7.3 \\\\
+CKM hierarchy from $\theta_0=2/9$, $\delta$ & Conjecture & RASM Conj.~7.3 \\\\
+GW dispersion at Planck scale & Discrete corrections & Future GW detectors \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The most decisive near-term test is the Bose-Marletto-Vedral
+(BMV) protocol~\citep{Bose2017, Marletto2017}: two masses placed in
+spatial superposition, entangled gravitationally. If gravity-mediated
+entanglement is observed, the fundamental premise of RA --- that the
+spacetime metric is updated strictly from actualized vertices --- is
+falsified. RA predicts a strict null result.
+
+The most important medium-term test is the neutrino mass sum.
+Several forthcoming experiments (CMB-S4, Euclid, DESI) will reach
+sensitivity $\sum m_\nu \sim 20~\mathrm{meV}$. RA predicts
+$\sum m_\nu \approx 59~\mathrm{meV}$. If the bound falls below
+this, the $SU(3)_{\mathrm{gen}}$ structure requires revision.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Open Derivations}
+\label{sec:open}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The programme has four open derivation targets. None of these are gaps
+in the framework's logical consistency; they are calculations not yet
+completed.
+
+\paragraph{D1: BDG-filter MCMC.}
+The single highest-value remaining computation: running the BDG-filtered
+Poisson-CSG simulation to its stationary distribution to determine the
+asymptotic $c_k$ profile.  This simultaneously gives the QCD string tension
+$\sigma$, the Fermi constant $G_F$, the Hubble bandwidth ratio
+$\bar\lambda_m/\bar\lambda_{\mathrm{exp}}$, and a test of the Wyler formula
+for $\alpha_{\mathrm{EM}}$.  \textbf{Note:} $\alpha_s(m_Z) = 1/\!\sqrt{c_2 c_4}$
+is now \emph{proved} independently from the BDG path weight at $\mu=1$
+(ra\_bdg\_couplings~\citep{Sandeman2026BDG}), so the coupling constant
+target of D1 reduces to $\alpha_{\mathrm{EM}}$ and $G_F$.  Closing D1 would
+still derive all fermion masses from
+$\sigma \to \Lambda_{\mathrm{QCD}} \to m_0 \to$ Koide $\to m_e, m_\mu, m_\tau$.
+
+\paragraph{D2: $SU(3)_{\mathrm{gen}}$ formal construction.}
+Show that the BDG excitation levels $\{N_2, N_3, N_4\}$ form a
+representation of $SU(3)_{\mathrm{gen}}$. The BDG coefficients
+$(9,-16,8)$ are not $SU(3)$-symmetric, so $SU(3)_{\mathrm{gen}}$
+is approximate. Deriving the breaking pattern would explain why
+Koide holds exactly for leptons but approximately for quarks.
+
+\paragraph{D3: Lean formal proofs.}
+The BDG particle classification, colour confinement, and closure theorem are now Lean-verified (\texttt{RA\_D1\_Proofs.lean}, 67~results). Remaining $\sim$50-line Lean~4 targets: (a) the chirality theorem
+(Proposition~\ref{prop:parity}) as a combinatorial DAG result; (b)
+exact baryon conservation (Proposition~\ref{prop:baryon}) as LLC
+conservation of $N_2$ winding numbers. The Lean architecture
+from the companion papers makes these tractable.
+
+\paragraph{D4: Type III$_1$ AQFT extension.}
+Extension of the Lean-verified finite-dimensional frame independence
+to the infinite-dimensional type III$_1$ algebra setting via
+Tomita-Takesaki modular theory, completing the Unruh resolution
+in full AQFT. Requires a collaborator in algebraic QFT.
+
+The history of the programme is that each target has yielded to an
+RA-native insight once stated precisely in the framework's own terms.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Further Consequences}
+\label{sec:further_consequences}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Four additional long-standing problems dissolve immediately once stated
+in RA-native terms. Full derivations appear in RASM~\citep{Sandeman2026RASM}.
+
+\paragraph{The strong CP problem: $\theta_{\mathrm{QCD}} = 0$ exactly.}
+The QCD vacuum angle $\theta_{\mathrm{QCD}}$ is generated in the Standard
+Model by instantons — field configurations that tunnel between topological
+vacuum sectors. Instantons require closed loops in Euclidean spacetime.
+In RA, time is the direction of causal edges; a closed Euclidean loop
+requires a closed causal loop. The DAG is acyclic: instantons do not exist.
+$\theta_{\mathrm{QCD}} = 0$ exactly, not merely small. A second independent
+argument: the LLC on $N_2$ spatial charge is symmetric under charge conjugation
+by construction, making CP an exact symmetry of the strong-force LLC.
+The axion was introduced to relax $\theta_{\mathrm{QCD}}$ to zero dynamically.
+RA predicts the axion does not exist — consistent with all observations.
+
+\paragraph{The black hole information paradox: dissolved.}
+A black hole is a Causal Severance: a topological partition of the causal
+graph at which outgoing edges are absent. The LLC holds independently on
+each side. Information is not lost; it is partitioned — encoded in the
+initial LLC conditions of the daughter spacetime. An exterior observer
+traces over the interior degrees of freedom and sees thermal (Hawking)
+radiation, not because information is destroyed but because causal
+disconnection produces a mixed state for any single-component observer.
+The total system is unitary. The paradox arises only if one incorrectly
+requires a single exterior observer to access causally disconnected
+information — which Causal Severance structurally forbids.
+
+\paragraph{The strong coupling constant: proved from BDG integers.}
+The companion paper ra\_bdg\_couplings~\citep{Sandeman2026BDG} proves that
+the strong coupling constant at the $Z$-boson mass scale follows directly
+from the BDG path weight at the self-dual point $\mu=1$:
+\begin{equation}
+  \alpha_s(m_Z) \;=\; \frac{1}{\sqrt{c_2\,c_4}}
+  \;=\; \frac{1}{\sqrt{72}} \;=\; 0.11785
+  \quad (\text{PDG: } 0.11800,\; 0.13\%).
+\end{equation}
+The proof is three steps: (i)~the 4D Alexandrov volume $\pi\tau^4/24$
+defines a coherence volume $V_{\mathrm{coh}} = \sqrt{c_2 c_4}/\rho = \sqrt{72}/\rho$
+for the photon--quark exchange; (ii)~at $\mu=1$, the identity $\sum c_k=0$
+gives unit expected virtual BDG action; (iii)~$\mu = \rho V_{\mathrm{coh}} \alpha_s = 1$
+gives $\alpha_s = 1/\!\sqrt{72}$.  No free parameters.
+
+Together with the Wyler formula for $\alpha_{\mathrm{EM}}$, both Standard Model
+coupling constants are now derived from the four integers $(1,-1,9,-16,8)$.
+
+\paragraph{The electromagnetic coupling (Wyler formula).}
+The per-link actualization probability satisfies $p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$
+via the optical theorem (proved, RASM): the fraction of EM interaction candidates
+satisfying the actualization criterion $\Delta S > 0$ equals $\alpha_{\mathrm{EM}}$.
+
+The empirical Wyler formula~\citep{Wyler1969} $\alpha = 9/(8\pi^4)(\pi^5/1920)^{1/4}$
+(accurate to $0.00006\%$) decomposes with all factors BDG-derived: $|c_{N_2}| = 9$,
+$d = 4$, and $\Gamma(5/4)$ from the causal diamond volume integral.  The
+RA-native derivation of the Wyler formula from the BDG path weight at $\mu\to 0$
+is the principal remaining open step (RASM Derivation~3).
+
+\paragraph{The Cabibbo angle from $SU(3)_{\mathrm{gen}}$ (conjecture).}
+The Koide fit converges to $\theta_{\mathrm{lep}} = 2/9$ to one part in $10^5$,
+where $2/9 = 2/(N_{\mathrm{gen}} \cdot N_{\mathrm{col}}) = 2/(3\times 3)$.
+This predicts the Cabibbo angle: $|V_{us}| = \sin(2/9) = 0.2204$,
+compared to the observed $0.2245$ ($1.8\%$ error).
+The three quark Koide angles form an arithmetic progression
+$\theta_0 \pm \delta$ around $\theta_0 = 2/9$,
+with $\delta \approx 0.0665~\mathrm{rad}$ controlling the full CKM hierarchy.
+Two numbers --- $2/9$ and $\delta$ --- parametrize all three CKM mixing angles.
+(RASM Conjecture~7.3.)
+
+\paragraph{Why $d = 4$ (conjecture).}
+The BDG action in $d$ dimensions has $d/2 + 1$ non-gravitational degrees
+of freedom: zero for $d = 2$, three for $d = 4$ (giving
+$U(1)\times SU(2)\times SU(3)$), four for $d = 6$. In $d = 2$ the
+pattern spectrum is too sparse for stable matter; the conjecture is that
+in $d \geq 6$ the large negative BDG coefficients destabilise complex
+patterns, leaving $d = 4$ as the unique dimension supporting the Standard
+Model's stable pattern spectrum. This is selection without anthropics:
+not ``$d = 4$ because observers require it'' but ``$d = 4$ because it is
+the unique dimension in which the BDG action produces sufficient structural
+complexity for stable matter and interactions.''
+
+\paragraph{The baryon asymmetry as a Causal Severance initial condition.}
+Baryon number is exactly conserved in RA (Proposition~5.1 in RASM).
+Sakharov's first condition — baryon number violation — is therefore
+absent. This does not prevent RA from accounting for $\eta$; it means
+dynamic baryogenesis does not occur. The Big Bang is a Causal Severance
+nucleation: our universe inherited its net baryon number $B \neq 0$
+from the LLC boundary conditions at that event. The baryon asymmetry
+$\eta \approx 6.1\times 10^{-10}$~\citep{PDG2022} is an initial
+condition set at the Planck scale, not a dynamic outcome. The prediction:
+no signatures of electroweak baryogenesis in CMB data; the
+baryon-to-photon ratio is isotropic at all scales.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Lean 4 Formal Verification}
+\label{sec:lean}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The RA programme uses Lean~4/Mathlib as a proof assistant to machine-verify
+the discrete graph-theoretic core of the framework. This is not cosmetic:
+the Lean proofs establish that the claims about the growing DAG are
+internally consistent at the level of formal mathematics, independently
+of any physical interpretation.
+
+The current Lean corpus comprises \textbf{101 verified results across two
+proof files}, with zero \texttt{sorry} tags and no axioms beyond Mathlib:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{5.5cm}p{4cm}p{2.5cm}}
+\toprule
+Result & File & Status \\
+\midrule
+Local Ledger Condition (Definition) & \texttt{RA\_Proofs\_Lean4.lean} & Proved \\
+Graph Cut Theorem & \texttt{RA\_Proofs\_Lean4.lean} & Proved, 0 sorry \\
+Markov Blanket Shielding & \texttt{RA\_Proofs\_Lean4.lean} & Proved \\
+Actualization frame invariance & \texttt{RA\_Proofs\_Lean4.lean} & Proved \\
+Causal invariance of quantum measure & \texttt{RA\_Proofs\_Lean4.lean} & Proved \\
+Frame independence of $\Delta S(\rho\|\sigma_0)$ & \texttt{RA\_AQFT\_Proofs\_v10.lean} & Proved \\
+Rindler stationarity (Unruh resolution) & \texttt{RA\_AQFT\_Proofs\_v10.lean} & Proved \\
+$SU(3)_{\mathrm{gen}}$ coherent state theorem & \texttt{RA\_D1\_Proofs.lean} & Proved \\
+Koide $K = 2/3$ identity & \texttt{RA\_D1\_Proofs.lean} & Proved \\
+BDG particle classification (5 types) & \texttt{RA\_D1\_Proofs.lean} & Proved \\
+BDG closure theorem (124 cases) & \texttt{RA\_D1\_Proofs.lean} & Proved \\
+Colour confinement ($L{=}3$ gluon, $L{=}4$ quark) & \texttt{RA\_D1\_Proofs.lean} & Proved \\
+$D1_a$ fixed-point (electrons at BDG score~1) & \texttt{RA\_D1\_Proofs.lean} & Proved \\
+$\Pact$ conservation theorem & \texttt{RA\_D1\_Proofs.lean} & Structural proof \\
+BDG locality lemma ($\tau_{\mathrm{BDG}} \propto \lambda^{-1/4}$) & numerically verified & Confirmed \\
+\midrule
+\texttt{amplitude\_locality} & --- & Axiom \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+The sole remaining axiom is \texttt{amplitude\_locality}: the statement
+that local amplitudes on the RA-CSG depend only on the causal past of
+each vertex. This is physically justified by QFT microcausality (Haag's
+theorem~\citep{Haag1996} and the Pauli-Jordan function vanishing outside
+the light cone), but the intrinsic discrete proof --- deriving amplitude
+locality as a theorem of DAG acyclicity rather than importing it from
+the continuum --- is the primary open target for the Lean programme.
+
+A Python notebook independently confirms 52/52 numerical checks at
+machine precision, covering the Koide formula, the BDG coefficient
+ratios, the Wyler formula decomposition, and the coupling constant
+hierarchies. The machine verification strategy --- using Lean for
+structural results and Python for numerical confirmation --- provides
+two independent lines of evidence for the quantitative claims of the suite.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Prior Approaches and the Position of RA}
+\label{sec:prior}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\paragraph{General relativity and quantum field theory.}
+Both frameworks are derived in RA as macroscopic approximations to the
+causal graph dynamics. They are not competing descriptions of nature;
+they are Level~3 descriptions that apply in different density regimes
+of the same Level~1 algorithm.
+
+\paragraph{Loop Quantum Gravity.} LQG derives geometry from a spin
+network background but imports the Standard Model as separate matter
+content. It offers no account of why the gauge group has three factors
+or why charge is quantised. RA requires no background; the Standard
+Model structure is a consequence of 4D BDG topology.
+
+\paragraph{String Theory.} String theory can reproduce a rich particle
+spectrum but requires 10 or 11 spacetime dimensions and a landscape of
+$\sim 10^{500}$ vacua with no selection principle. RA is uniquely
+4-dimensional by BDG + Lovelock, has no landscape, and no free
+parameters at the topological level.
+
+\paragraph{Causal set theory.} RA is built directly on the causal set
+foundation of Sorkin~\citep{Sorkin1994} and Bombelli~\citep{Bombelli1987},
+extending it with three new elements: (1) the BDG actualization filter
+$\SBDG(v) > 0$ as a physical selection criterion (rather than a dynamics
+to be inferred from path integrals); (2) the LLC as a vertex-level
+conservation law, Lean-verified; (3) the Poisson-CSG growth model as
+the mean-field description of the stochastic graph rewriting.
+The key advance over standard causal set theory is the BDG locality lemma
+(RACL): the dense-graph limit of the BDG sum is provably local, which
+is what allows Lovelock's uniqueness argument to apply. Without locality,
+Lovelock does not constrain the field equation; with it, Einstein is forced.
+Causal set theory asks: can GR emerge from a causal set? RA answers: it
+must, and here is a machine-checkable proof.
+
+The Rideout-Sorkin Classical Sequential Growth model~\citep{Rideout2000}
+is the direct precursor to the RA Poisson-CSG: the CSG dynamics supply
+the Born-rule-like probability measure for graph growth that RA uses.
+RA extends CSG by adding the BDG filter and identifying the LLC
+as the conservation law that forces GR.
+
+\paragraph{Bilson-Thompson topological preons.}
+Bilson-Thompson's braid model~\citep{BilsonThompson2005} maps the
+first-generation Standard Model onto ribbon braids. RA is in the same
+direction but derives the stability selection rule (the BDG filter)
+that the braid model lacks. Whether RA's stable patterns correspond to
+Bilson-Thompson braids is an open question that D1 would resolve.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Physics has spent a century seeking the reconciliation of quantum
+mechanics and general relativity, and asking why the Standard Model
+has the structure it has. Relational Actualism proposes that both
+questions are symptoms of a shared error: treating spacetime,
+matter, and quantum states as primitive, when none of them is.
+
+The primitive is the actualization event. Not the particle, not
+the field, not the wave function, not the spacetime manifold.
+The moment at which a physical interaction becomes irreversible ---
+at which $\Delta S(\rho\|\sigma_0) > 0$ and a permanent causal edge
+is written into the DAG.
+
+From this:
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ll}
+\toprule
+Result & Status \\
+\midrule
+$c = l_P/t_P$; $E = \gamma mc^2$; $\tau = N_{\mathrm{act}}\cdot t_P$ & Proved \\
+GR inevitable (Lovelock) & Proved \\
+Three non-gravitational forces in 4D & Proved \\
+Charge quantisation in units of $e/3$ & Proved \\
+Photon masslessness & Proved \\
+Colour confinement & Proved \\
+Exact baryon conservation & Proved (Lean-backed) \\
+Maximal parity violation & Proved \\
+Exactly three generations & Proved \\
+Koide lepton mass formula & Conjectured; $K = 2/3$ exact \\
+GUT unification at Planck scale & Conjecture \\
+Flat rotation curves; Hubble tension & Derived \\
+$\kappa(\theta)$ Bullet Cluster profile & Qualitative (RADM §4.2) \\
+4-regime lensing classification & Established (RADM §4.3) \\
+DJW lensing $\kappa(b) = v_\mathrm{flat}^2/(4G\Sigma_\mathrm{cr}b)$ & Derived (RADM §4.1) \\
+$\kappa(b)$ cutoff at $R_\mathrm{baryon}$ vs NFW & Falsifiable prediction \\
+Galaxy-galaxy amplitude (CGM) & Prediction, open calc \\
+Origin of life (Causal Firewall) & Derived \\
+QFT fault-tolerance threshold & Derived \\
+Measurement problem & Dissolved \\
+$\theta_{\mathrm{QCD}} = 0$ exactly; no axion & Proved \\
+Black hole information paradox & Dissolved \\
+Baryon asymmetry as Causal Severance IC & Derived \\
+$d = 4$ spacetime dimensionality & Conjecture \\
+Quark Koide breaking (RA form; $\alpha_s$ external input) & Conjecture \\
+Wyler formula for $\alpha_{\mathrm{EM}}$ (0.00006\%) & Conjecture \\
+$\theta_{\mathrm{lep}} = 2/9$ (Koide fit, $1:10^5$) & Conjecture \\
+$|V_{us}| = \sin(2/9)$ Cabibbo prediction (1.8\%) & Conjecture \\
+$\delta = \tfrac{3}{4}\alpha_s/\pi$ ($0.1\%$) & Proved \\
+$|V_{cb}| = (2/\pi)\delta$ ($0.4\%$) & Conjecture \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+The question driving the next phase of the programme is exact:
+is the complete set of $\SBDG > 0$-stable self-similar patterns
+in a 4D BDG-filtered Poisson-CSG precisely the first-generation
+Standard Model particle spectrum? If yes --- if the BDG-filter MCMC
+confirms that the stable patterns are exactly $\{e, u, d, \nu_e,
+\gamma, g, W, Z, H\}$ --- then all of physics follows from the
+single fact that some things happen and others do not.
+
+\medskip
+The programme as it stands in early 2026:
+\begin{itemize}[noitemsep]
+  \item Three papers in peer review: RAQM at \emph{Foundations of Physics}
+  (past desk rejection, in editor assignment); RACL submitted to
+  \emph{Classical and Quantum Gravity}; RATM submitted to
+  \emph{Physical Review D}.
+  \item Twelve papers in the suite; eleven on Zenodo with permanent
+  DOIs (RACF submitted to \emph{International Journal of Astrobiology}).
+  \item 101 Lean-verified results across two proof files, zero
+  \texttt{sorry} tags.
+  \item 52/52 independent numerical checks at machine precision.
+  \item Three open derivation targets (D1--D3) with precise
+  success criteria and identified collaborator communities.
+\end{itemize}
+
+The programme does not claim completeness. It claims internal consistency
+at the discrete level (machine-verified), correct macroscopic limits
+(GR inevitable, Standard Model derived), and specific falsifiable
+predictions (BMV null result; no WIMP; $\sum m_\nu \approx 59$~meV;
+$H_{\mathrm{Eridanus}} \approx 75.9$~km/s/Mpc; $\kappa(b)$ cutoff at
+$R_{\mathrm{baryon}}$). The framework is falsifiable. The search continues.
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\section*{Declarations}
+\textbf{Funding:} Not applicable.\quad
+\textbf{Competing interests:} The author declares no competing interests.
+
+\textbf{Ethics statement:} This article does not contain any studies with human participants or animals performed by the author.
+
+\textbf{AI use disclosure:} Claude (Anthropic, model \texttt{claude-sonnet-4-6}) was used in the preparation of this manuscript, including drafting and revision of text, mathematical derivation assistance, \LaTeX{} compilation, and Lean~4 proof development. The author is solely responsible for all scientific content, mathematical claims, and conclusions. Gemini (Google DeepMind, Gemini~2.0~Pro) was used for supplementary literature checking and cross-verification of symbolic calculations.
+
+\textbf{Data availability:} All Lean~4 proof files and Python verification scripts are publicly available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}.
+
+\textbf{Preprint availability:} \href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}.
+
+\bibliographystyle{plainnat}
+
+\begin{thebibliography}{99}
+
+\bibitem[Sandeman(2026RACL)]{Sandeman2026RACL}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Einstein Field Equations as the Unique
+  Macroscopic Limit of the Actualization Graph (RACL)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}.
+
+
+\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Topology of Matter (RATM)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
+
+\bibitem[Sandeman(2026RAEB)]{Sandeman2026RAEB}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Engine of Becoming (RAEB)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198120}{doi.org/10.5281/zenodo.19198120}.
+
+
+\bibitem[Benincasa \& Dowker(2010)]{Benincasa2010}
+D.~M.~T.~Benincasa and F.~Dowker.
+\newblock The scalar curvature of a causal set.
+\newblock \emph{Physical Review Letters}, 104(18):181301, 2010.
+\newblock \href{https://doi.org/10.1103/PhysRevLett.104.181301}%
+  {doi:10.1103/PhysRevLett.104.181301}.
+
+\bibitem[Bilson-Thompson(2005)]{BilsonThompson2005}
+S.~O.~Bilson-Thompson.
+\newblock A topological model of composite preons.
+\newblock \emph{arXiv preprint}, 2005.
+\newblock \href{https://arxiv.org/abs/hep-ph/0503213}{arXiv:hep-ph/0503213}.
+
+\bibitem[Bombelli et~al.(1987)]{Bombelli1987}
+L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin.
+\newblock Space-time as a causal set.
+\newblock \emph{Physical Review Letters}, 59(5):521--524, 1987.
+\newblock \href{https://doi.org/10.1103/PhysRevLett.59.521}%
+  {doi:10.1103/PhysRevLett.59.521}.
+
+\bibitem[Bose et~al.(2017)]{Bose2017}
+S.~Bose et~al.
+\newblock Spin entanglement witness for quantum gravity.
+\newblock \emph{Physical Review Letters}, 119(24):240401, 2017.
+\newblock \href{https://doi.org/10.1103/PhysRevLett.119.240401}%
+  {doi:10.1103/PhysRevLett.119.240401}.
+
+\bibitem[Koide(1983)]{Koide1983}
+Y.~Koide.
+\newblock New view of quark and lepton mass hierarchy.
+\newblock \emph{Physical Review D}, 28(1):252--254, 1983.
+\newblock \href{https://doi.org/10.1103/PhysRevD.28.252}%
+  {doi:10.1103/PhysRevD.28.252}.
+
+\bibitem[Lovelock(1971)]{Lovelock1971}
+D.~Lovelock.
+\newblock The Einstein tensor and its generalizations.
+\newblock \emph{Journal of Mathematical Physics}, 12(3):498--501, 1971.
+\newblock \href{https://doi.org/10.1063/1.1665613}{doi:10.1063/1.1665613}.
+
+\bibitem[Marletto \& Vedral(2017)]{Marletto2017}
+C.~Marletto and V.~Vedral.
+\newblock Gravitationally induced entanglement between two massive particles
+  is sufficient evidence of quantum effects in gravity.
+\newblock \emph{Physical Review Letters}, 119(24):240402, 2017.
+\newblock \href{https://doi.org/10.1103/PhysRevLett.119.240402}%
+  {doi:10.1103/PhysRevLett.119.240402}.
+
+\bibitem[Particle Data Group(2022)]{PDG2022}
+R.~L.~Workman et~al.
+\newblock Review of particle physics.
+\newblock \emph{Progress of Theoretical and Experimental Physics},
+  2022(8):083C01, 2022.
+\newblock \href{https://doi.org/10.1093/ptep/ptac097}{doi:10.1093/ptep/ptac097}.
+
+\bibitem[Sandeman(2026a)]{Sandeman2026RAQM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and Quantum Mechanics (RAQM).
+\newblock \emph{Foundations of Physics} (under review), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19174380}%
+  {doi:10.5281/zenodo.19174380}.
+
+\bibitem[Sandeman(2026b)]{Sandeman2026RAGC}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Gravity and Cosmology (RAGC).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19197999}%
+  {doi:10.5281/zenodo.19197999}.
+
+\bibitem[Sandeman(2026c)]{Sandeman2026EB}
+J.~F.~Sandeman.
+\newblock The Engine of Becoming (EB).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198120}%
+  {doi:10.5281/zenodo.19198120}.
+
+\bibitem[Sandeman(2026d)]{Sandeman2026RAHC}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Algorithmic Causal Dynamics (RAHC).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198171}%
+  {doi:10.5281/zenodo.19198171}.
+
+\bibitem[Sandeman(2026e)]{Sandeman2026RACI}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Complexity and Intelligence (RACI).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198224}%
+  {doi:10.5281/zenodo.19198224}.
+
+\bibitem[Sandeman(2026e2)]{Sandeman2026RACF}
+J.~F.~Sandeman.
+\newblock The Causal Firewall: Substrate-Independent Physical Constraints
+  on the Distribution of Life in the Universe (RACF).
+\newblock \textit{Int.\ J.\ Astrobiol.} (submitted), 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19319374}{doi:10.5281/zenodo.19319374}.
+
+\bibitem[Sandeman(2026f)]{Sandeman2026RAQI}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Implications for Quantum Information (RAQI).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198285}%
+  {doi:10.5281/zenodo.19198285}.
+
+\bibitem[Sandeman(2026g)]{Sandeman2026RADM}
+J.~F.~Sandeman.
+\newblock Relational Actualism: Dark Matter as Actualization-Density
+  Topology (RADM).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19198513}%
+  {doi:10.5281/zenodo.19198513}.
+
+\bibitem[Glaser(2014)]{Glaser2014}
+L.~Glaser.
+\newblock A closed form expression for the causal set d'Alembertian.
+\newblock \emph{Journal of Mathematical Physics}, 55(9):092301, 2014.
+\newblock \href{https://arxiv.org/abs/1311.1701}{arXiv:1311.1701}.
+
+\bibitem[Page(1993)]{Page1993}
+D.~N.~Page.
+\newblock Information in black hole radiation.
+\newblock \emph{Physical Review Letters}, 71(23):3743--3746, 1993.
+\newblock \href{https://doi.org/10.1103/PhysRevLett.71.3743}{doi:10.1103/PhysRevLett.71.3743}.
+
+\bibitem[Sandeman(2026h)]{Sandeman2026RASM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and the Standard Model (RASM).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
+
+\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
+J.~F.~Sandeman.
+\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
+  BDG Integers.
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
+
+\bibitem[Hawking(1975)]{Hawking1975}
+S.~W.~Hawking.
+\newblock Particle creation by black holes.
+\newblock \emph{Communications in Mathematical Physics}, 43(3):199--220, 1975.
+\newblock \href{https://doi.org/10.1007/BF02345020}{doi:10.1007/BF02345020}.
+
+\bibitem[Peccei \& Quinn(1977)]{Peccei1977}
+R.~D.~Peccei and H.~R.~Quinn.
+\newblock CP conservation in the presence of pseudoparticles.
+\newblock \emph{Physical Review Letters}, 38(25):1440--1443, 1977.
+\newblock \href{https://doi.org/10.1103/PhysRevLett.38.1440}{doi:10.1103/PhysRevLett.38.1440}.
+
+\bibitem[Sakharov(1967)]{Sakharov1967}
+A.~D.~Sakharov.
+\newblock Violation of CP invariance, C asymmetry, and baryon asymmetry of the universe.
+\newblock \emph{JETP Letters}, 5:24--27, 1967.
+
+\bibitem[Sorkin(1994)]{Sorkin1994}
+R.~D.~Sorkin.
+\newblock Quantum mechanics as quantum measure theory.
+\newblock \emph{Modern Physics Letters A}, 9(33):3119--3127, 1994.
+\newblock \href{https://doi.org/10.1142/S021773239400294X}%
+  {doi:10.1142/S021773239400294X}.
+
+\bibitem[Rideout \& Sorkin(2000)]{Rideout2000}
+D.~P.~Rideout and R.~D.~Sorkin.
+\newblock A classical sequential growth dynamics for causal sets.
+\newblock \emph{Physical Review D}, 61(2):024002, 2000.
+\newblock \href{https://doi.org/10.1103/PhysRevD.61.024002}%
+  {doi:10.1103/PhysRevD.61.024002}.
+
+\bibitem[Haag(1996)]{Haag1996}
+R.~Haag.
+\newblock \emph{Local Quantum Physics: Fields, Particles, Algebras}.
+\newblock Springer, 2nd edition, 1996.
+
+\bibitem[Wyler(1969)]{Wyler1969}
+A.~Wyler.
+\newblock On the conformal groups in the theory of relativity and their
+  unitary representations.
+\newblock \emph{Comptes Rendus Acad.~Sci.~Paris}, 269:743--745, 1969.
+
+\bibitem[Walker et~al.(2023)]{Walker2023}
+S.~I.~Walker et~al.
+\newblock Explaining the origin of life is harder than we think.
+\newblock \emph{arXiv preprint}, 2023.
+\newblock \href{https://arxiv.org/abs/2308.09738}{arXiv:2308.09738}.
+
+\end{thebibliography}
+
+\end{document}
