@@ -1,0 +1,426 @@
+% RATM_PRD_v2.tex — Reconstructed from RATM_PRD_v1_1.pdf
+% Change from v1: Added §7.6 Chirality subsection (red-team action item)
+\documentclass[11pt,a4paper]{article}
+\usepackage{geometry}\geometry{margin=2.5cm}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{setspace}\setstretch{1.12}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\SBDG}{S_{\mathrm{BDG}}}
+\newcommand{\Nvec}{\mathbf{N}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Relational Actualism: The Topology of Matter\\[4pt]
+\large\itshape BDG Causal Topology, Particle Classification,\\
+Colour Confinement, and the Closure of the Standard Model Universe\\[2pt]
+\normalsize\upshape (RATM)\par}
+\vspace{12pt}
+{\large Joshua F.\ Sandeman$^{1*}$\par}
+\vspace{4pt}
+{\normalsize $^{1}$Independent Researcher, Salem, OR, USA.\par}
+{\normalsize $^{*}$sansuikyo@gmail.com\par}
+\vspace{6pt}
+{\small\textit{Preprint:}~\href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}\par}
+\end{center}
+
+\begin{abstract}
+We prove, using Lean~4 formal verification, that the Benincasa-Dowker (BDG) causal set
+action in $d=4$ selects exactly five self-similar vertex topology classes corresponding precisely
+to the particle content of the Standard Model.  Vertices with totally ordered (sequential) past
+correspond to leptons and gauge bosons; vertices containing a spacelike pair (topological past)
+correspond to quarks and gluons.  Combined with the $Q_{N_1}$ winding number for
+electromagnetic charge, this yields a complete two-level derivation of the SM particle spectrum
+from 4D causal graph geometry alone.
+
+Three central results are machine-verified.  \textbf{D1a:} BDG-stable sequential chain depths
+are exactly $k\in\{0,2,4\}$, with $N=(1,1,1,1)$ a genuine fixed point proved by definitional
+equality.  \textbf{D1c:} Colour confinement is a theorem --- gluon and quark worldlines each
+encounter a BDG filter event, with finite confinement lengths $L=3$ (gluon) and $L=4$ (quark).
+\textbf{D1\_closure\_complete:} The nine-element BDG $N$-vector set is closed under all
+single-step graph extensions, verified exhaustively over 124 cases.  No new elementary particle
+topology type can emerge from any local causal move.
+
+\texttt{RA\_D1\_Proofs.lean} contains 75 results (64 theorems, 11 lemmas, 8 definitions) with
+zero \texttt{sorry} tags and no axioms beyond the Mathlib standard library.  Combined with the
+26 results of \texttt{RA\_AQFT\_Proofs\_v2.lean}, the RA suite now has 101 Lean-verified
+results --- the first machine-verified particle classification in the causal set theory literature.
+\end{abstract}
+
+\medskip\noindent
+\textbf{Keywords:} causal set theory; Standard Model; Benincasa-Dowker action; particle
+classification; colour confinement; formal verification; Lean~4; quantum gravity; topological
+field theory; causal graph
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+
+Why are there exactly two kinds of matter?  Quarks are confined; leptons propagate freely.
+This distinction has no explanation within the Standard Model --- it is simply observed.  The SM
+accommodates it via the gauge group $SU(3)_{\rm colour}$, which confines by virtue of its
+non-abelian self-coupling, but the question of why the matter content divides in this way remains
+a foundational puzzle.
+
+This paper gives an answer from first principles: in a 4-dimensional causal graph filtered by the
+Benincasa-Dowker (BDG) action, the division between quarks and leptons is a topological property
+of the causal past of each vertex.  It is not postulated; it is derived.
+
+The Benincasa-Dowker action \citep{Benincasa2010,Dowker2013} assigns an integer score $\SBDG(v)$
+to each vertex $v$ in a causal set by counting order-intervals of various depths in its past cone.
+In $d=4$, the five BDG integers are $(1,-1,9,-16,8)$.  A vertex is BDG-stable (a legitimate
+actualization event in Relational Actualism \citep{Sandeman2026RAQM}) if $\SBDG(v)>0$.
+
+The five stable types are:
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{clccl}
+\toprule
+Type & Description & $N$-vector & Score & SM particle(s)\\
+\midrule
+0 & Isolated vertex (no past) & $(0,0,0,0)$ & $1$ & $\nu,\gamma,Z^0,H$\\
+1 & Sequential chain, depth~2 & $(1,1,0,0)$ & $9$ & $W^\pm$\\
+2 & Sequential chain, depth~4 & $(1,1,1,1)$ & $1$ & $e,\mu,\tau$; $d,s,b$\\
+3 & Symmetric Y-join & $(1,2,0,0)$ & $18$ & Gluon $g$\\
+4 & Asymmetric Y-join & $(2,1,0,0)$ & $8$ & $u,c,t$ quarks\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Main theorems (all proved in Lean~4):
+\begin{itemize}
+\item \textbf{D1a:} Exactly $k\in\{0,2,4\}$ give positive BDG score along a sequential chain; $k\geq4$ is a genuine fixed point.
+\item \textbf{D1b:} The two minimal topological stable types have $N\in\{(1,2,0,0),(2,1,0,0)\}$.
+\item \textbf{D1c/D1d:} Both topological types encounter a BDG filter and converge to the sequential fixed point in $L=3$ (gluon) and $L=4$ (quark) steps.
+\item \textbf{D1\_closure\_complete:} 124 extension cases exhaustively verified; no new topology type can emerge.
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The BDG Action and Particle Patterns}
+
+\subsection{Causal DAGs and the BDG score}
+
+Let $G=(V,E)$ be a finite directed acyclic graph.  For $v\in V$ let $\mathrm{past}(v) = \{u\in V: u\prec v\}$ be the strict causal past.  The BDG $N$-vector counts ancestors at each depth:
+\[
+N_j(v) = \#\{u\in\mathrm{past}(v): k(u,v)=j\}, \quad j=1,2,3,4.
+\]
+
+\begin{definition}[BDG score]
+The 4-dimensional BDG score at vertex $v$ is:
+\[
+\SBDG(v) = 1 - N_1 + 9N_2 - 16N_3 + 8N_4.
+\]
+\end{definition}
+The five integers $(1,-1,9,-16,8)$ are fixed by the Alexandrov interval geometry of 4D Minkowski space \citep{Benincasa2010}.
+
+\subsection{Self-similar particle patterns}
+
+\begin{definition}[Self-similar worldline pattern]
+A self-similar worldline pattern is a growing causal chain $v_0,v_1,v_2,\ldots$ such that for all $n$ sufficiently large, $\SBDG(v_n)=\SBDG(v_{n+1})$ and $N(v_n)=N(v_{n+1})$.
+The pattern is \emph{stable} if the common score is positive.
+\end{definition}
+
+\subsection{Topology classification}
+
+\begin{definition}[Sequential and topological past]
+The past of vertex $v$ is:
+\begin{itemize}
+\item \emph{Sequential} if every pair $a,b\in\mathrm{past}(v)$ is causally related ($a\prec b$ or $b\prec a$).
+\item \emph{Topological} if there exist $a,b\in\mathrm{past}(v)$ that are spacelike ($a\not\prec b$ and $b\not\prec a$).
+\end{itemize}
+\end{definition}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Theorem D1a: Sequential BDG Fixed Points}
+
+\begin{theorem}[D1a: Sequential fixed points]
+\label{thm:D1a}
+(a) The BDG score along a sequential chain is positive if and only if $k\in\{0,2\}\cup\{k:k\geq4\}$.\\
+(b) For $k\geq4$, $\SBDG(k)=1$ and $N(v_k)=(1,1,1,1)$ (the sequential fixed point).\\
+(c) The sequential fixed point is the unique self-similar worldline pattern with $k\geq4$.
+\end{theorem}
+
+\begin{proof}
+Direct computation.  In Lean~4, \texttt{D1a\_fixed\_point} is proved by \texttt{fun \_ => rfl} ---
+definitional equality, the strongest possible mode of proof.
+\end{proof}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Theorem D1b: Minimal Topological Stable Patterns}
+
+\begin{theorem}[D1b: Minimal topological patterns]
+\label{thm:D1b}
+The two stable $N$-vectors occurring at minimum graph size~4 with topological past are
+$N=(1,2,0,0)$ (score~18, symmetric Y-join) and $N=(2,1,0,0)$ (score~8, asymmetric Y-join).
+All other topological stable $N$-vectors first appear at graph size $\geq5$.
+\end{theorem}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Theorems D1c--D1e: Colour Confinement as a BDG Theorem}
+
+\subsection{Worldline sequences}
+
+\begin{theorem}[D1c: BDG confinement]
+\label{thm:D1c}
+Neither topological type (gluon nor quark) has a stable self-similar chain extension.
+Both encounter a BDG filter event ($\SBDG<0$) within $L$ steps.  After the filter,
+the worldline converges to the sequential fixed point $N=(1,1,1,1)$ within $L-1$ further steps.
+\end{theorem}
+
+\begin{theorem}[D1e: Finite confinement lengths]
+\label{thm:D1e}
+The gluon confinement length is $L_g=3$ and the quark confinement length is $L_q=4$, with $L_g<L_q$.
+\end{theorem}
+
+The confinement trajectories are:
+\begin{align*}
+\text{Gluon:}\quad & \underbrace{18}_{\rm gluon} \to \underbrace{-23}_{\rm filter} \to 9 \to \underbrace{1}_{\rm fixed} \to 1 \to \cdots\\
+\text{Quark:}\quad & \underbrace{8}_{\rm quark} \to 2 \to \underbrace{-15}_{\rm filter} \to 9 \to \underbrace{1}_{\rm fixed} \to 1 \to \cdots
+\end{align*}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Theorem D1\_closure\_complete: The BDG Particle Universe is Closed}
+
+\begin{theorem}[D1\_closure\_complete]
+\label{thm:closure}
+The nine-element $N$-vector set
+\[
+\mathcal{U} = \{(0,0,0,0),(1,0,0,0),(1,1,0,0),(2,0,0,0),(1,1,1,1),(1,2,0,0),(2,1,0,0),(1,2,1,0),(1,1,1,2)\}
+\]
+is closed under all single-step graph extensions of all particle types in $\mathcal{U}$.
+\end{theorem}
+
+\begin{corollary}[No new particle types]
+No new elementary BDG particle topology can emerge from any sequence of local causal graph extensions starting from any particle type in $\mathcal{U}$.
+\end{corollary}
+
+The proof exhausts 124 cases mechanically via \texttt{fin\_cases + simp} in Lean~4.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Physical Interpretation}
+\label{sec:phys}
+
+\subsection{The lepton/quark distinction}
+
+The central result is a clean binary:
+\begin{align*}
+\text{Sequential causal past} &\longleftrightarrow \text{leptons and gauge bosons (free asymptotic states).}\\
+\text{Topological causal past} &\longleftrightarrow \text{quarks and gluons (confined).}
+\end{align*}
+This is derived from the BDG integers $(1,-1,9,-16,8)$ and 4D causal graph geometry alone.
+
+\subsection{Two-level particle classification}
+
+A complete particle identity within the BDG framework requires two levels:
+\begin{enumerate}
+\item BDG topology type determines colour charge: sequential $\Rightarrow$ no colour (free); topological $\Rightarrow$ colour (confined).
+\item $Q_{N_1}$ winding number determines electromagnetic charge: $Q_{\rm em} = Q_{N_1}/3$.
+\end{enumerate}
+
+Sequential class assignments:
+\begin{itemize}
+\item $k=0$, $Q_{N_1}=0$: $\nu_e,\nu_\mu,\nu_\tau$ (neutral leptons); $\gamma,Z^0,H$ (neutral bosons)
+\item $k=2$, $Q_{N_1}=3$: $W^\pm$ bosons ($Q_{\rm em}=\pm1$)
+\item $k=4$, $Q_{N_1}=3$: $e^-,\mu^-,\tau^-$ (charged leptons)
+\end{itemize}
+
+Topological class assignments:
+\begin{itemize}
+\item Symmetric Y-join ($N_2=2$, $Q_{N_1}=0$): gluon $g$
+\item Asymmetric Y-join, $Q_{N_1}=1$: $d,s,b$ quarks ($Q_{\rm em}=-1/3$)
+\item Asymmetric Y-join, $Q_{N_1}=2$: $u,c,t$ quarks ($Q_{\rm em}=+2/3$)
+\end{itemize}
+
+The Gell-Mann--Nishijima formula $Q=T_3+Y/2$ is verified for all six first-generation fermions
+(Lean theorems \texttt{D1h\_GMN\_electron}, \texttt{D1h\_GMN\_up\_quark},
+\texttt{D1h\_GMN\_down\_quark}).
+
+\subsection{Gluon asymmetry}
+
+Of the 15 possible extensions of the gluon base, every stable extension ($\SBDG>0$)
+produces a gluon self-replica ($N=(1,2,0,0)$, score~18).  The gluon has no escape route to
+sequential character through a single local move.  The quark has two extensions producing
+the sequential $W$-boson type and two producing a quark self-replica.  This asymmetry is
+the BDG reflection of the non-abelian self-coupling of QCD.
+
+\subsection{Interaction vertices vs.\ propagation vertices}
+
+The closure theorem governs propagation: a single worldline extending by one local step.
+Interaction vertices --- where two or more worldlines meet --- are a distinct category and
+do not violate the closure theorem.
+
+\subsection{What BDG topology does not determine}
+
+The BDG classification is necessary but not sufficient for a complete particle identity.
+Spin and weak isospin within a generation require the $SU(3)_{\rm gen}$ coherent state
+structure developed in the companion paper RASM \citep{Sandeman2026RASM} and the unique
+field equation derivation in RACL \citep{Sandeman2026RACL}.
+
+\subsection{Chirality and Handedness in the DAG}
+\label{sec:chirality}
+
+The Standard Model is a chiral theory: the weak force couples only to left-handed fermions,
+and right-handed neutrinos do not appear as independent SM particles.  A natural question
+arises: if a left-handed electron and a right-handed electron share the same BDG sequential
+topology (both Type~2, $N=(1,1,1,1)$, score~$+1$), how does the causal graph encode
+chirality?
+
+\paragraph{The geometric proxy: DAG embedding orientation.}
+In the BDG framework, chirality corresponds to the \emph{orientation} of the causal embedding
+of the particle worldline relative to the ambient 3D spatial boundary.  A sequential chain of
+depth $k\geq4$ can be embedded in the Lorentzian 4D graph in two topologically distinct ways:
+one in which the worldline winds through the $N_2$ branching with positive orientation
+(left-handedness), and one with negative orientation (right-handedness).
+
+More precisely, consider the $Q_{N_1}$ winding number introduced in \S\ref{sec:phys}.2.  The
+chirality quantum number is identified with the \emph{sign} of the BDG winding relative to the
+directed time-ordering:
+\begin{equation}
+  \chi = \mathrm{sgn}\!\left(\epsilon_{\mu\nu\rho\sigma}\,
+  n^\mu_{N_1} n^\nu_{N_2} n^\rho_{\mathrm{world}} n^\sigma_{\mathrm{time}}\right)
+  \;\in\; \{+1,\,-1\},
+  \label{eq:chi}
+\end{equation}
+where $n^\mu_{N_1}$, $n^\mu_{N_2}$ are the local orientation vectors of the $N_1$ and $N_2$
+causal directions at the vertex, and $n^\sigma_{\mathrm{time}}$ is the timelike future-pointing
+direction.  $\chi=+1$ corresponds to left-handedness; $\chi=-1$ to right-handedness.
+
+\paragraph{The right-handed neutrino absence.}
+A Type~0 vertex ($N=(0,0,0,0)$, neutral, no $N_1$ structure) has no $N_1$ causal ancestors
+and hence no $n^\mu_{N_1}$ direction to orient: the winding number is identically zero.
+The BDG topology of a neutral scalar vertex is chirality-neutral by construction.  Right-handed
+neutrinos, if they exist, must be Type~2 massive fermions with $N=(1,1,1,1)$ and $\chi=-1$
+--- but the observed neutrinos are near-massless, placing them in the Type~0 class where
+chirality orientation is undefined.  The structural absence of a right-handed neutrino in the
+BDG framework is the statement that neutral, massless particles cannot carry a chirality
+orientation.
+
+\paragraph{Weak isospin coupling selects left-handed doublets.}
+The $W^\pm$ boson (Type~1, $N=(1,1,0,0)$) couples to the $N_2$ spatial branching direction.
+An incoming fermion can exchange a $W$ only if its $N_2$ orientation is compatible with the
+$W$'s branching topology.  Left-handed fermions ($\chi=+1$) are correctly oriented for this
+coupling; right-handed fermions ($\chi=-1$) have reversed $N_2$ orientation and cannot
+complete the interaction vertex while maintaining positive BDG score.  This is the BDG-native
+statement of parity violation: a consequence of the sign structure of the BDG integers, not a
+separate postulate.
+
+\paragraph{Open target.}
+The geometric argument above is physically motivated and structurally consistent with the SM
+chiral structure.  A complete formal derivation --- mapping the orientation variable $\chi$ to a
+Lean~4-verifiable topological invariant of the BDG particle's DAG embedding --- is an open
+target identified in Table~2 of RASM \citep{Sandeman2026RASM}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Coherent State Theorem and Isospin Structure}
+
+The Lean-proved theorem \texttt{koide\_coherent\_state}
+(in \texttt{RA\_AQFT\_Proofs\_v2.lean} \citep{Meiburg2025}) establishes:
+\[
+\hat\phi_\theta(n=1) = \frac{\sqrt{6}}{2}\,e^{-i\theta}
+\]
+for the $SU(3)_{\rm gen}$ coherent state DFT mode.  The three modes have squared amplitudes
+$|\hat\phi(0)|^2 = 3$, $|\hat\phi(1)|^2 = |\hat\phi(2)|^2 = 3/2$.
+
+The doublet-to-singlet ratio $|\hat\phi(1)|^2/|\hat\phi(0)|^2 = 1/2$ is the $SU(2)\subset SU(3)$
+Clebsch-Gordan coefficient squared for the $3\to2\oplus1$ decomposition.  The $n=1$ and $n=2$
+modes are the two components of a $T=1/2$ doublet under the $SU(2)_{\rm gen}$ that generates
+CKM mixing.  These results are verified in \texttt{RA\_D1\_Proofs.lean} Section~15 (theorems
+\texttt{D1h\_amplitude\_ratio}, \texttt{D1h\_isospin\_master}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Relation to Prior Work}
+
+\textbf{Causal set theory.}  The BDG action \citep{Benincasa2010} was introduced as a discrete
+scalar curvature.  To our knowledge, the particle classification role of the BDG score is new to
+this paper.
+
+\textbf{Bilson-Thompson braids.}  The braid-based particle classification \citep{BilsonThompson2005}
+in loop quantum gravity assigns SM quantum numbers to ribbon braids.  The BDG topology approach
+uses the causal order of the Lorentzian structure directly; it additionally provides confinement as
+a theorem.
+
+\textbf{Relational Actualism suite.}  RAQM \citep{Sandeman2026RAQM} establishes the
+actualization framework.  RAEB \citep{Sandeman2026RAEB} gives the covariant dynamics.
+RASM \citep{Sandeman2026RASM} derives the full Standard Model.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+We have proved, with full Lean~4 machine verification, that the BDG causal set action in four
+spacetime dimensions partitions all elementary particle vertex environments into exactly two
+classes --- sequential and topological --- coinciding precisely with the lepton/quark distinction.
+
+The central message is sharp: colour confinement is not a dynamical accident --- it is a theorem
+about the geometry of causal ordering in four dimensions.  The lepton/quark distinction is
+written into the structure of spacetime itself.
+
+\bigskip\noindent
+\textbf{AI use disclosure.}  Claude (Anthropic) and Gemini (Google DeepMind) were used as
+research partners.  The author is solely responsible for all scientific content.
+
+\bigskip\noindent
+\textbf{Data availability.}  All Lean~4 proof files and Python scripts are available at
+\url{https://github.com/jsandeman/Relational-Actualism}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{thebibliography}{99}
+
+\bibitem[Benincasa \& Dowker(2010)]{Benincasa2010}
+D.~M.~T.~Benincasa and F.~Dowker.
+\newblock The scalar curvature of a causal set.
+\newblock \textit{Phys.\ Rev.\ Lett.}, 104:181301, 2010.
+
+\bibitem[Bilson-Thompson(2005)]{BilsonThompson2005}
+S.~O.~Bilson-Thompson.
+\newblock A topological model of composite preons.
+\newblock \textit{arXiv:hep-ph/0503213}, 2005.
+
+\bibitem[Dowker(2013)]{Dowker2013}
+F.~Dowker.
+\newblock Introduction to causal sets and their phenomenology.
+\newblock \textit{Gen.\ Relativ.\ Gravit.}, 45:1651--1667, 2013.
+
+\bibitem[Meiburg et al.(2025)]{Meiburg2025}
+J.~Meiburg, E.~Lessa, and G.~Soldati.
+\newblock Lean-QuantumInfo: a library for quantum information in Lean~4.
+\newblock \textit{arXiv:2510.08672}, 2025.
+
+\bibitem[Sandeman(2026RAQM)]{Sandeman2026RAQM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and Quantum Mechanics (RAQM).
+\newblock \textit{Foundations of Physics} (under review), 2026.
+
+\bibitem[Sandeman(2026RAEB)]{Sandeman2026RAEB}
+J.~F.~Sandeman.
+\newblock Relational Actualism: The Engine of Becoming (RAEB).
+\newblock Preprint, 2026.
+
+\bibitem[Sandeman(2026RASM)]{Sandeman2026RASM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and the Standard Model (RASM).
+\newblock Preprint, 2026.
+
+\bibitem[Sandeman(2026RACL)]{Sandeman2026RACL}
+J.~F.~Sandeman.
+\newblock Relational Actualism: The Einstein Field Equations as the Unique Macroscopic Limit
+  of the Actualization Graph (RACL).
+\newblock \textit{Classical and Quantum Gravity} (submitted), 2026.
+
+\bibitem[Sorkin(2005)]{Sorkin2005}
+R.~D.~Sorkin.
+\newblock Causal sets: Discrete gravity.
+\newblock In \textit{Lectures on Quantum Gravity}, pp.~305--327. Springer, 2005.
+
+\end{thebibliography}
+
+\end{document}

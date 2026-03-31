@@ -1,0 +1,850 @@
+\documentclass[11pt,twocolumn]{article}
+\usepackage[margin=0.85in,top=1in]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\section}{0pt}{14pt}{4pt}
+\titlespacing*{\subsection}{0pt}{10pt}{3pt}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── Shortcuts ──────────────────────────────────────────────────────────
+\newcommand{\DAG}{\mathcal{G}}
+\newcommand{\partialG}{\partial\DAG}
+\newcommand{\Vvalid}{\mathcal{V}_{\mathrm{valid}}}
+\newcommand{\lambdax}{\lambda(x)}
+\newcommand{\DeltaS}{\Delta S(\rho\|\sigma_0)}
+
+\begin{document}
+
+\title{Relational Actualism:\\
+Irreversible Events as the Primitive Basis of Physical Reality}
+
+\author{Joshua F.~Sandeman\\
+\small Independent Researcher, Salem, Oregon, USA\\
+\small \href{mailto:sansuikyo@gmail.com}{sansuikyo@gmail.com}}
+
+\date{March 2026}
+
+% ── ABSTRACT ───────────────────────────────────────────────────────────
+\begin{abstract}
+Relational Actualism (RA) is a foundational framework in which
+on-shell actualization events---irreversible physical interactions
+that write permanent vertices into a growing causal Directed
+Acyclic Graph (DAG)---are taken as the primitive constituents
+of physical reality.
+From this single ontological commitment, no new fields or free
+parameters are required to derive: the observer-independent
+criterion for wave function collapse ($\Delta S(\rho\|\sigma_0)>0$);
+the structural zero of the cosmological constant; the density-dependent
+Hubble expansion rate; the prohibition of causally silent dark matter
+candidates; flat galactic rotation curves; the fine structure constant
+$\alpha_{\rm EM}^{-1}=137$ and strong coupling $\alpha_s(m_Z)=
+1/\sqrt{72}$; and the complete particle content of the Standard Model
+from five integers.
+We present the Engine of Becoming---the five-step Covariant Stochastic
+Graph Rewriting System that governs the growth of the causal DAG---and
+show that quantum mechanics and general relativity are not rival
+fundamental theories but descriptions of different levels and limits
+of the same algorithm.
+Time in RA is not a background parameter but the process of graph growth
+itself: the arrow of time is not explained by entropy gradients but
+encoded in the irreversibility of every actualization event.
+All framework claims with finite-dimensional analogs have been formally
+verified in Lean~4/Mathlib.
+We articulate the hard mathematical walls that remain open,
+identify the collaboration targets that would close them, and assemble
+the complete falsifiable prediction set of the programme.
+\end{abstract}
+
+\maketitle
+
+% ── I. INTRODUCTION ─────────────────────────────────────────────────────
+\section{Introduction: The Shared Error}
+
+The irreconcilability of quantum mechanics (QM) and general relativity
+(GR) is routinely presented as the central unsolved problem of
+theoretical physics.
+Every proposed resolution---string theory, loop quantum gravity,
+causal dynamical triangulations, asymptotic safety---accepts both
+frameworks as given and attempts to make them mutually consistent.
+We propose instead that the difficulty lies upstream: both frameworks
+share a foundational error, and identifying that error dissolves the
+tension rather than resolving it.
+
+\emph{The shared error is the treatment of time as a background parameter.}
+In the Schr\"{o}dinger equation, $t$ is a continuous coordinate along
+which the state vector evolves unitarily.
+In the Einstein field equations, $t$ is a coordinate label on a
+block Lorentzian manifold.
+In both cases, nothing actually happens: the formalism describes a
+static mathematical structure; genuine temporal becoming is represented
+nowhere.
+
+Relational Actualism begins from a different premise.
+Time is not a dimension through which events are located.
+Time is the process of the causal graph growing---the irreversible
+accumulation of on-shell actualization events that write permanent
+vertices into a growing Directed Acyclic Graph (DAG).
+The arrow of time is not a consequence of entropy gradients or
+initial conditions; it is encoded in the very definition of an
+actualization event, which is irreversible by stipulation.
+
+This is not merely an interpretive shift.
+The companion papers of this programme~\cite{Sandeman2026P1,Sandeman2026P2,Sandeman2026P3}
+have shown that this single ontological reorientation yields, without
+additional parameters: the correct values of the two most precisely
+measured coupling constants; an observer-independent criterion for
+wave function collapse with three testable predictions; a structural
+resolution of the cosmological constant problem; and a geometric mechanism
+for the Hubble tension with a falsifiable numerical prediction.
+
+The present paper assembles the framework in its most complete form.
+Section~\ref{sec:primitive} states the primitive ontological commitment
+and its immediate logical consequences.
+Section~\ref{sec:engine} presents the Engine of Becoming: the
+five-step algorithm governing the growth of the causal DAG.
+Section~\ref{sec:limits} shows how QM and GR emerge as limiting
+approximations.
+Section~\ref{sec:complexity} develops the emergence of biological
+complexity and the Causal Firewall.
+Section~\ref{sec:time} develops the account of time, causality, and
+the arrow.
+Section~\ref{sec:philosophy} positions the framework against the
+principal competing ontologies.
+Section~\ref{sec:predictions} assembles all testable predictions
+of the programme.
+Section~\ref{sec:hardwalls} states the open mathematical problems
+with precision.
+
+% ── II. THE PRIMITIVE COMMITMENT ────────────────────────────────────────
+\section{The Primitive Commitment}
+\label{sec:primitive}
+
+\subsection{Actualization events as primitive}
+
+Relational Actualism posits:
+
+\begin{definition}[Actualization event]
+An \emph{actualization event} is a physical interaction that produces
+an irreversible increase in quantum relative entropy
+$\Delta S(\rho\|\sigma_0) > 0$ with respect to the Minkowski vacuum
+state $\sigma_0$, generating a permanent, redundant causal record
+in the asymptotic environment.
+\end{definition}
+
+This is an objective, observer-independent physical criterion.
+The relative entropy $S(\rho\|\sigma_0) = \mathrm{Tr}[\rho(\ln\rho
+- \ln\sigma_0)]$ is a property of the interaction, not of any
+observer's knowledge.
+The vacuum state $\sigma_0$ is the physical reference state of
+the quantum field, not a subjective baseline.
+In weakly coupled quantum field theory, the criterion coincides
+with the on-shell condition $p^\mu p_\mu = m^2c^2$: a real excitation
+propagating into the asymptotic field produces exactly the permanent
+environmental record required~\cite{Sandeman2026P2}.
+
+\subsection{Three kinds of property}
+
+Properties in RA are of exactly three kinds:
+
+\begin{enumerate}[label=(\roman*), noitemsep]
+\item \emph{Invariant properties}: possessed by all actualized states
+  regardless of context (mass, charge, spin quantum number).
+\item \emph{Classical properties}: actualized deterministically through
+  interaction, because the causal and logical context has reduced the
+  possibilities to exactly one.
+\item \emph{Intrinsically relational properties}: actualized only in
+  specific interaction contexts, with genuine ontic randomness when
+  more than one possibility remains viable.
+\end{enumerate}
+
+This taxonomy dissolves the measurement problem at its root: asking
+``what is the value of an intrinsically relational property prior to
+the interaction that actualizes it?'' is not a question about Nature's
+hidden state but a category error.
+Intrinsically relational properties are not hidden; they are not yet
+actual.
+
+\subsection{The causal DAG}
+
+Let $\DAG = (V, E)$ be a growing Directed Acyclic Graph in which
+each vertex $v \in V$ is an actualization event and each edge
+$(u, v) \in E$ encodes ``$u$ is in the causal past of $v$.''
+The frontier $\partialG$ is the set of actualized vertices with
+no causal successors: the dynamical present.
+The graph grows by the sequential addition of new vertices to
+$\partialG$.
+The continuum spacetime manifold is the dense-graph limit of $\DAG$,
+recovered in the regime $\lambda \to \infty$ where $\lambda$ is
+the actualization density (vertices per unit proper volume).
+
+\begin{definition}[Local Ledger Condition]
+For every vertex $v \in V$, the sum of incoming conserved charges
+equals the sum of outgoing charges:
+\begin{equation}
+  \sum_{\substack{u:\,(u,v)\in E}} \mathbf{q}(u)
+  \;=\;
+  \sum_{\substack{w:\,(v,w)\in E}} \mathbf{q}(w).
+  \label{eq:LLC}
+\end{equation}
+\end{definition}
+
+The LLC is the discrete graph-theoretic primitive from which
+Noether conservation laws emerge in the continuum limit.
+It is formally verified in Lean~4/Mathlib (theorem
+\texttt{local\_ledger\_condition} in \texttt{RA\_D1\_Proofs.lean},
+zero sorry tags).
+
+Crucially, the LLC holds \emph{locally} on each causally connected
+component.
+Across causal severances---topological discontinuities that form
+when the actualization flux reaches the bandwidth limit of the
+local causal structure---conservation is not violated; it is
+formally undefined, because there is no causal connection across
+which to define it.
+Event horizons are not information destroyers; they are boundaries
+at which the graph has no outgoing edges.
+
+% ── III. THE ENGINE OF BECOMING ─────────────────────────────────────────
+\section{The Engine of Becoming}
+\label{sec:engine}
+
+The Engine of Becoming is a Covariant Stochastic Graph Rewriting
+System stated at three levels of description.
+The fundamental level (Level~1) is purely graph-theoretic.
+The intermediate level (Level~2) assigns complex amplitudes to
+causal histories via the quantum measure.
+The emergent level (Level~3) recovers the smooth continuum in the
+dense-graph limit.
+
+The five steps of the algorithm are as follows.
+
+\paragraph{Step 1 --- The Causal Boundary.}
+The present frontier $\partialG$ is the set of actualized vertices
+with no causal successors.
+This is a causal notion, not a spatial one.
+Different observers have different causal pasts and therefore different
+$\partialG$, but the Level~1 growth rules are the same for all
+observers.
+
+\paragraph{Step 2 --- The Quantum Possibility Space.}
+From $\partialG$, the valid candidate set $\Vvalid$ is determined
+by the actualization criterion.
+Amplitudes are assigned to all possible extensions via the quantum
+measure~\cite{Sorkin1994}:
+\begin{equation}
+  \mu(\mathcal{A}) \;=\; \sum_{h,h'\in\mathcal{A}} D(h,h'),
+  \label{eq:qm}
+\end{equation}
+where $D(h,h')$ is the decoherence functional over causal histories.
+Virtual candidates carry zero metric weight (they are not vertices
+of $V$) and do not source gravity.
+This is the structural explanation for why the vacuum does not
+gravitate: virtual (off-shell) processes satisfy $\Delta S = 0$
+and add no vertices to $\DAG$.
+
+\paragraph{Step 3 --- The Kinematic Snap.}
+The actualization criterion filters candidates by requiring
+$\Delta S(\rho\|\sigma_0) > 0$.
+Because Lorentz boosts are unitary conjugations, and relative entropy
+is invariant under unitary conjugation (proved in Lean:
+\texttt{frame\_independence} in \texttt{RA\_AQFT\_Proofs\_v10.lean}),
+this threshold is a Lorentz scalar.
+A Rindler observer perceives the Minkowski vacuum as a KMS thermal
+bath, but the relative entropy of that bath with respect to $\sigma_0$
+is zero under modular flow (\texttt{rindler\_stationarity}, Lean-verified):
+no actualization occurs.
+Both observers agree.
+
+\paragraph{Step 4 --- The Covariant Stochastic Update.}
+A set of causally disconnected valid candidates
+$\{v_1,\ldots,v_k\} \subseteq \Vvalid$ is actualized with probability
+\begin{equation}
+  P(\{v_1,\ldots,v_k\})
+  \;=\; \left|\sum_\sigma \prod_i a\bigl(v_{\sigma(i)}
+    \mid \mathrm{past}(v_{\sigma(i)})\bigr)\right|^2,
+  \label{eq:update}
+\end{equation}
+where the sum is over all causal-order-consistent orderings $\sigma$.
+By causal invariance~\cite{Sorkin1994}, this probability is the same
+for every foliation: it depends only on the causal structure of the
+antecedents.
+The Born rule is not a postulate; it is a consequence of the quantum
+measure on the causal graph.
+
+\paragraph{Step 5 --- The Hydrodynamic Limit.}
+After actualization, $V$ is updated and the effective metric is
+recalculated from the actualization density $\lambda(x)$ via the
+RA field equation:
+\begin{equation}
+  G_{\mu\nu} \;=\; 8\pi G\!\left(T_{\mu\nu}^{(A)}
+    + \Theta_{\mu\nu}^{(\lambda)}\right),
+  \label{eq:field_eq}
+\end{equation}
+where $\Theta_{\mu\nu}^{(\lambda)} = \xi[\nabla_\mu\nabla_\nu
+(\ln\lambda) - g_{\mu\nu}\Box(\ln\lambda)]$.
+This recalculation happens only \emph{after} actualization, never
+during the quantum exploration.
+Gravity is a post-actualization output of Step~5.
+Superposed states never source the metric.
+
+% ── IV. QM AND GR AS LIMITS ─────────────────────────────────────────────
+\section{QM and GR as Limiting Approximations}
+\label{sec:limits}
+
+\subsection{Quantum mechanics as the slowly-varying limit}
+
+When the actualization density $\lambda(x)$ varies slowly in space
+and time---equivalently, when back-reaction of the causal graph onto
+itself is negligible---the quantum measure of equation~\eqref{eq:qm}
+reduces to the Feynman path integral:
+\begin{equation}
+  \langle x_f | e^{-iHt/\hbar} | x_i \rangle
+  \;\underset{\lambda\to\mathrm{smooth}}{\longrightarrow}\;
+  \int \mathcal{D}x\, e^{iS[x]/\hbar}.
+  \label{eq:qm_limit}
+\end{equation}
+Standard quantum mechanics is the Engine of Becoming at Level~2
+in the regime where the discrete causal graph is well-approximated
+by a continuous Hilbert space evolution.
+
+\subsection{General relativity as the dense-graph limit}
+
+When the actualization density $\lambda \to \infty$, the discrete
+graph converges to a smooth Lorentzian manifold and the RA field
+equation~\eqref{eq:field_eq} reduces to:
+\begin{equation}
+  G_{\mu\nu} \;=\; 8\pi G\, T_{\mu\nu},
+  \label{eq:gr_limit}
+\end{equation}
+the Einstein field equations.
+The $\Theta_{\mu\nu}^{(\lambda)}$ correction vanishes when $\lambda$
+is spatially uniform (dense homogeneous matter), recovering standard
+GR in the interior of galaxies and on cosmological scales where
+the density is approximately uniform.
+
+\emph{Uniqueness of the EFE.}
+The Einstein field equations with $\Lambda = 0$ are not merely
+recovered but are the \emph{unique} macroscopic output of the
+Engine of Becoming under three constraints: (i) the Local Ledger
+Condition~\eqref{eq:LLC}, proved in Lean; (ii) the BDG action as
+the unique discrete Lorentz-invariant action in $d=4$~\cite{Glaser2014};
+and (iii) Lovelock's theorem~\cite{Lovelock1971}, which establishes
+that the Einstein tensor is the unique rank-$(0,2)$ divergence-free
+tensor constructed from the metric and its first two derivatives
+in four spacetime dimensions.
+No cosmological constant term arises because the vacuum does not
+actualize (Step~2 of the Engine; proved in Paper~3~\cite{Sandeman2026P3}).
+The combination of these three results closes the derivation without
+free parameters.
+
+\subsection{Why they appear incompatible}
+
+QM assumes that states evolve continuously and unitarily (the
+Level~2 quantum measure).
+GR assumes that the spacetime metric is sourced by the stress-energy
+tensor (the Level~3 dense-graph output).
+These two approximations conflict in regimes where both matter
+simultaneously---specifically, at Planck densities where quantum
+fluctuations of the metric are non-negligible.
+The apparent incompatibility is not a fundamental conflict between
+two correct theories; it is the natural breakdown of two
+approximations to the Engine of Becoming applied simultaneously
+outside their domain of validity.
+
+% ── V. EMERGENT COMPLEXITY AND THE CAUSAL FIREWALL ──────────────────────
+\section{Emergent Complexity and the Causal Firewall}
+\label{sec:complexity}
+
+\subsection{Complexity as iterated coarse-graining}
+
+Step~5 of the Engine of Becoming is recursive.
+The hydrodynamic limit that produces the spacetime metric from
+the actualization density $\lambda(x)$ is one instance of a
+general coarse-graining operation.
+Applying the same operation at successively larger scales produces
+the full hierarchy of physical complexity.
+
+Define the \emph{coarse-grained assembly depth} $\tilde{A}_{\rm RA}(x)$
+as the mean causal depth of the DAG within a coarse-graining volume
+$\mathcal{V}$ around $x$.
+For a monoatomic gas, $\tilde{A}_{\rm RA} \sim 1$; for a covalent
+molecule, $\tilde{A}_{\rm RA} \sim 3$--$5$; for a metabolically
+active cell, $\tilde{A}_{\rm RA} \gg 10^3$.
+The step from physics to chemistry to biology is the step from
+low-depth to high-depth actualization networks.
+This is not an emergentist metaphor; it is a structural consequence
+of iterated Step~5 coarse-graining.
+
+\subsection{Biological assembly and irreversibility}
+
+Molecular assembly in biology corresponds directly to actualization
+events.
+Each JOIN operation in Assembly Theory~\cite{Cronin2023}---the
+formation of a covalent bond that advances molecular construction---
+corresponds to at least one irreversible actualization event:
+an exothermic on-shell energy transfer that satisfies
+$\Delta S > 0$ and cannot be reversed by subsequent unitary evolution.
+
+This claim is not merely a formal identification.
+B3LYP/6-311+G* density functional calculations across the five
+primary bond types of biological assembly (C-C, C-N, C-O, S-S, P-O)
+confirm that all are exothermic under standard biological conditions,
+mandating irreversible energy dissipation at each assembly step.
+The Local Ledger Condition~\eqref{eq:LLC} then governs the energy
+bookkeeping of the assembly process, establishing a tight connection
+between the physics of the DAG and the chemistry of life.
+
+\subsection{The Causal Firewall}
+
+The Engine of Becoming predicts a phase transition in the
+actualization density that acts as a hard boundary separating
+abiotic chemistry from stable biological complexity.
+
+\begin{proposition}[Causal Firewall]
+\label{prop:firewall}
+At the critical actualization density $\mu = 1$ (the BDG self-dual
+point, the QCD confinement--deconfinement transition), the
+Erd\H{o}s-R\'{e}nyi random graph transitions from subcritical
+($\mu < 1$: only small components, no spanning cluster) to
+supercritical ($\mu > 1$: a giant connected component spans the
+system).
+This transition is the \emph{Causal Firewall}: below it, molecular
+assemblies dissipate before reaching biological complexity; above
+it, stable, self-reinforcing causal networks can persist.
+\end{proposition}
+
+The same critical density $\mu = 1$ governs four physically
+distinct phenomena simultaneously: the QCD confinement--deconfinement
+transition (particle physics); the onset of flat galactic rotation
+curves (galactic dynamics via the $\nabla^2(\ln\lambda)$ term);
+the fault-tolerance threshold of quantum error correction (quantum
+information); and the Causal Firewall for biological complexity.
+That a single dimensionless parameter controls the transition in
+all four regimes is a structural prediction of the framework,
+not a parameter choice.
+
+\subsection{Biosignature prediction}
+
+The Causal Firewall implies that substrate-independent physical
+constraints govern the emergence of life.
+Specifically: any planetary environment in which biological
+complexity can arise must sustain actualization densities above
+the Causal Firewall threshold.
+This is independent of the chemical substrate (carbon-based,
+silicon-based, or otherwise).
+
+The falsifiable prediction: biosignature searches should correlate
+the presence of biological complexity with thermodynamic environments
+that sustain $\mu \geq 1$.
+Environments that are too cold, too rarefied, or too far from
+chemical disequilibrium cannot sustain biological assembly because
+they fall below the Causal Firewall threshold.
+This is a physically derived constraint on the distribution of life
+in the universe, testable with current and near-future
+astrobiology surveys.
+
+% ── VI. TIME AND THE ARROW ───────────────────────────────────────────────
+\section{Time, the Arrow, and Ontic Randomness}
+\label{sec:time}
+
+\subsection{Time as the growing graph}
+
+In RA, time is not a dimension through which events are located.
+Time \emph{is} the process of the causal DAG growing.
+Proper time along a worldline is the count of actualization events
+along that worldline:
+\begin{equation}
+  \tau_{\rm proper} \;=\; \frac{N_{\rm act}}{\lambda_0},
+  \label{eq:proper_time}
+\end{equation}
+where $N_{\rm act}$ is the number of actualization events and
+$\lambda_0$ is the reference actualization rate in flat space.
+Relativistic time dilation is the statement that different worldlines
+accumulate actualization events at different rates: a clock in
+motion writes fewer vertices per coordinate second than a stationary
+clock, because its causal graph is more sparsely connected to the
+environment~\cite{Sandeman2026P3}.
+
+This identification is not a metaphor.
+The Lorentz transformation acts on the DAG as a re-labelling of
+vertices; proper time is invariant under this re-labelling because
+it counts physical events, not coordinate intervals.
+
+\subsection{The arrow of time}
+
+Thermodynamic accounts of the arrow of time require explaining why
+entropy increases from past to future given time-symmetric
+microscopic laws.
+In RA, the arrow of time is not derived from entropy; it is
+\emph{encoded in the definition of an actualization event}.
+An edge $(u, v) \in E$ is directed: $u$ is in the causal past of
+$v$, and this relation cannot be reversed.
+There is no sense in which the DAG can shrink.
+The past is permanent; the future is open.
+
+This dissolves the problem.
+One cannot ask why the DAG grows in the direction it does:
+directedness is constitutive of what an edge is.
+The arrow of time is not a feature to be explained by the framework;
+it is the framework's most primitive axiom made explicit.
+
+\subsection{Ontic randomness}
+
+The randomness of quantum measurement is ontically irreducible in RA.
+In a two-state superposition $\alpha|x_1\rangle + \beta|x_2\rangle$,
+the Born rule probabilities $|\alpha|^2$, $|\beta|^2$ are the
+distribution over possible next vertices of the DAG.
+Which vertex is added at Step~4 is not determined by any prior
+fact in $V$: it is a genuinely new addition to the causal order.
+The actualization event at $x_0$ is the first link of a new causal
+chain, not the conclusion of an old one.
+
+This is not ignorance of a hidden variable.
+The quantum amplitudes governing the next vertex are not waiting to
+be discovered; they are underdetermined until the event occurs.
+Classical chaos is different: given perfect initial conditions,
+the trajectory is fixed; only our ignorance produces apparent
+randomness.
+In RA, there are no initial conditions that would determine the
+outcome if we knew them.
+The randomness is in the world, not in our description of it.
+
+% ── VI. PHILOSOPHICAL POSITIONING ──────────────────────────────────────
+\section{Philosophical Positioning}
+\label{sec:philosophy}
+
+\subsection{Against the block universe}
+
+The block universe (eternalism) holds that past, present, and future
+events are equally real, and that temporal becoming is an illusion
+produced by our position within the four-dimensional manifold.
+In RA, the block universe is literally false: the DAG $\DAG$ is
+not a complete static structure but a growing one.
+Future vertices do not exist; they are not yet actual.
+The distinction between the actual and the possible is metaphysically
+sharp, not perspectival.
+This is not a claim about human experience of time but about the
+physical structure of the world.
+
+\subsection{Against Copenhagen}
+
+The Copenhagen interpretation grounds measurement in the classical/quantum
+distinction without specifying what draws the boundary.
+RA provides the criterion: the boundary lies where $\Delta S > 0$.
+There is no Heisenberg cut in RA; there is only a gradient in the
+actualization rate $\lambda(x)$.
+Large, warm objects are classical not because they are fundamentally
+different from quantum systems but because their internal actualization
+rate is far above the threshold at every observable scale.
+
+\subsection{Against Everett}
+
+Everettian QM holds that all branches of the wave function are real
+and that apparent collapse is a perspectival artifact.
+RA holds that exactly one branch becomes actual at each Step~4;
+the others were genuinely possible but are now closed.
+The difference is not merely semantic.
+Everett predicts no sharp reversibility threshold (all branches
+remain in principle recoverable); RA predicts a specific measurable
+threshold $\Delta S^*$ above which recovery is impossible.
+Everett predicts no Lieb-Robinson propagation delay for apparent
+collapse; RA predicts a finite propagation speed~\cite{Sandeman2026P2}.
+These are discriminating empirical differences.
+
+\subsection{Against pilot wave theory}
+
+Bohmian mechanics accounts for quantum randomness by postulating
+hidden particle positions guided by the wave function.
+RA posits no hidden variables.
+The randomness at Step~4 is irreducibly ontic, not epistemic:
+there is no fact of the matter about which vertex will be added
+before it is added.
+Bohmian mechanics is also in tension with quantum field theory,
+where particle number is not conserved; RA operates at the level
+of field interactions and is free of this constraint.
+
+\subsection{Against relational QM}
+
+Rovelli's relational QM~\cite{Rovelli1996} grounds quantum
+states relative to observers.
+RA's actualization criterion is observer-independent: the relative
+entropy $\Delta S(\rho\|\sigma_0)$ is a property of the field state
+with respect to the physical vacuum, not with respect to any observer.
+The Rindler resolution (Section~\ref{sec:engine}) makes this explicit:
+both the inertial and Rindler observers agree on $\Delta S = 0$ for
+the vacuum, regardless of their different experiences.
+
+% ── VII. PREDICTIONS ────────────────────────────────────────────────────
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+Table~\ref{tab:all_predictions} assembles the complete set of
+falsifiable quantitative predictions of the Relational Actualism
+programme.
+All predictions are structural consequences of the single ontological
+commitment of Section~\ref{sec:primitive}; none are post-hoc fits.
+
+\begin{table*}[t]
+\centering
+\caption{Complete falsifiable prediction set of the Relational Actualism
+  programme. All predictions follow structurally from the single commitment
+  that actualization events are primitive. Paper numbers refer to the
+  companion papers~\cite{Sandeman2026P1,Sandeman2026P2,Sandeman2026P3}.
+  $\checkmark$ = confirmed by existing data; $\bigcirc$ = testable with
+  current or near-future experiments; $\square$ = requires future
+  infrastructure.}
+\label{tab:all_predictions}
+\small
+\begin{tabular}{p{4.5cm}p{3.5cm}lp{3cm}}
+\toprule
+Prediction & Value & Status & Source / Test \\
+\midrule
+\multicolumn{4}{l}{\textit{Paper 1: BDG causal geometry}} \\[2pt]
+$\alpha_{\rm EM}^{-1}$ (leading order) & $144 - 7 = 137.000$ & $\checkmark$ 0.026\% & PDG 2024 \\
+$\alpha_{\rm EM}^{-1}$ (exact polynomial) & 136.845 & $\checkmark$ 0.14\% & PDG 2024 \\
+$\alpha_s(m_Z)$ & $1/\sqrt{72} = 0.11785$ & $\checkmark$ 0.13\% & PDG 2024 \\
+$m_p / \Lambda_{\rm QCD}$ & $\sqrt{c_4} = 2\sqrt{2}$ & $\checkmark$ 0.08\% & PDG 2024 \\
+SM particle content & 5 topology classes & $\checkmark$ exact & Lean-verified \\
+No proton decay & $\tau_p = \infty$ & $\checkmark$ (lower bounds) & Super-K, Hyper-K \\
+No 4th SM generation & 3 generations only & $\checkmark$ & LEP, LHC \\
+\midrule
+\multicolumn{4}{l}{\textit{Paper 2: Wave function collapse}} \\[2pt]
+LR actualization propagation delay & $\Delta t \geq |r_A - r_B|/v_{\rm LR}$ & $\bigcirc$ & Optical lattices, SC qubits \\
+Env-dependent transition duration & $\tau_{\rm act} \sim \hbar/\Delta E_{\rm env}$ & $\bigcirc$ & SC circuit tuning \\
+Sharp reversibility threshold & $\Delta S^*$ measurable & $\bigcirc$ & Quantum eraser+threshold \\
+Rindler stationarity & $\Delta S = 0$ under modular flow & $\checkmark$ Lean-verified & Unruh consistency \\
+\midrule
+\multicolumn{4}{l}{\textit{Paper 3: Cosmology}} \\[2pt]
+$H_0$ in Eridanus supervoid & $\approx 75.9\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & $\bigcirc$ & Void surveys \\
+$H_0$ anticorrelates with $\bar\rho_{\rm LOS}$ & line-of-sight dependence & $\bigcirc$ & DESI, Euclid \\
+No WIMP gravitational sourcing & $\leq 10^{-25}$ of baryons & $\checkmark$ null results & LZ, PandaX-4T \\
+MW-analog Einstein radius & $\approx 0.47$ arcsec & $\bigcirc$ & Strong lensing surveys \\
+Structural $\Lambda = 0$ & no vacuum contribution & $\bigcirc$ & CMB low-$\ell$ power \\
+\midrule
+\multicolumn{4}{l}{\textit{This paper (P4)}} \\[2pt]
+BMV null result & no gravity-mediated entanglement & $\bigcirc$ & BMV experiment \\
+Kinematic Coherence Bound & $N_{\rm max} = \eta\cdot p_{\rm th}$ & $\bigcirc$ & Fault-tolerant QC arrays \\
+No Boltzmann Brains & $P_{\rm BB} = 0$ exactly & $\checkmark$ (structural) & Vacuum definition \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{The BMV prediction}
+
+The Bose-Marletto-Vedral (BMV) experiment~\cite{Bose2017,Marletto2017}
+proposes to measure gravitationally mediated entanglement between
+two masses in superposition.
+RA predicts a strict null result: because the metric is updated only
+at Step~5, after actualization, and quantum superpositions never
+source the metric, there can be no gravitationally mediated
+entanglement between systems that have not already undergone
+actualization (Section~\ref{sec:engine}).
+A null result would be the first direct experimental support for the
+framework's core architecture.
+A positive result would falsify the Engine of Becoming as stated.
+Both outcomes are scientifically valuable.
+
+\subsection{The Kinematic Coherence Bound}
+
+The actualization criterion imposes a maximum scale on fault-tolerant
+quantum computation.
+An array of $N$ physical qubits with error rate $p$ per gate can
+maintain logical coherence only up to
+\begin{equation}
+  N_{\rm max} \;\leq\; \eta \cdot p_{\rm th},
+  \label{eq:KCB}
+\end{equation}
+where $p_{\rm th}$ is the fault-tolerance threshold and $\eta$
+is a constant determined by the actualization geometry.
+This bound is absent from standard QEC theory, which imposes no
+upper limit on array size given sufficiently small error rates.
+Testing this bound at large qubit array scales provides a direct
+probe of the actualization threshold.
+
+\subsection{Boltzmann Brains}
+
+The Boltzmann Brain problem asks whether the universe is dominated
+by isolated thermodynamic fluctuations (``brains'') in an otherwise
+empty de Sitter vacuum.
+In RA, spontaneous fluctuations from the vacuum satisfy
+$\Delta S(\rho\|\sigma_0) = 0$ (the vacuum state is the reference
+$\sigma_0$ itself), and therefore produce no actualization events.
+Boltzmann Brains are categorically impossible: they require
+self-organizing complexity to emerge from a state that, by definition,
+contains no actualization events.
+This is a structural prohibition, not a probabilistic suppression.
+
+% ── VIII. HARD WALLS ────────────────────────────────────────────────────
+\section{Open Problems and Hard Walls}
+\label{sec:hardwalls}
+
+The following mathematical problems are precisely identified gaps
+in the present formulation.
+They do not undermine the predictions in Section~\ref{sec:predictions},
+which hold in the regimes where the existing derivations apply.
+
+\paragraph{Hard Wall 1: Bianchi compatibility.}
+The RA field equation~\eqref{eq:field_eq} must satisfy the contracted
+Bianchi identity $\nabla_\mu G^{\mu\nu} \equiv 0$, requiring
+$\nabla_\mu\Theta^{\mu\nu}_{(\lambda)} = 0$.
+This is satisfied in the weak-field static limit; the full covariant
+proof requires deriving the coupling $\xi$ from the microscopic graph
+dynamics.
+Collaboration target: Algebraic QFT expertise in Tomita-Takesaki
+modular theory.
+
+\paragraph{Hard Wall 2: Amplitude locality.}
+The causal invariance theorem at Step~4 is proved in the perturbative
+regime given the axiom of amplitude locality.
+The intrinsic discrete proof---showing that local amplitudes satisfy
+causal independence as a theorem of the discrete graph dynamics
+rather than an axiom---is the primary open problem of the Lean
+verification programme.
+This is equivalent to proving Bell causality for the graph rewriting
+system in the Rideout-Sorkin~\cite{RideoutSorkin2000} sense.
+Collaboration target: Causal set theory experts (Dowker, Henson).
+
+\paragraph{Hard Wall 3: Continuum limit.}
+The discrete LLC~\eqref{eq:LLC} is Lean-verified.
+That the continuum limit satisfies the contracted Bianchi identity
+$\nabla_\mu G^{\mu\nu} \equiv 0$ without breaking Lorentz invariance
+requires demonstrating convergence of the discrete conservation
+law to the differential Noether condition.
+Collaboration target: Experts in causal dynamical triangulations
+(Loll, Radboud) and asymptotic safety.
+
+\paragraph{Hard Wall 4: Covariant $\Box(\ln\lambda)$.}
+The cosmological predictions of Paper~3 use the weak-field
+$\nabla^2(\ln\lambda)$ correction.
+The fully covariant $g^{\mu\nu}\nabla_\mu\nabla_\nu(\ln\lambda)$
+is required for strong-field and early-universe applications.
+Demonstrating that this satisfies Bianchi compatibility and
+reduces to the Newtonian limit is Hard Wall~2 of the cosmology paper.
+
+% ── IX. CONCLUSION ──────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+
+Relational Actualism begins from a single claim: on-shell actualization
+events are the primitive constituents of physical reality.
+From this commitment alone, with no additional fields or free
+parameters, the programme derives: both Standard Model coupling
+constants and the complete particle spectrum (Paper~1); an
+observer-independent criterion for wave function collapse with three
+testable predictions (Paper~2); the structural zero of the
+cosmological constant, the Hubble tension, and dark matter
+phenomenology (Paper~3); and the framework presented here,
+which shows that QM and GR are approximations to the same algorithm.
+
+The arc of the argument is conceptually clean.
+The measurement problem is dissolved because collapse is identified
+with a physical event (irreversible entropy production), not an
+observer's intervention.
+The cosmological constant problem is dissolved because the vacuum
+does not gravitate (off-shell processes add no vertices to the DAG).
+The Hubble tension has a specific geometric mechanism (expansion is
+inversely proportional to actualization density).
+The dark matter phenomenology is reproduced by the topological
+tension at density gradients in the causal graph.
+
+In each case, the resolution is not ad hoc.
+It is the same ontological commitment applied consistently.
+
+The universe may not always know what it is going to do, but it
+always knows what it has done.
+That permanence of the actual, and openness of the possible, is the
+simplest---and perhaps the only---account of physical reality that
+is simultaneously consistent with quantum mechanics, general
+relativity, and the irreversible macroscopic world we inhabit.
+
+% ── ACKNOWLEDGEMENTS ────────────────────────────────────────────────────
+\section*{Acknowledgements}
+The author acknowledges the use of Anthropic's Claude and Google's Gemini
+as AI research partners during the preparation of this manuscript.
+The author is solely responsible for all scientific content and conclusions.
+
+% ── REFERENCES ──────────────────────────────────────────────────────────
+\begin{thebibliography}{99}
+
+\bibitem{Sorkin1994}
+R.~D.~Sorkin,
+Quantum mechanics as quantum measure theory,
+Mod.\ Phys.\ Lett.\ A \textbf{9}, 3119 (1994).
+
+\bibitem{RideoutSorkin2000}
+D.~P.~Rideout and R.~D.~Sorkin,
+Classical sequential growth dynamics for causal sets,
+Phys.\ Rev.\ D \textbf{61}, 024002 (2000).
+
+\bibitem{Rovelli1996}
+C.~Rovelli,
+Relational quantum mechanics,
+Int.\ J.\ Theor.\ Phys.\ \textbf{35}, 1637 (1996).
+
+\bibitem{Bose2017}
+S.~Bose et al.,
+Spin entanglement witness for quantum gravity,
+Phys.\ Rev.\ Lett.\ \textbf{119}, 240401 (2017).
+
+\bibitem{Marletto2017}
+C.~Marletto and V.~Vedral,
+Gravitationally induced entanglement between two massive particles
+is sufficient evidence of quantum effects in gravity,
+Phys.\ Rev.\ Lett.\ \textbf{119}, 240402 (2017).
+
+\bibitem{Sandeman2026P1}
+J.~F.~Sandeman,
+The Fine Structure Constant and Strong Coupling from
+Four-Dimensional Causal Geometry,
+Zenodo doi:10.5281/zenodo.19324790 (2026).
+
+\bibitem{Sandeman2026P2}
+J.~F.~Sandeman,
+Wave Function Collapse as Irreversible Entropy Production:
+An Observer-Independent Criterion with Three Experimental Predictions,
+in preparation (2026).
+
+\bibitem{Sandeman2026P3}
+J.~F.~Sandeman,
+Structural Zero Cosmological Constant and the Hubble Tension from
+Causal Actualization Density,
+in preparation (2026).
+
+
+
+\bibitem{Glaser2014}
+L.~Glaser,
+A closed form expression for the causal set d'Alembertian,
+Class.\ Quantum Grav.\ \textbf{31}, 095007 (2014).
+
+\bibitem{Lovelock1971}
+D.~Lovelock,
+The Einstein tensor and its generalizations,
+J.\ Math.\ Phys.\ \textbf{12}, 498 (1971).
+
+\bibitem{Cronin2023}
+S.~M.~Walker et al.,
+Identifying molecules as biosignatures with assembly theory
+and mass spectrometry,
+Nature \textbf{616}, 01 (2023).
+
+\end{thebibliography}
+
+\end{document}

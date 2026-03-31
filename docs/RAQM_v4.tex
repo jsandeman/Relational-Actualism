@@ -603,6 +603,30 @@ $\mathcal{P}_{\mathrm{act}}$, reformulated in terms of local algebras and modula
 Fock-space particles, produces a frame-independent set of actualization events is
 pursued in the companion paper RAGC~\citep{Sandeman2026RAGC}.
 
+\paragraph{The vacuum reference state $\sigma_0$: algebraic definition.}
+A potential concern is whether $\sigma_0$---the vacuum reference state with respect
+to which the entropy increase is measured---requires a pre-existing continuous
+spacetime metric to define. It does not.
+
+$\sigma_0$ is defined \emph{algebraically}: it is the unique KMS (Kubo-Martin-Schwinger)
+ground state of the local operator algebra associated with the causal diamond
+$\mathcal{D}(x)$ whose past and future boundaries define the vertex $v$ under
+consideration. This definition relies only on the local causal order (the partial
+order of the DAG) and the modular structure of the local algebra of observables
+--- both of which are discrete, combinatorial, and pre-geometric.
+
+Explicitly: for a vertex $v$ with causal diamond $\mathcal{D}(v) = J^+(p) \cap
+J^-(q)$ (the Alexandrov interval between its defining past and future boundary
+events $p, q$), $\sigma_0$ is the state that minimises the relative entropy
+$S(\rho \| \sigma_0)$ over the local algebra $\mathcal{A}(\mathcal{D}(v))$.
+The existence and uniqueness of this state follows from the Tomita-Takesaki
+modular theory for the local algebra, which requires no continuous background
+metric~\citep{Haag1996}. The metric does not define the vacuum; the vacuum is
+defined by the causal order, and the metric emerges from the vacuum's
+entanglement structure in the macroscopic limit (Jacobson's thermodynamic
+derivation~\citep{Jacobson1995}, closed by RACL via Lovelock's theorem).
+The logic is therefore not circular.
+
 \subsubsection{Lemma: Conservation of Probability under Actualization}
 
 When an actualizing interaction occurs, the continuous pruning of the state space

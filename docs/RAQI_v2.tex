@@ -148,6 +148,38 @@ timescales $T_1$ (energy relaxation) and $T_2$ (phase coherence), which are
 treated as empirical parameters to be minimised through engineering. RA gives these
 parameters a physical interpretation and identifies the mechanism that sets them.
 
+\paragraph{Decoherence vs.\ actualization: why QEC cannot unwind a Kinematic Snap.}
+It is essential to distinguish two physically distinct processes that both
+cause quantum information loss.
+
+\emph{Decoherence} is unitary entanglement of the qubit with its environment.
+It is reversible in principle: the qubit-environment system evolves under a
+unitary that, if reversed, would recover the qubit state. Standard quantum
+error correction (QEC) --- surface codes, stabiliser codes, bosonic codes ---
+is designed precisely to undo this unitary entanglement before it propagates
+beyond the correction radius. QEC works because decoherence is a \emph{reversible
+unitary process}.
+
+\emph{Actualization} (the Kinematic Snap) is an ontological, non-unitary
+graph-rewriting event. When the qubit's interaction with its environment
+satisfies $\Delta S(\rho \| \sigma_0) > 0$, a permanent directed edge is
+inscribed into the causal DAG. This is not a unitary rotation: it is an
+irreversible change in the causal structure of spacetime. The superposition is
+destroyed at the fundamental graph level \emph{before} any syndrome measurement
+can be executed --- the collapse is not a change of the wavefunction on an
+existing graph; it is a rewriting of the graph itself.
+
+QEC operates on the wavefunction. It cannot undo a graph rewrite.
+
+The practical consequence is that there exist errors that are in principle
+uncorrectable: those caused by genuine Kinematic Snaps rather than by
+decoherence. Any error correction protocol that identifies a Snap as if it were
+decoherence will fail because the relevant degrees of freedom are no longer in
+superposition --- they have been permanently inscribed into the DAG. The
+$N_{\max}$ bound of the KCB (Section~\ref{sec:kcb}) is precisely the bound
+on the number of qubits before Snap-type errors overwhelm the correctable
+decoherence budget.
+
 In RA, decoherence occurs when the system exchanges on-shell bosons with its
 environment. Specifically, the actualization timescale is
 \begin{equation}

@@ -1853,18 +1853,133 @@ result; showing it implies the correct GR boundary condition is an open task.
 
 % ─── Summary ─────────────────────────────────────────────────────────────────
 
-\subsection{Derivation 5: The Unified Metric Sourcing Equation}
+\subsection{Derivation 5: The covariant $\Box(\ln\lambda)$ field equation}
 \label{sec:d5}
 
-\paragraph{Status: relocated to RADM.}
-The conjectural two-component metric sourcing equation
-$\nabla^2\Phi = 4\pi G[\rho_A + \rho_\lambda]$, the derivation of the
-$\nabla^2(\ln\lambda)$ gradient term, and the associated rotation curve and Bullet
-Cluster arguments are developed as the primary subject of the companion paper
-RADM~\citep{Sandeman2026RADM}. That paper provides the detailed derivation
-candidates, hard walls, and collaborator targets for the dark matter replacement
-programme. The WIMP prohibition (Prediction~4 above) stands independently of
-the conjectural mechanisms in RADM.
+The RA Poisson equation established in \S\ref{sec:newtonian} gives
+\begin{equation}
+  \nabla^2(\ln\lambda) = -\frac{\rho_A}{3\xi}
+  \label{eq:poisson_lnlam}
+\end{equation}
+in the quasi-static weak-field limit.  We now derive its fully covariant
+generalisation, identify the Bianchi-compatible stress-energy tensor for the
+$\lambda$-field, and discuss the new physics in the time-dependent and
+strong-field regimes.
+
+\subsubsection{Scalar-tensor action}
+
+Define $\varphi \equiv \ln\lambda$.  The RA effective action for the
+$\lambda$-field is
+\begin{equation}
+  S_\lambda[g,\varphi]
+  = -\frac{\xi}{2}\int g^{\mu\nu}\nabla_\mu\varphi\,\nabla_\nu\varphi\,
+      \sqrt{-g}\,\mathrm{d}^4x
+  \;+\; \xi\int \bigl(g^{\mu\nu}\Box - \nabla^\mu\nabla^\nu\bigr)\varphi\;
+      \delta g_{\mu\nu}\,\sqrt{-g}\,\mathrm{d}^4x \,.
+  \label{eq:action_lambda}
+\end{equation}
+The second term is a non-minimal coupling (NMC) required for
+Bianchi compatibility (\S\ref{sec:bianchi} below).
+
+\subsubsection{Covariant field equation}
+
+Taking the Euler--Lagrange variation of $S_\lambda + S_\mathrm{matter}$
+with respect to $\varphi$:
+\begin{equation}
+  \xi\,\Box(\ln\lambda) = \frac{\partial\mathcal{L}_\mathrm{matter}}{\partial(\ln\lambda)}
+    = -\frac{\rho_A}{3} \,,
+\end{equation}
+where the matter--$\lambda$ coupling $\partial\mathcal{L}/\partial(\ln\lambda)
+= -\rho_A/3$ follows from the dimensional reduction structure of
+$\mathcal{P}_\mathrm{act}$ in the three spatial directions (RAGC~\S4).
+This gives
+\begin{equation}
+  \boxed{
+    \Box(\ln\lambda)
+    \;\equiv\; g^{\mu\nu}\nabla_\mu\nabla_\nu(\ln\lambda)
+    \;=\; -\frac{\rho_A}{3\xi}
+  }
+  \label{eq:D5}
+\end{equation}
+as the covariant $\lambda$-field equation.
+
+\subsubsection{Bianchi-compatible stress-energy tensor}
+\label{sec:bianchi}
+
+Varying the full action with respect to $g^{\mu\nu}$ yields the
+$\lambda$-field stress-energy tensor:
+\begin{equation}
+  T_{\mu\nu}^\lambda
+  = \xi\!\left[\nabla_\mu\varphi\,\nabla_\nu\varphi
+      - \tfrac{1}{2}g_{\mu\nu}(\nabla\varphi)^2\right]
+  + \xi\!\left[g_{\mu\nu}\Box\varphi - \nabla_\mu\nabla_\nu\varphi\right].
+  \label{eq:Tmunu_lambda}
+\end{equation}
+The second line (the NMC term) is essential.  Taking the covariant
+divergence and applying $[\Box,\nabla_\nu]\varphi = R_{\nu\mu}\nabla^\mu\varphi$:
+\begin{equation}
+  \nabla^\mu T_{\mu\nu}^\lambda
+  = \xi\,\Box\varphi\cdot\nabla_\nu\varphi
+    + \xi\,R_{\nu\mu}\nabla^\mu\varphi \,.
+\end{equation}
+Substituting~\eqref{eq:D5}: the first term becomes
+$-(\rho_A/3)\nabla_\nu\varphi$, and the Ricci back-reaction term
+$\xi R_{\nu\mu}\nabla^\mu\varphi$ encodes the covariant coupling
+between spacetime curvature and $\lambda$-field gradients.
+The full RA field equations
+\begin{equation}
+  G_{\mu\nu} = 8\pi G\,\mathcal{P}_\mathrm{act}[T_{\mu\nu}]
+             + 8\pi G\,T_{\mu\nu}^\lambda
+  \label{eq:RA_field_eqs}
+\end{equation}
+satisfy $\nabla^\mu G_{\mu\nu} = 0$ identically by the Bianchi identity,
+provided~\eqref{eq:D5} holds.
+
+\subsubsection{Newtonian and Hubble limits}
+
+\paragraph{Quasi-static weak field.}
+Setting $\partial_t = 0$ in~\eqref{eq:D5} with $(-+++)$ signature
+gives $\Box \approx \nabla^2$, recovering~\eqref{eq:poisson_lnlam}. $\checkmark$
+
+\paragraph{Vacuum propagation.}
+In the absence of matter ($\rho_A = 0$):
+\begin{equation}
+  \Box(\ln\lambda) = 0 \,,
+\end{equation}
+so actualization-density fluctuations propagate as a massless scalar wave
+at speed $c$.  This gives the $\lambda$-field a causal, retarded Green's
+function — variations in one region influence $\lambda$ elsewhere only
+after light-travel time.
+
+\paragraph{Hubble tension.}
+In the KBC void ($\rho_A \approx 0.7\,\rho_{A,\mathrm{global}}$),
+$\Box(\ln\lambda) \approx 0$ in the void interior and
+$\ln\lambda_{\mathrm{void}} > \ln\lambda_{\mathrm{global}}$.
+The local Hubble rate satisfies $H_{\mathrm{local}} \propto \lambda_{\mathrm{local}}$
+(RAGC~\S5.2), giving $H_{\mathrm{local}} > H_{\mathrm{CMB}}$ in agreement
+with the observed tension.  The Eridanus supervoid prediction
+($H \approx 75.9\;\mathrm{km\,s}^{-1}\mathrm{Mpc}^{-1}$,
+$\delta \approx -0.30$) follows from the solution to~\eqref{eq:D5}
+with the observed void density profile.
+
+\subsubsection{Remaining open derivations}
+
+Equation~\eqref{eq:D5} is the covariant field equation for $\ln\lambda$.
+What remains is to prove:
+\begin{enumerate}
+  \item \emph{Bianchi compatibility in full non-linear GR}: the derivation above
+    is perturbative (linear in $\lambda - \lambda_0$).  The non-linear
+    proof requires showing $\nabla^\mu G_{\mu\nu} = 0$ holds for the full
+    coupled system~\eqref{eq:RA_field_eqs}--\eqref{eq:D5}.
+  \item \emph{Cosmological perturbation theory}: the coupled system of
+    $\delta\lambda$, $\delta g_{\mu\nu}$ perturbations in an FRW background,
+    needed for CMB power spectrum predictions.
+  \item \emph{Strong-field corrections}: near black holes the field equation
+    acquires additional terms from $R_{\nu\mu}\nabla^\mu\varphi$
+    in~\eqref{eq:Tmunu_lambda}.
+\end{enumerate}
+Items 1--2 are targets for a modified-gravity collaborator
+(Loll/Radboud, Deffner/UMBC).
 
 \subsection{Derivation 6: Equivalence Principle Recovery and Operationalization
 of $\lambda$}

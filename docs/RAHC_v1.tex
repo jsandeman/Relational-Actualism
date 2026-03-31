@@ -153,6 +153,27 @@ formal correspondence with Friston's Free Energy Principle. Sections~\ref{sec:pr
 through~\ref{sec:hardwalls} state the empirical predictions, the relationship to
 the RA suite, and the open problems.
 
+\paragraph{Terminology bridge.}
+This paper draws on two communities with distinct vocabularies.  For readers
+from the physics and quantum gravity community: a \emph{Structural Causal
+Model} (SCM) is the causal graph analogue of a macroscopic dynamical system
+--- a coarse-grained DAG whose nodes are effective macroscopic variables and
+whose edges encode causal dependence (Pearl~\citep{Pearl2009}).  A
+\emph{Markov blanket} is the causal boundary of a subgraph: the minimal
+set of vertices that screens the system's internal dynamics from the rest of
+the graph, exactly as a causal severance boundary screens an RA subsystem
+from its complement.  The \emph{Free Energy Principle} (Friston~\citep{Friston2010})
+is the variational principle obeyed by any system that actively maintains
+its Markov blanket against dissolution --- the biological analogue of the
+LLC stability condition at the macroscopic scale.  For readers from complex
+systems and theoretical biology: an \emph{actualization event} is an
+irreversible physical interaction that writes a permanent causal record (a
+directed edge in the DAG); the \emph{Local Ledger Condition} is
+energy-momentum conservation at every such event; and \emph{causal depth}
+$A_{\mathrm{RA}}$ is the DAG analogue of assembly index depth~\citep{Murray2023},
+measuring the minimum number of sequential irreversible steps required to
+produce a structure.  Formal definitions follow in Section~\ref{sec:coarsegrain}.
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Formalizing the Coarse-Grained Causal Graph}
 \label{sec:coarsegrain}
@@ -1612,6 +1633,11 @@ M.~Kanehisa and S.~Goto.
 J.~Pearl.
 \newblock \textit{Probabilistic Reasoning in Intelligent Systems}.
 \newblock Morgan Kaufmann, San Francisco, 1988.
+
+\bibitem[Pearl(2009)]{Pearl2009}
+J.~Pearl.
+\newblock \textit{Causality: Models, Reasoning, and Inference} (2nd ed.).
+\newblock Cambridge University Press, 2009.
 
 \bibitem[Tononi(2004)]{Tononi2004}
 G.~Tononi.
