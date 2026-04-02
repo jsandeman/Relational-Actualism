@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RA Knowledge Explorer — Joshua F. Sandeman</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+:root{--deep:#0f0f1a;--gold:#c8a96e;--gold-pale:#e8d5a8;--slate:#4a5568;--mist:#f4f1eb;--paper:#faf8f3;--rule:#d4c9b0;--ink:#1a1a2e;--lv:#c8a96e;--cv:#5a9fd4;--dr:#6ab187;--ar:#d4a853}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Outfit',sans-serif;font-weight:300;background:var(--deep);color:var(--mist);display:flex;flex-direction:column}
+header{padding:.9rem 1.5rem;border-bottom:1px solid rgba(200,169,110,.15);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--mist)}
+.header-title em{font-style:italic;color:var(--gold-pale)}
+.header-sub{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(200,169,110,.5);margin-top:.15rem}
+.controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.filter-btn{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid;cursor:pointer;transition:all .2s;background:transparent}
+.filter-btn.lv{border-color:rgba(200,169,110,.4);color:var(--lv)}
+.filter-btn.lv.on{background:rgba(200,169,110,.15)}
+.filter-btn.cv{border-color:rgba(90,159,212,.4);color:var(--cv)}
+.filter-btn.cv.on{background:rgba(90,159,212,.12)}
+.filter-btn.dr{border-color:rgba(106,177,135,.4);color:var(--dr)}
+.filter-btn.dr.on{background:rgba(106,177,135,.12)}
+.filter-btn.ar{border-color:rgba(212,168,83,.4);color:var(--ar)}
+.filter-btn.ar.on{background:rgba(212,168,83,.12)}
+.filter-btn.all{border-color:rgba(244,241,235,.25);color:rgba(244,241,235,.6)}
+.filter-btn.all.on{background:rgba(244,241,235,.08)}
+.sep{width:1px;height:20px;background:rgba(200,169,110,.2)}
+.main{display:flex;flex:1;overflow:hidden}
+#graph-panel{flex:1;position:relative;overflow:hidden}
+#graph-svg{width:100%;height:100%}
+#side-panel{width:340px;flex-shrink:0;border-left:1px solid rgba(200,169,110,.15);display:flex;flex-direction:column;overflow:hidden}
+.side-tabs{display:flex;border-bottom:1px solid rgba(200,169,110,.15);flex-shrink:0}
+.tab{flex:1;padding:.7rem;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,169,110,.4);cursor:pointer;text-align:center;border-right:1px solid rgba(200,169,110,.1);transition:color .2s,background .2s}
+.tab:last-child{border-right:none}
+.tab.active{color:var(--gold);background:rgba(200,169,110,.06)}
+.tab-content{flex:1;overflow-y:auto;padding:1.2rem}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* NODE DETAIL */
+.detail-empty{color:rgba(244,241,235,.3);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-align:center;margin-top:3rem;line-height:2}
+.detail-id{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--gold);margin-bottom:.3rem}
+.detail-status{display:inline-block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;padding:2px 8px;margin-bottom:.8rem}
+.detail-stmt{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--mist);line-height:1.55;margin-bottom:1rem}
+.detail-section{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,169,110,.5);margin:.8rem 0 .4rem}
+.dep-chip{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;padding:3px 8px;border:1px solid rgba(200,169,110,.25);margin:2px;cursor:pointer;transition:border-color .2s,color .2s}
+.dep-chip:hover{border-color:var(--gold);color:var(--gold)}
+.detail-evidence{font-size:.82rem;line-height:1.6;color:rgba(244,241,235,.55)}
+
+/* ESSAY */
+.essay-text{font-family:'Cormorant Garamond',serif;font-size:.95rem;line-height:1.75;color:rgba(244,241,235,.75)}
+.essay-text+.essay-text{margin-top:1em}
+.essay-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--gold-pale);margin-bottom:1rem}
+.essay-rule{width:2rem;height:1px;background:var(--gold);margin:1.5rem 0}
+.essay-section{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(200,169,110,.5);margin:1.5rem 0 .6rem}
+
+/* PRIORITY */
+.priority-row{padding:.8rem 0;border-bottom:1px solid rgba(200,169,110,.1);display:flex;align-items:baseline;gap:.8rem}
+.priority-id{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold);flex-shrink:0;width:2.5rem}
+.priority-stmt{font-size:.82rem;line-height:1.45;color:rgba(244,241,235,.7)}
+
+/* GRAPH */
+.g-node circle{cursor:pointer;transition:r .15s,opacity .2s}
+.g-link{transition:stroke-opacity .2s}
+.g-node text{pointer-events:none;font-size:8px;font-family:'DM Mono',monospace;dominant-baseline:central;fill:rgba(244,241,235,.5)}
+.g-node.dim circle{opacity:.07}
+.g-node.dim text{opacity:.05}
+.g-link.dim{stroke-opacity:.04!important}
+.g-link.hi{stroke-opacity:.9!important}
+
+/* HINT */
+#graph-hint{position:absolute;bottom:12px;left:16px;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;color:rgba(200,169,110,.35);text-transform:uppercase;pointer-events:none}
+#path-indicator{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:.62rem;color:var(--gold);letter-spacing:.1em;opacity:0;transition:opacity .3s;pointer-events:none}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(200,169,110,.2);border-radius:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-title">Relational Actualism — <em>Knowledge Explorer</em></div>
+    <div class="header-sub">Joshua F. Sandeman &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; 60 claims · 12 Lean-verified · 0 open problems</div>
+  </div>
+  <div class="controls">
+    <button class="filter-btn all on" onclick="toggleFilter('all')">All</button>
+    <button class="filter-btn lv on" onclick="toggleFilter('LV')">Lean ✓</button>
+    <button class="filter-btn cv on" onclick="toggleFilter('CV')">Computed ✓</button>
+    <button class="filter-btn dr on" onclick="toggleFilter('DR')">Derived</button>
+    <button class="filter-btn ar on" onclick="toggleFilter('AR')">Argued</button>
+    <div class="sep"></div>
+    <button class="filter-btn all" onclick="resetGraph()" style="border-color:rgba(200,169,110,.3);color:rgba(200,169,110,.6)">Reset</button>
+  </div>
+</header>
+
+<div class="main">
+  <div id="graph-panel">
+    <svg id="graph-svg"></svg>
+    <div id="graph-hint">click node · shift+click to trace path · drag to move</div>
+    <div id="path-indicator">path mode — click second node</div>
+  </div>
+  <div id="side-panel">
+    <div class="side-tabs">
+      <div class="tab active" onclick="showTab('detail')">Node</div>
+      <div class="tab" onclick="showTab('essay')">Essay</div>
+      <div class="tab" onclick="showTab('priority')">Priority</div>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-detail">
+        <div class="detail-empty" id="empty-msg">Click any node<br>to explore its<br>connections</div>
+        <div id="node-detail" style="display:none"></div>
+      </div>
+      <div class="tab-pane" id="tab-essay">
+        <div class="essay-title">On the Mutual Implication<br>of Laws and Phenomena</div>
+        <div class="essay-rule"></div>
+        <div class="essay-section">The standard picture</div>
+        <p class="essay-text">Physics has long maintained a dichotomy: laws on one side, phenomena on the other. The laws are the fixed background against which phenomena play out. This division feels natural, almost definitional.</p>
+        <p class="essay-text">Relational Actualism dissolves this dichotomy — not by arguing against it. And it does so while preserving what makes phenomena real: the irreversible unfolding of events in time. The arrow of time and the web of mutual implications are two perspectives on one process.</p>
+        <div class="essay-section">The single commitment</div>
+        <p class="essay-text">The LLC is not a constraint that the causal graph satisfies; it <em>is</em> the causal graph, stated as a property. Conservation of energy is not a law that actualization events obey; it is what actualization events are, viewed at the level of bookkeeping. The irreversibility of time is encoded in the framework's most primitive commitment, since actualization — by definition — is directed.</p>
+        <div class="essay-section">The mathematical evidence</div>
+        <p class="essay-text">When we mapped the open problems, none required a genuinely new physical input. Each was the same constraint — "when does a process become irreversible?" — asked at a different scale. The answer is always ΔS* ≈ 0.601 nats.</p>
+        <p class="essay-text">O09 (spacelike commutativity) was amplitude locality applied to two observers. O05 (Unruh detector) was rindler_stationarity applied to a measuring device. O08 (biological timescale) revealed a fixed-point: μ = ΔS* universally, the ℓ, Γ, and τ_d all cancelling.</p>
+        <div class="essay-section">The presentation problem</div>
+        <p class="essay-text">Human language is linear. But the structure of RA is not a chain — it is a web. The interactive graph to the left is not a diagram about the theory. It is the theory's logical structure, made visible.</p>
+        <p class="essay-text">The reader can navigate in any order, following edges in either direction. The structure is the same regardless of where they start — because the structure is not imposed on the content, but is the content.</p>
+        <div class="essay-rule"></div>
+        <p class="essay-text" style="font-style:italic;font-size:.88rem;color:rgba(244,241,235,.5)">"The laws are not above the phenomena; they are the phenomena, described at the level of pattern rather than instance."</p>
+      </div>
+      <div class="tab-pane" id="tab-priority">
+        <div class="essay-section">Highest-impact closures</div>
+        <div id="priority-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const NN=[
+  {id:"L01",s:"LV",t:"LLC: conservation at every DAG vertex",ev:"local_ledger_condition in RA_D1_Proofs.lean",ds:5},
+  {id:"L02",s:"LV",t:"Graph Cut: LLC holds independently on each side of causal severance",ev:"graph_cut_theorem in RA_D1_Proofs.lean",ds:1},
+  {id:"L03",s:"LV",t:"Markov blanket: subgraph shielding from exterior",ev:"markov_blanket in RA_D1_Proofs.lean",ds:0},
+  {id:"L04",s:"LV",t:"Frame independence: S(UρU†‖σ₀)=S(ρ‖σ₀) for Poincaré symmetries U",ev:"frame_independence in RA_AQFT_Proofs_v10.lean",ds:2},
+  {id:"L05",s:"LV",t:"Rindler stationarity: d/dt S(α_t(ρ_β)‖σ₀)=0 under modular flow",ev:"rindler_stationarity in RA_AQFT_Proofs_v10.lean",ds:1},
+  {id:"L06",s:"LV",t:"Rindler thermal: ρ_β is valid density matrix (herm/pos/tr=1)",ev:"rindlerThermal in RA_AQFT_Proofs_v10.lean",ds:0},
+  {id:"L07",s:"LV",t:"Causal invariance (BDG): μ_σ(S)=μ_σ'(S) — quantum measure is foliation-independent",ev:"causal_invariance in RA_AQFT_Proofs_v10.lean",ds:3},
+  {id:"L08",s:"LV",t:"α_EM: 144−7=137 from BDG depth-ratio fixed point",ev:"alpha_inv_137 via norm_num",ds:0},
+  {id:"L09",s:"LV",t:"Koide: K=2/3 from BDG integers",ev:"koide_formula in RA_D1_Proofs.lean",ds:0},
+  {id:"L10",s:"LV",t:"Confinement lengths: L=3 gluon, L=4 quark from BDG topology",ev:"confinement_lengths in RA_D1_Proofs.lean",ds:0},
+  {id:"L11",s:"LV",t:"BDG closure: 5 topology types, 124 extensions exhaust SM spectrum",ev:"universe_closure in RA_D1_Proofs.lean",ds:1},
+  {id:"L12",s:"LV",t:"Qubit fragility: electrons and photons at minimum BDG score 1",ev:"structural_fragility in RA_D1_Proofs.lean",ds:1},
+  {id:"C01",s:"CV",t:"α_s(m_Z)=1/√72≈0.11785 (PDG 0.118, Δ=0.13%)",ev:"d3_alpha_s_proof.py",ds:0},
+  {id:"C02",s:"CV",t:"P_acc(1)≈0.548 at μ=1 BDG Poisson-CSG",ev:"RASM Monte Carlo simulation",ds:3},
+  {id:"C03",s:"CV",t:"ΔS*=−log P_acc(1)≈0.601 nats — the universal actualization threshold",ev:"direct computation from C02",ds:4},
+  {id:"C04",s:"CV",t:"t*=(1/g)√(ΔS*/2)≈0.274/g — parameter-free actualization timescale",ev:"spin-bath model + C03",ds:1},
+  {id:"C05",s:"CV",t:"H(Eridanus KBC void)≈75.9 km/s/Mpc from baryon density proxy",ev:"void geometry + RAGC field equations",ds:1},
+  {id:"C06",s:"CV",t:"Proton mass: m_p=√c₄·Λ_QCD to 0.08%",ev:"BDG Regge structure",ds:0},
+  {id:"C07",s:"CV",t:"Roper resonance: 290 MeV gap = two-pion loop (Kind 2 virtual process)",ev:"bare BDG 1150 vs physical 1440 MeV",ds:0},
+  {id:"C08",s:"CV",t:"f₀=5.42: baryon-to-dark ratio from BDG path weights (Planck: 5.416)",ev:"BDG Monte Carlo",ds:0},
+  {id:"D01",s:"DR",t:"Lorentz covariance: actualization criterion is Lorentz-covariant",ev:"L04 for Poincaré U",ds:1},
+  {id:"D02",s:"DR",t:"Unruh resolution: Rindler observer detects no actualization in Minkowski vacuum",ev:"L05: per-step ΔS_n=0; threshold never crossed",ds:1},
+  {id:"D03",s:"DR",t:"Vacuum suppression: P_act projects vacuum out of metric source → Λ=0",ev:"on-shell → ΔS=0 → no sourcing",ds:2},
+  {id:"D04",s:"DR",t:"Bianchi flat: LLC → ∇_μG^μν≡0 in flat/weak-field limit",ev:"RACL proof + Lovelock",ds:2},
+  {id:"D05",s:"DR",t:"Five-scale μ=1 unification: QCD / galactic / fault-tolerance / ΔS* / Firewall",ev:"same Erdős-Rényi transition each case",ds:1},
+  {id:"D06",s:"DR",t:"SM spectrum: 5 BDG types map to SM particle classes",ev:"L11 + topology matching",ds:0},
+  {id:"D07",s:"DR",t:"WEP approximation: |ρ_A−ρ_matter|/ρ_matter~τ_eq/t_cosm≲10⁻⁴ for baryons",ev:"equilibration rate argument",ds:2},
+  {id:"D08",s:"AR",t:"ξ estimate: ξ=ΔS*/l_RA²=1/(4l_P²)=0.250 l_P⁻²",ev:"S_RA=S_BH self-consistency with l_RA from O06",ds:1},
+  {id:"D09",s:"DR",t:"COM actualization timescale: τ_act=ΔS*/Γ_eff — same t* formula as RAQM",ev:"decoherence theory + C03/C04",ds:0},
+  {id:"D10",s:"AR",t:"Jacobson bridge: LLC + T_Unruh(L05) + area law → G_μν=8πGT_μν on any background",ev:"Jacobson 1995; L01+L05 Lean-verified; area law from O06",ds:0},
+  {id:"D11",s:"DR",t:"Causal Firewall fixed-point: μ_single=ΔS*≈0.601 universally; N_min=⌈1/ΔS*⌉=2",ev:"algebraic: λτ_dℓ³=(Γ_eff/ℓ³)(ΔS*/Γ_eff)ℓ³=ΔS*",ds:0},
+  {id:"A01",s:"AR",t:"GR uniqueness: G_μν=8πG P_act[T_μν], Λ=0 unique by Lovelock",ev:"RACL; d=4 from L11; Bianchi from D04",ds:2},
+  {id:"A02",s:"DR",t:"WIMP prohibition: zero EM/strong → zero actualization depth → zero gravitational coupling",ev:"no interactions → no actualization flux",ds:1},
+  {id:"A03",s:"DR",t:"BMV null mechanism: superposed mass sources zero metric",ev:"unactualized → ρ_A=0 → ∇²Φ=0 → no phase difference",ds:2},
+  {id:"A04",s:"AR",t:"Causal severance: event horizons are topological DAG disconnections",ev:"LLC undefined across severance, not violated",ds:0},
+  {id:"A05",s:"AR",t:"Born rule consistency: quantum measure is consistent with Born rule",ev:"a(x)∝ψ(x) is a constraint, not a derivation",ds:0},
+  {id:"A06",s:"AR",t:"Causal Firewall: μ=1 percolation as origin-of-life threshold",ev:"Erdős-Rényi transition at μ=1",ds:2},
+  {id:"O01",s:"LV",t:"Amplitude locality proved for BDG dynamics: a(v|C)=a(v|C') when C∩past(v)=C'∩past(v)",ev:"bdg_amplitude_locality in RA_AmpLocality.lean",ds:0},
+  {id:"O02",s:"LV",t:"Causal invariance unconditional for BDG dynamics",ev:"O01 proved; 1 assembly sorry in bdg_causal_invariance",ds:0},
+  {id:"O03",s:"AR",t:"Bianchi curved: LLC+L05 → Clausius → Jacobson → full GR on curved background",ev:"Jacobson 1995 bridge; area law from O06",ds:0},
+  {id:"O04",s:"DR",t:"WEP formal: τ_eq=ΔS*/Γ_em; ρ_A→ρ_matter with explicit bounds",ev:"D09 framework; bound=τ_eq/t_cosm for baryons",ds:0},
+  {id:"O05",s:"AR",t:"Unruh detector: Γ_eff=0 for KMS bath (L05) → τ_act→∞ → no clicks in either frame",ev:"D09 framework with L05: ΔS_rel=0 → no threshold crossing",ds:0},
+  {id:"O06",s:"AR",t:"ξ derivation: l_RA=√(4ΔS*)l_P≈1.55l_P; ξ=1/(4l_P²) from area law self-consistency",ev:"S_RA=S_BH requires l_RA=√(4ΔS*)l_P",ds:0},
+  {id:"O07",s:"DR",t:"BMV timescale: τ_act=ΔS*/Γ_eff; same t* formula applied to COM positional DOF",ev:"decoherence theory + C03/C04; 300K→10⁻¹²s; UHV→0.6s",ds:0},
+  {id:"O08",s:"AR",t:"Firewall τ_d: μ_single=ΔS* universally; N_min=2 is the minimum life criterion",ev:"D09: τ_d=ΔS*/Γ_mol; fixed-point cancellation",ds:0},
+  {id:"O09",s:"DR",t:"Covariant Step 4: amplitude locality → spacelike updates commute exactly",ev:"O01: {v_A}∩past(v_B)=∅ → P(v_B|v_A,C)=P(v_B|C)",ds:0},
+  {id:"P01",s:"DR",t:"BMV null: null gravity-mediated entanglement at m~10⁻¹⁴kg, τ~1s",ev:"A03+D09 mechanism fully specified; O01 for Lean proof",ds:0},
+  {id:"P02",s:"CV",t:"Hubble gradient: H₀ correlates linearly with ρ_b(LOS)",ev:"C05 for Eridanus case",ds:0},
+  {id:"P03",s:"AR",t:"WIMP floor: no dark matter signal below neutrino floor (categorical)",ev:"A02; XENONnT data consistent",ds:0},
+  {id:"P04",s:"CV",t:"Spin bath: t*≈0.274/g, ΔS*≈0.601 nats parameter-free",ev:"C03, C04 fully derived",ds:0},
+  {id:"P05",s:"AR",t:"KCB: N_max=η·p_th for fault-tolerant quantum arrays",ev:"L12 structural fragility",ds:0},
+  {id:"P06",s:"AR",t:"Biosignature universality: Causal Firewall is substrate-independent across all chemistries",ev:"μ=1 criterion is parameter-free",ds:0},
+];
+const LL=[
+  {s:"L02",t:"L01"},{s:"L03",t:"L01"},{s:"L07",t:"L01"},{s:"D01",t:"L04"},
+  {s:"D02",t:"L05"},{s:"D02",t:"D01"},{s:"D03",t:"L01"},{s:"D04",t:"L01"},
+  {s:"D04",t:"L02"},{s:"D05",t:"C03"},{s:"D05",t:"L04"},{s:"D07",t:"D03"},
+  {s:"D08",t:"C03"},{s:"D09",t:"D02"},{s:"D09",t:"A03"},{s:"D09",t:"C03"},
+  {s:"D09",t:"C04"},{s:"D10",t:"L01"},{s:"D10",t:"L05"},{s:"D10",t:"D03"},
+  {s:"D11",t:"D09"},{s:"D11",t:"C03"},{s:"D11",t:"A06"},{s:"A01",t:"D04"},
+  {s:"A01",t:"L01"},{s:"A02",t:"D07"},{s:"A02",t:"A01"},{s:"A03",t:"D03"},
+  {s:"A03",t:"L07"},{s:"A03",t:"D09"},{s:"A06",t:"D05"},{s:"A06",t:"C02"},
+  {s:"O01",t:"L07"},{s:"O02",t:"O01"},{s:"O03",t:"D10"},{s:"O04",t:"D07"},
+  {s:"O04",t:"D09"},{s:"O05",t:"D02"},{s:"O05",t:"D09"},{s:"O05",t:"L05"},
+  {s:"O06",t:"D08"},{s:"O06",t:"C03"},{s:"O07",t:"A03"},{s:"O07",t:"C03"},
+  {s:"O07",t:"C04"},{s:"O08",t:"A06"},{s:"O08",t:"D09"},{s:"O08",t:"C03"},
+  {s:"O09",t:"O01"},{s:"O09",t:"L04"},{s:"P01",t:"A03"},{s:"P01",t:"D09"},
+  {s:"P01",t:"O01"},{s:"P02",t:"C05"},{s:"P03",t:"A02"},{s:"P04",t:"C03"},
+  {s:"P04",t:"C04"},{s:"P05",t:"L12"},{s:"P06",t:"A06"},{s:"C03",t:"C02"},
+  {s:"C04",t:"C03"},
+];
+
+const COLORS={LV:'#c8a96e',CV:'#5a9fd4',DR:'#6ab187',AR:'#d4a853'};
+const SNAMES={LV:'Lean-verified',CV:'Computation-verified',DR:'Derived',AR:'Argued'};
+const PRIORITY=[
+  {id:'L01',reason:'5 downstream. Bedrock of GR, conservation, and Bianchi.'},
+  {id:'C03',reason:'4 downstream. ΔS*=0.601 nats threads quantum measurement, area law, and life.'},
+  {id:'L07',reason:'3 downstream. Causal invariance — now unconditional for BDG.'},
+  {id:'C02',reason:'3 downstream. P_acc(1)≈0.548 grounds the five-scale unification.'},
+  {id:'A03',reason:'2 downstream. BMV null mechanism — fully specified via D09.'},
+  {id:'D04',reason:'2 downstream. Bianchi flat: Lean→continuum bridge.'},
+  {id:'D07',reason:'2 downstream. WEP bound: |ρ_A−ρ_matter|/ρ_matter≲10⁻⁴.'},
+  {id:'O03',reason:'Jacobson bridge: closes curved-background GR from Lean bedrock.'},
+  {id:'O06',reason:'l_RA=√(4ΔS*)l_P resolves ξ and connects ΔS* to Newton\'s constant.'},
+];
+
+let filters={LV:true,CV:true,DR:true,AR:true};
+let selectedNode=null;
+let pathMode=false;
+let pathStart=null;
+
+// Build adjacency for path finding
+const adjMap={};
+NN.forEach(n=>{adjMap[n.id]={out:[],in:[]};});
+LL.forEach(l=>{adjMap[l.s]?.out.push(l.t);adjMap[l.t]?.in.push(l.s);});
+
+function bfsPath(a,b){
+  const visited={[a]:null};
+  const q=[a];
+  while(q.length){
+    const cur=q.shift();
+    if(cur===b){
+      const path=[];let c=b;while(c!==null){path.unshift(c);c=visited[c];}
+      return path;
+    }
+    [...(adjMap[cur]?.out||[]),...(adjMap[cur]?.in||[])].forEach(nb=>{
+      if(!(nb in visited)){visited[nb]=cur;q.push(nb);}
+    });
+  }
+  return null;
+}
+
+const svg=d3.select('#graph-svg');
+const container=document.getElementById('graph-panel');
+const W=container.offsetWidth||700,H=container.offsetHeight||600;
+const nodes=NN.map(n=>({...n}));
+const links=LL.map(l=>({source:l.s,target:l.t}));
+
+const sim=d3.forceSimulation(nodes)
+  .force('link',d3.forceLink(links).id(d=>d.id).distance(50).strength(.6))
+  .force('charge',d3.forceManyBody().strength(-110))
+  .force('center',d3.forceCenter(W/2,H/2))
+  .force('collision',d3.forceCollide(12));
+
+svg.append('defs').append('marker').attr('id','earr')
+  .attr('viewBox','0 0 10 10').attr('refX',15).attr('refY',5)
+  .attr('markerWidth',5).attr('markerHeight',5).attr('orient','auto-start-reverse')
+  .append('path').attr('d','M2 1L8 5L2 9').attr('fill','none')
+  .attr('stroke','rgba(200,169,110,.5)').attr('stroke-width',1.5).attr('stroke-linecap','round');
+
+const linkSel=svg.append('g').selectAll('line').data(links).join('line')
+  .attr('stroke','rgba(200,169,110,.25)').attr('stroke-width',.7)
+  .attr('marker-end','url(#earr)').attr('stroke-opacity',.3);
+
+const drag=d3.drag()
+  .on('start',(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;})
+  .on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y;})
+  .on('end',(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;});
+
+const nodeSel=svg.append('g').selectAll('g').data(nodes).join('g').attr('class','g-node').call(drag)
+  .on('click',(e,d)=>{
+    if(e.shiftKey){handlePathClick(d);}
+    else{e.stopPropagation();selectNode(d);}
+  });
+nodeSel.append('circle')
+  .attr('r',d=>5+Math.sqrt(d.ds||0)*2.5)
+  .attr('fill',d=>COLORS[d.s]||'#888')
+  .attr('stroke','rgba(15,15,26,.7)').attr('stroke-width',1.5);
+nodeSel.append('text')
+  .attr('dy',d=>-(7+Math.sqrt(d.ds||0)*2.5)).attr('text-anchor','middle').text(d=>d.id);
+
+sim.on('tick',()=>{
+  linkSel.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+  nodeSel.attr('transform',d=>`translate(${Math.max(12,Math.min(W-12,d.x))},${Math.max(12,Math.min(H-20,d.y))})`);
+});
+
+svg.on('click',()=>{if(!pathMode)clearSelection();});
+
+function selectNode(d){
+  if(pathMode){handlePathClick(d);return;}
+  selectedNode=d.id;
+  const nb=new Set([d.id]);
+  links.forEach(l=>{if(l.source.id===d.id)nb.add(l.target.id);if(l.target.id===d.id)nb.add(l.source.id);});
+  nodeSel.classed('dim',nd=>!nb.has(nd.id)||(filters[nd.s]===false));
+  linkSel.attr('stroke-opacity',l=>(l.source.id===d.id||l.target.id===d.id)?0.9:0.04)
+    .classed('hi',l=>l.source.id===d.id||l.target.id===d.id).classed('dim',l=>l.source.id!==d.id&&l.target.id!==d.id);
+  showDetail(d);
+  showTab('detail');
+}
+
+function handlePathClick(d){
+  if(!pathMode||!pathStart){
+    pathMode=true;pathStart=d.id;
+    document.getElementById('path-indicator').style.opacity=1;
+    nodeSel.classed('dim',nd=>nd.id!==d.id);
+    linkSel.attr('stroke-opacity',.04);
+  } else {
+    const path=bfsPath(pathStart,d.id);
+    if(path){
+      const pathSet=new Set(path);
+      const edgeSet=new Set();
+      for(let i=0;i<path.length-1;i++)edgeSet.add(path[i]+'->'+path[i+1]);
+      nodeSel.classed('dim',nd=>!pathSet.has(nd.id));
+      linkSel.attr('stroke-opacity',l=>(edgeSet.has(l.source.id+'->'+l.target.id)||edgeSet.has(l.target.id+'->'+l.source.id))?0.9:0.04);
+      // Show path in detail
+      const n=NN.find(n=>n.id===d.id);
+      showDetail(n, path);
+    }
+    pathMode=false;pathStart=null;
+    document.getElementById('path-indicator').style.opacity=0;
+    showTab('detail');
+  }
+}
+
+function clearSelection(){
+  selectedNode=null;pathMode=false;pathStart=null;
+  document.getElementById('path-indicator').style.opacity=0;
+  nodeSel.classed('dim',nd=>filters[nd.s]===false);
+  linkSel.attr('stroke-opacity',.3).classed('hi',false).classed('dim',false);
+  document.getElementById('empty-msg').style.display='block';
+  document.getElementById('node-detail').style.display='none';
+}
+
+function toggleFilter(type){
+  if(type==='all'){
+    const allOn=Object.values(filters).every(v=>v);
+    Object.keys(filters).forEach(k=>filters[k]=!allOn);
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('on',!allOn));
+  } else {
+    filters[type]=!filters[type];
+    document.querySelector('.filter-btn.'+type.toLowerCase()).classList.toggle('on',filters[type]);
+  }
+  applyFilters();
+}
+
+function applyFilters(){
+  nodeSel.classed('dim',d=>filters[d.s]===false);
+  linkSel.attr('stroke-opacity',l=>(filters[l.source.s]!==false&&filters[l.target.s]!==false)?.3:.04);
+}
+
+function resetGraph(){
+  clearSelection();
+  Object.keys(filters).forEach(k=>filters[k]=true);
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.add('on'));
+  applyFilters();
+}
+
+function showDetail(d, path){
+  document.getElementById('empty-msg').style.display='none';
+  const det=document.getElementById('node-detail');
+  det.style.display='block';
+  const deps=LL.filter(l=>l.s===d.id).map(l=>l.t);
+  const rdeps=LL.filter(l=>l.t===d.id).map(l=>l.s);
+  let html=`<div class="detail-id">${d.id}</div>`;
+  html+=`<div class="detail-status" style="background:${COLORS[d.s]}22;color:${COLORS[d.s]};border:1px solid ${COLORS[d.s]}44">${SNAMES[d.s]}</div>`;
+  html+=`<div class="detail-stmt">${d.t}</div>`;
+  if(d.ev){html+=`<div class="detail-section">Evidence</div><div class="detail-evidence">${d.ev}</div>`;}
+  if(deps.length){
+    html+=`<div class="detail-section">Depends on</div>`;
+    deps.forEach(dep=>{html+=`<span class="dep-chip" onclick="selectById('${dep}')">${dep}</span>`;});
+  }
+  if(rdeps.length){
+    html+=`<div class="detail-section">Required by</div>`;
+    rdeps.forEach(dep=>{html+=`<span class="dep-chip" onclick="selectById('${dep}')">${dep}</span>`;});
+  }
+  if(path){
+    html+=`<div class="detail-section">Path (${path.length} steps)</div>`;
+    html+=`<div class="detail-evidence">${path.join(' → ')}</div>`;
+  }
+  det.innerHTML=html;
+}
+
+function selectById(id){
+  const n=nodes.find(n=>n.id===id);
+  if(n)selectNode(n);
+}
+
+function showTab(name){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['detail','essay','priority'][i]===name));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.toggle('active',p.id==='tab-'+name));
+}
+
+// Build priority list
+const pl=document.getElementById('priority-list');
+PRIORITY.forEach(p=>{
+  const n=NN.find(n=>n.id===p.id);
+  const div=document.createElement('div');div.className='priority-row';
+  div.innerHTML=`<span class="priority-id" style="color:${COLORS[n?.s]||'#888'}">${p.id}</span><span class="priority-stmt">${p.reason}</span>`;
+  div.style.cursor='pointer';
+  div.onclick=()=>{const nd=nodes.find(n=>n.id===p.id);if(nd)selectNode(nd);};
+  pl.appendChild(div);
+});
+</script>
+</body>
+</html>

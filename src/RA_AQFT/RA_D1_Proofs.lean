@@ -118,7 +118,7 @@ theorem D1a_three_stable_nvectors :
   refine ⟨by norm_num [chainScore], by norm_num [chainScore], ?_⟩
   intro k hk
   obtain ⟨n, rfl⟩ := Nat.exists_eq_add_of_le hk
-  rw [show n + 4 = n + 4 from rfl, D1a_fixed_point]
+  rw [show 4 + n = n + 4 from add_comm 4 n, D1a_fixed_point]
   norm_num
 
 /-- The unstable depths (score ≤ 0) are exactly {1, 3}. -/
@@ -686,6 +686,7 @@ def extensionScore_quark_t1 : Fin 31 → ℤ
   | ⟨28, _⟩ =>   -15
   | ⟨29, _⟩ =>   -15
   | ⟨30, _⟩ =>   -15
+  | ⟨n + 31, h⟩ => absurd h (by omega)
 
 def extensionScore_gluon_t2 : Fin 63 → ℤ
   | ⟨ 0, _⟩ =>     0
@@ -751,6 +752,7 @@ def extensionScore_gluon_t2 : Fin 63 → ℤ
   | ⟨60, _⟩ =>     1
   | ⟨61, _⟩ =>     1
   | ⟨62, _⟩ =>     1
+  | ⟨n + 63, h⟩ => absurd h (by omega)
 
 theorem D1_closure_quark_t1 (m : Fin 31) :
     extensionScore_quark_t1 m ≤ 0 ∨
@@ -980,11 +982,11 @@ With Q_em = Q_N1 / 3 from the BDG winding structure:
 -- Amplitude squares from the coherent state (arithmetic facts)
 /-- The generation singlet |φ̂(0)|² = 3. -/
 theorem D1h_singlet_amplitude_sq : (Real.sqrt 3) ^ 2 = 3 := by
-  rw [sq_sqrt]; norm_num
+  rw [Real.sq_sqrt (by norm_num : (0:ℝ) ≤ 3)]
 
 /-- The generation doublet |φ̂(1)|² = 3/2. -/
 theorem D1h_doublet_amplitude_sq : (Real.sqrt 6 / 2) ^ 2 = 3 / 2 := by
-  rw [div_pow, sq_sqrt]; norm_num
+  rw [div_pow, Real.sq_sqrt (by norm_num : (0:ℝ) ≤ 6)]; norm_num
 
 /-- The doublet-to-singlet amplitude ratio squared = 1/2. -/
 theorem D1h_amplitude_ratio :

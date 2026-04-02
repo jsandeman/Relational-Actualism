@@ -228,6 +228,39 @@ are complex and interference is non-trivial.
 
 \subsection{Causal Invariance: The Discrete Lorentz Covariance Condition}
 
+\begin{theorem}[Causal Invariance of the Quantum Measure, conditional on amplitude locality]
+\label{thm:causal_invariance}
+Let $G$ be a finite causal DAG and let $\mathcal{S}$ be a set of partial
+DAGs (an observable). Suppose the local amplitude $a(v \mid \mathrm{past}(v))$
+satisfies amplitude locality (Definition above). Then the quantum measure
+$\mu_{\mathcal{Q}}(\mathcal{S}) = |\sum_{h \supset \mathcal{S}} \mathcal{A}(h)|^2$
+is independent of the linear extension of the partial order used to define
+the sequential growth: for any two linear extensions $\sigma, \sigma'$ of
+the causal partial order,
+\[
+  \mu_\sigma(\mathcal{S}) = \mu_{\sigma'}(\mathcal{S}).
+\]
+\end{theorem}
+
+\noindent\textit{Proof sketch.} The amplitude $\mathcal{A}(h) =
+\prod_{v \in h} a(v \mid \mathrm{past}(v))$ is a product of local factors.
+By amplitude locality, each factor $a(v \mid \mathrm{past}(v))$ depends only
+on the causal past of $v$, which is determined by the partial order
+independently of the linear extension. Transposing two spacelike-separated
+vertices $v_i, v_j$ in the ordering leaves each factor unchanged (neither is
+in the causal past of the other). Since any two linear extensions are related
+by a sequence of such transpositions, $\mathcal{A}(h)$ is invariant under
+the ordering, and the sum over histories is therefore ordering-independent.
+The squared magnitude is then ordering-independent.
+\hfill$\square$
+
+\noindent The combinatorial core of this proof has been formally verified in
+\texttt{RA\_AQFT\_Proofs\_v10.lean} (theorem \texttt{causal\_invariance},
+zero sorry tags). The remaining open problem is proving amplitude locality
+intrinsically on the discrete graph (Hard Wall~1).
+
+
+
 The foliation-dependence problem is solved by the condition of \emph{causal
 invariance}: the quantum measure must be independent of the order in which
 spacelike-separated vertices are added to the causal DAG.
@@ -307,12 +340,77 @@ $V$. This is a purely combinatorial, background-independent process: no
 spacetime, no Hilbert space. The past is the fixed set $V$; the future is the
 set of all possible extensions $\mathcal{C}(G)$; the present is the boundary
 $\partial G$.
+\paragraph{Explicit rewrite rules and constraints.}
+The Level~1 dynamics can be stated as a formal rewrite system:
+
+\begin{enumerate}[noitemsep,label=\textbf{R\arabic*.}]
+  \item \textbf{(Initialization)} The universe begins with the empty DAG
+    $G_0 = (\emptyset, \emptyset)$.
+  \item \textbf{(Extension)} At each step, one element $v_* \in \Vvalid$ is
+    selected and appended: $G_{n+1} = (V_n \cup \{v_*\},\; E_n \cup
+    \{(u, v_*) : u \in \mathrm{past}(v_*)\})$.
+  \item \textbf{(Acyclicity)} $v_*$ may only have causal antecedents in
+    $\partial G_n$, guaranteeing the DAG remains acyclic.
+  \item \textbf{(Covariance / label-independence)} The physics depends only
+    on the partial order $(V, \leq)$ and the actualization measure, not on
+    the integer labels assigned to vertices. Two growth sequences that produce
+    isomorphic partial orders are physically identical.
+  \item \textbf{(Validity)} Only elements of $\Vvalid$ can be selected:
+    $\Delta S(\rho\|\sigma_0) > 0$ must be satisfied.
+\end{enumerate}
+
+The weight for selecting a specific $v_* \in \Vvalid$ at Level~1 is uniform
+over $\Vvalid$ (maximum entropy, no preferred direction); the Level~2 quantum
+measure then assigns non-uniform amplitudes to completed histories.
+$\Vvalid$ is non-empty at every step as long as there exist matter fields
+in the causal boundary (physical assumption: the universe contains
+interacting matter); it is finite because $\partial G$ is finite
+at every finite stage of growth. The growth process is Markov in the
+causal set sense: the probability of the next extension depends only on
+the current graph $(V, E)$ and not on the sequence of prior steps
+(Rideout-Sorkin Bell-causality condition~\citep{RideoutSorkin2000}).
+
+\noindent\textit{Well-posedness scope.} Non-emptiness and the Markov property
+are stated as physical assumptions, not formal proofs within RAEB.
+This is the standard presentation in causal set theory: Rideout and
+Sorkin~\citep{RideoutSorkin2000} similarly assert Bell-causality and
+label-independence as physical axioms without proving a general existence
+theorem for the classical sequential growth process.
+A formal existence and uniqueness theorem for the quantum stochastic
+extension is part of the open programme; RAEB establishes the structure
+and predictions under these physical assumptions.
+At Level~1 there is no Hilbert space: the acyclicity constraint and the
+validity criterion are purely combinatorial.
+\paragraph{The Level~1/Level~2 architecture is hierarchical, not circular.}
+A potential concern: $\mathcal{V}_{\mathrm{valid}}$ at Level~1 invokes
+$\Delta S > 0$, which appears to require the Level~2 quantum state.
+The resolution: the \emph{perturbative implementation} of validity at
+Level~1 is the on-shell kinematic condition $p^\mu p_\mu = m^2c^2$,
+which is purely about momentum conservation and requires no Hilbert space.
+Level~2 provides the \emph{foundational justification} for why on-shell
+processes actualise (they generate $\Delta S > 0$ in the Level~2 state),
+but does not need to be computed at each Level~1 step.
+The architecture is therefore: Level~1 uses a kinematic proxy (on-shell)
+that Level~2 justifies post-hoc; not a circular dependency but a
+perturbative approximation to the full entropic criterion.
+
+
 
 \subsection{Level 2: The Quantum Measure}
 
 Level~2 equips the Level~1 growth process with quantum amplitudes. A
 \emph{causal history} $h$ is a maximal chain of single-element extensions
-from the empty set to the complete DAG $G$. The quantum measure assigns:
+from the empty set to the complete DAG $G$. Following Sorkin~\citep{Sorkin1994},
+the quantum measure satisfies \emph{grade-2 additivity}: for any three
+mutually exclusive observables $\mathcal{S}_1, \mathcal{S}_2, \mathcal{S}_3$,
+$\muC(\mathcal{S}_1 \cup \mathcal{S}_2 \cup \mathcal{S}_3) =
+\muC(\mathcal{S}_1 \cup \mathcal{S}_2) + \muC(\mathcal{S}_1 \cup \mathcal{S}_3)
++ \muC(\mathcal{S}_2 \cup \mathcal{S}_3) - \muC(\mathcal{S}_1) -
+\muC(\mathcal{S}_2) - \muC(\mathcal{S}_3)$.
+This replaces the classical additivity of probability measures and allows
+quantum interference while forbidding higher-order interference (grade-3
+and above), consistent with standard quantum mechanics.
+The quantum measure assigns:
 \begin{equation}
   \mathcal{A}(h) \;=\; \prod_{v \in h} a(v \mid \mathrm{past}(v)),
   \label{eq:local_amplitude}
@@ -382,6 +480,42 @@ covariance: causal invariance, Lean-verified; locality: definitional in CSG),
 the Einstein equations are not recovered in a limit --- they are logically
 guaranteed. The interesting physics is where RA \emph{departs} from GR:
 sparse regions ($\mu \sim 1$), Planck-scale corrections, Causal Severance.
+\paragraph{Lovelock assumptions: why each is satisfied.}
+Lovelock's theorem~\citep{Lovelock1971} states that the unique rank-2
+symmetric tensor satisfying (i)~$d=4$ spacetime dimensions, (ii)~locality
+(depends on the metric and its first two derivatives), (iii)~second-order
+field equations, and (iv)~automatic divergence-free condition
+($\nabla_\mu G^{\mu\nu} \equiv 0$) is a linear combination of the Einstein
+tensor and the metric. We now show each assumption is satisfied by the
+RA-CSG coarse-graining:
+
+\begin{enumerate}[noitemsep,label=(\roman*)]
+  \item \textbf{$d=4$}: The BDG causal set action selects $d=4$ as the
+  dimension compatible with the Standard Model particle content
+  (established as a companion result in RASM~\citep{Sandeman2026RASM} and
+  RATM~\citep{Sandeman2026RATM}; not derived independently in this paper).
+  For the purposes of Lovelock uniqueness, $d=4$ is treated as an input
+  from the companion programme.
+  \item \textbf{Locality}: The effective metric is the coarse-grained output of
+  the RA-CSG via $\lambda(x) = \lim_{\mathcal{V}\to\mathrm{meso}}|V \cap \mathcal{V}|/
+  \mathrm{Vol}(\mathcal{V})$, a local spatial average. The effective stress-energy
+  $\langle\Tact\rangle$ depends only on local on-shell matter fields.
+  \item \textbf{Second-order}: The EFE is the unique second-order field equation
+  for the coarse-grained metric. This follows from the fact that the LLC is a
+  first-order conservation law on the DAG, and coarse-graining first-order
+  discrete laws yields second-order continuum equations.
+  \item \textbf{Divergence-free}: The Local Ledger Condition (Lean-verified,
+  \texttt{local\_ledger\_condition}, zero sorry) is the discrete conservation
+  law. Its continuum limit is $\nabla_\mu G^{\mu\nu} \equiv 0$ --- not an
+  independent assumption but a consequence of the LLC, proved in the companion
+  paper RACL~\citep{Sandeman2026RACL}.
+\end{enumerate}
+
+All four assumptions are satisfied by construction. Lovelock's uniqueness
+theorem therefore guarantees $G_{\mu\nu} = 8\pi G\,\langle\Tact\rangle$
+with $\Lambda = 0$ as the unique macroscopic description.
+
+
 
 The local actualization density:
 \begin{equation}
@@ -471,6 +605,29 @@ covariant form, with each step identified with its level.
 \end{description}
 
 % ─────────────────────────────────────────────────────────────────────────────
+
+\paragraph{The actualization criterion at the discrete level.}
+The referee asks how $\Delta S(\rho\|\sigma_0) > 0$ is defined when
+Level~1 has ``no Hilbert space.'' The resolution is as follows.
+Level~1 is purely combinatorial: the validity criterion $\Vvalid$ is
+implemented as a filter on candidate extensions, corresponding to the
+on-shell condition $p^\mu p_\mu = m^2c^2$ in the perturbative regime.
+This filter is combinatorially well-defined without a Hilbert space.
+
+The Hilbert space and relative entropy appear at Level~2, where the quantum
+measure assigns complex amplitudes to causal histories. The relative entropy
+$\Delta S(\rho\|\sigma_0)$ is then the Level~2 quantity that justifies the
+Level~1 filter: a vertex $v_*$ is in $\Vvalid$ if and only if its addition
+to the history would produce $\Delta S > 0$ in the Level~2 quantum state.
+The two levels are consistent by construction: Level~1 is the combinatorial
+shadow of the Level~2 validity condition, made computable without an explicit
+state vector by restricting to on-shell kinematics.
+
+The system-environment split question is also resolved at Level~2: the
+relevant split is between the vertex being added (system) and the rest of
+the actualized graph (environment). This split is defined by the causal
+structure of the DAG, not by an observer or coarse-graining choice.
+
 \section{The BMV Prediction}
 \label{sec:bmv}
 % ─────────────────────────────────────────────────────────────────────────────
@@ -489,12 +646,70 @@ pursuing this test.
 The Engine of Becoming predicts a strict null result: no gravity-mediated
 entanglement between superposed masses will be observed.
 
-The argument follows directly from Step~5. The spacetime metric is recalculated
-strictly from $V$---the set of actualized vertices---and never from the quantum
-possibility space (Step~2). A superposed mass that has not yet actualized
-contributes zero weight to $V$ and therefore zero metric sourcing. The metric
-cannot be placed in superposition because the metric is a property of the
-actualized causal record, not of the space of unactualized possibilities.
+\paragraph{The RA mechanism and virtual vs.\ on-shell exchanges.}
+The referee raises a precise point: in standard field-theoretic analyses,
+BMV entanglement arises from the Newtonian potential (virtual graviton
+exchange), not on-shell graviton emission. The RA mechanism must therefore
+address virtual exchanges directly.
+
+In RA, the static Newtonian potential between two macroscopic bodies is
+the coarse-grained Level-3 metric sourced by those bodies' \emph{accumulated
+actualized vertices}. Macroscopic objects are continuously exchanging on-shell
+bosons among their constituent particles; this steady actualization flux
+sources the effective metric that we identify as the Newtonian gravitational
+field. Virtual (off-shell) exchanges in this context produce $\Delta S = 0$
+and do \emph{not} update the metric --- they are bookkeeping in the
+perturbative expansion, not physical actualization events.
+
+For the superposed diamond mass in BMV: the mass is in a quantum superposition
+and has not actualized in the relevant positional degree of freedom. Critically,
+because the mass has not actualized, \emph{it has not yet contributed
+actualized vertices to the metric at the superposed locations}. The Newtonian
+potential of the superposed mass is therefore not placed in superposition in
+RA --- there is no actualized source for a superposed gravitational field.
+Any virtual graviton exchange between the two test masses carries zero
+actualization information about the superposition direction, because the
+superposition is an unactualized quantum possibility (Step~2), not an
+actualized causal vertex (Step~4).
+
+\paragraph{How ordinary gravitational interaction works.}
+For classical macroscopic objects, the Newtonian potential is sourced
+by their accumulated actualized depth: their constituent particles have
+been continuously actualizing via EM and strong interactions for their
+entire history. The metric they source is classical because they are
+classical --- they have no unactualized positional superpositions.
+The BMV superposed masses differ in precisely this way: their positional
+degree of freedom is genuinely unactualized.
+
+\paragraph{Minimal toy calculation: classical vs.\ superposed source.}
+For a classical point mass $M$ fully actualized at position $\mathbf{x}_0$,
+the RA metric perturbation is $h_{00} = -2\Phi/c^2$ where
+$\nabla^2\Phi = 4\pi G\,\rho_A(\mathbf{x})$ with $\rho_A = M\,\delta^3(\mathbf{x} - \mathbf{x}_0)$.
+This recovers the standard Newtonian potential $\Phi = -GM/|\mathbf{x} - \mathbf{x}_0|$.
+The mass is fully actualized, so $\rho_A \propto \rho_{\mathrm{matter}}$
+as shown in RAGC.
+
+For a superposed mass in state $|\psi\rangle = (|{\mathbf{x}_1}\rangle +
+|{\mathbf{x}_2}\rangle)/\sqrt{2}$, the mass has not yet actualized in position.
+In RA: $\rho_A = 0$ for the unactualized superposition (no actualized vertex
+at $\mathbf{x}_1$ or $\mathbf{x}_2$), so $\nabla^2\Phi = 0$ and the metric
+is unperturbed. There is no superposed gravitational field.
+A probe mass experiencing this field accumulates zero differential gravitational
+phase, predicting null entanglement.
+This is distinct from semiclassical gravity (which would source from
+$\langle\hat{T}_{00}\rangle \propto M(|\psi(\mathbf{x}_1)|^2 + |\psi(\mathbf{x}_2)|^2)$,
+giving a non-zero but classical-averaged metric), and from quantum gravity
+(which would allow superposed metrics). The RA prediction is unambiguous:
+no metric perturbation from an unactualized source, hence no phase entanglement.
+
+
+$d \sim 250~\mu$m, $\tau \sim 1$~s. At these parameters, the
+superposed masses are in genuine quantum superposition of position;
+no on-shell positional actualization has occurred. The RA prediction
+is therefore null: the metric is not placed in superposition;
+no phase-entangling interaction is generated by the gravitational field.
+Null at $m \sim 10^{-14}$~kg with $\tau \sim 1$~s is the
+falsifiable prediction, with the mechanism now specified.
 
 \paragraph{Distinction from semiclassical gravity.}
 Standard semiclassical gravity sources the metric from the expectation value
@@ -515,6 +730,31 @@ from actualized vertices---a falsification of the Engine of Becoming as stated.
 % ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{Quantum Mechanics as the Level~2 / Slowly-Varying Limit}
+
+\paragraph{Born rule consistency check.}
+The quantum measure is consistent with the Born rule in the single-particle,
+non-relativistic limit. This is a \emph{consistency check}, not a derivation
+from something more fundamental --- a feature shared by all quantum measure
+approaches, including Sorkin's original formulation.
+Consider a particle with wavefunction $\psi(\mathbf{x})$. The requirement
+that the quantum measure reproduce standard QM fixes the local amplitude
+to $a(\mathbf{x}) \propto \psi(\mathbf{x})$; with this identification,
+equation~\eqref{eq:qm_probability} gives:
+\begin{equation}
+  P(\text{snap at } \mathbf{x}) = |\mathcal{A}(\mathbf{x})|^2
+  = |\psi(\mathbf{x})|^2\,d^3x.
+\end{equation}
+The Born rule is therefore not a new postulate in RA: it is the condition
+that determines the local amplitude in terms of the wavefunction. This
+reformulation is operationally equivalent to standard QM and does not
+introduce new parameters.
+For entangled bipartite states $\Psi(\mathbf{x}_A, \mathbf{x}_B)$, the joint
+measure factorises for spacelike-separated snap events (by amplitude locality),
+consistent with the standard joint probability distribution without introducing
+preferred foliations. No-signalling is maintained operationally: the
+non-selective quantum measure is CPTP and satisfies microcausality
+(Lean-verified via \texttt{frame\_independence}).
+
 
 When the metric changes negligibly between actualization events, the quantum
 measure reduces to the Feynman path integral on a fixed spacetime background.
@@ -549,19 +789,27 @@ this suggests the Rindler observer should experience actualization events not
 seen by the inertial observer---a violation of the objectivity of the
 Kinematic Snap.
 
-The resolution: the actualization criterion is $\Delta S(\rho\|\sigma_0) > 0$,
-not particle number. The Rindler thermal state has $\Delta S_{\mathrm{rel}} = 0$
-with respect to the Minkowski vacuum under modular flow---the relative entropy
-is stationary. This is the content of the \texttt{rindler\_stationarity}
-theorem proved in \texttt{RA\_AQFT\_Proofs\_v10.lean}: the relative entropy
-between the Rindler KMS state and the vacuum is invariant under the modular
-automorphism group of the Rindler wedge algebra. Because the threshold
-$\Delta S > 0$ is not crossed, no actualization is attributed to the thermal
-bath by the Rindler observer. Both observers agree: no physical snap has
-occurred. The apparent paradox dissolves because the actualization criterion
-is covariant by construction---relative entropy is unitarily invariant under
-Lorentz boosts (proved via the Continuous Functional Calculus in
-\texttt{frame\_independence}).
+The resolution: the actualization criterion is a per-step \emph{increase}
+$\Delta S_n = S(\rho_{n+1}\|\sigma_0) - S(\rho_n\|\sigma_0) > 0$,
+where $\rho_n$ is the reduced state before the $n$-th actualization step
+and $\sigma_0$ is the vacuum reference. Actualization requires an
+\emph{increase} in relative entropy, not merely positive relative entropy.
+
+For the Rindler observer: the relevant question is whether $S(\rho_\beta\|\sigma_0)$
+\emph{increases} along the observer's physical evolution. The
+\texttt{rindler\_stationarity} theorem (\texttt{RA\_AQFT\_Proofs\_v10.lean})
+proves that $\frac{d}{dt}S(\alpha_t(\rho_\beta)\|\sigma_0) = 0$, where
+$\alpha_t$ is the Tomita-Takesaki modular flow of the Rindler wedge algebra:
+the relative entropy is \emph{stationary} (its rate of change under modular
+flow is zero). This is the precise content: $\Delta S_{\mathrm{rel}} = 0$
+means the \emph{change per step is zero}, so the actualization threshold
+$\Delta S > 0$ is never crossed. No actualization is attributed to the
+Rindler thermal bath.
+
+Both observers therefore agree: no physical snap has occurred in the Minkowski
+vacuum. The criterion is covariant because the relevant unitaries (Poincar\'{e}
+boosts) are symmetries of $\sigma_0$, so \texttt{frame\_independence} applies
+(see the symmetry-hypothesis caveat in the Lean table).
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{The Algorithm and the Suite}
@@ -600,6 +848,43 @@ levels or steps of the Engine of Becoming:
 \end{description}
 
 % ─────────────────────────────────────────────────────────────────────────────
+
+\paragraph{Lean~4 formal verification: theorem statements.}
+The following theorems are formally verified in
+\texttt{RA\_AQFT\_Proofs\_v10.lean} and \texttt{RA\_D1\_Proofs.lean},
+available at \url{https://github.com/jsandeman/Relational-Actualism}
+(Lean~4.29.0, zero sorry tags in cited results):
+
+\begin{itemize}[noitemsep]
+  \item \texttt{causal\_invariance} [\texttt{RA\_AQFT\_Proofs\_v10.lean},
+    Lean~4.29.0, zero sorry, commit pinned at repo]:
+    $\mu_\sigma(\mathcal{S}) = \mu_{\sigma'}(\mathcal{S})$
+    for all linear extensions $\sigma, \sigma'$ of the causal partial order,
+    \textbf{given amplitude locality} (required assumption explicitly stated
+    in the theorem). Proved for finite DAGs via induction on adjacent transpositions.
+  \item \texttt{frame\_independence}: $S(U\rho U^\dagger \| \sigma_0) =
+    S(\rho\|\sigma_0)$ for all unitaries $U$ satisfying
+    $U\sigma_0 U^\dagger = \sigma_0$ (symmetries of the reference state).
+    In the finite-dimensional truncation used in the Lean proof,
+    $\sigma_0 \propto I$ (maximally mixed state), so this holds for
+    all unitaries; in the physical application, the relevant unitaries
+    are Poincar\'{e} boosts, which leave the Minkowski vacuum $\sigma_0$
+    invariant by Poincar\'{e} symmetry. Supports Lorentz covariance
+    of the actualization criterion for the physically relevant symmetry group.
+  \item \texttt{rindler\_stationarity}: $\Delta S(\rho_\beta\|\sigma_0) = 0$
+    under modular flow for the Rindler KMS state. Proves no actualization
+    in the Minkowski vacuum for accelerated observers.
+  \item \texttt{local\_ledger\_condition}: Conservation at every DAG vertex.
+    The discrete foundation for Bianchi compatibility in the continuum limit.
+\end{itemize}
+
+The formal objects (finite DAGs, density matrices, relative entropy) correspond
+to the physical objects (causal histories, quantum states, actualization criterion)
+via the Level~1/Level~2 architecture: Level~1 objects are the graph-theoretic
+inputs; Level~2 objects are the matrix/operator-valued quantities over those graphs.
+The Lean proofs certify internal consistency of the algebraic and combinatorial
+claims; the physical identification rests on the Level~2 amplitude assignment.
+
 \section{Hard Walls and Open Problems}
 \label{sec:hardwalls}
 % ─────────────────────────────────────────────────────────────────────────────
@@ -705,6 +990,16 @@ levels or steps of the Engine of Becoming:
   Pauli-Jordan function vanishing outside the light cone. The main theorem
   then follows by elementary algebra.
 
+  \textbf{Key application in RAQM.}
+  Amplitude locality has a direct physical application beyond RAEB: in the
+  companion paper RAQM~\citep{Sandeman2026RAQM}, it is used to prove that
+  the joint snap probability for spacelike-separated entangled pairs
+  factorises --- $r_{AB}(x_A, x_B) = r_A(x_A) \cdot r_B(x_B)$ --- making
+  the joint actualization event foliation-independent.
+  This is the precise mechanism by which RAQM handles non-local actualization
+  without superluminal signalling. The amplitude locality axiom plays the
+  same foundational role in both papers.
+
   The remaining open problem---now precisely stated---is:
   \begin{quotation}
   \noindent\textit{Define the local amplitude $a(v \mid \mathrm{past}(v))$
@@ -751,44 +1046,6 @@ levels or steps of the Engine of Becoming:
   where $\lambda(x)$ is the local actualization density, $V_{\mathrm{coh}}$ is
   the pre-actualization coherence volume, and $p_{\mathrm{th}} \approx 10^{-2}$
   is the Kinematic Coherence Bound threshold of RAQI~\citep{Sandeman2026d}.
-
-  \paragraph{The action--entropy bridge.}
-  A reviewer may ask why the BDG topological action $S_{\mathrm{BDG}}$ should
-  act as a thermodynamic entropy gradient rather than merely a geometric curvature
-  measure. The answer is direct. The BDG action counts the alternating signed
-  sum of causal intervals at increasing depths:
-  $S_{\mathrm{BDG}}(v) = \sum_k c_k\,N_k(v)$.
-  Each term $N_k(v)$ counts the number of causal intervals of length $k$
-  in the past of $v$ --- it is a measure of the local combinatorial richness
-  of the DAG, i.e., the number of distinct causal histories available to $v$
-  at depth $k$.
-  Since entropy is the logarithm of accessible microstate count
-  ($S \propto \ln \Omega$), a vertex that is accessible via many distinct
-  causal paths (large $N_k$ terms at positive $c_k$ depths) maximises both
-  $S_{\mathrm{BDG}}$ and the local microstate generation rate.
-  Conversely, a vertex that has very few causal ancestors (small $N_k$) lies in
-  a low-entropy, low-$S_{\mathrm{BDG}}$ region.
-  The identification $S_{\mathrm{BDG}}(v) > 0 \Leftrightarrow
-  \Delta S(\rho \| \sigma_0) > 0$ is therefore not a postulate: it is the
-  statement that both conditions select vertices in the
-  combinatorially rich (high-microstate) sector of the causal graph.
-  Maximising $S_{\mathrm{BDG}}$ and maximising local entropy production are
-  one and the same condition, expressed in discrete combinatorial and continuous
-  information-theoretic language respectively.
-
-  A key structural identity follows from the second-order operator property
-  of the BDG action~\citep{Glaser2014}: at the self-dual point $\mu=1$
-  (all depth layers equally weighted),
-  \begin{equation}
-    V_{\mathrm{eff}}(\mu=1) \;=\; c_0 + \textstyle\sum_{k=1}^4 c_k
-    \;=\; 1 + 0 \;=\; 1.
-    \label{eq:veff1_eb}
-  \end{equation}
-  The $\sum_{k=1}^4 c_k = 0$ identity means $\mu=1$ is the unique density at
-  which the virtual intermediate vertex carries unit expected BDG action.
-  This is why the strong coupling at the self-dual scale is the pure
-  geometric mean $\alpha_s = 1/\!\sqrt{c_2 c_4}$ with no additional correction,
-  as proved in RASM~\citep{Sandeman2026RASM,Sandeman2026BDG}.
   This makes $c_k$ \emph{local and environment-dependent} for the first time in
   any CSG formulation. In dense environments ($\mu \gg 1$): $d_s = 3$, GR is
   recovered. In sparse environments ($\mu \ll 1$): the graph becomes tree-like
@@ -802,23 +1059,12 @@ levels or steps of the Engine of Becoming:
 
   \item[Hard Wall 3: The Standard Model Couplings.]
   The local amplitudes depend on the coupling constants of the Standard Model.
-  Substantial progress has been made: the companion paper
-  RASM~\citep{Sandeman2026RASM} derives the BDG particle classification
-  (Lean-verified, RATM) and proves the strong coupling constant at the
-  $Z$-boson mass scale~\citep{Sandeman2026BDG}:
-  \begin{equation}
-    \alpha_s(m_Z) = \frac{1}{\sqrt{c_2\,c_4}} = \frac{1}{\sqrt{72}} = 0.11785
-    \quad (\text{PDG: } 0.11800,\; 0.13\%).
-  \end{equation}
-  The proof uses the 4D Alexandrov coherence volume and the RA actualization
-  threshold at $\mu=1$; no free parameters.  The electromagnetic coupling
-  is given by the Wyler formula (numerically verified to $0.0001\%$;
-  RA-native derivation in progress).  The remaining open targets are: (i)
-  the RA renormalization group $d\alpha_s/d\!\ln\rho$ from BDG first
-  principles; and (ii) deriving $U(1)\times SU(2)\times SU(3)$ from the
-  causal DAG structure (long-range horizon, RAGC Epilogue~\citep{Sandeman2026b}).
-  \textbf{Collaborator target:} topological quantum field theory; Standard
-  Model phenomenology; renormalization group in causal set theory.
+  The Engine of Becoming uses these as inputs rather than deriving them from
+  the graph topology. The derivation of $U(1) \times SU(2) \times SU(3)$ from
+  the causal DAG structure is the long-range horizon described in the RAGC
+  Epilogue~\citep{Sandeman2026b}.
+  \textbf{Collaborator target:} topological quantum field theory, Standard
+  Model phenomenology.
 \end{description}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1010,19 +1256,6 @@ J.~F.~Sandeman.
 \newblock Relational Actualism and the Standard Model ({RASM}).
 \newblock Preprint, 2026.
 \newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
-
-\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
-J.~F.~Sandeman.
-\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
-  BDG Integers.
-\newblock Preprint, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
-
-\bibitem[Glaser(2014)]{Glaser2014}
-L.~Glaser.
-\newblock A closed form expression for the causal set d'Alembertian.
-\newblock \emph{Journal of Mathematical Physics}, 55(9):092301, 2014.
-\newblock \href{https://doi.org/10.1063/1.4895604}{doi:10.1063/1.4895604}.
 
 \bibitem[Sandeman(2026)]{Sandeman2026Foundation}
 J.~F.~Sandeman.

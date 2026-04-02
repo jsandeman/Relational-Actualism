@@ -43,6 +43,26 @@ open Classical Matrix BigOperators
 variable {n : ℕ} [NeZero n] [Fintype (Fin n)] [DecidableEq (Fin n)]
 
 -- =====================================================================
+-- HELPER: Inner product adjoint identity (rectangular matrices)
+-- =====================================================================
+
+/-- For A : Matrix (Fin m) (Fin p) ℂ, u : Fin m → ℂ, v : Fin p → ℂ:
+    ∑ᵢ u†ᵢ (Av)ᵢ = ∑ⱼ (Aᴴu)†ⱼ vⱼ.
+    Used to substitute y = Aᴴu in quadratic form xᴴABAxᴴx = yᴴBy. -/
+lemma inner_adjoint_rectangular {m p : ℕ} [Fintype (Fin m)] [Fintype (Fin p)]
+    (A : Matrix (Fin m) (Fin p) ℂ) (u : Fin m → ℂ) (v : Fin p → ℂ) :
+    ∑ i : Fin m, star (u i) * (A *ᵥ v) i =
+    ∑ j : Fin p, star ((A.conjTranspose *ᵥ u) j) * v j := by
+  -- Expand mulVec to explicit Finset sums via simp
+  have h1 : ∀ i : Fin m, (A *ᵥ v) i = ∑ j : Fin p, A i j * v j :=
+    fun i => by simp [Matrix.mulVec, dotProduct]
+  have h2 : ∀ j : Fin p, (A.conjTranspose *ᵥ u) j = ∑ i : Fin m, star (A i j) * u i :=
+    fun j => by simp [Matrix.mulVec, dotProduct, Matrix.conjTranspose]
+  simp_rw [h1, h2, star_sum, StarMul.star_mul, star_star, Finset.mul_sum, Finset.sum_mul]
+  rw [Finset.sum_comm]
+  congr 1; ext j; congr 1; ext i; ring
+
+-- =====================================================================
 -- 0. MATRIX LOGARITHM VIA CONTINUOUS FUNCTIONAL CALCULUS
 -- =====================================================================
 
@@ -116,7 +136,7 @@ def vacuumState : DensityMatrix n where
           · simp
           · intro b _ hb; simp [hb]
           · simp]
-        simp [Complex.normSq_apply, Complex.mul_conj']
+        simp [Complex.normSq_apply]
       rw [key]
       exact Complex.normSq_nonneg _
   tr1  := by
@@ -129,48 +149,47 @@ def vacuumState : DensityMatrix n where
 -- 4. RINDLER THERMAL STATE
 -- =====================================================================
 
-private noncomputable def Z (β ω : ℝ) : ℝ :=
-  ∑ j : Fin n, Real.exp (-(β * ω * (j.val : ℝ)))
-
-private lemma Z_pos (β ω : ℝ) (hβ : 0 < β) (hω : 0 < ω) : 0 < Z β ω := by
-  apply Finset.sum_pos
-  · intro j _; exact Real.exp_pos _
-  · exact ⟨⟨0, Nat.pos_of_ne_zero (NeZero.ne n)⟩, Finset.mem_univ _⟩
-
-def rindlerThermal (β ω : ℝ) (hβ : 0 < β) (hω : 0 < ω) :
+noncomputable def rindlerThermal (β ω : ℝ) (hβ : 0 < β) (hω : 0 < ω) :
     DensityMatrix n where
   mat := Matrix.diagonal (fun i : Fin n =>
-    ((Real.exp (-(β * ω * (i.val : ℝ))) / Z β ω : ℝ) : ℂ))
+    ((Real.exp (-(β * ω * (i.val : ℝ))) /
+      ∑ j : Fin n, Real.exp (-(β * ω * (j.val : ℝ))) : ℝ) : ℂ))
   herm := by
     rw [Matrix.isHermitian_diagonal_iff]
-    intro i; simp [IsSelfAdjoint, starRingEnd_apply, Complex.conj_ofReal]
+    intro i; exact Complex.conj_ofReal _
   pos := by
     constructor
     · rw [Matrix.isHermitian_diagonal_iff]
-      intro i; simp [IsSelfAdjoint, starRingEnd_apply, Complex.conj_ofReal]
+      intro i; exact Complex.conj_ofReal _
     · intro x
-      -- Diagonal with nonneg real entries λᵢ: xᴴDx = Σᵢ λᵢ|xᵢ|² ≥ 0
       simp only [Matrix.mulVec_diagonal]
-      rw [show (∑ i : Fin n, star (x i) *
-          ((Real.exp (-(β * ω * (i.val : ℝ))) / Z β ω : ℝ) * x i)).re =
-          ∑ i : Fin n, (Real.exp (-(β * ω * (i.val : ℝ))) / Z β ω) *
-          Complex.normSq (x i) from by
-        simp_rw [show ∀ i : Fin n, star (x i) *
-            ((↑(Real.exp (-(β * ω * ↑↑i)) / Z β ω) : ℂ) * x i) =
-            (↑(Real.exp (-(β * ω * ↑↑i)) / Z β ω) : ℂ) * (star (x i) * x i)
-            from fun i => by ring]
-        simp_rw [← Complex.normSq_eq_abs, Complex.normSq_apply]
-        push_cast; ring_nf; simp [Complex.add_re, Complex.mul_re]]
+      set Z : ℝ := ∑ j : Fin n, Real.exp (-(β * ω * (j.val : ℝ))) with hZ_def
+      have hZ : 0 < Z := by positivity
+      have key : (∑ i : Fin n, star (x i) *
+            (↑(Real.exp (-(β * ω * (i.val : ℝ))) / Z) * x i)).re =
+          ∑ i : Fin n, Real.exp (-(β * ω * (i.val : ℝ))) / Z * Complex.normSq (x i) := by
+        simp only [Complex.re_sum]
+        apply Finset.sum_congr rfl
+        intro i _
+        have h1 : star (x i) * (↑(Real.exp (-(β * ω * (i.val : ℝ))) / Z) * x i) =
+                  ↑(Real.exp (-(β * ω * (i.val : ℝ))) / Z) * (star (x i) * x i) := by ring
+        have h2 : (star (x i) * x i).re = Complex.normSq (x i) := by
+          simp [Complex.normSq_apply]
+        rw [h1]
+        simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, h2]
+        ring
+      rw [key]
       apply Finset.sum_nonneg
       intro i _
-      exact mul_nonneg (div_nonneg (Real.exp_nonneg _) (Z_pos β ω hβ hω).le)
-                       (Complex.normSq_nonneg _)
+      exact mul_nonneg (div_nonneg (Real.exp_nonneg _) hZ.le) (Complex.normSq_nonneg _)
   tr1 := by
     rw [Matrix.trace_diagonal]
+    set Z : ℝ := ∑ j : Fin n, Real.exp (-(β * ω * (j.val : ℝ))) with hZ_def
+    have hZ : 0 < Z := by positivity
     simp only [Complex.ofReal_div]
     rw [← Finset.sum_div]
     simp only [← Complex.ofReal_sum]
-    exact div_self (Complex.ofReal_ne_zero.mpr (Z_pos β ω hβ hω).ne')
+    exact div_self (Complex.ofReal_ne_zero.mpr hZ.ne')
 
 -- =====================================================================
 -- 5. UNITARY MATRICES
@@ -201,10 +220,13 @@ lemma MatPosSemidef.conj_unitary (U : UnitaryMatrix n)
     -- xᴴ(UMU†)x = (U†x)ᴴ M (U†x) ≥ 0 by hMp applied to y = U†x
     have key : ∑ i, star (x i) *
         ((U.mat * M * U.mat.conjTranspose) *ᵥ x) i =
-        ∑ i, star (U.mat.conjTranspose *ᵥ x) i *
+        ∑ i, star ((U.mat.conjTranspose *ᵥ x) i) *
         (M *ᵥ (U.mat.conjTranspose *ᵥ x)) i := by
-      simp only [Matrix.mulVec_mulVec, Pi.star_apply,
-                 Matrix.star_mulVec, Matrix.conjTranspose_conjTranspose]
+      rw [show (U.mat * M * U.mat.conjTranspose) *ᵥ x =
+          U.mat *ᵥ (M *ᵥ (U.mat.conjTranspose *ᵥ x)) from by
+        simp only [Matrix.mulVec_mulVec]
+        rw [Matrix.mul_assoc]]
+      exact inner_adjoint_rectangular U.mat x (M *ᵥ (U.mat.conjTranspose *ᵥ x))
     rw [key]
     exact hMp (U.mat.conjTranspose *ᵥ x)
 
@@ -212,8 +234,11 @@ def unitaryConj (U : UnitaryMatrix n) (ρ : DensityMatrix n) :
     DensityMatrix n where
   mat  := U.mat * ρ.mat * U.mat.conjTranspose
   herm := by
-    rw [Matrix.IsHermitian] at ρ.herm ⊢
-    simp [Matrix.conjTranspose_mul, ρ.herm, Matrix.mul_assoc]
+    unfold Matrix.IsHermitian
+    have hρ : ρ.matᴴ = ρ.mat := by
+      have h := ρ.herm; unfold Matrix.IsHermitian at h; exact h
+    simp [Matrix.conjTranspose_mul, Matrix.conjTranspose_conjTranspose,
+          Matrix.mul_assoc, hρ]
   pos  := MatPosSemidef.conj_unitary U ρ.pos
   tr1  := by
     have h : (U.mat * ρ.mat * U.mat.conjTranspose).trace =
@@ -356,14 +381,18 @@ noncomputable def CPTPMap.apply {n m k : ℕ} [NeZero n] [NeZero m] [NeZero k]
     (E : CPTPMap n m k) (ρ : DensityMatrix n) : DensityMatrix m where
   mat := ∑ i : Fin k, E.kraus i * ρ.mat * (E.kraus i).conjTranspose
   herm := by
-    rw [Matrix.IsHermitian]
+    unfold Matrix.IsHermitian
+    have hρ : ρ.matᴴ = ρ.mat := by
+      have h := ρ.herm; unfold Matrix.IsHermitian at h; exact h
     simp [Matrix.conjTranspose_sum, Matrix.conjTranspose_mul,
-          Matrix.conjTranspose_conjTranspose, ρ.herm.eq, Matrix.mul_assoc]
+          Matrix.conjTranspose_conjTranspose, Matrix.mul_assoc, hρ]
   pos := by
     constructor
-    · rw [Matrix.IsHermitian]
+    · unfold Matrix.IsHermitian
+      have hρ : ρ.matᴴ = ρ.mat := by
+        have h := ρ.herm; unfold Matrix.IsHermitian at h; exact h
       simp [Matrix.conjTranspose_sum, Matrix.conjTranspose_mul,
-            Matrix.conjTranspose_conjTranspose, ρ.herm.eq, Matrix.mul_assoc]
+            Matrix.conjTranspose_conjTranspose, Matrix.mul_assoc, hρ]
     · intro x
       -- Each term Kᵢ ρ Kᵢ† is PSD (by MatPosSemidef.conj_unitary),
       -- and a sum of PSD matrices is PSD.
@@ -372,24 +401,28 @@ noncomputable def CPTPMap.apply {n m k : ℕ} [NeZero n] [NeZero m] [NeZero k]
             ((∑ i : Fin k, E.kraus i * ρ.mat * (E.kraus i).conjTranspose) *ᵥ x) i).re =
           (∑ i : Fin k, ∑ j : Fin m, star (x j) *
             ((E.kraus i * ρ.mat * (E.kraus i).conjTranspose) *ᵥ x) j).re from by
-        simp [Matrix.sum_mulVec, Finset.sum_comm]]
+        simp only [Matrix.sum_mulVec, Finset.sum_apply, Finset.mul_sum]
+        rw [Finset.sum_comm]]
       rw [Complex.re_sum]
       apply Finset.sum_nonneg
       intro i _
       -- term i: xᴴ(KᵢρKᵢ†)x = (Kᵢ†x)ᴴ ρ (Kᵢ†x) ≥ 0
       have hterm : (∑ j : Fin m, star (x j) *
           ((E.kraus i * ρ.mat * (E.kraus i).conjTranspose) *ᵥ x) j) =
-          (∑ j : Fin n, star ((E.kraus i).conjTranspose *ᵥ x) j *
+          (∑ j : Fin n, star (((E.kraus i).conjTranspose *ᵥ x) j) *
           (ρ.mat *ᵥ ((E.kraus i).conjTranspose *ᵥ x)) j) := by
-        simp only [Matrix.mulVec_mulVec, Matrix.star_mulVec,
-                   Matrix.conjTranspose_conjTranspose]
+        rw [show (E.kraus i * ρ.mat * (E.kraus i).conjTranspose) *ᵥ x =
+            E.kraus i *ᵥ (ρ.mat *ᵥ ((E.kraus i).conjTranspose *ᵥ x)) from by
+          simp only [Matrix.mulVec_mulVec]
+          rw [Matrix.mul_assoc]]
+        exact inner_adjoint_rectangular (E.kraus i) x
+          (ρ.mat *ᵥ ((E.kraus i).conjTranspose *ᵥ x))
       rw [hterm]
       exact ρ.pos.2 ((E.kraus i).conjTranspose *ᵥ x)
   tr1 := by
     -- Tr[∑ᵢ KᵢρKᵢ†] = ∑ᵢ Tr[Kᵢ†Kᵢρ] = Tr[(∑ᵢ Kᵢ†Kᵢ)ρ] = Tr[ρ] = 1
     simp only [Matrix.trace_sum]
     simp_rw [Matrix.trace_mul_cycle (E.kraus _) ρ.mat (E.kraus _).conjTranspose]
-    simp_rw [← Matrix.mul_assoc]
     rw [← Matrix.trace_sum]
     rw [show ∑ i : Fin k, (E.kraus i).conjTranspose * E.kraus i * ρ.mat =
         (∑ i : Fin k, (E.kraus i).conjTranspose * E.kraus i) * ρ.mat from

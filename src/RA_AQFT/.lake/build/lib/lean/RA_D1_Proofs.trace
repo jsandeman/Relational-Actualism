@@ -1,0 +1,39 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["e9569ef28e102091.olean"],
+  "i": "982cf32cc233b311.ilean",
+  "c": "a7cdcdd836563f6d.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Cli/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/batteries/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Qq/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/aesop/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/plausible/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean /Users/jsandeman/.elan/toolchains/leanprover--lean4---v4.29.0/bin/lean /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_D1_Proofs.lean -o /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_D1_Proofs.olean -i /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_D1_Proofs.ilean -c /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_D1_Proofs.c --setup /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_D1_Proofs.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "RA_D1_Proofs.lean:1112:5: unused variable `hf`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "RA_D1_Proofs.lean:1118:13: unused variable `h`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"}],
+ "inputs":
+ [["RA_D1_Proofs:deps",
+   [["deps",
+     [["RelationalActualism/RelationalActualism:extraDep",
+       [["@RelationalActualism:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "d476c41a23a92916"],
+        ["Mathlib:importAllArts", "8f795eb0a9993479"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.29.0, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740",
+   "60bb08ef22408c8a"],
+  ["/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_D1_Proofs.lean",
+   "6fd569266a441345"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: RA_D1_Proofs", "db56b9755bb2d13b"],
+  ["Package.id?: (some RelationalActualism)", "e09e9957965f872f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "97f5cb850787e559"}

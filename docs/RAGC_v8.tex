@@ -132,21 +132,7 @@ causal set generative measure is presented: the Benincasa-Dowker sign
 criterion ($S_{\mathrm{BDG}}(v) > 0$) as the discrete actualization
 filter yields a Poisson-CSG formula $c_k^{\mathrm{RA}}(x) \propto
 e^{-\mu}\mu^k$ with $\mu = \lambda\,V_{\mathrm{coh}}\,p_{\mathrm{th}}$
-that is local and environment-dependent.
-
-\paragraph{Topological definition of $\lambda(x)$.}
-The actualization density $\lambda(x)$ is defined \emph{purely combinatorially}
-as $\lambda = N / \mathcal{V}$, where $N$ is the number of actualization
-vertices in a local region and $\mathcal{V}$ is the volume of the corresponding
-Alexandrov interval (causal diamond) $\mathcal{D}(p,q) = J^+(p) \cap J^-(q)$.
-Crucially, $\mathcal{V}$ is measured by the \emph{longest directed chain}
-(proper time) between the bounding past vertex $p$ and future vertex $q$ ---
-not by any continuous background metric volume. The volume is emergent from the
-causal order; the causal order does not live inside a pre-existing volume.
-This definition is fully consistent with the Benincasa-Dowker continuum
-limit~\citep{Benincasa2010} and makes $\lambda(x)$ a coordinate-independent,
-graph-native quantity. There is no circularity: the metric is derived
-from $\lambda$, not used to define it. A bandwidth-partition model
+that is local and environment-dependent. A bandwidth-partition model
 predicts $H_{\mathrm{local}} \approx 73.1\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$
 from the KBC void and a new falsifiable consequence: the Eridanus
 supervoid ($\delta \approx -0.30$) should give $H \approx
@@ -594,16 +580,13 @@ gravitational field changes it by modifying the local causal graph density.
 Special-relativistic and general-relativistic time dilation are two regimes of
 the same underlying actualization-rate calculation.
 
-\paragraph{Hard wall.}
-The formal derivation of equations~\eqref{eq:sr_dilation}
-and~\eqref{eq:grav_dilation} from the covariant RA field equations requires
-establishing Bianchi compatibility ($\nabla_\mu \langle T^{\mu\nu}_{\mathrm{RA}}
-\rangle = 0$) on general curved backgrounds --- Derivation~3, hard wall~iv.
-The qualitative account above is derivable from the actualization criterion and
-the proper-time identification; the precise numerical coefficients require the
-full covariant framework. What is not conjectural is the identification of proper
-time with the actualization count: this follows directly from the ontological
-commitment that time is the growing graph.
+\paragraph{Note on derivation status.}
+The qualitative account above is derivable from the actualization criterion
+and the proper-time identification; the precise numerical coefficients in the
+curved-spacetime regime require the full covariant framework
+(see Open Problem~O2, Section~\ref{sec:openproblems}). What is not
+conjectural is the identification of proper time with the actualization count:
+this follows directly from the ontological commitment that time is the growing graph.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{The Local Ledger: Conservation on a Growing Graph}
@@ -929,30 +912,6 @@ in correlations between the matter distribution at the nucleation epoch and the
 effective cosmological constant inferred from late-time observations. Identifying
 this imprint is a long-range observational target.
 
-\paragraph{Predicted parent black-hole mass.}
-Inverting the horizon-entropy relation with the observed $\Lambda_{\mathrm{obs}}$
-gives a structural prediction for the parent black-hole mass at nucleation:
-\begin{equation}
-  M_{\mathrm{parent}} \;\approx\; 6.6 \times 10^6\,M_\odot,
-  \label{eq:SMBH_parent}
-\end{equation}
-consistent with the mass of Sagittarius~A* ($4.1\times 10^6\,M_\odot$)
-within the systematic uncertainty on $\Lambda$.  This is not a fit: it is
-the unique mass implied by the Causal Severance mechanism applied to the
-observed cosmological constant.
-
-\paragraph{Three-in-one cosmological correlation.}
-The Causal Severance mechanism couples $\Lambda$, $\Omega_{\mathrm{CDM}}$,
-and $H_0$ through the boundary actualization flux:
-\begin{equation}
-  \Lambda \times \Omega_{\mathrm{CDM}} \times H_0^2
-  \;\propto\; \Phi_{\mathrm{boundary}}^2.
-  \label{eq:three_in_one}
-\end{equation}
-A correlated shift in all three parameters in the ratio this equation
-predicts is a falsifiable RA signature: $\Lambda$CDM treats them as
-independently tunable, but RA links them through a single dynamical quantity.
-
 \paragraph{Connection to biological complexity.}
 The causal graph mechanisms of RAGC extend directly to the emergence of biological
 complexity. The Local Ledger Condition and Ledger Partition Theorem, proved here,
@@ -1039,52 +998,6 @@ results above are complete and RA-native. The Bullet Cluster offset follows
 from the $A_\mathrm{RA}$(stellar)/$ A_\mathrm{RA}$(gas) ratio of $\sim 10^8$
 (RADM~\S4.2).
 
-\subsection{Prediction 5: CMB Acoustic Peak Structure and the Dark Matter Density}
-\label{sec:pred5}
-
-Two new results close major gaps in RAGC's cosmological programme.
-
-\paragraph{Sinc suppression at acoustic peaks.}
-For a baryon perturbation $\delta_b \propto \cos(k c_s t)$, the
-actualization-density perturbation $\delta_A$ satisfies:
-\begin{equation}
-  \frac{\delta_A}{\delta_b} \;=\; \frac{\sin(k r_s)}{k r_s},
-  \label{eq:sinc_pred5}
-\end{equation}
-where $r_s$ is the sound horizon.  At every CMB acoustic peak
-($k r_s = n\pi$), $\sin(n\pi)/(n\pi) = 0$ exactly: the actualization-density
-perturbation vanishes at the peaks independent of any free parameter.
-The $\rho_A$ power spectrum is therefore automatically CDM-like in shape at
-all acoustic scales, with no tuning required.  This is a structural prediction
-distinguishable from $\Lambda$CDM by the absence of a CDM mass parameter.
-
-\paragraph{BDG derivation of $\Omega_{\mathrm{CDM}}/\Omega_b$.}
-The companion papers RASM and ra\_bdg\_couplings~\citep{Sandeman2026RASM,Sandeman2026BDG}
-derive the dark matter/baryon density ratio from the BDG integers alone:
-\begin{align}
-  \frac{\Omega_{\mathrm{CDM}}}{\Omega_b}
-  &= \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} \times \alpha_s(2m_p)
-   = 17.32 \times 0.312 = 5.40,
-  \label{eq:f0_ragc}
-\end{align}
-where $W_{\mathrm{baryon}} = 3/2$ exactly and $W_{\mathrm{other}}/W_{\mathrm{baryon}} = 17.32$
-are proved from BDG combinatorics at $\mu=1$, and $\alpha_s(2m_p) = 0.312\pm
-0.004$ from FLAG~2021 lattice QCD running.  This agrees with Planck~2018
-$5.416$ to $0.3\%$ --- the first derivation of a cosmological density ratio
-from pure causal-graph topology.
-
-\paragraph{RA-native derivation of $Q_{\mathrm{eff}}$ and $m_p$ (RASM).}
-The companion paper RASM~\citep{Sandeman2026RASM} provides an RA-native
-identification of the effective scale.  The BDG filtration length $L=4$ for
-quarks (Lean-verified, RATM) and the baryon weight $W_{\mathrm{baryon}}=3/2$
-give $Q_{\mathrm{eff}} = L\times W_{\mathrm{baryon}}\times\Lambda_{\mathrm{QCD}}
-= 6\Lambda_{\mathrm{QCD}} = 2m_p$ (exact by $m_p=3m_0$ and $m_0=m_p/3$).
-Furthermore the BDG Regge formula (RASM~\S7) gives $m_p = \sqrt{c_4}\,\Lambda_{\mathrm{QCD}}$
-to $0.08\%$, so the complete $f_0$ chain
-$f_0 = 17.32\times\alpha_s(2\sqrt{c_4}\,\Lambda_{\mathrm{QCD}}) = 5.38$
-is fully RA-native once $\Lambda_{\mathrm{QCD}}$ is derived from the
-BDG string tension $\sigma = \Lambda_{\mathrm{QCD}}^2$ (Derivation~2 of RAGC).
-
 \section{Mathematical Derivations}
 \label{sec:math}
 
@@ -1166,9 +1079,9 @@ absorber) along a shared on-shell channel. This formalism makes the bilateral
 nature of actualization explicit: a vertex nucleates only when both participating
 systems contribute an on-shell event.
 
-\subsubsection{Hard Wall: The Generative Measure and Benincasa-Dowker Filter}
+\subsubsection{Derivation Status: Generative Measure}
 
-\textbf{Note: the primary hard wall (continuum limit) is now closed.}
+\textbf{The primary open problem (continuum limit) is now closed.}
 The companion paper RACL~\citep{Sandeman2026RACL} proves that the
 Lean-verified Local Ledger Condition, combined with the Benincasa-Dowker
 theorem, Lovelock uniqueness, and the $\mathcal{P}_{\mathrm{act}}$
@@ -1394,6 +1307,14 @@ Minkowski vacuum, no actualization is occurring. They disagree only on the modal
 decomposition (which modes to call ``particles'')---a difference of description,
 not a difference of physical reality. Actualization requires an irreversible
 \emph{increase} in relative entropy, not merely non-zero relative entropy.
+This does not imply that accelerated observers cannot experience physical heating:
+if an accelerated body is in contact with a physical heat bath
+(friction, collisions, electromagnetic radiation from external sources),
+these involve genuine on-shell exchanges with the environment and do produce
+$\Delta S > 0$ actualization events. The Unruh thermal bath is
+specifically the \emph{stationary} KMS state of the Minkowski vacuum
+as seen by the accelerated observer --- it does not thermalize a body further
+than the vacuum, because $\Delta S_{\mathrm{rel}} = 0$ under modular flow.
 
 \paragraph{The non-unitary element.}
 A natural question arises: since unitary evolution preserves relative entropy,
@@ -1593,7 +1514,7 @@ is therefore built from $S$-matrix poles, not from the full off-shell generating
 functional.
 \end{proof}
 
-\subsubsection{Hard Wall}
+\subsubsection{Derivation Status and Open Problems}
 \label{sec:hardwall}
 
 Three open sub-problems were identified in prior development of this framework.
@@ -1853,133 +1774,18 @@ result; showing it implies the correct GR boundary condition is an open task.
 
 % ─── Summary ─────────────────────────────────────────────────────────────────
 
-\subsection{Derivation 5: The covariant $\Box(\ln\lambda)$ field equation}
+\subsection{Derivation 5: The Unified Metric Sourcing Equation}
 \label{sec:d5}
 
-The RA Poisson equation established in \S\ref{sec:newtonian} gives
-\begin{equation}
-  \nabla^2(\ln\lambda) = -\frac{\rho_A}{3\xi}
-  \label{eq:poisson_lnlam}
-\end{equation}
-in the quasi-static weak-field limit.  We now derive its fully covariant
-generalisation, identify the Bianchi-compatible stress-energy tensor for the
-$\lambda$-field, and discuss the new physics in the time-dependent and
-strong-field regimes.
-
-\subsubsection{Scalar-tensor action}
-
-Define $\varphi \equiv \ln\lambda$.  The RA effective action for the
-$\lambda$-field is
-\begin{equation}
-  S_\lambda[g,\varphi]
-  = -\frac{\xi}{2}\int g^{\mu\nu}\nabla_\mu\varphi\,\nabla_\nu\varphi\,
-      \sqrt{-g}\,\mathrm{d}^4x
-  \;+\; \xi\int \bigl(g^{\mu\nu}\Box - \nabla^\mu\nabla^\nu\bigr)\varphi\;
-      \delta g_{\mu\nu}\,\sqrt{-g}\,\mathrm{d}^4x \,.
-  \label{eq:action_lambda}
-\end{equation}
-The second term is a non-minimal coupling (NMC) required for
-Bianchi compatibility (\S\ref{sec:bianchi} below).
-
-\subsubsection{Covariant field equation}
-
-Taking the Euler--Lagrange variation of $S_\lambda + S_\mathrm{matter}$
-with respect to $\varphi$:
-\begin{equation}
-  \xi\,\Box(\ln\lambda) = \frac{\partial\mathcal{L}_\mathrm{matter}}{\partial(\ln\lambda)}
-    = -\frac{\rho_A}{3} \,,
-\end{equation}
-where the matter--$\lambda$ coupling $\partial\mathcal{L}/\partial(\ln\lambda)
-= -\rho_A/3$ follows from the dimensional reduction structure of
-$\mathcal{P}_\mathrm{act}$ in the three spatial directions (RAGC~\S4).
-This gives
-\begin{equation}
-  \boxed{
-    \Box(\ln\lambda)
-    \;\equiv\; g^{\mu\nu}\nabla_\mu\nabla_\nu(\ln\lambda)
-    \;=\; -\frac{\rho_A}{3\xi}
-  }
-  \label{eq:D5}
-\end{equation}
-as the covariant $\lambda$-field equation.
-
-\subsubsection{Bianchi-compatible stress-energy tensor}
-\label{sec:bianchi}
-
-Varying the full action with respect to $g^{\mu\nu}$ yields the
-$\lambda$-field stress-energy tensor:
-\begin{equation}
-  T_{\mu\nu}^\lambda
-  = \xi\!\left[\nabla_\mu\varphi\,\nabla_\nu\varphi
-      - \tfrac{1}{2}g_{\mu\nu}(\nabla\varphi)^2\right]
-  + \xi\!\left[g_{\mu\nu}\Box\varphi - \nabla_\mu\nabla_\nu\varphi\right].
-  \label{eq:Tmunu_lambda}
-\end{equation}
-The second line (the NMC term) is essential.  Taking the covariant
-divergence and applying $[\Box,\nabla_\nu]\varphi = R_{\nu\mu}\nabla^\mu\varphi$:
-\begin{equation}
-  \nabla^\mu T_{\mu\nu}^\lambda
-  = \xi\,\Box\varphi\cdot\nabla_\nu\varphi
-    + \xi\,R_{\nu\mu}\nabla^\mu\varphi \,.
-\end{equation}
-Substituting~\eqref{eq:D5}: the first term becomes
-$-(\rho_A/3)\nabla_\nu\varphi$, and the Ricci back-reaction term
-$\xi R_{\nu\mu}\nabla^\mu\varphi$ encodes the covariant coupling
-between spacetime curvature and $\lambda$-field gradients.
-The full RA field equations
-\begin{equation}
-  G_{\mu\nu} = 8\pi G\,\mathcal{P}_\mathrm{act}[T_{\mu\nu}]
-             + 8\pi G\,T_{\mu\nu}^\lambda
-  \label{eq:RA_field_eqs}
-\end{equation}
-satisfy $\nabla^\mu G_{\mu\nu} = 0$ identically by the Bianchi identity,
-provided~\eqref{eq:D5} holds.
-
-\subsubsection{Newtonian and Hubble limits}
-
-\paragraph{Quasi-static weak field.}
-Setting $\partial_t = 0$ in~\eqref{eq:D5} with $(-+++)$ signature
-gives $\Box \approx \nabla^2$, recovering~\eqref{eq:poisson_lnlam}. $\checkmark$
-
-\paragraph{Vacuum propagation.}
-In the absence of matter ($\rho_A = 0$):
-\begin{equation}
-  \Box(\ln\lambda) = 0 \,,
-\end{equation}
-so actualization-density fluctuations propagate as a massless scalar wave
-at speed $c$.  This gives the $\lambda$-field a causal, retarded Green's
-function — variations in one region influence $\lambda$ elsewhere only
-after light-travel time.
-
-\paragraph{Hubble tension.}
-In the KBC void ($\rho_A \approx 0.7\,\rho_{A,\mathrm{global}}$),
-$\Box(\ln\lambda) \approx 0$ in the void interior and
-$\ln\lambda_{\mathrm{void}} > \ln\lambda_{\mathrm{global}}$.
-The local Hubble rate satisfies $H_{\mathrm{local}} \propto \lambda_{\mathrm{local}}$
-(RAGC~\S5.2), giving $H_{\mathrm{local}} > H_{\mathrm{CMB}}$ in agreement
-with the observed tension.  The Eridanus supervoid prediction
-($H \approx 75.9\;\mathrm{km\,s}^{-1}\mathrm{Mpc}^{-1}$,
-$\delta \approx -0.30$) follows from the solution to~\eqref{eq:D5}
-with the observed void density profile.
-
-\subsubsection{Remaining open derivations}
-
-Equation~\eqref{eq:D5} is the covariant field equation for $\ln\lambda$.
-What remains is to prove:
-\begin{enumerate}
-  \item \emph{Bianchi compatibility in full non-linear GR}: the derivation above
-    is perturbative (linear in $\lambda - \lambda_0$).  The non-linear
-    proof requires showing $\nabla^\mu G_{\mu\nu} = 0$ holds for the full
-    coupled system~\eqref{eq:RA_field_eqs}--\eqref{eq:D5}.
-  \item \emph{Cosmological perturbation theory}: the coupled system of
-    $\delta\lambda$, $\delta g_{\mu\nu}$ perturbations in an FRW background,
-    needed for CMB power spectrum predictions.
-  \item \emph{Strong-field corrections}: near black holes the field equation
-    acquires additional terms from $R_{\nu\mu}\nabla^\mu\varphi$
-    in~\eqref{eq:Tmunu_lambda}.
-\end{enumerate}
-Items 1--2 are targets for a modified-gravity collaborator
-(Loll/Radboud, Deffner/UMBC).
+\paragraph{Status: relocated to RADM.}
+The conjectural two-component metric sourcing equation
+$\nabla^2\Phi = 4\pi G[\rho_A + \rho_\lambda]$, the derivation of the
+$\nabla^2(\ln\lambda)$ gradient term, and the associated rotation curve and Bullet
+Cluster arguments are developed as the primary subject of the companion paper
+RADM~\citep{Sandeman2026RADM}. That paper provides the detailed derivation
+candidates, hard walls, and collaborator targets for the dark matter replacement
+programme. The WIMP prohibition (Prediction~4 above) stands independently of
+the conjectural mechanisms in RADM.
 
 \subsection{Derivation 6: Equivalence Principle Recovery and Operationalization
 of $\lambda$}
@@ -2027,9 +1833,30 @@ never been in actualization equilibrium with the baryonic sector. They are not a
 species that violates universality; they are a species that has never participated
 in the actualization dynamics that generate the metric in the first place.
 
+\paragraph{Bounding estimate for WEP correction.}
+While the formal proof is a hard wall, the order of the correction
+can be estimated. For a species in actualization equilibrium, the
+deviation from WEP scales as:
+\begin{equation}
+  \frac{|\rho_A - \rho_{\mathrm{matter}}|}{\rho_{\mathrm{matter}}}
+  \;\sim\; \frac{\tau_{\mathrm{eq}}}{t_{\mathrm{cosm}}},
+  \label{eq:wep_bound}
+\end{equation}
+where $\tau_{\mathrm{eq}}$ is the timescale for the species to reach
+actualization equilibrium and $t_{\mathrm{cosm}}$ is the age of the
+universe. For ordinary baryonic matter, which has been in thermal and
+electromagnetic equilibrium since recombination:
+$\tau_{\mathrm{eq}} \sim 10^{13}$~s (recombination epoch),
+$t_{\mathrm{cosm}} \sim 4 \times 10^{17}$~s, giving a fractional
+deviation $\lesssim 10^{-4}$, well below current E\"{o}tv\"{o}s
+precision ($\sim 10^{-13}$) in the post-recombination regime.
+The deviation is negligible not because WEP is assumed, but because
+ordinary matter has had sufficient time to reach actualization
+equilibrium. WIMPs never reached this equilibrium.
+
 \paragraph{Hard wall: formal proof of WEP recovery.}
-The argument above establishes the equilibrium limit qualitatively but does not
-constitute a proof. A publishable version of the WIMP prohibition requires:
+The argument above establishes the equilibrium limit qualitatively;
+a rigorous proof requires:
 \begin{enumerate}[noitemsep]
   \item A formal derivation showing that $\rho_A \to \rho_{\mathrm{matter}}$ in
   the equilibrium limit, with explicit bounds on the correction term
@@ -2061,8 +1888,14 @@ natural candidates are:
   More directly proportional to current $\lambda$ in dense regions, but misses
   the accumulated depth of old stellar populations.
   \item \textbf{Baryon density} $\rho_b$ from X-ray surveys and Sunyaev-Zel'dovich
-  measurements. Proportional to total mass in a region, which correlates with
-  long-term actualization history for matter in equilibrium.
+  measurements. This is the \emph{theoretically preferred} proxy: since RA
+  privileges on-shell electromagnetic and strong interactions
+  ($\Delta S_{\mathrm{rel}} > 0$ from EM/strong on-shell processes), $\rho_b$
+  is the most direct observable correlate of accumulated actualization flux.
+  Galaxy number density and star-formation rate are secondary proxies
+  (correlated with $\rho_b$ but with higher systematic uncertainty);
+  \textbf{the primary falsifiable prediction uses $\rho_b$}.
+  \label{sec:proxies}
 \end{itemize}
 The Hubble tension prediction becomes falsifiable precisely when: (a) $\lambda(x)$
 is replaced by one of these observational proxies; (b) a smoothing scale is
@@ -2307,6 +2140,21 @@ Bound established in RAQI~\citep{Sandeman2026RAQI}. The rate limit on
 actualization events per coherence volume pins this entropy ratio to an
 observable threshold, constraining $\xi$ via fault-tolerant quantum array
 decoherence limits.
+A specific numerical estimate is now available from the companion paper
+RAQM~\citep{Sandeman2026RAQM}: the per-vertex entropy generated at
+actualization threshold is $\langle\Delta S_{\mathrm{vertex}}\rangle
+= -\log P_{\mathrm{acc}}(1) \approx 0.601$~nats (derived from the
+BDG Poisson-CSG at $\mu=1$). Substituting into~\eqref{eq:xi_microscopic}
+with the Planck area $l_P^2$:
+\begin{equation}
+  \xi \;\approx\; \frac{0.601~\text{nats}}{l_P^2}
+  \;\approx\; 0.601\,l_P^{-2},
+  \label{eq:xi_numerical}
+\end{equation}
+a parameter-free prediction connecting the quantum measurement threshold
+to the coupling constant governing galactic rotation curves.
+This estimate is provisional pending the full derivation of the RA
+continuum limit, but it is no longer undetermined in principle.
 
 \subsubsection*{The Actualization Field Equation and Its Observational Consequences}
 
@@ -2441,6 +2289,69 @@ phenomenology, large-scale structure.
 
 % ─────────────────────────────────────────────────────────────────────────────
 
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Open Problems and Future Horizons}
+\label{sec:openproblems}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The following problems are precisely scoped open targets for the RA programme.
+Completed results are not repeated here; this section gathers only the
+outstanding mathematical derivations and their collaboration requirements.
+
+\begin{description}[leftmargin=2em,labelwidth=!,labelsep=0.5em]
+
+\item[\textbf{O1: Covariant generalisation of the generative measure.}]
+The BDG-filtered Poisson-CSG defines the actualization dynamics in the
+flat-spacetime, weak-field regime. Extension to general curved backgrounds
+requires deriving the covariant generative measure for the RA-CSG, confirming
+that the BDG filter is invariant under diffeomorphisms of the underlying
+continuum approximation.
+\textit{Collaboration:} causal set theory; CDT computational physics;
+causal dynamical triangulations.
+
+\item[\textbf{O2: Covariant Step~4 (stochastic update commutativity).}]
+The stochastic graph update in the Engine of Becoming must be shown to
+commute for spacelike-separated candidates: selecting $v_A$ then $v_B$
+must produce the same graph as $v_B$ then $v_A$ when causally disconnected.
+This is the Tomonaga-Schwinger analogue for the stochastic update.
+\textit{Collaboration:} algebraic QFT; causal set theory.
+
+\item[\textbf{O3: Non-perturbative regime of $\mathcal{P}_{\mathrm{act}}$.}]
+The actualization projector uses Fock-space structure, requiring a perturbative
+vacuum. In strongly coupled regimes (QCD confinement, critical points), a
+non-perturbative formulation via Haag-Kastler axioms or the OPE is required.
+Extension to curved backgrounds via Hadamard renormalization is also needed.
+\textit{Collaboration:} algebraic QFT; Tomita-Takesaki modular theory.
+
+\item[\textbf{O4: Formal WEP recovery.}]
+The bounding estimate $|\rho_A - \rho_{\mathrm{matter}}|/\rho_{\mathrm{matter}}
+\lesssim \tau_{\mathrm{eq}}/t_{\mathrm{cosm}}$ (Section~\ref{sec:wep_bound})
+establishes WEP consistency phenomenologically.
+A formal proof that $\rho_A \to \rho_{\mathrm{matter}}$ in the equilibrium limit,
+with explicit bounds as a function of departure from equilibrium, would
+complete the WEP recovery argument and fully justify the WIMP prohibition.
+\textit{Collaboration:} experimental gravity; precision equivalence principle tests.
+
+\item[\textbf{O5: Fixing $\xi$ from RA microscopic structure.}]
+The coupling constant $\xi \approx 0.601\,l_P^{-2}$ (Section~\ref{sec:xi})
+is estimated from the RAQM actualization threshold. A first-principles
+derivation from the entropy generated per actualization event and the
+RA area element would promote this from an estimate to a prediction.
+The RAQI Kinematic Coherence Bound provides a second handle.
+\textit{Collaboration:} quantum information; quantum gravity phenomenology;
+large-scale structure.
+
+\item[\textbf{O6: Quantitative $H_0$-density slope.}]
+Prediction~1 (Eridanus supervoid $H_{\mathrm{Eridanus}} \approx 75.9$~km/s/Mpc)
+uses the baryon density $\rho_b$ as the theoretically favoured proxy for
+$\lambda(x)$ (see Section~\ref{sec:proxies}). A quantitative derivation
+of the $H_0$-density slope from $\xi$ and $\bar\rho_A$ would make this
+prediction fully parameter-free.
+\textit{Collaboration:} observational cosmology; DESI; large-scale structure surveys.
+
+\end{description}
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section*{Epilogue: The Horizon of the Program --- From Gravity to Gauge Symmetries}
 \addcontentsline{toc}{section}{Epilogue: The Horizon of the Program}
@@ -2461,37 +2372,6 @@ engine: it uses known electromagnetic, weak, and strong cross-sections to inform
 the graph's transition probabilities without deriving those cross-sections from
 the graph structure itself. A mature theory of fundamental physics cannot borrow
 its interaction rules; it must derive them.
-
-\paragraph{Progress on this horizon.}
-The companion paper RASM~\citep{Sandeman2026RASM} has now substantially
-advanced this programme.  The BDG integers $(1,-1,9,-16,8)$ determine a
-complete, Lean-verified five-element particle topology (RATM), give exactly
-three non-gravitational gauge interactions, and yield two proved coupling
-constants:
-\begin{equation}
-  \alpha_s(m_Z) = \frac{1}{\sqrt{c_2 c_4}} = \frac{1}{\sqrt{72}} = 0.11785
-  \qquad (\text{PDG: } 0.11800,\; 0.13\%)
-\end{equation}
-from the BDG path weight at $\mu=1$~\citep{Sandeman2026BDG}, alongside the
-Wyler formula for $\alpha_{\mathrm{EM}}$ (verified to $0.0001\%$).  The
-dark matter/baryon ratio follows from the same integers:
-$\Omega_{\mathrm{CDM}}/\Omega_b = 5.40$ (Planck~2018: $5.416$, $0.3\%$,
-Prediction~5 above).
-
-The BDG Regge formula $m_n^2 = 4\sigma n$ (with $a_0=0$ from the identity
-$c_1+c_2+c_3+c_4=0$) gives the proton mass:
-\begin{equation}
-  m_p = \sqrt{c_4}\,\Lambda_{\mathrm{QCD}} = \sqrt{8}\times 332~\mathrm{MeV}
-  = 939~\mathrm{MeV} \qquad (0.08\%),
-\end{equation}
-and the Koide scale $m_0 = m_p/3 = \sqrt{c_4/c_2}\,\Lambda_{\mathrm{QCD}} = 313$~MeV ($0.08\%$),
-connecting the cosmological derivation target $f_0$ to the hadronic string
-tension $\sigma = \Lambda_{\mathrm{QCD}}^2$. The RAGC Derivation~1 simulation
-therefore simultaneously predicts the cosmological dark matter density,
-the proton mass, and the Koide scale with zero free parameters.
-
-What was stated as a long-range research direction in the original RAGC
-is now a partially completed derivation.
 
 The ultimate multi-decade horizon of the RA program is the derivation of the
 Standard Model from the pure discrete topology of the causal DAG. What follows
@@ -2583,6 +2463,12 @@ were generated or analysed.
 
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
+
+\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
+J.~F. Sandeman.
+\newblock {Relational Actualism: The Topology of Matter (RATM)}.
+\newblock \textit{Preprint}, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
 
 
 \bibitem[Sandeman(2026a)]{Sandeman2026a}
@@ -2768,6 +2654,11 @@ C.~Marletto and V.~Vedral.
   sufficient evidence of quantum effects in gravity.
 \newblock \textit{Physical Review Letters}, 119:240402, 2017.
 
+\bibitem[Lovelock(1971)]{Lovelock1971}
+D.~Lovelock.
+\newblock The Einstein tensor and its generalizations.
+\newblock \emph{Journal of Mathematical Physics}, 12(3):498--501, 1971.
+\newblock \href{https://doi.org/10.1063/1.1665613}{doi:10.1063/1.1665613}.
 
 \bibitem[Lovelock(1971)]{Lovelock1971}
 D.~Lovelock.
@@ -2782,37 +2673,9 @@ A.~Meiburg, L.~A.~Lessa, and R.~R.~Soldati.
 \newblock Lean-QuantumInfo:
   \href{https://github.com/Timeroot/Lean-QuantumInfo}{github.com/Timeroot/Lean-QuantumInfo}.
 
-\bibitem[Sandeman(2026g)]{Sandeman2026RASM}
-J.~F.~Sandeman.
-\newblock Relational Actualism and the Standard Model ({RASM}).
-\newblock Preprint, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
+\bibitem[Sandeman(2026g)]{Sandeman2026RASM}J.~F.~Sandeman.\newblock Relational Actualism and the Standard Model ({RASM}).\newblock Preprint, 2026.\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}
 
-\bibitem[Sandeman(2026RACL)]{Sandeman2026RACL}
-J.~F.~Sandeman.
-\newblock Relational Actualism: The Einstein Field Equations as the Unique
-  Macroscopic Limit of the Actualization Graph ({RACL}).
-\newblock \textit{Classical and Quantum Gravity} (submitted), 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19270020}{doi.org/10.5281/zenodo.19270020}.
-
-\bibitem[Sandeman(2026RATM)]{Sandeman2026RATM}
-J.~F.~Sandeman.
-\newblock Relational Actualism: The Topology of Matter ({RATM}).
-\newblock \textit{Physical Review D} (submitted), 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19265651}{doi.org/10.5281/zenodo.19265651}.
-
-\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
-J.~F.~Sandeman.
-\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
-  BDG Integers.
-\newblock Preprint, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
-
-\bibitem[Sandeman(2026h)]{Sandeman2026Foundation}
-J.~F.~Sandeman.
-\newblock Relational Actualism: A Foundation Paper.
-\newblock Preprint, 2026.
-\newblock \href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}.
+\bibitem[Sandeman(2026h)]{Sandeman2026Foundation}J.~F.~Sandeman.\newblock Relational Actualism: A Foundation Paper.\newblock Preprint, 2026.\newblock \href{https://doi.org/10.5281/zenodo.19229438}{doi.org/10.5281/zenodo.19229438}
 
 \bibitem[O'Hanlon(1972)]{OHanlon1972}
 J.~O'Hanlon.

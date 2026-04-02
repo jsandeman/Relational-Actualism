@@ -377,6 +377,25 @@ distinction: gluons are more strongly confined than quarks. This is
 the BDG manifestation of the fact that the SU(3) non-abelian gauge
 sector has stronger self-coupling than the quark-gluon coupling.
 
+\paragraph{Concrete quantum-number example: three colour charges from $N_1 = 2$.}
+Type-3 vertices have $\mathbf{N} = (2,1,0,0)$ and BDG score
+$S_{\mathrm{BDG}} = c_4 = 8$.
+The $N_1 = 2$ value is the unique distinguishing feature of this class:
+no other stable topology class in $d=4$ has $N_1 > 1$.
+In the BDG-filtered Poisson-CSG, the $N_1$-fold depth-1 degeneracy
+admits exactly $N_1 + 1 = 3$ distinct causal configurations
+at depth~1 — corresponding to the three colour charges of QCD (red,
+green, blue).
+The Lean-verified confinement length $L_q = 4$
+(Theorem~\ref{thm:D1e}) establishes directly that Type-3 vertices
+cannot propagate as free asymptotic states beyond causal depth~4,
+reproducing colour confinement as a theorem of the BDG integer
+structure, not as an external input.
+This provides a concrete checkable example of the bijection between
+BDG topology classes and SM quantum numbers: the $N_1 = 2$
+degeneracy encodes $\mathrm{SU}(3)_{\mathrm{colour}}$
+multiplicity, and the Lean-proved $L_q = 4$ encodes confinement.
+
 % ── 6. D1\_closure\_complete ─────────────────────────────────────────────────
 \section{Theorem D1\_closure\_complete: The BDG Particle Universe is Closed}
 \label{sec:closure}
