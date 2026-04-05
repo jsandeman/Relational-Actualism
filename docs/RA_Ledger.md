@@ -69,7 +69,7 @@
 | ID | Claim | Evidence | Gap | Downstream |
 |---|---|---|---|---|
 | A01 | GR_UNIQUE: G_μν=8πG P_act[T_μν],Λ=0 unique by Lovelock | RACL; d=4 from L11; Bianchi from D04 | D04 needs curved-background extension (O03) | 1 |
-| A02 | WIMP_PROHIB: WIMPs have A_RA≈0, no gravitational coupling | no EM/strong interactions → no actualization flux | O04 for formal WEP bound | 1 |
+| A02 | WIMP_PROHIB: WIMPs have A_RA≈0, no gravitational coupling | no EM/strong interactions → no actualization flux; O04 (DR) closes WEP | — | 1 |
 | A04 | CAUSAL_SEVER: event horizons are topological DAG disconnections | LLC undefined across severance, not violated | — | — |
 | A05 | BORN_CONSIST: quantum measure consistent with Born rule | a(x)∝ψ(x) is constraint, not derivation | not claimable as derivation | — |
 | A06 | CAUSAL_FIREWALL: μ=1 percolation as origin-of-life threshold | Erdős-Rényi transition at μ=1 | decoherence timescale τ_d (O08) | **3** |

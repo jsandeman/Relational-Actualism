@@ -20,7 +20,7 @@ L04 | TH | LV | []           | FRAME_IND: S(UρU†‖σ₀)=S(ρ‖σ₀) for U
 L05 | TH | LV | []           | RINDLER_STAT: d/dt S(α_t(ρ_β)‖σ₀)=0 under modular flow α_t   | rindler_stationarity in RA_AQFT_Proofs_v10.lean      | —
 L06 | TH | LV | []           | RINDLER_THERMAL: ρ_β is valid density matrix (herm/pos/tr=1)  | rindlerThermal in RA_AQFT_Proofs_v10.lean            | —
 L07 | TH | LV | []           | CAUSAL_INV_COND: μ_σ(S)=μ_σ'(S) given amplitude_locality      | causal_invariance in RA_AQFT_Proofs_v10.lean         | conditional on O01
-L08 | TH | LV | []           | ALPHA_EM: 144−7=137 (BDG depth-ratio fixed point)             | alpha_inv_137 via norm_num in RA_D1_Proofs.lean      | —
+L08 | TH | LV | [L10,L11]   | ALPHA_EM: 144−7=137 (BDG vertex-type ratio fixed point)       | alpha_inv_137 via norm_num; 144=3!×4! from Poisson-CSG depths k=3,4; 7=L_g+L_q from L10 | exact fixed-point gives α⁻¹≈136.84; fractional correction to 137.036 is open (see IC30)
 L09 | TH | LV | []           | KOIDE: K=2/3 from BDG integers                                | koide_formula in RA_D1_Proofs.lean                   | —
 L10 | TH | LV | []           | CONFINEMENT: L=3 (gluon), L=4 (quark) from BDG topology      | confinement_lengths in RA_D1_Proofs.lean             | —
 L11 | TH | LV | []           | BDG_CLOSURE: 5 topology types, 124 extensions exhaust SM      | universe_closure in RA_D1_Proofs.lean                | —
@@ -30,7 +30,7 @@ L12 | TH | LV | []           | QUBIT_FRAGILE: electrons/photons at minimum BDG s
 // LAYER 1: COMPUTATION-VERIFIED (public scripts, reproducible)
 // ══════════════════════════════════════════════════════════════
 
-C01 | CM | CV | []           | ALPHA_S: α_s(m_Z)=1/√72=0.11785 (PDG: 0.118, Δ=0.13%)        | d3_alpha_s_proof.py; W=c₂·E[S_virt]·c₄=72          | —
+C01 | CM | DR | [L11]        | ALPHA_S: α_s(m_Z)=1/√72=0.11785 (PDG: 0.118, Δ=0.13%)        | BDG algebraic: α=1/√(S_photon×S_quark)=1/√(c₂c₄); E[S_virt]=c₀=1 from Σcₖ=0 (BDG identity) | scale identification μ=1↔m_Z is AR (see IC31)
 C02 | CM | CV | []           | P_ACC: P_acc(μ=1)=0.548436 exactly at BDG Poisson-CSG         | D1_BDG_MCMC_simulation.py; exact enumeration Apr2026 | —
 //         MODEL: S=1-N1+9N2-16N3+8N4, Nk~Pois(μ^k/k!) indep, P_acc=P(S>0)
 C03 | CM | CV | [C02]        | DELTA_S_STAR: ΔS*(μ=1)=0.60069 nats (exact, irrational)      | exact enumeration Apr2026; 10^9 MC confirms 25σ≠3/5  | —
@@ -47,7 +47,7 @@ C08 | CM | CV | [C02]        | F_ZERO: W_other/W_baryon=17.32×α_s(m_p)=f₀=5.
 
 D01 | TH | DR | [L04]        | LORENTZ_COV: actualization criterion is Lorentz-covariant      | L04 for Poincaré U; σ₀ invariant under boosts        | —
 D02 | TH | DR | [L05,D01]    | UNRUH_RES: Rindler obs detects no actualization in Mink vac   | L05: per-step ΔS_n=0; threshold never crossed        | detector coupling story (see O05)
-D03 | TH | DR | [L01]        | VACUUM_SUPP: P_act projects out vacuum from metric source      | on-shell condition → off-shell ΔS=0 → no sourcing    | —
+D03 | TH | DR | [L01]        | VACUUM_SUPP: P_act removes vacuum from ANY gravitational source | ΔS(σ₀‖σ₀)=0<ΔS* → P_act[σ₀]=0; does NOT assume field eq form — holds for any metric-sourcing prescription | —
 D04 | TH | DR | [L01,L02]    | BIANCHI_FLAT: LLC → ∇_μG^μν≡0 in flat/weak-field limit        | RACL proof sketch + Lovelock                         | —
 D05 | TH | DR | [C03,L04]    | FIVE_SCALE: μ=1 unifies QCD/galactic/fault-tol/ΔS*/Firewall   | structural: same Erdős-Rényi transition each case    | —
 D06 | TH | DR | [L11]        | SM_SPECTRUM: 5 BDG types map to SM particle classes           | L11 + topology matching                              | —
@@ -60,9 +60,9 @@ D09 | TH | DR | [D02,A03,C03,C04] | COM_ACTUALIZATION: τ_act=ΔS*/Γ_eff; g_BMV
 // ══════════════════════════════════════════════════════════════
 
 D10 | TH | AR | [L01,L05,D03]| JACOBSON_BRIDGE: LLC+T_Unruh(L05)+area_law → G_μν=8πGT_μν  | Jacobson 1995; two of three inputs Lean-verified; area law from O06 | explicit Steps A+B writeup; independent l_RA derivation
-D11 | TH | DR | [D09,C03,A06]| CF_FIXEDPOINT: μ_single=ΔS*≈0.601 universally; N_min=ceil(1/ΔS*)=2 for Causal Firewall | algebraic: μ=λτ_dℓ³=(Γ_eff/ℓ³)(ΔS*/Γ_eff)ℓ³=ΔS* | —
+D11 | TH | DR | [D09,C03,A06]| CF_FIXEDPOINT: μ_single=ΔS*≈0.601 universally; N_min=ceil(1/ΔS*)=2 for Causal Firewall | algebraic: μ=λτ_dℓ³=ΔS* (Γ_eff and ℓ cancel by DEFINITION of λ and τ_d). Physical content is in D09 (τ_d formula) and A06 (Erdős-Rényi applicability), not in the cancellation itself. | —
 A01 | TH | AR | [D04,L01]    | GR_UNIQUE: G_μν=8πG P_act[T_μν],Λ=0 unique by Lovelock         | RACL; d=4 from L11; Bianchi from D04                 | D04 needs curved-background extension (O03)
-A02 | TH | AR | [D07,A01]    | WIMP_PROHIB: WIMPs have A_RA≈0, no gravitational coupling     | no EM/strong interactions → no actualization flux    | O04 for formal WEP bound
+A02 | TH | DR | [D07,A01,O04]| WIMP_PROHIB: WIMPs have A_RA≈0, no gravitational coupling     | no EM/strong interactions → no actualization flux; O04 (DR) closes WEP bound | —
 A03 | TH | DR | [D03,L07,D09]| BMV_NULL_MECH: superposed mass sources zero metric            | unactualized → ρ_A=0 → ∇²Φ=0 → no phase difference; D09 gives timescale | O01 for full Lean proof
 A04 | TH | AR | []           | CAUSAL_SEVER: event horizons are topological DAG disconnections | LLC undefined across severance, not violated         | —
 A05 | TH | AR | [L07]        | BORN_CONSIST: quantum measure consistent with Born rule        | a(x)∝ψ(x) is constraint, not derivation              | not claimable as derivation
@@ -88,7 +88,7 @@ O09 | TH | DR | [O01,L04]    | COV_STEP4: O01 → a(v_B|C∪{v_A})=a(v_B|C) for 
 
 P01 | PR | DR | [A03,D09,O01]| BMV_NULL: null gravity-mediated entanglement m~10⁻¹⁴kg τ~1s    | A03+D09 give complete mechanism; O01 for Lean proof  | NEAR-TERM: multiple groups pursuing
 P02 | PR | CV | [C05]        | HUBBLE_GRADIENT: H₀ correlates linearly with ρ_b(LOS)          | C05 for specific Eridanus case                       | NEAR-TERM: DESI data available
-P03 | PR | AR | [A02]        | WIMP_FLOOR: no DM signal below neutrino floor (categorical)    | A02; current XENONnT data consistent                 | ONGOING: LZ/XENONnT
+P03 | PR | DR | [A02]        | WIMP_FLOOR: no DM signal below neutrino floor (categorical)    | A02 (now DR); current XENONnT data consistent        | ONGOING: LZ/XENONnT
 P04 | PR | CV | [C03,C04]    | SPIN_BATH: t*≈0.274/g, ΔS*≈0.601 nats (parameter-free)        | C03,C04 fully derived                                | TESTABLE: superconducting circuits
 P05 | PR | AR | [L12]        | KCB: N_max=η·p_th for fault-tolerant quantum arrays             | Kinematic Coherence Bound from L12                   | TESTABLE: near-future QEC experiments
 P06 | PR | AR | [A06]        | CAUSAL_FIREWALL: biosignature universality                      | substrate-independence from μ=1 criterion             | LONG-TERM: SETI observational
@@ -101,7 +101,7 @@ N01 | CM | CV | []  | α_EM⁻¹ = 137 (integer; Wyler gives fractional correcti
 N02 | CM | CV | []  | α_s(m_Z) = 1/√72 ≈ 0.11785
 N03 | CM | CV | []  | ΔS*(μ=1) = 0.60069 nats (exact; 3/5=0.600 ruled out at 25σ)
 N04 | CM | CV | []  | t* ≈ 0.274/g
-N05 | CM | CV | []  | ξ ≈ 0.601 l_P⁻² (provisional — O06)
+N05 | CM | AR | [O06]  | ξ = 1/(4l_P²) = 0.250 l_P⁻² (corrected via O06; depends on self-consistency argument)
 N06 | CM | CV | []  | H(Eridanus) ≈ 75.9 km/s/Mpc
 N07 | CM | CV | []  | m_p = √c₄ · Λ_QCD (0.08% accuracy)
 N08 | CM | CV | []  | f₀ = 5.42 (baryon-to-dark ratio; Planck: 5.416)
@@ -327,7 +327,7 @@ IC15 | SINGULARITIES ARE NON-PHYSICAL: At μ→∞ (singularity density), RA giv
      the discrete Planck unit l_P, t_P. "Singularity" = causal termination in RA.
 
 // OPEN NATIVE PROBLEMS (added to existing O-series):
-O10 | TH | OP | [D04,L01] | DISCRETE_BIANCHI: Prove ∇_μG^μν=0 from LLC using ONLY
+O10n| TH | OP | [D04,L01] | DISCRETE_BIANCHI: Prove ∇_μG^μν=0 from LLC using ONLY
      discrete graph theory — without smooth manifold or AQFT. Discrete Lovelock analogue.
      Gap: requires discrete differential geometry on the growing DAG. Lean target.
 
@@ -413,6 +413,13 @@ IC22 | O10 STATUS AFTER RA_Spin2_Macro.lean (Apr 3 2026):
      L01(LV)→llc constraint(AR); dim=2(sorry,completable); O01(LV)+L04(LV)→Weinberg→GR.
      This is the closest RA has been to a fully discrete proof of GR without smooth manifold.
      Bypasses Lovelock theorem entirely. Purely combinatorial/linear algebraic.
+
+O10 | TH | DR | [O01,L04,L01,L11,D03,D04,O10s] | WEINBERG_ROUTE: G_μν=8πG P_act[T_μν]
+     Chain: O01(LV)+L04(LV)+L01(LV)+L11(LV)+D03(DR)+D04(DR)+O10s(LV-struct)→Weinberg→GR.
+     Status: DR. All RA inputs at DR or LV. Gap: O10s finrank sorry (completable).
+O10b| TH | DR | [L01,L02,O06] | BRIDGE_LEMMA: LLC → ∂_μT^μν=0 + S=A/4l_P²
+     Kinetic theory + Gauss + Riemann sum. ΔS* cancels exactly in area law derivation.
+
 
 // ══════════════════════════════════════════════════════════════════════════════
 // C09: BDG ACTION CONCENTRATION — PATH COUPLING BOUND (Apr 3, 2026)
@@ -642,6 +649,43 @@ D4U02u | TH | DR | [D4U02a,L11] | D4U02_UNIQUE_d4: conditioning proof is d=4 spe
       Result: D4U02 (Planck-density selectivity maximum) is dimensionally unique.
       Combined with L11 (d=4 from SM closure): d=4 is doubly selected.
       Status: DR. New result from the conditioning method.
+
+
+IC30 | α_EM DERIVATION CHAIN (resolved Apr 2026): RA-native, no Wyler.
+     Chain: BDG vertex types (photon N=(1,1,0,0) S=9; electron N=(1,1,1,1) S=1)
+     → Poisson prefactor ratio P(photon)/P(electron) = 3!×4!/μ⁷ = 144/μ⁷
+     → self-consistency at μ=1+α gives 144α = (1+α)⁷
+     → leading order α⁻¹ = 144-7 = 137 (Lean-verified integer identity)
+     OPEN: Exact fixed-point gives α⁻¹ ≈ 136.84 (0.14% from PDG 137.036).
+     The linearization 137 happens to be CLOSER to PDG (0.026%) than the
+     exact solution. The fractional correction 137→137.036 is not yet derived
+     RA-natively. The Wyler formula gives 137.036 to 0.00006% via conformal
+     geometry (D_IV^5) but this is NOT RA-native.
+     STATUS: Integer 137 is LV. Fractional value is open.
+
+IC31 | α_s DERIVATION: Two RA-native routes, both purely algebraic.
+     Route 1 (causal exchange amplitude): W = c₂ × E[S_virt] × c₄ = 9×1×8 = 72.
+       E[S_virt] = c₀ = 1 from BDG identity Σcₖ = 0 (second-order operator property).
+       This is ALGEBRAIC (model-independent), not statistical.
+       α_s = 1/√W = 1/√72.
+     Route 2 (BDG inner product): ⟨A,B⟩_BDG = Σₖ cₖ Aₖ Bₖ.
+       ⟨A,A⟩ = S(A). Cauchy-Schwarz: max amplitude = √(S_A×S_B).
+       α = 1/√(S_photon × S_quark) = 1/√(c₂c₄) = 1/√72.
+     OPEN: Scale identification (μ=1 ↔ m_Z) is argued, not derived.
+     The 0.13% agreement is consistent with m_Z being in the slowly-running
+     UV regime close to the BDG fixed point.
+
+IC32 | POISSON MODEL RECONCILIATION (resolved Apr 2026):
+     The RASM model (Nₖ ~ Pois(μᵏ/k!)) and the couplings paper model
+     (Nₖ ~ Pois(μᵏ)) are used for DIFFERENT calculations:
+     - RASM model: computes P_acc, ΔS*, and the α_EM vertex-type ratio (144=3!×4!).
+     - The coupling constants (α_s, α_EM) are derived from BDG INTEGER IDENTITIES
+       (Σcₖ=0, vertex type scores), NOT from Poisson expectations.
+     - No statistical model inconsistency remains: the couplings are algebraic,
+       and the Poisson model choice only affects ΔS* (where RASM is correct).
+     The old BDG couplings paper (Zenodo DOI 10.5281/zenodo.19324790) used the
+     Pois(μᵏ) model for the E[S_virt]=1 step. The RA-native derivation replaces
+     this with the algebraic identity E[S_virt] = c₀ = 1, which is model-independent.
 
 IC29 | AUDIT Apr-4-2026: New avenues for remaining open problems.
      O03 (Bianchi curved): D4U02 conditioning suggests perturbative approach.
