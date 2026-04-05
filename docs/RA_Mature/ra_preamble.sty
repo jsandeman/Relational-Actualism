@@ -1,0 +1,60 @@
+% ra_preamble.sty — shared preamble for all RA papers
+\ProvidesPackage{ra_preamble}
+\usepackage[T1]{fontenc}
+
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[numbers]{natbib}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+% Status badge colours
+\definecolor{lv_green}{RGB}{34,139,34}
+\definecolor{cv_blue}{RGB}{30,100,180}
+\definecolor{dr_amber}{RGB}{180,120,0}
+\definecolor{ar_orange}{RGB}{200,80,0}
+\definecolor{op_red}{RGB}{180,30,30}
+
+% Status badges
+\newcommand{\statusLV}{\textcolor{lv_green}{\textbf{[LV]}}}
+\newcommand{\statusCV}{\textcolor{cv_blue}{\textbf{[CV]}}}
+\newcommand{\statusDR}{\textcolor{dr_amber}{\textbf{[DR]}}}
+\newcommand{\statusAR}{\textcolor{ar_orange}{\textbf{[AR]}}}
+\newcommand{\statusOP}{\textcolor{op_red}{\textbf{[OP]}}}
+
+% RA notation
+\newcommand{\DeltaS}{\Delta S^*}
+\newcommand{\Pacc}{P_{\mathrm{acc}}}
+\newcommand{\Pact}{\hat{P}_{\mathrm{act}}}
+\newcommand{\lP}{\ell_{\mathrm{P}}}
+\newcommand{\tact}{\tau_{\mathrm{act}}}
+\newcommand{\KBC}{K = 9N_2 - 16N_3 + 8N_4}
+\newcommand{\SBDG}{S = 1 - N_1 + 9N_2 - 16N_3 + 8N_4}
+
+% Lean theorem box
+\newmdenv[
+  linecolor=lv_green!60,
+  backgroundcolor=lv_green!5,
+  linewidth=1pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+]{leanbox}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\hypersetup{colorlinks=true,linkcolor=cv_blue,citecolor=cv_blue,urlcolor=cv_blue}
+\setlength{\parskip}{4pt}

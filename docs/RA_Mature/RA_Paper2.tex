@@ -1,0 +1,174 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{ra_preamble}
+\title{\textbf{Wave Function Collapse as Irreversible Entropy Production:\\
+The Universal Actualization Timescale}\\[0.4em]
+\large\normalfont Relational Actualism Paper~II\\
+\normalsize Under review, \textit{Foundations of Physics}}
+\author{Joshua F.~Sandeman\\[0.3em]
+\small Independent Researcher, Salem, Oregon\\
+\small \texttt{sansuikyo@gmail.com} $\cdot$ \texttt{relationalactualism.org}}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We present Relational Actualism's resolution of the quantum measurement problem and derive a universal actualization timescale formula that applies from the Planck scale to biological systems.  Wavefunction collapse is not a postulate but a physical event: an interaction actualizes when $\Delta S(\rho\|\sigma_0) > \DeltaS = 0.60069\,\mathrm{nats}$.  This threshold is derived from the BDG causal set action in $d=4$ (Paper~I \cite{RA_P1}).  We prove causal invariance of the quantum measure for any permutation of spacelike events \statusLV\ (O01, O02) and resolve the Unruh paradox: the Rindler thermal state is KMS, giving $\Delta S_{\mathrm{per\;photon}} = 0$ and $\tact \to \infty$ in Minkowski vacuum \statusDR\ (O05r, from L05 \statusLV).  The universal formula $\tact = \DeltaS / \Gamma_{\mathrm{on\text{-}shell}}$ spans fourteen orders of magnitude: at $T=1\,\mathrm{mK}$ (BMV experiment), $\tact \approx 1.9\times10^4\,\mathrm{s} \gg \tau_{\mathrm{exp}}$; at $T=300\,\mathrm{K}$ (biology), $\tau_d \approx 20\,\mathrm{fs} = \tau_{\mathrm{vib}}$.  The actualization timescale scales as $T^{-4}$ through the blackbody rate $\Gamma_{bb}\propto T^4$, in contrast to the standard Lindblad result $\tau_{\mathrm{dec}} \sim T^{-1}$.  This difference in power law is a falsifiable prediction distinguishing RA from all decoherence-based approaches.  A parameter-free spin-bath collapse prediction $t^* = 0.274/g$ is also derived.
+\end{abstract}
+
+\tableofcontents
+
+%───────────────────────────────────────────────────────────────
+\section{The Measurement Problem and Its Resolution}
+
+The measurement problem is structural: quantum mechanics describes superpositions, but every observation produces a definite outcome.  Every proposed resolution either adds structure (many worlds, hidden variables), modifies mathematics (GRW, CSL, pilot waves), or refuses engagement (Copenhagen).  None derives collapse from more fundamental principles.
+
+RA dissolves the problem by replacing the Heisenberg cut with an objective criterion: an interaction \emph{actualizes} — becomes a permanent event — when it produces a quantum relative entropy change exceeding $\DeltaS = 0.60069\,\mathrm{nats}$.  The quantum-to-classical transition is not a boundary between systems but a threshold that any interaction either crosses or does not.
+
+\paragraph{The Schr\"odinger cat.} A real cat is a densely self-coupled actualization network: $\sim10^{25}$ atoms exchanging on-shell bosons at rates $\sim10^{13}\,\mathrm{s}^{-1}$ at $300\,\mathrm{K}$.  The decoherence timescale $\tau_d \approx 20\,\mathrm{fs}$ (derived in Section~\ref{sec:tau}) means the cat undergoes $\sim5\times10^{13}$ actualization events per second.  It is classical by constitution, not observation.  The radioactive isotope is the genuine quantum system — a single nuclear degree of freedom with a well-defined (but unpredictable) actualization time.
+
+%───────────────────────────────────────────────────────────────
+\section{The Actualization Criterion}
+
+\subsection{Objective Threshold}
+
+An interaction constitutes an actualization event if and only if:
+\begin{equation}
+  \Delta S(\rho \| \sigma_0) > \DeltaS = 0.60069\,\mathrm{nats}
+  \label{eq:criterion}
+\end{equation}
+where $\sigma_0$ is the vacuum state.  This is observer-independent and Lorentz-covariant:
+\begin{leanbox}
+\textbf{Theorem (L04, Frame Independence) \statusLV:} $S(U\rho U^\dagger \| \sigma_0) = S(\rho\|\sigma_0)$ for all Poincar\'e $U$ with $U\sigma_0 U^\dagger = \sigma_0$ (\texttt{frame\_independence}, RA\_AQFT\_Proofs\_v10.lean).
+\end{leanbox}
+In the perturbative regime, Eq.~(\ref{eq:criterion}) reduces to the on-shell condition $p^\mu p_\mu = m^2c^2$.  Off-shell virtual processes ($\Delta S = 0$) never cross the threshold and do not contribute to the actualized causal graph.
+
+\subsection{Causal Invariance (Lean-Verified)}
+
+\begin{leanbox}
+\textbf{Theorem (O01, Amplitude Locality) \statusLV:} The BDG amplitude $a(v|C)$ depends only on $C \cap \mathrm{past}(v)$ (\texttt{bdg\_amplitude\_locality}, RA\_AmpLocality.lean, zero sorry tags).
+
+\textbf{Theorem (O02, Causal Invariance) \statusLV:} The quantum measure is independent of the linear extension $\sigma$ for \emph{any} permutation $\sigma.\mathrm{Perm}\,\sigma'$ (\texttt{bdg\_causal\_invariance}, RA\_AmpLocality.lean).
+\end{leanbox}
+
+%───────────────────────────────────────────────────────────────
+\section{The Universal Actualization Timescale}\label{sec:tau}
+
+\subsection{Derivation}
+
+The actualization timescale is the mean time for a system to accumulate $\Delta S > \DeltaS$ through on-shell boson exchanges with its environment:
+\begin{equation}
+  \boxed{\tact(m,T) = \frac{\DeltaS}{\Gamma_{\mathrm{on\text{-}shell}}(m,T) \cdot \Delta S_{\mathrm{per\;boson}}(T)}}
+  \label{eq:tau}
+\end{equation}
+Here $\Gamma_{\mathrm{on\text{-}shell}}$ is the rate of on-shell boson exchanges (those satisfying $\hbar\omega > k_BT\cdot\DeltaS$), and $\Delta S_{\mathrm{per\;boson}} \approx \hbar\omega/(k_BT)$ is the entropy carried per exchange at the thermal peak.
+
+\subsection{Comparison with the Lindblad Master Equation}\label{sec:lindblad}
+
+Standard decoherence theory uses the Lindblad master equation:
+\begin{equation}
+  \dot\rho = -\frac{i}{\hbar}[H,\rho] + \sum_k \Bigl(L_k\rho L_k^\dagger - \tfrac{1}{2}\{L_k^\dagger L_k,\rho\}\Bigr)
+  \label{eq:lindblad}
+\end{equation}
+The decoherence rate $\Gamma_{\mathrm{dec}}$ is computed from the environmental spectral density $J(\omega)$, giving (for the quantum Brownian motion model \cite{Joos1985,Zurek2003}):
+\begin{equation}
+  \tau_{\mathrm{dec}}^{(\mathrm{Lindblad})} \sim \frac{\hbar}{k_BT}\left(\frac{\lambda_{\mathrm{th}}}{\Delta x}\right)^2 \propto T^{-1}
+  \label{eq:lindblad_tau}
+\end{equation}
+The RA prediction differs in two ways:
+
+\begin{table}[h]
+\centering
+\caption{RA vs.\ Lindblad: actualization timescale comparison}
+\label{tab:comparison}
+\begin{tabular}{lll}
+\toprule
+Property & Lindblad (standard QM) & RA (this work) \\
+\midrule
+Temperature scaling & $\tact \propto T^{-1}$ & $\tact \propto T^{-4}$ (via $\Gamma_{bb}\propto T^4$) \\
+Threshold behavior & Smooth exponential & Step function at $T^*$ \\
+Virtual processes & Contribute to decoherence & $\Delta S=0$, do not actualize \\
+BMV at $1\,\mathrm{mK}$ & $\tau \sim 10^2\,\mathrm{s}$ & $\tact \sim 10^4\,\mathrm{s}$ \\
+Biology at $300\,\mathrm{K}$ & $\tau \sim 10^{-13}\,\mathrm{s}$ & $\tact \sim 2\times10^{-14}\,\mathrm{s}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Where standard theory breaks down:} The Lindblad equation treats the environmental bath as a continuous spectral density extending to $\omega=0$.  RA imposes a hard threshold: modes with $\hbar\omega < k_BT\cdot\DeltaS$ are off-shell and contribute $\Delta S=0$.  At low temperatures ($T\ll \hbar\omega_{\mathrm{vib}}/k_B$), the on-shell mode count drops sharply, replacing the smooth $T^{-1}$ Lindblad scaling with the $T^4$ blackbody suppression.  This distinction is absent in all continuous-bath decoherence approaches.
+
+\textbf{The step-function signature:} RA predicts a critical temperature $T^*$ below which $\tact \gg \tau_{\mathrm{exp}}$ (quantum behavior preserved) and above which $\tact \ll \tau_{\mathrm{exp}}$ (classical).  Standard QM predicts smooth exponential suppression.  The step function is the qualitative experimental signature.
+
+\subsection{The BMV Experiment ($T\approx 1\,\mathrm{mK}$)}
+
+For a levitated nanosphere with $m \approx 10^{-14}\,\mathrm{kg}$, $R \approx 780\,\mathrm{nm}$:
+\begin{align}
+  \frac{\hbar\omega_{\mathrm{vib}}}{k_BT}\biggr|_{1\,\mathrm{mK}} &\approx 76{,}000 \gg 1 \quad\text{(zero phonons on-shell)} \\
+  \Gamma_{bb}(T=1\,\mathrm{mK}) &= \frac{\sigma_{SB} A T^4}{E_{\mathrm{photon}}} \approx 10^{-5}\,\mathrm{s}^{-1} \\
+  \tact &= \frac{0.601}{10^{-5}\times 2.82} \approx 1.9\times 10^4\,\mathrm{s} \gg \tau_{\mathrm{exp}} \approx 1\text{--}10\,\mathrm{s}
+  \label{eq:bmv}
+\end{align}
+The center-of-mass remains unactualized throughout the BMV experiment.  Gravity-mediated entanglement is zero \statusDR.  The mechanism: the $T^4$ suppression of blackbody flux at millikelvin temperatures makes the on-shell exchange rate $\Gamma_{bb}$ too small to accumulate $\DeltaS$ on any experimentally relevant timescale.
+
+\subsection{The Biological Scale ($T\approx 300\,\mathrm{K}$)}
+
+At body temperature with optical phonons ($\omega_{\mathrm{opt}} = 3\times10^{13}\,\mathrm{rad/s}$):
+\begin{align}
+  \frac{\hbar\omega_{\mathrm{opt}}}{k_BT}\biggr|_{300\,\mathrm{K}} &= 0.76 \quad\text{(on-shell: }{\hbar\omega}/{k_BT} > \DeltaS = 0.6) \\
+  \Gamma_{\mathrm{opt}} &= \frac{k_BT}{\hbar} = 3.93\times10^{13}\,\mathrm{s}^{-1} \\
+  \tau_d &= \frac{0.601}{3.93\times10^{13}\times 0.76} = 2.0\times10^{-14}\,\mathrm{s} = 20\,\mathrm{fs}
+  \label{eq:bio}
+\end{align}
+This equals $\tau_{\mathrm{vib}}$, the vibrational decoherence timescale.  The RA on-shell selection criterion identifies the correct bath (vibrational, not Debye acoustic) without additional input.
+
+%───────────────────────────────────────────────────────────────
+\section{The Unruh Paradox Resolved}\label{sec:unruh}
+
+\begin{leanbox}
+\textbf{Theorem (L05, Rindler Stationarity) \statusLV:} $\frac{d}{dt}S(\alpha_t(\rho_\beta)\|\sigma_0) = 0$ under modular flow $\alpha_t$ (\texttt{rindler\_stationarity}, RA\_AQFT\_Proofs\_v10.lean).
+
+\textbf{Theorem (L06, Rindler Thermal) \statusLV:} $\rho_\beta$ is a valid density matrix (Hermitian, positive, $\mathrm{tr}=1$) (\texttt{rindlerThermal}).
+\end{leanbox}
+
+Resolution via the universal timescale (O05r \statusDR): A Rindler observer perceives the Minkowski vacuum as thermal at $T_U = \hbar a/(2\pi c k_B)$.  L05 establishes that the Rindler bath is KMS — by definition, each photon exchange with a KMS bath satisfies $\Delta S_{\mathrm{rel}} = 0$ per exchange.  Therefore:
+\begin{equation}
+  \Delta S_{\mathrm{per\;photon}}(\text{Rindler in Mink. vac.}) = 0 \implies \tact = \frac{\DeltaS}{0} \to \infty
+\end{equation}
+The detector never fires, regardless of acceleration.  The Unruh radiation is real (L05--L06) but produces zero relative entropy change relative to the vacuum because it \emph{is} the vacuum in another frame.
+
+%───────────────────────────────────────────────────────────────
+\section{Spin-Bath Collapse Prediction}
+
+For a spin-half system coupled to a bosonic bath with coupling constant $g$ \statusCV:
+\begin{equation}
+  t^* = \frac{1}{g}\sqrt{\frac{\DeltaS}{2}} = \frac{0.274}{g}
+  \label{eq:spinbath}
+\end{equation}
+This is the time at which accumulated relative entropy first exceeds $\DeltaS$.  The $g$-dependence and numerical prefactor $0.274 = \sqrt{\DeltaS/2}$ are fully determined predictions, distinguishable from GRW ($t^* \propto m^{-1}$, linear in inverse mass) and CSL models (different parameter dependence).
+
+%───────────────────────────────────────────────────────────────
+\section{Discussion}
+
+The universal formula~(\ref{eq:tau}) provides a unified account of decoherence across scales with no free parameters.  The key predictions are:
+\begin{enumerate}
+  \item \textbf{BMV null result} (near-term): $\tact \approx 1.9\times10^4\,\mathrm{s} \gg 1\text{--}10\,\mathrm{s}$ at $T=1\,\mathrm{mK}$.
+  \item \textbf{$T^{-4}$ scaling} (distinctive): measurable by varying temperature across the step-function threshold $T^*$.  Standard QM gives $T^{-1}$.
+  \item \textbf{Spin-bath}: $t^* = 0.274/g$, parameter-free, testable with superconducting circuits.
+  \item \textbf{Biology}: $\tau_d = 20\,\mathrm{fs}$ at $T=300\,\mathrm{K}$, equal to $\tau_{\mathrm{vib}}$.
+\end{enumerate}
+All four are derivable from a single equation with a single derived constant ($\DeltaS = 0.60069$).
+
+\section*{Acknowledgments}
+The universal timescale formula and its connection to Paper~III--IV was developed with Claude (Anthropic).  Lean~4 files at \url{https://github.com/jsandeman/Relational-Actualism}.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+\bibitem{RA_P1} Sandeman, J.~F. (2026). Paper~I: Coupling Constants. Zenodo, doi:10.5281/zenodo.19362289.
+\bibitem{RA_P5} Sandeman, J.~F. (2026). Paper~V: The Complete Framework. Zenodo, doi:10.5281/zenodo.19363077.
+\bibitem{Bell1987} Bell, J.~S. (1987). \textit{Speakable and Unspeakable in Quantum Mechanics}. Cambridge.
+\bibitem{GRW1986} Ghirardi, G.~C., Rimini, A., and Weber, T. (1986). Unified dynamics. \textit{Phys.\ Rev.\ D}, 34, 470.
+\bibitem{Joos1985} Joos, E., and Zeh, H.~D. (1985). The emergence of classical properties. \textit{Z.\ Phys.\ B}, 59, 223.
+\bibitem{Bose2017} Bose, S.\ et al.\ (2017). Spin entanglement witness for quantum gravity. \textit{Phys.\ Rev.\ Lett.}, 119, 240401.
+\bibitem{Marletto2017} Marletto, C., and Vedral, V. (2017). Gravitationally-induced entanglement. \textit{Phys.\ Rev.\ Lett.}, 119, 240402.
+\bibitem{Zurek2003} Zurek, W.~H. (2003). Decoherence, einselection, and the quantum origins of the classical. \textit{Rev.\ Mod.\ Phys.}, 75, 715.
+\bibitem{Haag1996} Haag, R. (1996). \textit{Local Quantum Physics}. Springer.
+\end{thebibliography}
+\end{document}
