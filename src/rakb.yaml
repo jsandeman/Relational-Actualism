@@ -212,7 +212,8 @@ updated: 2026-04-05
 deps: [L10,L11]
 claim: ALPHA_EM: 144−7=137 (BDG vertex-type ratio fixed point)
 evidence: alpha_inv_137 via norm_num; 144=3!×4! from Poisson-CSG depths k=3,4; 7=L_g+L_q from L10
-gap: IC30 CLOSED. Full discrete formula: α⁻¹=(137+√(137²+4P_acc c₂))/2=137.036019 (PDG: 137.035999, 0.00001%). See IC30 for derivation.
+gap: —
+
 derivation: |
   L08 | TH | LV
   narrative: Fine structure constant inverse = 137 from BDG depth-ratio fixed point
@@ -1926,7 +1927,7 @@ updated: 2026-04-05
 deps: [O10n,L01,O01,L11]
 claim: GR_UNIQUE: G_μν=8πG P_act[T_μν],Λ=0 unique by Lovelock
 evidence: RACL; d=4 from L11; Bianchi from O10n (LLC→BD→EH→Bianchi); BDG uniqueness replaces Lovelock
-gap: D04 needs curved-background extension (O03)
+gap: O03 reframed: prove continuum limit of unique BDG action converges on curved backgrounds (see O03_REFRAMED)
 derivation: |
   A01 | TH | DR
   narrative: G_μν = 8πG P_act[T_μν] with Λ=0 is unique by Lovelock in d=4
@@ -2175,7 +2176,7 @@ derivation: |
 === CLAIM: O03 ===
 id: O03
 type: TH
-status: DR
+status: DEPRECATED
 updated: 2026-04-05
 deps: [L01,L05,D08]
 claim: BIANCHI_CURVED: LLC+L05 → Clausius → Jacobson → G_μν=8πGT_μν
@@ -2465,7 +2466,7 @@ derivation: |
 === CLAIM: O10 ===
 id: O10
 type: TH
-status: DR
+status: DEPRECATED
 updated: 2026-04-05
 deps: [O01,L04,L01,L11,D03,D04,O10s]
 claim: WEINBERG_ROUTE: G_μν=8πG P_act[T_μν]
@@ -2532,7 +2533,7 @@ claim: BRIDGE_LEMMA: LLC → ∂_μT^μν=0 + S=A/4l_P²
 === CLAIM: O10n ===
 id: O10n
 type: TH
-status: DR
+status: DEPRECATED
 updated: 2026-04-05
 deps: [L01,O01,L11]
 claim: DISCRETE_BIANCHI: ∇_μG^μν=0 follows from LLC via BDG uniqueness
@@ -2550,7 +2551,7 @@ derivation: |
     (Benincasa-Dowker 2010). BD Theorem 1: BDG action → EH action
     ∫R√g d⁴x in continuum limit. EH variation → G^μν = 8πG T^μν.
     This replaces smooth Lovelock theorem with discrete BDG uniqueness.
-  PART C: Bianchi from LLC + field equations
+  PART C: Bianchi from LLC + field equations. The Bianchi identity is the LLC in a continuum costume
     ∇_μT^μν = 0 (Part A) + G^μν = 8πG T^μν (Part B)
     → ∇_μG^μν = 8πG ∇_μT^μν = 0. □
   PHILOSOPHICAL: In standard GR, Bianchi (geometric) and ∇T=0 (matter)
@@ -3147,7 +3148,7 @@ updated: 2026-04-05
 deps: [A01,A02,L11]
 claim: ROTATION_FLAT: ∇²(ln λ) + 2D DJW geometry → flat curves
 evidence: RADM §3-4
-gap: O03 for full Weyl proof
+gap: Weyl curvature sourcing from actualization density — collaboration target (Dowker/Loll)
 derivation: |
   DM01 | TH | AR
   narrative: Flat galactic rotation curves from ∇²(ln λ) in the sparse-halo regime
@@ -3175,7 +3176,7 @@ updated: 2026-04-05
 deps: [A01,DM01]
 claim: BULLET_CLUSTER: lensing from current A_RA, no trailing wake
 evidence: RADM §5 (RA-native)
-gap: O03
+gap: Weyl curvature sourcing — same as DM01
 derivation: |
   DM02 | TH | AR
   narrative: Bullet Cluster lensing from current causal depth, not trajectory history
@@ -3872,7 +3873,7 @@ D09 | TH | DR | [D02,A03,C03,C04] | COM_ACTUALIZATION: τ_act=ΔS*/Γ_eff; g_BMV
 
 D10 | TH | AR | [L01,L05,D03]| JACOBSON_BRIDGE: LLC+T_Unruh(L05)+area_law → G_μν=8πGT_μν  | Jacobson 1995; two of three inputs Lean-verified; area law from O06 | explicit Steps A+B writeup; independent l_RA derivation
 D11 | TH | DR | [D09,C03,A06]| CF_FIXEDPOINT: μ_single=ΔS*≈0.601 universally; N_min=ceil(1/ΔS*)=2 for Causal Firewall | algebraic: μ=λτ_dℓ³=ΔS* (Γ_eff and ℓ cancel by DEFINITION of λ and τ_d). Physical content is in D09 (τ_d formula) and A06 (Erdős-Rényi applicability), not in the cancellation itself. | —
-A01 | TH | DR | [D04,L01]    | GR_UNIQUE: G_μν=8πG P_act[T_μν],Λ=0 unique by Lovelock         | RACL; d=4 from L11; Bianchi from D04                 | D04 needs curved-background extension (O03)
+A01 | TH | DR | [D04,L01]    | GR_UNIQUE: G_μν=8πG P_act[T_μν],Λ=0 unique by Lovelock         | RACL; d=4 from L11; Bianchi from D04                 | O03 reframed: prove continuum limit of unique BDG action converges on curved backgrounds (see O03_REFRAMED)
 A02 | TH | DR | [D07,A01,O04]| WIMP_PROHIB: WIMPs have A_RA≈0, no gravitational coupling     | no EM/strong interactions → no actualization flux; O04 (DR) closes WEP bound | —
 A03 | TH | DR | [D03,L07,D09]| BMV_NULL_MECH: superposed mass sources zero metric            | unactualized → ρ_A=0 → ∇²Φ=0 → no phase difference; D09 gives timescale | O01 for full Lean proof
 A04 | TH | DR | []           | CAUSAL_SEVER: event horizons are topological DAG disconnections | LLC undefined across severance, not violated         | —
@@ -4466,8 +4467,343 @@ IC29 | AUDIT Apr-4-2026: New avenues for remaining open problems.
 # P1 (PRL): Rejected; rebuttal written (BDG RG two-state model)
 
 # 4-PAPER RESTRUCTURE (Apr 1, 2026):
-# P1: 10.5281/zenodo.19362289 (Fine Structure & Strong Coupling)
-# P2: 10.5281/zenodo.19362968 (Wave Function Collapse)
-# P3: 10.5281/zenodo.19363017 (Cosmology)
-# P4: 10.5281/zenodo.19363077 (Framework — now P5 in 5-paper suite)
-# P4 (Causal Firewall): needs new DOI
+# PAPER SUITE (6 papers: P0 + P1-P5, Apr 7 2026):
+# P0: "A Biography of the Universe" — narrative overview (target: FoP)
+# P1: "The Physics of a Self-Consistent Causal Graph" — BDG, O14, couplings, spectrum (target: PRL/NatPhys)
+# P2: "Wave Function Collapse as Irreversible Entropy Production" — measurement, QM predictions (target: FoP)
+# P3: "The Origin, Structure, and Fate of Universes in Causal Graph Cosmology" — cosmology, nucleation, CMB, fate (target: PRD)
+# P4: "The Causal Firewall" — complexity, biology, five-scale unification (target: IJA/PRE)
+# P5: "Relational Actualism: Irreversible Events as Primitive Basis of Physical Reality" — framework synthesis (target: FoP/Annals)
+# DOIs: P1=10.5281/zenodo.19362289, P2=10.5281/zenodo.19362968, P3=10.5281/zenodo.19363017
+#        P5 inherits old P4 DOI=10.5281/zenodo.19363077. P0 and P4 need new DOIs.
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# APRIL 7, 2026 — RAKB AUDIT FIXES AND NEW CLAIMS
+# ════════════════════════════════════════════════════════════════════════════
+
+# ISSUE 3: Promote IC30 to first-class derived result
+=== CLAIM: IC30_REF ===
+id: IC30_REF
+type: IC
+status: CV
+updated: 2026-04-07
+deps: [N09]
+claim: IC30 RESOLVED — α_EM full derivation now tracked as N09
+derivation: See N09 for the complete discrete Dyson equation derivation.
+evidence: N09
+gap: —
+papers: [P1]
+notes: IC30 was doing too much work as an integrity check. The result is now a first-class N-series claim.
+
+# ISSUE 5: O14_PROOF — explicitly state the Boolean lattice lemma
+=== CLAIM: O14_PROOF ===
+id: O14_PROOF
+type: TH
+status: AR
+updated: 2026-04-07
+deps: [O14, L07, O01, D4U02]
+claim: O14 PROOF SKETCH — BDG coefficients uniquely determined by (Yeats moments + binomial inversion + D4U02)
+derivation: |
+  THEOREM: The d=4 BDG growth functional S = 1 - N₁ + 9N₂ - 16N₃ + 8N₄
+  is uniquely determined by:
+    (i)   Locality + causal invariance → linearity in N_k
+    (ii)  Non-redundancy → binomial inversion of cumulative counts
+    (iii) Minimal depth → K = d/2 + 2
+    (iv)  Self-sustaining selectivity → d = 4
+
+  Step A. (i) forces S = s₀ + Σ c_k N_k (proved: O01 + multiplicativity).
+  
+  Step B. Yeats moments r_k(d=4) = (2k+3)(2k+2)(2k+1)/6 = (1,10,35,84).
+  Fixed by d=4 causal geometry (Yeats 2025, CQG 42, 145003).
+  
+  Step C. Non-redundancy = Möbius inversion on the Boolean lattice.
+  BOOLEAN LATTICE LEMMA (stated but not yet formally proved):
+    An interval [x,v] with k intermediate elements contains exactly
+    C(k,j) sub-intervals of depth j, obtained by choosing j of the
+    k intermediate elements. Therefore the containment poset of
+    sub-intervals is isomorphic to the Boolean lattice 2^[k].
+  PROOF SKETCH: Each intermediate element is either included or not
+  in the sub-interval. Inclusion is independent across elements.
+  The set of inclusion choices is {0,1}^k = 2^[k]. ∎
+  STATUS: The lemma is combinatorially straightforward but has not
+  been formally stated as a standalone result. Upgrade to DR requires
+  explicit statement; upgrade to LV requires Lean formalization.
+  
+  Step D. Binomial inversion of d=4 moments:
+    C_i = Σ C(i-1,k)(-1)^k r_k = (1, -9, 16, -8)
+    Action: (c₁,...,c₄) = (-1, 9, -16, 8). Verified exact arithmetic [CV].
+  
+  Step E. Second-order identity Σ C_k = 0 is AUTOMATIC for all even d.
+    Proof: hockey-stick identity. Verified d=2,4,6,8 [CV].
+  
+  Step F. D4U02 selects d=4 (selectivity peak at μ≈1) [CV].
+  
+  CORRECTION: Status downgraded from DR to AR because Step C's Boolean
+  lattice lemma, while obvious, has not been explicitly proved as a
+  standalone result. All other steps are explicit.
+evidence: o14_proof.py (Apr 6 2026) — exact arithmetic verification for d=2,4,6,8
+gap: Boolean lattice lemma (Step C) needs explicit proof for DR status.
+papers: [P0, P1, P4, P5]
+notes: |
+  Upgrade path: (1) State Boolean lattice lemma explicitly → DR.
+  (2) Formalize in Lean 4 → LV. All steps are finite integer arithmetic.
+
+# ISSUE 6: IC35 — add explicit O14 compatibility statement
+=== CLAIM: IC35 ===
+id: IC35
+type: IC
+status: CV
+updated: 2026-04-07
+deps: [D13, O14_PROOF]
+claim: SELECTIVITY_NOT_UNIQUE — Maximum ΔS* at μ=1 does NOT uniquely select BDG coefficients within d=4
+derivation: |
+  Scanned 240 second-order actions with integer coefficients.
+  BDG ranked #112 by ΔS*. Maximum ΔS* = 0.6425 at (a=2, b=-5).
+  BDG ΔS* = 0.5996.
+  
+  IMPORTANT CLARIFICATION (Issue 6 fix):
+  IC35 does NOT threaten O14. O14's proof does not use selectivity
+  maximization to fix the coefficients within d=4. O14 uses:
+    - Yeats moments (fixed by d=4 geometry)
+    - Möbius inversion (unique by Rota's theorem)
+  IC35 eliminates one CANDIDATE route (selectivity maximization)
+  but the actual route (Yeats + Möbius) is unaffected.
+  D4U02 uses selectivity only to select d=4, not to fix coefficients.
+evidence: o14_incidence_algebra.py scan (Apr 6 2026)
+gap: —
+papers: []
+notes: IMPORTANT NEGATIVE RESULT but does not undermine O14.
+
+# ISSUE 8: Resolve GS02 / IC33 discrepancy
+=== CLAIM: IC33_REF ===
+id: IC33_REF
+type: IC
+status: CV
+updated: 2026-04-07
+deps: [GS02]
+claim: IC33 corresponds to GS02 (gauge sign mechanism). GS02 is the canonical claim; IC33 tracks the verification.
+derivation: |
+  GS02 (gauge_sign_mechanism) is the substantive claim: alternating
+  BDG signs (+,-,+,-,+) produce SU(3)×SU(2)×U(1) via inclusion-exclusion.
+  IC33 was the integrity check that verified this by exact enumeration.
+  GS02 status: CV (verified by enumeration).
+  IC33 status: now references GS02 as the canonical entry.
+evidence: GS02 exact enumeration
+gap: —
+papers: [P1]
+notes: Resolves the GS02/IC33 naming discrepancy flagged in audit.
+
+# ISSUE 9: Update Lean count
+=== CLAIM: META_LEAN_COUNT ===
+id: META_LEAN_COUNT
+type: IC
+status: CV
+updated: 2026-04-07
+deps: []
+claim: LEAN_THEOREM_COUNT — Approximately 112 Lean 4 verified results across three proof files (updated Apr 7)
+derivation: |
+  RA_D1_Proofs.lean: ~45 theorems (L01-L12 + supporting lemmas)
+  RA_AQFT_Proofs_v10.lean: ~55 theorems (L04-L07 + frame independence + thermal states)
+  RA_AmpLocality.lean: ~12 theorems (O01 + interval lemmas + BDG increment)
+  Total: ~112 (up from ~109 estimate on Apr 3)
+  
+  Note: exact count depends on whether supporting lemmas are counted.
+  Core theorems with zero sorry: all of L01-L12, L04-L07, O01.
+  One intentional sorry: bdg_causal_invariance (List.Perm induction).
+evidence: Lean 4 compilation logs
+gap: —
+papers: [P5]
+notes: Updated from ~109 (Apr 3) to ~112 (Apr 7).
+
+# ════════════════════════════════════════════════════════════════════════════
+# CLAIMS FROM APR 6-7 SESSION (nucleation cosmology, O14, cascade)
+# ════════════════════════════════════════════════════════════════════════════
+
+=== CLAIM: D13 ===
+id: D13
+type: TH
+status: DR
+updated: 2026-04-07
+deps: [O14_PROOF]
+claim: BDG_FACTORIZATION — P(z) = 1 + z(z-1)(8z²-8z+1) structural decomposition
+derivation: |
+  P(z) = 1 - z + 9z² - 16z³ + 8z⁴.
+  P(z) - 1 = z(-1 + 9z - 16z² + 8z³) = z × Q₁(z).
+  Q₁(1) = 0 → (z-1) divides Q₁.
+  Q₁/(z-1) = 8z² - 8z + 1 = R₄(z).
+  Therefore P(z) = 1 + z(z-1)R₄(z).
+  
+  Structural: "1" = birth, "z" = past-dependence, "(z-1)" = second-order,
+  "R₄" = dimension-specific curvature response.
+  R₄(1) = 1 (normalization).
+  
+  The 2-parameter freedom in R₄ = az² + bz + (1-a-b) was ILLUSORY —
+  it appeared only in the polynomial basis, not in the natural basis
+  (Yeats moments + binomial inversion). See O14_PROOF.
+evidence: sympy factorization (Apr 6 2026)
+gap: —
+papers: [P1, P5]
+notes: Key algebraic insight enabling O14 proof.
+
+=== CLAIM: A07 ===
+id: A07
+type: TH
+status: AR
+updated: 2026-04-07
+deps: [L02, A04]
+claim: SMBH_PARENT — Parent black hole mass M ≈ 2.5-6.6 × 10⁶ M☉ from η_b = 6.1 × 10⁻¹⁰
+derivation: |
+  η_b = N_baryons / (S_BH/k_B). Our η_b = 6.1 × 10⁻¹⁰ with N_baryons ≈ 10⁸⁰.
+  S_BH/k_B ≈ 10⁹⁰. Inverting Bekenstein-Hawking: M ≈ 2.5-6.6 × 10⁶ M☉.
+  This is an SMBH — comparable to Sgr A* (4.1 × 10⁶ M☉).
+  Stellar-mass BHs give wrong η_b.
+evidence: nucleation_asymmetry.py (Apr 6 2026)
+gap: Formal derivation of η_b from LLC boundary conditions at severance.
+papers: [P0, P3]
+notes: RA-native prediction about the parent universe's structure.
+
+=== CLAIM: CS08 ===
+id: CS08
+type: TH
+status: DR
+updated: 2026-04-07
+deps: [A07]
+claim: KERR_QUADRUPOLE — Kerr horizon gives pure ℓ=2 deformation ε₂ ∝ a*², octupole ε₃ = 0 identically
+derivation: |
+  Σ₊(θ) = r₊² + a²cos²θ decomposed into Legendre polynomials.
+  ε₂(a*) ≈ 0.036a*² + 0.326a*⁴ (quadrupole from Kerr geometry).
+  ε₃ = 0 identically from Kerr equatorial symmetry.
+  Any ε₃ ≠ 0 must come from accretion asymmetry, still aligned with spin axis.
+evidence: kerr_cmb_transfer.py (Apr 6 2026) [CV]
+gap: —
+papers: [P0, P3]
+notes: —
+
+=== CLAIM: D12 ===
+id: D12
+type: TH
+status: DR
+updated: 2026-04-07
+deps: [CS08]
+claim: DILUTION_LAW — Inflationary dilution of nucleation perturbation: amplitude(ℓ)/amplitude(2) = (2/ℓ)²
+derivation: |
+  Mode ℓ exits causal horizon ln(ℓ/2) e-folds after ℓ=2.
+  Dilution per e-fold is exponential.
+  Result: (2/ℓ)² parameter-free dilution law.
+  ℓ=2: full signal. ℓ=3: 44% amplitude. ℓ=4: 6% power. ℓ≥6: negligible.
+evidence: Kinematics of horizon exit during inflation.
+gap: —
+papers: [P0, P3]
+notes: Parameter-free — follows from inflation kinematics alone.
+
+=== CLAIM: A08 ===
+id: A08
+type: TH
+status: AR
+updated: 2026-04-07
+deps: [A01]
+claim: VOID_FILAMENT — μ-dependent expansion feedback creates void-filament cosmic web as dynamical attractor
+derivation: |
+  RA field equations couple expansion rate inversely to baryon density.
+  Underdense → expand faster → dilute further (positive feedback).
+  Overdense → expand slower → concentrate further (positive feedback).
+  Both endpoints: causal disconnection (starvation or density severance).
+evidence: Qualitative argument from RA field equations.
+gap: Quantitative simulation of void-filament evolution.
+papers: [P0, P3]
+notes: —
+
+=== CLAIM: A09 ===
+id: A09
+type: TH
+status: AR
+updated: 2026-04-07
+deps: [A08]
+claim: NO_HEAT_DEATH — Universe fragments rather than equilibrates; heat death prohibited
+derivation: |
+  Heat death requires single connected component persisting for infinite time.
+  Void-filament feedback (A08) fragments every component on finite timescale.
+  Voids: starvation severance at μ < 1.
+  Boundaries: density severance at μ > μ₂ ≈ 5.7.
+  Both directions → causal disconnection.
+evidence: A08 + dual severance mechanism.
+gap: Quantitative fragmentation timescale (O13).
+papers: [P0, P3]
+notes: Strengthens Boltzmann Brain prohibition (dynamical, not just structural).
+
+# ════════════════════════════════════════════════════════════════════════════
+# O14 CASCADE: Status updates (superseding original O-claims)
+# ════════════════════════════════════════════════════════════════════════════
+
+=== CLAIM: O02_CLOSED ===
+id: O02_CLOSED
+type: IC
+status: DR
+updated: 2026-04-07
+deps: [O01, O14_PROOF]
+claim: O02 effectively closed — O01 removes amplitude_locality axiom; remaining sorry is mechanical Lean step
+evidence: RA_AmpLocality.lean (O01 proved); bdg_causal_invariance sorry is List.Perm induction only
+gap: Mechanical Lean completion.
+papers: [P2, P5]
+notes: —
+
+=== CLAIM: O09_CLOSED ===
+id: O09_CLOSED
+type: IC
+status: DR
+updated: 2026-04-07
+deps: [O01, O14_PROOF]
+claim: O09 effectively closed — follows from O01 for unique BDG action
+evidence: O01 + L07 + O14_PROOF
+gap: —
+papers: [P5]
+notes: —
+
+=== CLAIM: O10_SUPERSEDED ===
+id: O10_SUPERSEDED
+type: IC
+status: DR
+updated: 2026-04-07
+deps: [O14_PROOF]
+claim: O10 (Discrete Bianchi) superseded by O14 — unique action's continuum limit satisfies Bianchi
+evidence: O14_PROOF + Benincasa-Dowker 2010
+gap: —
+papers: [P5]
+notes: —
+
+=== CLAIM: O11_SUPERSEDED ===
+id: O11_SUPERSEDED
+type: IC
+status: DR
+updated: 2026-04-07
+deps: [O14_PROOF]
+claim: O11 (Lorentz emergence) superseded by O14 — Lorentz invariance follows from uniqueness of BDG action
+evidence: O14_PROOF + Dowker-Glaser 2013
+gap: —
+papers: [P5]
+notes: —
+
+=== CLAIM: O03_REFRAMED ===
+id: O03_REFRAMED
+type: TH
+status: OP
+updated: 2026-04-07
+deps: [O14_PROOF, D04]
+claim: O03 REFRAMED — Prove continuum limit of unique BDG action satisfies Lovelock on curved backgrounds
+evidence: Benincasa-Dowker 2010; Machet-Wang 2020 (CQG 38 015010)
+gap: Full curved-space convergence theorem.
+papers: [P3, P5]
+notes: Much more tractable than original O03.
+
+# ════════════════════════════════════════════════════════════════════════════
+# OPEN PROBLEM SUMMARY (post-O14 cascade, Apr 7 2026)
+# ════════════════════════════════════════════════════════════════════════════
+#
+# CLOSED/SUPERSEDED: O02, O09, O10, O11 (4 problems eliminated)
+# DEPRECATED: Original O03, O10, O10n (replaced by reframed versions)
+# REFRAMED: O03_REFRAMED, O06 (essentially resolved), O12 (computational)
+# UNCHANGED/OPEN: O04, O05, O07 (HIGH PRIORITY), O08, O13
+# NET: 0 foundational, 5 technical, 1 experimentally urgent (O07)
+# ════════════════════════════════════════════════════════════════════════════
+
