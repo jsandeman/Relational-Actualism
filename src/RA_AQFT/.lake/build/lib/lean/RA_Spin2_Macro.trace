@@ -1,14 +1,42 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["2fc57558e23860b0.olean"],
-  "i": "82b814564dcb1796.ilean",
-  "c": "a8cf00ec59fded9f.c"},
+ {"o": ["2627118913e36739.olean"],
+  "i": "1a24391ace5a2010.ilean",
+  "c": "cfcf3502fc137209.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Cli/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/batteries/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Qq/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/aesop/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/plausible/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean /Users/jsandeman/.elan/toolchains/leanprover--lean4---v4.29.0/bin/lean /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_Spin2_Macro.lean -o /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_Spin2_Macro.olean -i /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_Spin2_Macro.ilean -c /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_Spin2_Macro.c --setup /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_Spin2_Macro.setup.json --json",
    "level": "trace"},
-  {"message": "RA_Spin2_Macro.lean:113:8: declaration uses `sorry`",
+  {"message":
+   "RA_Spin2_Macro.lean:88:57: This simp argument is unused:\n  Matrix.vecHead\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecH̵e̵a̵d̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵Tail]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:88:73: This simp argument is unused:\n  Matrix.vecTail\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵T̵a̵i̵l̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:90:57: This simp argument is unused:\n  Matrix.vecHead\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecH̵e̵a̵d̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵Tail]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:90:73: This simp argument is unused:\n  Matrix.vecTail\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵T̵a̵i̵l̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:97:55: This simp argument is unused:\n  Matrix.vecHead\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵H̵e̵a̵d̵,̵ ̵Matrix.vecTail, Pi.smul_apply, smul_eq_mul]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:97:71: This simp argument is unused:\n  Matrix.vecTail\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵T̵a̵i̵l̵,̵\n  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Pi.smul_apply, smul_eq_mul]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:104:53: This simp argument is unused:\n  Matrix.vecHead\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecH̵e̵a̵d̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵Tail]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:104:69: This simp argument is unused:\n  Matrix.vecTail\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵T̵a̵i̵l̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:115:53: This simp argument is unused:\n  Matrix.vecHead\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecH̵e̵a̵d̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵Tail]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "RA_Spin2_Macro.lean:115:69: This simp argument is unused:\n  Matrix.vecTail\n\nHint: Omit it from the simp argument list.\n  simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead,̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵T̵a̵i̵l̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
    "level": "warning"}],
  "inputs":
  [["RA_Spin2_Macro:deps",
@@ -16,19 +44,8 @@
      [["RelationalActualism/RelationalActualism:extraDep",
        [["@RelationalActualism:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib.LinearAlgebra.Dimension.Constructions transitive imports (legacy)",
-         "575f8d4e95f6a0b1"],
-        ["Mathlib.LinearAlgebra.Dimension.Constructions:importAllArts",
-         "a9974f8c26487a06"],
-        ["Mathlib.Algebra.Module.Submodule.Basic transitive imports (legacy)",
-         "dc7ccebf8e3c485c"],
-        ["Mathlib.Algebra.Module.Submodule.Basic:importAllArts",
-         "962a3b57096d898a"],
-        ["Mathlib.Data.Real.Basic transitive imports (legacy)",
-         "0623792590893e28"],
-        ["Mathlib.Data.Real.Basic:importAllArts", "da90de132a87c0de"],
-        ["Mathlib.Tactic.Ring transitive imports (legacy)", "452c002fcf91c6e0"],
-        ["Mathlib.Tactic.Ring:importAllArts", "fa42d157730c56ad"]]]]],
+       [["Mathlib transitive imports (legacy)", "e9ff1afb0cafc3e3"],
+        ["Mathlib:importAllArts", "53ce4ca5aaaabad2"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -37,10 +54,10 @@
   ["Lean 4.29.0, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740",
    "60bb08ef22408c8a"],
   ["/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_Spin2_Macro.lean",
-   "363269325dccd69c"],
+   "e8f4d94057b2634c"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: RA_Spin2_Macro", "170d0afbf8b7198d"],
   ["Package.id?: (some RelationalActualism)", "e09e9957965f872f"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "eda486a89c9636b1"}
+ "depHash": "2680c096e3b765ae"}

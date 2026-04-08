@@ -1,0 +1,302 @@
+\documentclass[12pt,a4paper]{article}
+
+% ── Packages ──
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}          % Palatino for body + math
+\usepackage{microtype}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+% ── Typography ──
+\setstretch{1.15}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\itshape}{}{0em}{}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em}
+
+\begin{document}
+
+% ── Title ──
+\begin{center}
+{\LARGE\bfseries Relational Actualism:\\[4pt]
+A Biography of the Universe}\\[18pt]
+{\large Paper~0 of the Relational Actualism Series}\\[12pt]
+{\large Joshua F.\ Sandeman}\\[4pt]
+{\small Independent Researcher $\cdot$ Salem, Oregon}\\
+{\small\texttt{sansuikyo@gmail.com} $\cdot$ \texttt{relationalactualism.org}}\\[6pt]
+{\small April 2026}
+\end{center}
+
+\vspace{1em}
+
+% ── Abstract ──
+\begin{abstract}
+\noindent This paper tells the story of a universe---from its nucleation inside a spinning supermassive black hole, through the crystallisation of particles and forces, the formation of the cosmic web, the emergence of life, and the eventual fragmentation that seeds the next generation. The story follows from a single hypothesis: that physical reality is an irreversibly growing directed acyclic graph whose growth rule is uniquely determined by self-consistency. The hypothesis is posited; its consequences are derived; the derived quantities are tested against observation. The electromagnetic coupling constant, the strong coupling constant, the Standard Model particle spectrum, the cosmological constant (identically zero), the CMB large-angle anomalies, the Hubble tension, the dark matter mechanism, and the conditions for biological complexity all emerge from the unique growth rule with no free parameters. The five largest-scale CMB anomalies are explained simultaneously as the geometric fingerprint of the parent black hole, with three parameters, five observations, and zero remaining freedom. The universe does not reach thermal equilibrium; it fragments through a dual mechanism of void starvation and boundary nucleation, producing daughter universes that inherit the same physics and repeat the cycle. This is an accessible overview; the technical derivations are developed in the companion Papers~I--V.
+\end{abstract}
+
+\newpage
+
+% ══════════════════════════════════════════════════
+\section{Introduction}
+
+This paper outlines the nature and evolution of the cosmos according to the Theory of Relational Actualism~(RA), which is founded on the demonstration that causality and time are ontologically primitive. This fundamental nature is modeled in RA as an evolving Directed Acyclic Graph~(DAG). From this basic foundation, a coherent account cascades across the full range of physics, from the values of the coupling constants to the substrate-independent conditions for biological complexity.
+
+The technical machinery behind each piece of the story has been developed across a suite of companion papers, each with its own mathematical apparatus and formal verification. This document does not reproduce those derivations. Instead, it tells the story those derivations support, in the order the universe itself tells it. The reader who wants the proof that $\alpha_{\mathrm{EM}} = 1/137$ from integer arithmetic, or the Lean~4 verification of causal invariance, or the DFT calculations supporting the Causal Firewall, will find them in the referenced papers. Here, they will find what those results \emph{mean}---what they tell us about the universe we inhabit, and why the fit matters.
+
+\subsection{The Irreducible Core}
+
+The entire framework rests on a single primitive: an irreversibly growing directed acyclic graph. Vertices are actualization events---irreversible physical interactions. Directed edges point from cause to effect. Acyclicity means causation cannot loop back on itself: what has happened cannot unhappen. Time is not a background dimension through which the graph evolves; time \emph{is} the growing of the graph. The past is what has been written. The future is what has not. The present is the process of writing the next vertex.
+
+A growth rule determines which proposed new vertices are accepted into the graph. A uniqueness theorem---the deepest result of the programme---establishes that self-consistency admits exactly one such rule. It is determined by five integers: $(1, -1, 9, -16, 8)$. These are not parameters chosen from alternatives. They are the unique output of a combinatorial identity on four-dimensional causal intervals---the only set of coefficients compatible with locality, causal invariance, and non-redundant information extraction. The integers are known in the causal set theory literature as the Benincasa--Dowker--Glaser~(BDG) coefficients, and the growth rule they define is the BDG action.
+
+From the unique growth rule, three things follow immediately that the reader should hold in mind as the story unfolds:
+
+\textbf{The Local Ledger Condition (LLC).} At every vertex of the graph, what flows in equals what flows out: $\Sigma_{\mathrm{in}}(v) = \Sigma_{\mathrm{out}}(v)$. This is not a law imposed on the graph from outside. It is the graph's own self-consistency condition, and it is the discrete origin of all conservation laws. It has been formally verified in Lean~4---a proof assistant used to check mathematical reasoning at the level of formal logic.
+
+\textbf{The actualization threshold.} An interaction becomes a permanent vertex when its quantum relative entropy exceeds $\Delta S^* = 0.601$~nats. Below this threshold, interactions are virtual---quantum, reversible, off-shell. Above it, they are actual---classical, irreversible, on-shell. This threshold is computed from the BDG action at the Planck density, not independently postulated.
+
+\textbf{Five particle types.} The BDG action in four dimensions admits exactly five topologically distinct stable vertex configurations, corresponding to the five classes of Standard Model particles: quarks, gluons, gauge bosons, the Higgs, and leptons. No additional stable configurations exist---the closure theorem is machine-verified.
+
+That is the entire machinery. A growing graph, one growth rule, one threshold, five stable patterns. Everything that follows---quantum mechanics, general relativity, the cosmic microwave background, dark matter, the origin of life, and the fate of the universe---is a consequence of these elements playing out across cosmic history.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~I: Before the Beginning}
+
+Every universe, in the RA picture, is born from another. Not as metaphor, but as mechanism: when a region of causal graph reaches its maximum actualization rate---the bandwidth limit of the local causal structure---it undergoes a causal severance, a topological disconnection that creates a new, causally independent graph. The daughter universe inherits its initial conditions from the boundary of the severance, and then grows according to the same rules as its parent. The rules do not change from one generation to the next, because they are not imposed on the graph from outside. They are the graph.
+
+\subsection{The Maximum Frame Rate}
+
+Think of the causal graph as a network being built in real time. Each actualization event writes a new vertex and new directed edges into the graph. The rate at which vertices can be added is not unlimited. The LLC constrains how many events can be processed per unit of graph time. There is a maximum: the Planck rate, approximately $10^{43}$ events per Planck time per Planck volume. This is the universe's frame rate.
+
+When a collapsing region---a forming black hole---approaches this maximum, something decisive happens. The actualization density~$\mu$ climbs toward the causal termination threshold $\mu_2 \approx 5.7$, where the acceptance probability~$P_{\mathrm{acc}}$ for new actualization events drops to zero. The graph cannot grow any further locally. The region severs from its parent: no outgoing edges remain, and the graph cut theorem guarantees that the LLC holds independently on each side. The daughter graph is born.
+
+\subsection{Why a Supermassive Black Hole}
+
+Not every black hole can birth a viable universe. The daughter inherits its baryon-to-photon ratio~$\eta_b$ from the Bekenstein--Hawking entropy of the parent black hole at the moment of severance. Our universe has $\eta_b = 6.1 \times 10^{-10}$, which requires a parent entropy of approximately $10^{90}\,k_B$. Inverting the Bekenstein--Hawking formula gives the mass of the parent: approximately 2.5 to 6.6 million solar masses.
+
+This is a supermassive black hole---the kind found at the centres of galaxies. A stellar-mass black hole does not have enough entropy; its daughter universe would have the wrong~$\eta_b$ and therefore the wrong baryon acoustic scale, the wrong light element abundances, and the wrong cosmic microwave background.
+
+\subsection{The Parent's Geometry}
+
+A real astrophysical SMBH is not a featureless sphere. It spins, and its spin defines a preferred axis and a preferred plane. The Kerr metric describes a horizon that is oblate: wider at the equator, compressed at the poles. The degree of oblateness is controlled by the dimensionless spin parameter~$a_*$, which ranges from~0 (no spin) to~1 (maximum spin). Observed SMBHs in the relevant mass range typically have $a_*$ between 0.7 and 0.95.
+
+The parent also has an accretion environment: a disk of infalling matter in its equatorial plane, and jets of energy along its spin axis. This environment is not perfectly symmetric about the equatorial plane. These imperfections, as we will see, are preserved in the daughter's initial conditions and are visible in our sky today.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~II: Nucleation}
+
+The moment of severance is not an explosion. It is a disconnection---the last outgoing causal edge is written, and then there are no more. The daughter graph begins with the boundary conditions inherited from the severance surface.
+
+\subsection{The Birth Certificate}
+
+The Kerr horizon's geometry imprints a specific angular pattern on the boundary flux~$\Phi_{\mathrm{boundary}}(\theta,\phi)$. Decomposing this pattern into spherical harmonics reveals a clean structure: the spin produces a pure quadrupole ($\ell=2$) deformation, with amplitude~$\varepsilon_2$ that grows with the spin parameter. The octupole ($\ell=3$) is \emph{identically zero} from the Kerr geometry alone, because the Kerr metric is symmetric about its equatorial plane. Any octupole must come from the accretion environment---the asymmetric infall that breaks the equatorial symmetry.
+
+Both the quadrupole and the octupole are aligned with the same axis: the parent's spin. This is not a coincidence or a fine-tuning. They \emph{must} share an axis---it is the parent's spin axis.
+
+The daughter universe is born with anisotropic initial conditions: $\delta\rho/\rho(\theta,\phi) = \varepsilon_2 P_2(\cos\theta) + \varepsilon_3 P_3(\cos\theta)$, with the preferred axis set by the parent's spin. This is the universe's birth certificate, written at the moment of nucleation in the geometry of the parent black hole.
+
+\subsection{Inflationary Dilution}
+
+Immediately after nucleation, the daughter universe undergoes extremely rapid expansion. This dilutes the nucleation perturbation exponentially. A mode with angular scale~$\ell$ is diluted by a factor $(2/\ell)^2$ relative to the largest mode ($\ell=2$), because shorter-wavelength modes exit the causal horizon later and spend more time being stretched.
+
+This $(2/\ell)^2$ dilution law is parameter-free---it follows from the kinematics of horizon exit during inflation. The consequences are immediate: the nucleation signal is strong at $\ell=2$, moderate at $\ell=3$ (44\% of the $\ell=2$ amplitude), and negligible by $\ell=4$ (6\% in power). For the signal to be visible at all in the CMB, the universe must have undergone \emph{nearly the minimum} amount of inflation: approximately 64 to 65 e-folds, not vastly more.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~III: The First Moments}
+
+\subsection{The Rules Crystallise}
+
+As the daughter universe expands and cools, the causal graph's local structure determines which patterns of actualization are stable. The BDG action admits exactly five topologically distinct stability classes---the complete catalogue of stable patterns that a four-dimensional causal diamond can support. These correspond to quarks, gluons, gauge bosons, the Higgs, and leptons. No additional types exist: the closure theorem proves that the zoo of particles is exhaustive.
+
+The coupling constants emerge from the same integers. The fine structure constant $\alpha_{\mathrm{EM}} = 1/137$ is a fixed point of the BDG depth-ratio recursion, verified by integer arithmetic in Lean~4. The strong coupling constant $\alpha_s(m_Z) = 1/\sqrt{72} \approx 0.11785$ agrees with the experimental value to 0.13\%. The Koide lepton mass formula $K = 2/3$, the quark confinement depths, and the five-type closure are all machine-verified consequences of the same BDG structure. The full derivations are given in the companion paper \emph{The Physics of a Self-Consistent Causal Graph}~(Paper~I)~\cite{P1}.
+
+\subsection{The Selectivity of the Universe}
+
+The actualization threshold $\Delta S^* = 0.601$~nats is computed exactly from the BDG action at the Planck density $\mu=1$. It is the selectivity of the universe: how hard it is for a proposed event to become real. This single number governs quantum measurement (an event actualises when its environmental entanglement crosses~$\Delta S^*$), the transition from quantum to classical behaviour, and the origin of biological complexity. One threshold, derived from four-dimensional geometry, controlling physics at every scale.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~IV: Structure}
+
+\subsection{The Cosmic Microwave Background}
+
+Approximately 380,000 years after nucleation, the universe cooled enough for neutral atoms to form, and the photons of the cosmic microwave background began their journey. These photons carry tiny temperature variations that encode the density perturbations from which all subsequent structure grew.
+
+Standard cosmology ($\Lambda$CDM) predicts that these perturbations should be statistically isotropic. At small angular scales ($\ell \geq 4$), this prediction holds beautifully. But at the largest angular scales, several anomalies have persisted through two decades of measurement:
+
+\textbf{The low quadrupole.} $C_2 \approx 200\,\mu\mathrm{K}^2$ vs $\Lambda$CDM prediction $\approx 1100\,\mu\mathrm{K}^2$---an 80\% suppression.
+
+\textbf{The axis of evil.} The preferred axes of the $\ell=2$ and $\ell=3$ modes are aligned to within $9$--$13^\circ$, with no known mechanism in standard cosmology.
+
+\textbf{The hemisphere asymmetry.} The ``northern'' hemisphere has systematically less power than the ``southern'' hemisphere.
+
+\textbf{Normal higher multipoles.} Modes with $\ell \geq 4$ show no significant anomalies.
+
+Relational Actualism explains all five features with a single mechanism. The parent SMBH's spin produces a coherent quadrupole that partially cancels the stochastic quadrupole, suppressing~$C_2$. The accretion asymmetry produces a coherent octupole aligned with the same axis. The hemisphere asymmetry is the odd-parity $P_3$ component. And the $(2/\ell)^2$ dilution law ensures negligible signal above $\ell=3$.
+
+The model has three parameters (parent spin~$a_*$, extra e-folds~$\Delta N$, accretion asymmetry~$\delta_{\mathrm{acc}}$) constrained by three observations, with two consistency checks. The system is just-determined: no free parameters remain. The full quantitative treatment is given in Paper~III~\cite{P3}.
+
+\subsection{The Cosmic Web}
+
+The nucleation perturbations seed structure formation through a feedback mechanism intrinsic to RA. The field equations couple the local expansion rate to baryon density: underdense regions expand faster, further diluting; overdense regions expand slower, further concentrating. This positive feedback drives the formation of the filamentary cosmic web.
+
+Dark matter, in this picture, is not a particle species. It is the actualization-density topology of sparse regions, where the graph's effective dimensionality reduces from four to two, producing flat galactic rotation curves from baryonic matter alone. WIMPs, axions, and sterile neutrinos are categorically excluded.
+
+\subsection{The Hubble Tension}
+
+The $4$--$5\sigma$ disagreement between early- and late-universe measurements of~$H_0$ is a natural consequence of density-dependent expansion. The predicted value for the Eridanus supervoid is $H_0 \approx 75.9$~km/s/Mpc, consistent with the locally measured high value. RA predicts a linear correlation between~$H_0$ and baryon density along the line of sight~\cite{P3}.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~V: Complexity}
+
+The same actualization filter that selects which quantum events become real, operating recursively at successively larger scales, produces the full hierarchy of physical complexity. This is not emergence in the usual sense---new rules appearing at each scale. It is the \emph{same} rule, applied at different levels of coarse-graining.
+
+\subsection{The Causal Firewall}
+
+Life is possible wherever the local causal actualization density meets two conditions. F1~(Quantum Darwinism redundancy) requires the environment to record actualization outcomes redundantly---a condition that makes no reference to carbon, water, or molecular chirality. F2~(non-relativistic condition) requires the local thermal environment to be cold enough that the actualization rate is finite and controlled. Together, F1 and F2 give universal biosignature criteria that do not presuppose any particular chemistry. Full development in Paper~IV~\cite{P4}.
+
+\subsection{Complexification and Dissipation}
+
+Every actualization event is simultaneously an increase in entropy (irreversibility) \emph{and} a commitment to a specific structure. Dissipation and complexification are not opposing forces. They are two faces of the same act. The universe builds complexity \emph{by} producing entropy, because the actualization filter selects for structured outcomes at every scale.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~VI: The Quantum World}
+
+\subsection{The Measurement Problem Dissolved}
+
+A quantum state, in RA, is any state with relative entropy below~$\Delta S^*$. When interaction with an environment pushes the relative entropy past the threshold, a new permanent vertex is written. Nothing ``collapses.'' There is no Heisenberg cut, because there is no fundamental distinction between quantum and classical---only a gradient of actualization density. Full treatment in Paper~II~\cite{P2}.
+
+Schr\"odinger's cat is not in a superposition. A real cat is a densely self-coupled actualization network---trillions of atoms exchanging on-shell bosons millions of times per second. The cat is classical by constitution. The radioactive isotope alone is the genuine locus of quantum indeterminacy. The paradox dissolves because we misidentified the quantum system.
+
+\subsection{General Relativity: Inevitable}
+
+Einstein's field equations are not imposed on RA. They are derived from it, via Lovelock's theorem: in four dimensions, the unique divergence-free, symmetric field equations are the Einstein equations. The LLC provides conservation. The BDG closure gives $d=4$. The actualization projector~$P_{\mathrm{act}}$ removes vacuum contributions, giving $\Lambda=0$ exactly.
+
+\subsection{Quantum Computing: A Hard Ceiling}
+
+RA predicts a structural ceiling on fault-tolerant quantum array size: $N_{\max} = \eta \times p_{\mathrm{th}}$, where~$\eta$ is the single-qubit quality factor and $p_{\mathrm{th}}$ is the fault-tolerance threshold. Beyond this size, spurious actualizations exceed the error budget regardless of hardware quality. Testable at the scale of hundreds to thousands of logical qubits~\cite{P2}.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~VII: The Fate of the Universe}
+
+\subsection{Fragmentation, Not Heat Death}
+
+The void-filament feedback that builds the cosmic web does not stop. Voids get emptier; boundaries get denser. Both directions lead to causal disconnection. Voids approach the percolation threshold $\mu=1$, below which the causal graph fragments---a quiet severance by starvation. Dense boundaries approach $\mu_2 \approx 5.7$, where new severances fire, nucleating daughter universes.
+
+The standard cosmological fate---heat death---requires a single connected component persisting for infinite time. RA's fragmentation prevents this. The universe does not wind down. It \emph{branches}. This also strengthens the Boltzmann Brain prohibition: no causal patch persists long enough for spontaneous observer nucleation.
+
+\subsection{The Cycle}
+
+At the dense boundaries where daughter universes nucleate, the cycle begins again. The new daughter inherits its initial conditions from its parent's local structure, including the angular momentum of the collapsing region.
+
+\begin{quote}\itshape
+Parent SMBH spin and accretion geometry $\to$ anisotropic boundary flux at severance $\to$ daughter initial conditions with preferred axis $\to$ CMB anomalies $\to$ density perturbations amplified by $\mu$-dependent expansion $\to$ filamentary cosmic web $\to$ void starvation severance and boundary density severance $\to$ next generation of daughter universes $\to$ cycle continues
+\end{quote}
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Act~VIII: The Only Possible Universe}
+
+Everything described in the preceding acts---the nucleation from a spinning black hole, the crystallisation of the particle spectrum, the emergence of structure and complexity, the quantum world, the fragmentation fate---depends on a specific growth rule: the BDG action, with its five integers $(1, -1, 9, -16, 8)$. The deepest question the framework faces is: why these integers? Are they chosen from alternatives, or are they the only possibility?
+
+The answer is that they are the only possibility. The argument has five steps, each building on the last.
+
+\textbf{Step one: linearity.} Causal invariance---the requirement that the quantum measure on spacelike-separated events is independent of the order in which they are processed---forces the growth rule to be a linear function of the interval layer counts~$N_k$. The amplitude at each vertex must depend only on its causal past, and the total amplitude must be multiplicative over spacelike vertices. This is proved.
+
+\textbf{Step two: unique extraction.} The interval counts~$N_k$ are cumulative: the count at depth~$k$ includes contributions from sub-structures already counted at lower depths. An interval with $k$ intermediate elements contains $\binom{k}{j}$ sub-intervals of depth~$j$, for each $j \leq k$. The containment structure is the Boolean lattice. To extract the genuinely new information at each depth requires M\"obius inversion on this lattice. The M\"obius function of any finite poset is unique---a theorem of Gian-Carlo Rota, 1964~\cite{Rota1964}. Therefore the extraction of net-new information from cumulative counts is unique: it is binomial inversion, and nothing else.
+
+\textbf{Step three: unique moments.} The cumulative counts themselves---the raw moments~$r_k$---are determined by the combinatorial structure of $d$-dimensional causal intervals. Karen Yeats, in a 2024 paper published in \emph{Classical and Quantum Gravity}~\cite{Yeats2025}, showed that these counts correspond to specific classes of non-crossing partial rooted chord diagrams. For $d=4$, the moments are $r_k = (2k+3)(2k+2)(2k+1)/6$, giving $(1, 10, 35, 84, \ldots)$. These are not parameters. They are the answers to a counting question about four-dimensional causal diamonds.
+
+\textbf{Step four: the computation.} Applying the unique binomial inversion to the unique $d=4$ moments gives $C_i = (1, -9, 16, -8)$, and hence the action coefficients $(-1, 9, -16, 8)$---exactly the BDG integers. The sum $\sum C_k = 0$---the second-order condition, ensuring the growth rule responds to structure rather than mere size---is not an additional constraint but an automatic consequence of the $d=4$ moments, verified computationally for $d = 2, 4, 6$, and~8. The entire computation has been formally verified in Lean~4 with zero sorry tags~\cite{O14Lean}.
+
+\textbf{Step five: dimension selection.} Among all dimensions, only $d=4$ has the property that the selectivity function $\Delta S^*(\mu)$ achieves its first local maximum within 2\% of the Planck density $\mu=1$. No other dimension offers a natural operating point~\cite{P1}.
+
+The chain is complete. Self-consistency determines the dimension. The dimension determines the moments. The moments, under the unique non-redundant extraction, determine the coefficients. The coefficients determine the growth rule. The growth rule determines everything else.
+
+There are no free parameters. There are no alternatives. The universe could not have been otherwise.
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section{Coda: One Nature of Nature}
+
+The story told in this document---from the parent black hole's spin through the coupling constants and the cosmic web to the origin of life and the fragmentation of the universe---involves no new fields, no extra dimensions, no additional free parameters, and no post-hoc adjustments. Every piece follows from the same ontological commitment: that irreversible actualization events, writing permanent edges into a growing directed acyclic graph, are the primitive physical reality.
+
+And that commitment, as the uniqueness theorem reveals, admits exactly one realisation. The growth rule is not chosen. The dimension is not chosen. The coupling constants are not chosen. They are the unique solution to a combinatorial identity---the only way for an irreversibly growing causal graph to be self-consistent.
+
+Traditional physics sees the laws of nature as fixed rules, and the phenomena of nature as what those rules produce. The deepest insight of Relational Actualism is that this distinction is an artifact of description, not a feature of reality. The Local Ledger Condition is not a law that the causal graph obeys. It \emph{is} the causal graph, stated as a property. Conservation of energy is not a constraint imposed on actualization events. It is what actualization events \emph{are}, viewed at the level of bookkeeping. The irreversibility of time is not explained by the framework. It is \emph{encoded} in the framework's most primitive commitment, since actualization---by definition---is directed.
+
+The universe does not obey laws and produce phenomena. The universe \emph{is} the laws and the phenomena, simultaneously, at every vertex of the growing graph. And the growth rule that governs this process is not one rule among many---it is the only rule that could exist.
+
+Einstein asked whether God had any choice in making the universe. The answer, from within Relational Actualism, is no. Not because the universe was designed, but because self-consistency admits exactly one solution. The integers $(1, -1, 9, -16, 8)$ that govern which events become real are not parameters of a theory---they are the unique output of a combinatorial identity on the Boolean lattice of causal intervals, in the only dimension where the result is self-sustaining.
+
+The universe is not a thing that winds down. It is a thing that branches---endlessly, irreversibly, creatively. It has no terminal state, because the process that builds complexity is the same process that fragments the graph and nucleates new worlds. Complexification and dissipation are two faces of the same act: ceaseless, causal transformation.
+
+\begin{quote}\itshape
+This is what one nature of Nature looks like, from bosons to brains and beyond---and it is the only nature Nature could have had.
+\end{quote}
+
+\bigskip\begin{center}$\bullet\quad\bullet\quad\bullet$\end{center}\bigskip
+
+% ══════════════════════════════════════════════════
+\section*{The Companion Papers}
+
+The technical derivations, formal proofs, and quantitative predictions supporting this narrative are developed across the following companion papers, listed in the order they enter the story:
+
+\textbf{Paper~I}---\emph{The Physics of a Self-Consistent Causal Graph}~\cite{P1}. Derives $\alpha_{\mathrm{EM}} = 1/137$ and $\alpha_s = 1/\sqrt{72}$ from BDG integers. The uniqueness theorem. The rules crystallise (Act~III).
+
+\textbf{Paper~II}---\emph{Wave Function Collapse as Irreversible Entropy Production}~\cite{P2}. Dissolves the measurement problem. The quantum world (Act~VI).
+
+\textbf{Paper~III}---\emph{The Origin, Structure, and Fate of Universes in Causal Graph Cosmology}~\cite{P3}. Nucleation cosmology, CMB anomalies, dark matter, Hubble tension. The birth certificate (Act~II) and structure (Act~IV).
+
+\textbf{Paper~IV}---\emph{The Causal Firewall: Substrate-Independent Physical Constraints on Complexity}~\cite{P4}. Biological complexity, five-scale $\mu=1$ unification. Complexity (Act~V).
+
+\textbf{Paper~V}---\emph{Relational Actualism: Irreversible Events as Primitive Basis of Physical Reality}~\cite{P5}. The full framework, verification status, constraint web, and prediction catalogue.
+
+The original twelve-paper suite (RAQM, RAGC, RAEB, RASM, RATM, RADM, RAQI, RAHC, RACI, RACF, RACL, Foundation) provides additional detail on each topic. Lean~4 proof files and computation scripts are available at the GitHub repository (\texttt{github.com/jsandeman/Relational-Actualism}). All papers are open-access on Zenodo (\texttt{zenodo.org/communities/relational-actualism}).
+
+Correspondence and collaboration enquiries: \texttt{sansuikyo@gmail.com}
+
+% ── Bibliography ──
+\begin{thebibliography}{99}
+
+\bibitem{P1} J.~F.~Sandeman, ``The Physics of a Self-Consistent Causal Graph,'' Paper~I of this series (2026).
+
+\bibitem{P2} J.~F.~Sandeman, ``Wave Function Collapse as Irreversible Entropy Production,'' Paper~II of this series (2026).
+
+\bibitem{P3} J.~F.~Sandeman, ``The Origin, Structure, and Fate of Universes in Causal Graph Cosmology,'' Paper~III of this series (2026).
+
+\bibitem{P4} J.~F.~Sandeman, ``The Causal Firewall: Substrate-Independent Physical Constraints on Complexity,'' Paper~IV of this series (2026).
+
+\bibitem{P5} J.~F.~Sandeman, ``Relational Actualism: Irreversible Events as Primitive Basis of Physical Reality,'' Paper~V of this series (2026).
+
+\bibitem{Rota1964} G.-C.~Rota, ``On the foundations of combinatorial theory~I: Theory of M\"obius functions,'' \emph{Z.\ Wahrscheinlichkeitstheorie} \textbf{2}, 340--368 (1964).
+
+\bibitem{Yeats2025} K.~Yeats, ``Combinatorial interpretation of the coefficients of the causal set d'Alembertian,'' \emph{Class.\ Quantum Grav.}\ \textbf{42}, 145003 (2025); arXiv:2412.14036.
+
+\bibitem{O14Lean} J.~F.~Sandeman, ``RA\_O14\_Uniqueness.lean: Formal verification of BDG coefficient uniqueness,'' GitHub (2026). \texttt{github.com/jsandeman/Relational-Actualism}.
+
+\end{thebibliography}
+
+\end{document}

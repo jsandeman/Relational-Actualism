@@ -12,16 +12,11 @@
 --   proj: x ↦ (x₃, x₄)
 --   lift: (a,b) ↦ (0, (7a+b)/8, (15a-7b)/8, a, b)
 
-import Mathlib.LinearAlgebra.Dimension.Constructions
-import Mathlib.LinearAlgebra.Dimension.Finrank
-import Mathlib.Algebra.Module.Submodule.Basic
-import Mathlib.LinearAlgebra.LinearIndependent.Basic
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Linarith
+import Mathlib
 
 open BigOperators
+
+noncomputable section
 
 abbrev MacroSpace := Fin 5 → ℝ
 
@@ -79,12 +74,10 @@ private def projMap : physicalSubspace →ₗ[ℝ] (Fin 2 → ℝ) where
   toFun p := ![p.1 3, p.1 4]
   map_add' p q := by
     funext i; fin_cases i <;>
-      simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-            Matrix.head_fin_const, Pi.add_apply]
+      simp [Matrix.cons_val_zero, Matrix.cons_val_one, Pi.add_apply]
   map_smul' r p := by
     funext i; fin_cases i <;>
-      simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-            Matrix.head_fin_const, Pi.smul_apply, smul_eq_mul]
+      simp [Matrix.cons_val_zero, Matrix.cons_val_one, Pi.smul_apply, smul_eq_mul]
 
 private def liftMap : (Fin 2 → ℝ) →ₗ[ℝ] physicalSubspace where
   toFun ab :=
@@ -92,28 +85,23 @@ private def liftMap : (Fin 2 → ℝ) →ₗ[ℝ] physicalSubspace where
       rw [mem_physicalSubspace]
       refine ⟨by simp [Matrix.cons_val_zero], ?_, ?_⟩
       · rw [fin5_sum]; simp only [c_R]
-        simp [Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-              Matrix.head_cons, Matrix.head_fin_const]; ring
+        simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, Matrix.vecTail]; ring
       · rw [fin5_sum]; simp only [l_R]
-        simp [Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-              Matrix.head_cons, Matrix.head_fin_const]; ring⟩
+        simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, Matrix.vecTail]; ring⟩
   map_add' ab cd := by
     apply Subtype.ext; funext i; fin_cases i <;>
-      simp [Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-            Matrix.head_cons, Matrix.head_fin_const, Pi.add_apply,
-            AddMemClass.mk_add_mk] <;> ring
+      simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, Matrix.vecTail,
+            Pi.add_apply] <;> ring
   map_smul' r ab := by
     apply Subtype.ext; funext i; fin_cases i <;>
-      simp [Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-            Matrix.head_cons, Matrix.head_fin_const, Pi.smul_apply,
-            SetLike.mk_smul_mk, smul_eq_mul] <;> ring
+      simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, Matrix.vecTail,
+            Pi.smul_apply, smul_eq_mul] <;> ring
 
 private lemma proj_lift_id : Function.LeftInverse projMap liftMap := by
   intro ab
   simp only [projMap, liftMap, LinearMap.coe_mk, AddHom.coe_mk]
   funext i; fin_cases i <;>
-    simp [Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-          Matrix.head_cons, Matrix.head_fin_const]
+    simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, Matrix.vecTail]
 
 private lemma lift_proj_id : Function.LeftInverse liftMap projMap := by
   intro ⟨p, hp⟩
@@ -124,8 +112,7 @@ private lemma lift_proj_id : Function.LeftInverse liftMap projMap := by
   simp only [c_R] at hb; simp only [l_R] at hl
   simp only [liftMap, projMap, LinearMap.coe_mk, AddHom.coe_mk]
   funext i; fin_cases i <;>
-    simp [Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-          Matrix.head_cons, Matrix.head_fin_const] <;>
+    simp [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead, Matrix.vecTail] <;>
     linarith
 
 private def physIso : physicalSubspace ≃ₗ[ℝ] (Fin 2 → ℝ) :=
@@ -141,9 +128,11 @@ private def physIso : physicalSubspace ≃ₗ[ℝ] (Fin 2 → ℝ) :=
 theorem emergent_massless_spin2 :
     Module.finrank ℝ physicalSubspace = 2 := by
   have h := LinearEquiv.finrank_eq physIso
-  simp [Module.finrank_fin_fun] at h
+  simp at h
   exact h
 
 -- ═══════════════════════════════════════════════════════════════
 -- ZERO sorry tags. O10-spin2 fully verified.
 -- ═══════════════════════════════════════════════════════════════
+
+end

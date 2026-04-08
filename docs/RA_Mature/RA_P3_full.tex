@@ -1,0 +1,591 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{microtype}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setstretch{1.15}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prediction}[theorem]{Prediction}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries The Origin, Structure, and Fate of Universes in Causal Graph Cosmology}\\[18pt]
+{\large Paper~III of the Relational Actualism Series}\\[12pt]
+{\large Joshua F.\ Sandeman}\\[4pt]
+{\small Independent Researcher $\cdot$ Salem, Oregon}\\
+{\small\texttt{sansuikyo@gmail.com} $\cdot$ \texttt{relationalactualism.org}}\\[6pt]
+{\small April 2026}
+\end{center}
+\vspace{1em}
+
+\textbf{The Origin, Structure, and Fate of Universes in Causal Graph
+Cosmology}
+
+\emph{Paper III of the Relational Actualism Series}
+
+Joshua F. Sandeman
+
+Independent Researcher · Salem, Oregon · sansuikyo@gmail.com
+
+April 2026
+
+\textbf{Abstract}
+
+If physical reality is an irreversibly growing directed acyclic graph
+governed by the unique BDG growth rule (Paper I), what does this imply
+for cosmology? We show that the framework resolves five outstanding
+cosmological puzzles simultaneously: (i) the cosmological constant is
+identically zero, because unactualized (off-shell) processes do not
+source the gravitational field; (ii) dark matter is not a particle
+species but the actualization-density topology of sparse regions where
+the causal graph's effective dimensionality reduces from four to two,
+producing flat rotation curves from baryonic matter alone; (iii) the
+Hubble tension is a density-dependent expansion effect, with a specific
+prediction H\textsubscript{0} ≈ 75.9 km/s/Mpc in the Eridanus supervoid;
+(iv) the CMB anomalies (low quadrupole, axis-of-evil alignment,
+hemisphere asymmetry) are the geometric fingerprint of the spinning
+supermassive black hole from which our universe nucleated, diluted by a
+parameter-free (2/ℓ)² law; and (v) the universe does not reach thermal
+equilibrium because void-filament dynamics fragment every connected
+component before heat death, prohibiting Boltzmann Brains dynamically.
+We derive the parent black hole mass (≈ 2.5--6.6 × 10\textsuperscript{6}
+M\textsubscript{☉}), the three-parameter CMB anomaly model (parent spin,
+inflationary e-folds, accretion asymmetry) that accounts for five
+independent observations with zero remaining freedom, and the
+generational cycle by which universes reproduce through causal severance
+at filament boundaries.
+
+\textbf{1. Introduction}
+
+Modern cosmology, for all its precision, harbours deep puzzles at both
+ends of the energy scale. The cosmological constant Λ accounts for 68\%
+of the energy density of the universe, yet quantum field theory predicts
+a vacuum energy 10\textsuperscript{120} times larger than observed. Dark
+matter accounts for 27\% of the energy density, yet decades of direct
+detection experiments have found nothing. The Hubble constant measured
+locally (H\textsubscript{0} ≈ 73 km/s/Mpc) disagrees with the value
+inferred from the early universe (H\textsubscript{0} ≈ 67.4 km/s/Mpc) at
+4--5σ. The largest angular scales of the cosmic microwave background
+display anomalies --- a suppressed quadrupole, aligned low multipoles, a
+hemisphere asymmetry --- that ΛCDM cannot explain. And the long-term
+fate of the universe, in the standard picture, is thermal death:
+eternal, empty, cold equilibrium.
+
+This paper shows that all five puzzles are resolved by a single
+hypothesis: physical reality is an irreversibly growing directed acyclic
+graph whose growth rule is uniquely determined by self-consistency
+(Paper I {[}1{]}). Each resolution is a structural consequence of the
+hypothesis, not a post-hoc accommodation. And each makes specific,
+falsifiable predictions.
+
+More than resolving puzzles, the framework tells a continuous story: the
+\emph{biography} of a universe from its origin in a parent black hole's
+causal severance, through the formation of structure and complexity, to
+its eventual fragmentation into daughter universes that repeat the
+cycle. This paper presents that story with full technical detail.
+
+The paper is organised as follows. Section 2 derives general relativity
+and the structural zero cosmological constant. Section 3 presents the
+dark matter mechanism. Section 4 treats the Hubble tension. Section 5
+introduces causal severance and black hole physics. Section 6 derives
+the parent black hole mass. Section 7 presents the nucleation geometry.
+Section 8 derives the inflationary dilution law. Section 9 explains the
+CMB anomalies. Section 10 treats the cosmic web. Section 11 describes
+the fate of the universe. Section 12 presents the generational cycle.
+Section 13 discusses the Boltzmann Brain prohibition. Section 14 lists
+predictions. Section 15 concludes.
+
+\textbf{2. General Relativity and the Cosmological Constant}
+
+\textbf{2.1 GR from Lovelock's theorem}
+
+The Einstein field equations are derived, not imposed. The Local Ledger
+Condition (LLC) --- Σ\textsubscript{in}(v) = Σ\textsubscript{out}(v) at
+every vertex {[}LV{]} --- provides local conservation. The BDG closure
+theorem (Paper I) provides d = 4. Lovelock's theorem {[}2{]} then
+establishes that the unique symmetric, divergence-free field equations
+in four dimensions are the Einstein equations:
+
+\begin{quote}
+\emph{Gμν = 8πG P\_act{[}Tμν{]}}
+\end{quote}
+
+where P\textsubscript{act} is the actualization projector that removes
+unactualized contributions from the stress-energy tensor. The Bianchi
+identity ∇\textsubscript{μ}G\textsuperscript{μν} ≡ 0 follows from the
+LLC in the continuum limit {[}3{]}.
+
+\textbf{2.2 Structural zero cosmological constant}
+
+The actualization projector P\textsubscript{act} removes all off-shell
+(virtual) contributions from the gravitational source. Vacuum quantum
+fluctuations have ΔS = 0 --- they do not cross the actualization
+threshold --- and therefore contribute zero to the metric source. The
+cosmological constant is not small; it is \emph{identically zero}:
+
+\begin{quote}
+\emph{Λ = 0 (structural, not fine-tuned)}
+\end{quote}
+
+This dissolves the 10\textsuperscript{120} vacuum energy discrepancy.
+The QFT calculation of vacuum energy is mathematically correct but
+physically irrelevant: it sums over virtual processes that never become
+vertices in the causal graph.
+
+\textbf{3. Dark Matter as Actualization-Density Topology}
+
+\textbf{3.1 The WIMP prohibition}
+
+Any particle that does not participate in on-shell electromagnetic or
+strong interactions has zero RA assembly depth --- it never crosses the
+actualization threshold through normal matter interactions --- and
+therefore contributes nothing to the gravitational source. WIMPs,
+axions, and sterile neutrinos are \emph{categorically prohibited} as
+dark matter candidates. This is not a quantitative constraint but a
+structural exclusion: such particles have no vertices in the causal
+graph.
+
+Current data from LZ and XENONnT are consistent with this prediction: no
+dark matter signal has been detected above the neutrino floor.
+
+\textbf{3.2 Dimensionality reduction in sparse regions}
+
+In regions of low actualization density (voids, galactic outskirts), the
+causal graph becomes effectively two-dimensional. This follows from the
+Durhuus-Jonsson-Wheater theorem {[}4{]} for Lorentzian random graphs:
+below a critical density, the graph's spectral dimension drops from four
+to two.
+
+In two-dimensional effective geometry, the gravitational dynamics are
+qualitatively different from four-dimensional GR. The effective
+potential includes a logarithmic correction that flattens rotation
+curves without requiring additional matter. The boundary correction term
+in the metric-sourcing equation is:
+
+\begin{quote}
+\emph{∇²(ln λ) = local actualization density gradient}
+\end{quote}
+
+where λ is the local actualization density. This reproduces observed
+flat galactic rotation curves from baryonic matter alone. The full
+covariant form □(ln λ) remains an open problem (O03), but the weak-field
+Newtonian limit is complete.
+
+\textbf{3.3 The baryon-to-dark-matter ratio}
+
+The ratio Ω\textsubscript{CDM}/Ω\textsubscript{b} is derived from BDG
+path weights at μ = 1 (Paper I, Section 10): f\textsubscript{0} = 5.42,
+in 0.3\% agreement with Planck 2018 (5.416 ± 0.015). In RA, ``dark
+matter'' is the actualization-density topology of non-baryonic regions
+--- not a new particle, but the same graph physics producing different
+effective geometry at different densities.
+
+\textbf{4. The Hubble Tension}
+
+The RA field equations couple the local expansion rate to baryon
+density: regions with lower actualization density expand faster. This is
+a direct consequence of the metric being sourced by
+P\textsubscript{act}{[}T\textsubscript{μν}{]} --- regions with fewer
+actualized events per unit volume have less gravitational
+self-attraction and therefore expand more rapidly.
+
+The predicted Hubble constant within the KBC void (the large underdense
+region near our galaxy) is:
+
+\begin{quote}
+\emph{H(Eridanus) ≈ 75.9 km/s/Mpc {[}CV{]}}
+\end{quote}
+
+consistent with the locally measured high value. The globally averaged
+value (dominated by denser regions and the CMB) remains near 67.4
+km/s/Mpc. The tension is not a discrepancy between measurements --- it
+is a real physical effect: different regions of space genuinely have
+different expansion rates because they have different actualization
+densities.
+
+\textbf{Prediction:} H\textsubscript{0} correlates linearly with baryon
+density along the line of sight. This is testable with DESI and other
+large-scale structure surveys. The correlation should be absent in ΛCDM.
+
+\textbf{5. Causal Severance and Black Holes}
+
+\textbf{5.1 Bandwidth saturation}
+
+The causal graph has a maximum actualization rate --- the Planck rate,
+approximately 10\textsuperscript{43} events per Planck time per Planck
+volume. When a collapsing region approaches this limit, the
+actualization density μ climbs toward the causal termination threshold
+μ\textsubscript{2} ≈ 5.7, where the acceptance probability
+P\textsubscript{acc} → 0. The graph cannot grow further locally.
+
+\textbf{5.2 Topological disconnection}
+
+When P\textsubscript{acc} → 0, no new vertices are accepted. The region
+severs from the parent graph: no outgoing causal edges exist. The graph
+cut theorem {[}LV{]} guarantees that the LLC holds independently on each
+side of the severance. Event horizons are not barriers that destroy
+information --- they are boundaries at which the causal graph has no
+outgoing edges. Conservation is not violated across them; it is
+\emph{undefined}, because there is no causal connection across which to
+define it.
+
+\textbf{5.3 No singularities}
+
+The continuum GR singularity (where curvature diverges) is replaced by a
+causal termination: a region where the actualization density exceeds
+μ\textsubscript{2} and the graph stops growing. There is no point of
+infinite density because the graph is discrete --- dividing by zero is a
+continuum artefact that does not arise in a finite structure.
+
+\textbf{6. The Parent Black Hole}
+
+At causal severance, the daughter graph inherits its initial conditions
+from the LLC boundary at the severance surface. The baryon-to-photon
+ratio η\textsubscript{b} of the daughter is set by the
+Bekenstein-Hawking entropy of the parent:
+
+\begin{quote}
+\emph{η\_b = N\_baryons / (S\_BH / k\_B)}
+\end{quote}
+
+Our universe has η\textsubscript{b} = 6.1 × 10\textsuperscript{⁻¹⁰} with
+N\textsubscript{baryons} ≈ 10\textsuperscript{80}. This requires
+S\textsubscript{BH}/k\textsubscript{B} ≈ 10\textsuperscript{90}.
+Inverting the Bekenstein-Hawking formula S\textsubscript{BH} =
+π(M/m\textsubscript{P})² k\textsubscript{B}:
+
+\begin{quote}
+\emph{M\_parent ≈ 2.5--6.6 × 10⁶ M☉}
+\end{quote}
+
+This is a supermassive black hole (SMBH) --- comparable to Sagittarius
+A* (4.1 × 10\textsuperscript{6} M\textsubscript{☉}). Stellar-mass black
+holes give the wrong η\textsubscript{b}; intermediate-mass black holes
+give the wrong acoustic scale. The SMBH mass range is not a choice ---
+it is the unique range consistent with our observed universe.
+
+This is an RA-native prediction about the \emph{parent universe's}
+structure. No other framework can formulate this question, because no
+other framework identifies the Big Bang as a causal severance with
+specific boundary conditions.
+
+\textbf{7. Nucleation: The Kerr Geometry}
+
+\textbf{7.1 The parent's spin}
+
+A real astrophysical SMBH spins, with dimensionless spin parameter a* ∈
+{[}0, 1). Observed SMBHs in the relevant mass range typically have a* ≈
+0.7--0.95. The Kerr metric describes an oblate horizon whose geometry
+depends on a*.
+
+\textbf{7.2 Angular decomposition of the boundary flux}
+
+The Kerr horizon metric function Σ\textsubscript{+}(θ) =
+r\textsubscript{+}² + a²cos²θ is not spherically symmetric. Decomposing
+into Legendre polynomials:
+
+\begin{quote}
+\emph{Φ\_boundary(θ) = Φ₀{[}1 + ε₂ P₂(cosθ) + ε₃ P₃(cosθ){]}}
+\end{quote}
+
+where ε\textsubscript{2}(a*) ≈ 0.036a*² + 0.326a*⁴ is the quadrupole
+amplitude from the Kerr geometry, and ε\textsubscript{3} = 0
+\emph{identically} from the equatorial symmetry of the Kerr metric
+{[}CV{]}.
+
+Any octupole (ε\textsubscript{3} ≠ 0) must come from the accretion
+environment: asymmetric infall, jet asymmetry, or tidal distortion.
+Crucially, this accretion asymmetry is still aligned with the spin axis,
+because the disk lies in the equatorial plane. Therefore
+ε\textsubscript{2} and ε\textsubscript{3} \emph{must} share the same
+preferred axis.
+
+\textbf{7.3 Daughter initial conditions}
+
+The daughter universe is born with anisotropic initial conditions:
+
+\begin{quote}
+\emph{δρ/ρ(θ, φ) = ε₂ P₂(cosθ) + ε₃ P₃(cosθ)}
+\end{quote}
+
+with the preferred axis equal to the parent's spin axis. This is the
+universe's \emph{birth certificate} --- written at the moment of
+nucleation in the geometry of the parent black hole.
+
+\textbf{8. The (2/ℓ)² Dilution Law}
+
+Immediately after nucleation, the daughter universe undergoes rapid
+expansion (inflation). The nucleation perturbation is diluted
+exponentially. Different multipoles exit the causal horizon at different
+times: mode ℓ exits ln(ℓ/2) e-folds after ℓ = 2. The resulting dilution
+is:
+
+\begin{quote}
+\emph{(amplitude at ℓ) / (amplitude at ℓ = 2) = (2/ℓ)²}
+\end{quote}
+
+\textbf{Theorem (Multipole Dilution) {[}DR{]}.} \emph{The nucleation
+signal at multipole ℓ is diluted by (2/ℓ)² relative to ℓ = 2. This is
+parameter-free --- it follows from the kinematics of horizon exit during
+inflation.}
+
+Consequences:
+
+• ℓ = 2: full signal (reference)
+
+• ℓ = 3: 44\% amplitude, 20\% power
+
+• ℓ = 4: 25\% amplitude, 6\% power
+
+• ℓ ≥ 6: \textless{} 1\% power --- negligible
+
+For the nucleation signal to be visible at all, the universe must have
+undergone nearly the minimum amount of inflation: N\textsubscript{total}
+≈ 64--65 e-folds {[}CV{]}. This is itself a prediction (Section 14).
+
+\textbf{9. The CMB Anomalies Explained}
+
+\textbf{9.1 Five anomalies in ΛCDM}
+
+The Planck satellite data reveals five anomalies at the largest angular
+scales of the CMB, each unexplained by ΛCDM:
+
+\textbf{(1) Low quadrupole:} C\textsubscript{2} ≈ 200 μK² vs ΛCDM ≈ 1100
+μK² (80\% suppression).
+
+\textbf{(2) Quadrupole-octupole alignment:} The ℓ = 2 and ℓ = 3
+preferred axes are aligned to within 9--13°.
+
+\textbf{(3) N/S hemisphere asymmetry:} A\textsubscript{NS} ≈ 0.07
+systematic power difference.
+
+\textbf{(4) Normal C}\textsubscript{3}\textbf{:} The octupole is
+consistent with or slightly above ΛCDM predictions.
+
+\textbf{(5) Normal higher multipoles:} ℓ ≥ 4 match ΛCDM.
+
+\textbf{9.2 The RA explanation}
+
+All five features follow from the Kerr nucleation geometry:
+
+\textbf{(1)} The coherent nucleation quadrupole partially cancels the
+stochastic (inflationary) quadrupole, suppressing C\textsubscript{2}.
+
+\textbf{(2)} Both ε\textsubscript{2} and ε\textsubscript{3} are aligned
+with the parent's spin axis. The alignment is structural, not
+coincidental.
+
+\textbf{(3)} The ε\textsubscript{3}P\textsubscript{3}(cosθ) term is odd
+under θ → π − θ, creating hemisphere asymmetry aligned with the spin
+axis.
+
+\textbf{(4)} The (2/ℓ)² dilution makes the ℓ = 3 nucleation signal 44\%
+of ℓ = 2 --- too weak to suppress C\textsubscript{3} but sufficient to
+cause alignment.
+
+\textbf{(5)} The (2/ℓ)² dilution makes the nucleation signal negligible
+at ℓ ≥ 4.
+
+\textbf{9.3 Three parameters, zero freedom}
+
+The model has three parameters:
+
+• Parent spin a* (sets ε\textsubscript{2} from Kerr geometry)
+
+• Extra e-folds ΔN beyond minimum inflation (sets dilution)
+
+• Accretion asymmetry δ\textsubscript{acc} =
+ε\textsubscript{3}/ε\textsubscript{2} (from N/S asymmetry:
+δ\textsubscript{acc} ≈ 0.69)
+
+These are constrained by three observations (C\textsubscript{2}
+suppression, alignment angle, N/S asymmetry) with two consistency checks
+(C\textsubscript{3} not suppressed, higher ℓ normal). The system is
+just-determined: zero remaining freedom. For any a* ∈ {[}0.3, 0.998{]},
+the required ΔN ≈ 3.3--5.0, giving N\textsubscript{total} ≈ 64--65
+{[}CV{]}.
+
+\textbf{10. The Cosmic Web}
+
+The nucleation perturbations seed structure formation through a feedback
+mechanism intrinsic to RA. The field equations couple local expansion
+rate inversely to baryon density. Underdense regions expand faster,
+further diluting; overdense regions expand slower, further
+concentrating. This positive feedback drives density perturbations away
+from uniformity.
+
+The result is the filamentary cosmic web. In ΛCDM, this structure is
+contingent on the initial perturbation spectrum. In RA, the feedback
+makes filamentary topology \emph{inevitable} for any universe with
+density perturbations. The cosmic web is the dynamical attractor of any
+RA universe, regardless of specific initial conditions.
+
+\textbf{Prediction:} The large-scale orientation of the cosmic web
+correlates with the CMB preferred axis (the parent's spin axis).
+Testable with DESI/Euclid galaxy surveys. ΛCDM predicts no such
+correlation.
+
+\textbf{11. The Fate of the Universe}
+
+\textbf{11.1 Dual severance mechanism}
+
+The void-filament feedback does not stop. Both endpoints of the density
+bifurcation lead to causal disconnection:
+
+\textbf{Starvation severance:} Voids approach the Erdős-Rényi
+percolation threshold μ = 1, below which the causal graph fragments. The
+graph stops growing locally --- quiet disconnection.
+
+\textbf{Density severance:} Dense filament boundaries approach
+μ\textsubscript{2} ≈ 5.7, where P\textsubscript{acc} → 0. New causal
+severances fire, nucleating daughter universes.
+
+\textbf{11.2 No heat death}
+
+The standard cosmological fate --- heat death --- requires a single
+causally connected component persisting for infinite time. RA's
+fragmentation prevents this. Every density perturbation drives regions
+away from μ = 1, and both directions terminate in disconnection. The
+universe does not equilibrate. It \emph{fragments}.
+
+\textbf{12. The Generational Cycle}
+
+At dense filament boundaries where daughter universes nucleate, the
+cycle begins again. Each daughter inherits initial conditions from its
+parent's local structure, including angular momentum. The parent's
+evolved cosmic web provides the asymmetry that seeds the daughter's
+structure formation.
+
+The generational chain:
+
+Parent SMBH (a*, accretion) → anisotropic Φ\textsubscript{boundary} →
+daughter initial conditions → CMB anomalies → structure formation →
+cosmic web → void starvation + boundary nucleation → granddaughter
+universes → cycle continues
+
+The physics is identical across generations (the unique BDG growth rule
+applies universally). Only the initial conditions vary --- different
+parent masses, spins, and accretion geometries produce daughters with
+different η\textsubscript{b}, different CMB anomaly patterns, and
+different large-scale structure. The ``multiverse'' of RA is a
+multiverse of initial conditions, not of different physics.
+
+\textbf{13. Boltzmann Brain Prohibition}
+
+The Boltzmann Brain problem asks why our ordered universe is more
+probable than a spontaneous fluctuation. In ΛCDM with Λ \textgreater{} 0
+and infinite time, BB nucleations are inevitable and should vastly
+outnumber ordinary observers.
+
+RA prohibits Boltzmann Brains by two mechanisms. First,
+\emph{structurally}: the actualization filter selects based on relative
+entropy, not Boltzmann statistics, so random fluctuations cannot pass
+the filter to build ordered complexity. Second, \emph{dynamically}: no
+causal patch persists long enough for BB nucleation because
+fragmentation (Section 11) disconnects every component on a finite
+timescale.
+
+\textbf{14. Predictions}
+
+The following predictions are specific, falsifiable, and testable with
+existing or planned experiments:
+
+\textbf{P-COSMO-1:} Λ = 0 exactly. Any confirmed detection of a nonzero
+cosmological constant (beyond effective Λ from misidentified
+actualization-density effects) falsifies the framework.
+
+\textbf{P-COSMO-2:} No dark matter signal below the neutrino floor. LZ
+and XENONnT results are consistent.
+
+\textbf{P-COSMO-3:} H\textsubscript{0} correlates linearly with baryon
+density along line of sight. Testable with DESI.
+
+\textbf{P-COSMO-4:} Parent SMBH mass ≈ 2.5--6.6 × 10\textsuperscript{6}
+M\textsubscript{☉} (constrains the consistency of the framework).
+
+\textbf{P-COSMO-5:} CMB quadrupole-octupole alignment persists in CMB-S4
+data with significance \textgreater{} 3σ.
+
+\textbf{P-COSMO-6:} N/S hemisphere asymmetry aligned with the
+axis-of-evil axis.
+
+\textbf{P-COSMO-7:} Near-minimum inflation: N\textsubscript{total} ≈
+64--65 e-folds. Testable via tensor-to-scalar ratio.
+
+\textbf{P-COSMO-8:} Cosmic web large-scale orientation correlates with
+CMB preferred axis.
+
+\textbf{P-COSMO-9:} Higher CMB multipoles (ℓ ≥ 4) show decreasing
+alignment with preferred axis, following (2/ℓ)².
+
+\textbf{15. Conclusions}
+
+The growing DAG hypothesis, combined with the unique BDG growth rule
+established in Paper I, resolves five outstanding cosmological puzzles:
+the cosmological constant, dark matter, the Hubble tension, the CMB
+anomalies, and the heat death problem. Each resolution is structural ---
+a direct consequence of the hypothesis rather than a parameter
+adjustment. Each makes specific, falsifiable predictions.
+
+The most striking result is the identification of the CMB anomalies as
+the birth certificate of the universe: the geometric fingerprint of the
+spinning supermassive black hole from which our universe nucleated. The
+three-parameter model (parent spin, inflationary e-folds, accretion
+asymmetry) accounts for five independent observations with zero
+remaining freedom and a parameter-free (2/ℓ)² dilution law.
+
+The framework predicts a universe that does not die but reproduces ---
+fragmenting through the dual mechanism of starvation severance (voids)
+and density severance (filament boundaries), with daughter universes
+nucleating at the dense boundaries and inheriting angular momentum from
+their parents. The cycle is eternal, the physics is identical across
+generations, and the unique growth rule ensures that every daughter
+universe produces the same Standard Model, the same coupling constants,
+and the same conditions for complexity.
+
+Companion papers treat the growth rule and its derivation (Paper I
+{[}1{]}), the measurement problem and quantum predictions (Paper II
+{[}5{]}), substrate-independent complexity (Paper IV {[}6{]}), and the
+full framework synthesis (Paper V {[}7{]}). An accessible overview is
+given in Paper 0 {[}8{]}.
+
+\textbf{References}
+
+{[}1{]} J. F. Sandeman, Paper I: The Physics of a Self-Consistent Causal
+Graph (2026).
+
+{[}2{]} D. Lovelock, J. Math. Phys. 12, 498 (1971).
+
+{[}3{]} J. F. Sandeman, RACL: Conserved Quantities in Causal
+Actualization Dynamics (2026).
+
+{[}4{]} B. Durhuus, T. Jonsson, and J. F. Wheater, J. Stat. Phys. 139,
+859 (2010).
+
+{[}5{]} J. F. Sandeman, Paper II: Wave Function Collapse as Irreversible
+Entropy Production (2026).
+
+{[}6{]} J. F. Sandeman, Paper IV: The Causal Firewall (2026).
+
+{[}7{]} J. F. Sandeman, Paper V: Relational Actualism Framework (2026).
+Zenodo: doi:10.5281/zenodo.19363077.
+
+{[}8{]} J. F. Sandeman, Paper 0: A Biography of the Universe (2026).
+
+{[}9{]} K. Yeats, Class. Quantum Grav. 42, 145003 (2025).
+
+{[}10{]} G.-C. Rota, Z. Wahrscheinlichkeitstheorie 2, 340--368 (1964).
+
+{[}11{]} Planck Collaboration, A\&A 641, A6 (2020).
+
+\end{document}
