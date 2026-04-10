@@ -26,5 +26,7 @@ lean_lib «RelationalActualism» where
     -- Spin-2 DOF count (O10s)
     `RA_Spin2_Macro,
     -- BDG uniqueness: Yeats → Möbius → coefficients (O14)
-    `RA_O14_Uniqueness
+    `RA_O14_Uniqueness,
+    -- Baryon conservation + chirality (D3a, D3b)
+    `RA_BaryonChirality
   ]

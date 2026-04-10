@@ -156,7 +156,7 @@ This theorem is proved in Lean~4 (\texttt{bdg\_amplitude\_locality} in \texttt{R
 
 Causal invariance---the requirement that the quantum measure on sets of spacelike-separated actualization events is independent of the linear extension used to process them---combined with amplitude locality, constrains the growth functional to be of the linear form~\eqref{eq:bdg_general}. The argument is that multiplicative amplitudes (required by the factorisation of the quantum measure over spacelike-separated events) require additive actions, which are linear in the layer counts~$N_k$.
 
-With amplitude locality proved as a theorem (not assumed as an axiom), the causal invariance of the quantum measure for BDG dynamics is unconditional. One intentional sorry remains in the Lean formalisation: the \texttt{List.Perm} induction step in \texttt{bdg\_causal\_invariance}, which is a mechanical combinatorial fact about commuting complex multiplication factors.
+With amplitude locality proved as a theorem (not assumed as an axiom), the causal invariance of the quantum measure for BDG dynamics is unconditional. The full proof---including the \texttt{List.Perm} induction step establishing permutation-invariance of the multiplicative foldl accumulator---compiles in Lean~4.29 with zero sorry tags (\texttt{bdg\_causal\_invariance} in \texttt{RA\_AmpLocality.lean}~\cite{AmpLocLean}).
 
 \subsection{Step B: The Yeats moment sequence}\label{sec:yeats}
 
@@ -448,26 +448,23 @@ This is the first derivation of a cosmological density ratio from pure causal-gr
 
 The Standard Model gauge group $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$ emerges from the alternating sign structure of the BDG coefficients.
 
-The BDG coefficients have signs $(+,-,+,-,+)$, forced by the inclusion--exclusion counting of causal intervals. At each depth~$k$, the sign determines whether the corresponding layer contributes isotropically~($+$) or anisotropically~($-$) to the local causal geometry:
-\begin{itemize}[nosep]
-\item $\mathrm{SU}(3)$ colour from the $k=3,4$ layers (three-fold anisotropy in the deepest BDG layers);
-\item $\mathrm{SU}(2)$ weak isospin from the $k=1,2$ layers (two-fold anisotropy in the intermediate layers);
-\item $\mathrm{U}(1)$ hypercharge from the $k=0$ layer (single isotropic factor).
-\end{itemize}
-The product $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$ is verified by exact enumeration of the BDG sign pattern~[CV]. The gauge group is not imposed on the framework; it emerges from the combinatorial structure of the unique growth rule.
+The BDG coefficients have signs $(+,-,+,-,+)$, forced by the inclusion--exclusion counting of causal intervals. At each depth~$k$, the sign determines whether the corresponding layer contributes isotropically~($c_k > 0$, encouraging many ancestors distributed across spatial directions) or anisotropically~($c_k < 0$, penalising multiple ancestors and selecting a preferred direction):
 
-The depth-to-group mapping is:
 \begin{center}
-\begin{tabular}{@{}cccc@{}}
+\begin{tabular}{@{}crcll@{}}
 \toprule
-BDG depths & Sign pattern & Anisotropy & Gauge group \\
+Depth $k$ & $c_k$ & Sign & Angular effect & Gauge structure \\
 \midrule
-$k=3,4$ & $(-,+)$ & 3-fold & $\mathrm{SU}(3)$ \\
-$k=1,2$ & $(-,+)$ & 2-fold & $\mathrm{SU}(2)$ \\
-$k=0$ & $(+)$ & isotropic & $\mathrm{U}(1)$ \\
+0 & $+1$  & $+$ & baseline (vacuum) & --- \\
+1 & $-1$  & $-$ & $E[N_1]=1$: one ancestor $\to$ 2+1 split & $\mathrm{SU}(2)_L \times \mathrm{U}(1)_Y$ \\
+2 & $+9$  & $+$ & distributed $\to$ scalar & $\mathrm{U}(1)$ remnant (Higgs) \\
+3 & $-16$ & $-$ & heavily penalised $\to$ confined & inherits $\mathrm{SU}(3)$ \\
+4 & $+8$  & $+$ & distributed $\to$ isotropic & native $\mathrm{SU}(3)_c$ \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\noindent The 2+1 split at depth~1 has a concrete origin: at $\mu=1$, $\lambda_1 = 1$, so each vertex has on average exactly one nearest causal ancestor. One ancestor picks one spatial direction, breaking three-dimensional isotropy into two transverse directions ($\mathrm{SU}(2)_L$) and one longitudinal ($\mathrm{U}(1)_Y$). The product $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$ is confirmed by exact enumeration: $E[N_k \mid S > 0]$ is strictly greater than $E[N_k]$ for positive~$c_k$ and strictly less for negative~$c_k$, for all $k = 1,\ldots,4$~[CV].
 
 %================================================================
 \section{Discussion}\label{sec:discussion}
@@ -544,7 +541,7 @@ We have posited that physical reality is an irreversibly growing directed acycli
 \end{itemize}
 The uniqueness theorem establishes that these are the \emph{only} predictions a self-consistent causal graph can make. The DAG was posited; the constraints were derived; the predictions were tested. All are passed.
 
-Companion papers derive further consequences: wave function collapse and quantum predictions (Paper~II~\cite{P2}), cosmological parameters and nucleation cosmology (Paper~III~\cite{P3}), substrate-independent conditions for biological complexity (Paper~IV~\cite{P4}), the complete framework synthesis (Paper~V~\cite{P5}), and a narrative overview (Paper~0~\cite{P0}).
+Companion papers derive further consequences: wave function collapse and quantum predictions (Paper~II~\cite{P2}), cosmological parameters and nucleation cosmology (Paper~III~\cite{P3}), and substrate-independent conditions for biological complexity (Paper~IV~\cite{P4}). Paper~0~\cite{P0} provides the narrative overview and complete framework synthesis.
 
 \section*{Acknowledgments}
 
@@ -590,8 +587,6 @@ The formal verification programme uses Lean~4/Mathlib. Computation scripts use P
 \bibitem{P3} J.~F.~Sandeman, ``The Origin, Structure, and Fate of Universes in Causal Graph Cosmology,'' Paper~III of this series (2026).
 
 \bibitem{P4} J.~F.~Sandeman, ``The Causal Firewall,'' Paper~IV of this series (2026).
-
-\bibitem{P5} J.~F.~Sandeman, ``Relational Actualism: Irreversible Events as Primitive Basis of Physical Reality,'' Paper~V of this series (2026).
 
 \end{thebibliography}
 

@@ -58,7 +58,7 @@ Quantum Computing and Quantum Thermodynamics}}
 \small Independent Researcher \\
 \small \texttt{sansuikyo@gmail.com}}
 
-\date{April 1, 2026 (PDT)}
+\date{March 2026}
 
 \maketitle
 \begin{center}
@@ -76,7 +76,6 @@ kinematic threshold from virtual to real and an irreversible vertex is inscribed
 into the growing causal DAG. This paper develops the implications for quantum
 computing and quantum thermodynamics.
 
-
 For quantum computing, the Kinematic Snap provides a principled physical floor
 on decoherence and yields the \emph{Kinematic Coherence Bound}: the maximum
 fault-tolerant array size is $N_{\max} = \eta \cdot p_{\mathrm{th}}$,
@@ -84,29 +83,21 @@ where $\eta$ is the single-qubit quality factor and $p_{\mathrm{th}}$ is the
 fault-tolerance threshold. This is a structural constraint not anticipated by
 standard quantum error correction theory: logical error rates grow with $N$
 because each added qubit is an additional kinematic site at which actualization
-can occur. Unlimited scaling without improving $\eta$ will eventually push the
-logical error rate above $p_{\mathrm{th}}$ regardless of single-qubit fidelity.
+can occur.
 
-
-For quantum thermodynamics, RA grounds Landauer\'s principle in the causal DAG
-structure, resolves Maxwell\'s demon without information-theoretic postulates,
+For quantum thermodynamics, RA grounds Landauer's principle in the causal DAG
+structure, resolves Maxwell's demon without information-theoretic postulates,
 gives the fluctuation theorems a precise actualization-event interpretation, and
 establishes that the thermodynamic arrow of time is structural rather than emergent.
 
-
-A key technical result: the quantum relative entropy is frame-independent
-(\texttt{frame\_independence} in \texttt{RA\_AQFT\_Proofs\_v10.lean},
-zero sorry tags, Lean~4.29.0), proved using the continuous functional
-calculus unitary-conjugation lemma. The Rindler thermal state
-\texttt{rindlerThermal} and \texttt{rindler\_stationarity} are also
-fully proved with zero sorry tags in the same file. The
+A key technical result: the quantum relative entropy is frame-independent by a
+machine-verified Lean~4 theorem (\texttt{frame\_independence} in
+\texttt{RA\_AQFT\_Proofs\_v10.lean}), proved using the continuous functional
+calculus unitary-conjugation lemma of the Lean-QuantumInfo library. The
 fault-tolerance threshold, the speed of light $c = l_P/t_P$, and the biological
 Causal Firewall are all the same Erd\H{o}s-R\'{e}nyi percolation transition
 at different scales of the causal graph.
 
-
-Throughout, implications are stated conditionally on the correctness of the RA
-framework, which is currently under peer review.
 \end{abstract}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -156,6 +147,38 @@ Standard quantum error correction characterises decoherence by the phenomenologi
 timescales $T_1$ (energy relaxation) and $T_2$ (phase coherence), which are
 treated as empirical parameters to be minimised through engineering. RA gives these
 parameters a physical interpretation and identifies the mechanism that sets them.
+
+\paragraph{Decoherence vs.\ actualization: why QEC cannot unwind a Kinematic Snap.}
+It is essential to distinguish two physically distinct processes that both
+cause quantum information loss.
+
+\emph{Decoherence} is unitary entanglement of the qubit with its environment.
+It is reversible in principle: the qubit-environment system evolves under a
+unitary that, if reversed, would recover the qubit state. Standard quantum
+error correction (QEC) --- surface codes, stabiliser codes, bosonic codes ---
+is designed precisely to undo this unitary entanglement before it propagates
+beyond the correction radius. QEC works because decoherence is a \emph{reversible
+unitary process}.
+
+\emph{Actualization} (the Kinematic Snap) is an ontological, non-unitary
+graph-rewriting event. When the qubit's interaction with its environment
+satisfies $\Delta S(\rho \| \sigma_0) > 0$, a permanent directed edge is
+inscribed into the causal DAG. This is not a unitary rotation: it is an
+irreversible change in the causal structure of spacetime. The superposition is
+destroyed at the fundamental graph level \emph{before} any syndrome measurement
+can be executed --- the collapse is not a change of the wavefunction on an
+existing graph; it is a rewriting of the graph itself.
+
+QEC operates on the wavefunction. It cannot undo a graph rewrite.
+
+The practical consequence is that there exist errors that are in principle
+uncorrectable: those caused by genuine Kinematic Snaps rather than by
+decoherence. Any error correction protocol that identifies a Snap as if it were
+decoherence will fail because the relevant degrees of freedom are no longer in
+superposition --- they have been permanently inscribed into the DAG. The
+$N_{\max}$ bound of the KCB (Section~\ref{sec:kcb}) is precisely the bound
+on the number of qubits before Snap-type errors overwhelm the correctable
+decoherence budget.
 
 In RA, decoherence occurs when the system exchanges on-shell bosons with its
 environment. Specifically, the actualization timescale is
@@ -682,10 +705,7 @@ This means the actualization criterion is a covariant scalar: it is the same in
 all inertial and uniformly accelerated frames. The Rindler thermal bath, seen by
 an accelerated observer, has $\Delta S_{\mathrm{rel}} = 0$---it is stationary
 with respect to the vacuum and does not constitute a sequence of actualization
-events. This is the theorem \texttt{rindler\_stationarity}, now
-fully proved in Lean~4.29.0 with zero sorry tags; the supporting
-density matrix \texttt{rindlerThermal} (hermiticity, positive
-semidefiniteness, and trace~1) is also fully proved.
+events. This is the compiled theorem \texttt{rindler\_stationarity}.
 
 \subsection{The Data Processing Inequality and Causal Structure}
 
@@ -841,6 +861,20 @@ central quantity; RA gives that quantity a physical interpretation as the
 actualization criterion; and the frame-independence of that criterion is a compiled
 Lean theorem. The mathematical infrastructure is shared.
 
+\paragraph{Connection to Standard Model coupling constants.}
+The actualization threshold $p_{\mathrm{th}} \approx 10^{-2}$ used in the
+Kinematic Coherence Bound is distinct from, but related to, the fundamental
+coupling constants of the Standard Model. In the companion paper
+RASM~\citep{Sandeman2026RASM} and the focused derivation
+paper~\citep{Sandeman2026BDG}, the strong coupling constant is derived directly
+from the BDG integers: $\alpha_s(m_Z) = 1/\sqrt{c_2 c_4} = 1/\sqrt{72} = 0.11785$,
+agreeing with the PDG world average to $0.13\%$.  The coupling $\alpha_s$ governs
+actualization events in the strong sector; $p_{\mathrm{th}}$ governs the
+\emph{error-correction threshold} in engineered quantum arrays.  These operate at
+different scales and serve different roles in the RA framework.  Their numerical
+proximity ($p_{\mathrm{th}} \sim 10^{-2}$, $\alpha_s \sim 10^{-1}$) reflects the
+common origin in BDG causal geometry but is not an identity.
+
 \subsection{Scope and Limitations}
 
 The implications in this paper are derived under the assumption that the RA
@@ -855,11 +889,12 @@ scientific posture; the implications are stated as conditionals, not assertions.
 The Lean-verified results cited in Section~\ref{sec:qit} establish the
 mathematical consistency of the AQFT proof program in finite dimensions, with three
 axioms: the CFC unitary-conjugation lemma (sourced from Lean-QuantumInfo), the
-Poincar\'{e}-invariance of the vacuum (a QFT physics input), and the data processing inequality (proved in Lean-QuantumInfo and
-also established natively in \texttt{RA\_AQFT\_Proofs\_v10.lean}
-via \texttt{CPTPMap.apply}). The extension to the full
-infinite-dimensional type~III$_1$ algebra setting remains the primary open
-mathematical target.
+Poincar\'{e}-invariance of the vacuum (a QFT physics input), and the data
+processing inequality (proved in Lean-QuantumInfo). In RA's ontology,
+these finite-dimensional results are fundamental---the discrete causal
+graph is the primitive reality. The type~III$_1$ continuum AQFT framework
+is the macroscopic approximation; compatibility is a consistency check,
+not a foundational requirement.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusion}
@@ -886,8 +921,9 @@ The shared mathematical substrate---quantum relative entropy, CPTP maps, the dat
 processing inequality---connects both fields to the RA AQFT proof program and to
 the Lean-QuantumInfo library~\citep{Meiburg2025LQI} in which key results are
 formally verified. The frame-independence of the actualization criterion is a
-compiled theorem. The remaining mathematical frontier is the extension from finite
-dimensions to the type~III$_1$ von Neumann algebra setting.
+compiled theorem. The type~III$_1$ von Neumann algebra framework is the
+continuum approximation to these discrete results; RA treats the
+finite-dimensional proofs as fundamental.
 
 The framework makes specific, discriminating predictions (Section~\ref{sec:predictions})
 that are testable with existing or near-future experimental platforms. Those tests
@@ -991,6 +1027,19 @@ J.~F.~Sandeman.
 \newblock Preprint, 2026.
 \newblock \href{https://doi.org/10.5281/zenodo.19198513}{doi.org/10.5281/zenodo.19198513}.
 
+\bibitem[Sandeman(2026g)]{Sandeman2026RASM}
+J.~F.~Sandeman.
+\newblock Relational Actualism and the Standard Model ({RASM}).
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19229335}{doi.org/10.5281/zenodo.19229335}.
+
+\bibitem[Sandeman(2026BDG)]{Sandeman2026BDG}
+J.~F.~Sandeman.
+\newblock Two Standard Model Coupling Constants from the Unique 4-Dimensional
+  BDG Integers.
+\newblock Preprint, 2026.
+\newblock \href{https://doi.org/10.5281/zenodo.19324790}{doi.org/10.5281/zenodo.19324790}.
+
 \end{thebibliography}
 
 \section*{Declarations}
@@ -1000,7 +1049,7 @@ J.~F.~Sandeman.
 \textbf{Preprint availability:} This manuscript is available as a preprint at
 \href{https://doi.org/10.5281/zenodo.19198285}{doi.org/10.5281/zenodo.19198285}.
 
-\textbf{Code availability:} The Lean~4 formal proof file (\texttt{RA\_AQFT\_Proofs\_v10.lean}) and Python computational scripts are publicly available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}.
+\textbf{Code availability:} The Lean~4 formal proof files (\texttt{RA\_D1\_Proofs.lean}, \texttt{RA\_AmpLocality.lean}, \texttt{RA\_GraphCore.lean}, \texttt{RA\_Koide.lean}, \texttt{RA\_AQFT\_Proofs\_v10.lean}, \texttt{RA\_Spin2\_Macro.lean}, \texttt{RA\_SteinChen.lean}) and Python computational scripts are publicly available at \href{https://github.com/jsandeman/Relational-Actualism}{github.com/jsandeman/Relational-Actualism}. The RA Lean~4 corpus comprises 176 verified theorems with one intentional sorry (LQI adapter). Amplitude locality (O01) and causal invariance (O02) are proved unconditionally in \texttt{RA\_AmpLocality.lean}.
 
 \textbf{Data availability:} This paper presents theoretical work. No datasets
 were generated or analysed.
