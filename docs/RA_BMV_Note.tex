@@ -1,0 +1,562 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{enumitem}
+
+% Theorem environments
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem*{remark}{Remark}
+
+% RA-specific commands
+\newcommand{\Pact}{P_{\mathrm{act}}}
+\newcommand{\Tact}{T^{\mu\nu}_{\mathrm{act}}}
+\newcommand{\Srel}{\Delta S(\rho\|\sigma_0)}
+\newcommand{\DAG}{\mathcal{G}}
+
+\title{Actualized Geometry and a Null Prediction\\
+for Gravity-Mediated Entanglement\\[6pt]
+{\large The Bose--Marletto--Vedral Protocol in Relational Actualism}}
+
+\author{Joshua F.\ Sandeman\\
+{\small Independent Researcher, Salem, Oregon}\\
+{\small \texttt{sansuikyo@gmail.com}}\\
+{\small \texttt{relationalactualism.org}}\\[6pt]
+{\small with Claude (Anthropic) and ChatGPT (OpenAI)}}
+
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We show that Relational Actualism (RA) predicts a strict null result
+for gravity-mediated entanglement in the Bose--Marletto--Vedral (BMV)
+protocol. The prediction follows from a single architectural principle:
+the effective spacetime metric is sourced only by the actualized causal
+ledger---the growing directed acyclic graph of irreversible physical
+events---not by unactualized quantum branch structure. During coherent
+spatial superposition, the positional alternatives of the test masses
+remain in the reversible possibility layer (Step~2 of the Engine of
+Becoming) and have not yet been inscribed as actualized vertices
+(Step~4). Since the metric is recalculated only from actualized
+vertices (Step~5), no branch-resolved geometry exists during the
+coherent evolution interval. The gravitational phase is therefore
+common-mode across all positional branches, and the entangling
+invariant vanishes identically: $\Delta\phi_{\mathrm{grav}} = 0$.
+We prove a coherence--geometry incompatibility theorem showing that
+the two conditions required by the standard BMV mechanism---maintained
+positional coherence and branch-resolved gravitational geometry---are
+structurally mutually exclusive in RA. A positive BMV signal, after
+exclusion of nongravitational channels, would directly falsify the
+Step-2/Step-5 separation that is central to the RA architecture.
+\end{abstract}
+
+\tableofcontents
+
+%% ===============================================================
+\section{Introduction}
+\label{sec:intro}
+%% ===============================================================
+
+The Bose--Marletto--Vedral (BMV) protocol \cite{Bose2017,Marletto2017}
+proposes to test whether gravity can mediate quantum entanglement
+between two mesoscopic masses, each placed in a coherent spatial
+superposition. If gravity is fundamentally quantum, the branch-dependent
+Newtonian interaction generates a nonseparable phase that entangles
+the masses. If gravity is fundamentally classical or---as Relational
+Actualism (RA) holds---fundamentally \emph{actualized}, no such
+entanglement arises.
+
+The standard BMV argument implicitly assumes that each branch of the
+spatial superposition sources its own gravitational field prior to
+any measurement or actualization event. In the language of RA, this
+amounts to assuming that the effective metric responds to the Level-2
+quantum-measure amplitude structure---the space of unrealized
+possibilities---rather than exclusively to the Level-3 actualized
+causal ledger.
+
+RA denies precisely this assumption. The framework's central
+architectural feature is a sharp separation between three levels of
+physical description:
+\begin{itemize}[nosep]
+\item \textbf{Step 2 (Propose):} Reversible quantum amplitudes are
+assigned to candidate continuations of the actualized graph. No
+vertices are written.
+\item \textbf{Step 4 (Inscribe):} One candidate is selected and
+irreversibly written into the causal DAG as a new actualized vertex,
+subject to the BDG filter $S_{\mathrm{BDG}} > 0$.
+\item \textbf{Step 5 (Update geometry):} The effective metric
+$g_{\mu\nu}$ is recalculated from the updated actualized graph via
+the coarse-graining map $g_{\mu\nu} = \mathcal{G}[G_n]$.
+\end{itemize}
+
+\noindent
+The BMV protocol requires Step~5 to respond at Step~2. RA says Step~5
+responds only at Step~4. That is the entire content of the null
+prediction, and this note makes it precise.
+
+\medskip
+\noindent
+\textbf{This paper does and does not:}
+\begin{itemize}[nosep]
+\item[\checkmark] Proves a null BMV theorem from RA's Step-2/Step-5
+separation.
+\item[\checkmark] States the precise falsification condition for RA.
+\item[\checkmark] Distinguishes RA's prediction from both quantized
+gravity and semiclassical gravity.
+\item[$\times$] Does not derive the full RA ontology (see companion
+papers \cite{RAQM,RAGC,EB}).
+\item[$\times$] Does not claim gravity is ``classical'' in the naive
+sense.
+\end{itemize}
+
+%% ===============================================================
+\section{The Standard BMV Mechanism}
+\label{sec:standard}
+%% ===============================================================
+
+Two equal masses $A$ and $B$, each of mass $m$, are prepared in the
+spatial superposition
+\begin{equation}
+|{+}\rangle_X = \frac{1}{\sqrt{2}}
+\bigl(|L\rangle_X + |R\rangle_X\bigr),
+\qquad X \in \{A,B\}.
+\end{equation}
+The initial joint state is
+\begin{equation}
+|\Psi_0\rangle = |{+}\rangle_A \otimes |{+}\rangle_B
+= \frac{1}{2}\bigl(|LL\rangle + |LR\rangle + |RL\rangle
++ |RR\rangle\bigr).
+\end{equation}
+Each branch $|ij\rangle$ has separation $d_{ij}$ and Newtonian
+interaction energy $U_{ij} = -Gm^2/d_{ij}$. After interaction
+time~$t$, branch $|ij\rangle$ accumulates the gravitational phase
+\begin{equation}
+\phi_{ij} = \frac{Gm^2 t}{\hbar\, d_{ij}}.
+\end{equation}
+The evolved state is
+\begin{equation}
+|\Psi_{\mathrm{std}}(t)\rangle
+= \frac{1}{2}\sum_{i,j \in \{L,R\}} e^{i\phi_{ij}} |ij\rangle.
+\end{equation}
+This state is entangled whenever the entangling phase invariant
+\begin{equation}
+\Delta\phi := \phi_{LL} + \phi_{RR} - \phi_{LR} - \phi_{RL}
+\end{equation}
+is nonzero modulo $2\pi$. For generic separations,
+$\Delta\phi \neq 0$, and the standard prediction is positive
+gravity-mediated entanglement.
+
+The implicit assumption behind this calculation is that each branch
+$|ij\rangle$ has its own gravitational potential, sourced by the
+mass configuration that branch represents. That is the assumption
+RA removes.
+
+%% ===============================================================
+\section{RA Architecture: The Step-2/Step-5 Separation}
+\label{sec:architecture}
+%% ===============================================================
+
+In Relational Actualism, the universe is represented by a growing
+causal directed acyclic graph (DAG)~$G = (V, \prec)$ whose vertices
+are actualized events and whose edges encode causal precedence. The
+dynamics proceeds through the five-step Engine of Becoming:
+
+\begin{enumerate}[nosep]
+\item \textbf{Survey:} Identify the boundary of $G$ (vertices with
+no future-directed edges).
+\item \textbf{Propose:} Assign complex amplitudes to candidate
+extensions of $G$, weighted by the BDG action
+$S = 1 - N_1 + 9N_2 - 16N_3 + 8N_4$.
+\item \textbf{Filter:} Retain only candidates with
+$S_{\mathrm{BDG}} > 0$.
+\item \textbf{Inscribe:} Select one candidate and write it
+irreversibly into the graph as a new vertex.
+\item \textbf{Update:} Recalculate the effective metric from the
+updated actualized graph: $g_{\mu\nu} = \mathcal{G}[G]$.
+\end{enumerate}
+
+The critical architectural feature for BMV is the separation between
+Steps~2 and~5. Step~2 creates a weighted space of possibilities.
+Step~5 responds only to what has been inscribed at Step~4.
+
+\begin{definition}[Ledger-sourced metric]
+\label{def:ledger}
+Let $G_n = (V_n, E_n)$ be the actualized causal DAG after $n$
+actualization events. The emergent metric at stage~$n$ is
+\begin{equation}
+g_{\mu\nu}^{(n)} = \mathcal{G}[G_n],
+\end{equation}
+where $\mathcal{G}$ is the Step-5 coarse-graining map. This metric
+depends only on actualized vertices and edges, not on unactualized
+candidate extensions present in the Step-2 amplitude layer.
+\end{definition}
+
+\begin{definition}[Branch-coherent regime]
+\label{def:coherent}
+A BMV protocol is in the \emph{branch-coherent regime} on the
+interval $[0,T]$ if, for each mass, the positional alternatives
+$L$ and $R$ remain in coherent superposition throughout $[0,T]$:
+no irreversible positional actualization event occurs during that
+interval. Equivalently, the positional degree of freedom remains at
+Step~2 rather than passing through Step~4.
+\end{definition}
+
+%% ===============================================================
+\section{The RA-BMV Null Theorem}
+\label{sec:theorem}
+%% ===============================================================
+
+\begin{lemma}[Step-2 non-sourcing]
+\label{lem:nonsource}
+Let $\mathcal{C}_n$ denote the set of candidate extensions available
+at Step~2 from ledger state $G_n$. Suppose a degree of freedom
+remains fully within the Step-2 amplitude layer during $[0,T]$, so
+that none of its alternatives are selected at Step~4 during that
+interval. Then the Step-5 metric is insensitive to the decomposition
+of amplitudes across those alternatives.
+
+In symbols: if no candidate in the relevant sector actualizes, then
+for that sector
+\begin{equation}
+G(t) = G_n \quad \text{for all } t \in [0,T],
+\end{equation}
+and therefore
+\begin{equation}
+g_{\mu\nu}(t) = \mathcal{G}[G_n] \quad \text{for all } t \in [0,T].
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Step~2 enumerates weighted possibilities; it does not add vertices to
+the actualized graph. By hypothesis, no positional branch is selected
+at Step~4 during $[0,T]$. Therefore the actualized graph in the
+relevant sector does not change. Since Step~5 depends only on the
+actualized graph (Definition~\ref{def:ledger}), the metric remains
+unchanged throughout the interval.
+\end{proof}
+
+\begin{lemma}[No branch-indexed metric before actualization]
+\label{lem:nobranch}
+In the branch-coherent regime, there is no ontically meaningful
+family
+\begin{equation}
+\{g^{LL}_{\mu\nu},\; g^{LR}_{\mu\nu},\;
+g^{RL}_{\mu\nu},\; g^{RR}_{\mu\nu}\}
+\end{equation}
+of simultaneously available branch-resolved metrics.
+\end{lemma}
+
+\begin{proof}
+Such a family would require the four branch labels $LL, LR, RL, RR$
+to correspond to four distinct actual source configurations. But in
+the branch-coherent regime, those labels denote only unactualized
+Step-2 alternatives. By Lemma~\ref{lem:nonsource}, Step~5 has access
+only to the common actual ledger, not to branch labels that have not
+passed through Step~4.
+\end{proof}
+
+\begin{theorem}[RA-BMV null theorem]
+\label{thm:null}
+Consider a BMV protocol with two masses $A$ and $B$, each prepared
+in a coherent two-position superposition. Assume:
+\begin{enumerate}[nosep]
+\item the protocol remains in the branch-coherent regime during the
+interaction interval $[0,T]$;
+\item the emergent metric is Step-5 sourced from the actualized
+ledger only;
+\item nongravitational entangling channels are absent.
+\end{enumerate}
+Then the purely gravitational contribution to the four branch phases
+is common-mode:
+\begin{equation}
+\phi^{\mathrm{grav}}_{LL}
+= \phi^{\mathrm{grav}}_{LR}
+= \phi^{\mathrm{grav}}_{RL}
+= \phi^{\mathrm{grav}}_{RR},
+\end{equation}
+and the entangling phase invariant vanishes:
+\begin{equation}
+\boxed{\Delta\phi_{\mathrm{grav}} := \phi_{LL} + \phi_{RR}
+- \phi_{LR} - \phi_{RL} = 0.}
+\end{equation}
+Hence the protocol cannot generate gravity-mediated entanglement.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:nobranch}, no branch-resolved metric exists during
+the coherent interval. Gravity contributes the same Step-5 background
+potential $U_0 = U[g_{\mu\nu}(G_n)]$ to each amplitude component.
+The induced gravitational phase is identical on all four branches:
+$\phi_{ij}^{\mathrm{grav}} = -U_0 t/\hbar$ for all $i,j$. Therefore
+\begin{equation}
+|\Psi_{\mathrm{RA}}(t)\rangle
+= e^{-iU_0 t/\hbar}
+\frac{1}{2}\bigl(|LL\rangle + |LR\rangle + |RL\rangle
++ |RR\rangle\bigr)
+= e^{-iU_0 t/\hbar}\,|{+}\rangle_A \otimes |{+}\rangle_B.
+\end{equation}
+The state remains separable, so $\Delta\phi_{\mathrm{grav}} = 0$.
+\end{proof}
+
+%% ===============================================================
+\section{Coherence--Geometry Incompatibility}
+\label{sec:incompatibility}
+%% ===============================================================
+
+The null result is not contingent on experimental parameters such as
+mass, separation, or interaction time. It reflects a structural
+incompatibility between the two conditions the standard BMV mechanism
+requires.
+
+\begin{theorem}[Coherence--geometry incompatibility]
+\label{thm:incomp}
+In RA, the following two conditions cannot simultaneously hold for
+the same positional degree of freedom over the same interval:
+\begin{enumerate}[nosep]
+\item \emph{Branch coherence:} the alternatives $L$ and $R$ remain
+in coherent superposition.
+\item \emph{Branch-resolved geometry:} the alternatives $L$ and $R$
+source distinct effective metrics.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+If branch coherence holds, the alternatives remain at Step~2 and
+have not entered the ledger; by Lemma~\ref{lem:nonsource} they
+cannot source distinct Step-5 metrics. Conversely, if branch-resolved
+geometry exists, the branch label must already be represented in the
+actualized ledger, meaning Step~4 has occurred and coherence is lost.
+\end{proof}
+
+This is the deeper structural reason for the null prediction. The
+standard BMV mechanism requires simultaneous access to both the
+coherent superposition \emph{and} the branch-dependent geometry that
+would produce the entangling phase. In RA, these are architecturally
+mutually exclusive.
+
+%% ===============================================================
+\section{What ``Spacetime Superposition'' Means in RA}
+\label{sec:spacetime}
+%% ===============================================================
+
+The standard BMV framework implicitly represents the evolved state
+as a superposition of matter--geometry composites:
+\begin{equation}
+\frac{1}{2}\bigl(
+|LL\rangle|g_{LL}\rangle
++ |LR\rangle|g_{LR}\rangle
++ |RL\rangle|g_{RL}\rangle
++ |RR\rangle|g_{RR}\rangle
+\bigr).
+\label{eq:standard_superposition}
+\end{equation}
+RA replaces this with
+\begin{equation}
+\biggl(\frac{1}{2}\sum_{i,j \in \{L,R\}} |ij\rangle\biggr)
+\otimes |g[\DAG_n]\rangle.
+\label{eq:ra_superposition}
+\end{equation}
+
+The phrase ``spacetime superposition'' must therefore be
+disambiguated:
+
+\begin{itemize}[nosep]
+\item \textbf{Forbidden in RA:} A superposition of presently actual
+effective metrics---Eq.~\eqref{eq:standard_superposition}.
+\item \textbf{Permitted in RA:} A superposition of Step-2
+growth channels whose later actualization would yield different
+Step-5 metrics---i.e., superposition over geometry-producing
+\emph{futures}, not over the presently actual geometry.
+\end{itemize}
+
+This distinction is not interpretive decoration. It is the
+architectural content of the Step-2/Step-5 separation and the source
+of the null prediction.
+
+%% ===============================================================
+\section{Relation to Competing Frameworks}
+\label{sec:comparison}
+%% ===============================================================
+
+It is important to distinguish the RA null prediction from two
+superficially similar positions.
+
+\subsection{Quantized gravity}
+
+In frameworks where gravity is a quantized field, the metric is a
+quantum degree of freedom that can be placed in superposition. Each
+branch of the matter superposition sources its own branch of the
+metric superposition. The standard BMV mechanism operates, and the
+prediction is positive: $\Delta\phi \neq 0$.
+
+RA disagrees. The metric is not a quantum degree of freedom. It is
+the macroscopic record of actualized history.
+
+\subsection{Semiclassical gravity}
+
+In semiclassical gravity, the metric is sourced by the expectation
+value of the stress-energy tensor:
+$G_{\mu\nu} = 8\pi G\, \langle\hat{T}_{\mu\nu}\rangle$.
+A spatial superposition would produce an averaged field that is
+neither the $|L\rangle$ nor the $|R\rangle$ configuration but a
+weighted mean. The BMV prediction in this framework is ambiguous:
+some treatments predict partial entanglement, others predict none.
+
+RA disagrees with semiclassical gravity as well. The source is not
+the expectation value of unactualized branch structure. The source
+is the actualized ledger alone:
+\begin{equation}
+G_{\mu\nu} = 8\pi G\, \Pact[T_{\mu\nu}],
+\end{equation}
+where $\Pact$ is the actualization projector that retains only
+on-shell, ledger-written contributions.
+
+Thus RA's null result is not ``gravity is classical.'' It is
+specifically \emph{gravity is actualized}: sourced only by irreversible
+causal facts, not by reversible quantum possibilities.
+
+%% ===============================================================
+\section{Experimental Consequences}
+\label{sec:experiment}
+%% ===============================================================
+
+\subsection{The prediction}
+
+In an ideal BMV experiment with all nongravitational channels
+excluded, RA predicts:
+\begin{equation}
+\Delta\phi_{\mathrm{grav}}^{\mathrm{RA}} = 0,
+\end{equation}
+and any entanglement monotone attributed solely to gravity must
+vanish:
+\begin{equation}
+\mathcal{E}_{\mathrm{grav}}^{\mathrm{RA}} = 0.
+\end{equation}
+
+\subsection{What RA allows}
+
+RA does not predict the complete absence of all experimental
+signatures. The following effects may be present:
+\begin{itemize}[nosep]
+\item Common-mode gravitational phases (global, nonfactorizable
+contribution zero).
+\item Environmental decoherence from nongravitational channels.
+\item Electromagnetic or Casimir contamination.
+\item Trap-dependent systematic phases.
+\end{itemize}
+The prediction is that after removal of these nongravitational
+contributions, no purely gravitational entangling signal remains.
+
+\subsection{Falsification condition}
+
+A positive BMV result---specifically, a nonzero entanglement witness
+attributed to gravity after exclusion of all nongravitational
+channels---would directly falsify the Step-2/Step-5 separation of
+the Engine of Becoming. It would demonstrate that the effective
+metric responds to unactualized quantum branch structure, collapsing
+the distinction between possibility and actuality that is central
+to RA.
+
+The logic is unusually clean:
+\begin{itemize}[nosep]
+\item \textbf{Null BMV:} consistent with RA.
+\item \textbf{Positive BMV:} incompatible with present-form RA.
+\end{itemize}
+
+This makes the BMV experiment one of the sharpest near-term
+empirical discriminators for the RA programme.
+
+%% ===============================================================
+\section{Discussion}
+\label{sec:discussion}
+%% ===============================================================
+
+The RA-BMV null prediction reveals something deep about the framework.
+RA does not merely classify gravity as classical or quantum. It makes
+a more specific structural claim: \emph{gravity is the macroscopic
+description of what has already become actual.}
+
+The metric $g_{\mu\nu} = \mathcal{G}[G_n]$ is not a fundamental
+field. It is the large-scale order of the actualized causal ledger.
+Asking whether gravity can be ``in superposition'' is, in RA, a
+category error: you cannot superpose the record of what has happened,
+because what has happened is by definition actual and definite.
+
+This does not mean RA denies quantum phenomena in gravitational
+settings. Gravitational effects such as gravitational redshift,
+time dilation, and frame-dragging are all present in RA as
+consequences of the actualized graph's large-scale structure. What
+RA denies is that the metric itself can be placed in a coherent
+superposition of branch-resolved configurations, because that would
+require the actualized ledger to contain mutually exclusive entries
+simultaneously.
+
+The BMV experiment is therefore not merely a test of whether gravity
+is ``quantum enough'' to mediate entanglement. It is a test of
+whether the effective spacetime geometry belongs to the space of
+actualized facts or to the space of unresolved possibilities. RA
+predicts the former. A positive BMV result would require the latter.
+
+%% ===============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%% ===============================================================
+
+We have shown that Relational Actualism predicts a strict null result
+for gravity-mediated entanglement in the BMV protocol. The prediction
+follows from a single principle: the effective metric is sourced only
+by the actualized causal ledger, not by unactualized quantum branch
+structure. The coherence--geometry incompatibility theorem
+(Theorem~\ref{thm:incomp}) establishes that the two conditions
+required by the standard BMV mechanism---maintained positional
+coherence and branch-resolved gravitational geometry---are
+structurally mutually exclusive in RA.
+
+Multiple experimental groups are currently developing BMV-type
+experiments \cite{Bose2017,Marletto2017}. A null result would be
+consistent with RA and would constrain frameworks in which gravity
+is a quantized degree of freedom. A positive result would directly
+falsify the Step-2/Step-5 separation that is the architectural
+foundation of Relational Actualism.
+
+Either outcome advances physics.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bose2017}
+S.~Bose, A.~Mazumdar, G.~W.~Morley, H.~Ulbricht, M.~Toro\v{s},
+M.~Paternostro, A.~A.~Geraci, P.~F.~Barker, M.~S.~Kim, and
+G.~Milburn, ``Spin entanglement witness for quantum gravity,''
+\emph{Phys.\ Rev.\ Lett.}\ \textbf{119}, 240401 (2017).
+
+\bibitem{Marletto2017}
+C.~Marletto and V.~Vedral, ``Gravitationally induced
+entanglement between two massive particles is sufficient
+evidence of quantum effects of gravity,''
+\emph{Phys.\ Rev.\ Lett.}\ \textbf{119}, 240402 (2017).
+
+\bibitem{RAQM}
+J.~F.~Sandeman, ``Relational Actualism and Quantum Mechanics,''
+Zenodo (2026). \texttt{doi:10.5281/zenodo.19174380}.
+
+\bibitem{RAGC}
+J.~F.~Sandeman, ``Relational Actualism: Gravity and Cosmology,''
+Zenodo (2026). \texttt{doi:10.5281/zenodo.19197999}.
+
+\bibitem{EB}
+J.~F.~Sandeman, ``The Engine of Becoming: Quantum Gravity as
+Covariant Stochastic Graph Rewriting,''
+Zenodo (2026). \texttt{doi:10.5281/zenodo.19198120}.
+
+\end{thebibliography}
+
+\end{document}

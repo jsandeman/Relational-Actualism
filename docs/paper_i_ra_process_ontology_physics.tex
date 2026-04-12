@@ -1,0 +1,240 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\title{Relational Actualism: A Process Ontology for Physics}
+\author{Joshua Sandeman}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Relational Actualism (RA) begins from an ontological reversal. Instead of taking objects, fields, or quantum states in a pre-given spacetime as physically basic, it takes irreversible actualization events as primitive. The world is not fundamentally a static manifold populated by entities, nor a timeless wavefunction awaiting interpretation, but a growing causal ledger: a directed acyclic structure of irreversible events whose accumulation gives rise, at larger scales, to geometry, matter, and higher-order organization.
+
+This paper is the theory-definition paper for the canonical RA suite. Its purpose is not to derive every domain of known physics, nor to present the full empirical prediction program. Its purpose is earlier and more basic: to state the irreducible kernel of the framework, to present the closure architecture by which that kernel is pinned to explicit mathematics, and to define the implemented $d=4$ theory on which the later bridge papers rest.
+
+The paper has four principal claims. First, RA has a clean irreducible kernel: event primacy, irreversible inscription, an open future structured by weighted possibilities, a nontrivial actuality threshold, and stable motifs as persistent entities. Second, this kernel is not left at the level of philosophical posture, but is closed by a specific set of mathematical results: unique local action in $d=4$, local conservation, amplitude locality, spacelike order independence, dense-regime continuum closure, a nontrivial actualization threshold, and finite stable motif closure. Third, these closures yield an implemented $d=4$ theory whose core state structure is a growing causal DAG together with local motif states $M=(T,N,C,\sigma)$. Fourth, within the present framework, $d=4$ is not merely the implementation studied, but the unique dimensionality currently known to satisfy all identified closure criteria simultaneously: unique coefficient structure, near-Planck selectivity placement, exact second-order cancellation, and sufficient stable topology closure.
+
+The paper adopts explicit epistemic discipline throughout. Kernel commitments, closure results, implemented structure, later bridge claims, and speculative extensions are kept distinct. The result is not a claim that all of physics has already been fully derived. It is a claim that RA now possesses a coherent process ontology, a real closure architecture, and a specific implemented theory strong enough to support serious bridge work to gravity, matter, interaction hierarchy, and persistence.
+\end{abstract}
+
+\section*{Front-matter status box}
+\noindent\textbf{This paper does:} define Kernel RA, present the closure architecture, specify the implemented $d=4$ theory, and state the epistemic ladder by which later bridges should be read.
+
+\noindent\textbf{This paper does not:} derive Einstein's equations in detail, fully identify the Standard Model, present detailed coupling or mass numerics, or survey the empirical prediction program. Those tasks are deferred to companion papers.
+
+\noindent\textbf{Status discipline:} this paper contains ontological commitments, closure results, and theory-definition structure. Later bridge arguments are referenced but not developed in full.
+
+\section{Introduction: What this paper is}
+Modern physics inherits a common structural habit from both its classical and quantum formulations: it begins with states, fields, or observables defined on a background structure, and asks how those states evolve. Time then appears as a parameter of evolution, while actuality appears either as a brute fact of measurement or as a merely perspectival update of description. Relational Actualism begins elsewhere. It takes as primitive not the occupancy of a state in spacetime, but the irreversible production of causal fact. The fundamental question is not ``what state is the system in?'' but ``what has actually happened?''
+
+The central claim of Relational Actualism is that physical reality is fundamentally composed of irreversible actualization events. An actualization event is one in which a previously open physical possibility becomes an actual causal fact and leaves a permanent record in the structure of the world. The universe is therefore not fundamentally a static spacetime manifold populated by objects, nor a single mathematical state evolving unitarily in a timeless formal arena. It is a growing causal ledger: a directed acyclic structure of irreversible events whose accumulation gives rise, at larger scales, to the effective descriptions we call spacetime, matter, and higher-order organization.
+
+This paper is the theory-definition paper for the new canonical suite. Its purpose is not to show that every domain of physics has already been fully derived. Its purpose is earlier and more basic: to state the irreducible kernel of the framework, to show how that kernel is closed into explicit mathematics, and to define the implemented $d=4$ realization of the theory. The architecture is therefore not organized by traditional subject domains such as quantum theory, gravity, particle physics, cosmology, and biology. It is organized by epistemic level:
+\[
+\text{Kernel} \to \text{Closure} \to \text{Implementation} \to \text{Interpretation} \to \text{Speculation}.
+\]
+
+This reorganization matters. The original RA corpus was assembled during discovery, and therefore often combined ontology, derivation, interpretation, and prediction within the same documents. That was productive during theory formation, but it obscures the logical structure of the framework once the project is read as a unified whole. The present paper therefore adopts a stricter discipline. Kernel claims are separated from closure results; closure results are separated from downstream bridge arguments; bridge arguments are separated from interpretations and speculative extensions. The aim is not to weaken the theory by caution, but to strengthen it by precision.
+
+The central methodological claim of this paper is that Relational Actualism is not merely a philosophical proposal supplemented by illustrative mathematics. Nor is it merely a technical graph model onto which metaphysical language has been retrospectively attached. Rather, the framework has the following shape: first, a process ontology of irreversible actualization; second, a set of closure results that pin that ontology to explicit mathematical structure; third, a specific implemented $d=4$ theory defined by those closures. In most cases, the move from kernel to implementation is not made by convenience or taste, but by a uniqueness result, a finite classification, or an exact computation. That is the sense in which the implemented theory is meant to be constrained rather than merely chosen.
+
+The paper proceeds as follows. Section~\ref{sec:kernel} states the kernel of Relational Actualism: the minimal commitments required for the framework to remain recognizably itself. Section~\ref{sec:dag} introduces the causal DAG as the primitive structural representation of the growing ledger. Section~\ref{sec:closures} presents the closure architecture that converts Kernel RA into a specific $d=4$ theory. Section~\ref{sec:implemented} defines Implemented $d=4$ RA as the concrete theory fixed by those closures. Section~\ref{sec:actualization} situates the actualization criterion within that architecture, emphasizing that the discrete BDG filter is fundamental while entropy-increment and on-shell language are downstream approximations. Section~\ref{sec:d4} states the special role of four dimensions within the present framework. Section~\ref{sec:scope} marks what this paper fixes, what it defers, and what remains open. Section~\ref{sec:conclusion} closes.
+
+This paper therefore has a limited but foundational aim. It does not yet derive Einstein's equations in detail. It does not yet present the full bridge to particle classes, gauge structure, or numerical couplings. It does not survey the framework's predictions. What it does is more basic: it defines what RA is.
+
+\section{The kernel}\label{sec:kernel}
+The kernel of Relational Actualism is the smallest set of commitments required for the framework to remain a process ontology of physics rather than a reinterpretation of existing formalism. These commitments are pre-mathematical in the sense that they do not yet specify the full machinery of the $d=4$ implementation. But they are not arbitrary. They define the conceptual burden any viable RA-type theory must bear.
+
+\subsection{Event primacy}
+The first commitment is that physical reality is fundamentally composed of actualization events. Events are not secondary happenings involving more primitive objects situated in an already-existing spacetime. They are the primitive facts. To say that something is physically real at the deepest level is to say that it has actualized: that one possibility has crossed into actuality and entered the causal record of the world.
+
+This commitment is what makes RA a process ontology in a strong sense. It does not begin with things and then explain interactions among them. It begins with interaction-like actualization events and treats persistent things as later, emergent structures. In this respect, the framework is not merely proposing a new model of microscopic dynamics. It is proposing a different answer to the question of what the physically basic entities are.
+
+\subsection{Irreversible inscription}
+The second commitment is that actualization is irreversible. An actualized event is not merely distinguishable, nor merely observed, nor merely selected relative to an epistemic perspective. It is inscribed into the world as a permanent causal fact. Once actualized, it belongs to the fixed causal past of subsequent events. This is why actualization is not reducible to reversible unitary evolution or to an observer's update of knowledge. It changes the physical structure of reality itself.
+
+Irreversibility is therefore not an after-the-fact thermodynamic story in RA. It is primitive. The arrow of time is not explained by a special initial condition imposed on an otherwise reversible ontology; it is encoded in the fact that actualization is one-way inscription into the causal ledger.
+
+\subsection{The open future with weighted possibilities}
+The third commitment is that the future is not already actual. Before actualization, the world contains a space of constrained possibilities rather than a fully realized block of facts. These possibilities are not treated as equally weighted classical alternatives. They carry nontrivial quantum weighting. Kernel RA therefore rejects both classical determinism and naive branching realism. It insists that there is a genuine distinction between the possibility layer and the actualized causal record.
+
+This commitment does important work. Without it, RA would collapse either into a static block ontology or into a purely classical growth model. The future must be open in a physically meaningful sense, and it must be structured by amplitudes rather than by mere ignorance.
+
+\subsection{The actuality threshold}
+The fourth commitment is that not every possibility becomes actual. There exists a genuine threshold separating reversible quantum possibility from irreversible causal fact. This threshold must be nontrivial. If every interaction automatically actualized, the framework would reduce to universal event-stamping of ordinary dynamics and would fail to distinguish virtuality from actuality. If, on the other hand, actuality were merely stipulated without a criterion, the framework would collapse into verbal relabeling.
+
+This commitment is one of the load-bearing points of the theory, because it is where the ontology confronts the measurement problem directly. The framework must provide a real distinction between candidate extensions of the causal structure and those that become part of the world's actual ledger.
+
+\subsection{Persistent entities as renewable motifs}
+The fifth commitment is that persistent entities are not primitive substances. They are stable self-reproducing patterns of causal organization. Once event primacy is accepted, the ontology of enduring things must be reconstructed rather than assumed. RA's answer is that particles, clocks, organisms, and other persistent systems are stable motifs in the growing causal graph: local patterns that continue to reproduce their structural identity under further actualization.
+
+Recent developments sharpen this further. Persistent entities are not merely motifs that happen to last. They are renewable motifs whose internal organization obstructs cheap exit paths strongly enough to permit continued renewal. Persistence is therefore not primitive and decay is not accidental. Both are consequences of how graph growth filters the accessible futures of a motif.
+
+\subsection{What the kernel rejects}
+Taken together, these commitments imply a set of rejections as well as assertions. Kernel RA rejects the block universe as fundamental. It rejects observer-dependent collapse as fundamental. It rejects state-first ontology. And it rejects the idea that persistence belongs to irreducible substances. Persistence is an emergent stability property of renewable motifs in a growing causal structure.
+
+What the kernel does not yet fix is equally important. It does not yet tell us which local combinatorial action governs admissibility. It does not yet tell us the explicit form of the actualization criterion. It does not yet derive Einstein--Hilbert structure or identify particle classes. Those belong to closure and implementation.
+
+\section{The causal DAG}\label{sec:dag}
+If the kernel of Relational Actualism states what kinds of things are primitive, the next task is to state the minimal structure those things must form. If actualization events are real, if they are irreversibly inscribed, and if the future is open until actualization occurs, then reality cannot be fundamentally represented as a timeless set of equally real events. It must be represented as a structure that grows by one-way addition. The natural mathematical form of that structure is a directed acyclic graph.
+
+At any stage, the universe is represented by a causal DAG
+\[
+G=(V,\prec),
+\]
+where $V$ is the set of actualized events and $\prec$ is the causal precedence relation. The graph is directed because causation is ordered, and acyclic because irreversibility forbids later events from becoming part of their own ancestry.
+
+This has three immediate consequences. First, time is not fundamentally a background parameter but the growth of the graph itself. Second, the distinction between past and future becomes ontologically sharp: the past is the subgraph already written, while the future consists of candidate extensions not yet admitted to the ledger. Third, proper time is most naturally counted in actualization events along persistent motif histories rather than assumed as primitive metric duration.
+
+The causal DAG therefore does not merely illustrate the ontology. It is its primitive structural expression.
+
+\section{The closure architecture}\label{sec:closures}
+The kernel is not yet a theory. To become a theory, each kernel commitment must be pinned to explicit mathematics. This pinning occurs through closure results: uniqueness theorems, exact computations, finite classification theorems, or published bridge theorems that convert conceptual commitments into determinate structure.
+
+The strongest current summary is the seven-row closure spine:
+\begin{enumerate}[label=\arabic*.]
+    \item local combinatorial action exists $\rightarrow$ BDG unique in $d=4$;
+    \item conservation at vertices $\rightarrow$ Local Ledger Condition;
+    \item amplitude depends on causal past $\rightarrow$ amplitude locality;
+    \item spacelike ordering is irrelevant $\rightarrow$ causal invariance;
+    \item dense coarse-graining yields continuum physics $\rightarrow$ Einstein--Hilbert bridge;
+    \item actualization threshold is nontrivial $\rightarrow$ discrete BDG selectivity structure;
+    \item stable patterns define matter $\rightarrow$ finite stable topology universe.
+\end{enumerate}
+
+The important point is that the move from kernel to implementation is not mostly a matter of taste. In the strongest rows, it is a matter of uniqueness or closure. That is why the implemented theory is not best described as one possible realization among many, but as the closure-backed realization currently supported by the framework.
+
+\subsection{Why closure matters}
+Closure is the point where RA stops being merely philosophy and becomes concrete physics. It is also the point at which later bridge work inherits its credibility. When a bridge is built from a closure-backed structure, it may still remain partly interpretive, but it is not floating free.
+
+\section{Implemented \texorpdfstring{$d=4$}{d=4} Relational Actualism}\label{sec:implemented}
+The implemented theory is the specific $d=4$ realization fixed by the current closure architecture. It consists of:
+\begin{itemize}
+    \item the unique local BDG action in $d=4$,
+    \item event-level conservation through the Local Ledger Condition,
+    \item amplitude locality and spacelike order independence in the possibility layer,
+    \item a nontrivial actualization criterion based fundamentally on the discrete BDG filter,
+    \item a finite stable topology universe,
+    \item and dense-regime closure toward continuum geometry.
+\end{itemize}
+
+A key consequence of recent developments is that persistent motif states should now be represented not merely by topology class but by a fuller state object:
+\[
+M=(T,N,C,\sigma),
+\]
+where $T$ is topology class, $N$ is the local BDG depth profile, $C$ is confinement/reset memory, and $\sigma$ is the internal label structure relevant to accessible renewal and exit channels. This does not belong only to later phenomenology. It belongs already to the implemented theory, because persistence and decay are not external add-ons; they are part of the internal consistency structure by which motifs survive or fail to survive under graph growth.
+
+The implemented theory should therefore be understood as a self-filtering growth process rather than a static state space with extra dynamical rules attached. Its local action, conservation, thresholding, and motif structure form a closed dynamical architecture.
+
+\section{The actualization criterion in the architecture}\label{sec:actualization}
+One of the most important clarifications in the recent development of RA is that the actualization criterion has a hierarchy of forms. The fundamental level is the discrete BDG filter: the sign and magnitude of the local BDG score determine whether a candidate local extension is genuinely record-forming. Continuum entropy-increment language and on-shell criteria are downstream approximations, not the primitive criterion.
+
+This matters because it changes the status of several later bridge results. The actualization threshold is no longer a vague metaphysical gesture or a perturbative slogan. It is a specific discrete filter whose selectivity structure can be analyzed directly. In particular, the threshold quantity $\Delta S^*$ now serves as an already-established discrimination measure that later reappears in the candidate hadronic density closure.
+
+So the actualization criterion belongs here, in the theory-definition paper, not only in later bridge work. It is part of what makes Implemented $d=4$ RA a definite theory rather than a merely suggestive ontology.
+
+\section{The special role of four dimensions}\label{sec:d4}
+Within the present framework, four dimensions are not treated merely as the implementation of interest. They are the unique dimensionality currently known to satisfy all identified closure criteria simultaneously.
+
+The current closure package supports the following picture. In $d=4$, the local BDG coefficient vector is uniquely fixed. In $d=4$, the selectivity ceiling sits essentially at Planck density. In $d=4$, the coefficient vector satisfies exact second-order cancellation,
+\[
+\sum_k c_k = -1 + 9 - 16 + 8 = 0,
+\]
+which is the d'Alembertian condition required for the continuum wave-operator limit. And in $d=4$, the local stable topology universe closes into exactly five classes. Recent cross-dimensional exclusion work then shows that no other displayed dimension satisfies all of these criteria simultaneously.
+
+The strongest disciplined formulation is therefore this:
+\begin{quote}
+Within the present framework, $d=4$ is the unique dimensionality currently known to satisfy all identified closure criteria simultaneously: unique coefficient structure, near-Planck selectivity placement, exact second-order cancellation, and sufficient stable topology closure.
+\end{quote}
+
+This is already a very strong statement. It should not be inflated prematurely into every stronger metaphysical slogan one might be tempted to use. But it does justify a major shift in emphasis: $d=4$ is not merely where the current implementation happens to live. It is where the closure network closes.
+
+\section{What this paper fixes, defers, and leaves open}\label{sec:scope}
+This paper fixes several things.
+
+First, it fixes the kernel ontology of RA: event primacy, irreversible inscription, weighted open future, a nontrivial actualization threshold, and renewable motifs as persistent entities.
+
+Second, it fixes the closure architecture by which that kernel becomes concrete.
+
+Third, it fixes the implemented $d=4$ theory as the specific closure-backed realization on which later bridge papers depend.
+
+Fourth, it fixes the role of the actualization criterion as a fundamental discrete filter rather than a secondary continuum slogan.
+
+Fifth, it fixes the current strongest statement about $d=4$: not merely that it is studied, but that it is the unique currently supported closure point of the theory.
+
+What this paper defers is equally important. It defers the full gravity bridge, the detailed particle-class mapping, the gauge and coupling story, the hadronic density closure, the motif-renewal lifetime program, and the empirical prediction suite. Those belong to later papers precisely so that the theory-definition paper can remain architecturally clean.
+
+What remains open is not a weakness but a matter of discipline. Some closure results are theorem-level, some are computation-backed, some are bridge-level syntheses, and some are still targets. The theory is strongest when those levels remain explicit.
+
+\section{Conclusion}\label{sec:conclusion}
+Relational Actualism proposes that physical reality is fundamentally a growing causal ledger of irreversible actualization events. This is a strong ontological shift away from state-first, object-first, and block-universe pictures. But the framework now has more than a philosophical posture. It has a closure architecture. And that architecture yields a specific implemented $d=4$ theory.
+
+The significance of the present paper is therefore not that it completes all of physics. It does not. Its significance is that it makes clear what the framework is, what its closure backbone is, what the implemented theory is, and why later bridge claims should be read as flowing from that structure rather than floating free.
+
+The result is a cleaner and more disciplined picture of the project. Kernel commitments define what must be true for an RA-type theory to exist at all. Closure results pin those commitments to determinate mathematics. The implemented d=4 theory provides the concrete substrate. Later papers then ask what gravity, matter, interaction hierarchy, and persistence follow from it.
+
+The most important philosophical consequence of this architecture is that stable reality is not primitive and decay is not accidental. Persistent structure exists only insofar as graph growth is self-filtering in the right way: renewable motifs survive, cheap exits are blocked or narrowed, and a world of durable matter becomes possible. In that sense, the universe is not a system that merely obeys external laws. It is a self-writing process whose lawful structure is inseparable from its own growth.
+
+\begin{thebibliography}{99}
+
+\bibitem{BenincasaDowker2010}
+D.~M.~T.~Benincasa and F.~Dowker,
+``The scalar curvature of a causal set,''
+\emph{Phys. Rev. Lett.} \textbf{104} (2010) 181301.
+
+\bibitem{DowkerGlaser2013}
+F.~Dowker and L.~Glaser,
+``Causal set d'Alembertians for various dimensions,''
+\emph{Class. Quantum Grav.} \textbf{30} (2013) 195016.
+
+\bibitem{Yeats2025}
+D.~Yeats,
+``[Title of Yeats 2025 causal-diamond moment paper],''
+\emph{Class. Quantum Grav.} \textbf{42} (2025) 145003.
+
+\bibitem{RAO14}
+J.~Sandeman,
+``O14: Uniqueness of the $d=4$ BDG action,''
+internal Lean formalization and project note.
+
+\bibitem{RAD4U02}
+J.~Sandeman,
+``D4U02: The selectivity ceiling is at $\mu=1$,''
+internal analytic proof note and certified computation package.
+
+\bibitem{RAL10L11}
+J.~Sandeman,
+``L10 and L11: Confinement lengths and closure of the stable topology universe,''
+internal Lean formalization and project note.
+
+\bibitem{RAKernel}
+J.~Sandeman,
+``Kernel versus implemented Relational Actualism,''
+internal architecture note.
+
+\bibitem{RAActualizationAudit}
+J.~Sandeman,
+``The actualization criterion in Relational Actualism,''
+internal audit note.
+
+\bibitem{RAd4Closure}
+J.~Sandeman,
+``d=4 closure in Relational Actualism,''
+internal technical note.
+
+\end{thebibliography}
+
+\end{document}
