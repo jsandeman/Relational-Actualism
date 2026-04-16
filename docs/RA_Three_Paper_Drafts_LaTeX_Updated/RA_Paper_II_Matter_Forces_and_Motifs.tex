@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newcommand{\RA}{\mathrm{RA}}
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism II: Matter, Forces, and Renewal Motifs}}\\[0.75em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Draft updated April 13, 2026}
+\end{center}
+
+\begin{abstract}
+This second paper develops the particle, force, and motif structure of Relational Actualism from the BDG-filtered causal graph. The present revision updates the paper where the new finitary and severance results matter. The main additions are: (i) an explicit finite-state interpretation of motif renewal and confinement, (ii) a clarification that the relevant particle and interaction classes are properties of finite local topology classes rather than continuum fields, and (iii) a revised bridge to the severance programme in which boundary counting and hidden causal channels are treated as graph-theoretic observables rather than continuum imports.
+\end{abstract}
+
+\section{Introduction}
+Paper II sits between the ontological kernel of Paper I and the gravity-cosmology-severance analysis of Paper III. Its purpose is to show how persistent local patterns in the growing causal graph acquire the interpretation of particles, charges, confinement, and renewal motifs. The updated severance work does not force a global rewrite of this paper, but it does sharpen its language: matter and forces must be described entirely in terms of finite local graph structure, with continuum field language treated as translation rather than primitive ontology.
+
+\section{Finite local topology classes}
+A persistent RA pattern is not a field excitation on a background manifold. It is a finite local topology class that reproduces itself under the sequential growth rule.
+
+\begin{definition}[Local topology class]
+A local topology class is an equivalence class of finite neighborhoods in the actualized graph, classified by the BDG depth profile and the induced pattern of causal comparabilities.
+\end{definition}
+
+\begin{remark}
+Because physically realized graphs are finite at each stage, all particle-like and interaction-like motifs are realized as finite local structures. This matters conceptually: the charge and stability of a motif are not properties of an infinite field mode but of a finite graph neighborhood that renews itself under growth.
+\end{remark}
+
+\section{Motif renewal under finitary actuality}
+The older language of ``self-reproduction'' or ``renewal'' can now be made more precise in light of Axiom 7 from Paper I. At any stage $n$, a motif exists only insofar as there is a finite local region of $G_n$ whose admissible successor neighborhoods preserve its topology class with high probability.
+
+\begin{definition}[Renewal motif]
+A renewal motif is a finite local topology class $\mathcal{M}$ such that, conditioned on admissible growth in its neighborhood, the probability that the successor neighborhood remains in $\mathcal{M}$ is bounded away from zero (or tends to one in an appropriate stable regime).
+\end{definition}
+
+This formulation avoids any appeal to completed infinite worldlines. Stability is a property of repeated finite renewal, not of eternal persistence.
+
+\section{Charges and constrained local growth}
+In the RA programme, conserved charges are local constraints on admissible growth. The local ledger condition restricts how finite neighborhoods may change, while the BDG score restricts which local topologies survive actualization.
+
+The standard particle labels are therefore shorthand for finite local motifs together with their conservation behavior under renewal:
+\begin{itemize}
+    \item electromagnetic behavior is tied to one family of local winding / adjacency counts,
+    \item color behavior is tied to constrained multi-branch topology classes,
+    \item weak behavior is tied to orientation-sensitive or handed renewal relations,
+    \item confinement is the statement that certain local topology classes cannot persist as isolated asymptotic motifs under the BDG filter.
+\end{itemize}
+
+\section{Confinement, closure, and finite graph neighborhoods}
+The strongest conceptual revision here is a finite-state one. Confinement should not be imagined as a force that acts over an actually infinite field configuration. Rather, it is the fact that a local motif cannot maintain admissible renewal unless it sits inside a finite closure pattern with the correct neighborhood structure.
+
+\begin{proposition}[Finite closure principle]
+If a motif class requires nontrivial branch-balance or multi-color cancellation in order to remain admissible, then its stable realization must occur in a finite closure neighborhood rather than as a freely propagating isolated motif.
+\end{proposition}
+
+\begin{remark}
+This principle links the matter/force paper to the severance paper. In both contexts, the physically meaningful object is a finite combinatorial interface: in Paper II, the interface that stabilizes a motif; in Paper III, the interface that carries the hidden causal channels of a severance.
+\end{remark}
+
+\section{Boundary observables and motif language}
+The updated entropy work matters here because it clarifies what counts as a genuine graph observable. Boundary-vertex count, severed-link count, and motif adjacency count are all finite graph-theoretic observables. Their continuum counterparts are translations, not primitives.
+
+This suggests a useful general maxim for the paper suite:
+\begin{quote}
+Charges, motif classes, severance entropy, and boundary size are all defined first as finite combinatorial observables. Only afterward are they rendered in continuum language.
+\end{quote}
+
+\section{Revision note on continuum rhetoric}
+Several parts of earlier drafts tended to speak as though motifs lived in pre-existing space. The current severance work reinforces the opposite view: space is represented internally by antichain structure, boundary size by finite boundary counts, and interaction range by graph neighborhood structure. Paper II should therefore avoid unnecessary continuum rhetoric wherever the underlying finite graph description is available.
+
+\section{Conclusion}
+Paper II remains the paper of matter, forces, and renewal motifs, but it is now more explicitly aligned with the finitary ontology of Paper I and the severance/boundary observables of Paper III. The core message is unchanged: particles and interactions are persistent local graph patterns. What has improved is the precision of the language used to describe them. They are finite local structures, finite renewal classes, and finite constrained interfaces at every actual stage.
+
+\section*{References}
+\begin{enumerate}[leftmargin=1.5em]
+\item J. F. Sandeman, \emph{Relational Actualism: The Topology of Matter}, project draft materials, 2026.
+\item J. F. Sandeman, \emph{Relational Actualism and the Standard Model}, project draft materials, 2026.
+\item D. M. T. Benincasa and F. Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\end{enumerate}
+\end{document}

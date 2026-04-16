@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newcommand{\RA}{\mathrm{RA}}
+\newcommand{\LLC}{\mathrm{LLC}}
+\newcommand{\Pacc}{P_{\mathrm{acc}}}
+\newcommand{\SRa}{S_{\mathrm{RA}}}
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism III: Gravity, Cosmology, Severance, and Complexity}}\\[0.75em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Draft updated April 13, 2026}
+\end{center}
+
+\begin{abstract}
+This third paper develops the gravity, cosmology, severance, and complexity consequences of Relational Actualism. The present revision incorporates the recent severance results in full: the explicit axiom of Finitary Actuality, the choice of the RA-native entropy observable as severed-link count, the closure of the finiteness and interface-invariance parts of the entropy programme, and the correction of the ``area law'' into an intrinsically discrete boundary law. The paper therefore distinguishes sharply between discrete physics and continuum translation. The fundamental statement is not that entropy must first be shown to match continuum horizon area, but that severance entropy is proportional to intrinsic discrete boundary size. The comparison with Bekenstein-Hawking entropy is then a question about the BDG-to-metric dictionary.
+\end{abstract}
+
+\section{Introduction}
+Paper III is the paper in which the RA account of gravity, cosmology, severance, horizon entropy, nucleation, and complexity comes together. The recent work on severance makes one point unmistakable: several earlier ``problems'' were not failures of the discrete framework but category mistakes introduced by treating continuum quantities as the primary targets. The present draft corrects that error by stating the discrete observables first and only afterward discussing their continuum translation.
+
+\section{Axiom 7 revisited}
+The finitary ontology introduced in Paper I is especially consequential here.
+
+\begin{axiom}[Finitary Actuality]
+Every physically realized universe-state has finite actual graph $G_n$. No physically realized state contains an actually infinite number of vertices, links, or admissible extensions. Infinite structures may be used as asymptotic or continuum idealizations, but are not ontologically actual.
+\end{axiom}
+
+This axiom immediately cleans up several issues in the severance programme: all physically realized severance entropies are finite, all boundary counts are finite, and the relevant interface observables are finite combinatorial objects rather than divergent continuum expressions.
+
+\section{Causal severance and the entropy observable}
+\begin{definition}[Severance]
+A causal severance is a partition of the realized graph into two subgraphs whose cross-boundary causal links are cut or blocked.
+\end{definition}
+
+\begin{definition}[Cross-severance link set]
+For a severance $\Sigma:V=V_A\sqcup V_B$, define
+\[
+L_\Sigma=\{(u,v)\in L(G_n):u\in V_A,\ v\in V_B\},
+\]
+where $L(G_n)$ is the set of irreducible causal links of the realized graph.
+\end{definition}
+
+\begin{definition}[RA-native severance entropy]
+The severance entropy is
+\[
+\SRa(\Sigma)=|L_\Sigma|.
+\]
+Entropy therefore counts blocked irreducible future-directed causal channels.
+\end{definition}
+
+\begin{remark}
+This resolves the earlier ambiguity between boundary-vertex count and severed-link count. Boundary vertices are not the entropy itself. They are a proxy quantity that becomes useful only after the severed-link observable has been fixed.
+\end{remark}
+
+\section{Target 1A: closed in the finitary setting}
+\begin{theorem}[Finiteness]
+For any physically realized severance $\Sigma\subset G_n$,
+\[
+\SRa(\Sigma)<\infty.
+\]
+\end{theorem}
+
+\begin{proof}
+By Finitary Actuality, $G_n$ is finite. Therefore $L(G_n)$ is finite. Since $L_\Sigma\subseteq L(G_n)$, $L_\Sigma$ is finite, hence $\SRa(\Sigma)=|L_\Sigma|<\infty$.
+\end{proof}
+
+\begin{definition}[Severance-equivalent refinement]
+Two severance descriptions are severance-equivalent if they preserve the severance boundary identification and the cross-severance link set $L_\Sigma$, while differing only in interior or exterior structure away from the interface.
+\end{definition}
+
+\begin{theorem}[Interface invariance]
+If two severance descriptions are severance-equivalent, then their severance entropies are equal.
+\end{theorem}
+
+\begin{proof}
+The severance entropy is the cardinality of the cross-severance link set. If that set is preserved, its cardinality is preserved.
+\end{proof}
+
+\begin{remark}
+The physical justification for this equivalence relation comes from boundary shielding / Markov blanket structure: interior refinements that do not alter the boundary interface do not alter cross-boundary observables.
+\end{remark}
+
+\section{The corrected boundary law}
+The key decomposition is
+\[
+\SRa(\Sigma)=\sum_{u\in \partial V_A} d^{\Sigma}_{\mathrm{out}}(u)
+=\langle d^{\Sigma}_{\mathrm{out}}\rangle\,N_\partial(\Sigma),
+\]
+where $N_\partial(\Sigma)=|\partial V_A|$ is the number of severance-boundary vertices and $d^{\Sigma}_{\mathrm{out}}(u)$ counts the severed outgoing links of boundary vertex $u$.
+
+\begin{proposition}[Discrete boundary law]
+If the mean severed out-degree is asymptotically local and stable, then
+\[
+\SRa(\Sigma)\propto N_\partial(\Sigma).
+\]
+\end{proposition}
+
+This is the RA-native ``area law.'' The intrinsic discrete boundary size is $N_\partial$, not a pre-existing smooth metric area. The further question of how $N_\partial$ is expressed in continuum metric language is a translation problem, not an additional fact of the discrete physics.
+
+\section{Boundary regularity: the remaining discrete issue}
+The correct residual discrete question is not whether $N_\partial$ ``matches'' continuum area, but whether it is a well-behaved intrinsic measure of boundary size.
+
+\begin{conjecture}[Boundary regularity]
+For a macroscopic null severance in the low-$\mu$ regime, the severance boundary vertices form a thin, spatially organized boundary layer rather than a diffuse or fractal bulk distribution. Consequently, $N_\partial$ is the correct intrinsic discrete measure of boundary size.
+\end{conjecture}
+
+The antichain-drift result contributes here by supporting spatial dominance at low $\mu$, while the kernel-gentleness / low-density inertness result supports the claim that the BDG filter does not strongly distort local boundary geometry in the horizon regime. Together they make the boundary-regularity conjecture plausible, but not yet proved.
+
+\section{Translation to Bekenstein-Hawking entropy}
+Once the discrete boundary law is accepted, the comparison with black hole thermodynamics becomes a problem in dictionary-building. Under the BDG-to-metric translation, one expects the discrete boundary size $N_\partial$ to map to continuum horizon area, and the law
+\[
+\SRa\propto N_\partial
+\]
+to translate to
+\[
+S\sim \frac{A}{4l_P^2}
+\]
+up to the coefficient fixed by the dictionary. In this form, the famous $1/4$ factor is not the primary discrete fact but the coefficient of a translation map. Its exact derivation remains open.
+
+\section{Cosmological severance and nucleation}
+The same corrected logic applies to the cosmological nucleation programme. The discrete physics is:
+\begin{enumerate}[label=(\arabic*)]
+    \item severance defines a finite cross-boundary entropy observable;
+    \item that entropy is proportional to discrete boundary size via local severed out-degree;
+    \item boundary structure and local graph geometry constrain how much hidden causal content becomes available in a daughter branch or daughter universe.
+\end{enumerate}
+
+The older question ``does the entropy first reproduce continuum area?'' is therefore demoted. The primary issue is finite graph structure at the severance interface; metric language enters only in the later translation.
+
+\section{Complexity and boundary counting}
+The complexity theme of Paper III is also clarified by the severance work. Biological boundaries, Markov blankets, causal firewalls, and black hole severances are all instances of the same structural idea: a finite interface that screens and regulates hidden causal channels. The severance entropy therefore belongs naturally in the same family of interface observables as causal blanket size and boundary stability measures.
+
+\section{Conclusion}
+The recent updates substantially sharpen Paper III. The entropy observable is fixed, Target 1A is closed in the finitary setting, and the old ``area law'' has been corrected into a discrete boundary law. The remaining tasks are correspondingly clearer: prove boundary regularity strongly enough that $N_\partial$ is the right intrinsic boundary-size observable, stabilize the local out-degree factor, and then complete the BDG-to-metric translation that yields the Bekenstein-Hawking coefficient.
+
+\section*{References}
+\begin{enumerate}[leftmargin=1.5em]
+\item J. F. Sandeman, project drafts on gravity, cosmology, and severance, 2026.
+\item D. M. T. Benincasa and F. Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\item S. Dou and R. D. Sorkin, work on horizon molecules and causal set entropy.
+\item Causal set literature on numerical area-law confirmations in $d=4$.
+\end{enumerate}
+\end{document}

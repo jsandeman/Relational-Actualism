@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{microtype}
+\geometry{margin=1in}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\title{Relational Actualism II:\\Matter, Forces, and Motif Persistence}
+\author{Joshua F. Sandeman}
+\date{Draft prepared April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This second paper develops the matter and force sector of the three-paper Relational Actualism suite. The central proposal is that particles are persistent self-reproducing motifs in the growing causal graph and that the Standard Model structure arises from the local topology and depth structure of the 4D Benincasa--Dowker--Glaser action. We present the five motif classes, the sequential/topological division corresponding to asymptotically free versus confined sectors, the three non-gravitational depth channels, and the depth-resolved account of force differentiation. The paper then enlarges the motif state from topology alone to the full persistence label $M=(T,N,C,\sigma)$, where $\sigma$ encodes channel-accessibility structure. This enlarged state supports an RA-native account of renewal, decay, selection rules, OZI-type suppression, lifetime hierarchies, and the distinction between direct, flavor-suppressed, G-parity-suppressed, and topology-protected exit paths. The result is a complete draft of the second canonical paper, incorporating the April 10--11 discoveries on force hierarchy, motif renewal, and $\sigma$-filtered persistence.
+\end{abstract}
+
+\section{Introduction}
+If Paper I answered the question ``what is the universe doing?'', this paper asks: what are particles and forces in such a universe? In Relational Actualism there are no persisting substances moving through a pre-existing background. There are only stable motifs that successfully reproduce their local causal organization as the graph grows.
+
+The key claim of this paper is that the matter sector is not an additional layer pasted onto the dynamics. It is a consequence of the same local 4D BDG structure that already underwrites the actualization filter. The later sections then argue that particle identity requires more than bare topology class alone: persistence, lifetime, and accessible decay channels require the full motif state $M=(T,N,C,\sigma)$.
+
+\section{Particles as Persistent Motifs}
+A particle is a stable self-reproducing local motif in the growing causal graph. At the crude first pass, such a motif is characterized by its local topology type $T$, its BDG interval-count vector $N$, and its effective confinement or renewal behaviour under graph growth. The primitive notion is not ``object'' but ``renewable local causal pattern.''
+
+The immediate consequence is that mass and lifetime are dynamical costs of persistence. A heavier motif is one that requires a higher actualization rate to maintain its identity. A shorter-lived motif is one with accessible exit channels out of its identity class.
+
+\section{The Five Motif Classes}
+The current 4D implementation yields five central motif classes built from the local BDG score. They are conveniently represented by the stable $N$-vectors:
+\begin{center}
+\begin{tabular}{p{0.12\textwidth} p{0.24\textwidth} p{0.20\textwidth} p{0.23\textwidth}}
+Type & Representative $N$-vector & Structural character & Standard interpretation\\
+0 & $(0,0,0,0)$ & isolated/neutral seed & neutral massless or scalar-neutral sector\\
+1 & $(1,1,0,0)$ & short sequential chain & charged weak-boson-type motif\\
+2 & $(1,1,1,1)$ & long sequential fixed point & lepton/down-type asymptotic class\\
+3 & $(1,2,0,0)$ & symmetric topological Y-join & gluon-type confined class\\
+4 & $(2,1,0,0)$ & asymmetric topological Y-join & quark/up-type confined class\\
+\end{tabular}
+\end{center}
+
+The decisive structural split is between sequential pasts and topological pasts containing a spacelike pair. In the current reading, sequential motifs correspond to asymptotically propagating sectors while topological motifs correspond to confined sectors.
+
+\section{Why There Are Three Non-Gravitational Force Channels}
+In the 4D BDG action there are four integer-valued local depth channels. One linear combination is already consumed by the gravitational curvature score. This leaves three independent non-gravitational channels. The natural structural interpretation is that the three non-gravitational interactions of the Standard Model correspond to the three remaining independent BDG combinations.
+
+At the level of this paper, the claim should be stated carefully. What is structurally secure is the counting statement: 4D gives exactly three non-gravitational degrees of freedom after the curvature combination is fixed. The exact mapping of these channels to $U(1)$, $SU(2)$, and $SU(3)$ belongs to the interpretation layer, though it is tightly constrained by the sign and depth structure.
+
+\section{Charge, Color, and Handedness}
+The three channels admit the following reading.
+
+\subsection{Depth-1 channel and electromagnetic charge}
+The first channel is naturally tied to immediate predecessor structure and, in the current interpretation, to signed one-step winding. This yields quantization in units compatible with the familiar $e/3$ pattern once three spatial directions are taken into account.
+
+\subsection{Depth-2 channel and color}
+The second channel measures medium-range branching structure. In the present reading, it supplies the triplet-like color bookkeeping whose local balance under the LLC yields confinement constraints.
+
+\subsection{Depth-3/4 channel and weak handedness}
+The deeper channel records longer-range directed structure and, in the current interpretation, supports the handed weak sector. The arrow of time is built into the graph, so maximal parity violation is not treated as a statistical preference but as a structural asymmetry in admissible causal winding.
+
+\section{Force Differentiation from Depth Weighting}
+A major April 10 result was that the BDG depth structure naturally differentiates interactions even before importing continuum renormalization language. The effective weight associated with depth channel $k$ is naturally modelled as
+\begin{equation}
+W_k(\mu)=\frac{\mu^k}{k!}\, |c_k|,
+\end{equation}
+where $\mu$ is the local actualization-density parameter and $c_k$ are the BDG coefficients.
+
+At Planck-density scale $\mu\sim 1$, the channels are all order unity. At lower densities, factorial suppression differentiates them. This suggests a simple structural slogan: \emph{forces are depth-channel transition statistics.}
+
+This does not yet amount to a complete beta-function derivation. What it does provide is a native discrete mechanism by which a unified high-density interaction budget can split into differentiated low-density interaction sectors.
+
+\section{From Topology to Full Motif State}
+Topology class alone does not determine persistence. The April 10--11 analysis showed that motifs with the same $(N,L)$ profile can have wildly different effective lifetimes. The remedy is to treat the full motif state as
+\begin{equation}
+M=(T,N,C,\sigma),
+\end{equation}
+where:
+\begin{itemize}
+    \item $T$ is topology class,
+    \item $N$ is the BDG depth-count vector,
+    \item $C$ is the confinement or renewal character,
+    \item $\sigma$ is the internal channel-accessibility label structure.
+\end{itemize}
+
+The new point is that $\sigma$ is not optional bookkeeping. It is part of motif identity. It encodes which transition channels are accessible, blocked, or forced into multi-step paths.
+
+\section{Renewal, Dressing, Excitation, Conversion, Disruption}
+To describe persistence and decay natively, we distinguish five local outcomes for a candidate update applied to a motif.
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Renewal:} the motif reproduces its identity.
+    \item \textbf{Dressing:} the motif persists with reversible local elaboration.
+    \item \textbf{Excitation:} the motif remains in the same family but at higher effective internal cost.
+    \item \textbf{Conversion:} the motif transitions into another stable identity class.
+    \item \textbf{Disruption:} the motif exits its identity class.
+\end{enumerate}
+
+Lifetime is then a first-exit problem from the identity class. The natural factorization is
+\begin{equation}
+P_k(M\to M')=\Sigma_k(M)\, A_k(M)\, G_k(\mu)\, B_k(M\to M'),
+\end{equation}
+where $\Sigma_k$ is the $\sigma$-filter, $A_k$ the topology accessibility factor, $G_k$ the depth-channel growth weight, and $B_k$ the branching kernel.
+
+\section{The $\sigma$-Filter Hierarchy}
+The April 11 computations showed that a clean empirical hierarchy appears once $\sigma$-filters are included. The effective suppression classes are:
+\begin{center}
+\begin{tabular}{p{0.16\textwidth} p{0.22\textwidth} p{0.30\textwidth}}
+Class & Typical $\Sigma_{\mathrm{eff}}$ & Interpretation\\
+Direct & $\sim 1$ & single-step direct exit available\\
+Flavor & $\sim 0.3$--$0.4$ & flavor rearrangement cost\\
+G-parity & $\sim 0.06$--$0.1$ & two-body exit blocked, multi-step path forced\\
+Topology/OZI & $\sim 0$ at one step & no single-step exit channel available\\
+\end{tabular}
+\end{center}
+
+The canonical test case is the $\rho$/$\omega$ pair. They have nearly the same mass and the same basic BDG profile, yet their lifetimes differ substantially. In the RA-native reading, this is not evidence that topology failed. It is evidence that topology alone was not the full state descriptor. The difference lies in $\sigma$: one motif has a direct exit path, the other a filtered multi-step route.
+
+\section{OZI Suppression as Topology-Space Inaccessibility}
+One of the sharpest structural results of the recent computation is the reinterpretation of OZI suppression. Certain motifs, such as the $\phi$-like profile, appear disruption-proof at single-step level: every local depth insertion renews or dresses rather than exits. In RA language, OZI suppression is topology-space inaccessibility of single-step disruption channels.
+
+That is an important conceptual shift. A selection rule is not a prohibition imposed from outside. It is a statement about which paths through motif space exist.
+
+\section{Mass, Lifetime, and Actualization Rate}
+In the motif picture, energy is actualization rate and lifetime is expected time to first exit from a persistence class. These claims fit naturally together. A motif with a high maintenance rate but no easy exit channels can be both energetic and long-lived; a motif with modest maintenance cost but an accessible deep exit channel can be short-lived.
+
+The immediate moral is that mass and lifetime are distinct invariants of motif persistence, not one-parameter consequences of a single stability score.
+
+\section{Toward Gauge Structure from Potentia Geometry}
+The recent work on Berry phase and the geometry of potentia suggests a further unification: the same $\sigma$-sector structure that filters decay channels may also organize the continuation bundle over changing boundary conditions. In that reading, gauge structure, selection rules, and renewal structure are three views of the same internal sector geometry.
+
+In this paper that programme is stated, not completed. The prudent status is: a well-posed structural bridge from motif-state $\sigma$ sectors to gauge fiber structure.
+
+\section{What Paper II Establishes}
+This second paper establishes the matter/force bridge in the three-paper suite.
+\begin{enumerate}[label=\arabic*.]
+    \item Particles are persistent self-reproducing motifs, not enduring substances.
+    \item The 4D BDG local structure yields a five-class motif taxonomy with a sequential/topological division matching the asymptotic/confined split.
+    \item The three non-gravitational force channels arise naturally from the 4D depth structure once the curvature combination is fixed.
+    \item Force differentiation admits an RA-native depth-weighting account.
+    \item Persistence and decay require the full motif state $M=(T,N,C,\sigma)$.
+    \item Selection rules and lifetime hierarchies are naturally reinterpreted as topology-space accessibility constraints.
+\end{enumerate}
+
+\section{Conclusion}
+The deepest lesson of Paper II is that particle identity in RA is richer than topology class and more dynamic than a point-particle ontology can easily express. A particle is a renewable motif. A force is a depth-channel transition statistic. A selection rule is a statement about accessible routes through motif space. Longevity is not mysterious stability but filtered exit.
+
+This prepares the final paper. Once motifs, filters, and persistence classes are in place, gravity, cosmology, and complexity can be treated on the same footing: as large-scale consequences of graph growth and the channel structure of persistence.
+
+\begin{thebibliography}{99}
+\bibitem{BD2010} D. M. T. Benincasa and F. Dowker, ``The scalar curvature of a causal set,'' \emph{Physical Review Letters} \textbf{104} (2010), 181301.
+\bibitem{Dowker2013} F. Dowker, ``Introduction to causal sets and their phenomenology,'' \emph{General Relativity and Gravitation} \textbf{45} (2013), 1651--1667.
+\bibitem{GellMann} M. Gell-Mann, ``A schematic model of baryons and mesons,'' \emph{Physics Letters} \textbf{8} (1964), 214--215.
+\bibitem{SandemanRASM} J. F. Sandeman, ``Relational Actualism and the Standard Model,'' preprint, 2026.
+\bibitem{SandemanRATM} J. F. Sandeman, ``Relational Actualism: The Topology of Matter,'' preprint, 2026.
+\bibitem{SandemanRAEB} J. F. Sandeman, ``Relational Actualism: The Engine of Becoming,'' preprint, 2026.
+\bibitem{SandemanRAQM} J. F. Sandeman, ``The Relational Universe: Interaction and the Transition of the Possible to the Actual,'' preprint, 2026.
+\bibitem{SandemanBerry} J. F. Sandeman, ``RA-native notes on Berry phase and the geometry of potentia,'' working notes, 2026.
+\end{thebibliography}
+
+\end{document}

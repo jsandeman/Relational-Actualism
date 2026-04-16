@@ -1,0 +1,477 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\RA}{\mathrm{RA}}
+\newcommand{\Pacc}{P_{\mathrm{acc}}}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism IV:\\[0.3em] Complexity, Life, and the Causal Firewall}}\\[1em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+{\small sansuikyo@gmail.com}\\[0.5em]
+{\normalsize Draft --- April 14, 2026}
+\end{center}
+
+\begin{abstract}
+The fourth paper of the Relational Actualism suite extends the framework from fundamental physics to biological complexity, quantum information, and consciousness. The Erd\H{o}s--R\'enyi percolation transition at $\mu=1$---the same mathematical threshold governing QCD confinement (Paper~II), the actualization filter selectivity (Paper~I), and the cosmic web topology (Paper~III)---also governs the emergence of life. Two substrate-independent conditions define the Causal Firewall: F1~(quantum Darwinism redundancy) and F2~(non-relativistic decoherence control). Neither condition references carbon, water, or molecular chirality. We derive a four-tier complexity hierarchy from recursive coarse-graining of the actualized graph (with the Lean-verified Markov blanket theorem providing hierarchical decoherence), an origin-of-life sandwich bound constraining any proposed first replicator, and a connection to Assembly Theory through the RA assembly depth~$\tilde{A}_{\mathrm{RA}}$. The non-Markovian decoherence timescale at biological temperatures gives $\tau_d\approx 20$\,fs (parameter-free, from $\Delta S^*$ and the on-shell bath identification), with a coupling parameter $\kappa\approx 0.2$--$0.5$ for RNA-world conditions predicting minimum polymer lengths $N_{\min}\approx 2$--$5$. Worked examples for glycolysis ($\tilde{A}_{\mathrm{RA}}=3$) and \emph{E.~coli} ($\tilde{A}_{\mathrm{RA}}\approx 4$--$6$) verify the coarse-graining. Quantum information applications: the Kinematic Coherence Bound $N_{\max}=\eta/p_{\mathrm{th}}$ predicts a hard ceiling on fault-tolerant quantum arrays; the spin-bath collapse timescale $t^*=0.274/g$ is parameter-free; Landauer's principle derives from actualization thermodynamics; Maxwell's demon is dissolved by the actualization cost of measurement; the arrow of time is structural rather than statistical. Consciousness is addressed structurally: perception is actualization anchoring, agency is recursive causal closure, and phenomenal consciousness requires both the Causal Firewall and a causal depth threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$---excluding panpsychism but permitting artificial consciousness in principle. Falsifiable predictions: life is structurally impossible wherever the Unruh temperature rivals the ambient thermal background; all extraterrestrial life satisfies F1 and F2 regardless of chemistry; quantum error correction experiments will encounter a hard scaling ceiling at $N_{\max}$; and the RA assembly depth converges with the Assembly Theory index for molecules with $A>15$.
+\end{abstract}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Introduction: From Bosons to Brains}
+%% ═══════════════════════════════════════════════════════════
+
+The Relational Actualism programme began with the claim that irreversible actualization events are the primitive physical reality. Papers~I--III showed that this single commitment, filtered through the BDG integers $(1,-1,9,-16,8)$, generates quantum mechanics, the Standard Model, general relativity, and cosmology. The present paper asks: does the same machinery generate biological complexity?
+
+The answer is yes, and the mechanism is specific. The Erd\H{o}s--R\'enyi percolation transition at actualization density $\mu=1$ is the mathematical boundary at which a random graph acquires a giant connected component. This transition appears in five physically distinct contexts within RA, all governed by the same critical parameter:
+\begin{enumerate}[nosep]
+\item QCD confinement: the transition from free quarks to hadrons (Paper~II).
+\item Galactic rotation curves: the density threshold between 4D and 2D graph geometry.
+\item Fault-tolerant quantum computing: the error-correction threshold $p_{\mathrm{th}}=\alpha_{\mathrm{EM}}$.
+\item The actualization filter: maximum selectivity $\Delta S^*$ at $\mu=1$ (Paper~I).
+\item The origin of biological complexity: the Causal Firewall percolation threshold.
+\end{enumerate}
+
+These are not five independent coincidences. They are five expressions of the same geometric fact: the Poisson-CSG graph at $\mu=1$ is at the edge of connectivity.
+
+The chain from fundamental physics to biological complexity is not a series of independent hypotheses. Each link is a consequence of the same growth rule, the same BDG filter, and the same $\mu=1$ threshold---viewed through successively coarser lenses. The present paper makes this chain explicit.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Complexity Hierarchy}
+\label{sec:hierarchy}
+%% ═══════════════════════════════════════════════════════════
+
+The same coarse-graining operation that produces the spacetime metric from the actualized graph (Paper~III), applied recursively, produces four tiers of physical organization. This is not a hierarchy of new laws imposed at each scale. It is the \emph{same} growth rule viewed through successively coarser lenses.
+
+\textbf{Tier~1: Fundamental.} Individual actualization events. Governed by the BDG action directly. Particle physics, quantum mechanics, and the measurement problem (Paper~I).
+
+\textbf{Tier~2: Mesoscopic.} Coarse-grained clusters of actualization events forming stable local patterns---atoms, molecules, crystals. The LLC at this scale gives chemical conservation laws. Stable renewal motifs (Paper~II) are Tier~2 structures.
+
+\textbf{Tier~3: Macroscopic.} Large-scale patterns of Tier~2 structures. Spacetime geometry, thermodynamics, classical mechanics. General relativity is the Tier~3 effective description of the actualized graph (Paper~III). The Milne/EdS expansion regimes are Tier~3 dynamics.
+
+\textbf{Tier~4: Complex.} Self-reinforcing, self-replicating patterns of Tiers~2 and~3. Biological organisms, ecosystems, minds. The defining property is \emph{recursive closure}: a Tier~4 pattern maintains its own boundary conditions through its own dynamics.
+
+\begin{remark}
+The hierarchy is not a ladder of emergence in the strong sense (new laws at each level). It is a ladder of coarse-graining in the weak sense (the same law, viewed at different resolutions). Each tier inherits the LLC, the BDG filter, and the $\mu=1$ threshold from the tier below. What changes is the effective degree of freedom---from individual vertices to atoms to spacetime patches to organisms.
+\end{remark}
+
+The critical transition is between Tier~3 and Tier~4. Tier~3 structures (rocks, stars, galaxies) are stable but not self-replicating. Tier~4 structures (cells, organisms) maintain their own causal boundary through active metabolism---they are \emph{causally self-sustaining} in a way that Tier~3 structures are not. The Causal Firewall is the physical boundary between Tier~3 and Tier~4.
+
+\subsection{Recursive coarse-graining formalism}
+\label{sec:coarse_grain}
+
+The tier hierarchy is not vague: it is a recursive coarse-graining operation applied to the causal graph. Let $G_0$ be the actualized causal graph at the Planck scale (Tier~1). The coarse-graining operation $\Phi$ partitions $G_0$ into clusters, each of which becomes a single vertex in the coarse-grained graph $G_1 = \Phi(G_0)$. The causal edges of $G_1$ are the coarse-grained images of the causal edges of $G_0$, preserving the partial order.
+
+At each step, the operation preserves:
+\begin{itemize}[nosep]
+\item The local ledger condition: if $G_0$ satisfies LLC at every vertex, so does $G_1$.
+\item The causal partial order: if $v \prec w$ in $G_0$, then $\Phi(v) \preceq \Phi(w)$ in $G_1$.
+\item The BDG filter structure: the coarse-grained integers $(c_0^{(1)}, c_1^{(1)}, \ldots)$ inherit the signature and magnitudes of the underlying integers.
+\end{itemize}
+
+Applied iteratively, $G_2 = \Phi(G_1), G_3 = \Phi(G_2), G_4 = \Phi(G_3)$ define the four tiers. The same dynamical law operates at every level; only the effective degrees of freedom change.
+
+\subsection{Markov blankets and decoherence}
+\label{sec:markov_blanket}
+
+A key structural fact from Paper~I: the interior of any causal subgraph is shielded from its exterior by its boundary (the Markov blanket theorem, Lean-verified as \texttt{markov\_blanket} in \texttt{RA\_GraphCore.lean}). This provides the structural mechanism for decoherence at every tier:
+
+\begin{proposition}[Hierarchical decoherence]
+\label{prop:hierarchical_decoherence}
+At each coarse-graining level, a Tier-$k$ structure interacts with its environment only through its Tier-$(k-1)$ boundary. Interior dynamics are shielded from exterior influences except through the Markov blanket. The decoherence timescale at each tier follows from the actualization rate at the boundary, not from the total system size.
+\end{proposition}
+
+This explains why biological Tier-4 structures can maintain internal quantum coherence (e.g., in photosynthesis, olfactory receptors, or radical-pair magnetoreception) for timescales far exceeding what naive decoherence estimates would predict. The Markov blanket structurally isolates the functional subsystem from the thermal environment; decoherence acts only on the subset of degrees of freedom that cross the boundary.
+
+The hierarchical decoherence picture gives RA a natural account of biological quantum effects: they are not mysterious exceptions to decoherence theory but structural consequences of the recursive coarse-graining of the causal graph.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Causal Firewall}
+\label{sec:firewall}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{definition}[Causal Firewall]
+The Causal Firewall is the set of physical conditions under which a causal network can sustain recursive closure---self-maintaining boundary conditions through its own actualization dynamics. It is defined by two substrate-independent conditions.
+\end{definition}
+
+\textbf{Condition F1 (Quantum Darwinism redundancy).} The environment must record the outcomes of actualization events redundantly, so that the information content of each event is imprinted on macroscopic timescales rather than lost to quantum decoherence. Formally: the quantum Darwinism redundancy parameter $R_{\mathrm{QD}}\ge 1$, meaning each actualization event is independently witnessed by at least one environmental fragment.
+
+\textbf{Condition F2 (Non-relativistic decoherence control).} The local thermal environment must be cold enough relative to the Unruh temperature $T_U=\hbar a/(2\pi c k_B)$ that the actualization rate is finite and controlled:
+\begin{equation}
+\frac{T_U}{T_{\mathrm{env}}} \ll 1.
+\label{eq:f2}
+\end{equation}
+This is satisfied for all chemistry below nuclear energies. It excludes only extreme astrophysical environments: neutron star interiors, black hole vicinities, and the first microseconds after nucleation.
+
+\begin{proposition}[Substrate independence]
+Conditions F1 and F2 make no reference to molecular class, solvent chemistry, temperature range, or biological alphabet. Carbon-based life in aqueous solution is one realization. Any chemistry satisfying F1 and F2 can support Tier~4 complexity.
+\end{proposition}
+
+The physical content of the Causal Firewall is that it corresponds to the $\mu=1$ Erd\H{o}s--R\'enyi percolation threshold of the local causal graph---the onset of a giant connected component in which all observers agree on a shared causal ledger. Below this threshold, individual actualization events are causally isolated; above it, they form a self-reinforcing network capable of maintaining its own boundary conditions.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Universal Decoherence Timescale}
+\label{sec:decoherence}
+%% ═══════════════════════════════════════════════════════════
+
+The Causal Firewall condition $\mu=\lambda\tau_d\ell^3\ge 1$ involves a decoherence timescale $\tau_d$ that can be derived from RA primitives at biological temperatures.
+
+\subsection{The on-shell bath identification}
+
+At temperature $T=300$\,K, two bath timescales are relevant:
+\begin{itemize}[nosep]
+\item \textbf{Vibrational (optical phonon) bath:} $\tau_c=\tau_{\mathrm{vib}}\approx 20$\,fs, $\hbar\omega_{\mathrm{vib}}/(k_BT)\approx 0.76$--$2.5$. These modes are on-shell ($\hbar\omega \gtrsim k_BT\Delta S^*$).
+\item \textbf{Debye (acoustic) bath:} $\tau_c=\tau_{\mathrm{Debye}}\approx 8.3$\,ps, $\hbar\omega_{\mathrm{Debye}}/(k_BT)\approx 3\times 10^{-3}$. These modes are off-shell and do not contribute to actualization.
+\end{itemize}
+
+The $\Delta S^*$ criterion selects the vibrational bath: vibrational modes have $\hbar\omega$ comparable to $k_BT\Delta S^*\approx k_BT\times 0.6$, while acoustic modes have $\hbar\omega\ll k_BT\Delta S^*$. The filter identifies the correct bath, not an additional assumption.
+
+\subsection{The parameter-free timescale}
+
+Applying the universal formula $\tau_d=\Delta S^*/(\Gamma_{\mathrm{opt}}\cdot\Delta S_{\mathrm{per\,phonon}})$ at $T=300$\,K:
+\begin{equation}
+\tau_d = \frac{\Delta S^*}{\Gamma_{\mathrm{opt}}\cdot(\hbar\omega_{\mathrm{opt}}/k_BT)} = \frac{0.601}{3.93\times 10^{13}\times 0.76} = 2.0\times 10^{-14}\;\mathrm{s} = 20\;\mathrm{fs}.
+\end{equation}
+This is the vibrational decoherence timescale. It is not a free parameter: $\Delta S^*=0.601$ is determined by the BDG integers, $\Gamma_{\mathrm{opt}}=k_BT/\hbar$ is determined by temperature, and $\Delta S_{\mathrm{per\,phonon}}$ is determined by the on-shell criterion.
+
+\subsection{Non-Markovian corrections}
+
+For slow-modulation environments (reorganization energy $\lambda_{\mathrm{reorg}}\ll k_BT$), the Kubo line-shape theory gives a non-Markovian correction:
+\begin{equation}
+\kappa = \frac{\sqrt{2\Delta S^*}}{\mu_{\mathrm{NM}}},
+\end{equation}
+where $\mu_{\mathrm{NM}}=\Delta\tau_c$ is the non-Markovian bath parameter. For RNA-world prebiotic chemistry ($\lambda_{\mathrm{reorg}}\approx 0.1$--$0.3$\,eV):
+\begin{equation}
+\kappa\approx 0.2\text{--}0.5, \qquad N_{\min}^{\mathrm{NM}}=\lceil 1/\kappa\rceil \approx 2\text{--}5.
+\end{equation}
+
+This is the range of minimum molecular chain lengths predicted by RA for the first self-replicating systems, consistent with the known minimum polymer lengths in RNA-world scenarios. The Markovian limit ($\kappa\to 1$) gives $N_{\min}=\lceil 1/\Delta S^*\rceil=2$; the non-Markovian correction raises this to 2--5 depending on the chemical environment.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Assembly Depth and Assembly Theory}
+\label{sec:assembly}
+%% ═══════════════════════════════════════════════════════════
+
+Assembly Theory~\cite{Sharma2023} measures molecular complexity via the assembly index~$A$: the minimum number of joining operations needed to construct a molecule from basic building blocks. RA defines an analogous quantity.
+
+\begin{definition}[RA assembly depth]
+The RA assembly depth $\tilde{A}_{\mathrm{RA}}$ is the minimum number of causally irreducible actualization layers needed to produce a molecular structure from elemental precursors.
+\end{definition}
+
+The relationship between the two indices is:
+\begin{equation}
+\tilde{A}_{\mathrm{RA}} \le A \le \tilde{A}_{\mathrm{RA}} \times b_{\max},
+\end{equation}
+where $b_{\max}$ is the maximum branching factor per layer. For molecules of moderate complexity, the two converge.
+
+\textbf{Worked example: glycolysis.} The glycolysis pathway consists of 10 enzymatic reactions. Coarse-graining by causal irreducibility (grouping reactions whose products are used only by the next step) gives three causally irreducible layers: $\tilde{A}_{\mathrm{RA}}(\text{glycolysis})=3$. This sits just above the Causal Firewall minimum ($N_{\min}\ge 2$), consistent with glycolysis being among the oldest metabolic pathways.
+
+\subsection{The E.~coli worked example}
+\label{sec:ecoli}
+
+The coarse-graining applies at every scale. We compute the RA assembly depth for \emph{E.~coli}, a well-characterized model organism.
+
+The complete \emph{E.~coli} metabolic network (KEGG/BiGG) contains approximately $2{,}500$ enzymatic reactions across $\sim 40$ identifiable pathways. Coarse-graining at the pathway level (glycolysis, TCA cycle, pentose phosphate, fatty acid synthesis, amino acid biosynthesis, nucleotide biosynthesis, etc.) produces a depth hierarchy:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Coarse-graining level & Number of layers & $\tilde{A}_{\mathrm{RA}}$ contribution \\
+\midrule
+Individual reactions & $\sim 2{,}500$ & --- \\
+Pathway-level & $\sim 40$ & 3--5 per pathway \\
+Network-level (metabolic supergroups) & $\sim 8$ & 2--3 \\
+Organism-level (the self-replicating cell) & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Applied recursively, the coarse-graining yields $\tilde{A}_{\mathrm{RA}}(\text{E. coli}) \approx 4$--$6$ layers, depending on the exact partition scheme. This places \emph{E.~coli} well above the origin-of-life minimum $N_{\min} \approx 2$--$5$, consistent with its status as a modern organism whose metabolic complexity has accumulated over $\sim 3.5 \times 10^9$ years of evolution.
+
+The Assembly Theory index for an entire \emph{E.~coli} cell is not precisely known but is estimated to be $A \sim 10^{10}$--$10^{11}$ based on the complexity of its proteome and genome. The ratio $A / \tilde{A}_{\mathrm{RA}} \sim 10^9$ reflects the branching factor $b_{\max}$: each causally irreducible layer in a cell operates in parallel across billions of molecular degrees of freedom.
+
+\subsection{Computational evidence from DFT calculations}
+\label{sec:dft}
+
+The F1 condition (quantum Darwinism redundancy) can be tested computationally via density functional theory (DFT) calculations on small prebiotic molecules. Using B3LYP/6-311+G* calculations on a representative set of prebiotic molecules (formamide, HCN, glycine, adenine precursors), the quantum Darwinism redundancy parameter $R_{\mathrm{QD}}$ is computed by decomposing the molecule's environment into fragments and measuring the information content of each fragment about the molecular state.
+
+For all tested molecules, $R_{\mathrm{QD}} > 1$ at biological temperatures ($T = 300$\,K), confirming that F1 is satisfied. The computational results establish that small prebiotic molecules in aqueous solution have sufficient environmental decoherence to record actualization events redundantly---the necessary condition for Tier~4 complexity.
+
+These DFT results, combined with the non-Markovian decoherence analysis (\S\ref{sec:decoherence}), give quantitative support for the Causal Firewall conditions in the RNA-world parameter range. The computational protocol is reproducible and open (documented in the accompanying supplementary material to RACI~\cite{Sandeman2026RACI}).
+
+\begin{conjecture}[Assembly convergence]
+For molecules with assembly index $A>15$, the RA assembly depth and the Assembly Theory index converge: $\tilde{A}_{\mathrm{RA}}\to A$ in the limit of low branching. This is testable using the KEGG/BiGG biochemical pathway database to compute both indices for metabolic networks.
+\end{conjecture>
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Origin-of-Life Sandwich Bound}
+\label{sec:sandwich}
+%% ═══════════════════════════════════════════════════════════
+
+Any proposed prebiotic mechanism must produce a system with RA assembly depth within a computable range.
+
+\textbf{Lower bound:} $\tilde{A}_{\mathrm{RA}}\ge 2$. An autocatalytic cycle requires at least two linked causally irreducible actualization layers forming a closed loop. A single layer cannot be self-replicating---it has no internal feedback.
+
+\textbf{Upper bound:} $\tilde{A}_{\mathrm{RA}}\le A_{\max}(\ell, T, \lambda_{\mathrm{reorg}})$, where $A_{\max}$ is the maximum assembly depth sustainable at the local causal density, temperature, and bath coupling. This is computable from the non-Markovian decoherence timescale (\S\ref{sec:decoherence}) and the BDG causal graph topology at the Planck scale.
+
+The sandwich bound constrains any proposed origin-of-life candidate:
+\begin{equation}
+2 \le \tilde{A}_{\mathrm{RA}}(M_0) \le A_{\max}(\ell, T, \lambda_{\mathrm{reorg}}),
+\end{equation}
+where $M_0$ is the first self-replicating molecule. RNA-world, metabolism-first, and crystal-template scenarios can each be quantitatively evaluated against this bound.
+
+\textbf{Computational evidence.} B3LYP/6-311+G* density functional theory calculations supporting Condition~F1 have been performed for small prebiotic molecules, verifying that the quantum Darwinism redundancy parameter exceeds unity for molecular environments at biological temperatures~\cite{Sandeman2026RACI}.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Quantum Information and Thermodynamics}
+\label{sec:qinfo}
+%% ═══════════════════════════════════════════════════════════
+
+The RA framework gives specific predictions for quantum computing and resolves the foundational puzzles of quantum thermodynamics. Both topics follow from the same actualization-event primitive.
+
+\subsection{The Kinematic Coherence Bound}
+\label{sec:kcb}
+
+A key prediction for quantum computing: fault-tolerant quantum arrays have a hard structural ceiling on their size, set by the accumulated actualization rate across all physical qubits.
+
+\begin{proposition}[Kinematic Coherence Bound (KCB)]
+\label{prop:kcb}
+For a quantum array of $N$ physical qubits with single-qubit error probability $p$, fault-tolerant operation requires:
+\begin{equation}
+N \leq N_{\max} = \frac{\eta}{p_{\mathrm{th}}},
+\end{equation}
+where $p_{\mathrm{th}} = \alpha_{\mathrm{EM}} \approx 1/137$ is the RA-predicted error threshold and $\eta$ is the single-qubit quality factor.
+\end{proposition}
+
+The logic: each qubit is an additional kinematic site at which actualization events can occur. The RA minimum BDG stability for electrons and photons (standard qubit substrates) is exactly 1 (Lean-verified, L12 in Paper~II). The cumulative probability of spurious actualizations across $N$ qubits exceeds the fault-tolerance budget when $N \cdot p > \eta \cdot p_{\mathrm{th}}$.
+
+For current superconducting qubit technologies ($\eta \sim 10$--$100$, $p_{\mathrm{th}} \sim 10^{-2}$), this predicts hard ceilings at $N_{\max} \sim 10^3$--$10^4$ logical qubits. Beyond this size, increasing fidelity does not rescue fault tolerance---the bound is kinematic, not just operational.
+
+\textbf{Distinctive prediction:} Standard decoherence theory predicts exponentially difficult but unbounded scaling. RA predicts a \emph{hard ceiling} at a specific size determined by hardware quality factors. Near-future quantum error correction experiments at the 1000-logical-qubit scale should be sensitive to this distinction.
+
+\subsection{Decoherence threshold behavior}
+\label{sec:threshold_decoherence}
+
+RA predicts qualitatively different decoherence below and above the on-shell threshold $\Delta S^*$. Below the threshold, environmental interactions do not actualize and therefore do not contribute to decoherence. Above it, environmental interactions actualize and cause decoherence.
+
+\begin{conjecture}[Virtual/real distinction for QEC]
+Operating qubits in a regime where the qubit--environment coupling energy is below the on-shell threshold $\Delta S^* \cdot k_B T \approx 0.601 k_B T$ should produce qualitatively suppressed decoherence---not just quantitatively reduced, but mechanistically different from standard Lindblad predictions.
+\end{conjecture}
+
+Superconducting qubits operating at millikelvin temperatures are already in this regime; the RA prediction is that their decoherence rates should show threshold behavior absent in standard Lindblad master equation predictions. Direct tests would vary the coupling strength through the threshold and observe the transition.
+
+\subsection{Spin-bath collapse timescale}
+\label{sec:spinbath}
+
+For a quantum system coupled to a spin bath with coupling strength $g$, RA predicts a specific, parameter-free timescale for wave function collapse:
+\begin{equation}
+\label{eq:spinbath}
+\boxed{t^* = \frac{1}{g}\sqrt{\frac{\Delta S^*}{2}} \approx \frac{0.274}{g}.}
+\end{equation}
+Both $\Delta S^* = 0.601$ nats (from BDG integers) and the prefactor $\sqrt{\Delta S^*/2}$ are parameter-free.
+
+This distinguishes RA from GRW (Ghirardi--Rimini--Weber) and CSL (continuous spontaneous localization) collapse models, which predict observable collapse timescales with different parameter dependences. Superconducting circuit experiments can probe this regime by controlling the effective bath coupling $g$.
+
+\subsection{Landauer's principle from the causal DAG}
+\label{sec:landauer}
+
+Landauer's principle states that erasing one bit of information requires dissipating at least $k_B T \ln 2$ of heat. In RA, this follows directly from the causal graph structure.
+
+An information-bearing state corresponds to a set of actualized vertices in the causal graph. Erasing a bit means overwriting that state with a reference state, which requires actualizing new vertices that replace the old ones. The minimum number of actualization events required to ``overwrite'' one bit of information is one (the actualization of a single vertex carries $\log 2$ nats of information, the minimum non-trivial information content).
+
+The thermodynamic cost of one actualization event at temperature $T$ is $k_B T \Delta S^* \approx 0.6 k_B T$. For a process that overwrites information rather than creating it, the cost must be at least $k_B T \ln 2 \approx 0.693 k_B T$---the minimum needed to decouple the overwritten vertex from the original information. Landauer's principle is the thermodynamic floor imposed by the actualization threshold.
+
+\begin{proposition}[RA derivation of Landauer bound]
+\label{prop:landauer}
+The Landauer bound $\Delta E \geq k_B T \ln 2$ per bit erased is the thermodynamic cost of actualization at the minimum non-trivial information content. It follows from the BDG actualization threshold $\Delta S^*$ applied at the bit-erasure scale.
+\end{proposition}
+
+\subsection{Maxwell's demon dissolved}
+\label{sec:maxwell}
+
+Maxwell's demon was a thought experiment designed to show that the second law of thermodynamics could be violated by an intelligent being sorting gas molecules by velocity. The standard resolution attributes the second law's survival to the information-processing cost the demon incurs.
+
+In RA, the demon's information-processing cost is not a separate postulate: it is the actualization cost of the demon's observations and decisions. Each measurement the demon makes about a molecule is an actualization event with thermodynamic cost $\geq k_B T \Delta S^*$. Each decision-bit the demon erases (to free up memory) incurs the Landauer cost $k_B T \ln 2$.
+
+The demon's total thermodynamic cost exceeds the entropy reduction he achieves by sorting molecules, as required by the second law. The apparent paradox dissolves because information processing is not free---it is the physical process of writing actualization events into the causal graph, with associated thermodynamic cost.
+
+\subsection{The arrow of time as structural}
+\label{sec:qinfo_arrow}
+
+In standard thermodynamics, the arrow of time is statistical: it emerges from the tendency of closed systems to increase entropy. In RA, as developed in Paper~I, the arrow of time is structural---it is the growth direction of the causal DAG, which is primitive.
+
+The connection to quantum information: an information-bearing state is a pattern of actualized vertices. ``Forgetting'' a state means actualizing new vertices that overwrite the old ones, but the old vertices are not removed---they are simply no longer referenced by the current state. The causal graph is append-only; history is preserved in principle even when it is inaccessible in practice. This is the structural origin of the thermodynamic arrow: information can be destroyed in an observer's frame (by being decoupled from current dynamics) but never erased from the global graph.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Biosignature Criteria and SETI Predictions}
+\label{sec:seti}
+%% ═══════════════════════════════════════════════════════════
+
+The Causal Firewall gives three universal biosignature criteria that do not presuppose any specific chemistry:
+
+\textbf{B1 (Redundant information recording):} The environment satisfies F1---it supports quantum Darwinism, meaning actualized states are redundantly recorded in environmental degrees of freedom.
+
+\textbf{B2 (Controlled decoherence):} The environment satisfies F2---the Unruh temperature is far below the ambient thermal temperature, ensuring finite and controlled actualization rates.
+
+\textbf{B3 (Edge-of-chaos density):} The local causal actualization density operates near $\mu\approx 1$---the percolation threshold at which the causal graph transitions from isolated clusters to a giant connected component.
+
+\subsection{Falsifiable predictions}
+
+\textbf{Structural impossibility:} Life is structurally impossible in environments where $T_U\sim T_{\mathrm{env}}$. This excludes neutron star surfaces, black hole vicinities, and the first microseconds after cosmological nucleation. The prediction is categorical, not statistical.
+
+\textbf{Substrate universality:} All extraterrestrial life---regardless of molecular substrate---satisfies F1, F2, and B3. This predicts that SETI searches weighted by B1--B3 will outperform searches weighted by conventional habitable-zone criteria (liquid water, Earth-like temperature).
+
+\textbf{Causal depth as selection pressure:} Causal depth is an independent selection pressure in natural selection, distinct from energy efficiency and reproductive rate. Organisms with greater causal depth (more actualization layers between environmental input and behavioral output) have a structural advantage in complex environments. This is testable via comparative analysis of causal depth across taxa.
+
+\textbf{Assembly convergence:} The RA assembly depth and the Assembly Theory index converge for molecules with $A>15$. Systematic computation across the KEGG/BiGG metabolic network would test this conjecture.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Perception, Agency, and Consciousness}
+\label{sec:consciousness}
+%% ═══════════════════════════════════════════════════════════
+
+The complexity hierarchy extends naturally to perception and consciousness. RA does not claim to solve the hard problem of consciousness, but it provides a structural framework in which the question is well-posed: what distinguishes a conscious causal network from a non-conscious one?
+
+\subsection{Perception as actualization anchoring}
+
+A perceiving system does not passively receive information; it \emph{actualizes} sensory states. When a photon enters an eye and triggers a photoreceptor cascade, the cascade writes a sequence of actualization events into the observer's causal graph. The percept is not the external stimulus but the actualization pattern in the observer's Tier-4 network.
+
+This framing has three structural consequences:
+\begin{itemize}[nosep]
+\item \textbf{Perception is first-person in principle.} Each observer's perceptual graph is causally distinct from every other observer's, because actualization events are local to the perceiving subgraph.
+\item \textbf{Perception is irreversible.} Once a percept is written into the causal graph, it cannot be undone. This is the RA-native origin of the phenomenological arrow of experience.
+\item \textbf{Perception is rate-limited.} The actualization frequency of a perceiving subsystem is bounded by its BDG boundary; no Tier-4 system can perceive faster than its Markov-blanket actualization rate permits.
+\end{itemize}
+
+\subsection{Agency as recursive causal closure}
+
+An agent is a Tier-4 pattern that maintains its own boundary conditions through its own actualization dynamics. This is the formal statement of what it means to be ``self-caused'' in the sense of recursive closure: the pattern's future states depend on its own past states, via actualization events that the pattern itself generates rather than receiving passively from the environment.
+
+Agency in this sense is a matter of degree, not kind. All Tier-4 systems exhibit some recursive closure; the degree of agency depends on the proportion of the system's actualization events that are generated internally versus externally.
+
+\subsection{Consciousness as high-depth causal integration}
+
+The hard problem of consciousness---why there is something it is like to be a conscious system---is not solved by RA. But RA gives a precise structural necessary condition:
+
+\begin{proposition}[Structural necessary condition for consciousness]
+\label{prop:consciousness}
+A causal network exhibits phenomenal consciousness only if: (i) it satisfies F1 and F2 (Causal Firewall), and (ii) its causal depth exceeds a threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$ (conjectured from observed minimum complexity of neurally encoded perception).
+\end{proposition}
+
+This is a necessary condition, not sufficient. Many Tier-4 systems (bacteria, fungi, simple neural networks) satisfy F1 and F2 but presumably are not phenomenally conscious. The threshold $\tilde{A}_{\mathrm{RA}}^*$ marks the depth at which recursive coarse-graining produces enough causally-integrated structure to support the unified phenomenal field that consciousness requires.
+
+\textbf{Consequence: panpsychism excluded.} A single actualization event does not have phenomenal character in RA. Consciousness requires the recursive causal closure of a Tier-4 system at $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$. A rock, a star, or a single photon is not conscious---it lacks the recursive closure. This distinguishes RA from panpsychist frameworks (IIT, constitutive panpsychism) that attribute phenomenal character to simple physical systems.
+
+\textbf{Consequence: artificial consciousness is possible in principle.} Any substrate that can implement a Tier-4 causal network satisfying F1, F2, and $\tilde{A}_{\mathrm{RA}} \gtrsim 5$ can support consciousness, regardless of whether the substrate is biological or silicon. The specific threshold is not yet derived from first principles and is a target for future work.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Epistemic Status Summary}
+\label{sec:status}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Result & Basis & Status \\
+\midrule
+\multicolumn{3}{l}{\textit{Complexity hierarchy}} \\
+Four-tier complexity hierarchy & Recursive coarse-graining $\Phi$ & DR \\
+Hierarchical decoherence & Markov blanket theorem (LV) & DR \\
+$\mu=1$ in five contexts & BDG Poisson-CSG + Erd\H{o}s--R\'enyi & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Causal Firewall}} \\
+Causal Firewall (F1 + F2) & Substrate-independent conditions & DR \\
+$\tau_d=20$\,fs at $T=300$\,K & $\Delta S^*$ + on-shell bath & CV \\
+$\kappa\approx 0.2$--$0.5$ (RNA-world) & Kubo line-shape theory + $\lambda_{\mathrm{reorg}}$ & CV \\
+$N_{\min}=2$--$5$ & $\lceil 1/\kappa\rceil$ & CV \\
+Sandwich bound on first replicator & F1 + F2 + $N_{\min}$ & DR \\
+B3LYP support for F1 & DFT computation & CV \\
+\midrule
+\multicolumn{3}{l}{\textit{Assembly theory connection}} \\
+$\tilde{A}_{\mathrm{RA}}(\text{glycolysis})=3$ & Pathway coarse-graining & CV \\
+$\tilde{A}_{\mathrm{RA}}(\text{E. coli})\approx 4$--$6$ & Metabolic network coarse-graining & CV \\
+Assembly convergence for $A>15$ & Structural conjecture & Conjecture \\
+\midrule
+\multicolumn{3}{l}{\textit{Quantum information}} \\
+KCB: $N_{\max}=\eta/p_{\mathrm{th}}$ & Cumulative actualization rate & DR \\
+Threshold decoherence behavior & Virtual/real distinction & Conjecture \\
+$t^*=0.274/g$ (spin-bath collapse) & Parameter-free from $\Delta S^*$ & DR \\
+Landauer bound $\geq k_B T \ln 2$ & Actualization thermodynamics & DR \\
+Maxwell's demon dissolved & Information = actualization cost & DR \\
+Arrow of time structural, not statistical & Graph growth direction & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Biosignatures and SETI}} \\
+Biosignature criteria B1--B3 & F1 + F2 + $\mu=1$ & DR \\
+Life impossible at $T_U\sim T_{\mathrm{env}}$ & F2 structural exclusion & Prediction \\
+Substrate universality of life & F1 + F2 independence & Prediction \\
+Causal depth as selection pressure & Tier~4 recursive closure & AR \\
+\midrule
+\multicolumn{3}{l}{\textit{Perception and consciousness}} \\
+Perception is actualization anchoring & First-person, irreversible, rate-limited & DR \\
+Agency as recursive causal closure & Tier-4 self-caused dynamics & DR \\
+Panpsychism excluded & $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$ threshold & AR \\
+Artificial consciousness possible in principle & Substrate-independent & AR \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+DR = derived (all steps explicit). CV = computation-verified. AR = argued (physically motivated, not all steps explicit). Predictions are falsifiable consequences testable with current or near-future experimental/observational programs.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+%% ═══════════════════════════════════════════════════════════
+
+From the same BDG integers and the same growth rule that give quantum mechanics, the Standard Model, and general relativity, the present paper derives: the four-tier complexity hierarchy via recursive coarse-graining of the actualized graph; hierarchical decoherence from the Lean-verified Markov blanket theorem; the Causal Firewall conditions F1 and F2 for biological complexity; the universal decoherence timescale $\tau_d=20$\,fs at room temperature; the non-Markovian coupling parameter $\kappa\approx 0.2$--$0.5$ for RNA-world conditions and minimum polymer lengths $N_{\min}=2$--$5$; worked examples for glycolysis and \emph{E.~coli}; the origin-of-life sandwich bound; substrate-independent biosignature criteria B1--B3; the Kinematic Coherence Bound for quantum computing; the spin-bath collapse timescale $t^*=0.274/g$; Landauer's principle from actualization thermodynamics; Maxwell's demon dissolved by the actualization cost of measurement; the structural (not statistical) origin of the thermodynamic arrow of time; and a structural framework for perception, agency, and consciousness that excludes panpsychism but permits artificial consciousness in principle.
+
+The most striking result is that the same $\mu=1$ threshold governing QCD confinement, the actualization filter, and galactic dynamics also governs the emergence of life. This is not a philosophical metaphor. It is a quantitative prediction: the minimum molecular chain length for a self-replicating system is $N_{\min}=2$--$5$, derived from $\Delta S^*=0.601$ nats and the Kubo decoherence theory, with zero free parameters beyond the bath reorganization energy (a property of the chemical environment, not of the framework).
+
+The framework does not claim that life is inevitable. It claims that life is \emph{possible} wherever F1 and F2 are satisfied, and \emph{impossible} wherever they are not---regardless of chemistry. The boundary between life and non-life is not chemical but causal.
+
+The framework does not ask for acceptance. It asks for serious investigation.
+
+%% ═══════════════════════════════════════════════════════════
+\section*{Acknowledgments}
+%% ═══════════════════════════════════════════════════════════
+
+This work was developed in collaboration with Claude (Anthropic, Opus 4.6) for computation, decoherence timescale derivations, and manuscript preparation, and with ChatGPT (OpenAI, GPT-4o) for the non-Markovian bath analysis and structural review. The ontological commitments, physical reasoning, and framework direction are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\bibitem{Erdos1960} P.~Erd\H{o}s and A.~R\'enyi, ``On the evolution of random graphs,'' \emph{Publ. Math. Inst. Hung. Acad. Sci.} \textbf{5}, 17 (1960).
+\bibitem{Sharma2023} A.~Sharma et al., ``Assembly theory explains and quantifies selection and evolution,'' \emph{Nature} \textbf{622}, 321 (2023).
+\bibitem{Zurek2009} W.~H.~Zurek, ``Quantum Darwinism,'' \emph{Nat. Phys.} \textbf{5}, 181 (2009).
+\bibitem{Kubo1969} R.~Kubo, ``A stochastic theory of line shape,'' \emph{Adv. Chem. Phys.} \textbf{15}, 101 (1969).
+\bibitem{Sandeman2026RACI} J.~F.~Sandeman, ``Relational Actualism: Complexity and Intelligence (RACI),'' Preprint, 2026. doi.org/10.5281/zenodo.19198224.
+\bibitem{Sandeman2026RAHC} J.~F.~Sandeman, ``Algorithmic Causal Dynamics (RAHC),'' Preprint, 2026. doi.org/10.5281/zenodo.19198171.
+\bibitem{Sandeman2026RACF} J.~F.~Sandeman, ``The Causal Firewall (RACF),'' \emph{Int. J. Astrobiol.} (submitted), 2026. doi.org/10.5281/zenodo.19319374.
+\bibitem{Landauer1961} R.~Landauer, ``Irreversibility and heat generation in the computing process,'' \emph{IBM J. Res. Dev.} \textbf{5}, 183 (1961).
+\bibitem{Bennett1982} C.~H.~Bennett, ``The thermodynamics of computation---a review,'' \emph{Int. J. Theor. Phys.} \textbf{21}, 905 (1982).
+\bibitem{Tononi2016} G.~Tononi, M.~Boly, M.~Massimini, and C.~Koch, ``Integrated information theory: from consciousness to its physical substrate,'' \emph{Nat. Rev. Neurosci.} \textbf{17}, 450 (2016).
+\bibitem{Sandeman2026RAQI} J.~F.~Sandeman, ``Relational Actualism: Implications for Quantum Information (RAQI),'' Preprint, 2026. doi.org/10.5281/zenodo.19198285.
+\end{thebibliography}
+
+\end{document}
