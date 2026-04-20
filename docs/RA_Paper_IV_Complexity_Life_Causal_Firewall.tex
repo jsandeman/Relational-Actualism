@@ -5,14 +5,84 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+% --- Robust definitions to work around mathptmx/hyperref issues ---
+\let\oldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+\newcommand{\SRa}{S_{\mathrm{RA}}}
+\newcommand{\Dkl}{D_{\mathrm{KL}}}
+\newcommand{\TV}{\mathrm{TV}}
+% --- End robust definitions ---
+
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{booktabs}
+\usepackage{tcolorbox}
 \usepackage{array}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Prevent math commands from breaking PDF metadata (bookmarks, abstract title, etc.)
+\pdfstringdefDisableCommands{%
+  \def\hbar{hbar}%
+  \def\ell{l}%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+  \def\SRa{S_RA}%
+  \def\Pacc{P_acc}%
+  \def\Dkl{D_KL}%
+  \def\TV{TV}%
+}
+
 \setstretch{1.08}
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
@@ -37,14 +107,38 @@
 \end{center}
 
 \begin{abstract}
-The fourth paper of the Relational Actualism suite extends the framework from fundamental physics to biological complexity, quantum information, and consciousness. The Erd\H{o}s--R\'enyi percolation transition at $\mu=1$---the same mathematical threshold governing QCD confinement (Paper~II), the actualization filter selectivity (Paper~I), and the cosmic web topology (Paper~III)---also governs the emergence of life. Two substrate-independent conditions define the Causal Firewall: F1~(quantum Darwinism redundancy) and F2~(non-relativistic decoherence control). Neither condition references carbon, water, or molecular chirality. We derive a four-tier complexity hierarchy from recursive coarse-graining of the actualized graph (with the Lean-verified Markov blanket theorem providing hierarchical decoherence), an origin-of-life sandwich bound constraining any proposed first replicator, and a connection to Assembly Theory through the RA assembly depth~$\tilde{A}_{\mathrm{RA}}$. The non-Markovian decoherence timescale at biological temperatures gives $\tau_d\approx 20$\,fs (parameter-free, from $\Delta S^*$ and the on-shell bath identification), with a coupling parameter $\kappa\approx 0.2$--$0.5$ for RNA-world conditions predicting minimum polymer lengths $N_{\min}\approx 2$--$5$. Worked examples for glycolysis ($\tilde{A}_{\mathrm{RA}}=3$) and \emph{E.~coli} ($\tilde{A}_{\mathrm{RA}}\approx 4$--$6$) verify the coarse-graining. Quantum information applications: the Kinematic Coherence Bound $N_{\max}=\eta/p_{\mathrm{th}}$ predicts a hard ceiling on fault-tolerant quantum arrays; the spin-bath collapse timescale $t^*=0.274/g$ is parameter-free; Landauer's principle derives from actualization thermodynamics; Maxwell's demon is dissolved by the actualization cost of measurement; the arrow of time is structural rather than statistical. Consciousness is addressed structurally: perception is actualization anchoring, agency is recursive causal closure, and phenomenal consciousness requires both the Causal Firewall and a causal depth threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$---excluding panpsychism but permitting artificial consciousness in principle. Falsifiable predictions: life is structurally impossible wherever the Unruh temperature rivals the ambient thermal background; all extraterrestrial life satisfies F1 and F2 regardless of chemistry; quantum error correction experiments will encounter a hard scaling ceiling at $N_{\max}$; and the RA assembly depth converges with the Assembly Theory index for molecules with $A>15$.
+This paper extends Relational Actualism (RA) into the domains of complexity, life, agency, and cognition. Its central aim is not to claim complete derivation of these domains, but to develop a common discrete framework in which they can be discussed using the same ontology as the rest of the RA suite: finite actual graphs, structured potentia, shielding, recursive closure, and the causal firewall. The paper contains three distinct kinds of claims, which are explicitly distinguished throughout: structural results concerning causal organization and boundary formation; empirical or observational predictions concerning life, biosignatures, and the causal firewall; and exploratory philosophical implications concerning agency, perception, and consciousness. The strongest contributions of the paper concern recursive closure, shielding, and the organizational conditions under which stable complexity can persist. Where consciousness is discussed, the paper aims at structural necessary conditions and exclusion results, not a derived sufficient-condition theory of phenomenal consciousness. The paper should therefore be read as the most exploratory member of the RA suite: a disciplined extension of the framework into complexity and life, rather than a claim of full closure on these topics.
 \end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of This Paper,colback=gray!5,colframe=gray!60]
+This is the most exploratory paper in the RA suite. Its claims fall into three categories:
+\begin{itemize}[nosep]
+    \item \textbf{Structural results} concerning causal organization, recursive closure, shielding, and boundary formation;
+    \item \textbf{Empirical predictions} concerning the causal firewall, biosignatures, and life-related observational signatures;
+    \item \textbf{Exploratory philosophical implications} concerning agency, perception, and consciousness.
+\end{itemize}
+Where consciousness is discussed, the paper aims at structural necessary conditions and exclusion results, not a derived sufficient-condition theory of phenomenal consciousness.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This paper is the most exploratory member of the Relational Actualism suite. It extends the framework into complexity, life, agency, and the causal firewall.
+\begin{itemize}[nosep]
+    \item \textbf{Assumed from Paper~I:} the ontology, axioms, finite growth rule, and actualization framework.
+    \item \textbf{Used from Paper~II where relevant:} the motif, renewal, and interaction structures required for stable complex organization.
+    \item \textbf{Used from Paper~III where relevant:} severance, shielding, boundary structure, and the macroscopic interpretation of causal organization.
+    \item \textbf{This paper contributes:} the complexity hierarchy, the causal firewall programme, and exploratory applications to life, perception, agency, and consciousness.
+\end{itemize}
+This paper should be read as a disciplined extension of the RA framework rather than as a claim of theorem-level closure on all questions concerning life or mind.
+\end{tcolorbox}
 
 %% ═══════════════════════════════════════════════════════════
 \section{Introduction: From Bosons to Brains}
 %% ═══════════════════════════════════════════════════════════
 
-The Relational Actualism programme began with the claim that irreversible actualization events are the primitive physical reality. Papers~I--III showed that this single commitment, filtered through the BDG integers $(1,-1,9,-16,8)$, generates quantum mechanics, the Standard Model, general relativity, and cosmology. The present paper asks: does the same machinery generate biological complexity?
+\paragraph{How to read this paper.}
+This paper is the most exploratory member of the RA suite. Its purpose is to extend the discrete framework of Relational Actualism into the domains of complexity, life, agency, and cognition, but it does not claim theorem-level closure across all of these topics. Three different claim types appear below and are explicitly distinguished: first, structural claims about causal organization, recursive closure, shielding, and boundary formation within the RA graph; second, empirical or observational predictions concerning life, biosignatures, and the causal firewall; and third, exploratory philosophical implications concerning agency, perception, and consciousness. In particular, where consciousness is discussed, the paper aims at structural necessary conditions and exclusion results, not a derived sufficient-condition theory of phenomenal consciousness.
+
+The Relational Actualism programme began with the claim that irreversible actualization events are the primitive physical reality. Papers~I--III develop the consequences of this commitment, filtered through the BDG integers $(1,-1,9,-16,8)$, in the domains of quantum mechanics, the Standard Model, general relativity, and cosmology. The discrete/topological core of those papers is well-supported; several continuum-bridge steps are explicitly labeled DR (derived) conditional, PI (phenomenological interpolation), or CN (conjecture), as their epistemic-status tables document. The present paper asks: does the same machinery extend to biological complexity?
 
 The answer is yes, and the mechanism is specific. The Erd\H{o}s--R\'enyi percolation transition at actualization density $\mu=1$ is the mathematical boundary at which a random graph acquires a giant connected component. This transition appears in five physically distinct contexts within RA, all governed by the same critical parameter:
 \begin{enumerate}[nosep]
@@ -55,9 +149,9 @@ The answer is yes, and the mechanism is specific. The Erd\H{o}s--R\'enyi percola
 \item The origin of biological complexity: the Causal Firewall percolation threshold.
 \end{enumerate}
 
-These are not five independent coincidences. They are five expressions of the same geometric fact: the Poisson-CSG graph at $\mu=1$ is at the edge of connectivity.
+These are not five independent coincidences. They are five proposed expressions of the same geometric fact: the Poisson-CSG graph at $\mu=1$ is at the edge of connectivity. The five contexts differ, however, in how fully each identification has been closed. Some rest on tight derivations from the BDG filter (context 4, the actualization threshold itself; context 1, QCD confinement via BDG path-weight enumeration); others rest on a continuum-bridge identification (context 2, galactic rotation curves, which inherits a Paper~III dimensional-reduction bridge); others are programme-level identifications whose physical content is still interpretive (context 3, the quantum-computing threshold, and context 5, the causal-firewall percolation identification developed in this paper). The table in \S\ref{sec:status} tracks these distinctions; the $\mu=1$ architecture should be read as a proposed unifying thread across RA, not as an equally-closed identification in all five domains.
 
-The chain from fundamental physics to biological complexity is not a series of independent hypotheses. Each link is a consequence of the same growth rule, the same BDG filter, and the same $\mu=1$ threshold---viewed through successively coarser lenses. The present paper makes this chain explicit.
+The chain from fundamental physics to biological complexity is proposed here as a unified architecture rather than a closed series of theorems. Several links are genuinely derived at the discrete layer; others are identifications under the BDG-to-metric or actualization-to-macroscopic dictionaries, still in need of tighter closure. The present paper makes the architecture explicit while documenting which links sit at which epistemic layer.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Complexity Hierarchy}
@@ -97,7 +191,7 @@ Applied iteratively, $G_2 = \Phi(G_1), G_3 = \Phi(G_2), G_4 = \Phi(G_3)$ define 
 \subsection{Markov blankets and decoherence}
 \label{sec:markov_blanket}
 
-A key structural fact from Paper~I: the interior of any causal subgraph is shielded from its exterior by its boundary (the Markov blanket theorem, Lean-verified as \texttt{markov\_blanket} in \texttt{RA\_GraphCore.lean}). This provides the structural mechanism for decoherence at every tier:
+A key structural fact from Paper~I: the interior of any causal subgraph is shielded from its exterior by its boundary. This shielding property (the Markov blanket theorem) is stated and Lean-verified at the discrete-graph level of Paper~I; the paper's Lean supplement contains the relevant theorem (\texttt{markov\_blanket}). \emph{Citation audit note:} the exact Lean file carrying this theorem is being reconfirmed against the audited Paper~I supplement following the file-attribution corrections applied to Paper~II (where \texttt{universe\_closure} and \texttt{confinement\_lengths} were found in \texttt{RA\_D1\_Proofs.lean} rather than \texttt{RA\_GraphCore.lean}). Readers should treat the theorem name as load-bearing; the file path is the current best attribution and will be corrected in the Lean supplement if needed. This shielding provides the structural mechanism for decoherence at every tier:
 
 \begin{proposition}[Hierarchical decoherence]
 \label{prop:hierarchical_decoherence}
@@ -149,7 +243,7 @@ At temperature $T=300$\,K, two bath timescales are relevant:
 
 The $\Delta S^*$ criterion selects the vibrational bath: vibrational modes have $\hbar\omega$ comparable to $k_BT\Delta S^*\approx k_BT\times 0.6$, while acoustic modes have $\hbar\omega\ll k_BT\Delta S^*$. The filter identifies the correct bath, not an additional assumption.
 
-\subsection{The parameter-free timescale}
+\subsection{The universal decoherence timescale}
 
 Applying the universal formula $\tau_d=\Delta S^*/(\Gamma_{\mathrm{opt}}\cdot\Delta S_{\mathrm{per\,phonon}})$ at $T=300$\,K:
 \begin{equation}
@@ -218,13 +312,15 @@ The Assembly Theory index for an entire \emph{E.~coli} cell is not precisely kno
 
 The F1 condition (quantum Darwinism redundancy) can be tested computationally via density functional theory (DFT) calculations on small prebiotic molecules. Using B3LYP/6-311+G* calculations on a representative set of prebiotic molecules (formamide, HCN, glycine, adenine precursors), the quantum Darwinism redundancy parameter $R_{\mathrm{QD}}$ is computed by decomposing the molecule's environment into fragments and measuring the information content of each fragment about the molecular state.
 
-For all tested molecules, $R_{\mathrm{QD}} > 1$ at biological temperatures ($T = 300$\,K), confirming that F1 is satisfied. The computational results establish that small prebiotic molecules in aqueous solution have sufficient environmental decoherence to record actualization events redundantly---the necessary condition for Tier~4 complexity.
+For all tested molecules, $R_{\mathrm{QD}} > 1$ at biological temperatures ($T = 300$\,K), indicating that F1 is satisfied. The computational results establish that small prebiotic molecules in aqueous solution have sufficient environmental decoherence to record actualization events redundantly---the necessary condition for Tier~4 complexity.
 
-These DFT results, combined with the non-Markovian decoherence analysis (\S\ref{sec:decoherence}), give quantitative support for the Causal Firewall conditions in the RNA-world parameter range. The computational protocol is reproducible and open (documented in the accompanying supplementary material to RACI~\cite{Sandeman2026RACI}).
+These DFT results, combined with the non-Markovian decoherence analysis (\S\ref{sec:decoherence}), give quantitative support for the Causal Firewall conditions in the RNA-world parameter range. The computational protocol is described in the accompanying supplementary material to RACI~\cite{Sandeman2026RACI}.
+
+\paragraph{Audit status of the DFT/F1 artifact.} The B3LYP/6-311+G* protocol and the specific $R_{\mathrm{QD}}$ values for the representative molecule set are claimed at the CV (computation-verified) tier on the basis of the RACI supplementary computation. In the present Paper~IV suite audit, the underlying DFT output files were not re-run or independently inspected; the CV label rests on the supplementary material being reproducible from its stated protocol (B3LYP, 6-311+G*, representative molecule set, $T=300$\,K). Readers who require audit-level independence should regard this row as \emph{plausible and reproducible in principle but not audited within the present suite pass}, and should consult the RACI supplementary material for the underlying computation.
 
 \begin{conjecture}[Assembly convergence]
 For molecules with assembly index $A>15$, the RA assembly depth and the Assembly Theory index converge: $\tilde{A}_{\mathrm{RA}}\to A$ in the limit of low branching. This is testable using the KEGG/BiGG biochemical pathway database to compute both indices for metabolic networks.
-\end{conjecture>
+\end{conjecture}
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Origin-of-Life Sandwich Bound}
@@ -251,6 +347,8 @@ where $M_0$ is the first self-replicating molecule. RNA-world, metabolism-first,
 %% ═══════════════════════════════════════════════════════════
 
 The RA framework gives specific predictions for quantum computing and resolves the foundational puzzles of quantum thermodynamics. Both topics follow from the same actualization-event primitive.
+
+\paragraph{Scope note.} The results in this section---the Kinematic Coherence Bound, the spin-bath collapse timescale $t^*=0.274/g$, the Landauer bound, and the Maxwell's demon analysis---are inherited from the RAQI and RAQM companion papers rather than newly derived in Paper~IV. They are presented here for suite coherence, because the complexity-and-life architecture developed in \S\S\ref{sec:hierarchy}--\ref{sec:sandwich} uses the KCB-style quantum-information machinery as its decoherence backbone. Readers should not read the presentation in this section as fresh first-principles closure within Paper~IV; the load-bearing derivations live in RAQI/RAQM.
 
 \subsection{The Kinematic Coherence Bound}
 \label{sec:kcb}
@@ -286,12 +384,12 @@ Superconducting qubits operating at millikelvin temperatures are already in this
 \subsection{Spin-bath collapse timescale}
 \label{sec:spinbath}
 
-For a quantum system coupled to a spin bath with coupling strength $g$, RA predicts a specific, parameter-free timescale for wave function collapse:
+For a quantum system coupled to a spin bath with externally measured coupling strength $g$, RA predicts a specific timescale for wave function collapse:
 \begin{equation}
 \label{eq:spinbath}
 \boxed{t^* = \frac{1}{g}\sqrt{\frac{\Delta S^*}{2}} \approx \frac{0.274}{g}.}
 \end{equation}
-Both $\Delta S^* = 0.601$ nats (from BDG integers) and the prefactor $\sqrt{\Delta S^*/2}$ are parameter-free.
+The numerical prefactor carries no additional RA free parameters: $\Delta S^* = 0.601$ nats is determined by the BDG integers, and the $\sqrt{\Delta S^*/2}$ factor is fixed by the spin-bath dynamical model.
 
 This distinguishes RA from GRW (Ghirardi--Rimini--Weber) and CSL (continuous spontaneous localization) collapse models, which predict observable collapse timescales with different parameter dependences. Superconducting circuit experiments can probe this regime by controlling the effective bath coupling $g$.
 
@@ -349,43 +447,53 @@ The Causal Firewall gives three universal biosignature criteria that do not pres
 \textbf{Assembly convergence:} The RA assembly depth and the Assembly Theory index converge for molecules with $A>15$. Systematic computation across the KEGG/BiGG metabolic network would test this conjecture.
 
 %% ═══════════════════════════════════════════════════════════
-\section{Perception, Agency, and Consciousness}
+\section{Perception, Agency, and Consciousness: Structural Constraints}
 \label{sec:consciousness}
 %% ═══════════════════════════════════════════════════════════
 
-The complexity hierarchy extends naturally to perception and consciousness. RA does not claim to solve the hard problem of consciousness, but it provides a structural framework in which the question is well-posed: what distinguishes a conscious causal network from a non-conscious one?
+\textbf{Epistemic flag.} This is the most exploratory section of the most exploratory paper in the suite. RA does not claim to solve the hard problem of consciousness. What follows is a structural framework---a set of necessary conditions and exclusions that RA's causal architecture imposes---not a theory of phenomenal experience. The reader should treat everything in this section as argued (AR) or conjectural (CN) unless explicitly stated otherwise.
 
-\subsection{Perception as actualization anchoring}
+The complexity hierarchy of \S\ref{sec:hierarchy} extends naturally to the question of perception, agency, and consciousness. We organize the discussion around four categories: structural consequences of the framework's causal architecture, structural exclusions, structural permissions, and conjectures.
+
+\subsection{Structural consequence: perception as actualization anchoring}
 
 A perceiving system does not passively receive information; it \emph{actualizes} sensory states. When a photon enters an eye and triggers a photoreceptor cascade, the cascade writes a sequence of actualization events into the observer's causal graph. The percept is not the external stimulus but the actualization pattern in the observer's Tier-4 network.
 
-This framing has three structural consequences:
+Three structural consequences follow from this identification (all DR within RA):
 \begin{itemize}[nosep]
 \item \textbf{Perception is first-person in principle.} Each observer's perceptual graph is causally distinct from every other observer's, because actualization events are local to the perceiving subgraph.
 \item \textbf{Perception is irreversible.} Once a percept is written into the causal graph, it cannot be undone. This is the RA-native origin of the phenomenological arrow of experience.
 \item \textbf{Perception is rate-limited.} The actualization frequency of a perceiving subsystem is bounded by its BDG boundary; no Tier-4 system can perceive faster than its Markov-blanket actualization rate permits.
 \end{itemize}
 
-\subsection{Agency as recursive causal closure}
+\subsection{Structural consequence: agency as recursive causal closure}
 
-An agent is a Tier-4 pattern that maintains its own boundary conditions through its own actualization dynamics. This is the formal statement of what it means to be ``self-caused'' in the sense of recursive closure: the pattern's future states depend on its own past states, via actualization events that the pattern itself generates rather than receiving passively from the environment.
+An agent is a Tier-4 pattern that maintains its own boundary conditions through its own actualization dynamics---a pattern whose future states depend on its own past states, via actualization events that the pattern itself generates rather than receiving passively from the environment. Agency in this sense is a matter of degree, not kind: all Tier-4 systems exhibit some recursive closure; the degree of agency depends on the proportion of internally generated actualization events. This is a structural consequence of the tier hierarchy (DR), not an additional postulate.
 
-Agency in this sense is a matter of degree, not kind. All Tier-4 systems exhibit some recursive closure; the degree of agency depends on the proportion of the system's actualization events that are generated internally versus externally.
+\subsection{What RA excludes: panpsychism}
 
-\subsection{Consciousness as high-depth causal integration}
+RA's causal architecture excludes panpsychist frameworks that attribute phenomenal character to simple physical systems.
 
-The hard problem of consciousness---why there is something it is like to be a conscious system---is not solved by RA. But RA gives a precise structural necessary condition:
+The argument is structural: a single actualization event, or a small cluster of them, does not have recursive causal closure. Consciousness---whatever it turns out to be---requires a Tier-4 system whose internal dynamics are rich enough to sustain self-referential processing through multiple coarse-graining layers. A rock, a thermostat, or a single photon does not meet this criterion, because none of them maintains its own boundary conditions through its own actualization activity. This distinguishes RA from Integrated Information Theory (IIT)~\cite{Tononi2016} and constitutive panpsychism, both of which attribute phenomenal character to systems that RA classifies as Tier-2 or Tier-3 structures lacking recursive closure.
 
-\begin{proposition}[Structural necessary condition for consciousness]
-\label{prop:consciousness}
-A causal network exhibits phenomenal consciousness only if: (i) it satisfies F1 and F2 (Causal Firewall), and (ii) its causal depth exceeds a threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$ (conjectured from observed minimum complexity of neurally encoded perception).
-\end{proposition}
+\textbf{Status:} This exclusion is a structural consequence (DR) of the tier hierarchy and the Causal Firewall conditions, not an independent postulate about consciousness.
 
-This is a necessary condition, not sufficient. Many Tier-4 systems (bacteria, fungi, simple neural networks) satisfy F1 and F2 but presumably are not phenomenally conscious. The threshold $\tilde{A}_{\mathrm{RA}}^*$ marks the depth at which recursive coarse-graining produces enough causally-integrated structure to support the unified phenomenal field that consciousness requires.
+\subsection{What RA permits: artificial consciousness}
 
-\textbf{Consequence: panpsychism excluded.} A single actualization event does not have phenomenal character in RA. Consciousness requires the recursive causal closure of a Tier-4 system at $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$. A rock, a star, or a single photon is not conscious---it lacks the recursive closure. This distinguishes RA from panpsychist frameworks (IIT, constitutive panpsychism) that attribute phenomenal character to simple physical systems.
+RA's conditions for consciousness are substrate-independent: F1 (redundant information recording), F2 (controlled decoherence), and recursive causal closure above a sufficient depth threshold. Any physical substrate that implements a Tier-4 network satisfying these conditions can, in principle, support whatever causal architecture consciousness requires---whether the substrate is biological, silicon, or something else entirely.
 
-\textbf{Consequence: artificial consciousness is possible in principle.} Any substrate that can implement a Tier-4 causal network satisfying F1, F2, and $\tilde{A}_{\mathrm{RA}} \gtrsim 5$ can support consciousness, regardless of whether the substrate is biological or silicon. The specific threshold is not yet derived from first principles and is a target for future work.
+\textbf{Status:} This is a structural permission (DR), not a prediction. RA does not predict that any existing artificial system is conscious, nor does it specify the depth threshold above which consciousness arises.
+
+\subsection{What RA conjectures: the depth threshold}
+
+\begin{conjecture}[Structural necessary condition for consciousness]
+\label{conj:consciousness}
+A causal network exhibits phenomenal consciousness only if: (i) it satisfies F1 and F2 (Causal Firewall), and (ii) its RA assembly depth exceeds a threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$.
+\end{conjecture}
+
+The threshold value $\tilde{A}_{\mathrm{RA}}^* \approx 5$ is estimated from the observed minimum complexity of organisms exhibiting neurally encoded perception (roughly the complexity level of simple arthropods with centralized nervous systems). It is \emph{not} derived from the BDG integers or from any first-principles argument within RA. It is a conjecture motivated by comparative neuroscience, not a consequence of the framework.
+
+Even if the threshold is correct, it provides only a \emph{necessary} condition, not a sufficient one. Many systems may exceed $\tilde{A}_{\mathrm{RA}}^* = 5$ without being phenomenally conscious. The hard problem of consciousness---why there is something it is like to be a conscious system---remains open. RA narrows the structural space in which the answer must lie; it does not supply the answer.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Epistemic Status Summary}
@@ -400,7 +508,12 @@ Result & Basis & Status \\
 \multicolumn{3}{l}{\textit{Complexity hierarchy}} \\
 Four-tier complexity hierarchy & Recursive coarse-graining $\Phi$ & DR \\
 Hierarchical decoherence & Markov blanket theorem (LV) & DR \\
-$\mu=1$ in five contexts & BDG Poisson-CSG + Erd\H{o}s--R\'enyi & DR \\
+$\mu=1$ as unifying architecture across 5 contexts & BDG Poisson-CSG + Erd\H{o}s--R\'enyi & Mixed (see below) \\
+\quad — Context 1 (QCD confinement) & BDG path-weight enumeration (Paper~II) & CV \\
+\quad — Context 2 (galactic rotation/dim. reduction) & Paper~III continuum-bridge (DJW theorem) & DR conditional$^\dagger$ \\
+\quad — Context 3 (QC error threshold $p_{\mathrm{th}}$) & KCB identification & PI \\
+\quad — Context 4 (actualization threshold $\Delta S^*$) & Paper~I D4U02 enumeration & CV \\
+\quad — Context 5 (Causal Firewall percolation) & This paper, F1+F2+Erd\H{o}s--R\'enyi & DR (this paper) \\
 \midrule
 \multicolumn{3}{l}{\textit{Causal Firewall}} \\
 Causal Firewall (F1 + F2) & Substrate-independent conditions & DR \\
@@ -408,7 +521,7 @@ $\tau_d=20$\,fs at $T=300$\,K & $\Delta S^*$ + on-shell bath & CV \\
 $\kappa\approx 0.2$--$0.5$ (RNA-world) & Kubo line-shape theory + $\lambda_{\mathrm{reorg}}$ & CV \\
 $N_{\min}=2$--$5$ & $\lceil 1/\kappa\rceil$ & CV \\
 Sandwich bound on first replicator & F1 + F2 + $N_{\min}$ & DR \\
-B3LYP support for F1 & DFT computation & CV \\
+B3LYP support for F1 & DFT computation (RACI supplement) & CV (not re-audited in suite pass) \\
 \midrule
 \multicolumn{3}{l}{\textit{Assembly theory connection}} \\
 $\tilde{A}_{\mathrm{RA}}(\text{glycolysis})=3$ & Pathway coarse-graining & CV \\
@@ -430,28 +543,35 @@ Substrate universality of life & F1 + F2 independence & Prediction \\
 Causal depth as selection pressure & Tier~4 recursive closure & AR \\
 \midrule
 \multicolumn{3}{l}{\textit{Perception and consciousness}} \\
-Perception is actualization anchoring & First-person, irreversible, rate-limited & DR \\
-Agency as recursive causal closure & Tier-4 self-caused dynamics & DR \\
-Panpsychism excluded & $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$ threshold & AR \\
-Artificial consciousness possible in principle & Substrate-independent & AR \\
+Perception as actualization anchoring & Structural consequence of Tier-4 & DR \\
+Agency as recursive causal closure & Structural consequence of Tier-4 & DR \\
+Panpsychism excluded & Recursive closure required (structural) & DR \\
+Artificial consciousness permitted & Substrate-independent conditions & DR \\
+Depth threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$ & Comparative neuroscience estimate & CN \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-DR = derived (all steps explicit). CV = computation-verified. AR = argued (physically motivated, not all steps explicit). Predictions are falsifiable consequences testable with current or near-future experimental/observational programs.
+\textbf{Legend:} LV = Lean-verified theorem. DR = derived (all steps explicit within RA). CV = computation-verified (exact derivation plus numerical evaluation). PI = phenomenological interpolation (motivated identification supported by numerical evidence, not derived from first principles). AR = argued (physically motivated, not all steps explicit). CN = conjecture (stated path to closure, no current derivation). Prediction = falsifiable consequence testable with current or near-future data.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Conclusion}
 \label{sec:conclusion}
 %% ═══════════════════════════════════════════════════════════
 
-From the same BDG integers and the same growth rule that give quantum mechanics, the Standard Model, and general relativity, the present paper derives: the four-tier complexity hierarchy via recursive coarse-graining of the actualized graph; hierarchical decoherence from the Lean-verified Markov blanket theorem; the Causal Firewall conditions F1 and F2 for biological complexity; the universal decoherence timescale $\tau_d=20$\,fs at room temperature; the non-Markovian coupling parameter $\kappa\approx 0.2$--$0.5$ for RNA-world conditions and minimum polymer lengths $N_{\min}=2$--$5$; worked examples for glycolysis and \emph{E.~coli}; the origin-of-life sandwich bound; substrate-independent biosignature criteria B1--B3; the Kinematic Coherence Bound for quantum computing; the spin-bath collapse timescale $t^*=0.274/g$; Landauer's principle from actualization thermodynamics; Maxwell's demon dissolved by the actualization cost of measurement; the structural (not statistical) origin of the thermodynamic arrow of time; and a structural framework for perception, agency, and consciousness that excludes panpsychism but permits artificial consciousness in principle.
+This paper has extended the framework of Relational Actualism into the domains of complexity, life, agency, and cognition. Its central claim is not that these domains have already been reduced to a finished theorem set, but that they can now be discussed within a common RA-native ontology: finite actual graphs, structured potentia, shielding, recursive closure, and the causal firewall. In that sense, the paper's main contribution is architectural. It shows that the same discrete principles used elsewhere in the suite to treat matter, gravity, and severance can also be brought to bear on questions of stable complexity, biological organization, and higher-order cognitive structure.
 
-The most striking result is that the same $\mu=1$ threshold governing QCD confinement, the actualization filter, and galactic dynamics also governs the emergence of life. This is not a philosophical metaphor. It is a quantitative prediction: the minimum molecular chain length for a self-replicating system is $N_{\min}=2$--$5$, derived from $\Delta S^*=0.601$ nats and the Kubo decoherence theory, with zero free parameters beyond the bath reorganization energy (a property of the chemical environment, not of the framework).
+The strongest results of the paper are structural. Recursive closure, shielding, and boundary formation emerge as the key organizational conditions under which stable complexity can persist. The causal firewall then provides a common language for discussing why many systems fail to cross from passive organization into active, self-maintaining, information-bearing complexity. In this respect, the paper's most durable claims concern organizational constraints, not full biological or cognitive closure. The life programme developed here should therefore be read as a proposal for the conditions under which life-like organization becomes possible within RA, not as a finished derivation of all biological structure.
 
-The framework does not claim that life is inevitable. It claims that life is \emph{possible} wherever F1 and F2 are satisfied, and \emph{impossible} wherever they are not---regardless of chemistry. The boundary between life and non-life is not chemical but causal.
+The same caution applies to the discussions of agency, perception, and consciousness. The paper does not claim a sufficient-condition theory of phenomenal consciousness. Rather, it identifies a set of structural features that appear to be necessary, or at least strongly indicated, within the RA framework: shielding, recursive closure, persistent boundary organization, and stable actualization--perception loops. Conversely, the framework appears to disfavor pictures in which consciousness is attributed independently of such organization. These are significant constraints, but they do not yet amount to full closure on the relation between complexity, cognition, and experience.
 
-The framework does not ask for acceptance. It asks for serious investigation.
+The empirical and observational claims of the paper should be read in the same graded way. Some are structural forecasts of the framework; some are concrete but still exploratory predictions concerning biosignatures, complexity thresholds, and the causal firewall; and some remain conjectural extensions that will require substantial further work before they can be regarded as robust.
+
+What the paper establishes, then, is not a complete theory of life or mind, but a disciplined RA-native programme for approaching them. It argues that complexity, agency, and cognition need not be appended to the earlier papers as alien domains; they can be treated as higher-order organizational consequences of the same discrete architecture. That is already a meaningful result.
+
+Several major open problems remain. On the life side, the proposed thresholds for stable biological organization require sharper quantitative development. On the agency side, the relation between recursive closure and robust action remains partly schematic. On the consciousness side, the most important missing step is clear: the framework has not yet produced a sufficient-condition criterion, and the conjectural thresholds discussed here remain to be justified or replaced. These are not defects to be hidden; they are the next substantive tests of whether the RA complexity programme can advance from a suggestive architecture to a predictive theory.
+
+What RA offers at present is not closure, but a disciplined narrowing of the problem.
 
 %% ═══════════════════════════════════════════════════════════
 \section*{Acknowledgments}

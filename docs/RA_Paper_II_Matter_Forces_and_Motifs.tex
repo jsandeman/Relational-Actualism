@@ -1,7 +1,5 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{mathptmx}
-\usepackage{courier}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
@@ -12,6 +10,7 @@
 \usepackage{titlesec}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{tcolorbox}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 \setstretch{1.08}
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
@@ -32,22 +31,62 @@
 {\large Joshua F. Sandeman}\\[0.25em]
 {\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
 {\small sansuikyo@gmail.com}\\[0.5em]
-{\normalsize Draft --- April 13, 2026}
+{\normalsize Draft --- April 17, 2026}
 \end{center}
 
 \begin{abstract}
-The second paper of the Relational Actualism suite derives the Standard Model particle spectrum, coupling constants, mass cascade, force hierarchy, and grand unification structure from the BDG integers $(1,-1,9,-16,8)$ and the causal graph of Paper~I. The five topologically distinct stability classes of the $d=4$ BDG action correspond exhaustively to the particle types of the Standard Model (Lean~4 verified, 124 extension cases). From these types and their BDG depth profiles, we derive: the strong coupling $\alpha_s(m_Z) = 1/\sqrt{72}$ (PDG match to 0.13\%), the fine structure constant $\alpha_{\mathrm{EM}}^{-1} = 137.036$ (0.00001\%), the Koide lepton relation $K = 2/3$ (exact, Lean-verified), the Koide breaking pattern for quarks from a one-loop Casimir formula (zero free parameters, 3--8\% match), the Cabibbo angle $|V_{us}| = \sin(2/9) = 0.2204$ (1.8\%), $|V_{cb}| = 0.0424$ (0.4\%), the sum of neutrino masses $\sum m_\nu \approx 59$\,meV (with Majorana prediction), the proton mass $m_p = m_P\alpha_{\mathrm{EM}}^5/2^{28} = 941$\,MeV (0.3\%) from a $\mu^5$ gluon vertex cascade, the Higgs mass $m_H = 133\,m_p = 125.2$\,GeV (0.06\%), the proton charge radius $r_p = 0.84$\,fm (0.03\%), and the baryon-to-dark matter ratio $f_0 = 5.40$ (Planck: 5.416, 0.3\%). Force ranges are derived from a unified principle: EM $1/r^2$ from causal geometry, weak $R_W = \hbar/(m_W c)$ from BDG debt lifetime, strong linear confinement $V(r) = \sigma r$ from LLC flux tubes with Regge trajectories $m^2 \propto J$ as a bonus. The gauge group $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$ emerges from a bifurcation of BDG geometry; at the Planck scale both $\mathrm{SU}(3)_{\mathrm{colour}}$ and $\mathrm{SU}(3)_{\mathrm{gen}}$ unify into a single group with $\sin^2\theta_W = 3/8$. The absence of supersymmetry, WIMPs, axions, and a Page curve are structural consequences; exact proton stability, $\theta_{\mathrm{QCD}} = 0$, and the baryon asymmetry as a severance initial condition are predicted outputs. All results are parameter-free: the BDG integers are the only input.
+This paper develops the matter-and-force sector of Relational Actualism (RA) by relating stable particle classes, force mediation, and coupling hierarchy to the discrete topology of the actualization graph. The central claim is structural: the physically relevant sector is organized by a small set of motif and renewal types determined by the $d=4$ Benincasa--Dowker growth law. From this architecture the paper derives a set of exact discrete constraints, presents numerical evaluations of graph-determined quantities, and proposes a number of phenomenological identifications with observed particle-sector parameters. These result types are distinguished explicitly and should not be conflated. The topology classification core is structural: five topologically distinct stability classes are shown---via Lean-verified enumeration over 124 extension cases---to correspond to the Standard Model particle types. The three non-gravitational forces are unified under a single bandwidth-limited graph-propagation principle. Several mass and coupling relations, including the proton mass cascade and CKM-angle identifications, remain conjectural or phenomenological and are labeled as such. The goal of the paper is therefore not to announce complete closure of the matter sector, but to establish a disciplined RA programme in which particle physics is constrained by discrete graph structure rather than imposed as a separate continuum input.
 \end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of Results in This Paper,colback=gray!5,colframe=gray!60]
+This paper contains three distinct types of claims, which should not be conflated:
+\begin{itemize}[nosep]
+    \item Exact structural results concerning motif classes, renewal structure, and topological constraints;
+    \item Numerical evaluations of graph-determined quantities;
+    \item Phenomenological identifications connecting these quantities to observed particle-sector parameters.
+\end{itemize}
+Where closure has not been achieved, this is stated explicitly. In particular, several mass and coupling relations remain conjectural or interpolative rather than theorem-level results. The discrete statement is primary; the continuum statement is its translation under the BDG-to-metric dictionary.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This paper develops the matter-and-force sector of the Relational Actualism suite.
+\begin{itemize}[nosep]
+    \item \textbf{Assumed from Paper~I:} the ontology, axioms, BDG growth law, actualization rule, and dimensional selection framework.
+    \item \textbf{This paper contributes:} the topology/motif classification programme, renewal structure, and the matter-and-force architecture built from the discrete graph.
+    \item \textbf{Paper~III} draws on this sector when discussing severance, cosmology, and the macroscopic consequences of matter structure.
+    \item \textbf{Paper~IV} draws on this sector where complex organization, stability, and life depend on the particle and interaction architecture developed here.
+\end{itemize}
+The strongest claims of this paper are structural; several quantitative identifications are explicitly marked as numerical, phenomenological, or conjectural.
+\end{tcolorbox}
 
 %% ═══════════════════════════════════════════════════════════
 \section{Introduction}
+\label{sec:intro}
 %% ═══════════════════════════════════════════════════════════
 
-The Standard Model of particle physics describes the observed menagerie of particles with extraordinary precision but deep dissatisfaction. Why these particles? Why these symmetry groups? Why three generations? Why are the coupling constants what they are? The Standard Model takes these as inputs.
-
-Paper~II derives them. The BDG closure theorem, formally verified in Lean~4, establishes that in four-dimensional spacetime the BDG causal action admits exactly five topologically distinct stability classes. These five classes exhaust the Standard Model. From their integer structure, the coupling constants, mass ratios, and gauge groups follow without free parameters.
+The Standard Model of particle physics describes the observed menagerie of particles with extraordinary precision, but leaves its particle content, gauge structure, and parameter values as inputs. The purpose of Paper~II is not to claim final closure of all of those questions at once, but to develop the RA matter-and-force programme in a disciplined way. Its central structural claim is that the $d=4$ BDG growth law organizes the physically relevant sector into a small set of stable topology and renewal classes, and that many familiar particle-sector regularities can be reformulated in those terms. Some results in this paper are exact and discrete, some are numerical evaluations of graph-determined quantities, and some are phenomenological identifications whose status remains explicitly non-final. These categories are distinguished throughout.
 
 This paper assumes the ontological framework of Paper~I: the growing causal graph, the BDG filter with coefficients $(1,-1,9,-16,8)$, and the sequential growth rule. All particle properties are properties of finite local graph neighborhoods---renewal motifs that reproduce themselves under the growth dynamics. Continuum field language is translation, not primitive ontology.
+
+A warning about epistemic status, up front: the second sentence of the preceding paragraph (``From their integer structure, the coupling constants, mass ratios, and gauge groups follow without free parameters'') was an overclaim in earlier drafts and remains a programme goal rather than a fully delivered result. The present paper makes that distinction explicit. Results in this paper come in five epistemic tiers:
+
+\begin{center}
+\begin{tabular}{cp{0.78\linewidth}}
+\toprule
+Tier & Meaning \\
+\midrule
+LV & Lean-verified theorem. Machine-checked within the framework. \\
+DR & Derived: all steps explicit within RA, rigorous but not Lean-verified. \\
+CV & Computation-verified: exact derivation combined with numerical evaluation to stated precision. \\
+PI & Phenomenological interpolation: an identification motivated by the framework's structure whose numerical agreement with observation is the principal evidence. The identification is not derived from first principles; the numerical match supports but does not establish the underlying mechanism. \\
+CN & Conjecture: a hypothesized identification with a stated path to closure but no current derivation. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The body of the paper labels each numerical claim with its tier, and \S12 collects the classifications in a single table. The reader should treat LV and DR results as rigorous consequences of the framework; CV results as rigorous derivations whose numerical precision reflects the accuracy of the derivation; PI results as motivated identifications supported by numerical evidence rather than first-principles derivations; and CN results as current conjectures. A result's quantitative precision ($0.3\%$, $0.06\%$, etc.) says nothing about its epistemic tier: a conjecture can match to one part in $10^5$ by coincidence, and a Lean-verified theorem establishes no numerical value at all.
+
+Among the results in this paper, the ones carrying the most conjectural weight are: the identification of the quark Koide breaking as a one-loop Casimir effect (PI); the Cabibbo-angle identification $|V_{us}|=\sin(2/9)$ and its CKM companions (PI); the $\mu^5$ gluon-vertex cascade bridge identifications for hadron masses (PI/CN); and the grand-unification conjecture at the Planck scale (CN). The reader should read these sections with appropriate caution.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Five Topology Types}
@@ -59,7 +98,7 @@ This paper assumes the ontological framework of Paper~I: the growing causal grap
 In $d=4$, the BDG causal action admits exactly five topologically distinct stability classes under causal diamond extension. All 124 possible single-vertex extensions of the four BDG depth layers are classified, and no additional stable patterns exist.
 \end{theorem}
 
-This result is formally verified in \texttt{RA\_GraphCore.lean} (\texttt{universe\_closure}), compiling with zero errors and zero \texttt{sorry} tags.
+This result is formally verified in \texttt{RA\_D1\_Proofs.lean} (\texttt{universe\_closure}), compiling with zero errors and zero \texttt{sorry} tags.
 
 The five types correspond to the particle families of the Standard Model:
 
@@ -68,8 +107,8 @@ The five types correspond to the particle families of the Standard Model:
 \toprule
 Type & Particle class & BDG depth $L$ & Color & Gauge structure \\
 \midrule
-1 & Quarks & 4 & 3-colour $\mathrm{SU}(3)$ & confined \\
-2 & Gluons & 3 & 3-colour $\mathrm{SU}(3)$ & confined \\
+1 & Quarks & 4 & 3-colour & $\mathrm{SU}(3)$ confined \\
+2 & Gluons & 3 & 3-colour & $\mathrm{SU}(3)$ confined \\
 3 & Gauge bosons ($W,Z,\gamma$) & 1 & singlet & $\mathrm{SU}(2)\times\mathrm{U}(1)$ \\
 4 & Higgs boson & 2 & singlet & scalar \\
 5 & Leptons and neutrinos & 1 & singlet & chiral \\
@@ -84,10 +123,10 @@ The five types are exhaustive: the closure theorem proves that no additional sta
 \subsection{Confinement from BDG topology}
 
 \begin{proposition}[Confinement depths --- Lean verified]
+\label{prop:confinement}
 The BDG stability analysis gives confinement depths $L=3$ (gluon) and $L=4$ (quark). Both require multi-branch closure neighborhoods for stable renewal. Isolated quarks and gluons cannot maintain admissible renewal under the BDG filter.
 \end{proposition}
-
-Verified in \texttt{RA\_GraphCore.lean} (\texttt{confinement\_lengths}).
+Verified in \texttt{RA\_D1\_Proofs.lean} (\texttt{confinement\_lengths}).
 
 This is confinement without a confining potential. In RA, quarks are confined because their BDG topology class requires a finite closure neighborhood---a color-singlet partner---in order for the local renewal process to continue. An isolated quark would fail the BDG filter within a few actualization steps because its depth-3 and depth-4 ancestor counts would produce $S\le 0$.
 
@@ -137,80 +176,75 @@ verified by \texttt{norm\_num} in Lean~4. The fractional correction uses the dis
 
 The PDG value is $137.035999$, a match to $0.00001\%$. This is fully discrete, with no $\pi$ input---the irrational part comes entirely from the square root of BDG integers.
 
-\subsection{The Koide formula and SU(3)$_{\mathrm{gen}}$}
+\subsection{The Koide formula and SU(3)\texorpdfstring{$_{\mathrm{gen}}$}{gen}}
 \label{sec:koide}
 
 In 1981, Yoshio Koide discovered that the three charged lepton masses satisfy:
 \begin{equation}
 K \equiv \frac{m_e+m_\mu+m_\tau}{(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau})^2} = \frac{2}{3}.
 \end{equation}
-Using 2022 PDG values, $K = 0.666661$, agreeing with $2/3$ to one part in $10^5$---extraordinary precision for a formula the Standard Model has never derived. In RA, this is a theorem of BDG integer arithmetic, formally verified in Lean~4 (\texttt{koide\_formula} in \texttt{RA\_Koide.lean}, zero \texttt{sorry}).
+Using 2022 PDG values, $K=0.666661$, agreeing with $2/3$ to one part in $10^5$. The Standard Model does not derive this relation; in RA, it is a theorem of BDG integer arithmetic, formally verified in Lean~4 (\texttt{koide\_formula} in \texttt{RA\_Koide.lean}, zero \texttt{sorry}).
 
 \subsubsection{The structural parallel between generations and colours}
 
-The three generation levels $\{N_2, N_3, N_4\}$ and the three colour charges $\{r, g, b\}$ arise from precisely the same source: the three non-gravitational degrees of freedom of the 4D BDG action. The colour charges are the three spatial components of the $N_2$ branching; the generations are the three excitation levels $N_2, N_3, N_4$. The permutation group $S_3$ acts on both sets in exactly the same way.
+The three generation levels $\{N_2,N_3,N_4\}$ and the three colour charges $\{r,g,b\}$ arise from precisely the same source: the three non-gravitational degrees of freedom of the 4D BDG action. The colour charges are the three spatial components of the $N_2$ branching; the generations are the three excitation levels $N_2,N_3,N_4$. The permutation group $S_3$ acts on both sets in exactly the same way.
 
 For the colour sector, the continuous extension of $S_3$ is $\mathrm{SU}(3)_{\mathrm{colour}}$, whose invariants give the Gell-Mann--Okubo baryon mass relations. The analogous structure for the generation sector is $\mathrm{SU}(3)_{\mathrm{gen}}$.
 
 \begin{proposition}[SU(3)$_{\mathrm{gen}}$ and the Koide formula]
-\label{prop:su3gen}
-The three generations of charged leptons transform under an approximate $\mathrm{SU}(3)_{\mathrm{gen}}$ symmetry acting on generation space $\{N_2, N_3, N_4\}$. The most general $\mathrm{SU}(3)_{\mathrm{gen}}$-invariant charged-lepton mass matrix has the form:
+The three generations of charged leptons transform under an approximate $\mathrm{SU}(3)_{\mathrm{gen}}$ symmetry acting on generation space $\{N_2,N_3,N_4\}$. The most general $\mathrm{SU}(3)_{\mathrm{gen}}$-invariant charged-lepton mass matrix has the form:
 \begin{equation}
-\label{eq:koide_mass_matrix}
-M_\ell = m_0 \left[ I + \sqrt{2}\,U(\theta) \right], \qquad U(\theta) = \mathrm{diag}\left(\cos\theta,\; \cos(\theta + \tfrac{2\pi}{3}),\; \cos(\theta + \tfrac{4\pi}{3})\right),
+M_\ell = m_0\left[I+\sqrt{2}\,U(\theta)\right], \quad U(\theta)=\mathrm{diag}\!\left(\cos\theta,\cos(\theta+\tfrac{2\pi}{3}),\cos(\theta+\tfrac{4\pi}{3})\right),
 \end{equation}
-where $m_0$ and $\theta$ are real parameters. For any $m_0$ and $\theta$, the eigenvalues of $M_\ell$ automatically satisfy $K = 2/3$.
+where $m_0$ and $\theta$ are real parameters. For any $m_0$ and $\theta$, the eigenvalues of $M_\ell$ automatically satisfy $K=2/3$.
 \end{proposition}
 
-The proof is a direct calculation: the $\cos(\theta + 2\pi k/3)$ structure ensures $\sum_k \cos(\theta + 2\pi k/3) = 0$ and $\sum_k \cos^2(\theta + 2\pi k/3) = 3/2$, from which $K = 2/3$ follows algebraically. Parameters $m_0 \approx 313.8$\,MeV and $\theta_{\mathrm{lep}} \approx 0.2220$\,rad fit the three lepton masses to experimental precision.
+The proof is a direct calculation: the $\cos(\theta+2\pi k/3)$ structure ensures $\sum_k\cos(\theta+2\pi k/3)=0$ and $\sum_k\cos^2(\theta+2\pi k/3)=3/2$, from which $K=2/3$ follows algebraically. Parameters $m_0\approx 313.8$\,MeV and $\theta_{\mathrm{lep}}\approx 0.2220$\,rad fit the three lepton masses to experimental precision.
 
 \subsubsection{The Koide scale and the constituent quark mass}
 
-The Koide scale $m_0 \approx 313.9$\,MeV equals the constituent quark mass $m_p/3 \approx 312.8$\,MeV to within $0.35\%$. In RA this is not a numerical coincidence: both $m_0$ and the constituent quark mass are set by the QCD string tension $\sigma$, which in turn emerges from the BDG-filter simulation. The derivation chain:
+The Koide scale $m_0\approx 313.9$\,MeV equals the constituent quark mass $m_p/3\approx 312.8$\,MeV to within $0.35\%$. In RA, the structural expectation is that both $m_0$ and the constituent quark mass are set by the QCD string tension $\sigma$, which in turn would emerge from the BDG-filter simulation. The conjectured derivation chain:
 \begin{equation}
-(1,-1,9,-16,8) \xrightarrow{\text{simulation}} \sigma \xrightarrow{\phantom{XXX}} \Lambda_{\mathrm{QCD}} \xrightarrow{\phantom{X}} m_0 \xrightarrow{\mathrm{SU}(3)_{\mathrm{gen}}} m_e, m_\mu, m_\tau
+(1,-1,9,-16,8)\xrightarrow{\text{simulation}}\sigma\longrightarrow\Lambda_{\mathrm{QCD}}\longrightarrow m_0\xrightarrow{\mathrm{SU}(3)_{\mathrm{gen}}}m_e,m_\mu,m_\tau
 \end{equation}
 would derive all charged lepton masses from the BDG integer sequence. Closing this chain is an open target.
 
 \subsection{Koide breaking in quarks: one-loop gauge renormalization}
-\label{sec:koide_breaking}
 
-The exact Koide relation $K = 2/3$ holds for charged leptons because they carry no colour charge---$\mathrm{SU}(3)_{\mathrm{gen}}$ acts undisturbed in the lepton sector. For quarks, which carry both $N_1$ (EM) and $N_2$ (colour) BDG charges simultaneously, the $\mathrm{SU}(3)_{\mathrm{gen}}$ mass matrix receives one-loop gauge corrections. These corrections are calculable.
+The exact Koide relation $K=2/3$ holds for charged leptons because they carry no colour charge---$\mathrm{SU}(3)_{\mathrm{gen}}$ acts undisturbed in the lepton sector. For quarks, which carry both $N_1$ (EM) and $N_2$ (colour) BDG charges simultaneously, the $\mathrm{SU}(3)_{\mathrm{gen}}$ mass matrix receives one-loop gauge corrections. These corrections are calculable.
 
 The BDG charge structure assigns each fermion a total gauge Casimir:
 \begin{equation}
-C_2 = \frac{Q_{N_1}^2}{9} + C_{2,\mathrm{colour}},
+C_2 = \frac{Q_{N_1}^2}{9}+C_{2,\mathrm{colour}},
 \end{equation}
-where $Q_{N_1}$ is the electric charge in units of $e/3$ and $C_{2,\mathrm{colour}} = 4/3$ for quarks (fundamental representation of $\mathrm{SU}(3)_{\mathrm{colour}}$) and zero for leptons.
+where $Q_{N_1}$ is the electric charge in units of $e/3$ and $C_{2,\mathrm{colour}}=4/3$ for quarks (fundamental representation of $\mathrm{SU}(3)_{\mathrm{colour}}$) and zero for leptons.
 
 \begin{proposition}[Koide breaking from one-loop gauge renormalization]
 \label{prop:koide_breaking}
 The Koide ratio for each fermion sector takes the form
 \begin{equation}
-\label{eq:koide_breaking}
-K = \frac{2}{3} + \frac{2^{d-1}\,\alpha_{\mathrm{EM}}}{\pi}\cdot\frac{Q_{N_1}^2}{9} + \frac{\alpha_s(\mu)}{\pi}\cdot C_{2,\mathrm{colour}},
+K = \frac{2}{3} + \frac{2^{d-1}\alpha_{\mathrm{EM}}}{\pi}\cdot\frac{Q_{N_1}^2}{9} + \frac{\alpha_s(\mu)}{\pi}\cdot C_{2,\mathrm{colour}},
 \end{equation}
-where $d=4$ is the spacetime dimension, $\mu \approx 1.66$\,GeV is the hadronic-partonic crossover scale (between $m_c$ and $m_\tau$), and $C_{2,\mathrm{colour}}$ is the colour Casimir. This formula has zero free parameters beyond the SM coupling constants.
+where $d=4$ is the spacetime dimension, $\mu\approx 1.66$\,GeV is the hadronic-partonic crossover scale (between $m_c$ and $m_\tau$), and $C_{2,\mathrm{colour}}$ is the colour Casimir. No additional fit parameter is introduced: the formula uses $d=4$, $\alpha_{\mathrm{EM}}$, and $\alpha_s(\mu)$ as inputs, where $\alpha_{\mathrm{EM}}$ and $\alpha_s$ are themselves RA-derived (Papers~I--II). The identification of this formula with quark Koide breaking is a phenomenological interpolation (PI), not a theorem.
 \end{proposition}
 
 The three fermion sectors give:
-
 \begin{center}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccll}
 \toprule
 Sector & $Q_{N_1}$ & $C_{2,\mathrm{colour}}$ & $K_{\mathrm{pred}}$ & $K_{\mathrm{obs}}$ \\
 \midrule
-Leptons ($e,\mu,\tau$) & 3 & 0 & 0.685 & 0.6667 (2.8\%) \\
-Down quarks ($d,s,b$) & 1 & $4/3$ & 0.787 & 0.731 (7.6\%) \\
-Up quarks ($u,c,t$) & 2 & $4/3$ & 0.793 & 0.849 (6.6\%) \\
+Leptons ($e,\mu,\tau$) & 3 & 0 & 0.685 & 0.6667 ($2.8\%$) \\
+Down quarks ($d,s,b$) & 1 & $4/3$ & 0.787 & 0.731 ($7.6\%$) \\
+Up quarks ($u,c,t$) & 2 & $4/3$ & 0.793 & 0.849 ($6.6\%$) \\
 Neutrinos ($\nu_e,\nu_\mu,\nu_\tau$) & 0 & 0 & $2/3$ & $2/3$ (Majorana) \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The $\sim$3--8\% residuals have three sources: quark masses themselves carry $\sim 5\%$ uncertainty at the relevant scale, the RG scale choice contributes $\sim 2\%$, and equation~\ref{eq:koide_breaking} omits two-loop corrections. The zero-free-parameter formula correctly reproduces the pattern: $K_{\mathrm{lep}} = 2/3$ exactly (no colour), $K_{\mathrm{dn}} < K_{\mathrm{up}}$ (down quarks carry smaller $Q_{N_1}$), and neutrinos satisfy $K = 2/3$ in the Majorana convention (\S\ref{sec:neutrinos}).
+The $\sim 3$--$8\%$ residuals have three sources: quark masses themselves carry $\sim 5\%$ uncertainty at the relevant scale, the RG scale choice contributes $\sim 2\%$, and equation~10 omits two-loop corrections. The zero-free-parameter formula correctly reproduces the pattern: $K_{\mathrm{lep}}=2/3$ exactly (no colour), $K_{\mathrm{dn}}<K_{\mathrm{up}}$ (down quarks carry smaller $Q_{N_1}$), and neutrinos satisfy $K=2/3$ in the Majorana convention (\S3.6).
 
-The factor $2^{d-1}\alpha/\pi = 8\alpha/\pi$ uses identically the factor $8 = 2^{d-1}$ appearing in the Wyler formula for $\alpha_{\mathrm{EM}}$. Both expressions involve the same BDG dimension factor for $d=4$.
+The factor $2^{d-1}\alpha/\pi=8\alpha/\pi$ uses identically the factor $8=2^{d-1}$ appearing in the Wyler formula for $\alpha_{\mathrm{EM}}$. Both expressions involve the same BDG dimension factor for $d=4$.
 
 \subsection{The Cabibbo angle and the CKM hierarchy}
 \label{sec:ckm}
@@ -219,32 +253,33 @@ The Koide parametrization fit to the charged lepton masses converges to:
 \begin{equation}
 \theta_{\mathrm{lep}} = \frac{2}{9} = 0.222222\ldots\,\mathrm{rad},
 \end{equation}
-to one part in $10^5$ (the fit gives $0.222220$). This is not a numerical accident: $2/9 = (2/3)\times(1/3)$, where $2/3$ is the Koide ratio $K$ and $1/3 = 1/N_{\mathrm{col}}$. In terms of RA group-structure integers:
+to one part in $10^5$ (the fit gives $0.222220$). This is not a numerical accident: $2/9=(2/3)\times(1/3)$, where $2/3$ is the Koide ratio $K$ and $1/3=1/N_{\mathrm{col}}$. In terms of RA group-structure integers:
 \begin{equation}
 \theta_{\mathrm{lep}} = \frac{2}{N_{\mathrm{gen}}\cdot N_{\mathrm{col}}} = \frac{2}{3\times 3} = \frac{2}{9},
 \end{equation}
-where $N_{\mathrm{gen}} = 3$ (generations from $\mathrm{SU}(3)_{\mathrm{gen}}$) and $N_{\mathrm{col}} = 3$ (colours from $\mathrm{SU}(3)_{\mathrm{colour}}$).
+where $N_{\mathrm{gen}}=3$ (generations from $\mathrm{SU}(3)_{\mathrm{gen}}$) and $N_{\mathrm{col}}=3$ (colours from $\mathrm{SU}(3)_{\mathrm{colour}}$).
 
 The three Koide sector angles form an arithmetic progression:
 \begin{equation}
-\theta_{\mathrm{dn}} = \frac{2}{9} - \delta, \qquad \theta_{\mathrm{lep}} = \frac{2}{9}, \qquad \theta_{\mathrm{up}} = \frac{2}{9} + \delta,
+\theta_{\mathrm{dn}} = \frac{2}{9}-\delta,\quad \theta_{\mathrm{lep}}=\frac{2}{9},\quad \theta_{\mathrm{up}}=\frac{2}{9}+\delta,
 \end{equation}
-with $\delta = (\theta_{\mathrm{up}} - \theta_{\mathrm{dn}})/2 \approx 0.0665$\,rad. The lepton sector sits at the central value; quarks are displaced by $\pm\delta$ due to their BDG charge coupling.
+with $\delta=(\theta_{\mathrm{up}}-\theta_{\mathrm{dn}})/2\approx 0.0665$\,rad. The lepton sector sits at the central value; quarks are displaced by $\pm\delta$ due to their BDG charge coupling.
 
 \begin{conjecture}[Cabibbo angle from SU(3)$_{\mathrm{gen}}$]
 \label{conj:cabibbo}
-The lepton Koide angle $\theta_{\mathrm{lep}} = 2/9$ predicts the Cabibbo angle:
+The lepton Koide angle $\theta_{\mathrm{lep}}=2/9$ predicts the Cabibbo angle:
 \begin{equation}
-\boxed{|V_{us}| = \sin\!\left(\frac{2}{N_{\mathrm{gen}}\cdot N_{\mathrm{col}}}\right) = \sin\!\left(\frac{2}{9}\right) = 0.2204.}
+|V_{us}| = \sin\!\left(\frac{2}{N_{\mathrm{gen}}\cdot N_{\mathrm{col}}}\right) = \sin\!\left(\frac{2}{9}\right) = 0.2204.
 \end{equation}
 \end{conjecture}
-The observed value is $|V_{us}| = 0.22453 \pm 0.00044$ (PDG 2022), a match to $1.8\%$.
 
-\textbf{The Koide angle displacement:} The displacement $\delta$ satisfies a Casimir-structured formula:
+The observed value is $|V_{us}|=0.22453\pm 0.00044$ (PDG 2022), a match to $1.8\%$. This identification is phenomenological (PI): the numerical proximity motivates the conjecture but does not establish it.
+
+\paragraph{The Koide angle displacement.} The displacement $\delta$ satisfies a Casimir-structured formula:
 \begin{equation}
 \delta = C_2(\mathrm{SU}(2)_{\mathrm{fund}})\cdot\frac{\alpha_s(\mu)}{\pi} = \frac{3}{4}\cdot\frac{\alpha_s(\mu)}{\pi},
 \end{equation}
-where $C_2(\mathrm{SU}(2)_{\mathrm{fund}}) = 3/4$ is the quadratic Casimir of $\mathrm{SU}(2)$ in the fundamental representation and $\mu \approx 1.66$\,GeV. Numerically: $(3/4)(\alpha_s/\pi) = 0.06660$ against the fitted $\delta = 0.06653$, a $0.1\%$ match.
+where $C_2(\mathrm{SU}(2)_{\mathrm{fund}})=3/4$ is the quadratic Casimir of $\mathrm{SU}(2)$ in the fundamental representation and $\mu\approx 1.66$\,GeV. Numerically: $(3/4)(\alpha_s/\pi)=0.06660$ against the fitted $\delta=0.06653$, a $0.1\%$ match.
 
 This completes a unified Casimir structure for all one-loop $\mathrm{SU}(3)_{\mathrm{gen}}$ corrections:
 \begin{equation}
@@ -259,79 +294,82 @@ The CKM element $|V_{cb}|$ satisfies:
 |V_{cb}| = \frac{2}{\pi}\delta = \frac{3\alpha_s(\mu)}{2\pi^2}.
 \end{equation}
 \end{conjecture}
-Numerically: $3\alpha_s/(2\pi^2) = 0.04240$ against the observed $|V_{cb}| = 0.04221 \pm 0.00078$ (PDG 2022), a $0.4\%$ match.
 
-Together, the two conjectures give all leading CKM parameters from two RA quantities---$\theta_0 = 2/9$ and $\alpha_s(\mu)/\pi$:
+Numerically: $3\alpha_s/(2\pi^2)=0.04240$ against the observed $|V_{cb}|=0.04221\pm 0.00078$ (PDG 2022), a $0.4\%$ match. As with the Cabibbo angle, this is a phenomenological identification (PI) supported by numerical proximity.
+
+Together, the two conjectures give all leading CKM parameters from two RA quantities---$\theta_0=2/9$ and $\alpha_s(\mu)/\pi$:
 \begin{center}
-\begin{tabular}{lcc}
+\begin{tabular}{lll}
 \toprule
 CKM element & Formula & Error vs PDG \\
 \midrule
-$|V_{us}|$ & $\sin(2/9) = 0.2204$ & 1.8\% \\
-$\delta$ (angle displacement) & $(3/4)(\alpha_s/\pi) = 0.0666$ & 0.1\% \\
-$|V_{cb}|$ & $(2/\pi)\delta = 0.0424$ & 0.4\% \\
-$A$ (Wolfenstein) & $|V_{cb}|/\lambda^2 = 0.872$ & 4.3\% \\
+$|V_{us}|$ & $\sin(2/9)=0.2204$ & $1.8\%$ \\
+$\delta$ (angle displacement) & $(3/4)(\alpha_s/\pi)=0.0666$ & $0.1\%$ \\
+$|V_{cb}|$ & $(2/\pi)\delta=0.0424$ & $0.4\%$ \\
+$A$ (Wolfenstein) & $|V_{cb}|/\lambda^2=0.872$ & $4.3\%$ \\
 \bottomrule
 \end{tabular}
 \end{center}
+
 No free parameters. The $|V_{ub}|$ element and the CP-violating phase $\delta_{CP}$ require the full complex $\mathrm{SU}(2)_{\mathrm{weak}}$ vertex structure in $\mathrm{SU}(3)_{\mathrm{gen}}$ space, which remains an open target.
 
-\subsection{Neutrino masses and the Majorana prediction}
+\subsection{Neutrino masses and the Majorana identification}
 \label{sec:neutrinos}
 
-The $\mathrm{SU}(3)_{\mathrm{gen}}$ structure extends to the neutrino sector. The neutrino mass matrix has the same form as equation~\ref{eq:koide_mass_matrix}, with parameters $m_0^\nu$ and $\theta_\nu$ specific to the neutrino sector.
+The $\mathrm{SU}(3)_{\mathrm{gen}}$ structure extends to the neutrino sector. The neutrino mass matrix has the same form as equation~7, with parameters $m_0^\nu$ and $\theta_\nu$ specific to the neutrino sector.
 
-The observed mass-squared differences from oscillation experiments ($\Delta m_{21}^2 \approx 7.41\times 10^{-5}$\,eV$^2$, $\Delta m_{31}^2 \approx 2.511\times 10^{-3}$\,eV$^2$, normal hierarchy, PDG 2022) fit the Koide parametrization with $m_0^\nu \approx 9.85$\,meV and $\theta_\nu \approx 0.478$\,rad, giving individual masses $m_1 \approx 0.36$\,meV, $m_2 \approx 8.6$\,meV, $m_3 \approx 50.1$\,meV, and $\sum m_\nu \approx 59$\,meV.
+The observed mass-squared differences from oscillation experiments ($\Delta m_{21}^2\approx 7.41\times 10^{-5}$\,eV$^2$, $\Delta m_{31}^2\approx 2.511\times 10^{-3}$\,eV$^2$, normal hierarchy, PDG 2022) fit the Koide parametrization with $m_0^\nu\approx 9.85$\,meV and $\theta_\nu\approx 0.478$\,rad, giving individual masses $m_1\approx 0.36$\,meV, $m_2\approx 8.6$\,meV, $m_3\approx 50.1$\,meV, and $\sum m_\nu\approx 59$\,meV.
 
-A naive check of the Koide formula with positive square roots gives $K_\nu \approx 0.52$, apparently differing from $2/3$. However, this is a category error for Majorana neutrinos. In the Koide parametrization $\sqrt{m_k} = \sqrt{m_0}(1 + \sqrt{2}\cos(\theta + 2\pi k/3))$, the relation $K = 2/3$ holds analytically because $\sum_k \cos(\theta + 2\pi k/3) = 0$ forces $\sum \mathrm{val}_k = 3$ and $\sum \mathrm{val}_k^2 = 6$, giving $K = 6/9 = 2/3$ regardless of $m_0$ or $\theta$.
+A naive check of the Koide formula with positive square roots gives $K_\nu\approx 0.52$, apparently differing from $2/3$. However, this is a category error for Majorana neutrinos. In the Koide parametrization $\sqrt{m_k}=\sqrt{m_0}(1+\sqrt{2}\cos(\theta+2\pi k/3))$, the relation $K=2/3$ holds analytically because $\sum_k\cos(\theta+2\pi k/3)=0$ forces $\sum\mathrm{val}_k=3$ and $\sum\mathrm{val}_k^2=6$, giving $K=6/9=2/3$ regardless of $m_0$ or $\theta$.
 
-For the neutrino fit, one of the three values $(1 + \sqrt{2}\cos(\theta_\nu + 2\pi k/3))$ is negative ($\approx -0.191$ for $k=1$). The mass $m_k = m_0\,\mathrm{val}_k^2$ is still positive (a square), but the signed square root $\sqrt{m_0}\,\mathrm{val}_k$ is negative. This sign flip is precisely a Majorana phase: for Dirac fermions all mass eigenvalues are positive-definite; for Majorana fermions the mass matrix is symmetric rather than Hermitian, and one eigenvalue carries a relative phase, appearing as a sign flip in $\sqrt{m_k}$.
+For the neutrino fit, one of the three values $(1+\sqrt{2}\cos(\theta_\nu+2\pi k/3))$ is negative ($\approx -0.191$ for $k=1$). The mass $m_k=m_0\,\mathrm{val}_k^2$ is still positive (a square), but the signed square root $\sqrt{m_0}\,\mathrm{val}_k$ is negative. This sign flip is precisely a Majorana phase: for Dirac fermions all mass eigenvalues are positive-definite; for Majorana fermions the mass matrix is symmetric rather than Hermitian, and one eigenvalue carries a relative phase, appearing as a sign flip in $\sqrt{m_k}$.
 
-When the Koide formula is evaluated using signed square roots---the correct convention for a Majorana mass matrix---both $\sum \mathrm{val}_k^2 = 6$ (unchanged by sign flips) and $\sum \mathrm{val}_k = 3$ (unchanged), giving:
+When the Koide formula is evaluated using signed square roots---the correct convention for a Majorana mass matrix---both $\sum\mathrm{val}_k^2=6$ (unchanged by sign flips) and $\sum\mathrm{val}_k=3$ (unchanged), giving:
 \begin{equation}
-\boxed{K_{\nu,\mathrm{Majorana}} = \frac{\sum_k m_k}{\left(\sum_k \pm\sqrt{m_k}\right)^2} = \frac{6m_0}{9m_0} = \frac{2}{3}.}
+K_{\nu,\mathrm{Majorana}} = \frac{\sum_k m_k}{\left(\sum_k \pm\sqrt{m_k}\right)^2} = \frac{6m_0}{9m_0} = \frac{2}{3}.
 \end{equation}
 The apparent gap vanishes entirely. $\mathrm{SU}(3)_{\mathrm{gen}}$ holds exactly for neutrinos in the correct Majorana convention.
 
-\begin{proposition}[RA predicts neutrinos are Majorana]
+\begin{proposition}[Structural compatibility with Majorana neutrinos]
 \label{prop:majorana}
-The $\mathrm{SU}(3)_{\mathrm{gen}}$ Koide structure for neutrino masses requires one signed square root to be negative, which is the defining property of a Majorana mass eigenvalue. RA therefore predicts that neutrinos are Majorana particles. This prediction is independent of the absolute mass scale and is testable via neutrinoless double beta decay experiments (KamLAND-Zen, GERDA, CUORE).
+The $\mathrm{SU}(3)_{\mathrm{gen}}$ Koide parametrization for neutrino masses, when fit to observed mass-squared differences, requires one signed square root to be negative. A negative signed square root in the Koide parametrization is the algebraic signature of a Majorana mass eigenvalue (a relative sign in the symmetric mass matrix). Under the identification of the Koide parametrization with a physical mass matrix (PI), RA is therefore structurally compatible with---and most naturally extended to---neutrinos being Majorana particles. This is a PI-level indication supported by the algebraic fit, not an independent first-principles derivation. It is testable via neutrinoless double beta decay experiments (KamLAND-Zen, GERDA, CUORE).
 \end{proposition}
 
-\textbf{Testable mass-scale prediction.} The Koide parametrization with $K_\nu = 2/3$ in the Majorana convention, together with the two observed $\Delta m^2$ values, uniquely determines the absolute mass scale:
+\paragraph{Testable mass-scale identification.} The Koide parametrization with $K_\nu=2/3$ in the Majorana convention, together with the two observed $\Delta m^2$ values, determines the absolute mass scale at PI level:
 \begin{equation}
-m_1 \approx 0.36\,\mathrm{meV}, \qquad \sum_k m_{\nu_k} \approx 59\,\mathrm{meV}.
+m_1 \approx 0.36\,\mathrm{meV},\quad \sum_k m_{\nu_k} \approx 59\,\mathrm{meV}.
 \end{equation}
-This prediction is (i) well within the current cosmological bound $\sum m_\nu < 120$\,meV (Planck 2018); (ii) testable with future precision surveys (CMB-S4, Euclid, DESI) reaching sensitivity $\sum m_\nu \sim 20$\,meV; and (iii) consistent with normal hierarchy ($m_1 < m_2 \ll m_3$). A positive neutrinoless double-beta-decay signal would confirm both the Majorana nature and the $\mathrm{SU}(3)_{\mathrm{gen}}$ framework simultaneously.
+This identification is (i)~well within the current cosmological bound $\sum m_\nu<120$\,meV (Planck 2018); (ii)~testable with future precision surveys (CMB-S4, Euclid, DESI) reaching sensitivity $\sum m_\nu\sim 20$\,meV; and (iii)~consistent with normal hierarchy ($m_1<m_2\ll m_3$). A positive neutrinoless double-beta-decay signal would support both the Majorana identification and the $\mathrm{SU}(3)_{\mathrm{gen}}$ framework simultaneously.
 
 \subsection{The QCD scale}
+\label{sec:qcd_scale}
 
 The QCD confinement scale in RA is:
 \begin{equation}
-\mu_{\mathrm{QCD}} = \exp\!\left(\sqrt{4\Delta S^*}\right) = \exp\!\left(\sqrt{4\times 0.601}\right) \approx 4.7119,
+\mu_{\mathrm{QCD}} = \exp\!\left(\sqrt{4\Delta S^*}\right) = \exp\!\left(\sqrt{4\times 0.600685}\right) \approx 4.7118,
 \end{equation}
-where $\Delta S^*=-\log P_{\mathrm{acc}}(1)\approx 0.601$ nats is the actualization threshold from Paper~I. The fitted QCD scale parameter corresponds to $\mu_{\mathrm{QCD}}\approx 4.713$, a match to $0.027\%$---again with zero free parameters.
+where $\Delta S^*=-\log P_{\mathrm{acc}}(1)\approx 0.600685$ nats is the actualization threshold from Paper~I (canonical value from the deterministic D4U02 enumeration, \texttt{d4u02\_enumeration.py}). The fitted QCD scale parameter corresponds to $\mu_{\mathrm{QCD}}\approx 4.713$, a match to $0.03\%$---again with zero free parameters.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Mass Cascade}
-\label{sec:masses}
+\label{sec:cascade}
 %% ═══════════════════════════════════════════════════════════
 
-The proton mass is not input into RA; it is derived through a multiplicative cascade across the BDG depth layers. This section gives the full derivation, the self-consistency argument that fixes the operating density, and the resulting predictions for neutron, pion, Higgs, and W masses.
+\paragraph{Epistemic flag.} This section is the most conjectural in the paper. The $\mu^5$ gluon-vertex cascade mechanism is motivated by the BDG topology (the gluon vertex carries profile $(1,2,0,0)$, which gives rise to $\mu^5$ in the Poisson-CSG approximation), but the identification of this mechanism with the physical proton mass requires a self-consistency argument that introduces one conjectural identification: $N_{\mathrm{eff}}=L_q^3=64$. The numerical agreement is strong ($0.3\%$ for $m_p$, better for $r_p$ and $m_H$), but the reader should interpret these as phenomenological interpolations (PI) in the sense of \S1: motivated identifications whose numerical agreement is the principal evidence. Sharpening any of them to a first-principles derivation is an open target.
+
+The proton mass is not input into RA. It is identified via a multiplicative cascade across the BDG depth layers, given a small number of identification steps whose epistemic status is noted as we proceed. This section gives the full construction, the self-consistency argument that fixes the operating density, and the resulting identifications for neutron, pion, Higgs, and $W$ masses.
 
 \subsection{The $\mu^5$ gluon vertex cascade}
 
-The proton is a three-quark bound state sustained by gluon exchange. In the BDG classification (Paper~II, Thm~\ref{thm:closure}), the gluon vertex carries the topological pattern $\mathbf{N}=(1,2,0,0)$ with score $S=+18$. At a local internal actualization density $\mu_p$, the Poisson-CSG probability of forming this vertex is:
+The proton is a three-quark bound state sustained by gluon exchange. In the BDG classification (Theorem~\ref{thm:closure}), the gluon vertex carries the topological pattern $N=(1,2,0,0)$ with score $S=+18$. At a local internal actualization density $\mu_p$, the Poisson-CSG probability of forming this vertex is:
 \begin{equation}
-\label{eq:gluon_prob}
-P(\text{gluon} \mid \mu_p) = \frac{\mu_p^5}{c_4} \exp\!\left(-\sum_{k=1}^4 \frac{\mu_p^k}{k!}\right) \;\approx\; \frac{\mu_p^5}{c_4} \qquad (\mu_p \ll 1),
+\mathbb{P}(\text{gluon}\mid\mu_p) = \frac{\mu_p^5}{c_4}\exp\!\left(-\sum_{k=1}^{4}\frac{\mu_p^k}{k!}\right) \approx \frac{\mu_p^5}{c_4}\quad(\mu_p\ll 1),
 \end{equation}
-with $c_4=8$ the BDG fourth-layer coefficient. The exponent $5$ is structural: one factor of $\mu$ from $N_1=1$ (one direct causal ancestor) and four factors from $\mathrm{Pois}(\mu^2/2)$ evaluated at $k=2$ giving $\mu^4/8$. The combination $\mu^{1+4}/(1\cdot 2) = \mu^5/2$ times the $c_4$ normalization from the depth-4 layer gives $\mu^5/8$.
+with $c_4=8$ the BDG fourth-layer coefficient. The exponent 5 is structural: one factor of $\mu$ from $N_1=1$ (one direct causal ancestor) and four factors from $\mathrm{Pois}(\mu^2/2)$ evaluated at $k=2$ giving $\mu^4/8$. The combination $\mu^{1+4}/(1\cdot 2)=\mu^5/2$ times the $c_4$ normalization from the depth-4 layer gives $\mu^5/8$.
 
 The proton mass equals the Planck mass suppressed by this gluon vertex rate:
 \begin{equation}
-\label{eq:mp_cascade}
-\boxed{\frac{m_p}{m_P} = \frac{\mu_p^5}{c_4}.}
+\frac{m_p}{m_P} = \frac{\mu_p^5}{c_4}.
 \end{equation}
 
 This is the RA mechanism for dimensional transmutation: five powers of a small density parameter produce the twenty orders of magnitude separating the proton mass from the Planck mass. No renormalization group running is invoked, and no continuum QCD input is required.
@@ -340,10 +378,9 @@ This is the RA mechanism for dimensional transmutation: five powers of a small d
 
 The proton is a self-sustaining pattern: its own actualization events create the internal density $\mu_p$ that sustains its topology. This gives a self-consistency equation:
 \begin{equation}
-\label{eq:self_consist_raw}
-\mu_p = \rho_p \cdot V_{\mathrm{coh}} \cdot p_{\mathrm{th}},
+\mu_p = \rho_p\cdot V_{\mathrm{coh}}\cdot p_{\mathrm{th}},
 \end{equation}
-where $\rho_p = N_{\mathrm{eff}} m_p / ((4\pi/3) r_p^3)$ is the actualization density (events per 3-volume), $V_{\mathrm{coh}} = (\pi/4!)\,\ell_C^4$ is the Alexandrov coherence 4-volume at the Compton wavelength $\ell_C = \hbar/(m_p c)$, $p_{\mathrm{th}} = \alpha_{\mathrm{EM}}$ is the per-link actualization probability identified via the optical theorem, and $N_{\mathrm{eff}}$ is the effective vertex count per proton cycle.
+where $\rho_p=N_{\mathrm{eff}}m_p/((4\pi/3)r_p^3)$ is the actualization density (events per 3-volume), $V_{\mathrm{coh}}=(\pi/4!)\ell_C^4$ is the Alexandrov coherence 4-volume at the Compton wavelength $\ell_C=\hbar/(m_p c)$, $p_{\mathrm{th}}=\alpha_{\mathrm{EM}}$ is the per-link actualization probability identified via the optical theorem, and $N_{\mathrm{eff}}$ is the effective vertex count per proton cycle.
 
 The $\pi$ from the 3D spherical volume cancels exactly against the $\pi$ from the 4D Alexandrov volume:
 \begin{equation}
@@ -351,68 +388,87 @@ The $\pi$ from the 3D spherical volume cancels exactly against the $\pi$ from th
 \end{equation}
 leaving a pure-integer geometric factor. The self-consistency equation simplifies to:
 \begin{equation}
-\mu_p = \frac{N_{\mathrm{eff}} \alpha_{\mathrm{EM}}}{32\, L_q^3},
+\mu_p = \frac{N_{\mathrm{eff}}\,\alpha_{\mathrm{EM}}}{32\,L_q^3},
 \end{equation}
-where we have used $r_p = L_q\,\ell_C$ with $L_q=4$ the quark confinement depth (Lean-verified, Paper~II~\S\ref{sec:five_types}).
+where we have used $r_p=L_q\,\ell_C$ with $L_q=4$ the quark confinement depth (Lean-verified, \S2).
 
 \subsection{The $N_{\mathrm{eff}}=L_q^3$ identification}
 
-The exact proton mass is recovered when $N_{\mathrm{eff}} = L_q^3 = 64$. With this identification, the confinement length drops out entirely:
+The identification $N_{\mathrm{eff}}=L_q^3=64$ is introduced as a working hypothesis. It produces a universal relation $\mu_p=\alpha_{\mathrm{EM}}/32$ that is independent of the confinement length, and gives the observed proton mass to $0.3\%$. The identification is conjectural (CN in the sense of \S1): its motivation is structural---the proton's confinement region should contain $L_q^3$ independent actualization sites in depth-space, corresponding to the 3D volume of the confinement lattice---but this is a physical picture rather than a derivation from the growth rule.
+
+With this identification, the confinement length drops out of the self-consistency equation:
 \begin{equation}
-\label{eq:mu_p_clean}
-\boxed{\mu_p = \frac{\alpha_{\mathrm{EM}}}{32}.}
+\mu_p = \frac{\alpha_{\mathrm{EM}}}{32}.
 \end{equation}
-Substituting into equation~\ref{eq:mp_cascade}:
+Substituting into equation (22):
 \begin{equation}
-\label{eq:mp_final}
-\boxed{m_p = m_P \cdot \frac{\alpha_{\mathrm{EM}}^5}{2^{28}} \;=\; 941\;\mathrm{MeV}.}
+m_p = m_P\cdot\frac{\alpha_{\mathrm{EM}}^5}{2^{28}} = 941\,\mathrm{MeV}.
 \end{equation}
-The observed proton mass is $938.3$\,MeV; the match is $0.3\%$. The exponent $28 = 5\times 5 + 3$ decomposes as five powers of $32=2^5$ from equation~\ref{eq:mu_p_clean} plus $c_4 = 2^3$ from equation~\ref{eq:mp_cascade}. The only inputs are $m_P$ (the single dimensionful scale in RA) and $\alpha_{\mathrm{EM}} = 1/137.036$ (derived in \S\ref{sec:alpha_em}).
+The observed proton mass is $938.3$\,MeV; the match is $0.3\%$. The exponent $28=5\times 5+3$ decomposes as five powers of $32=2^5$ from equation (26) plus $c_4=2^3$ from equation (22). The inputs are $m_P$ (the single dimensionful scale in RA), $\alpha_{\mathrm{EM}}=1/137.036$ (derived in \S3.2), and the conjectural identification $N_{\mathrm{eff}}=L_q^3$.
 
 \begin{remark}[On $N_{\mathrm{eff}}=64$]
-The identification $N_{\mathrm{eff}} = L_q^3$ is conjectured, not derived. Physically, it states that the proton's confinement region contains $L_q^3$ independent actualization sites in BDG depth-space---the 3D volume of the confinement lattice. The conjecture is motivated by two observations: (i)~this identification makes $\mu_p$ independent of $L_q$, giving the universal relation $\mu_p = \alpha_{\mathrm{EM}}/32$ for all hadrons bound by the same gluon vertex; (ii)~the resulting 0.3\% match is tighter than would be expected by accident given the cascade's five-power amplification of $N_{\mathrm{eff}}$. Deriving $N_{\mathrm{eff}}$ from first principles remains the primary open target of the cascade programme.
+The identification $N_{\mathrm{eff}}=L_q^3$ is motivated by two observations: (i)~this identification makes $\mu_p$ independent of $L_q$, giving the universal relation $\mu_p=\alpha_{\mathrm{EM}}/32$ for all hadrons bound by the same gluon vertex; (ii)~the resulting $0.3\%$ match to the proton mass is tighter than would be expected by accident given the cascade's five-power amplification of $N_{\mathrm{eff}}$. Neither of these is a derivation. Deriving $N_{\mathrm{eff}}$ from first principles---for instance, from the BDG Poisson-CSG self-consistency of a confined quark-gluon region---remains the primary open target of the cascade programme.
 \end{remark}
 
 \subsection{The $d=4$ uniqueness of the cascade exponent}
 
-The cascade exponent $1 + 2N_2 = 2N_c - 1$ arises from the gluon vertex requiring $N_1 = 1$ and $N_2 = N_c - 1 = 2$, where $N_c=3$ is the number of colors. The confinement cycle length is $d+1$. The identity:
+The cascade exponent $1+2N_2=2N_c-1$ arises from the gluon vertex requiring $N_1=1$ and $N_2=N_c-1=2$, where $N_c=3$ is the number of colors. The confinement cycle length is $d+1$. The identity:
 \begin{equation}
-2N_c - 1 = d + 1 \quad\Longleftrightarrow\quad d = 4
+2N_c-1 = d+1 \iff d=4
 \end{equation}
 holds only in four spacetime dimensions. This is a new uniqueness argument for $d=4$, independent of the D4U02 selectivity-ceiling argument given in Paper~I. In other dimensions, the cascade either fails to produce dimensional transmutation ($d<4$: exponent too small) or overshoots ($d>4$: exponent too large, producing masses above the observed hadronic scale).
 
-\subsection{Neutron, pion, and related predictions}
+\subsection{Neutron, pion, and related identifications}
 
-The same cascade mechanism, applied to mesons and to the neutron, yields three additional predictions with no new parameters.
+The same cascade mechanism, applied to mesons and to the neutron, yields three additional identifications with no new parameters.
 
-\textbf{Neutron mass.} The neutron has identical BDG topology to the proton (both are three-quark systems bound by gluon exchange at the same density $\mu_p$). The cascade formula predicts $m_n = m_p$ to leading order. The observed splitting $\Delta m = m_n - m_p = 1.293$\,MeV is an electromagnetic correction from the $u$-$d$ charge difference, consistent with standard QCD and within the 0.3\% cascade accuracy.
+\paragraph{Neutron mass.} The neutron has identical BDG topology to the proton (both are three-quark systems bound by gluon exchange at the same density $\mu_p$). The cascade formula predicts $m_n=m_p$ to leading order. The observed splitting $\Delta m=m_n-m_p=1.293$\,MeV is an electromagnetic correction from the $u$-$d$ charge difference, consistent with standard QCD and within the $0.3\%$ cascade accuracy.
 
-\textbf{Pion mass.} A meson is a two-quark system. If $N_{\mathrm{eff}}$ scales with quark count, then mesons have $N_{\mathrm{eff}}^{\mathrm{meson}} = (2/3) \times 64 = 42.7$, giving:
+\paragraph{Pion mass.} A meson is a two-quark system. If $N_{\mathrm{eff}}$ scales with quark count, then mesons have $N_{\mathrm{eff}}^{\mathrm{meson}}=(2/3)\times 64=42.7$, giving:
 \begin{equation}
-\mu_\pi = \frac{2}{3}\mu_p, \qquad m_\pi = \left(\frac{2}{3}\right)^5 m_p = \frac{32}{243}\times 941\,\mathrm{MeV} \approx 124\,\mathrm{MeV}.
+\mu_\pi = \frac{2}{3}\mu_p,\quad m_\pi = \left(\frac{2}{3}\right)^5 m_p = \frac{32}{243}\times 941\,\mathrm{MeV}\approx 124\,\mathrm{MeV}.
 \end{equation}
-The observed charged pion mass is $m_{\pi^\pm} = 139.6$\,MeV (11\% discrepancy). The gap reflects chiral symmetry breaking corrections that the simple quark-count scaling does not capture. Non-strange vector mesons ($\rho$, $\omega$) have $N_{\mathrm{eff}} \approx 62$ and predicted masses close to $m_p$, consistent with observation.
+The observed charged pion mass is $m_{\pi^\pm}=139.6$\,MeV ($11\%$ discrepancy). The residual is discussed in \S4.6. Non-strange vector mesons ($\rho,\omega$) have $N_{\mathrm{eff}}\approx 62$ and identified masses close to $m_p$, consistent with observation.
 
-\textbf{Proton charge radius.} The confinement radius follows directly from the Compton-wavelength identification:
+\paragraph{Flavor-singlet pseudoscalar ($\eta'$).} Among the light pseudoscalar mesons, the $\eta'$ is distinguished by its flavor-singlet structure: in the Standard Model, it is the pseudoscalar whose mass is not suppressed by the Goldstone mechanism due to the $\mathrm{U}(1)_A$ anomaly. Its observed mass is $m_{\eta'}=957.8$\,MeV. The baryon cascade formula predicts $941$\,MeV, matching $m_{\eta'}$ to $1.8\%$ with no free parameters and without invoking the quark-count scaling of equation (29). We flag this as a separate phenomenological identification (PI): the $\eta'$ appears to track the baryon scale because, in RA as in the Standard Model, it lacks the Goldstone-like suppression that distinguishes $\pi,K,\eta$. This match was found in post-hoc analysis of the cascade and is reported here for completeness; it was not used to tune any RA parameter.
+
+\paragraph{Proton charge radius.} The confinement radius follows directly from the Compton-wavelength identification:
 \begin{equation}
-r_p = L_q \cdot \ell_C = L_q \cdot \frac{\hbar}{m_p c}.
+r_p = L_q\cdot\ell_C = L_q\cdot\frac{\hbar}{m_p c}.
 \end{equation}
-Using $L_q = 4$ and the RA-predicted $m_p = 941$\,MeV: $r_p = 0.839$\,fm. Using the observed $m_p = 938.3$\,MeV: $r_p = 0.841$\,fm. The CODATA value is $r_p = 0.8414 \pm 0.0019$\,fm---a match to $0.03\%$ with the observed mass and $0.3\%$ with the cascade prediction. This is one of the cleanest numerical predictions in the suite.
+Using $L_q=4$ and the RA-identified $m_p=941$\,MeV: $r_p=0.839$\,fm. Using the observed $m_p=938.3$\,MeV: $r_p=0.841$\,fm. The CODATA value is $r_p=0.8414\pm 0.0019$\,fm---a match to $0.03\%$ with the observed mass and $0.3\%$ with the cascade identification. As with the other mass-cascade results, this should be read as a phenomenological interpolation: the numerical proximity is encouraging, but the identification $r_p=L_q\cdot\ell_C$ is not yet derived from first principles.
+
+\subsection{The pion residual and chirality-from-directionality}
+
+The $11\%$ residual in the pion cascade identification is the most visible gap in \S4. We do not close it in this paper, but we identify where an RA-native account of the gap should be sought.
+
+\paragraph{What we do not have.} We do not have an RA derivation of a Goldstone mechanism. In the Standard Model, the pion is a pseudo-Goldstone boson of spontaneously broken chiral $\mathrm{SU}(2)_L\times\mathrm{SU}(2)_R$ symmetry, with mass generated by explicit breaking from nonzero light-quark masses (the Gell-Mann--Oakes--Renner relation). This derivation uses Dirac spinors, a continuous chiral symmetry, and a Lagrangian; none of these are RA primitives. Importing the mechanism directly into RA would not be a derivation but an identification.
+
+\paragraph{What we do have.} In RA, chirality is not a symmetry that gets broken. The underlying graph is a DAG (Axiom~1, Paper~I), which means time (graph progression) is structurally unidirectional rather than spontaneously broken. There was never a symmetric starting point. This suggests the RA-native analog of chiral symmetry breaking is not a broken symmetry at all, but a structural asymmetry built into the ontology of actualization events. The BDG coefficients $(1,-1,9,-16,8)$ display a striking sign-alternation by chain-length parity; whether this parity structure carries the chiral content of RA dynamics is an open question, requiring careful distinction from the M\"obius-function structure on causal intervals that the coefficients formally implement.
+
+\paragraph{What might close it.} Three kinds of work would be needed to convert the $11\%$ gap into a derivation rather than a phenomenological acknowledgment:
+\begin{enumerate}[nosep]
+    \item A precise RA-native definition of a ``meson'' configuration in the growing DAG---i.e., a specification of which 2-vertex bound state corresponds to the pion---distinct from the 3-vertex baryon configuration used in \S4.
+    \item A mechanism by which DAG directionality generates a mass scale for this 2-vertex configuration that is lighter than the baryon scale in a structurally derivable way (rather than by $(2/3)^5$ quark-count scaling).
+    \item Either (a)~an RA-native Goldstone theorem showing that a specific symmetric excitation of the 2-vertex configuration has suppressed mass, with a combinatorial suppression factor computable from BDG coefficients; or (b)~an alternative mechanism that abandons the Goldstone framing entirely.
+\end{enumerate}
+Option (3b) is worth emphasizing. The Goldstone framing is inherited from continuum quantum field theory, and it is not obvious that RA should reproduce it. The $11\%$ residual could instead be the signature of a different RA-native mechanism that has no Standard Model analog---one which gives the same leading scale as Goldstone suppression but with a different structural origin. Ruling between these options is a target for future work.
+
+\paragraph{Status.} Paper~II's pion identification remains at $124$\,MeV ($11\%$ low) via equation (29). We do not upgrade this in the present suite. Post-hoc Monte Carlo exploration of the BDG dynamics at $\mu=1$ revealed numerical regularities (for instance, $m_{\pi^0}^2\approx m_p^2/48$ at $0.6\%$ error) that are suggestive of finer structure, but no derivation has been produced. These regularities are recorded in the RA knowledge base as conjectures (CN) pending derivation work, and are not claimed here.
 
 \subsection{Higgs mass}
 
 The Higgs boson carries the scalar depth-2 pattern ($N_2$-dominant). Its mass is related to the proton mass by the electromagnetic depth-ratio factor:
 \begin{equation}
-\label{eq:higgs_ratio}
-\boxed{\frac{m_H}{m_p} = \alpha_{\mathrm{EM}}^{-1} - L_q = 137 - 4 = 133.}
+\frac{m_H}{m_p} = \alpha_{\mathrm{EM}}^{-1}-L_q = 137-4 = 133.
 \end{equation}
-Substituting the RA-predicted $m_p$: $m_H = 133 \times 941\,\mathrm{MeV} = 125.2$\,GeV. The observed value is $m_H = 125.25 \pm 0.17$\,GeV---a match to $0.06\%$, well within experimental uncertainty.
+Substituting the RA-identified $m_p$: $m_H=133\times 941\,\mathrm{MeV}=125.2$\,GeV. The observed value is $m_H=125.25\pm 0.17$\,GeV---a match to $0.06\%$, well within experimental uncertainty.
 
-The ratio $m_H/m_p = 133$ is a BDG-native prediction with no free parameters. Physically, the Higgs is a depth-2 scalar whose mass scale is set by the full electromagnetic depth-ratio (137, from Paper~I) reduced by the quark confinement depth (4, from the topology closure). The derivation parallels the proton mass cascade but uses the depth-2 vertex normalization instead of depth-4.
+The ratio $m_H/m_p=133$ is a phenomenological identification (PI) within the BDG framework: no additional free parameter is introduced, but the identification of the Higgs with a depth-2 scalar pattern whose mass scale is set by the electromagnetic depth-ratio (137, from Paper~I) reduced by the quark confinement depth (4, from the topology closure) is not yet a first-principles derivation. The numerical proximity ($0.06\%$) is encouraging but does not by itself elevate the identification to theorem-level status.
 
 \subsection{$W$ boson mass}
 
-The $W$ boson carries the depth-1 gauge pattern with net weak isospin (Paper~II~\S\ref{sec:five_types}, Type~3). Its mass is constrained by the BDG debt structure of the weak charge, but the exact derivation involves the $N_3/N_4$ handedness sector and is not yet closed. The provisional formula:
+The $W$ boson carries the depth-1 gauge pattern with net weak isospin (Type~3 in Theorem~\ref{thm:closure}). Its mass is constrained by the BDG debt structure of the weak charge, but the exact derivation involves the $N_3/N_4$ handedness sector and is not yet closed. The provisional formula:
 \begin{equation}
 m_W = 6^{5/2}\,m_p \approx 83\,\mathrm{GeV}
 \end{equation}
@@ -422,23 +478,23 @@ matches the observed $80.4$\,GeV to $3.3\%$, but the exponent $5/2$ has not been
 
 The ratio of non-baryonic to baryonic gravitational weight is derived from BDG path weight enumeration. The baryon weight is exact:
 \begin{equation}
-W_{\mathrm{baryon}} = W_{\mathrm{quark}} + W_{\mathrm{fermion}} = \frac{1}{2!\,1!} + \frac{1}{1!\,1!\,1!\,1!} = \frac{1}{2} + 1 = \frac{3}{2}.
+W_{\mathrm{baryon}} = W_{\mathrm{quark}}+W_{\mathrm{fermion}} = \frac{1}{2!1!}+\frac{1}{1!1!1!1!} = \frac{1}{2}+1 = \frac{3}{2}.
 \end{equation}
-The non-baryon weight is computed by BDG exact enumeration over all non-baryon $\mathbf{N}$-vectors with $S_{\mathrm{BDG}} > 0$:
+The non-baryon weight is computed by BDG exact enumeration over all non-baryon $\mathbf{N}$-vectors with $S_{\mathrm{BDG}}>0$:
 \begin{equation}
-W_{\mathrm{other}} = 25.97 \quad \text{(exact enumeration, max-}n=12, \text{stable)}.
+W_{\mathrm{other}} = 25.97\quad (\text{exact enumeration, max-}n=12,\text{ stable}).
 \end{equation}
 The ratio:
 \begin{equation}
 \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} = \frac{25.97}{1.5} = 17.32.
 \end{equation}
-The energy weighting at the hadronic-partonic crossover scale $Q_{\mathrm{eff}} = 2m_p$ (the $B\bar{B}$ pair threshold, the natural IR scale of QCD nuclear physics) uses $\alpha_s(2m_p) = 0.312$ from standard QCD RG running:
+The energy weighting at the hadronic-partonic crossover scale $Q_{\mathrm{eff}}=2m_p$ (the $B\bar B$ pair threshold, the natural IR scale of QCD nuclear physics) uses $\alpha_s(2m_p)=0.312$ from standard SM QCD RG running:
 \begin{equation}
-\boxed{f_0 = 17.32 \times \alpha_s(2m_p) = 17.32 \times 0.312 = 5.40.}
+f_0 = 17.32\times\alpha_s(2m_p) = 17.32\times 0.312 = 5.40.
 \end{equation}
-The Planck satellite measurement gives $\Omega_{\mathrm{DM}}/\Omega_b = 5.416 \pm 0.015$---a match to $0.3\%$.
+The Planck satellite measurement gives $\Omega_{\mathrm{DM}}/\Omega_b=5.416\pm 0.015$---a match to $0.3\%$.
 
-\textbf{Epistemic note:} The 17.32 ratio is fully RA-native, derived from BDG exact enumeration with zero free parameters. The $\alpha_s(2m_p) = 0.312$ factor uses established SM QCD RG running from the UV fixed point $\alpha_s(m_Z) = 1/\sqrt{72}$ (which IS RA-native, \S\ref{sec:alpha_s}) down to the hadronic scale. This is not a free parameter, but it is an external input.
+\paragraph{Epistemic note.} The $17.32$ ratio is fully RA-native: it is derived from BDG exact enumeration with zero free parameters. The $\alpha_s(2m_p)=0.312$ factor is \emph{not} RA-native: it uses established SM QCD RG running from the UV fixed point $\alpha_s(m_Z)=1/\sqrt{72}$ (which IS RA-native, \S3.1) down to the hadronic scale. This RG-running step is not a free parameter, but it \emph{is} an external input to the $f_0$ calculation. A future RA-native derivation of the $\alpha_s(\mu)$ profile between the BDG UV and IR fixed points would close this remaining bridge.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Force Ranges: One Principle, Three Outcomes}
@@ -461,15 +517,14 @@ Strong & gluon & 0 (colored) & LLC flux tube; linear $V(r)=\sigma r$ \\
 
 \subsection{Electromagnetism: $1/r^2$ from causal geometry}
 
-The photon carries zero BDG debt per propagation cycle ($\Delta S_{\mathrm{BDG}} = 0$) and zero net spatial charge ($Q_{N_2} = 0$): it propagates with zero actualization cost and no LLC imbalance. Its exchange pattern spreads freely in all directions.
+The photon carries zero BDG debt per propagation cycle ($\Delta S_{\mathrm{BDG}}=0$) and zero net spatial charge ($Q_{N_2}=0$): it propagates with zero actualization cost and no LLC imbalance. Its exchange pattern spreads freely in all directions.
 
 The $1/r^2$ fall-off is the geometry of the causal light cone: the number of causal edges crossing a 2-sphere of coordinate radius $r$ scales as $r^2$, so the photon exchange density---and therefore the force---falls as $1/r^2$. Coulomb's law is a consequence of the 4D causal structure, not a separate postulate.
 
 \subsection{The weak force: range from BDG debt}
 
-The $W$ and $Z$ bosons carry net $Q_{N_3/N_4} \neq 0$ (weak isospin), paying BDG actualization cost at every vertex of their propagation. A pattern with rest-frame actualization frequency $f_0 = m_W c^2 / h$ can persist for proper time $\tau_W = 1/f_0 = \hbar/(m_W c^2)$ before its BDG debt becomes unsustainable. The range is:
+The $W$ and $Z$ bosons carry net $Q_{N_3/N_4}\ne 0$ (weak isospin), paying BDG actualization cost at every vertex of their propagation. A pattern with rest-frame actualization frequency $f_0=m_W c^2/h$ can persist for proper time $\tau_W=1/f_0=\hbar/(m_W c^2)$ before its BDG debt becomes unsustainable. The range is:
 \begin{equation}
-\label{eq:weak_range}
 R_W = c\,\tau_W = \frac{\hbar}{m_W c} \approx 2\times 10^{-18}\,\mathrm{m}.
 \end{equation}
 No Yukawa mechanism is postulated; this is the actualization lifetime of any BDG-indebted pattern. The weak force is short-range because the $W$ and $Z$ carry handedness charge that must be continuously actualized.
@@ -478,49 +533,48 @@ No Yukawa mechanism is postulated; this is the actualization lifetime of any BDG
 
 The strong force has two apparently contradictory properties: at short distances quarks behave as nearly free particles (asymptotic freedom), at long distances they are permanently confined. In RA both emerge from the same Poisson-CSG density parameter $\mu(x)$ varying with the actualization density between the quarks.
 
-\textbf{Asymptotic freedom at high $\mu$.} At short quark separation, the causal region between them is densely actualized. The $N_2$ spatial branching charge of each quark is distributed across many intermediate causal vertices: the effective colour charge experienced by a nearby quark is diluted over $\sim e^\mu$ available causal paths. In Poisson-CSG language, the mean $N_2$ branching per vertex spreads uniformly over all available paths, so the effective colour charge per path falls as $e^{-\mu}$. At high $\mu$ (short distance, high energy), colour charges decouple: $\alpha_s \to 0$. This is asymptotic freedom, derived from the Poisson-CSG density dependence rather than inserted by hand.
+\paragraph{Asymptotic freedom at high $\mu$.} At short quark separation, the causal region between them is densely actualized. The $N_2$ spatial branching charge of each quark is distributed across many intermediate causal vertices: the effective colour charge experienced by a nearby quark is diluted over $\sim e^\mu$ available causal paths. In Poisson-CSG language, the mean $N_2$ branching per vertex spreads uniformly over all available paths, so the effective colour charge per path falls as $e^{-\mu}$. At high $\mu$ (short distance, high energy), colour charges decouple: $\alpha_s\to 0$. This is asymptotic freedom, derived from the Poisson-CSG density dependence rather than inserted by hand.
 
-\textbf{Confinement and the LLC flux tube at low $\mu$.} As the quarks are separated, the causal structure between them becomes sparser. The LLC requires $Q_r + Q_g + Q_b = 0$ globally at all times, but with fewer intermediate vertices, global LLC balance must be maintained by fewer causal paths. Those paths must each carry higher $N_2$ branching flux to compensate. The exchange pattern does not spread over a 2-sphere as it would for a massless, colourless particle; instead it collimates into a narrow tube of concentrated $N_2$-density causal structure: a QCD flux tube.
+\paragraph{Confinement and the LLC flux tube at low $\mu$.} As the quarks are separated, the causal structure between them becomes sparser. The LLC requires $Q_r+Q_g+Q_b=0$ globally at all times, but with fewer intermediate vertices, global LLC balance must be maintained by fewer causal paths. Those paths must each carry higher $N_2$ branching flux to compensate. The exchange pattern does not spread over a 2-sphere as it would for a massless, colourless particle; instead it collimates into a narrow tube of concentrated $N_2$-density causal structure: a QCD flux tube.
 
 Each additional unit of quark separation requires one additional layer of $N_2$ causal structure in the flux tube to maintain LLC balance. The actualization cost per unit length is therefore constant:
 \begin{equation}
-\label{eq:linear_potential}
-V(r) = \sigma \cdot r, \qquad \sigma = \text{string tension (constant)}.
+V(r) = \sigma\cdot r,\quad \sigma=\text{string tension (constant)}.
 \end{equation}
-The force $F = dV/dr = \sigma$ is constant and independent of separation: the strong force does not weaken with distance but maintains a constant tension. This is the RA-native explanation of quark confinement without any phenomenological input.
+The force $F=dV/dr=\sigma$ is constant and independent of separation: the strong force does not weaken with distance but maintains a constant tension. This is the RA-native explanation of quark confinement without any phenomenological input.
 
-\textbf{Flux tube snap and hadron production.} When the quarks are sufficiently separated, the accumulated BDG action of the stretched flux tube exceeds the actualization cost of nucleating a new quark-antiquark pair at the snap point:
+\paragraph{Flux tube snap and hadron production.} When the quarks are sufficiently separated, the accumulated BDG action of the stretched flux tube exceeds the actualization cost of nucleating a new quark-antiquark pair at the snap point:
 \begin{equation}
-\sigma \cdot r > 2m_q c^2 \;\Longrightarrow\; \text{flux tube snaps, new meson nucleates at each end}.
+\sigma\cdot r > 2m_q c^2 \implies \text{flux tube snaps, new meson nucleates at each end.}
 \end{equation}
 This is why isolated quarks are never observed: every attempt to separate them nucleates new hadrons at the snap point.
 
 \subsection{Regge trajectories as a bonus result}
 
-In QCD, hadrons of the same quantum numbers but different spins lie on linear Regge trajectories: $m^2 \propto J$. This is a striking experimental regularity that QCD explains via the flux tube but does not derive from first principles.
+In QCD, hadrons of the same quantum numbers but different spins lie on linear Regge trajectories: $m^2\propto J$. This is a striking experimental regularity that QCD explains via the flux tube but does not derive from first principles.
 
-In RA, a baryon with orbital angular momentum $J$ has a flux tube of length $r \propto \sqrt{J}$ (from $J \propto m v r$ at the string tension scale). The mass is:
+In RA, a baryon with orbital angular momentum $J$ has a flux tube of length $r\propto\sqrt{J}$ (from $J\propto mvr$ at the string tension scale). The mass is:
 \begin{equation}
-m \propto \sigma \cdot r \propto \sigma^{1/2} \sqrt{J}, \qquad m^2 \propto \sigma J.
+m\propto\sigma\cdot r\propto\sigma^{1/2}\sqrt{J},\quad m^2\propto\sigma J.
 \end{equation}
-Regge trajectories are a direct consequence of the LLC flux tube picture; they require no additional input beyond the linear potential of equation~\ref{eq:linear_potential}.
+Regge trajectories are a direct consequence of the LLC flux tube picture; they require no additional input beyond the linear potential of equation (38).
 
 \subsection{The BDG renormalization group: two exact fixed points}
 
 The qualitative picture above can be made quantitative via a BDG-native renormalization group. At density $\mu$, the effective BDG score of a Type-3 (quark) vertex interpolates between the confinement limit (dominated by the vacuum score $c_0$) and the asymptotic-freedom limit (dominated by the free-vertex score $c_4$):
 \begin{equation}
-S_{\mathrm{eff}}(\mu) = (1 - e^{-\mu})\,c_4 + e^{-\mu}\,c_0.
+S_{\mathrm{eff}}(\mu) = (1-e^{-\mu})c_4 + e^{-\mu}c_0.
 \end{equation}
 The strong coupling at density $\mu$ is:
 \begin{equation}
 \alpha_s(\mu) = \frac{1}{\sqrt{c_2\,S_{\mathrm{eff}}(\mu)}}.
 \end{equation}
-This model has two exact fixed points determined entirely by the BDG integers $(c_0, c_2, c_4) = (1, 9, 8)$:
+This model has two exact fixed points determined entirely by the BDG integers $(c_0,c_2,c_4)=(1,9,8)$:
 \begin{align}
-\alpha_s^{\mathrm{IR}} &= \lim_{\mu\to 0} \alpha_s(\mu) = \frac{1}{\sqrt{c_2\,c_0}} = \frac{1}{3} \qquad \text{(confinement)}, \\
-\alpha_s^{\mathrm{UV}} &= \lim_{\mu\to\infty} \alpha_s(\mu) = \frac{1}{\sqrt{c_2\,c_4}} = \frac{1}{\sqrt{72}} = 0.11785 \qquad \text{(asymptotic freedom)}.
+\alpha_s^{\mathrm{IR}} &= \lim_{\mu\to 0}\alpha_s(\mu) = \frac{1}{\sqrt{c_2\,c_0}} = \frac{1}{3}\quad (\text{confinement}),\\
+\alpha_s^{\mathrm{UV}} &= \lim_{\mu\to\infty}\alpha_s(\mu) = \frac{1}{\sqrt{c_2\,c_4}} = \frac{1}{\sqrt{72}} = 0.11785\quad (\text{asymptotic freedom}).
 \end{align}
-The IR fixed point corresponds to the dense, strongly-coupled confinement regime; the UV fixed point to the sparse, weakly-coupled asymptotic-freedom regime. Both are exact consequences of the BDG integers with no external parameters. The physically observed running of $\alpha_s$ from the hadronic scale ($\alpha_s \sim 0.3$) to the electroweak scale ($\alpha_s(m_Z) \approx 0.118$) is bracketed by these two fixed points.
+The IR fixed point corresponds to the dense, strongly-coupled confinement regime; the UV fixed point to the sparse, weakly-coupled asymptotic-freedom regime. Both are exact consequences of the BDG integers with no external parameters. The physically observed running of $\alpha_s$ from the hadronic scale ($\alpha_s\sim 0.3$) to the electroweak scale ($\alpha_s(m_Z)\approx 0.118$) is bracketed by these two fixed points.
 
 \begin{center}
 \begin{tabular}{lcccl}
@@ -529,11 +583,11 @@ Observable & RA prediction & Experiment & Match & Status \\
 \midrule
 $\alpha_s(m_Z)$ & $1/\sqrt{72}=0.11785$ & $0.1180\pm 0.0009$ & $0.13\%$ & CV \\
 $\alpha_{\mathrm{EM}}^{-1}$ & $137.036019$ & $137.035999$ & $0.00001\%$ & CV \\
-$m_p$ & $941$\,MeV & $938.3$\,MeV & $0.3\%$ & CV \\
-$m_H$ & $125.2$\,GeV & $125.25$\,GeV & $0.06\%$ & CV \\
-$r_p$ & $0.84$\,fm & $0.841$\,fm & $0.03\%$ & CV \\
-$f_0$ & $5.42$ & $5.416$ & $0.07\%$ & CV \\
-$\mu_{\mathrm{QCD}}$ & $4.7119$ & $4.713$ (fit) & $0.027\%$ & CV \\
+$m_p$ & $941$\,MeV & $938.3$\,MeV & $0.3\%$ & PI \\
+$m_H$ & $125.2$\,GeV & $125.25$\,GeV & $0.06\%$ & PI \\
+$r_p$ & $0.84$\,fm & $0.841$\,fm & $0.03\%$ & PI \\
+$f_0$ & $5.42$ & $5.416$ & $0.07\%$ & CV (w/ ext.\ RG) \\
+$\mu_{\mathrm{QCD}}$ & $4.7118$ & $4.713$ (fit) & $0.03\%$ & CV \\
 $K$ (Koide) & $2/3$ & $2/3\pm 10^{-5}$ & exact & LV \\
 \bottomrule
 \end{tabular}
@@ -544,13 +598,13 @@ $K$ (Koide) & $2/3$ & $2/3\pm 10^{-5}$ & exact & LV \\
 \label{sec:gauge}
 %% ═══════════════════════════════════════════════════════════
 
-The Standard Model gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ emerges from a clean bifurcation between two kinds of geometric structure in the BDG-filtered growth process.
+The Standard Model gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ is identified in this paper, at the DR/PI level, with the product of two independent geometric structures on the BDG-filtered growth process. The identification is a programme-level proposal, not a closed theorem chain from BDG primitives to a fully derived gauge group.
 
-\subsection{Inter-depth geometry and SU(3)}
+\subsection{Inter-depth geometry and $\mathrm{SU}(3)$}
 
 The BDG coefficients alternate in sign: $(+1,-1,+9,-16,+8)$. This sign alternation arises from inclusion-exclusion counting of causal intervals in $d=4$~\cite{Benincasa2010}. Positive coefficients distribute isotropically (full symmetry at that depth); negative coefficients concentrate anisotropically (broken symmetry).
 
-The inter-depth transfer matrices $T_{i\to j}$ describe how probability flows between BDG depth sectors $i$ and $j$ during the sequential growth process. These matrices carry \emph{phase kicks} $\Delta S_{ij}=c_{j}-c_i$ that are profile-independent:
+The inter-depth transfer matrices $T_{i\to j}$ describe how probability flows between BDG depth sectors $i$ and $j$ during the sequential growth process. These matrices carry \emph{phase kicks} $\Delta S_{ij}=c_j-c_i$ that are profile-independent:
 
 \begin{center}
 \begin{tabular}{cccc}
@@ -571,96 +625,109 @@ The magnitudes $|10|,|25|,|24|,|15|,|1|,|9|$ are all distinct, which is the cond
 
 \subsection{The Berry phase programme}
 
-\begin{theorem}[2-sector flatness]
-For any 2-sector BDG transfer system, the Berry phase is zero. Opposite-sign phase kicks produce rotations about the same axis, yielding flat holonomy.
+\begin{theorem}[Transfer-Graph Overlap]
+\label{thm:overlap}
+For Givens-type sector transfers $T_{i\to j}$ and $T_{k\to l}$ acting on the BDG sector space, $[T_{i\to j},T_{k\to l}]=0$ if and only if $\{i,j\}\cap\{k,l\}=\emptyset$. Verified exhaustively by direct computation for $n=2,3,4,5,6$ in \texttt{berry\_theorems.py}. The Berry geometry is therefore controlled by the incidence structure of the sector transfer graph.
 \end{theorem}
 
-\begin{theorem}[Minimum curvature at 3 sectors]
-Nonzero Berry phase requires a minimum of 3 BDG depth sectors, arising from the asymmetry of the kick magnitudes.
+\begin{theorem}[Exact Poisson-thinning transfer law]
+\label{thm:thinning}
+The conditional probability that a boundary-event promotes the local motif to depth-$k$ sector is $f_k=\lambda_k/\sum_j\lambda_j$ exactly (not approximately), where $\lambda_k=\mu^k/k!$ are the Poisson-CSG rates at density $\mu$. This is a consequence of the Poisson thinning property: in a Poisson process partitioned into regions with rates $\{\lambda_k\}$, a uniformly random point falls in region $k$ with probability exactly $\lambda_k/\sum_j\lambda_j$, and region counts are independent Poisson variables. The BDG transfer fractions therefore require no modeling assumption beyond the Poisson-CSG framework of Paper~I.
+\end{theorem}
+
+\begin{theorem}[2-sector flatness]
+\label{thm:2sector}
+For any 2-sector BDG transfer system, the Berry phase is identically zero. By Theorem~\ref{thm:overlap}, the two transfers overlap on both indices; the resulting rotations act about the same axis in the relevant $\mathrm{SU}(2)$ Lie algebra, and same-axis rotations commute. The Wilson-loop eigenphase equals the sum of the individual rotation phases---a dynamical total phase, not a geometric one.
+\end{theorem}
+
+\begin{theorem}[Minimum curved sector count $=3$]
+\label{thm:min3}
+Nonzero Berry phase requires a minimum of 3 BDG depth sectors. The three BDG phase kicks around any 3-cycle of the sector graph sum to zero but are unequal in magnitude (all six pairs $|c_{j}-c_i|$ for the BDG coefficients $(c_1,c_2,c_3,c_4)=(-1,9,-16,8)$ produce six distinct values $|10|,|25|,|24|,|15|,|1|,|9|$); by Theorem~\ref{thm:overlap} the adjacent transfers overlap on one index and do not commute. Combined with Theorem~\ref{thm:2sector}, this establishes that 3 is the minimum sector count for genuine geometric phase.
 \end{theorem}
 
 \begin{theorem}[Depth-3 curvature maximum]
-The strongest curvature contributions come from transitions involving depth $k=3$ (coefficient $c_3=-16$, the largest in magnitude), producing kicks $|\Delta_{23}|=25$ and $|\Delta_{34}|=24$.
+\label{thm:depth3max}
+The strongest Berry curvature contributions come from transitions involving depth $k=3$ (coefficient $c_3=-16$, the largest in magnitude), producing kicks $|\Delta_{23}|=25$ and $|\Delta_{34}|=24$. Since $|c_3|$ exceeds the next-largest $|c_k|$ by $\ge 7$, any plaquette involving depth 3 carries curvature strictly larger than any plaquette not involving depth 3.
 \end{theorem}
 
-The 3-sector structure at the minimum required for geometric phase is precisely $\mathrm{SU}(3)$. The inter-depth geometry of the BDG coefficients---through their sign alternation and magnitude asymmetry---generates the color gauge group from pure arithmetic.
+The 3-sector structure at the minimum required for geometric phase is identified with $\mathrm{SU}(3)$. The inter-depth geometry of the BDG coefficients---through their sign alternation and magnitude asymmetry---is the candidate RA-native source of the color gauge group. The identification of the Berry-phase structure with the continuum $\mathrm{SU}(3)$ gauge group is a programme-level step (DR/PI), not a derivation at theorem level.
 
-At $\mu_{\mathrm{QCD}}=4.712$, the 3-sector eigenphase of the BDG transfer matrices is $\varphi=0.806$\,rad, computed from the Poisson thinning theorem (which makes the sector transition law $f_k=\lambda_k/\sum\lambda_j$ exact).
+\paragraph{Computation-verified eigenphase.} At $\mu_{\mathrm{QCD}}=4.7118$ (canonical value from \texttt{d4u02\_enumeration.py}), the 3-sector Wilson loop over the depth-$\{1,2,4\}$ transfer graph has eigenphases $\{-0.8055,0.0000,+0.8055\}$\,rad, computed explicitly in \texttt{berry\_gauge.py} via transfer fractions from Theorem~\ref{thm:thinning} and phase kicks $\Delta_{12}=+10$, $\Delta_{24}=-1$, $\Delta_{41}=-9$ from Theorem~\ref{thm:overlap}. The eigenphase $\varphi=0.806$\,rad is robust to the $\Delta S^*$ refinement at the $10^{-4}$\,rad level (the transfer fractions depend on ratios of $\lambda_k$, which cancel the $\mu_{\mathrm{QCD}}$ shift to leading order).
 
-\subsection{Intra-depth geometry and SU(2)}
+\subsection{Intra-depth geometry and $\mathrm{SU}(2)$}
 
 Orthogonal to the inter-depth structure, each BDG depth layer has \emph{spatial} boundary directions---the directions perpendicular to the causal chain within a single depth shell. In $d=4$, each depth shell has 2 spatial boundary directions. The symmetry group of 2-direction rotations is $\mathrm{SU}(2)$.
 
-\subsection{The clean bifurcation}
+\subsection{The geometric bifurcation}
 
 \begin{equation}
-\boxed{\mathrm{SU}(3)_{\mathrm{depth}}\times\mathrm{SU}(2)_{\mathrm{direction}}\times\mathrm{U}(1)_{\mathrm{phase}} = \mathrm{SM\;gauge\;group}.}
+\boxed{\mathrm{SU}(3)_{\mathrm{depth}}\times\mathrm{SU}(2)_{\mathrm{direction}}\times\mathrm{U}(1)_{\mathrm{phase}} \leftrightarrow \text{SM gauge group}.}
 \end{equation}
 
-The gauge group is not an input. It is the product of two independent geometric structures: inter-depth transfer (yielding $\mathrm{SU}(3)$) and intra-depth boundary directions (yielding $\mathrm{SU}(2)$), with the overall $\mathrm{U}(1)$ phase. Both structures are determined by the BDG integers and the dimension $d=4$.
+In this proposal, the gauge group is the product of two independent geometric structures: inter-depth transfer (yielding $\mathrm{SU}(3)$ via the Berry-phase programme) and intra-depth boundary directions (yielding $\mathrm{SU}(2)$), with the overall $\mathrm{U}(1)$ phase. Both structures are motivated by the BDG integers and the dimension $d=4$. The reader is cautioned that the Berry-phase theorems above are statements about the BDG transfer-matrix structure specifically; the identification of that structure with the continuum Standard-Model gauge group is an interpretive step (DR/PI), not a derivation from BDG primitives to the continuum group at theorem level.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Absence of Supersymmetry}
 \label{sec:susy}
 %% ═══════════════════════════════════════════════════════════
 
-Supersymmetry (SUSY) was motivated by three problems in the Standard Model. In RA, all three problems are either dissolved or resolved differently, and the structural algebra that SUSY requires is simply not generated. The non-observation of superpartners at the LHC is precisely what RA expects.
+Supersymmetry (SUSY) was motivated by three problems in the Standard Model. Within RA, each of those three problems receives a framework-internal reading that does not require supersymmetric partners to resolve it, and the structural algebra that supersymmetry requires is not naturally generated by the BDG growth dynamics. This does not constitute a proof that superpartners do not exist; it is a statement about which structural motivations for them have RA-native alternatives. The continued non-observation of superpartners at the LHC is consistent with the RA picture, though of course consistency with LHC data is also a feature of many other non-SUSY frameworks.
 
 \subsection{The hierarchy problem: dissolved}
 
-The hierarchy problem asks why quantum loop corrections do not drive the Higgs mass to the Planck scale. In QFT, virtual particle loops generate corrections $\delta m_H^2 \sim \Lambda_{\mathrm{UV}}^2$, requiring fine-tuned cancellations to maintain $m_H \sim 125$\,GeV.
+The hierarchy problem asks why quantum loop corrections do not drive the Higgs mass to the Planck scale. In QFT, virtual particle loops generate corrections $\delta m_H^2\sim\Lambda_{\mathrm{UV}}^2$, requiring fine-tuned cancellations to maintain $m_H\sim 125$\,GeV.
 
-In RA, mass is $f_0 = mc^2/h$---the actualization frequency of a BDG pattern. There are no virtual loops in the QFT sense. Feynman diagram loops are a continuum approximation to the causal graph, and in a DAG they cannot loop back on themselves by definition. The hierarchy problem is a consequence of assuming QFT loop corrections are real physical processes, rather than approximation artifacts of treating a discrete structure as continuous. In the discrete RA framework, the Higgs pattern simply has the BDG topology it has; there is no mechanism to drive it to a different mass.
+In RA, mass is $f_0=mc^2/h$---the actualization frequency of a BDG pattern. There are no virtual loops in the QFT sense. Feynman diagram loops are a continuum approximation to the causal graph, and in a DAG they cannot loop back on themselves by definition. The hierarchy problem is a consequence of assuming QFT loop corrections are real physical processes, rather than approximation artifacts of treating a discrete structure as continuous. In the discrete RA framework, the Higgs pattern simply has the BDG topology it has; there is no mechanism to drive it to a different mass.
 
 \subsection{Dark matter: already resolved}
 
 SUSY's lightest supersymmetric particle (LSP)---the neutralino---was the leading dark matter candidate for decades. In RA, the WIMP prohibition (Paper~III) establishes that any particle that does not participate in on-shell actualization events contributes zero causal depth and zero metric weight. WIMPs, neutralinos, and axions are structurally excluded as gravitational sources.
 
-The dark matter phenomena are explained by the Poisson-CSG dimensional reduction in sparse galactic halos ($\mu < 1$), developed in Paper~III. The dark matter problem is not a deficit to be filled by a new particle; it is a signal of topology change in the causal graph.
+The dark matter phenomena are explained by the Poisson-CSG dimensional reduction in sparse galactic halos ($\mu<1$), developed in Paper~III. The dark matter problem is not a deficit to be filled by a new particle; it is a signal of topology change in the causal graph.
 
 \subsection{Gauge coupling unification: handled at the source}
 
-SUSY modifies the running of the three gauge couplings so that they unify at a high scale $\sim 10^{16}$\,GeV. In RA, the coupling constants $\alpha_{\mathrm{EM}}$, $\alpha_s$, $G_F$ are not free parameters to be unified---they are determined by the BDG coefficients and the Poisson-CSG asymptotic $c_k$ distribution. If the three couplings have specific values because they are properties of the four BDG degrees of freedom in 4D, the unification question is answered at the level of the underlying topology, not by a symmetry imposed on top of the Standard Model (see \S\ref{sec:gut}).
+SUSY modifies the running of the three gauge couplings so that they unify at a high scale $\sim 10^{16}$\,GeV. In RA, the coupling constants $\alpha_{\mathrm{EM}},\alpha_s,G_F$ are not free parameters to be unified---they are identified with properties of the BDG coefficients and the Poisson-CSG asymptotic $c_k$ distribution. If the three couplings have specific values because they are properties of the four BDG degrees of freedom in 4D, the unification question is answered at the level of the underlying topology, not by a symmetry imposed on top of the Standard Model (see \S8).
 
 \subsection{Why SUSY algebra is not generated}
 
 In the RA pattern framework, fermions are 2-periodic BDG patterns and bosons are 1-periodic. SUSY would require that for every 2-periodic pattern there exists a corresponding 1-periodic pattern with the same mass and charges.
 
-The BDG growth dynamics do not generate this correspondence. A 2-periodic pattern is structurally different from a 1-periodic one: they have different $(N_1, N_2, N_3, N_4)$ profiles and therefore different actualization frequencies. There is no symmetry transformation in the BDG algebra that maps a 2-periodic pattern to a 1-periodic pattern with equal eigenvalues. SUSY is not ruled out by RA---it is simply \emph{not generated}. It is unnecessary structure, and the LHC's non-observation of superpartners across the entire originally motivated parameter space is in precise agreement with this structural prediction.
+The BDG growth dynamics do not generate this correspondence. A 2-periodic pattern is structurally different from a 1-periodic one: they have different $(N_1,N_2,N_3,N_4)$ profiles and therefore different actualization frequencies. There is no symmetry transformation in the BDG algebra that maps a 2-periodic pattern to a 1-periodic pattern with equal eigenvalues. SUSY is not ruled out by RA---it is simply not generated. It is unnecessary structure, and the LHC's non-observation of superpartners across the entire originally motivated parameter space is consistent with this structural picture.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Grand Unification: SU(3)$_{\mathrm{colour}}\times$SU(3)$_{\mathrm{gen}}$}
 \label{sec:gut}
 %% ═══════════════════════════════════════════════════════════
 
-The deepest structural consequence of the RASM programme is that Grand Unification is not an additional postulate but an inevitable consequence of the BDG architecture.
+\paragraph{Epistemic flag.} This section presents a structural conjecture (CN in the sense of \S1). The identification of colour and generation as two facets of a single BDG structure at the Planck scale is motivated by the integer architecture of the framework but is not derived from first principles. The section should be read as proposing a unification picture consistent with the framework, not as establishing one. The specific value $\sin^2\theta_W=3/8$ at unification follows if the unification holds; it is not independent evidence for it.
 
-\subsection{Two SU(3) groups from a single source}
+This section proposes that Grand Unification emerges as a natural structural consequence of the BDG architecture, rather than being an additional postulate.
+
+\subsection{Two $\mathrm{SU}(3)$ groups from a single source}
 
 Both $\mathrm{SU}(3)_{\mathrm{colour}}$ and $\mathrm{SU}(3)_{\mathrm{gen}}$ arise from the same BDG structure:
 \begin{align}
-\mathrm{SU}(3)_{\mathrm{colour}} &: \text{acts on } \{r, g, b\} = \text{three spatial directions of } N_2 \text{ branching}, \\
-\mathrm{SU}(3)_{\mathrm{gen}} &: \text{acts on } \{N_2, N_3, N_4\} = \text{three BDG excitation levels}.
+\mathrm{SU}(3)_{\mathrm{colour}} &: \text{ acts on } \{r,g,b\}=\text{three spatial directions of }N_2\text{ branching},\\
+\mathrm{SU}(3)_{\mathrm{gen}} &: \text{ acts on } \{N_2,N_3,N_4\}=\text{three BDG excitation levels}.
 \end{align}
-
-In the macroscopic low-energy regime, these are distinguishable: spatial $N_2$ directions couple to colour-charged patterns, while excitation levels couple to generation structure. But at the Planck scale, where $\mu \to \infty$ and all BDG levels are equally and densely populated, the distinction between ``which spatial direction'' and ``which excitation level'' disappears. The two $\mathrm{SU}(3)$ groups become indistinguishable facets of a single symmetry group acting on the full six-dimensional BDG charge space $\{r, g, b, N_2, N_3, N_4\}$.
+In the macroscopic low-energy regime, these are distinguishable: spatial $N_2$ directions couple to colour-charged patterns, while excitation levels couple to generation structure. But at the Planck scale, where $\mu\to\infty$ and all BDG levels are equally and densely populated, the distinction between ``which spatial direction'' and ``which excitation level'' disappears. The two $\mathrm{SU}(3)$ groups become indistinguishable facets of a single symmetry group acting on the full six-dimensional BDG charge space $\{r,g,b,N_2,N_3,N_4\}$.
 
 \begin{conjecture}[BDG Grand Unification]
-\label{conj:gut}
-At the Planck scale ($\mu \to \infty$), the combined symmetry group of the RA causal graph is $\mathrm{SU}(3)_{\mathrm{colour}} \times \mathrm{SU}(3)_{\mathrm{gen}}$, embedded in a unified group $G_{\mathrm{GUT}}$ acting on all six non-gravitational BDG degrees of freedom. This unification is structural---the Planck scale is not a free parameter but the scale at which the spatial and excitation-level aspects of the BDG structure become indistinguishable, i.e., $\mu \to \infty$ and $c_k \to$ uniform.
+At the Planck scale ($\mu\to\infty$), the combined symmetry group of the RA causal graph is $\mathrm{SU}(3)_{\mathrm{colour}}\times\mathrm{SU}(3)_{\mathrm{gen}}$, embedded in a unified group $G_{\mathrm{GUT}}$ acting on all six non-gravitational BDG degrees of freedom. This unification is structural---the Planck scale is not a free parameter but the scale at which the spatial and excitation-level aspects of the BDG structure become indistinguishable, i.e., $\mu\to\infty$ and $c_k\to$ uniform.
 \end{conjecture}
 
 \subsection{The Weinberg angle at unification}
 
-If $\mathrm{SU}(3)_{\mathrm{colour}} \times \mathrm{SU}(3)_{\mathrm{gen}}$ unifies into a single group at the Planck scale, the electroweak mixing angle takes the $\mathrm{SU}(5)$-type value at unification:
+If $\mathrm{SU}(3)_{\mathrm{colour}}\times\mathrm{SU}(3)_{\mathrm{gen}}$ unifies into a single group at the Planck scale, the electroweak mixing angle takes the $\mathrm{SU}(5)$-type value at unification:
 \begin{equation}
-\sin^2\theta_W\big|_{\mathrm{GUT}} = \frac{3}{8}.
+\sin^2\theta_W\Big|_{\mathrm{GUT}} = \frac{3}{8}.
 \end{equation}
-The observed value $\sin^2\theta_W \approx 0.231$ at the $Z$ mass scale is the result of renormalization group running from the Planck scale to the electroweak scale. In RA, this running is the $\mu$-dependence of the Poisson-CSG coupling: as $\mu$ decreases from $\infty$ (Planck) to the QCD confinement scale, the $N_2$ coupling strength grows relative to $N_1$ and $N_3/N_4$---precisely the observed running of $\alpha_s$ that drives $\sin^2\theta_W$ from $3/8$ to $0.231$.
+The observed value $\sin^2\theta_W\approx 0.231$ at the $Z$ mass scale is the result of renormalization group running from the Planck scale to the electroweak scale. In RA, this running is the $\mu$-dependence of the Poisson-CSG coupling: as $\mu$ decreases from $\infty$ (Planck) to the QCD confinement scale, the $N_2$ coupling strength grows relative to $N_1$ and $N_3/N_4$---consistent with the observed running of $\alpha_s$ that drives $\sin^2\theta_W$ from $3/8$ to $0.231$.
 
 \subsection{Why RA grand unification needs no SUSY}
 
-In conventional $\mathrm{SU}(5)$ GUTs, the three coupling constants do not quite meet without supersymmetric partners adjusting the RG flow. In RA, the unification at the Planck scale is structural: it is the $\mu \to \infty$ limit of the Poisson-CSG, not a coincidence of coupling trajectories. No superpartners are needed because the unification scale is fixed by the BDG structure, not by RG running. The non-observation of superpartners at the LHC (\S\ref{sec:susy}) is therefore both confirmed and explained.
+In conventional $\mathrm{SU}(5)$ GUTs, the three coupling constants do not quite meet without supersymmetric partners adjusting the RG flow. In RA, the unification at the Planck scale is structural: it is the $\mu\to\infty$ limit of the Poisson-CSG, not a coincidence of coupling trajectories. No superpartners are needed because the unification scale is fixed by the BDG structure, not by RG running. The non-observation of superpartners at the LHC (\S7) is therefore both consistent with and explained by this picture.
 
 \subsection{Exact proton stability}
 
@@ -682,16 +749,15 @@ A local topology class is an equivalence class of finite neighborhoods in the ac
 \end{definition}
 
 \begin{definition}[Renewal motif]
-A renewal motif is a local topology class $\mathcal{M}$ such that, conditioned on admissible growth in its neighborhood, the probability that the successor neighborhood remains in $\mathcal{M}$ is bounded away from zero.
+A renewal motif is a local topology class $M$ such that, conditioned on admissible growth in its neighborhood, the probability that the successor neighborhood remains in $M$ is bounded away from zero.
 \end{definition}
 
-Stability is a property of repeated finite renewal, not eternal persistence (Axiom~7). A particle ``exists'' insofar as its local topology class reproduces itself under the sequential growth rule.
+Stability is a property of repeated finite renewal, not eternal persistence (Axiom~7, Paper~I). A particle ``exists'' insofar as its local topology class reproduces itself under the sequential growth rule.
 
 \begin{proposition}[Structural fragility --- Lean verified]
 Electrons and photons have BDG stability score 1 (the minimum). They are the most fragile stable motifs---any additional interaction pushes them past the renewal threshold.
 \end{proposition}
-
-Verified in \texttt{RA\_GraphCore.lean} (\texttt{structural\_fragility}). This is the structural basis for the Kinematic Coherence Bound in quantum computing (Paper~I, \S12).
+Verified in \texttt{RA\_D1\_Proofs.lean} (\texttt{structural\_fragility}). This is the structural basis for the Kinematic Coherence Bound in quantum computing (Paper~I, \S12).
 
 \subsection{The force hierarchy}
 
@@ -714,66 +780,64 @@ The factorial suppression $1/k!$ at each depth level produces the observed force
 
 \subsection{Charge quantization in units of $e/3$}
 
-Charge quantization in units of $e/3$ is a theorem about $N_2$ winding numbers in the BDG closure pattern. In a $3+1$D causal graph, a vertex can receive signed edges from at most three independent spatial directions. The net signed $N_1$ charge is therefore constrained to integer values in $\{-3, -2, -1, 0, +1, +2, +3\}$. Identifying the unit charge with $e/3$ (one spatial edge per dimension):
+Charge quantization in units of $e/3$ is a theorem about $N_2$ winding numbers in the BDG closure pattern. In a 3+1D causal graph, a vertex can receive signed edges from at most three independent spatial directions. The net signed $N_1$ charge is therefore constrained to integer values in $\{-3,-2,-1,0,+1,+2,+3\}$. Identifying the unit charge with $e/3$ (one spatial edge per dimension):
 \begin{equation}
-Q_{N_1} \in \{-e,\, -2e/3,\, -e/3,\, 0,\, +e/3,\, +2e/3,\, +e\}.
+Q_{N_1}\in\{-e,-2e/3,-e/3,0,+e/3,+2e/3,+e\}.
 \end{equation}
-This matches the complete set of electric charges in the Standard Model: up quark $+2e/3$ ($Q_{N_1} = +2$), down quark $-e/3$ ($Q_{N_1} = -1$), electron $-e$ ($Q_{N_1} = -3$), neutrino $0$ ($Q_{N_1} = 0$), $W^\pm$ ($Q_{N_1} = \pm 3$), and neutral particles ($Q_{N_1} = 0$). Electric charge is quantized in units of $e/3$ because the spatial dimensionality of the causal graph is exactly 3.
+This matches the complete set of electric charges in the Standard Model: up quark $+2e/3$ ($Q_{N_1}=+2$), down quark $-e/3$ ($Q_{N_1}=-1$), electron $-e$ ($Q_{N_1}=-3$), neutrino $0$ ($Q_{N_1}=0$), $W^\pm$ ($Q_{N_1}=\pm 3$), and neutral particles ($Q_{N_1}=0$). Electric charge is quantized in units of $e/3$ because the spatial dimensionality of the causal graph is exactly 3.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Further Consequences}
-\label{sec:further}
+\label{sec:consequences}
 %% ═══════════════════════════════════════════════════════════
 
-The machinery developed in the preceding sections dissolves several additional long-standing problems in physics without requiring new postulates. We present three here.
+The machinery developed in the preceding sections offers RA-native readings of three additional long-standing problems in physics. In each case the reading is not a full solution in the traditional sense but a reframing: the framework's discrete primitives remove the need for certain questions to be asked, because what looked like a puzzle in the continuum picture turns out to be an artifact of the continuum description. We present three here.
 
-\subsection{The strong CP problem: $\theta_{\mathrm{QCD}} = 0$ exactly}
+\subsection{The strong CP problem: $\theta_{\mathrm{QCD}}=0$ exactly}
 
-The QCD Lagrangian permits a CP-violating term $\mathcal{L}_\theta = \theta_{\mathrm{QCD}}\,(g^2/32\pi^2)\,G^{\mu\nu}\tilde{G}_{\mu\nu}$. The experimental bound $|\theta_{\mathrm{QCD}}| < 10^{-10}$ implies this term is extraordinarily small, but no symmetry of the Standard Model forces it to zero. This is the strong CP problem.
+The QCD Lagrangian permits a CP-violating term $\mathcal{L}_\theta=\theta_{\mathrm{QCD}}(g^2/32\pi^2)G^{\mu\nu}\tilde G_{\mu\nu}$. The experimental bound $|\theta_{\mathrm{QCD}}|<10^{-10}$ implies this term is extraordinarily small, but no symmetry of the Standard Model forces it to zero. This is the strong CP problem.
 
-The $\theta_{\mathrm{QCD}}$ term arises in QFT because the QCD vacuum is a superposition of topological sectors $|n\rangle$ indexed by the winding number $n \in \pi_3(\mathrm{SU}(3)) = \mathbb{Z}$. These sectors are connected by instantons: Euclidean field configurations on $\mathbb{R}^4$ with non-trivial topology, which contribute to the path integral as tunnelling amplitudes between sectors.
+The $\theta_{\mathrm{QCD}}$ term arises in QFT because the QCD vacuum is a superposition of topological sectors $|n\rangle$ indexed by the winding number $n\in\pi_3(\mathrm{SU}(3))=\mathbb{Z}$. These sectors are connected by instantons: Euclidean field configurations on $\mathbb{R}^4$ with non-trivial topology, which contribute to the path integral as tunnelling amplitudes between sectors.
 
 In RA, the vacuum is the unique empty graph with no vertices. The growing DAG has no smooth gauge-field topology and therefore no concept of winding-number sectors: $\pi_3$ of a discrete partially-ordered set is trivial. There is no superposition of $|n\rangle$ states, because the sequential, acyclic growth of the graph admits only one vacuum---the empty graph. Instantons, which require a smooth Euclidean field configuration on $\mathbb{R}^4$ with non-trivial homotopy, have no counterpart in a discrete DAG.
 
 \begin{proposition}[Strong CP dissolution]
-\label{prop:strong_cp}
-The QCD vacuum's topological structure---a superposition of winding-number sectors connected by instantons---requires a smooth Euclidean gauge field with non-trivial $\pi_3(\mathrm{SU}(3))$ topology. The RA causal graph has a unique empty vacuum with no such topological structure. The mechanism that generates $\theta_{\mathrm{QCD}}$ is absent, so $\theta_{\mathrm{QCD}} = 0$ exactly. The strong CP problem does not arise in RA.
+The QCD vacuum's topological structure---a superposition of winding-number sectors connected by instantons---requires a smooth Euclidean gauge field with non-trivial $\pi_3(\mathrm{SU}(3))$ topology. The RA causal graph has a unique empty vacuum with no such topological structure. The mechanism that generates $\theta_{\mathrm{QCD}}$ is absent, so $\theta_{\mathrm{QCD}}=0$ exactly. The strong CP problem does not arise in RA.
 \end{proposition}
 
-A second, independent argument reaches the same conclusion via the LLC. The strong force is the LLC constraint on $N_2$ spatial charge. CP transformation flips $Q_{N_2}$ and reverses the spatial branching direction. The LLC equation $\Delta Q_{N_2} = 0$ at every vertex is equivalent to $\Delta(-Q_{N_2}) = 0$: CP maps a valid LLC-conserving configuration to another valid LLC-conserving configuration with the same action. CP is therefore an exact symmetry of the strong-force LLC, giving $\theta_{\mathrm{QCD}} = 0$ independently of the instanton argument.
+A second, independent argument reaches the same conclusion via the LLC. The strong force is the LLC constraint on $N_2$ spatial charge. CP transformation flips $Q_{N_2}$ and reverses the spatial branching direction. The LLC equation $\Delta Q_{N_2}=0$ at every vertex is equivalent to $\Delta(-Q_{N_2})=0$: CP maps a valid LLC-conserving configuration to another valid LLC-conserving configuration with the same action. CP is therefore an exact symmetry of the strong-force LLC, giving $\theta_{\mathrm{QCD}}=0$ independently of the instanton argument.
 
-\textbf{No axion.} The Peccei-Quinn axion was introduced specifically to dynamically relax $\theta_{\mathrm{QCD}}$ to zero. Since RA gives $\theta_{\mathrm{QCD}} = 0$ structurally, no axion field is required. RA predicts the axion does not exist, consistent with decades of non-observation in dedicated searches.
+\paragraph{No axion.} The Peccei--Quinn axion was introduced specifically to dynamically relax $\theta_{\mathrm{QCD}}$ to zero. Since RA gives $\theta_{\mathrm{QCD}}=0$ structurally, no axion field is required. RA predicts the axion does not exist, consistent with decades of non-observation in dedicated searches.
 
 \subsection{The black hole information paradox: dissolved by severance}
 
 Hawking's calculation shows that black holes emit thermal radiation. If the radiation is exactly thermal, it carries no information about infalling matter. This appears to violate the unitarity of quantum evolution, which requires information to be preserved.
 
-A black hole in RA is a region where the local actualization density approaches the bandwidth ceiling $c/\ell_P$, forming a \emph{causal severance}: a topological boundary in the DAG beyond which no outgoing causal edges exist. This is not the destruction of causal structure but its partition into two causally disconnected components (Paper~III).
+A black hole in RA is a region where the local actualization density approaches the bandwidth ceiling $c/\ell_P$, forming a causal severance: a topological boundary in the DAG beyond which no outgoing causal edges exist. This is not the destruction of causal structure but its partition into two causally disconnected components (Paper~III).
 
-The LLC holds independently on each component (the Graph Cut Theorem, Lean-verified). The conserved charges $(Q_{N_1}, Q_{N_2}, Q_{N_3/N_4}, p^\mu)$ that flow into the severance from the parent spacetime are encoded in the initial conditions of the daughter subgraph. Information is not destroyed; it is \emph{partitioned}. The book thrown into the black hole has its causal history encoded in the daughter spacetime's initial LLC conditions, fully accessible to observers inside the daughter but inaccessible to exterior observers, because there are no outgoing causal edges from daughter to parent.
+The LLC holds independently on each component (the Graph Cut Theorem, Lean-verified). The conserved charges $(Q_{N_1},Q_{N_2},Q_{N_3/N_4},p^\mu)$ that flow into the severance from the parent spacetime are encoded in the initial conditions of the daughter subgraph. Information is not destroyed; it is partitioned. The book thrown into the black hole has its causal history encoded in the daughter spacetime's initial LLC conditions, fully accessible to observers inside the daughter but inaccessible to exterior observers, because there are no outgoing causal edges from daughter to parent.
 
-\textbf{Why Hawking radiation appears thermal.} An exterior observer cannot access the daughter subgraph. Tracing over the daughter's degrees of freedom produces a mixed state at the severance boundary---thermal radiation. This is information partition, not information loss. The total system (parent + daughter) evolves unitarily; the exterior subsystem evolves non-unitarily only because it is genuinely causally disconnected from part of the total system.
+\paragraph{Why Hawking radiation appears thermal.} An exterior observer cannot access the daughter subgraph. Tracing over the daughter's degrees of freedom produces a mixed state at the severance boundary---thermal radiation. This is information partition, not information loss. The total system (parent + daughter) evolves unitarily; the exterior subsystem evolves non-unitarily only because it is genuinely causally disconnected from part of the total system.
 
 \begin{proposition}[No information loss]
-\label{prop:no_info_loss}
 The LLC holds on both sides of every causal severance. Unitarity is preserved for the total system (parent + daughter). The apparent information loss for an exterior observer is a consequence of causal disconnection, not of entropy increase. The black hole information paradox does not arise in RA.
 \end{proposition}
 
-\textbf{Prediction: no Page curve.} The Page curve predicts that if a black hole radiates into a pure total state, the exterior radiation entropy should first increase and then decrease back to zero as the black hole evaporates. In RA, the interior is genuinely causally disconnected---not a purification partner accessible to exterior observers. The exterior radiation is a genuinely mixed state throughout evaporation, not the marginal of a pure total state. The exterior entropy therefore increases monotonically throughout evaporation and does not decrease. RA predicts no Page curve, in contrast to holographic AdS/CFT accounts. This is a testable difference.
+\paragraph{Prediction: no Page curve.} The Page curve predicts that if a black hole radiates into a pure total state, the exterior radiation entropy should first increase and then decrease back to zero as the black hole evaporates. In RA, the interior is genuinely causally disconnected---not a purification partner accessible to exterior observers. The exterior radiation is a genuinely mixed state throughout evaporation, not the marginal of a pure total state. The exterior entropy therefore increases monotonically throughout evaporation and does not decrease. RA predicts no Page curve, in contrast to holographic AdS/CFT accounts. This is a testable difference.
 
 \subsection{The baryon asymmetry as a severance initial condition}
 
-The observable universe contains approximately $10^{80}$ baryons and essentially no antibaryons, with baryon-to-photon ratio $\eta_b = n_B/n_\gamma \approx 6.1 \times 10^{-10}$. Sakharov's conditions for dynamical baryogenesis require: (1)~baryon number violation, (2)~C and CP violation, (3)~departure from thermal equilibrium.
+The observable universe contains approximately $10^{80}$ baryons and essentially no antibaryons, with baryon-to-photon ratio $\eta_b=n_B/n_\gamma\approx 6.1\times 10^{-10}$. Sakharov's conditions for dynamical baryogenesis require: (1)~baryon number violation, (2)~C and CP violation, (3)~departure from thermal equilibrium.
 
 Baryon number is exactly conserved in RA. Sakharov condition (1) is therefore structurally absent. This does not mean RA cannot account for $\eta_b$; it means the question is posed in the wrong framework.
 
-The Big Bang in RA is a severance nucleation event: our universe is a daughter spacetime whose initial conditions are encoded in the LLC boundary conditions at the severance boundary (Paper~III). Among these initial conditions is a net baryon number $B = N_B \neq 0$, inherited from the parent spacetime via the LLC charge balance at the boundary.
+The Big Bang in RA is a severance nucleation event: our universe is a daughter spacetime whose initial conditions are encoded in the LLC boundary conditions at the severance boundary (Paper~III). Among these initial conditions is a net baryon number $B=N_B\ne 0$, inherited from the parent spacetime via the LLC charge balance at the boundary.
 
-The baryon asymmetry was not dynamically generated during cosmic evolution. It is an \emph{initial condition} of the daughter spacetime, imprinted at the Planck scale by the LLC at the severance boundary. Baryogenesis as a cosmic process does not occur in RA.
+The baryon asymmetry was not dynamically generated during cosmic evolution. It is an initial condition of the daughter spacetime, imprinted at the Planck scale by the LLC at the severance boundary. Baryogenesis as a cosmic process does not occur in RA.
 
-\textbf{Observational status.} If the baryon asymmetry is a severance initial condition, no dynamic baryogenesis process occurs and no signatures of electroweak baryogenesis or leptogenesis should appear in precision CMB data. The distinctive RA prediction is the absence of baryon isocurvature perturbations correlated with any baryogenesis epoch at any scale. Future precision measurements (CMB-S4, Simons Observatory) may provide a discriminating test.
+\paragraph{Observational status.} If the baryon asymmetry is a severance initial condition, no dynamic baryogenesis process occurs and no signatures of electroweak baryogenesis or leptogenesis should appear in precision CMB data. The distinctive RA prediction is the absence of baryon isocurvature perturbations correlated with any baryogenesis epoch at any scale. Future precision measurements (CMB-S4, Simons Observatory) may provide a discriminating test.
 
-The quantitative value $\eta_b \approx 6.1 \times 10^{-10}$ is in principle derivable from the LLC boundary conditions at the severance---a property of the BDG action at Planck density, calculable via the BDG-filter simulation. This is an open computational target.
+The quantitative value $\eta_b\approx 6.1\times 10^{-10}$ is in principle derivable from the LLC boundary conditions at the severance---a property of the BDG action at Planck density, calculable via the BDG-filter simulation. This is an open computational target.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Selective Regime and Motif Selection}
@@ -783,7 +847,7 @@ The quantitative value $\eta_b \approx 6.1 \times 10^{-10}$ is in principle deri
 The BDG filter does not treat all depth profiles equally. In the selective regime ($\mu\approx 3$--$5$), the filter exhibits a characteristic selection pattern (Monte Carlo, $3\times 10^5$ samples per density):
 
 \begin{center}
-\begin{tabular}{rcccc}
+\begin{tabular}{ccccc}
 \toprule
 $\mu$ & $\Delta N_1$ & $\Delta N_2$ & $\Delta N_3$ & $\Delta N_4$ \\
 \midrule
@@ -796,16 +860,15 @@ $\mu$ & $\Delta N_1$ & $\Delta N_2$ & $\Delta N_3$ & $\Delta N_4$ \\
 \end{tabular}
 \end{center}
 
-Here $\Delta N_k = \mathbb{E}[N_k|S>0]-\mathbb{E}[N_k]$ is the shift induced by the BDG filter.
+Here $\Delta N_k=\mathbb{E}[N_k\mid S>0]-\mathbb{E}[N_k]$ is the shift induced by the BDG filter.
 
 The pattern is universal across densities:
-\begin{itemize}
-\item $N_1$ always decreased ($c_1=-1$ penalizes shallow parents),
-\item $N_3$ always decreased ($c_3=-16$ heavily penalizes depth-3),
-\item $N_2$ and $N_4$ increased ($c_2=+9$, $c_4=+8$ reward depth-2 and depth-4).
+\begin{itemize}[nosep]
+    \item $N_1$ always decreased ($c_1=-1$ penalizes shallow parents),
+    \item $N_3$ always decreased ($c_3=-16$ heavily penalizes depth-3),
+    \item $N_2$ and $N_4$ increased ($c_2=+9$, $c_4=+8$ reward depth-2 and depth-4).
 \end{itemize}
-
-The filter selects for \emph{wide, deep, sparse} structure: motifs with rich depth-2 and depth-4 ancestry but few shallow ($N_1$) and depth-3 ($N_3$) connections. This is the discrete origin of the observed matter spectrum: stable particles are precisely those motifs whose depth composition passes the BDG filter with high probability.
+The filter selects for wide, deep, sparse structure: motifs with rich depth-2 and depth-4 ancestry but few shallow ($N_1$) and depth-3 ($N_3$) connections. This is the discrete origin of the observed matter spectrum: stable particles are precisely those motifs whose depth composition passes the BDG filter with high probability.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Epistemic Status of Results}
@@ -813,53 +876,54 @@ The filter selects for \emph{wide, deep, sparse} structure: motifs with rich dep
 %% ═══════════════════════════════════════════════════════════
 
 \begin{center}
-\begin{tabular}{llc}
+\small
+\begin{tabular}{lll}
 \toprule
 Result & Method & Status \\
 \midrule
 \multicolumn{3}{l}{\textit{Topology and structure}} \\
-5 topology types exhaust SM & Lean 4 (124 cases) & LV \\
-Confinement depths $L=3,4$ & Lean 4 & LV \\
-Baryon chirality (13 theorems) & Lean 4 & LV \\
+5 topology types exhaust SM & Lean~4 (124 cases) & LV \\
+Confinement depths $L=3,4$ & Lean~4 & LV \\
+Baryon chirality (13 theorems) & Lean~4 & LV \\
 Charge quantization in $e/3$ & $N_2$ winding in 3+1D & DR \\
 \midrule
 \multicolumn{3}{l}{\textit{Coupling constants}} \\
-$\alpha_{\mathrm{EM}}^{-1}=137$ (integer) & Lean 4 (\texttt{norm\_num}) & LV \\
-$\alpha_{\mathrm{EM}}^{-1}=137.036$ (full) & Discrete Dyson equation & CV \\
+$\alpha_{\mathrm{EM}}^{-1}=137$ (integer core) & Lean~4 (\texttt{norm\_num}) & LV \\
+$\alpha_{\mathrm{EM}}^{-1}=137.036$ (full value) & Discrete Dyson equation & CV \\
 $\alpha_s(m_Z)=1/\sqrt{72}$ & BDG UV fixed point & CV \\
 $\alpha_s^{\mathrm{IR}}=1/3$ & BDG RG IR fixed point & CV \\
-Koide $K=2/3$ & Lean 4 & LV \\
-Koide breaking $K_q,K_\ell$ pattern & Casimir formula (zero params) & CV \\
-Cabibbo angle $|V_{us}|=\sin(2/9)$ & $\mathrm{SU}(3)_{\mathrm{gen}}$ structure & CV \\
-$|V_{cb}|=(2/\pi)\delta=0.0424$ & Angle displacement $\delta$ & CV \\
-Neutrinos are Majorana & Sign flip in $\sqrt{m_k}$ & DR \\
-$\sum m_\nu \approx 59$\,meV & Koide + oscillation $\Delta m^2$ & CV \\
+Koide $K=2/3$ (leptons) & Lean~4 & LV \\
+Koide breaking $K_q,K_\ell$ pattern & Casimir formula identification & PI (3--8\%) \\
+Cabibbo angle $|V_{us}|=\sin(2/9)$ & $\mathrm{SU}(3)_{\mathrm{gen}}$ motivated identification & PI (1.8\%) \\
+$|V_{cb}|=(2/\pi)\delta=0.0424$ & Angle-displacement identification & PI (0.4\%) \\
+Neutrinos structurally Majorana-compatible & Sign flip in $\sqrt{m_k}$ & PI \\
+$\sum m_\nu\approx 59$\,meV & Koide + oscillation $\Delta m^2$ & CV \\
 \midrule
 \multicolumn{3}{l}{\textit{Mass cascade}} \\
-$\mu_p=\alpha_{\mathrm{EM}}/32$ & Self-consistency (conj. $N_{\mathrm{eff}}=L_q^3$) & Conjecture \\
-$m_p=m_P\alpha_{\mathrm{EM}}^5/2^{28}=941$\,MeV & $\mu^5$ cascade & CV (0.3\%) \\
-$m_n = m_p$ (leading order) & Same BDG topology & DR \\
-$m_H=133\,m_p=125.2$\,GeV & Depth-2 + EM ratio & CV (0.06\%) \\
-$r_p=L_q\ell_C=0.84$\,fm & Confinement radius & CV (0.03\%) \\
-$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG exact enumeration + SM RG & CV (0.3\%) \\
-$m_\pi\approx 124$\,MeV & $(2/3)^5 m_p$ & CV (11\%) \\
-$m_W=6^{5/2}m_p=83$\,GeV & Handedness sector (conj.) & Conjecture (3.3\%) \\
-$\mu_{\mathrm{QCD}}=4.7119$ & $\exp(\sqrt{4\Delta S^*})$ & CV (0.027\%) \\
+$\mu_p=\alpha_{\mathrm{EM}}/32$ (self-consistency) & Requires $N_{\mathrm{eff}}=L_q^3=64$ & CN \\
+$m_p=m_P\alpha_{\mathrm{EM}}^5/2^{28}=941$\,MeV & $\mu^5$ cascade identification & PI (0.3\%) \\
+$m_n=m_p$ (leading order) & Same BDG topology & DR \\
+$m_H=133 m_p=125.2$\,GeV & Depth-2 + EM ratio identification & PI (0.06\%) \\
+$r_p=L_q\ell_C=0.84$\,fm & Confinement radius identification & PI (0.03\%) \\
+$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG enumeration + ext.\ SM RG & CV (0.3\%, w/ ext.\ input) \\
+$m_\pi\approx 124$\,MeV & $(2/3)^5 m_p$ numerical observation & PI (11\%) \\
+$m_W=6^{5/2}m_p=83$\,GeV & Handedness sector identification & CN (3.3\%) \\
+$\mu_{\mathrm{QCD}}=4.7118$ & $\exp(\sqrt{4\Delta S^*})$, canonical D4U02 & CV (0.03\%) \\
 \midrule
 \multicolumn{3}{l}{\textit{Force ranges}} \\
 EM $1/r^2$ & Causal 2-sphere geometry & DR \\
-Weak $R_W=\hbar/(m_W c)$ & BDG debt lifetime & DR \\
-Strong $V(r)=\sigma r$ & LLC flux tube & DR \\
+Weak $R_W=\hbar/(m_W c)$ & BDG debt lifetime (unified principle) & DR \\
+Strong $V(r)=\sigma r$ & LLC flux tube (unified principle) & DR \\
 Regge $m^2\propto J$ & Flux tube $r\propto\sqrt{J}$ & DR \\
 \midrule
 \multicolumn{3}{l}{\textit{Gauge structure}} \\
-$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(2)\times\mathrm{U}(1)$ & Sign mechanism + Berry & CV \\
-$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(3)_{\mathrm{gen}}$ GUT & $\mu\to\infty$ limit & Conjecture \\
-$\sin^2\theta_W=3/8$ at GUT scale & SU(5)-type embedding & DR \\
+$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(2)\times\mathrm{U}(1)$ & Sign mechanism + Berry identification & PI \\
+$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(3)_{\mathrm{gen}}$ GUT & $\mu\to\infty$ structural conjecture & CN \\
+$\sin^2\theta_W=3/8$ at GUT scale & $\mathrm{SU}(5)$-type embedding (if GUT holds) & DR (conditional) \\
 \midrule
-\multicolumn{3}{l}{\textit{Structural predictions}} \\
-Absence of SUSY & BDG algebra not generated & DR \\
-Absence of WIMPs & Paper III (P\_act filter) & DR \\
+\multicolumn{3}{l}{\textit{Structural predictions / absences}} \\
+Absence of SUSY partners & BDG algebra not generated & DR \\
+Absence of WIMPs & Paper~III ($P_{\mathrm{act}}$ filter) & DR \\
 Exact proton stability & LLC applied to $N_2$ winding & LV \\
 $\theta_{\mathrm{QCD}}=0$ exactly & DAG has no instantons & DR \\
 Absence of axion & $\theta_{\mathrm{QCD}}=0$ structurally & DR \\
@@ -869,44 +933,49 @@ Baryon asymmetry as initial condition & Severance boundary LLC & DR \\
 \end{tabular}
 \end{center}
 
-LV = Lean-verified (machine-checked, zero \texttt{sorry}). CV = computation-verified (public scripts, reproducible). DR = derived (all steps explicit, not fully machine-checked).
+\paragraph{Legend.} LV = Lean-verified theorem (machine-checked at the stated layer; BDG coefficient uniqueness is LV at the arithmetic-inversion layer and supplemented by Yeats~(2025) at the geometric-identification layer, see Paper~I \S3.4). DR = derived (all steps explicit within RA). CV = computation-verified (exact derivation plus numerical evaluation). PI = phenomenological interpolation (motivated identification supported by numerical evidence, not yet derived from first principles). CN = conjecture (stated path to closure, no current derivation).
+
+\paragraph{Reading the table.} A PI label does not mean ``wrong''---several PI results in this table match observation to a part in $10^3$ or better---but it does mean that the agreement is not yet a derivation. Sharpening a PI to a DR or CV is the natural target for future work on the relevant section.
 
 %% ═══════════════════════════════════════════════════════════
 \section{What the Standard Model Gets Right, and Why}
-\label{sec:sm_success}
+\label{sec:sm}
 %% ═══════════════════════════════════════════════════════════
 
-The Standard Model is not wrong. It is a spectacularly accurate effective description of the BDG filter's output in the selective regime. Its symmetry groups encode the geometric structure of the BDG depth profile. Its coupling constants are eigenvalues of the BDG action. Its particle spectrum is the complete catalog of stable renewal motifs in $d=4$.
+The Standard Model is not wrong. It is a spectacularly accurate effective description of the BDG filter's output in the selective regime. Its symmetry groups encode the geometric structure of the BDG depth profile (at the DR/PI level of this paper). Its coupling constants are identified with eigenvalues or fixed points of the BDG integer arithmetic. Its particle spectrum corresponds, at the topology-class level, to the five stable renewal motifs in $d=4$ (Lean-verified).
 
-What the Standard Model cannot explain---why these groups, why these constants, why these particles---is not a failure of the Standard Model but a consequence of the fact that it describes the output without seeing the input. The input is the BDG action. The output is the Standard Model.
+What the Standard Model cannot explain---why these groups, why these constants, why these particles---is not a failure of the Standard Model but, on this picture, a consequence of the fact that it describes the output without seeing the input. The input, in RA's framing, is the BDG action; the output is the Standard Model. The extent to which the RA programme has actually \emph{derived} the Standard-Model content from BDG primitives is what the epistemic-status table in \S12 attempts to characterize honestly.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Conclusion}
 \label{sec:conclusion}
 %% ═══════════════════════════════════════════════════════════
 
-From the five integers $(1,-1,9,-16,8)$ and the sequential growth rule of Paper~I, the present paper derives: the complete Standard Model particle spectrum (five topology types, Lean-verified, 124 extension cases); the strong and electromagnetic coupling constants to sub-percent accuracy; the Koide lepton relation $K=2/3$ (exact, Lean-verified) and the Koide breaking pattern for quarks from a zero-parameter Casimir formula; the Cabibbo angle and $|V_{cb}|$ from the $\mathrm{SU}(3)_{\mathrm{gen}}$ structure; the Majorana nature of neutrinos and $\sum m_\nu \approx 59$\,meV; the proton mass from a $\mu^5$ gluon vertex cascade (0.3\% match); the Higgs, neutron, pion, and proton radius from the same cascade; the baryon-to-dark matter ratio $f_0 = 5.40$ from exact BDG path-weight enumeration; the gauge group $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$ from a geometric bifurcation of BDG structure; the three force ranges (EM Coulombic, weak short-range, strong confining) from a unified principle; Regge trajectories $m^2 \propto J$ as a flux-tube consequence; grand unification $\mathrm{SU}(3)_{\mathrm{colour}} \times \mathrm{SU}(3)_{\mathrm{gen}}$ at the Planck scale with $\sin^2\theta_W = 3/8$. The structural predictions include the absence of supersymmetry, WIMPs, and axions; exact proton stability; $\theta_{\mathrm{QCD}} = 0$; the absence of a Page curve; and the baryon asymmetry as a severance initial condition rather than a dynamical outcome of cosmic evolution. All results are parameter-free: the BDG integers are the only input.
+From the BDG integers $(1,-1,9,-16,8)$ and the sequential growth rule of Paper~I, the present paper develops the matter-and-force programme of Relational Actualism. Its strongest claims are structural: the five topology types, the renewal architecture, the confinement depths, and the organization of force mediation by discrete graph structure. On top of that structural core, the paper presents a number of numerical evaluations and phenomenological identifications, including candidate relations for couplings, masses, flavour parameters, and force ranges. Some of these are strikingly close to observed values, but they do not all stand at the same epistemic level, and should not be read as if they do.
 
-The particles are not excitations of fields on a background manifold. They are finite local topology classes---renewal motifs---that reproduce themselves under the BDG-filtered growth dynamics. The Standard Model's free parameters are, in RA, either Lean-verified theorems or computation-verified outputs of the BDG integer structure.
+The paper therefore does not claim complete closure of the particle sector. Rather, it establishes a disciplined programme in which a substantial part of particle structure is constrained by discrete topology and renewal, while several quantitative bridges to observation remain to be sharpened, proved, or replaced. The particles are not, in this picture, excitations of fields on a background manifold. They are finite local topology classes---renewal motifs---that reproduce themselves under the BDG-filtered growth dynamics.
 
-Paper~III develops the macroscopic consequences: gravity from the continuum limit of the LLC, cosmological predictions including apparent dark energy from $\Lambda=0$, the severance programme (horizons, entropy, nucleation), and the Boltzmann Brain prohibition. Paper~IV develops the emergence of biological complexity from the $\mu=1$ percolation threshold.
+\paragraph{Open targets.} The following are the most important unresolved items in this paper's programme: (i)~full derivation of the Higgs-sector mass relation from BDG dynamics; (ii)~closure of the $W$-mass conjecture; (iii)~first-principles derivation of $N_{\mathrm{eff}}$ in the proton mass cascade; (iv)~Haar-measure or algebraic derivation of the Cabibbo angle and CKM parameters; (v)~closure of the gauge-group identification at theorem level from BDG primitives to the continuum Standard-Model group; (vi)~first-principles derivation of the $\alpha_s(\mu)$ RG profile between the BDG UV and IR fixed points (which would close the $f_0$ bridge); (vii)~experimental discriminants separating RA predictions from Standard Model expectations; (viii)~an RA-native mechanism for the pion mass residual (see \S4.6), whether via a discrete Goldstone-like structure rooted in DAG directionality or via a structurally distinct RA-native mechanism with no Standard Model analog.
+
+Paper~III develops the macroscopic consequences: gravity, cosmology, and causal severance. Paper~IV develops the emergence of biological complexity from the same underlying percolation threshold.
 
 %% ═══════════════════════════════════════════════════════════
 \section*{Acknowledgments}
 %% ═══════════════════════════════════════════════════════════
 
-As in Paper~I, this work was developed in collaboration with Claude (Anthropic, Opus 4.6) for computation and manuscript preparation, and with ChatGPT (OpenAI, GPT-4o) for external review and proof structure. The ontological commitments, physical reasoning, and framework direction are the author's.
+As in Paper~I, this work was developed in collaboration with Claude (Anthropic) for computation and manuscript preparation, and with ChatGPT (OpenAI) for external review and proof structure. The ontological commitments, physical reasoning, and framework direction are the author's.
 
 \begin{thebibliography}{99}
 \bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
 \bibitem{Dowker2013} F.~Dowker and L.~Glaser, ``Causal set d'Alembertians for various dimensions,'' \emph{Class. Quantum Grav.} \textbf{30}, 195016 (2013).
-\bibitem{PDG2024} R.~L.~Workman et al. (Particle Data Group), ``Review of Particle Physics,'' \emph{PTEP} \textbf{2022}, 083C01 (2022), and 2024 update.
+\bibitem{Yeats2025} K.~Yeats, ``Hockey-stick-style identities and the moments of causal intervals in $d$-dimensional Lorentzian causal diamonds,'' \emph{Class. Quantum Grav.} \textbf{42}, 145003 (2025).
+\bibitem{PDG2022} R.~L.~Workman et al. (Particle Data Group), ``Review of Particle Physics,'' \emph{PTEP} \textbf{2022}, 083C01 (2022), and 2024 update.
 \bibitem{Planck2020} N.~Aghanim et al. (Planck Collaboration), ``Planck 2018 results. VI. Cosmological parameters,'' \emph{Astron. Astrophys.} \textbf{641}, A6 (2020).
-\bibitem{Koide1982} Y.~Koide, ``New viewpoint in the charged lepton mass relation,'' \emph{Phys. Lett. B} \textbf{120}, 161 (1983).
+\bibitem{Koide1983} Y.~Koide, ``New viewpoint in the charged lepton mass relation,'' \emph{Phys. Lett. B} \textbf{120}, 161 (1983).
 \bibitem{Wyler1971} A.~Wyler, ``L'espace sym\'etrique du groupe des \'equations de Maxwell,'' \emph{C. R. Acad. Sci. Paris} \textbf{272A}, 186 (1971).
-\bibitem{CabibboKM} N.~Cabibbo, ``Unitary symmetry and leptonic decays,'' \emph{Phys. Rev. Lett.} \textbf{10}, 531 (1963); M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,'' \emph{Prog. Theor. Phys.} \textbf{49}, 652 (1973).
-\bibitem{GUTGeorgiGlashow} H.~Georgi and S.~L.~Glashow, ``Unity of all elementary-particle forces,'' \emph{Phys. Rev. Lett.} \textbf{32}, 438 (1974).
-\bibitem{PecceiQuinn} R.~D.~Peccei and H.~R.~Quinn, ``CP conservation in the presence of pseudoparticles,'' \emph{Phys. Rev. Lett.} \textbf{38}, 1440 (1977).
+\bibitem{Cabibbo1963} N.~Cabibbo, ``Unitary symmetry and leptonic decays,'' \emph{Phys. Rev. Lett.} \textbf{10}, 531 (1963); M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,'' \emph{Prog. Theor. Phys.} \textbf{49}, 652 (1973).
+\bibitem{GeorgiGlashow1974} H.~Georgi and S.~L.~Glashow, ``Unity of all elementary-particle forces,'' \emph{Phys. Rev. Lett.} \textbf{32}, 438 (1974).
+\bibitem{PQ1977} R.~D.~Peccei and H.~R.~Quinn, ``CP conservation in the presence of pseudoparticles,'' \emph{Phys. Rev. Lett.} \textbf{38}, 1440 (1977).
 \bibitem{Page1993} D.~N.~Page, ``Information in black hole radiation,'' \emph{Phys. Rev. Lett.} \textbf{71}, 3743 (1993).
 \end{thebibliography}
 

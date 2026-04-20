@@ -6,14 +6,82 @@
 \usepackage[utf8]{inputenc}
 % \usepackage{microtype}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+% --- Robust definitions to work around mathptmx/hyperref issues ---
+\let\oldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+\newcommand{\SRa}{S_{\mathrm{RA}}}
+% --- End robust definitions ---
+
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{booktabs}
+\usepackage{tcolorbox}
 \usepackage{array}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Prevent math commands from breaking PDF metadata (bookmarks, abstract title, etc.)
+\pdfstringdefDisableCommands{%
+  \def\hbar{hbar}%
+  \def\ell{l}%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+  \def\SRa{S_RA}%
+  \def\Pacc{P_acc}%
+  \def\Dkl{D_KL}%
+  \def\TV{TV}%
+}
+
 \setstretch{1.08}
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
@@ -43,8 +111,30 @@
 \end{center}
 
 \begin{abstract}
-We present the ontological kernel and dynamical engine of Relational Actualism (RA), a foundational physics framework built on a single commitment: irreversible actualization events, writing permanent vertices into a growing causal directed acyclic graph filtered by the Benincasa--Dowker--Glaser (BDG) action, are the primitive physical reality. From the five BDG integers $(1,-1,9,-16,8)$ that characterize four-dimensional causal geometry, we derive: the actualization threshold $\Delta S^*\approx 0.601$ nats (parameter-free); the actualization criterion as a four-level hierarchy (BDG score $>0 \to \mu \geq 1 \to \Delta S > \Delta S^* \to$ on-shell); the strong coupling constant $\alpha_s(m_Z)=1/\sqrt{72}\approx 0.11785$ (PDG match: $0.13\%$); the fine structure constant $\alpha_{\mathrm{EM}}^{-1}=137.036$ via a discrete Dyson equation ($0.00001\%$ match); the Koide lepton relation $K=2/3$ (Lean-verified); and a proof that $d=4$ is the unique spacetime dimension satisfying all viability constraints simultaneously. The measurement problem is dissolved: quantum states are unactualized candidates; classical events are actualized vertices; no collapse postulate is needed. The Schr\"odinger equation is the low-density statistical limit of the discrete BDG dynamics; classical mechanics is the high-density limit. The Unruh effect is resolved by the Lean-verified Rindler stationarity theorem: the Rindler thermal bath has $\Delta S_n = 0$ under modular flow, so no actualization occurs. Special relativity emerges from the graph bandwidth: $c = \ell_P/t_P$, proper time is the integer count of actualization events along a worldline, and $E = \gamma m c^2$ is the actualization frequency. Singularities are replaced by topological severance when the bandwidth saturates. Seven axioms are stated, including Finitary Actuality: every physically realized universe-state is a finite graph. The formal core is machine-verified in Lean~4 (176+ theorems, 8 files). Falsifiable predictions include a strict null result for the Bose--Marletto--Vedral gravity-mediated entanglement protocol and the categorical prohibition of WIMPs as dark matter candidates.
+Relational Actualism (RA) is a foundational physics framework built on a single ontological commitment: that irreversible actualization events---interactions writing permanent vertices into a growing causal directed acyclic graph filtered by the Benincasa--Dowker--Glaser (BDG) action---are the primitive physical reality. The present paper establishes the kernel: seven axioms (including Finitary Actuality, which forbids actually-infinite structures), the sequential graph-growth rule, the BDG acceptance kernel, and the four-level actualization criterion that connects discrete combinatorics up to the on-shell condition of perturbative quantum field theory. From this kernel the measurement problem dissolves, with quantum and classical mechanics identified as the low-density and high-density limits of a single discrete process. The Schr\"odinger equation, the Born rule, special-relativistic kinematics, and the Unruh effect each receive natural RA-native readings; the last is addressed through a Lean-proved stationarity theorem whose scope is finite-dimensional and which currently imports the Poincar\'e invariance of the Minkowski vacuum as a physics axiom (a known open target). An argument that $d=4$ is the unique spacetime dimension satisfying all identified viability constraints---drawing on multiple convergent criteria of which the D4U02 selectivity ceiling is one---closes the paper. The formal core is machine-verified in Lean~4 (176+ theorems across 8 files, with remaining gaps documented in the Lean-verification table). Falsifiable predictions---including a strict null result for the Bose--Marletto--Vedral gravity-mediated entanglement protocol and the categorical prohibition of WIMPs as dark matter candidates---are developed in Papers~II, III, and~IV. An epistemic-status table at the end of the paper labels each claim as Lean-verified, derived, computation-verified, or conjectural.
 \end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of This Paper,colback=gray!5,colframe=gray!60]
+This foundational paper distinguishes:
+\begin{itemize}[nosep]
+    \item \textbf{Lean-verified theorems} concerning the discrete RA core;
+    \item \textbf{Derived results} establishing the ontology, growth rule, and kernel structure of RA;
+    \item \textbf{Translation claims} relating discrete statements to familiar continuum formulations;
+    \item \textbf{Conjectural bridges} where later physical applications are only previewed rather than closed here.
+\end{itemize}
+The aim of this paper is to establish the kernel of the framework, not to complete the particle, gravitational, or complexity programmes in full. The discrete statement is primary; the continuum statement is its translation under the BDG-to-metric dictionary.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This is the foundational paper of the Relational Actualism suite. It introduces the ontology, axioms, sequential growth rule, and actualization kernel on which the later papers depend.
+\begin{itemize}[nosep]
+    \item \textbf{This paper provides:} the bimodal ontology, the seven axioms, the finite growth rule, the BDG kernel structure, and the basic discrete-to-continuum translation framework.
+    \item \textbf{Paper~II uses these results} to develop the matter, force, and motif sector.
+    \item \textbf{Paper~III uses these results} to develop gravity, severance, entropy, and cosmology.
+    \item \textbf{Paper~IV uses these results} to extend the framework to complexity, life, and agency.
+\end{itemize}
+This paper establishes the kernel of the framework; it does not claim to complete the particle, gravitational, or complexity programmes in full.
+\end{tcolorbox}
 
 %% ═══════════════════════════════════════════════════════════
 \section{Introduction}
@@ -54,7 +144,7 @@ Modern physics is spectacularly successful at prediction and embarrassingly inco
 
 Relational Actualism proposes that both problems trace to a single omission: physics lacks a primitive account of \emph{when events become real}. The framework supplies one. An actualization event is an irreversible physical interaction that writes a permanent vertex into a growing causal graph. Quantum superposition is the space of unactualized candidates; wave function collapse is the selection of one candidate; general relativity is the macroscopic limit of the actualized graph. The incompatibility between quantum mechanics and gravity is revealed as a conflict between two approximations applied simultaneously in a regime where both break down.
 
-The present paper is the first of a four-paper suite. Its task is to state the ontological commitments, the sequential growth rule, and the immediate consequences that follow from the BDG action in four dimensions. Paper~II develops the particle spectrum, coupling constants, and force hierarchy. Paper~III develops gravity, cosmology, severance (the RA treatment of horizons and singularities), and apparent dark energy. Paper~IV develops the emergence of biological complexity from the Causal Firewall.
+The present paper is the first of a four-paper suite. Its task is to state the ontological commitments, the sequential growth rule, and the immediate consequences that follow from the BDG action in four dimensions.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Seven Axioms}
@@ -145,16 +235,18 @@ For $d=4$:
 (c_0,c_1,c_2,c_3,c_4)=(1,-1,9,-16,8).
 \end{equation}
 
-These five integers are not fitted parameters. They are determined by the geometry of a four-dimensional causal diamond---specifically, by M\"obius inversion on the Boolean lattice of causal intervals~\cite{Benincasa2010, Dowker2013}. This uniqueness has been formally verified in Lean~4 (\texttt{RA\_O14\_Uniqueness.lean}: 47 theorems, 0 \texttt{sorry} tags, compiled on Lean 4.29 + Mathlib).
+These five integers are not fitted parameters. They are determined by the geometry of a four-dimensional causal diamond---specifically, by M\"obius inversion on the Boolean lattice of causal intervals~\cite{Benincasa2010, Dowker2013}. The arithmetic binomial-inversion layer---that the d=4 Yeats moments $r_k=\binom{2k+3}{3}$ uniquely produce the coefficients $(1,-1,9,-16,8)$---is formally verified in Lean~4 (\texttt{RA\_O14\_Uniqueness.lean}: 47 theorems, 0 \texttt{sorry} tags, compiled on Lean 4.29 + Mathlib). The \emph{geometric} identification that these particular moments are the correct moments for d=4 Lorentzian causal diamonds rests on the separate peer-reviewed result of Yeats~(2025)~\cite{Yeats2025}. Uniqueness of the BDG coefficients is therefore Lean-verified at the arithmetic layer and derived at the geometric layer.
 
 \subsection{The d'Alembertian condition}
 
-A fundamental property of the $d=4$ BDG coefficients is the \emph{second-order operator condition}:
-\begin{equation}
-\label{eq:dalembert}
-\sum_{k=0}^{4} c_k = 1-1+9-16+8 = 1 \neq 0,
-\end{equation}
-but with the crucial constraint $c_0+c_1=0$ and $c_0+2c_1+c_2=c_4$, which ensures that the BDG action reproduces the scalar d'Alembertian $\Box$ in the continuum limit. The condition $\sum_k c_k \cdot k! / k! = 0$ for the appropriate weighted sum is satisfied only in $d=4$ among low dimensions, making the d'Alembertian well-defined. This is one of several independent reasons that $d=4$ is distinguished.
+A fundamental property of the $d=4$ BDG coefficients is the \emph{second-order operator condition}. Two distinct sums must be kept separate to avoid confusion:
+\begin{align}
+\label{eq:full_sum}
+\text{(full sum, including birth term)}\quad & \sum_{k=0}^{4} c_k = 1-1+9-16+8 = 1,\\
+\label{eq:dalembert_sum}
+\text{(non-birth action sum)}\quad & \sum_{k=1}^{4} c_k = -1+9-16+8 = 0.
+\end{align}
+The first sum includes the birth coefficient $c_0=1$ and does not vanish. The second sum excludes the birth term and is exactly the identity verified in Lean as \texttt{second\_order} in \texttt{RA\_O14\_Uniqueness.lean}. The vanishing of the non-birth sum (\ref{eq:dalembert_sum}), together with the algebraic constraints $c_0+c_1=0$ and $c_0+2c_1+c_2=c_4$, ensures that the BDG action reproduces the scalar d'Alembertian $\Box$ in the continuum limit. These specific identities are satisfied only by the $d=4$ coefficients among low-dimensional cases, making the d'Alembertian well-defined in $d=4$ and contributing one strand of the multi-criterion argument for $d=4$ uniqueness (see \S\ref{sec:d4}).
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Sequential Growth Rule}
@@ -317,14 +409,14 @@ Each level is obtained from the one above by taking an appropriate limit. The Le
 
 The Unruh effect is a potential challenge to any frame-dependent formulation of the actualization criterion: a Minkowski observer sees the vacuum as empty, but a uniformly accelerated Rindler observer sees a thermal bath at temperature $T_U = \hbar a/(2\pi c k_B)$. Does the Rindler observer experience actualization events that the inertial observer does not?
 
-\begin{theorem}[Rindler stationarity, Lean-verified]
+\begin{theorem}[Rindler stationarity, Lean-verified in finite-dimensional scope]
 \label{thm:rindler}
-For the Rindler thermal state $\rho_\beta$ under modular flow $\alpha_t$:
+In the finite-dimensional truncation formalised in Lean, the Rindler thermal state $\rho_\beta$ under modular flow $\alpha_t$ satisfies:
 \begin{equation}
 \frac{d}{dt} S(\alpha_t(\rho_\beta) \| \sigma_0) = 0.
 \end{equation}
 \end{theorem}
-This is \texttt{rindler\_stationarity} in \texttt{RA\_AQFT\_Proofs\_v10.lean}, zero \texttt{sorry}.
+This is \texttt{rindler\_stationarity} in \texttt{RA\_AQFT\_Proofs\_v10.lean}. The theorem is proved modulo (i)~the sorry \texttt{Matrix.cfc\_conj\_unitary} (a general CFC-unitary commutation lemma, closable by copying the corresponding proof from the Lean-QuantumInfo library) and (ii)~the axiom \texttt{vacuum\_lorentz\_invariant}, which imports the Poincar\'e invariance of the Minkowski vacuum from the Wightman axioms. Replacing the latter by an RA-native derivation from the BDG sprinkling limit is a known open target (IC46 in the RA knowledge base). In its current scope, the result therefore establishes that \emph{given the standard-QFT Poincar\'e-invariance property of the vacuum}, modular flow is relative-entropy-stationary in the finite-dimensional RA kernel---which is the statement needed for the Unruh resolution below.
 
 \begin{corollary}[Unruh resolution]
 A Rindler observer does not detect actualization events in the Minkowski vacuum. The per-step increment $\Delta S_n = 0$ under modular flow, so the Level-3 threshold $\Delta S^*$ is never crossed.
@@ -332,7 +424,7 @@ A Rindler observer does not detect actualization events in the Minkowski vacuum.
 
 Both observers agree: there is no physical actualization event. The Minkowski observer sees none (the vacuum is empty). The Rindler observer sees none (the thermal bath has constant relative entropy under modular flow). The frame-independence is a consequence of the unitary invariance of relative entropy under any symmetry of the vacuum state.
 
-The Unruh effect is real in the sense that a Rindler observer's detector registers thermal clicks. But those clicks correspond to coupling-induced excitations of the detector, not to actualization events of the bath itself. A full accounting requires an open-quantum-systems model of the detector (an open computational target); the Lean-verified result establishes that the \emph{bath} is non-actualizing, resolving the apparent paradox.
+The Unruh effect is real in the sense that a Rindler observer's detector registers thermal clicks. But those clicks correspond to coupling-induced excitations of the detector, not to actualization events of the bath itself. A full accounting requires an open-quantum-systems model of the detector (an open computational target); the Lean-proved result---conditional as noted above---establishes that the \emph{bath} is non-actualizing, resolving the apparent paradox modulo the axiom dependency.
 
 %% ═══════════════════════════════════════════════════════════
 \section{The Measurement Problem Dissolved}
@@ -536,7 +628,8 @@ Result & File & Status \\
 Local Ledger Condition & \texttt{RA\_GraphCore.lean} & Proved \\
 Graph Cut Theorem & \texttt{RA\_GraphCore.lean} & Proved \\
 Markov Blanket Shielding & \texttt{RA\_GraphCore.lean} & Proved \\
-BDG Coefficient Uniqueness & \texttt{RA\_O14\_Uniqueness.lean} & 47 thms, 0 sorry \\
+BDG Coefficient Uniqueness (arithmetic) & \texttt{RA\_O14\_Uniqueness.lean} & 47 thms, 0 sorry \\
+\quad + geometric identification & Yeats 2025 (external) & Published \\
 Amplitude Locality (O01) & \texttt{RA\_AmpLocality.lean} & Proved \\
 Causal Invariance & \texttt{RA\_AmpLocality.lean} & 1 sorry (assembly) \\
 $\alpha_{\mathrm{EM}}^{-1}=137$ & \texttt{RA\_GraphCore.lean} & \texttt{norm\_num} \\
@@ -544,12 +637,14 @@ Koide $K=2/3$ & \texttt{RA\_Koide.lean} & Proved \\
 Confinement depths & \texttt{RA\_GraphCore.lean} & Proved \\
 BDG closure (5 types) & \texttt{RA\_GraphCore.lean} & Proved \\
 Baryon chirality & \texttt{RA\_BaryonChirality.lean} & 13 thms, 0 sorry \\
-Frame independence & \texttt{RA\_AQFT\_v10.lean} & Proved \\
-Rindler stationarity & \texttt{RA\_AQFT\_v10.lean} & Proved \\
+Frame independence (finite-dim) & \texttt{RA\_AQFT\_v10.lean} & Conditional$^\dagger$ \\
+Rindler stationarity (finite-dim) & \texttt{RA\_AQFT\_v10.lean} & Conditional$^\dagger$ \\
 Emergent spin-2 & \texttt{RA\_Spin2\_Macro.lean} & Proved \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\noindent$^\dagger$\textbf{Conditional Lean results in \texttt{RA\_AQFT\_v10.lean}:} the frame-independence and Rindler-stationarity theorems are proved in Lean modulo (a)~one sorry---the general CFC-unitary commutation lemma \texttt{Matrix.cfc\_conj\_unitary}, trivially closable by copying the corresponding proof from the Lean-QuantumInfo library, and (b)~two imported axioms---\texttt{vacuum\_lorentz\_invariant} (Poincar\'e invariance of the Minkowski vacuum, from the Wightman axioms) and \texttt{petz\_monotonicity} (data processing inequality, to be closed via an LQI adapter). Only \texttt{vacuum\_lorentz\_invariant} is load-bearing for frame independence and Rindler stationarity; \texttt{petz\_monotonicity} is not invoked by these theorems. Replacing \texttt{vacuum\_lorentz\_invariant} with an RA-native derivation from the BDG sprinkling limit is a known open target.
 
 Total: 176+ theorems across 8 files, $\sim$3000 lines of Lean code. The proof files are publicly available at \texttt{github.com/jsandeman/Relational-Actualism}.
 
@@ -572,16 +667,75 @@ RA makes specific, falsifiable predictions that distinguish it from standard qua
 
 \textbf{Kinematic Coherence Bound.} There is a structural ceiling on the size of a fault-tolerant quantum array: $N_{\max}=\eta\cdot p_{\mathrm{th}}$, where $\eta$ is the single-qubit quality factor and $p_{\mathrm{th}}$ is the fault-tolerance threshold. This predicts a hard wall, not merely exponential difficulty, at scales of hundreds to thousands of logical qubits.
 
-\textbf{Spin-bath collapse timescale.} RA predicts a specific parameter-free timescale $t^*\approx 0.274/g$ (where $g$ is the spin-bath coupling constant) for wave function collapse in superconducting circuit experiments.
+\textbf{Spin-bath collapse timescale.} RA predicts a specific timescale $t^*\approx 0.274/g$ (where $g$ is the externally measured spin-bath coupling) for wave function collapse in superconducting circuit experiments. The numerical prefactor $0.274$ carries no additional RA free parameters beyond $\Delta S^*$ itself.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Epistemic Status Summary}
+\label{sec:status}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{tcolorbox}[title=Scope of the Lean-verified layer,colback=gray!5,colframe=gray!60]
+The Lean-verified core of this paper consists of: the kernel identities on the discrete DAG (LLC, graph-cut, Markov blanket, amplitude locality in the BDG increment model), the integer-arithmetic identities (BDG coefficient inversion at the arithmetic layer, $\alpha_{\mathrm{EM}}^{-1}=137$, Koide $K=2/3$, confinement depths, BDG closure), and several finite-dimensional AQFT-layer theorems conditional on disclosed axioms. Specifically, \texttt{frame\_independence} and \texttt{rindler\_stationarity} in \texttt{RA\_AQFT\_Proofs\_v10.lean} are proved modulo one sorry (\texttt{Matrix.cfc\_conj\_unitary}, trivially closable from Lean-QuantumInfo) and one QFT-imported axiom (\texttt{vacuum\_lorentz\_invariant}, which states Poincar\'e invariance of the Minkowski vacuum and is a known open target for RA-native derivation from the BDG sprinkling limit). Uniqueness of the BDG coefficients is Lean-verified at the arithmetic layer and supplemented by the peer-reviewed geometric identification of Yeats~(2025). Papers II--IV inherit this kernel and should treat claims depending on AQFT-layer closure or fully-native BDG-geometric uniqueness as conditional on the corresponding gaps in this paper.
+\end{tcolorbox}
+
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Result & Basis & Status \\
+\midrule
+\multicolumn{3}{l}{\textit{Ontology and dynamics}} \\
+Seven axioms (incl. Finitary Actuality) & Ontological commitments & Stated \\
+Sequential graph-growth rule & Axiomatic dynamics & Stated \\
+BDG acceptance kernel $K(\mathbf{N}|\mu)$ & Derived from growth rule + filter & DR \\
+Kernel--Poisson divergence identity & Theorem~\ref{thm:kl} & DR \\
+Asymptotic saturation $P_{\mathrm{acc}}\to 1$ & Theorem~\ref{thm:saturation} & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Actualization criterion}} \\
+Four-level hierarchy (L1 $\to$ L4) & Level-by-level derivation & DR \\
+$\Delta S^*\approx 0.601$ nats at $\mu=1$ & Exact computation from BDG integers & CV \\
+Rindler stationarity (Unruh resolution) & \texttt{rindler\_stationarity} Lean theorem & LV (conditional$^\dagger$) \\
+\midrule
+\multicolumn{3}{l}{\textit{Kinematics and cosmology-adjacent}} \\
+Measurement problem dissolved & Low-density limit of BDG dynamics & DR \\
+Schr\"odinger eq.\ as low-$\mu$ limit & Continuum limit argument & DR \\
+$c=\ell_P/t_P$ from graph bandwidth & Structural identification & DR \\
+Proper time as integer count & Structural identification & DR \\
+$E=\gamma m c^2$ from actualization rate & Structural identification & AR \\
+Singularity termination via saturation & Paper~III developed & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Dimensional uniqueness}} \\
+$d=4$ unique viable dimension & Multiple convergent criteria & DR \\
+$\mu^*\approx 1.019$ (D4U02 numerical) & Stein--Papangelou + certified enumeration & CV \\
+D4U02 analytic closure & Contour integral bound & Open \\
+\midrule
+\multicolumn{3}{l}{\textit{Coupling constants (previewed here, Paper II)}} \\
+$\alpha_{\mathrm{EM}}^{-1}=137$ integer core & \texttt{alpha\_inv\_137} Lean theorem & LV \\
+$\alpha_{\mathrm{EM}}^{-1}=137.036$ via Dyson eq. & Discrete Dyson equation & CV \\
+$\alpha_s(m_Z)=1/\sqrt{72}$ & \texttt{d3\_alpha\_s\_proof.py} & CV \\
+\midrule
+\multicolumn{3}{l}{\textit{Predictions (falsifiable consequences)}} \\
+BMV null result & From unactualized-superposition argument & DR \\
+WIMP prohibition (categorical) & Paper~III developed & DR \\
+Kinematic Coherence Bound & Paper~IV developed & DR \\
+$t^*=0.274/g$ spin-bath collapse & BDG integers + spin-bath model & DR \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Legend:} LV = Lean-verified theorem (machine-checked). LV (conditional) = Lean-verified modulo a disclosed axiom or sorry, with the dependency stated in the Lean-verification table. DR = derived (all steps explicit within RA). CV = computation-verified (explicit numerical evaluation). AR = argued (physically motivated, not all steps explicit). Open = conjectured with a stated path to closure.
+
+\noindent$^\dagger$\textbf{Conditional on:} the sorry \texttt{Matrix.cfc\_conj\_unitary} (trivially closable from Lean-QuantumInfo) and the QFT-imported axiom \texttt{vacuum\_lorentz\_invariant} in \texttt{RA\_AQFT\_Proofs\_v10.lean}. See the Lean-verification table and \S\ref{sec:unruh} for details.
 
 %% ═══════════════════════════════════════════════════════════
 \section{Conclusion}
 \label{sec:conclusion}
 %% ═══════════════════════════════════════════════════════════
 
-From a single ontological commitment---irreversible actualization events writing permanent vertices into a growing causal graph, filtered by the BDG action---the framework generates: the measurement problem's dissolution, the actualization threshold $\Delta S^*=0.601$ nats, the coupling constants $\alpha_s=1/\sqrt{72}$ and $\alpha_{\mathrm{EM}}^{-1}=137$, the uniqueness of $d=4$, the spatial expansion of the universe via antichain drift, and the kernel saturation that leads to gravitational severance. All without free parameters. All from five integers.
+From a single ontological commitment---that irreversible actualization events writing permanent vertices into a growing causal graph, filtered by the BDG action, are the primitive physical reality---this paper has established the kernel of Relational Actualism: seven axioms, a sequential growth rule, an acceptance kernel characterized by two Lean-verified identities, and a four-level actualization criterion. From the kernel, the measurement problem is dissolved at the level of the low-density limit; special-relativistic kinematics emerges from the graph bandwidth; and $d=4$ emerges as the unique dimension satisfying all identified viability criteria simultaneously.
 
-Paper~II develops the particle spectrum and force hierarchy from the BDG topology classes. Paper~III develops gravity, cosmology, the severance programme, apparent dark energy, and the discrete boundary law. Paper~IV develops the emergence of biological complexity from the same percolation threshold that governs QCD confinement and the actualization filter.
+The claims in this paper are not uniformly rigorous. Some are Lean-verified theorems (the Kernel--Poisson identity, the integer-core coupling-constant identities, the BDG coefficient uniqueness at the arithmetic layer). Some are Lean-verified conditional on disclosed axioms (the Rindler stationarity theorem used in the Unruh resolution, which depends on \texttt{vacuum\_lorentz\_invariant} as a QFT input---a known open target). Some are computation-verified (the exact $\Delta S^*$ value, the D4U02 selectivity maximum). Others are derivations within the framework whose bridge identifications (the kinematic identifications, the coupling-constant preview, the framework-wide predictions) are sharpened in the companion papers. The epistemic-status table above labels each claim accordingly.
+
+Paper~II develops the particle spectrum and force hierarchy from the BDG topology classes. Paper~III develops gravity, cosmology, and the severance programme. Paper~IV develops the emergence of biological complexity from the same percolation threshold that governs QCD confinement and the actualization filter.
 
 The framework does not ask for acceptance. It asks for serious investigation.
 
@@ -594,6 +748,7 @@ This work was developed in collaboration with Claude (Anthropic, Opus 4.6) for c
 \begin{thebibliography}{99}
 \bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
 \bibitem{Dowker2013} F.~Dowker and L.~Glaser, ``Causal set d'Alembertians for various dimensions,'' \emph{Class. Quantum Grav.} \textbf{30}, 195016 (2013).
+\bibitem{Yeats2025} K.~Yeats, ``Hockey-stick-style identities and the moments of causal intervals in $d$-dimensional Lorentzian causal diamonds,'' \emph{Class. Quantum Grav.} \textbf{42}, 145003 (2025).
 \bibitem{Sorkin1997} R.~D.~Sorkin, ``Forks in the road on the way to quantum gravity,'' \emph{Int. J. Theor. Phys.} \textbf{36}, 2759 (1997).
 \bibitem{Rideout2000} D.~P.~Rideout and R.~D.~Sorkin, ``A classical sequential growth dynamics for causal sets,'' \emph{Phys. Rev. D} \textbf{61}, 024002 (2000).
 \bibitem{Bose2017} S.~Bose et al., ``Spin entanglement witness for quantum gravity,'' \emph{Phys. Rev. Lett.} \textbf{119}, 240401 (2017).

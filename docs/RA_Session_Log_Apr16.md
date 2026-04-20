@@ -229,3 +229,171 @@ on the canonical side to preserve authoritative version.
 *Session log produced by Claude (Opus 4.6), April 16, 2026.*
 *Claude acted as computational and editorial partner; ontological
 commitments and framework direction are Joshua's.*
+
+---
+
+## IX. Blocks 5–7: ChatGPT Review Response (Continued)
+
+### Block 5: Paper IV Consciousness Softening
+
+Restructured §7 (Perception, Agency, and Consciousness) around an explicit
+three-column framework:
+- **What RA derives:** perception as actualization anchoring (first-person,
+  irreversible, rate-limited); agency as recursive causal closure
+- **What RA excludes:** panpsychism (structural exclusion via recursive
+  closure requirement)
+- **What RA permits:** artificial consciousness in principle (substrate-
+  independent conditions)
+- **What RA conjectures:** depth threshold Ã_RA* ≈ 5 (CN, from comparative
+  neuroscience, not derived from BDG integers)
+
+Added epistemic flag at section top: "This is the most exploratory section
+of the most exploratory paper in the suite." Changed Proposition → Conjecture
+for consciousness threshold. Added explicit "The hard problem of
+consciousness remains open" closing.
+
+### Block 6: Harmonized Epistemic Tables + Suite Map
+
+**Tables:** Paper III reclassified from mixed categories (Proved,
+Phenomenological, Strong evidence) to standardized 5-tier scheme
+(LV/DR/CV/PI/CN). Key reclassifications:
+- "Proved" → DR (framework-proved, not Lean-verified)
+- "Phenomenological" → PI (DESI w_0/w_a transition, α=0.68 release fraction)
+- "Strong evidence" → PI (Kerr nucleation 5-anomaly model)
+
+Paper IV legend updated to match same format. All four papers now use
+identical epistemic categories with identical definitions.
+
+**Suite map:** Added dependency table to Paper I introduction showing what
+each paper assumes and contributes. Added compact dependency notes to
+Papers II, III, IV introductions referencing back to Paper I's table. Added
+"All four papers use the same epistemic-status convention (LV/DR/CV/PI/CN)"
+to each paper's introduction.
+
+### Block 7: Paper III Nucleation/CMB Body Labels
+
+Three targeted edits:
+1. "The Big Bang is a causal severance event" → "is interpreted as" (framing)
+2. Added PI epistemic flag to Kerr nucleation subsection: "phenomenological
+   interpolation... does not derive the anomalies from BDG integers alone"
+3. Softened triumphalist closing: "zero remaining freedom" → "No free
+   parameters remain after fitting, though the model is phenomenological
+   rather than first-principles... should be evaluated on predictions T1-T3"
+
+---
+
+## X. Final Suite State (All 7 Blocks Complete)
+
+| Paper | Pages | Lines | Type 3 | Errors | Warnings |
+|-------|-------|-------|--------|--------|----------|
+| I     | 16    | 741   | 0      | 0      | 0        |
+| II    | 24    | 1015  | 0      | 0      | 0        |
+| III   | 19    | 800   | 0      | 0      | 0        |
+| IV    | 13    | 559   | 0      | 0      | 0        |
+| Total | 72    | 3115  | 0      | 0      | 0        |
+
+All ChatGPT review items addressed except bridge-exposition depth (logged
+as next-round target requiring author judgment about which bridges need
+most scaffolding).
+
+---
+
+*Session log updated by Claude (Opus 4.6), April 16, 2026.*
+
+---
+
+## XI. ChatGPT Round 2 Response: Replacement Abstracts + Epistemic Boxes
+
+### ChatGPT's Round 2 Review Summary
+
+ChatGPT's second formal referee report confirmed that Blocks 1-7 addressed
+the major concerns from Round 1. The revised verdict was "Major revision,
+but now substantially closer to circulation quality" (upgraded from
+"not yet submission-ready"). Maturity ranking unchanged: III > I > IV > II.
+
+ChatGPT then provided:
+- Replacement abstracts for Papers II and III (longer variants preferred by author)
+- Paper-specific epistemic boxes (tcolorbox format) for all four papers
+- "How to read this paper" paragraph for Paper IV
+- Preview-reduction paragraph for Paper I
+
+### Implementation
+
+**Paper I:**
+- Added tcolorbox epistemic box between abstract and introduction
+  (Paper I variant: Lean-verified / derived / translation / conjectural bridges)
+- Added preview-reduction paragraph: "This paper establishes the ontology
+  and generative kernel... does not claim to complete the particle,
+  gravitational, or complexity programmes in full."
+
+**Paper II:**
+- Replaced abstract with ChatGPT's longer draft (focuses on structural
+  claims, explicitly distinguishes result types, acknowledges mass cascade
+  and CKM as most conjectural)
+- Added tcolorbox epistemic box (Paper II variant: exact structural /
+  numerical evaluations / phenomenological identifications)
+
+**Paper III:**
+- Replaced abstract with ChatGPT's longer draft (centers on three pillars:
+  gravity as graph description, severance as singular replacement, entropy
+  as severed-link count; then cosmological applications with explicit
+  epistemic separation)
+- Added tcolorbox epistemic box (Paper III variant: derived discrete /
+  phenomenological interpolation / conjectural bridges)
+
+**Paper IV:**
+- Added tcolorbox epistemic box (Paper IV variant: structural results /
+  empirical predictions / exploratory philosophical implications)
+- Added "How to read this paper" paragraph at start of introduction
+  (three claim types: structural, empirical, exploratory philosophical)
+
+### Final Suite State
+
+| Paper | Pages | Errors | Warnings | Type 3 |
+|-------|-------|--------|----------|--------|
+| I     | 16    | 0      | 0        | 0      |
+| II    | 25    | 0      | 0        | 0      |
+| III   | 19    | 0      | 0        | 0      |
+| IV    | 14    | 0      | 0        | 0      |
+| Total | 74    | 0      | 0        | 0      |
+
+---
+
+*Session log final update by Claude (Opus 4.6), April 16, 2026.*
+
+---
+
+## XII. Submission Status Update — April 16, 2026
+
+**RACF now in active peer review at IJA (International Journal of Astrobiology).**
+
+Passed editorial desk screen and has been assigned to reviewers.
+
+### Updated submission status table
+
+| Paper | Journal | Status |
+|-------|---------|--------|
+| RAQM  | Foundations of Physics | Awaiting editor assignment |
+| RAGC  | —                       | NOT submitted |
+| RACL  | PRD (after CQG desk-rejection) | Awaiting editor decision |
+| RATM  | PRD                     | Rejected |
+| RACF  | **IJA**                 | **In peer review (reviewers assigned)** |
+| RAEB  | —                       | Reject with resubmission encouraged |
+| P1    | PRL                     | Rejected; rebuttal written |
+
+### Significance
+
+RACF is the first paper from the original 12-paper suite to reach active peer
+review. IJA is an appropriate venue for the causal firewall framing --
+substrate-independent F1/F2 conditions, biosignature criteria B1-B3, and the
+claim that life conditions are substrate-independent (not requiring carbon,
+water, or chirality). Astrobiology reviewers are specifically equipped to
+push back productively on these claims.
+
+Whichever way the review goes, the output is useful:
+- Accept: peer-reviewed anchor for the RA complexity programme
+- Major revision: external pressure to sharpen F1/F2
+
+---
+
+*Session log update by Claude (Opus 4.7), April 16, 2026.*

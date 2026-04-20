@@ -6,9 +6,9 @@ package «RelationalActualism»
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git"
 
--- Uncomment the following to discharge the CFC sorry in RA_AQFT_Proofs_v10:
--- require «lean-quantuminfo» from git
---   "https://github.com/Timeroot/Lean-QuantumInfo.git"
+-- CFC proof chain ported from Lean-QuantumInfo (see RA_CFC_Port.lean header).
+-- No LQI dependency needed; port is Mathlib-only. Toolchain mismatch with LQI
+-- (LQI on v4.23-rc2, RA on v4.29) is sidestepped.
 
 @[default_target]
 lean_lib «RelationalActualism» where
