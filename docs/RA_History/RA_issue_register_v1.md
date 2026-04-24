@@ -1,0 +1,40 @@
+# RA Issue Register v1
+
+Severity discipline:
+
+- **Critical**: cross-paper inconsistency or primacy problem that materially undermines current suite coherence
+
+- **Major**: load-bearing support gap or benchmark overstatement
+
+- **Moderate**: important but local or strategic gap
+
+
+## Critical
+
+| issue_id | severity | area | title | evidence | impact | recommended_fix |
+| --- | --- | --- | --- | --- | --- | --- |
+| RA-ISS-001 | Critical | Paper IV / suite primacy | DFT/F1 evidence still depends on RACI as the primary source | Paper IV §5.2, §6, and status table point to RACI supplement for the B3LYP/6-311+G* computation. | Prevents Paper IV from being self-supporting on one of its headline empirical claims. | Adopt editorial Option (b) immediately: mark DFT/F1 as an open computational target unless the protocol/results are migrated into the current suite. |
+| RA-ISS-002 | Critical | Paper IV / suite primacy | Paper IV §7 scope note makes RAQI/RAQM primary for KCB, t*, Landauer, and Maxwell's demon | Current scope note explicitly says the load-bearing derivations live in RAQI/RAQM. | Undercuts the suite's claim to be the canonical presentation. | Remove inheritance wording; either derive these results in the current suite or downgrade their status. |
+| RA-ISS-003 | Critical | Cross-paper consistency | KCB formula mismatch between Paper I and Paper IV | Paper I predictions table gives N_max = η·p_th while Paper IV §7.1 gives N_max = η/p_th. | Any public benchmark or prediction statement about KCB is unstable until the formula is canonicalized. | Re-derive KCB once and patch both papers plus any scripts/notes. |
+
+
+## Major
+
+| issue_id | severity | area | title | evidence | impact | recommended_fix |
+| --- | --- | --- | --- | --- | --- | --- |
+| RA-ISS-004 | Major | Paper IV / Lean attribution | Markov blanket shielding is not in the default-root RA_GraphCore.lean | Default-root GraphCore contains the graph-cut theorem and MarkovBlanket structure, but the explicit shielding theorem appears in nonroot files RA_Proofs_Lean4.lean and RA_Complexity_Proofs.lean. | Paper IV currently blurs theorem location and canonical build status for a load-bearing structural claim. | Canonicalize theorem location by migrating the shielding theorem into the default root or by citing the correct file and nonroot status. |
+| RA-ISS-005 | Major | Paper III / GR bridge | The GR bridge remains distributed and partly conditional on AQFT adapter assumptions | Frame independence and Rindler stationarity inherit one live sorry and two AQFT-level axioms in RA_AQFT_Proofs_v10.lean. | Papers III's field-equation, Lorentz, and frame-independence rhetoric must remain carefully tiered. | Publish a canonical GR-derivation chain note with all assumptions explicit and keep conditional flags visible. |
+| RA-ISS-006 | Major | Paper II / framing discipline | Paper II still treats SM targets as primary in key places | Editorial catalog flags the topology table, mass cascade opening, and charge/gauge language as identification-first rather than BDG-first. | Weakens RA-native presentation and obscures what is actually derived versus empirically identified. | Apply the editorial table rewrite and the 'derive BDG quantity, then identify' framing for the mass cascade. |
+| RA-ISS-007 | Major | Benchmark scripts / gravity | Rotation-curve script is calibrated from target flat velocity | ra_flat_rotation_curve.py defines v_flat_target and then sets xi = (v_flat_target/(2c))^2. | Current script is illustrative rather than first-principles support for the rotation-curve claim. | Derive xi from the covariant sourcing law or present the script explicitly as a calibration demonstration. |
+| RA-ISS-008 | Major | Benchmark scripts / lensing | Bullet Cluster script explicitly says the framework is consistent but not yet proved | bullet_cluster.py concludes that deriving the exact relationship between A_RA and lensing mass is the hard wall. | Bullet Cluster should remain a non-flagship, open benchmark until ρ_A is formally derived from P_act[T_{μν}]. | Promote only after a suite-primary weak-field sourcing derivation exists. |
+| RA-ISS-009 | Major | Paper IV / complexity pipeline | Assembly pipeline is still prototype-level | assembly_mapper.py only prints graph size/alphabet for one small molecule and does not compute RA assembly depth or KEGG/BiGG-scale examples. | Current worked-example rhetoric for glycolysis/E. coli outruns the executable pipeline in the uploaded core. | Build a real RA assembly-depth computation pipeline before treating this as established computational support. |
+
+
+## Moderate
+
+| issue_id | severity | area | title | evidence | impact | recommended_fix |
+| --- | --- | --- | --- | --- | --- | --- |
+| RA-ISS-010 | Moderate | Cosmology scripts | DESI/EdS→Milne script retains an underived transition parameter | ra_desi_verify.py explores transition models and fixes Ω_m in the w0-wa fit; its own output identifies t_trans as the remaining parameter. | Useful as phenomenology, but not yet a closed derivation. | Keep in PI/CV tier until t_trans and void-fraction evolution are derived. |
+| RA-ISS-011 | Moderate | Benchmark coverage | Mercury perihelion and weak-field solar-system lensing are absent from the current core snapshot | No Mercury/perihelion-specific file or script was found in the uploaded core bundles. | The suite currently lacks two classic high-value GR-domain benchmarks for the calculational-utility agenda. | Add Mercury perihelion and weak-field deflection as next benchmark developments after Casimir. |
+| RA-ISS-012 | Moderate | Benchmark scripts / quantum | Casimir benchmark is strong as a runnable witness but partly expository in its RA-specific layer | casimir_benchmark.py reproduces the standard Casimir stress tensor and states the remaining modular-flow proof as open. | Good benchmark candidate, but still not a full suite-primary derivation of the RA-specific AQFT layer. | Treat as a high-value benchmark-in-progress and pair it with the formal AQFT proof roadmap. |
+

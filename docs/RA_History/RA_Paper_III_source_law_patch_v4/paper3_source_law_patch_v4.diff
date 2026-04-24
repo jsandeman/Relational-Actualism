@@ -1,0 +1,68 @@
+--- RA_Paper_III_Gravity_Cosmology_Complexity.tex
++++ RA_Paper_III_Gravity_Cosmology_Complexity_patched_v4.tex
+@@ -275,21 +275,24 @@
+ \subsection{Rotation curves from $\nabla^2(\ln\lambda)$}
+ \label{sec:rotation_curves}
+ 
+-The detailed mechanism is captured by a boundary correction term in the metric-sourcing equation. In the weak-field quasi-static limit, the gravitational potential satisfies:
++The weak-field quasi-static regime should be read as an effective reduction of the covariant source $P_{\mathrm{act}}[T_{\mu\nu}]$, not yet as a coefficient-level derivation of every halo-scale observable. The safest current reading is that the source splits into a dense-equilibrium term and an actualization-gradient correction term. In that effective regime, the gravitational potential is modeled by:
+ \begin{equation}
+ \label{eq:modified_poisson}
+ \nabla^2\Phi = 4\pi G\,\rho_m + \nabla^2(\ln\lambda)\,c^2,
+ \end{equation}
+-where $\lambda(x)$ is the local actualization density (a smoothed version of $\mu$). The first term is the standard Newtonian sourcing; the second term is the RA correction from the causal graph geometry.
+-
+-In dense regions, $\lambda \approx \lambda_0$ (approximately constant), so $\nabla^2(\ln\lambda) \approx 0$ and the standard Poisson equation is recovered. In sparse galactic halos, $\lambda(r)$ falls off with radius, and $\nabla^2(\ln\lambda) > 0$: the correction term sources an additional effective gravitational field that mimics the presence of dark matter.
++where $\lambda(x)$ is the local actualization density (a smoothed version of $\mu$). The first term is the dense-regime matter sourcing; the second term is the current paper-level RA effective correction from the actualization geometry. A canonical derivation tying $P_{\mathrm{act}}[T_{\mu\nu}]$, $\rho_{\mathrm{A}}$, $\rho_m$, and the quasi-static correction operator into one covariant chain remains an open closure target.
++
++\paragraph{Current source-law dictionary.}
++At the covariant level, the source is $P_{\mathrm{act}}[T_{\mu\nu}]$. In the quasi-static dense regime, the effective mass density is naturally read from its $00$-component, $\rho_{\mathrm{A}} := P_{\mathrm{act}}[T_{00}]/c^2$, and local equilibration is expected to drive $\rho_{\mathrm{A}} \approx \rho_m$. In sparse or boundary regimes, the additional term in eq.~\ref{eq:modified_poisson} should be read as an effective correction sourced by actualization-density gradients. The exact operator-level and coefficient-level dictionary for that correction is not yet canonicalized and is not claimed here as a closed theorem.
++
++In dense regions, $\lambda \approx \lambda_0$ (approximately constant), so the correction term is suppressed and the standard Poisson equation is recovered. In sparse galactic halos, actualization-density gradients may generate an additional effective gravitational field that mimics the presence of dark matter. The precise sign convention and geometric operator needed for the asymptotic halo regime remain to be fixed by the covariant closure.
+ 
+ \begin{proposition}[Rotation curve mechanism]
+ \label{prop:rotation_curve}
+-A galaxy with baryonic matter density $\rho_m(r)$ concentrated in a disk of radius $R_d$, surrounded by a halo where $\lambda(r) \propto r^{-2}$ at large radii, produces a flat rotation curve with asymptotic velocity $v_\infty$ determined by $\lambda_0$ and $R_d$. No dark matter particles are required.
+-\end{proposition}
+-
+-The transition radius between the inner Newtonian regime and the outer flat regime is set by the point where $\lambda(r)$ begins to fall sharply---typically at the edge of the visible disk. This reproduces the MOND-like phenomenology (Milgrom's $a_0$) as an emergent scale in the RA framework, rather than a fundamental acceleration constant.
++A galaxy with baryonic matter density $\rho_m(r)$ concentrated in a disk of radius $R_d$, together with a halo-regime actualization profile whose effective correction yields an asymptotic acceleration $a_{\lambda}(r) \propto 1/r$, produces a flat rotation curve with asymptotic velocity $v_\infty$. No dark matter particles are required. The exact operator-level relation between the profile $\lambda(r)$ and the asymptotic correction is an open closure target.
++\end{proposition}
++
++The transition radius between the inner Newtonian regime and the outer flat regime is set by the point where the actualization profile begins to depart strongly from the dense-equilibrium regime---typically at the edge of the visible disk. This produces a MOND-like phenomenology as an emergent scale in the RA framework rather than a fundamental acceleration constant.
+ 
+ \subsection{The Bullet Cluster: Weyl curvature vs Ricci curvature}
+ \label{sec:bullet_cluster}
+@@ -312,18 +315,23 @@
+ 
+ The weak equivalence principle (WEP) states that all bodies fall with the same acceleration in a gravitational field, independent of their composition. In RA, gravitational coupling depends on $P_{\mathrm{act}}[T_{\mu\nu}]$, which is proportional to the actualized causal depth. Does this preserve the WEP?
+ 
+-\begin{proposition}[WEP approximation]
++\begin{proposition}[Dense-regime source tracking]
+ \label{prop:wep}
+-For baryonic matter with cosmological-scale equilibration timescales $\tau_{\mathrm{eq}}$ much less than the cosmic age $t_{\mathrm{cosm}}$:
+-\begin{equation}
+-\frac{|\rho_{\mathrm{A}} - \rho_{\mathrm{matter}}|}{\rho_{\mathrm{matter}}} \sim \frac{\tau_{\mathrm{eq}}}{t_{\mathrm{cosm}}} \lesssim 10^{-4},
+-\end{equation}
+-so the actualization density $\rho_{\mathrm{A}}$ tracks the matter density $\rho_{\mathrm{matter}}$ to $10^{-4}$ precision. The WEP is recovered at the $10^{-4}$ level.
+-\end{proposition}
+-
+-Current WEP tests (MICROSCOPE, E\"otv\"os-type experiments) reach $\sim 10^{-14}$ precision. The RA prediction is compatible if equilibration is fast enough that $\tau_{\mathrm{eq}}/t_{\mathrm{cosm}} \lesssim 10^{-14}$ for ordinary matter. This is expected for baryonic matter but remains an open formal target: the explicit equilibration dynamics derivation has not been closed.
++For baryonic matter with equilibration timescale $\tau_{\mathrm{eq}}$ and relevant accumulation timescale $t_{\mathrm{hist}}$:
++\begin{equation}
++\frac{|\rho_{\mathrm{A}} - \rho_{\mathrm{matter}}|}{\rho_{\mathrm{matter}}} \sim \frac{\tau_{\mathrm{eq}}}{t_{\mathrm{hist}}},
++\end{equation}
++so the actualization density $\rho_{\mathrm{A}}$ tracks the matter density $\rho_{\mathrm{matter}}$ in the dense-regime equilibration limit. For ordinary dense baryonic matter this error is expected to be very small; a quantitative bound remains an open derivational target.
++\end{proposition}
++
++Current WEP tests (MICROSCOPE, E\"otv\"os-type experiments) reach $\sim 10^{-14}$ precision. The RA expectation is that ordinary dense baryonic matter equilibrates rapidly enough to lie well below present bounds, but the explicit derivation of that precision-level bound has not yet been closed.
+ 
+ The prediction that distinguishes RA from standard GR is at \emph{very} large timescales: objects that have been causally isolated for $\gtrsim \tau_{\mathrm{eq}}$ might show small WEP violations, potentially testable with precision tests of stellar streams in the galactic halo (where equilibration times are longest).
++
++\subsection{Dense-regime weak-field benchmarks}
++\label{sec:dense_weak_field_benchmarks}
++
++In the dense-equilibrium weak-field regime, the recovered Einstein sector implies the standard Schwarzschild / PPN$(\beta=\gamma=1)$ consequences of ordinary GR. Solar-limb light deflection, Mercury's anomalous perihelion advance, and the ordinary thin-lens formulas should therefore be read as benchmark consequences of the bridge, not as separate imported mechanisms. By contrast, halo and cluster lensing in sparse or mixed-regime environments depend on the precise weak-field source law relating $P_{\mathrm{act}}[T_{\mu\nu}]$ to accumulated actualization depth and actualization-density gradients; that step remains an open closure target.
+ 
+ \subsection{The $f_0 = 5.40$ ratio and $\Omega_m$}
+ 

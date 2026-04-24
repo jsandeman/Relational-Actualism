@@ -1,0 +1,348 @@
+--- original
++++ native_v2
+@@ -35,17 +35,18 @@
+ \end{center}
+ 
+ \begin{abstract}
+-This paper develops the matter-and-force sector of Relational Actualism (RA) by relating stable particle classes, force mediation, and coupling hierarchy to the discrete topology of the actualization graph. The central claim is structural: the physically relevant sector is organized by a small set of motif and renewal types determined by the $d=4$ Benincasa--Dowker growth law. From this architecture the paper derives a set of exact discrete constraints, presents numerical evaluations of graph-determined quantities, and proposes a number of phenomenological identifications with observed particle-sector parameters. These result types are distinguished explicitly and should not be conflated. The topology classification core is structural: five topologically distinct stability classes are shown---via Lean-verified enumeration over 124 extension cases---to correspond to the Standard Model particle types. The three non-gravitational forces are unified under a single bandwidth-limited graph-propagation principle. Several mass and coupling relations, including the proton mass cascade and CKM-angle identifications, remain conjectural or phenomenological and are labeled as such. The goal of the paper is therefore not to announce complete closure of the matter sector, but to establish a disciplined RA programme in which particle physics is constrained by discrete graph structure rather than imposed as a separate continuum input.
++This paper develops the matter-and-force sector of Relational Actualism (RA) on a strictly native basis. Its target is not the Standard Model as an intermediate object, but the observed stability classes, interaction ranges, masses, radii, and matter-sector regularities that Nature presents. The active native support surface used in this revision consists of the graph-cut / local-ledger baseline from \texttt{RA\_GraphCore.lean}, the kernel-locality replacement family in \texttt{RA\_O01\_KernelLocality\_v2.lean}, the arithmetic coefficient core in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}, and the compiled D1-native chain: \texttt{RA\_D1\_NativeKernel\_v1.lean}, \texttt{RA\_D1\_NativeConfinement\_v1.lean}, \texttt{RA\_D1\_NativeClosure\_v1.lean}, and \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}. The strongest results are structural: a finite census of stable motif classes in $d=4$, finite closure lengths for the two minimal branching motifs, and depth-2 ledger / orientation constraints on stable bound patterns. Historical particle labels are used below only as downstream observational cartography, not as part of the derivational chain. Numerical links to measured masses, radii, and interaction scales are separated sharply from archived overlays involving gauge groups, running couplings, and flavour parameters. The aim of the paper is therefore to make the matter programme native at every step: finite motifs first, Nature-facing observables second, historical cartography last, if at all.
+ \end{abstract}
+ 
+ \begin{tcolorbox}[title=Epistemic Status of Results in This Paper,colback=gray!5,colframe=gray!60]
+-This paper contains three distinct types of claims, which should not be conflated:
++This revision separates four kinds of content, which should not be conflated:
+ \begin{itemize}[nosep]
+-    \item Exact structural results concerning motif classes, renewal structure, and topological constraints;
+-    \item Numerical evaluations of graph-determined quantities;
+-    \item Phenomenological identifications connecting these quantities to observed particle-sector parameters.
++    \item Exact native structural results concerning motif classes, finite closure, ledger preservation, and orientation asymmetry;
++    \item Nature-facing numerical targets, where the predicted or constrained quantity is directly measurable;
++    \item Phenomenological identifications that are still being sharpened from native structure to direct observable prediction;
++    \item Archived historical overlays, retained only for comparison and no longer counted as active native support.
+ \end{itemize}
+-Where closure has not been achieved, this is stated explicitly. In particular, several mass and coupling relations remain conjectural or interpolative rather than theorem-level results. The discrete statement is primary; the continuum statement is its translation under the BDG-to-metric dictionary.
++The discrete statement is primary. Historical field-theoretic or symmetry-language overlays, where still mentioned, are downstream cartography rather than part of the active derivational chain.
+ \end{tcolorbox}
+ 
+ \begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+@@ -64,29 +65,29 @@
+ \label{sec:intro}
+ %% ═══════════════════════════════════════════════════════════
+ 
+-The Standard Model of particle physics describes the observed menagerie of particles with extraordinary precision, but leaves its particle content, gauge structure, and parameter values as inputs. The purpose of Paper~II is not to claim final closure of all of those questions at once, but to develop the RA matter-and-force programme in a disciplined way. Its central structural claim is that the $d=4$ BDG growth law organizes the physically relevant sector into a small set of stable topology and renewal classes, and that many familiar particle-sector regularities can be reformulated in those terms. Some results in this paper are exact and discrete, some are numerical evaluations of graph-determined quantities, and some are phenomenological identifications whose status remains explicitly non-final. These categories are distinguished throughout.
+-
+-This paper assumes the ontological framework of Paper~I: the growing causal graph, the BDG filter with coefficients $(1,-1,9,-16,8)$, and the sequential growth rule. All particle properties are properties of finite local graph neighborhoods---renewal motifs that reproduce themselves under the growth dynamics. Continuum field language is translation, not primitive ontology.
+-
+-A warning about epistemic status, up front: the second sentence of the preceding paragraph (``From their integer structure, the coupling constants, mass ratios, and gauge groups follow without free parameters'') was an overclaim in earlier drafts and remains a programme goal rather than a fully delivered result. The present paper makes that distinction explicit. Results in this paper come in five epistemic tiers:
++Nature presents measured masses, radii, lifetimes, and interaction patterns. The task of Paper~II is to predict or constrain those observables directly from RA primitives: DAG growth, the BDG filter, the local ledger condition, and finite motif renewal. Historical particle labels may still appear below, but only as observational cartography after the native motif analysis has been stated.
++
++This revision therefore changes the support discipline of the paper. The active native Lean surface used here is: \texttt{RA\_GraphCore.lean} (graph-cut / local-ledger baseline), \texttt{RA\_O01\_KernelLocality\_v2.lean} (kernel locality and admissibility dependence on realized past), \texttt{RA\_O14\_ArithmeticCore\_v1.lean} (the $d=4$ arithmetic coefficient spine), and the compiled D1-native chain \texttt{RA\_D1\_NativeKernel\_v1.lean}, \texttt{RA\_D1\_NativeConfinement\_v1.lean}, \texttt{RA\_D1\_NativeClosure\_v1.lean}, and \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}. Historical files such as \texttt{RA\_D1\_Proofs.lean} remain part of the restored baseline but are no longer cited wholesale as active native support.
++
++A second change is linguistic. The paper no longer treats gauge groups, running couplings, flavour labels, or grand-unification stories as targets. Where such material is retained, it is explicitly marked as archived cartography or deferred overlay. The active chain is native: motif census, finite closure, force-range logic from graph structure, mass/radius targets tied directly to observation, and severance-based ledger transfer.
++
++Results in the paper continue to come in five epistemic tiers:
+ 
+ \begin{center}
+ \begin{tabular}{cp{0.78\linewidth}}
+ \toprule
+ Tier & Meaning \\
+ \midrule
+-LV & Lean-verified theorem. Machine-checked within the framework. \\
+-DR & Derived: all steps explicit within RA, rigorous but not Lean-verified. \\
++LV & Lean-verified theorem. Machine-checked within the native framework. \\
++DR & Derived: all steps explicit within RA-native terms, though not necessarily Lean-verified. \\
+ CV & Computation-verified: exact derivation combined with numerical evaluation to stated precision. \\
+-PI & Phenomenological interpolation: an identification motivated by the framework's structure whose numerical agreement with observation is the principal evidence. The identification is not derived from first principles; the numerical match supports but does not establish the underlying mechanism. \\
+-CN & Conjecture: a hypothesized identification with a stated path to closure but no current derivation. \\
++PI & Phenomenological interpolation: a Nature-facing numerical identification supported by the framework but not yet derived from first principles. \\
++CN & Conjecture: a stated native target with a specified path to closure. \\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ 
+-The body of the paper labels each numerical claim with its tier, and \S12 collects the classifications in a single table. The reader should treat LV and DR results as rigorous consequences of the framework; CV results as rigorous derivations whose numerical precision reflects the accuracy of the derivation; PI results as motivated identifications supported by numerical evidence rather than first-principles derivations; and CN results as current conjectures. A result's quantitative precision ($0.3\%$, $0.06\%$, etc.) says nothing about its epistemic tier: a conjecture can match to one part in $10^5$ by coincidence, and a Lean-verified theorem establishes no numerical value at all.
+-
+-Among the results in this paper, the ones carrying the most conjectural weight are: the identification of the quark Koide breaking as a one-loop Casimir effect (PI); the Cabibbo-angle identification $|V_{us}|=\sin(2/9)$ and its CKM companions (PI); the $\mu^5$ gluon-vertex cascade bridge identifications for hadron masses (PI/CN); and the grand-unification conjecture at the Planck scale (CN). The reader should read these sections with appropriate caution.
++The sections carrying the heaviest unresolved weight in this revision are the proton cascade closure, the Higgs/W mass identifications, and several force-range and matter-sector asymmetry calculations. By contrast, the closure census, finite closure lengths, and ledger-orientation material now sit on a compiled native base.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{The Five Topology Types}
+@@ -95,47 +96,50 @@
+ 
+ \begin{theorem}[BDG closure --- Lean verified]
+ \label{thm:closure}
+-In $d=4$, the BDG causal action admits exactly five topologically distinct stability classes under causal diamond extension. All 124 possible single-vertex extensions of the four BDG depth layers are classified, and no additional stable patterns exist.
++In $d=4$, the BDG causal action admits exactly five topologically distinct stability classes under causal-diamond extension. All 124 possible single-vertex extensions of the four BDG depth layers are classified, and no additional stable patterns occur in the current motif census.
+ \end{theorem}
+ 
+-This result is formally verified in \texttt{RA\_D1\_Proofs.lean} (\texttt{universe\_closure}), compiling with zero errors and zero \texttt{sorry} tags.
+-
+-The five types correspond to the particle families of the Standard Model:
+-
+-\begin{center}
+-\begin{tabular}{clccl}
++This result is now tracked by the compiled native closure chain in \texttt{RA\_D1\_NativeClosure\_v1.lean}, building on \texttt{RA\_D1\_NativeKernel\_v1.lean} and \texttt{RA\_D1\_NativeConfinement\_v1.lean}.
++
++The five classes are stated natively as motif families; any historical particle labels are downstream observational cartography only.
++
++\begin{center}
++\begin{tabular}{clcl}
+ \toprule
+-Type & Particle class & BDG depth $L$ & Color & Gauge structure \\
+-\midrule
+-1 & Quarks & 4 & 3-colour & $\mathrm{SU}(3)$ confined \\
+-2 & Gluons & 3 & 3-colour & $\mathrm{SU}(3)$ confined \\
+-3 & Gauge bosons ($W,Z,\gamma$) & 1 & singlet & $\mathrm{SU}(2)\times\mathrm{U}(1)$ \\
+-4 & Higgs boson & 2 & singlet & scalar \\
+-5 & Leptons and neutrinos & 1 & singlet & chiral \\
++Type & Native motif description & Minimal depth & Observational cartography (downstream only) \\
++\midrule
++I & depth-4 branching-stable bound motif & 4 & historically aligned with confined three-fold bound matter substructures \\
++II & depth-3 mediator motif with finite closure & 3 & historically aligned with short-range binding mediators \\
++III & depth-1 ledger-balanced propagation motif & 1 & historically aligned with neutral interaction carriers \\
++IV & depth-2 scalar stabilization motif & 2 & historically aligned with scalar mass-setting behaviour \\
++V & depth-1 terminal ledger motif & 1 & historically aligned with terminal charged / neutral matter motifs \\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ 
+ \begin{remark}
+-The five types are exhaustive: the closure theorem proves that no additional stable BDG patterns exist in $d=4$. No beyond-Standard-Model particles of new types are possible---their topology does not exist. This is a structural prohibition, not a dynamical one.
++The five classes are exhaustive only at the level of the present $d=4$ motif census. Any additional stable observed sector would require either higher-order motifs not yet enumerated or a failure of the current closure census. The theorem itself is native; the cartography to familiar particle labels is downstream and revisable.
+ \end{remark}
+ 
+ \subsection{Confinement from BDG topology}
+ 
+-\begin{proposition}[Confinement depths --- Lean verified]
++\begin{proposition}[Finite closure lengths --- Lean verified]
+ \label{prop:confinement}
+-The BDG stability analysis gives confinement depths $L=3$ (gluon) and $L=4$ (quark). Both require multi-branch closure neighborhoods for stable renewal. Isolated quarks and gluons cannot maintain admissible renewal under the BDG filter.
++The two minimal branching motif families require finite closure lengths $L=3$ and $L=4$. They do not persist as isolated renewal patterns; admissible continuation demands a finite closure neighbourhood.
+ \end{proposition}
+-Verified in \texttt{RA\_D1\_Proofs.lean} (\texttt{confinement\_lengths}).
+-
+-This is confinement without a confining potential. In RA, quarks are confined because their BDG topology class requires a finite closure neighborhood---a color-singlet partner---in order for the local renewal process to continue. An isolated quark would fail the BDG filter within a few actualization steps because its depth-3 and depth-4 ancestor counts would produce $S\le 0$.
++
++Verified in the compiled native module \texttt{RA\_D1\_NativeConfinement\_v1.lean} (theorem family culminating in \texttt{finite\_closure\_length}).
++
++This is the native content behind historical confinement language. Certain branching motifs fail the BDG filter if they are prolonged in isolation; stable renewal requires a finite closure environment that restores ledger balance across the relevant depth layers. Historical labels such as ``quark'' and ``gluon'' can still be used as downstream observational shorthand, but the theorem itself speaks only about finite closure lengths in the motif census.
+ 
+ \subsection{Three generations}
+ 
+ Three generations of quarks and leptons follow from the $\mathrm{SU}(3)_{\mathrm{gen}}$ symmetry of the BDG excitation levels $\{N_2,N_3,N_4\}$---the three non-gravitational degrees of freedom of the four-dimensional causal diamond. A fourth generation would require a sixth topology class, which the closure theorem rules out.
+ 
+ %% ═══════════════════════════════════════════════════════════
+-\section{Coupling Constants from BDG Integers}
++\section{Nature-facing Numerical Targets and Historical Overlays}
++
++\paragraph{Native-status note.} Only directly measurable Nature-targets remain active in the present revision. Historical coupling, gauge, flavour, or unification overlays retained in this section are archival comparison material and are not part of the active native support surface.
+ \label{sec:couplings}
+ %% ═══════════════════════════════════════════════════════════
+ 
+@@ -594,7 +598,9 @@
+ \end{center}
+ 
+ %% ═══════════════════════════════════════════════════════════
+-\section{The Gauge Group from BDG Geometry}
++\section{Historical Symmetry Cartography (Archival Overlay)}
++
++\paragraph{Native-status note.} Only directly measurable Nature-targets remain active in the present revision. Historical coupling, gauge, flavour, or unification overlays retained in this section are archival comparison material and are not part of the active native support surface.
+ \label{sec:gauge}
+ %% ═══════════════════════════════════════════════════════════
+ 
+@@ -667,7 +673,7 @@
+ In this proposal, the gauge group is the product of two independent geometric structures: inter-depth transfer (yielding $\mathrm{SU}(3)$ via the Berry-phase programme) and intra-depth boundary directions (yielding $\mathrm{SU}(2)$), with the overall $\mathrm{U}(1)$ phase. Both structures are motivated by the BDG integers and the dimension $d=4$. The reader is cautioned that the Berry-phase theorems above are statements about the BDG transfer-matrix structure specifically; the identification of that structure with the continuum Standard-Model gauge group is an interpretive step (DR/PI), not a derivation from BDG primitives to the continuum group at theorem level.
+ 
+ %% ═══════════════════════════════════════════════════════════
+-\section{The Absence of Supersymmetry}
++\section{Absence of Additional Stable Motif Sectors}
+ \label{sec:susy}
+ %% ═══════════════════════════════════════════════════════════
+ 
+@@ -696,7 +702,9 @@
+ The BDG growth dynamics do not generate this correspondence. A 2-periodic pattern is structurally different from a 1-periodic one: they have different $(N_1,N_2,N_3,N_4)$ profiles and therefore different actualization frequencies. There is no symmetry transformation in the BDG algebra that maps a 2-periodic pattern to a 1-periodic pattern with equal eigenvalues. SUSY is not ruled out by RA---it is simply not generated. It is unnecessary structure, and the LHC's non-observation of superpartners across the entire originally motivated parameter space is consistent with this structural picture.
+ 
+ %% ═══════════════════════════════════════════════════════════
+-\section{Grand Unification: SU(3)$_{\mathrm{colour}}\times$SU(3)$_{\mathrm{gen}}$}
++\section{Retired Unification Overlay (Archival)}
++
++\paragraph{Native-status note.} Only directly measurable Nature-targets remain active in the present revision. Historical coupling, gauge, flavour, or unification overlays retained in this section are archival comparison material and are not part of the active native support surface.
+ \label{sec:gut}
+ %% ═══════════════════════════════════════════════════════════
+ 
+@@ -809,35 +817,29 @@
+ 
+ \paragraph{No axion.} The Peccei--Quinn axion was introduced specifically to dynamically relax $\theta_{\mathrm{QCD}}$ to zero. Since RA gives $\theta_{\mathrm{QCD}}=0$ structurally, no axion field is required. RA predicts the axion does not exist, consistent with decades of non-observation in dedicated searches.
+ 
+-\subsection{The black hole information paradox: dissolved by severance}
+-
+-Hawking's calculation shows that black holes emit thermal radiation. If the radiation is exactly thermal, it carries no information about infalling matter. This appears to violate the unitarity of quantum evolution, which requires information to be preserved.
++\subsection{Severance and information partition}
+ 
+ A black hole in RA is a region where the local actualization density approaches the bandwidth ceiling $c/\ell_P$, forming a causal severance: a topological boundary in the DAG beyond which no outgoing causal edges exist. This is not the destruction of causal structure but its partition into two causally disconnected components (Paper~III).
+ 
+-The LLC holds independently on each component (the Graph Cut Theorem, Lean-verified). The conserved charges $(Q_{N_1},Q_{N_2},Q_{N_3/N_4},p^\mu)$ that flow into the severance from the parent spacetime are encoded in the initial conditions of the daughter subgraph. Information is not destroyed; it is partitioned. The book thrown into the black hole has its causal history encoded in the daughter spacetime's initial LLC conditions, fully accessible to observers inside the daughter but inaccessible to exterior observers, because there are no outgoing causal edges from daughter to parent.
+-
+-\paragraph{Why Hawking radiation appears thermal.} An exterior observer cannot access the daughter subgraph. Tracing over the daughter's degrees of freedom produces a mixed state at the severance boundary---thermal radiation. This is information partition, not information loss. The total system (parent + daughter) evolves unitarily; the exterior subsystem evolves non-unitarily only because it is genuinely causally disconnected from part of the total system.
++The LLC holds independently on each component (the Graph Cut Theorem, Lean-verified in \texttt{RA\_GraphCore.lean}). The ledgered quantities that flow into the severance from the parent spacetime are encoded in the initial conditions of the daughter subgraph. Information is not destroyed; it is partitioned. The book thrown into the black hole has its causal history encoded in the daughter spacetime's initial LLC conditions, fully accessible to observers inside the daughter but inaccessible to exterior observers because there are no outgoing causal edges from daughter to parent.
++
++\paragraph{Why Hawking radiation appears thermal.} An exterior observer cannot access the daughter subgraph. Tracing over the daughter's inaccessible sector produces a mixed boundary state. This is information partition, not information loss. The correct native statement is ledger preservation across genuine causal severance, not fundamental unitarity of a parent-plus-daughter continuum description.
+ 
+ \begin{proposition}[No information loss]
+-The LLC holds on both sides of every causal severance. Unitarity is preserved for the total system (parent + daughter). The apparent information loss for an exterior observer is a consequence of causal disconnection, not of entropy increase. The black hole information paradox does not arise in RA.
++The LLC holds on both sides of every causal severance. The apparent information loss for an exterior observer is a consequence of causal disconnection, not of entropy increase or ledger violation. The black hole information paradox therefore does not arise in RA's native formulation.
+ \end{proposition}
+ 
+-\paragraph{Prediction: no Page curve.} The Page curve predicts that if a black hole radiates into a pure total state, the exterior radiation entropy should first increase and then decrease back to zero as the black hole evaporates. In RA, the interior is genuinely causally disconnected---not a purification partner accessible to exterior observers. The exterior radiation is a genuinely mixed state throughout evaporation, not the marginal of a pure total state. The exterior entropy therefore increases monotonically throughout evaporation and does not decrease. RA predicts no Page curve, in contrast to holographic AdS/CFT accounts. This is a testable difference.
+-
+-\subsection{The baryon asymmetry as a severance initial condition}
+-
+-The observable universe contains approximately $10^{80}$ baryons and essentially no antibaryons, with baryon-to-photon ratio $\eta_b=n_B/n_\gamma\approx 6.1\times 10^{-10}$. Sakharov's conditions for dynamical baryogenesis require: (1)~baryon number violation, (2)~C and CP violation, (3)~departure from thermal equilibrium.
+-
+-Baryon number is exactly conserved in RA. Sakharov condition (1) is therefore structurally absent. This does not mean RA cannot account for $\eta_b$; it means the question is posed in the wrong framework.
+-
+-The Big Bang in RA is a severance nucleation event: our universe is a daughter spacetime whose initial conditions are encoded in the LLC boundary conditions at the severance boundary (Paper~III). Among these initial conditions is a net baryon number $B=N_B\ne 0$, inherited from the parent spacetime via the LLC charge balance at the boundary.
+-
+-The baryon asymmetry was not dynamically generated during cosmic evolution. It is an initial condition of the daughter spacetime, imprinted at the Planck scale by the LLC at the severance boundary. Baryogenesis as a cosmic process does not occur in RA.
+-
+-\paragraph{Observational status.} If the baryon asymmetry is a severance initial condition, no dynamic baryogenesis process occurs and no signatures of electroweak baryogenesis or leptogenesis should appear in precision CMB data. The distinctive RA prediction is the absence of baryon isocurvature perturbations correlated with any baryogenesis epoch at any scale. Future precision measurements (CMB-S4, Simons Observatory) may provide a discriminating test.
+-
+-The quantitative value $\eta_b\approx 6.1\times 10^{-10}$ is in principle derivable from the LLC boundary conditions at the severance---a property of the BDG action at Planck density, calculable via the BDG-filter simulation. This is an open computational target.
++\paragraph{Prediction: no Page curve.} In RA, the interior is genuinely causally disconnected---not a purification partner accessible to exterior observers. The exterior radiation is therefore treated as genuinely mixed throughout evaporation, and the exterior entropy need not turn over. This is a direct severance prediction, not a holographic comparison principle.
++
++\subsection{Matter-sector excess as a severance initial condition}
++
++The observable universe exhibits a pronounced matter-sector excess over its antimatter counterpart; conventionally this is summarized by the baryon-to-photon ratio $\eta_b = n_B/n_\gamma \approx 6.1\times 10^{-10}$. In the present native reading, this measured excess is the target. Historical baryogenesis narratives are downstream cartographies, not the question to which RA is primarily answering.
++
++RA frames the observed excess as a severance initial condition. Our universe is a daughter spacetime whose initial conditions are encoded in LLC boundary data at the severance boundary (Paper~III). On that picture, the matter-sector excess is inherited through boundary ledger transfer rather than dynamically generated during later cosmic evolution.
++
++\paragraph{Observational status.} If the observed matter-sector excess is a severance initial condition, there is no separate late-time generation epoch whose signatures must appear in precision cosmological data. The distinctive RA prediction is therefore the absence of a separate matter-generation epoch imprinted as an additional correlated feature in the CMB or large-scale-structure record.
++
++The quantitative value $\eta_b\approx 6.1\times 10^{-10}$ remains, in principle, a direct target for computation from LLC boundary data at severance. That calculation is not closed in the present paper and remains an open native computational target.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{The Selective Regime and Motif Selection}
+@@ -879,85 +881,57 @@
+ \small
+ \begin{tabular}{lll}
+ \toprule
+-Result & Method & Status \\
+-\midrule
+-\multicolumn{3}{l}{\textit{Topology and structure}} \\
+-5 topology types exhaust SM & Lean~4 (124 cases) & LV \\
+-Confinement depths $L=3,4$ & Lean~4 & LV \\
+-Baryon chirality (13 theorems) & Lean~4 & LV \\
+-Charge quantization in $e/3$ & $N_2$ winding in 3+1D & DR \\
+-\midrule
+-\multicolumn{3}{l}{\textit{Coupling constants}} \\
+-$\alpha_{\mathrm{EM}}^{-1}=137$ (integer core) & Lean~4 (\texttt{norm\_num}) & LV \\
+-$\alpha_{\mathrm{EM}}^{-1}=137.036$ (full value) & Discrete Dyson equation & CV \\
+-$\alpha_s(m_Z)=1/\sqrt{72}$ & BDG UV fixed point & CV \\
+-$\alpha_s^{\mathrm{IR}}=1/3$ & BDG RG IR fixed point & CV \\
+-Koide $K=2/3$ (leptons) & Lean~4 & LV \\
+-Koide breaking $K_q,K_\ell$ pattern & Casimir formula identification & PI (3--8\%) \\
+-Cabibbo angle $|V_{us}|=\sin(2/9)$ & $\mathrm{SU}(3)_{\mathrm{gen}}$ motivated identification & PI (1.8\%) \\
+-$|V_{cb}|=(2/\pi)\delta=0.0424$ & Angle-displacement identification & PI (0.4\%) \\
+-Neutrinos structurally Majorana-compatible & Sign flip in $\sqrt{m_k}$ & PI \\
+-$\sum m_\nu\approx 59$\,meV & Koide + oscillation $\Delta m^2$ & CV \\
+-\midrule
+-\multicolumn{3}{l}{\textit{Mass cascade}} \\
+-$\mu_p=\alpha_{\mathrm{EM}}/32$ (self-consistency) & Requires $N_{\mathrm{eff}}=L_q^3=64$ & CN \\
+-$m_p=m_P\alpha_{\mathrm{EM}}^5/2^{28}=941$\,MeV & $\mu^5$ cascade identification & PI (0.3\%) \\
+-$m_n=m_p$ (leading order) & Same BDG topology & DR \\
+-$m_H=133 m_p=125.2$\,GeV & Depth-2 + EM ratio identification & PI (0.06\%) \\
+-$r_p=L_q\ell_C=0.84$\,fm & Confinement radius identification & PI (0.03\%) \\
+-$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG enumeration + ext.\ SM RG & CV (0.3\%, w/ ext.\ input) \\
+-$m_\pi\approx 124$\,MeV & $(2/3)^5 m_p$ numerical observation & PI (11\%) \\
+-$m_W=6^{5/2}m_p=83$\,GeV & Handedness sector identification & CN (3.3\%) \\
+-$\mu_{\mathrm{QCD}}=4.7118$ & $\exp(\sqrt{4\Delta S^*})$, canonical D4U02 & CV (0.03\%) \\
+-\midrule
+-\multicolumn{3}{l}{\textit{Force ranges}} \\
+-EM $1/r^2$ & Causal 2-sphere geometry & DR \\
+-Weak $R_W=\hbar/(m_W c)$ & BDG debt lifetime (unified principle) & DR \\
+-Strong $V(r)=\sigma r$ & LLC flux tube (unified principle) & DR \\
+-Regge $m^2\propto J$ & Flux tube $r\propto\sqrt{J}$ & DR \\
+-\midrule
+-\multicolumn{3}{l}{\textit{Gauge structure}} \\
+-$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(2)\times\mathrm{U}(1)$ & Sign mechanism + Berry identification & PI \\
+-$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(3)_{\mathrm{gen}}$ GUT & $\mu\to\infty$ structural conjecture & CN \\
+-$\sin^2\theta_W=3/8$ at GUT scale & $\mathrm{SU}(5)$-type embedding (if GUT holds) & DR (conditional) \\
+-\midrule
+-\multicolumn{3}{l}{\textit{Structural predictions / absences}} \\
+-Absence of SUSY partners & BDG algebra not generated & DR \\
+-Absence of WIMPs & Paper~III ($P_{\mathrm{act}}$ filter) & DR \\
+-Exact proton stability & LLC applied to $N_2$ winding & LV \\
+-$\theta_{\mathrm{QCD}}=0$ exactly & DAG has no instantons & DR \\
+-Absence of axion & $\theta_{\mathrm{QCD}}=0$ structurally & DR \\
+-No Page curve & Severance partition (not purification) & DR \\
+-Baryon asymmetry as initial condition & Severance boundary LLC & DR \\
++Result & Basis & Status \\
++\midrule
++\multicolumn{3}{l}{\textit{Active native structural support}} \\
++$d=4$ motif kernel and minimal branching classes & \texttt{RA\_D1\_NativeKernel\_v1.lean} & LV \\
++Finite closure lengths $L=3,4$ & \texttt{RA\_D1\_NativeConfinement\_v1.lean} & LV \\
++Closure census of stable motif universe & \texttt{RA\_D1\_NativeClosure\_v1.lean} & LV \\
++Depth-2 ledger preservation / orientation asymmetry & \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean} & LV \\
++Graph cut / local ledger partition & \texttt{RA\_GraphCore.lean} & LV \\
++$d=4$ arithmetic coefficient inversion & \texttt{RA\_O14\_ArithmeticCore\_v1.lean} & LV \\
++\midrule
++\multicolumn{3}{l}{\textit{Nature-facing numerical programme}} \\
++Measured inverse fine-structure constant & arithmetic core + discrete completion & CV \\
++Proton mass cascade and radius & native cascade with empirical anchors & PI / CN \\
++Neutron leading-order degeneracy with proton motif & same native motif class & DR \\
++Force-range hierarchy from graph geometry and debt structure & native derivation programme & DR \\
++Matter-sector excess as severance initial condition & LLC boundary transfer & DR \\
++\midrule
++\multicolumn{3}{l}{\textit{Archived historical overlays (not active support)}} \\
++Running $\alpha_s(\mu)$ overlays & historical field-theoretic cartography & Archived overlay \\
++Koide / CKM / flavour overlays & historical symmetry cartography & Archived overlay \\
++Gauge-group identifications & historical symmetry cartography & Archived overlay \\
++Grand-unification overlay & retired comparison picture & Archived overlay \\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+ 
+-\paragraph{Legend.} LV = Lean-verified theorem (machine-checked at the stated layer; BDG coefficient uniqueness is LV at the arithmetic-inversion layer and supplemented by Yeats~(2025) at the geometric-identification layer, see Paper~I \S3.4). DR = derived (all steps explicit within RA). CV = computation-verified (exact derivation plus numerical evaluation). PI = phenomenological interpolation (motivated identification supported by numerical evidence, not yet derived from first principles). CN = conjecture (stated path to closure, no current derivation).
+-
+-\paragraph{Reading the table.} A PI label does not mean ``wrong''---several PI results in this table match observation to a part in $10^3$ or better---but it does mean that the agreement is not yet a derivation. Sharpening a PI to a DR or CV is the natural target for future work on the relevant section.
+-
+-%% ═══════════════════════════════════════════════════════════
+-\section{What the Standard Model Gets Right, and Why}
++\paragraph{Legend.} LV = Lean-verified theorem. DR = derived in RA-native terms. CV = computation-verified. PI = phenomenological interpolation. CN = conjecture. ``Archived overlay'' means retained for comparison only and not counted as active native support.
++
++\paragraph{Reading the table.} This revision distinguishes active native support from historical overlay. A strong numerical match does not by itself move a result onto the active native surface if its derivation still depends on imported theoretical objects or inherited cartography.
++
++%% ═══════════════════════════════════════════════════════════
++\section{Historical Cartographies Are Downstream, Not Target}
+ \label{sec:sm}
+ %% ═══════════════════════════════════════════════════════════
+ 
+-The Standard Model is not wrong. It is a spectacularly accurate effective description of the BDG filter's output in the selective regime. Its symmetry groups encode the geometric structure of the BDG depth profile (at the DR/PI level of this paper). Its coupling constants are identified with eigenvalues or fixed points of the BDG integer arithmetic. Its particle spectrum corresponds, at the topology-class level, to the five stable renewal motifs in $d=4$ (Lean-verified).
+-
+-What the Standard Model cannot explain---why these groups, why these constants, why these particles---is not a failure of the Standard Model but, on this picture, a consequence of the fact that it describes the output without seeing the input. The input, in RA's framing, is the BDG action; the output is the Standard Model. The extent to which the RA programme has actually \emph{derived} the Standard-Model content from BDG primitives is what the epistemic-status table in \S12 attempts to characterize honestly.
++The purpose of this paper is not to derive the Standard Model as an intermediate milestone. The active results concern finite motif classes, closure lengths, ledger preservation, and Nature-facing numerical targets. If some of those results later admit a compact cartography into historical gauge, flavour, or hadronic language, that cartography is downstream and optional.
++
++This distinction matters. A native theorem in RA speaks about depth counts, closure windows, ledger transfer, and admissible renewal. A historical overlay speaks about gauge groups, running couplings, or flavour labels. The former belongs to the derivation; the latter, if retained at all, belongs to later comparative synthesis.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{Conclusion}
+ \label{sec:conclusion}
+ %% ═══════════════════════════════════════════════════════════
+ 
+-From the BDG integers $(1,-1,9,-16,8)$ and the sequential growth rule of Paper~I, the present paper develops the matter-and-force programme of Relational Actualism. Its strongest claims are structural: the five topology types, the renewal architecture, the confinement depths, and the organization of force mediation by discrete graph structure. On top of that structural core, the paper presents a number of numerical evaluations and phenomenological identifications, including candidate relations for couplings, masses, flavour parameters, and force ranges. Some of these are strikingly close to observed values, but they do not all stand at the same epistemic level, and should not be read as if they do.
+-
+-The paper therefore does not claim complete closure of the particle sector. Rather, it establishes a disciplined programme in which a substantial part of particle structure is constrained by discrete topology and renewal, while several quantitative bridges to observation remain to be sharpened, proved, or replaced. The particles are not, in this picture, excitations of fields on a background manifold. They are finite local topology classes---renewal motifs---that reproduce themselves under the BDG-filtered growth dynamics.
+-
+-\paragraph{Open targets.} The following are the most important unresolved items in this paper's programme: (i)~full derivation of the Higgs-sector mass relation from BDG dynamics; (ii)~closure of the $W$-mass conjecture; (iii)~first-principles derivation of $N_{\mathrm{eff}}$ in the proton mass cascade; (iv)~Haar-measure or algebraic derivation of the Cabibbo angle and CKM parameters; (v)~closure of the gauge-group identification at theorem level from BDG primitives to the continuum Standard-Model group; (vi)~first-principles derivation of the $\alpha_s(\mu)$ RG profile between the BDG UV and IR fixed points (which would close the $f_0$ bridge); (vii)~experimental discriminants separating RA predictions from Standard Model expectations; (viii)~an RA-native mechanism for the pion mass residual (see \S4.6), whether via a discrete Goldstone-like structure rooted in DAG directionality or via a structurally distinct RA-native mechanism with no Standard Model analog.
+-
+-Paper~III develops the macroscopic consequences: gravity, cosmology, and causal severance. Paper~IV develops the emergence of biological complexity from the same underlying percolation threshold.
++From the BDG integers $(1,-1,9,-16,8)$ and the sequential growth rule of Paper~I, the present paper develops the matter programme of Relational Actualism on a stricter native basis than earlier drafts. Its strongest present claims are structural: the finite motif census, finite closure lengths, ledger preservation, and orientation asymmetry in the stable $d=4$ regime. These are the pieces that now sit on the compiled native support chain.
++
++On top of that structural base, the paper advances a Nature-facing numerical programme for measured masses, radii, and interaction ranges. Some of those targets remain phenomenological or conjectural, and the paper now states that fact more sharply. Historical overlays involving running couplings, flavour mixing, gauge groups, or unification are no longer treated as active support; they are either archived comparison material or deferred native targets to be rebuilt directly from RA primitives.
++
++\paragraph{Open native targets.} The most important remaining targets are: (i) full closure of the proton mass cascade without auxiliary identifications; (ii) direct force-range and scattering predictions from the native motif census; (iii) a first-principles computation of the observed matter-sector excess from severance boundary data; (iv) direct decay and lifetime predictions for the finite motif families; and (v) sharper observational cartography from native motif classes to measured particle-sector regularities, without importing field-theoretic intermediates.
++
++Paper~III develops severance and the macroscopic observational programme. Paper~IV develops recursive organization, finite assembly depth, and the life / cognition frontier on the same discrete base.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section*{Acknowledgments}

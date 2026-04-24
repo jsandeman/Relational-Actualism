@@ -1,0 +1,37 @@
+========================================================================
+RELATIONAL ACTUALISM — SOURCE-LAW REFERENCE SCAFFOLD v1
+========================================================================
+
+CANONICAL REGIME DICTIONARY
+------------------------------------------------------------------------
+Covariant bridge : G_{μν} = 8πG P_act[T_{μν}],  Λ = 0
+Dense regime     : ρ_A := P_act[T_00]/c^2, with ρ_A ≈ ρ_m under equilibration
+Effective sparse : ∇²Φ = 4πG ρ_A + 𝒟_λ[λ]
+Historical source: A_RA(x) remains an open covariant lensing variable
+
+DENSE-REGIME BENCHMARKS
+------------------------------------------------------------------------
+Solar-limb light deflection  : 1.751243 arcsec
+Mercury perihelion advance   : 42.982013 arcsec/century
+Einstein angle (1e11 M_sun)  : 0.638126 arcsec
+Einstein radius              : 3.093723 kpc
+Image pair for beta=0.5θ_E   : θ+/θ_E=1.280776, θ-/θ_E=-0.780776
+Total magnification          : 2.182821
+
+OPERATOR / SIGN CHECK FOR λ(r) ∝ r^-2
+------------------------------------------------------------------------
+Spatial dimension d=1:  ∇_d² ln λ = +2/r^2 (positive)
+Spatial dimension d=2:  ∇_d² ln λ = +0/r^2 (zero)
+Spatial dimension d=3:  ∇_d² ln λ = -2/r^2 (negative)
+
+Interpretation:
+For λ(r) ∝ r^-2, the correction is positive only under a 1D second-derivative
+reading, zero in standard 2D cylindrical radial form, and negative in 3D
+spherical radial form. So the halo operator/sign/geometry is not yet canonical.
+
+AUDIT VERDICT
+------------------------------------------------------------------------
+Safe now  : dense-regime GR recovery and its Solar-system / thin-lens consequences.
+Effective : halo correction as a sparse-regime ansatz.
+Open      : coefficient-level halo closure and mixed-regime cluster lensing.
+========================================================================

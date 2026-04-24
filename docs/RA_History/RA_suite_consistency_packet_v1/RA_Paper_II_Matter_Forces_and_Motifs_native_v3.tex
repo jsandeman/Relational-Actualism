@@ -1,0 +1,334 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\RA}{\mathrm{RA}}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism II:\\[0.3em] Matter, Forces, and Renewal Motifs}}\\[1em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+{\small sansuikyo@gmail.com}\\[0.5em]
+{\normalsize Draft --- April 17, 2026}
+\end{center}
+
+\begin{abstract}
+This paper develops the matter-and-force sector of Relational Actualism (RA) on a strictly native basis. Its target is not the Standard Model as an intermediate object, but the observed stability classes, interaction ranges, masses, radii, and matter-sector regularities that Nature presents. The active native support surface used in this revision consists of the graph-cut / local-ledger baseline from \texttt{RA\_GraphCore.lean}, the kernel-locality replacement family in \texttt{RA\_O01\_KernelLocality\_v2.lean}, the arithmetic coefficient core in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}, and the compiled D1-native chain: \texttt{RA\_D1\_NativeKernel\_v1.lean}, \texttt{RA\_D1\_NativeConfinement\_v1.lean}, \texttt{RA\_D1\_NativeClosure\_v1.lean}, and \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}. The strongest results are structural: a finite census of stable motif classes in $d=4$, finite closure lengths for the two minimal branching motifs, and depth-2 ledger / orientation constraints on stable bound patterns. Historical particle labels are used below only as downstream observational cartography, not as part of the derivational chain. Numerical links to measured masses, radii, and interaction scales are separated sharply from archived overlays involving gauge groups, running couplings, and flavour parameters. The aim of the paper is therefore to make the matter programme native at every step: finite motifs first, Nature-facing observables second, historical cartography last, if at all.
+\end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of Results in This Paper,colback=gray!5,colframe=gray!60]
+This revision separates four kinds of content, which should not be conflated:
+\begin{itemize}[nosep]
+    \item Exact native structural results concerning motif classes, finite closure, ledger preservation, and orientation asymmetry;
+    \item Nature-facing numerical targets, where the predicted or constrained quantity is directly measurable;
+    \item Phenomenological identifications that are still being sharpened from native structure to direct observable prediction;
+    \item Archived historical overlays, retained only for comparison and no longer counted as active native support.
+\end{itemize}
+The discrete statement is primary. Historical field-theoretic or symmetry-language overlays, where still mentioned, are downstream cartography rather than part of the active derivational chain.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This paper develops the matter-and-force sector of the Relational Actualism suite.
+\begin{itemize}[nosep]
+    \item \textbf{Assumed from Paper~I:} the ontology, axioms, BDG growth law, actualization rule, and dimensional selection framework.
+    \item \textbf{This paper contributes:} the topology/motif classification programme, renewal structure, and the matter-and-force architecture built from the discrete graph.
+    \item \textbf{Paper~III} draws on this sector when discussing severance, cosmology, and the macroscopic consequences of matter structure.
+    \item \textbf{Paper~IV} draws on this sector where complex organization, stability, and life depend on the particle and interaction architecture developed here.
+\end{itemize}
+The strongest claims of this paper are structural; several quantitative identifications are explicitly marked as numerical, phenomenological, or conjectural.
+\end{tcolorbox}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Introduction}
+\label{sec:intro}
+%% ═══════════════════════════════════════════════════════════
+
+Nature presents measured masses, radii, lifetimes, and interaction patterns. The task of Paper~II is to predict or constrain those observables directly from RA primitives: DAG growth, the BDG filter, the local ledger condition, and finite motif renewal. Historical particle labels may still appear below, but only as observational cartography after the native motif analysis has been stated.
+
+This revision therefore changes the support discipline of the paper. The active native Lean surface used here is: \texttt{RA\_GraphCore.lean} (graph-cut / local-ledger baseline), \texttt{RA\_O01\_KernelLocality\_v2.lean} (kernel locality and admissibility dependence on realized past), \texttt{RA\_O14\_ArithmeticCore\_v1.lean} (the $d=4$ arithmetic coefficient spine), and the compiled D1-native chain \texttt{RA\_D1\_NativeKernel\_v1.lean}, \texttt{RA\_D1\_NativeConfinement\_v1.lean}, \texttt{RA\_D1\_NativeClosure\_v1.lean}, and \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}. Historical files such as \texttt{RA\_D1\_Proofs.lean} remain part of the restored baseline but are no longer cited wholesale as active native support.
+
+A second change is linguistic. The paper no longer treats gauge groups, running couplings, flavour labels, or grand-unification stories as targets. Where such material is retained, it is explicitly marked as archived cartography or deferred overlay. The active chain is native: motif census, finite closure, force-range logic from graph structure, mass/radius targets tied directly to observation, and severance-based ledger transfer.
+
+Results in the paper continue to come in five epistemic tiers:
+
+\begin{center}
+\begin{tabular}{cp{0.78\linewidth}}
+\toprule
+Tier & Meaning \\
+\midrule
+LV & Lean-verified theorem. Machine-checked within the native framework. \\
+DR & Derived: all steps explicit within RA-native terms, though not necessarily Lean-verified. \\
+CV & Computation-verified: exact derivation combined with numerical evaluation to stated precision. \\
+PI & Phenomenological interpolation: a Nature-facing numerical identification supported by the framework but not yet derived from first principles. \\
+CN & Conjecture: a stated native target with a specified path to closure. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The sections carrying the heaviest unresolved weight in this revision are the proton cascade closure, the Higgs/W mass identifications, and several force-range and matter-sector asymmetry calculations. By contrast, the closure census, finite closure lengths, and ledger-orientation material now sit on a compiled native base.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Five Topology Types}
+\label{sec:five_types}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{theorem}[BDG closure --- Lean verified]
+\label{thm:closure}
+In $d=4$, the BDG causal action admits exactly five topologically distinct stability classes under causal-diamond extension. All 124 possible single-vertex extensions of the four BDG depth layers are classified, and no additional stable patterns occur in the current motif census.
+\end{theorem}
+
+This result is now tracked by the compiled native closure chain in \texttt{RA\_D1\_NativeClosure\_v1.lean}, building on \texttt{RA\_D1\_NativeKernel\_v1.lean} and \texttt{RA\_D1\_NativeConfinement\_v1.lean}.
+
+The five classes are stated natively as motif families; any historical particle labels are downstream observational cartography only.
+
+\begin{center}
+\begin{tabular}{clcl}
+\toprule
+Type & Native motif description & Minimal depth & Observational cartography (downstream only) \\
+\midrule
+I & depth-4 branching-stable bound motif & 4 & historically aligned with confined three-fold bound matter substructures \\
+II & depth-3 mediator motif with finite closure & 3 & historically aligned with short-range binding mediators \\
+III & depth-1 ledger-balanced propagation motif & 1 & historically aligned with neutral interaction carriers \\
+IV & depth-2 scalar stabilization motif & 2 & historically aligned with scalar mass-setting behaviour \\
+V & depth-1 terminal ledger motif & 1 & historically aligned with terminal charged / neutral matter motifs \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+The five classes are exhaustive only at the level of the present $d=4$ motif census. Any additional stable observed sector would require either higher-order motifs not yet enumerated or a failure of the current closure census. The theorem itself is native; the cartography to familiar particle labels is downstream and revisable.
+\end{remark}
+
+\subsection{Confinement from BDG topology}
+
+\begin{proposition}[Finite closure lengths --- Lean verified]
+\label{prop:confinement}
+The two minimal branching motif families require finite closure lengths $L=3$ and $L=4$. They do not persist as isolated renewal patterns; admissible continuation demands a finite closure neighbourhood.
+\end{proposition}
+
+Verified in the compiled native module \texttt{RA\_D1\_NativeConfinement\_v1.lean} (theorem family culminating in \texttt{finite\_closure\_length}).
+
+This is the native content behind historical confinement language. Certain branching motifs fail the BDG filter if they are prolonged in isolation; stable renewal requires a finite closure environment that restores ledger balance across the relevant depth layers. Historical labels such as ``quark'' and ``gluon'' can still be used as downstream observational shorthand, but the theorem itself speaks only about finite closure lengths in the motif census.
+
+\subsection{Three stable excitation sectors}
+
+The stable $d=4$ motif census contains three nontrivial excitation sectors built from the admissible depth layers $\{N_2,N_3,N_4\}$. In the native programme, that trichotomy is the theorem-level statement. Historical ``generation'' language is only downstream cartography to the observed three-family regularity. A putative fourth stable sector would require either a new admissible topology class or a breakdown of the present closure census; on the current compiled native chain, neither is available.
+
+
+%% ═══════════════════════════════════════════════════════════
+\section{Nature-facing Numerical Programme}
+\label{sec:couplings}
+%% ═══════════════════════════════════════════════════════════
+
+\paragraph{Native-status note.} Only directly measurable Nature-targets remain active in the present revision. Historical coupling, gauge, flavour, or unification overlays are not part of the active native support surface. The compiled native chain used positively in this paper is the graph-cut / ledger baseline of \texttt{RA\_GraphCore.lean}, the kernel-locality replacement family in \texttt{RA\_O01\_KernelLocality\_v2.lean}, the arithmetic coefficient core in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}, and the D1-native chain \texttt{RA\_D1\_NativeKernel\_v1.lean}, \texttt{RA\_D1\_NativeConfinement\_v1.lean}, \texttt{RA\_D1\_NativeClosure\_v1.lean}, and \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}.
+
+The numerical programme therefore proceeds in a different order from earlier drafts. First come finite motif classes, closure lengths, and ledger/orientation constraints. Second come measured masses, radii, lifetimes, and interaction ranges as Nature-facing targets. Only after that, if useful at all, come historical cartographies into gauge, flavour, or hadronic language.
+
+\subsection{Active numerical targets}
+
+The present paper keeps four numerical target families active:
+\begin{enumerate}[nosep]
+    \item the measured inverse electromagnetic line-strength constant, treated as a direct spectroscopic target whose integer backbone is fixed by the $d=4$ arithmetic core and whose small completion comes from the discrete acceptance kernel;
+    \item motif-mass and motif-radius targets for the stable closure classes, beginning with the leading proton-pattern observables as an open native computation;
+    \item interaction-range targets derived from propagation debt, closure burden, and flux maintenance rather than from imported field-theoretic carriers; and
+    \item the observed matter-sector excess, treated as a severance-boundary target rather than a late-time generation mechanism.
+\end{enumerate}
+
+These targets are not all closed at the same epistemic level. The point of the native rewrite is not to claim more closure than exists, but to keep every positive claim inside the RA ontology.
+
+\subsection{Deferred and archived overlays}
+
+Several older numerical chains are now explicitly removed from the active derivational line. Running strong-coupling profiles, flavour-angle formulae, Koide-style mass relations, neutrino-sector overlays, and unification numerology were useful for exploration, but they rely on imported theoretical objects or historical comparison categories. Under the present framing discipline they can appear only as deferred native targets or as archival provenance, not as active support.
+
+\section{Mass, Range, and Stability from Native Motif Data}
+\label{sec:motifs}
+%% ═══════════════════════════════════════════════════════════
+
+The native D1 chain supports a compact structural picture of the matter programme. Stable observed sectors correspond to renewal motifs: finite local topology classes that survive repeated admissible extension. Their persistence is controlled by three quantities: closure burden, ledger balance, and orientation constraints. These are the active structural quantities used throughout this paper.
+
+\subsection{Renewal motifs and repeated finite persistence}
+
+\begin{definition}[Local topology class]
+A local topology class is an equivalence class of finite neighbourhoods in the actualized graph, classified by BDG depth profile and induced causal comparability pattern.
+\end{definition}
+
+\begin{definition}[Renewal motif]
+A renewal motif is a local topology class $M$ such that, conditioned on admissible growth in its neighbourhood, the probability that the successor neighbourhood remains in $M$ is bounded away from zero.
+\end{definition}
+
+Stability is therefore a property of repeated finite renewal, not eternal persistence. A stable matter-sector object is a motif class whose admissible continuations repeatedly restore the local ledger and remain inside a finite closure window.
+
+\subsection{Interaction hierarchy from depth suppression and closure burden}
+
+The native structural hierarchy is not introduced by separate force postulates. It emerges from how extension costs scale with BDG depth and with the burden of maintaining closure across successive renewal steps. Three observationally distinct regimes follow:
+\begin{enumerate}[nosep]
+    \item \textbf{unburdened exchange:} patterns with zero net renewal debt spread over widening causal fronts and produce long-range $1/r^2$-type dilution in the macroscopic readout;
+    \item \textbf{debt-bearing exchange:} patterns that incur positive renewal cost at each step possess only a finite persistence window and therefore a finite range;
+    \item \textbf{closure-maintained exchange:} patterns that must keep ledger balance concentrated inside a narrow continuation corridor accumulate approximately constant extension cost per added layer, producing string-like confinement behaviour.
+\end{enumerate}
+
+Historical labels such as electromagnetic, weak, and strong may still be used as observational shorthand, but the active derivation is the native one above.
+
+\subsection{Signed three-direction charge spectrum}
+
+In a $3+1$ dimensional causal graph, a vertex can receive signed contributions from at most three independent spatial directions. The native statement is therefore a seven-value signed edge-count spectrum
+\begin{equation}
+q \in \{-3,-2,-1,0,+1,+2,+3\},
+\end{equation}
+which becomes the familiar charge spectrum only after a downstream observational normalization. The active support claim is the finite signed spectrum itself, not any imported gauge interpretation.
+
+\section{Further Native Consequences}
+\label{sec:consequences}
+%% ═══════════════════════════════════════════════════════════
+
+The native matter programme feeds directly into two further consequences used elsewhere in the suite.
+
+\subsection{Severance and information partition}
+
+A black hole in RA is a region where the local actualization density approaches the bandwidth ceiling $c/\ell_P$, forming a causal severance: a topological boundary in the DAG beyond which no outgoing causal edges exist. This is not the destruction of causal structure but its partition into two causally disconnected components (Paper~III).
+
+The LLC holds independently on each component (the Graph Cut Theorem, Lean-verified in \texttt{RA\_GraphCore.lean}). The ledgered quantities that flow into the severance from the parent spacetime are encoded in the initial conditions of the daughter subgraph. Information is not destroyed; it is partitioned. The correct native statement is ledger preservation across genuine causal severance, not a borrowed continuum conservation law.
+
+\subsection{Matter-sector excess as a severance initial condition}
+
+The observable universe exhibits a pronounced matter-sector excess over its antimatter counterpart. In the present native reading, this measured excess is the target. Historical baryogenesis narratives are downstream cartographies, not the question to which RA is primarily answering.
+
+RA frames the observed excess as a severance initial condition. Our universe is a daughter spacetime whose initial conditions are encoded in LLC boundary data at the severance boundary (Paper~III). On that picture, the matter-sector excess is inherited through boundary ledger transfer rather than dynamically generated during later cosmic evolution.
+
+\paragraph{Observational status.} If the observed matter-sector excess is a severance initial condition, there is no separate late-time generation epoch whose signatures must appear in precision cosmological data. The distinctive RA prediction is therefore the absence of a separate matter-generation epoch imprinted as an additional correlated feature in the CMB or large-scale-structure record. The quantitative value of the observed excess remains an open native computational target.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Selective Regime and Motif Selection}
+\label{sec:selective}
+%% ═══════════════════════════════════════════════════════════
+
+The BDG filter does not treat all depth profiles equally. In the selective regime ($\mu\approx 3$--$5$), the filter exhibits a characteristic selection pattern (Monte Carlo, $3\times 10^5$ samples per density):
+
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$\mu$ & $\Delta N_1$ & $\Delta N_2$ & $\Delta N_3$ & $\Delta N_4$ \\
+\midrule
+1.0 & $-0.34$ & $+0.32$ & $-0.14$ & $+0.03$ \\
+2.0 & $-0.12$ & $+0.58$ & $-0.66$ & $+0.16$ \\
+4.0 & $-0.05$ & $+1.10$ & $-2.51$ & $+1.32$ \\
+4.7 & $-0.06$ & $+1.17$ & $-3.17$ & $+1.93$ \\
+7.0 & $-0.02$ & $+0.60$ & $-2.66$ & $+2.18$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Here $\Delta N_k=\mathbb{E}[N_k\mid S>0]-\mathbb{E}[N_k]$ is the shift induced by the BDG filter.
+
+The pattern is universal across densities:
+\begin{itemize}[nosep]
+    \item $N_1$ always decreased ($c_1=-1$ penalizes shallow parents),
+    \item $N_3$ always decreased ($c_3=-16$ heavily penalizes depth-3),
+    \item $N_2$ and $N_4$ increased ($c_2=+9$, $c_4=+8$ reward depth-2 and depth-4).
+\end{itemize}
+The filter selects for wide, deep, sparse structure: motifs with rich depth-2 and depth-4 ancestry but few shallow ($N_1$) and depth-3 ($N_3$) connections. This is the discrete origin of the observed matter spectrum: stable particles are precisely those motifs whose depth composition passes the BDG filter with high probability.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Epistemic Status of Results}
+\label{sec:status}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+Result & Basis & Status \\
+\midrule
+\multicolumn{3}{l}{\textit{Active native structural support}} \\
+$d=4$ motif kernel and minimal branching classes & \texttt{RA\_D1\_NativeKernel\_v1.lean} & LV \\
+Finite closure lengths $L=3,4$ & \texttt{RA\_D1\_NativeConfinement\_v1.lean} & LV \\
+Closure census of stable motif universe & \texttt{RA\_D1\_NativeClosure\_v1.lean} & LV \\
+Depth-2 ledger preservation / orientation asymmetry & \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean} & LV \\
+Graph cut / local ledger partition & \texttt{RA\_GraphCore.lean} & LV \\
+$d=4$ arithmetic coefficient inversion & \texttt{RA\_O14\_ArithmeticCore\_v1.lean} & LV \\
+\midrule
+\multicolumn{3}{l}{\textit{Nature-facing numerical programme}} \\
+Measured inverse fine-structure constant & arithmetic core + discrete completion & CV \\
+Proton mass cascade and radius & native cascade with empirical anchors & PI / CN \\
+Neutron leading-order degeneracy with proton motif & same native motif class & DR \\
+Force-range hierarchy from graph geometry and debt structure & native derivation programme & DR \\
+Matter-sector excess as severance initial condition & LLC boundary transfer & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Archived historical overlays (not active support)}} \\
+Running $\alpha_s(\mu)$ overlays & historical field-theoretic cartography & Archived overlay \\
+Koide / CKM / flavour overlays & historical symmetry cartography & Archived overlay \\
+Gauge-group identifications & historical symmetry cartography & Archived overlay \\
+Grand-unification overlay & retired comparison picture & Archived overlay \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Legend.} LV = Lean-verified theorem. DR = derived in RA-native terms. CV = computation-verified. PI = phenomenological interpolation. CN = conjecture. ``Archived overlay'' means retained for comparison only and not counted as active native support.
+
+\paragraph{Reading the table.} This revision distinguishes active native support from historical overlay. A strong numerical match does not by itself move a result onto the active native surface if its derivation still depends on imported theoretical objects or inherited cartography.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Historical Cartographies Are Downstream, Not Target}
+\label{sec:sm}
+%% ═══════════════════════════════════════════════════════════
+
+The purpose of this paper is not to derive the Standard Model as an intermediate milestone. The active results concern finite motif classes, closure lengths, ledger preservation, and Nature-facing numerical targets. If some of those results later admit a compact cartography into historical gauge, flavour, or hadronic language, that cartography is downstream and optional.
+
+This distinction matters. A native theorem in RA speaks about depth counts, closure windows, ledger transfer, and admissible renewal. A historical overlay speaks about gauge groups, running couplings, or flavour labels. The former belongs to the derivation; the latter, if retained at all, belongs to later comparative synthesis.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+%% ═══════════════════════════════════════════════════════════
+
+From the BDG integers $(1,-1,9,-16,8)$ and the sequential growth rule of Paper~I, the present paper develops the matter programme of Relational Actualism on a stricter native basis than earlier drafts. Its strongest present claims are structural: the finite motif census, finite closure lengths, ledger preservation, and orientation asymmetry in the stable $d=4$ regime. These are the pieces that now sit on the compiled native support chain.
+
+On top of that structural base, the paper advances a Nature-facing numerical programme for measured masses, radii, and interaction ranges. Some of those targets remain phenomenological or conjectural, and the paper now states that fact more sharply. Historical overlays involving running couplings, flavour mixing, gauge groups, or unification are no longer treated as active support; they are either archived comparison material or deferred native targets to be rebuilt directly from RA primitives.
+
+\paragraph{Open native targets.} The most important remaining targets are: (i) full closure of the proton mass cascade without auxiliary identifications; (ii) direct force-range and scattering predictions from the native motif census; (iii) a first-principles computation of the observed matter-sector excess from severance boundary data; (iv) direct decay and lifetime predictions for the finite motif families; and (v) sharper observational cartography from native motif classes to measured particle-sector regularities, without importing field-theoretic intermediates.
+
+Paper~III develops severance and the macroscopic observational programme. Paper~IV develops recursive organization, finite assembly depth, and the life / cognition frontier on the same discrete base.
+
+%% ═══════════════════════════════════════════════════════════
+\section*{Acknowledgments}
+%% ═══════════════════════════════════════════════════════════
+
+As in Paper~I, this work was developed in collaboration with Claude (Anthropic) for computation and manuscript preparation, and with ChatGPT (OpenAI) for external review and proof structure. The ontological commitments, physical reasoning, and framework direction are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\bibitem{Dowker2013} F.~Dowker and L.~Glaser, ``Causal set d'Alembertians for various dimensions,'' \emph{Class. Quantum Grav.} \textbf{30}, 195016 (2013).
+\bibitem{Yeats2025} K.~Yeats, ``Hockey-stick-style identities and the moments of causal intervals in $d$-dimensional Lorentzian causal diamonds,'' \emph{Class. Quantum Grav.} \textbf{42}, 145003 (2025).
+\bibitem{PDG2022} R.~L.~Workman et al. (Particle Data Group), ``Review of Particle Physics,'' \emph{PTEP} \textbf{2022}, 083C01 (2022), and 2024 update.
+\bibitem{Planck2020} N.~Aghanim et al. (Planck Collaboration), ``Planck 2018 results. VI. Cosmological parameters,'' \emph{Astron. Astrophys.} \textbf{641}, A6 (2020).
+\bibitem{Koide1983} Y.~Koide, ``New viewpoint in the charged lepton mass relation,'' \emph{Phys. Lett. B} \textbf{120}, 161 (1983).
+\bibitem{Wyler1971} A.~Wyler, ``L'espace sym\'etrique du groupe des \'equations de Maxwell,'' \emph{C. R. Acad. Sci. Paris} \textbf{272A}, 186 (1971).
+\bibitem{Cabibbo1963} N.~Cabibbo, ``Unitary symmetry and leptonic decays,'' \emph{Phys. Rev. Lett.} \textbf{10}, 531 (1963); M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,'' \emph{Prog. Theor. Phys.} \textbf{49}, 652 (1973).
+\bibitem{GeorgiGlashow1974} H.~Georgi and S.~L.~Glashow, ``Unity of all elementary-particle forces,'' \emph{Phys. Rev. Lett.} \textbf{32}, 438 (1974).
+\bibitem{PQ1977} R.~D.~Peccei and H.~R.~Quinn, ``CP conservation in the presence of pseudoparticles,'' \emph{Phys. Rev. Lett.} \textbf{38}, 1440 (1977).
+\bibitem{Page1993} D.~N.~Page, ``Information in black hole radiation,'' \emph{Phys. Rev. Lett.} \textbf{71}, 3743 (1993).
+\end{thebibliography}
+
+\end{document}

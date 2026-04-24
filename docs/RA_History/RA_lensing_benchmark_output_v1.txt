@@ -1,0 +1,15 @@
+RA LENSING BENCHMARKS v1
+============================================================
+Dense-regime bridge consequences:
+  Solar-limb light deflection  : 1.751243 arcsec
+
+Generic strong-lensing example (translation benchmark):
+  Lens mass                    : 1.0e11 M_sun
+  D_l, D_s                     : 1.0 Gpc, 2.0 Gpc
+  Einstein angle              : 0.638126 arcsec
+  Einstein radius (lens plane): 3.093723 kpc
+
+  Example source offset beta = 0.5 theta_E:
+    theta_plus/theta_E        : 1.280776
+    theta_minus/theta_E       : -0.780776
+    total magnification       : 2.182821

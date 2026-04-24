@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["8fc70e59bc2619fd.olean"],
+  "i": "c0f685c7d0011b5c.ilean",
+  "c": "d5830d5413613fbf.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Cli/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/batteries/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Qq/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/aesop/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/plausible/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean /Users/jsandeman/.elan/toolchains/leanprover--lean4---v4.29.0/bin/lean /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_D1_Core_draft.lean -o /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_D1_Core_draft.olean -i /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_D1_Core_draft.ilean -c /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_D1_Core_draft.c --setup /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_D1_Core_draft.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["RA_D1_Core_draft:deps",
+   [["deps",
+     [["RelationalActualism/RelationalActualism:extraDep",
+       [["@RelationalActualism:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "e9ff1afb0cafc3e3"],
+        ["Mathlib:importAllArts", "53ce4ca5aaaabad2"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.29.0, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740",
+   "60bb08ef22408c8a"],
+  ["/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_D1_Core_draft.lean",
+   "755cea69cb819ca9"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: RA_D1_Core_draft", "6a077501e4fb7521"],
+  ["Package.id?: (some RelationalActualism)", "e09e9957965f872f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "add40c1a47ac46fa"}

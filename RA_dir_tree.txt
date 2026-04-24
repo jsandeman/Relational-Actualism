@@ -1,0 +1,404 @@
+.
+├── CONTRIBUTING.md
+├── data
+│   └── DFT_Survey
+│       ├── actualization_thermo.py
+│       └── thermo_batch_b3lyp.py
+├── docs
+│   ├── ~$lational Actualism Claude Logs.docx
+│   ├── A Letter About How the Universe Makes Itself.docx
+│   ├── antichain_drift.py
+│   ├── bdg_multicoupling.py
+│   ├── berry_bridge.py
+│   ├── berry_computation.py
+│   ├── berry_decomposition.py
+│   ├── berry_derive_f.py
+│   ├── berry_final.py
+│   ├── berry_gauge.py
+│   ├── Berry_Phase
+│   │   ├── berry_transfer.py
+│   │   ├── git_commit_apr12.txt
+│   │   ├── RA_Berry_Phase_Derived.md
+│   │   └── RA_Session_Log_Apr12.md
+│   ├── Berry_Phase.zip
+│   ├── berry_theorems.py
+│   ├── berry_thinning.py
+│   ├── bh_entropy_status.md
+│   ├── D4U02_analytic_proof.md
+│   ├── d4u02_proof_v2.docx
+│   ├── d4u02_proof.docx
+│   ├── DESI_T1_Analysis_Plan_v2.md
+│   ├── DESI_T1_Analysis_Plan.md
+│   ├── dowker_yeats_note.docx
+│   ├── EB_v2.tex
+│   ├── Epsilon_Env_Forecast_Memo_v3.md
+│   ├── Epsilon_Env_Forecast_Memo.md
+│   ├── files.zip
+│   ├── Foundation.pdf
+│   ├── Foundation.tex
+│   ├── kernel_saturation.py
+│   ├── N_eff_Analysis.md
+│   ├── Nature_Does_Not_Calculate.md
+│   ├── P0_ConstraintWeb.pdf
+│   ├── paper_i_ra_process_ontology_physics.tex
+│   ├── paper_i_relational_actualism_process_ontology_full_v2.tex
+│   ├── paper_ii_growing_ledger_known_physics_full_v2.tex
+│   ├── paper_ii_ra_growing_ledger_known_physics.tex
+│   ├── paper_iii_predictions_departures_tests_full_v2.tex
+│   ├── paper_iii_predictions_departures_tests_full_v3_with_BMV.tex
+│   ├── paper_iii_ra_predictions_departures_tests.tex
+│   ├── RA_abstracts_unicode.txt
+│   ├── RA_abstracts_zenodo.txt
+│   ├── RA_Actualization_Criterion.md
+│   ├── RA_AI_Context
+│   │   ├── Batch1_Audit_Apr8.md
+│   │   ├── RA Post Recovery Report.docx
+│   │   ├── RA_Batch1_Audit_Plan.md
+│   │   ├── RA_Memory_Backup_Apr9.md
+│   │   ├── RA_Recovery_Plan.md
+│   │   ├── RA_Session_Log_Apr8_Addendum2.md
+│   │   ├── RA_Session_Log_Apr8_Evening.md
+│   │   ├── RA_Session_Log_Apr9.md
+│   │   ├── RAKB_Reconciliation.txt
+│   │   └── Relational Actualism Claude Logs.docx
+│   ├── RA_Area_Law_Proposition.md
+│   ├── RA_Axiom7_AreaLaw.md
+│   ├── RA_Bandwidth_Partition.md
+│   ├── ra_bdg_couplings_1.pdf
+│   ├── ra_bdg_couplings_2.pdf
+│   ├── ra_bdg_couplings.pdf
+│   ├── ra_bdg_couplings.tex
+│   ├── RA_Berry_Phase_Honest.md
+│   ├── RA_Berry_Phase_Native.md
+│   ├── RA_Berry_Phase_Programme.md
+│   ├── RA_Berry_Phase_Status.md
+│   ├── RA_BH_Entropy_Complete.md
+│   ├── RA_Bimodal_Ontology.md
+│   ├── RA_BMV_Note.pdf
+│   ├── RA_BMV_Note.tex
+│   ├── RA_BMV_Null_Note.tex
+│   ├── RA_BMV_PaperIII_Insert.tex
+│   ├── RA_CFC_Port_Retrospective.md
+│   ├── RA_Complete_Inventory.md
+│   ├── RA_Cosmological_Nucleation.md
+│   ├── RA_d4_Closure.md
+│   ├── RA_d4_Uniqueness_OverDetermined_v2.md
+│   ├── RA_d4_Uniqueness_OverDetermined.md
+│   ├── RA_DESI_Dark_Energy_Note_v3.md
+│   ├── RA_DESI_Dark_Energy_Note.md
+│   ├── RA_Explorer.html
+│   ├── RA_File_Inventory.md
+│   ├── RA_Force_Differentiation.md
+│   ├── RA_Formal_Definitions.md
+│   ├── RA_Foundation_v1_9.pdf
+│   ├── RA_Foundation_v1.pdf
+│   ├── RA_Foundation_v1.tex
+│   ├── RA_Foundation_v2.pdf
+│   ├── RA_Foundation_v2.tex
+│   ├── RA_Four_Artifacts.md
+│   ├── RA_Framing_Discipline.md
+│   ├── RA_Geometry_of_Potentia.md
+│   ├── RA_GR_Bridge_Audit.md
+│   ├── RA_GS02_Audit.md
+│   ├── RA_IC30_Audit.md
+│   ├── RA_Introduction.docx
+│   ├── RA_Ledger.md
+│   ├── RA_Master_Dependency_Map.md
+│   ├── RA_Mature
+│   │   ├── fig1_growing_dag.pdf
+│   │   ├── fig2_selectivity.pdf
+│   │   ├── fig3_timescale.pdf
+│   │   ├── fig4_seeds.pdf
+│   │   ├── fig5_unification.pdf
+│   │   ├── RA_P0.pdf
+│   │   ├── RA_P0.tex
+│   │   ├── RA_P1_full.tex
+│   │   ├── RA_P1.pdf
+│   │   ├── RA_P1.tex
+│   │   ├── RA_P2_full.tex
+│   │   ├── RA_P2.pdf
+│   │   ├── RA_P2.tex
+│   │   ├── RA_P3_full.tex
+│   │   ├── RA_P3.pdf
+│   │   ├── RA_P3.tex
+│   │   ├── RA_P4_full.tex
+│   │   ├── RA_P4.pdf
+│   │   ├── RA_P4.tex
+│   │   ├── RA_P5_full.tex
+│   │   ├── RA_P5.pdf
+│   │   ├── RA_P5.tex
+│   │   ├── RA_Paper1_final.pdf
+│   │   ├── RA_Paper1_final.tex
+│   │   ├── RA_Paper2_final.pdf
+│   │   ├── RA_Paper2_final.tex
+│   │   ├── RA_Paper3_final.pdf
+│   │   ├── RA_Paper3_final.tex
+│   │   ├── RA_Paper4_final.pdf
+│   │   ├── RA_Paper4_final.tex
+│   │   ├── RA_Paper5_final.pdf
+│   │   └── RA_Paper5_final.tex
+│   ├── RA_MutualImplication.md
+│   ├── RA_New_Suite_TOC_v2.md
+│   ├── RA_New_Suite_TOC.md
+│   ├── RA_P0_Biography.docx
+│   ├── RA_P0.pdf
+│   ├── RA_P0.tex
+│   ├── RA_Paper_I_Kernel_and_Engine.pdf
+│   ├── RA_Paper_I_Kernel_and_Engine.tex
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs.pdf
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs.tex
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity.pdf
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity.tex
+│   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall.pdf
+│   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall.tex
+│   ├── RA_Particle_Topology_Audit.md
+│   ├── RA_Pion_Kaon_Synthesis.md
+│   ├── ra_preamble.sty
+│   ├── RA_PreRegistration_Predictions.pdf
+│   ├── RA_Programme_State_Apr16.md
+│   ├── RA_ProgrammeLetter_v1.pdf
+│   ├── RA_ProgrammeLetter_v1.tex
+│   ├── RA_Self_Writing_Universe.md
+│   ├── RA_Session_Log_Apr10-11.md
+│   ├── RA_Session_Log_Apr10.md
+│   ├── RA_Session_Log_Apr11.md
+│   ├── RA_Session_Log_Apr12.md
+│   ├── RA_Session_Log_Apr14_Complete.md
+│   ├── RA_Session_Log_Apr14.md
+│   ├── RA_Session_Log_Apr16.md
+│   ├── RA_Session_Log_Apr17.md
+│   ├── RA_Session_Log_Apr9.md
+│   ├── RA_Severance_Entropy_Observable.md
+│   ├── RA_Substack_post.md
+│   ├── ra_suite_dependency_graph.svg
+│   ├── RA_Suite_Editorial_Catalog.md
+│   ├── RA_Suite_Overview.pdf
+│   ├── RA_Suite_Overview.tex
+│   ├── RA_Three_Paper_Drafts_LaTeX
+│   │   ├── RA_Paper_I_Kernel_and_Engine.pdf
+│   │   ├── RA_Paper_I_Kernel_and_Engine.tex
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs.pdf
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs.tex
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Complexity.pdf
+│   │   └── RA_Paper_III_Gravity_Cosmology_Complexity.tex
+│   ├── RA_Three_Paper_Drafts_LaTeX_Updated
+│   │   ├── RA_Paper_I_Kernel_and_Engine.pdf
+│   │   ├── RA_Paper_I_Kernel_and_Engine.tex
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs.pdf
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs.tex
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Complexity.pdf
+│   │   └── RA_Paper_III_Gravity_Cosmology_Complexity.tex
+│   ├── RA_Three_Paper_Drafts_LaTeX_Updated.zip
+│   ├── RA_Website_Content_Map_v2.md
+│   ├── RA_Website_Content_Map.md
+│   ├── RA-Project-ToDo.docx
+│   ├── RACF_IJA_v1.pdf
+│   ├── RACF_IJA_v1.tex
+│   ├── RACF.pdf
+│   ├── RACF.tex
+│   ├── RACI_v6.pdf
+│   ├── RACI_v6.tex
+│   ├── RACI.pdf
+│   ├── RACI.tex
+│   ├── RACL - ScholarOne Manuscripts.pdf
+│   ├── RACL_CQG_cover.docx
+│   ├── RACL_CQG_v1_2.pdf
+│   ├── RACL_CQG_v1_3.pdf
+│   ├── RACL_CQG_v1.pdf
+│   ├── RACL_CQG_v1.tex
+│   ├── RACL_v1_2.pdf
+│   ├── RACL_v1.tex
+│   ├── RACL.pdf
+│   ├── RACL.tex
+│   ├── RADM_JCAP_cover_letter.pdf
+│   ├── RADM_v1.pdf
+│   ├── RADM_v1.tex
+│   ├── RADM_v2.pdf
+│   ├── RADM_v2.tex
+│   ├── RADM.pdf
+│   ├── RADM.tex
+│   ├── RAEB_Rebuttal_v1.pdf
+│   ├── RAEB_Rebuttal_v2.pdf
+│   ├── RAEB_Rebuttal_v3.pdf
+│   ├── RAEB_v1.pdf
+│   ├── RAEB_v1.tex
+│   ├── RAEB_v2.pdf
+│   ├── RAEB_v2.tex
+│   ├── RAEB.pdf
+│   ├── RAEB.tex
+│   ├── RAGC_Rebuttal_v1.pdf
+│   ├── RAGC_v7.pdf
+│   ├── RAGC_v7.tex
+│   ├── RAGC_v8.pdf
+│   ├── RAGC_v8.tex
+│   ├── RAGC.pdf
+│   ├── RAGC.tex
+│   ├── RAHC_v1.pdf
+│   ├── RAHC_v1.tex
+│   ├── RAHC.pdf
+│   ├── RAHC.tex
+│   ├── RAKB_Audit_Apr5.md
+│   ├── RAKB_Patch_IC46.md
+│   ├── RAKB_Update_Apr16.md
+│   ├── RAQI_Quantum_cover_letter.pdf
+│   ├── RAQI_uploaded_1.pdf
+│   ├── RAQI_uploaded.tex
+│   ├── RAQI_v2.pdf
+│   ├── RAQI_v2.tex
+│   ├── RAQI.pdf
+│   ├── RAQI.tex
+│   ├── RAQM_Rebuttal_v1.pdf
+│   ├── RAQM_Rebuttal_v1.tex
+│   ├── RAQM_Rebuttal_v2.pdf
+│   ├── RAQM_Rebuttal_v2.tex
+│   ├── RAQM_revised.pdf
+│   ├── RAQM_v4.pdf
+│   ├── RAQM_v4.tex
+│   ├── RAQM.pdf
+│   ├── RAQM.tex
+│   ├── RASM_PRD_cover_letter.pdf
+│   ├── RASM_v1.pdf
+│   ├── RASM_v1.tex
+│   ├── RASM_v2_1.pdf
+│   ├── RASM_v2.pdf
+│   ├── RASM_v2.tex
+│   ├── RASM.pdf
+│   ├── RASM.tex
+│   ├── RATM_CQG_cover_1.docx
+│   ├── RATM_CQG_cover.docx
+│   ├── RATM_CQG_v1_2.pdf
+│   ├── RATM_CQG_v1.pdf
+│   ├── RATM_CQG_v1.tex
+│   ├── RATM_PRD_cover.docx
+│   ├── RATM_PRD_v1_1.pdf
+│   ├── RATM_PRD_v1.pdf
+│   ├── RATM_PRD_v1.tex
+│   ├── RATM_PRD_v2.pdf
+│   ├── RATM_PRD_v2.tex
+│   ├── RATM_v1.pdf
+│   ├── RATM_v1.tex
+│   ├── RATM.pdf
+│   ├── RATM.tex
+│   ├── Relational_Actualism_Complexity_and_Intelligence.pdf
+│   ├── Relational_Actualism_Conservation_Ledger.pdf
+│   ├── Relational_Actualism_Dark_Matter.pdf
+│   ├── Relational_Actualism_Engine_of_Becoming.pdf
+│   ├── Relational_Actualism_Foundation.pdf
+│   ├── Relational_Actualism_Gravity_and_Cosmology.pdf
+│   ├── Relational_Actualism_Hierarchy_of_Complexity.pdf
+│   ├── Relational_Actualism_Monograph.pdf
+│   ├── Relational_Actualism_Quantum_Information.pdf
+│   ├── Relational_Actualism_Quantum_Mechanics.pdf
+│   ├── Relational_Actualism_Standard_Model.pdf
+│   ├── Relational_Actualism_Topology_Matter.pdf
+│   ├── ScholarOne Manuscripts - RACF.pdf
+│   ├── Stage_A_Full_Report.md
+│   ├── Stage_A_RA_Complexity_Proofs_Entry.md
+│   ├── Stage_B_Inventory.md
+│   ├── The Moment Time Was Born.docx
+│   └── The_Map_and_the_Territory.md
+├── RA_dir_tree.txt
+├── README.md
+└── src
+    ├── RA_AQFT
+    │   ├── antichain_drift.py
+    │   ├── bdg_multicoupling.py
+    │   ├── berry_bridge.py
+    │   ├── berry_computation.py
+    │   ├── berry_decomposition.py
+    │   ├── berry_derive_f.py
+    │   ├── berry_final.py
+    │   ├── berry_gauge.py
+    │   ├── berry_theorems.py
+    │   ├── berry_thinning.py
+    │   ├── berry_transfer.py
+    │   ├── born_rule_derivation.py
+    │   ├── branching_volume.py
+    │   ├── bullet_cluster.py
+    │   ├── casimir_benchmark.py
+    │   ├── cross_dimensional_exclusion.py
+    │   ├── D1_BDG_MCMC_simulation.py
+    │   ├── d1_BDG_string_tension.py
+    │   ├── d2_two_phases.py
+    │   ├── d3_alpha_s_BDG.py
+    │   ├── d3_alpha_s_proof.py
+    │   ├── d3i_complete.py
+    │   ├── D4U02_analytic_proof.md
+    │   ├── d4u02_enumeration.py
+    │   ├── daughter_universe.py
+    │   ├── f0_enumeration.py
+    │   ├── files
+    │   │   ├── endpoint_ap_table.csv
+    │   │   ├── endpoint_splitting_plot.png
+    │   │   ├── Epsilon_Env_Forecast_Memo_v3.md
+    │   │   ├── sensitivity_matrix.csv
+    │   │   ├── t1_forecast_deliverables_v2.py
+    │   │   └── toy_model_bracket_table.csv
+    │   ├── hard_wall_4_summary.py
+    │   ├── kernel_saturation.py
+    │   ├── lake-manifest.json
+    │   ├── lakefile_v1.lean
+    │   ├── lakefile.lean
+    │   ├── lean-toolchain
+    │   ├── mu_derivation.py
+    │   ├── mu_int_derive.py
+    │   ├── n_eff_alternative.py
+    │   ├── n_eff_factorization.py
+    │   ├── n_eff_mc_test.py
+    │   ├── o14_incidence_algebra.py
+    │   ├── o14_proof.py
+    │   ├── pathwise_exit.py
+    │   ├── qcd_running_proof.py
+    │   ├── RA_Alpha_EM_Proof.lean
+    │   ├── RA_AmpLocality.lean
+    │   ├── RA_AQFT_CFC_Patch.lean
+    │   ├── RA_AQFT_Proofs_v10.lean
+    │   ├── RA_AQFT_Proofs_v2.lean
+    │   ├── RA_AQFT_Proofs.lean
+    │   ├── RA_BaryonChirality.lean
+    │   ├── RA_BDG_Simulation.py
+    │   ├── RA_Berry_Phase_Derived.md
+    │   ├── ra_calibration.py
+    │   ├── RA_CFC_Port.lean
+    │   ├── RA_D1_Proof.py
+    │   ├── RA_D1_Proofs.lean
+    │   ├── ra_dark_energy.py
+    │   ├── ra_desi_verify.py
+    │   ├── ra_early_bh.py
+    │   ├── ra_flat_rotation_curve.py
+    │   ├── RA_GraphCore.lean
+    │   ├── RA_Koide.lean
+    │   ├── RA_O14_Uniqueness.lean
+    │   ├── RA_PACT_conservation_lean.lean
+    │   ├── RA_Proofs_Lean4.lean
+    │   ├── RA_RASM_Verification.py
+    │   ├── RA_Session_Log_Apr10.md
+    │   ├── RA_Session_Log_Apr12.md
+    │   ├── RA_Spin2_Macro.lean
+    │   ├── ra_structure_formation.py
+    │   ├── ra_verify_heraclitus.py
+    │   ├── rho_native.py
+    │   ├── rindler_relative_entropy.py
+    │   ├── scripts.txt
+    │   ├── severed_outdegree.py
+    │   ├── sigma_analysis.py
+    │   ├── sigma_table.py
+    │   ├── t1_forecast_deliverables.py
+    │   └── vwyler_proof.py
+    ├── ra_audit.py
+    ├── RA_Complexity
+    │   ├── assembly_mapper.py
+    │   └── RA_Complexity_Proofs.lean
+    └── RA_KB
+        ├── migrate_to_sqlite.py
+        ├── paper_updates_apr6.md
+        ├── ra_derivations.txt
+        ├── ra_kb.txt
+        ├── rakb copy.yaml
+        ├── rakb_snapshot.md
+        ├── rakb_tools.py
+        ├── rakb.db
+        ├── rakb.yaml
+        └── validate_rakb.py
+
+14 directories, 388 files

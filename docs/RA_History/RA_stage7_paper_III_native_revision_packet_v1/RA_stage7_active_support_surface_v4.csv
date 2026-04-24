@@ -1,0 +1,12 @@
+paper,claim_or_surface,basis,status
+Paper III,graph cut / local ledger partition,RA_GraphCore.lean,active native compiled support
+Paper III,kernel locality / admissibility depends on realized past,RA_O01_KernelLocality_v2.lean,active native compiled support
+Paper III,d=4 arithmetic coefficient inversion,RA_O14_ArithmeticCore_v1.lean,active native compiled support
+Paper III,matter-side motif / closure structure where inherited,compiled D1-native Paper II modules,active native compiled support (inherited where explicit)
+Paper III,severed-link entropy and interface finiteness,paper-local finite graph derivation,derived native support
+Paper III,sparse-regime topology transition,paper-local structural programme,argued / coefficient closure open
+Paper III,large-radius response / lensing offset,paper-local structural programme,phenomenological / open native target
+Paper III,environment-sensitive expansion signal,inhomogeneous fit-kernel programme,phenomenological interpolation
+Paper III,Bianchi / Lorentz / continuum field equation chain,historical continuum cartography,"deferred / archival, not active support"
+Paper III,alpha_s-based f0 overlay,historical comparison only,"archived overlay, not active support"
+Paper III,BMV null,bridge-level test only,"deferred, not active native support"

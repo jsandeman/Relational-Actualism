@@ -1,0 +1,101 @@
+
+# RA Results Registry v0.2 (expanded)
+
+results:
+
+- id: RA-KERNEL-001
+  name: BDG acceptance kernel
+  status: ANC
+  paper: I
+  statement: "S = 1 − N1 + 9N2 − 16N3 + 8N4, accept if S > 0"
+  sources: [RA_O14_ArithmeticCore_v1.lean]
+  target: "event admissibility structure"
+
+- id: RA-KERNEL-002
+  name: Kernel locality
+  status: ANC
+  paper: I
+  statement: "Admissibility depends only on realized past"
+  sources: [RA_O01_KernelLocality_v2.lean]
+  target: "local causation structure"
+
+- id: RA-MOTIF-001
+  name: Finite closure lengths
+  status: ANC
+  paper: II
+  statement: "Lg = 3, Lq = 4"
+  sources: [RA_D1_NativeConfinement_v1.lean]
+  target: "interaction range / confinement"
+
+- id: RA-MOTIF-002
+  name: Extension census
+  status: ANC
+  paper: II
+  statement: "Finite admissible extension classes"
+  sources: [RA_D1_NativeClosure_v1.lean]
+  target: "motif classification"
+
+- id: RA-ARITH-001
+  name: Koide ratio identity
+  status: ANC
+  paper: II
+  statement: "K = 2/3"
+  sources: [RA_KvalRatio.lean]
+  target: "lepton mass ratios"
+  caveat: "physical embedding not yet derived"
+
+- id: RA-ARITH-002
+  name: Strong interaction scale
+  status: DR
+  paper: II
+  statement: "alpha_RA = 1/sqrt(72)"
+  sources: [d3_alpha_s_proof.py]
+  target: "dimensionless interaction strength"
+
+- id: RA-ARITH-003
+  name: Internal density scale
+  status: CV
+  paper: II
+  statement: "mu_int = exp(sqrt(4 ΔS*)) ≈ 4.71"
+  sources: [mu_derivation.py, d4u02_enumeration.py]
+  target: "hadronic scale"
+
+- id: RA-ARITH-004
+  name: Path weight ratio
+  status: CV
+  paper: II
+  statement: "W_other / W_baryon ≈ 17.32"
+  sources: [f0_enumeration.py]
+  target: "lifetime hierarchy"
+
+- id: RA-GRAV-001
+  name: Kernel saturation identity
+  status: DR
+  paper: III
+  statement: "DKL = ΔS*, TV = 1 - Pacc"
+  sources: [kernel_saturation.py]
+  target: "high-density regime"
+
+- id: RA-GRAV-002
+  name: Antichain drift
+  status: CV
+  paper: III
+  statement: "E[ΔW] ≈ +0.34 at μ=1"
+  sources: [antichain_drift.py]
+  target: "expansion-like behavior"
+
+- id: RA-GRAV-003
+  name: D4U02 selectivity
+  status: CV
+  paper: III
+  statement: "μ* ≈ 1.019"
+  sources: [d4u02_enumeration.py]
+  target: "dimension selection"
+
+- id: RA-GRAV-004
+  name: BDG/LLC macro-kernel
+  status: ANC
+  paper: III
+  statement: "Joint kernel dimension = 2"
+  sources: [RA_BDG_LLC_Kernel.lean]
+  target: "macroscopic degrees of freedom"

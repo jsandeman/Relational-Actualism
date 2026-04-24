@@ -1,0 +1,655 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% \usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% --- Robust definitions to work around mathptmx/hyperref issues ---
+\let\oldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+\newcommand{\SRa}{S_{\mathrm{RA}}}
+% --- End robust definitions ---
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{array}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Prevent math commands from breaking PDF metadata (bookmarks, abstract title, etc.)
+\pdfstringdefDisableCommands{%
+  \def\hbar{hbar}%
+  \def\ell{l}%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+  \def\SRa{S_RA}%
+  \def\Pacc{P_acc}%
+  \def\Dkl{D_KL}%
+  \def\TV{TV}%
+}
+
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\RA}{\mathrm{RA}}
+\newcommand{\bdg}{\mathrm{BDG}}
+\newcommand{\LLC}{\mathrm{LLC}}
+\newcommand{\Pacc}{P_{\mathrm{acc}}}
+\newcommand{\Pot}{\Pi}
+\newcommand{\Dkl}{D_{\mathrm{KL}}}
+\newcommand{\TV}{\mathrm{TV}}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism I:\\[0.3em] Kernel, Actualization, and the Engine of Becoming}}\\[1em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+{\small sansuikyo@gmail.com}\\[0.5em]
+{\normalsize Draft --- April 13, 2026}
+\end{center}
+
+\begin{abstract}
+Relational Actualism (RA) is a foundational physics framework built on a single ontological commitment: irreversible actualization events write permanent vertices into a growing causal directed acyclic graph filtered by the four-dimensional Benincasa--Dowker--Glaser (BDG) action. The present paper establishes the kernel in native terms: seven axioms, sequential graph growth, the BDG acceptance kernel, the local-ledger / graph-cut structure of realized partitions, the Level-1 actualization criterion $S_{\mathrm{BDG}}>0$, the kernel-locality replacement family showing that admissibility depends only on realized past, and the $d=4$ arithmetic coefficient-inversion layer. The active native Lean support surface used in the current suite pass is deliberately narrow: \texttt{RA\_GraphCore.lean}, \texttt{RA\_O01\_KernelLocality\_v2.lean}, and \texttt{RA\_O14\_ArithmeticCore\_v1.lean}. Statistical selectivity, sparse versus dense actualization regimes, finite propagation, bandwidth saturation, and the multi-criterion case for $d=4$ are developed directly from this kernel. Historical AQFT, on-shell, coupling-constant, and Lorentz/GR/QFT bridge material is not counted as active support here; where such cartographies are mentioned, they are treated as deferred or archival. Papers~II--IV extend this kernel natively into matter / motif structure, severance / cosmology, and complexity / life.
+\end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of This Paper,colback=gray!5,colframe=gray!60]
+This kernel paper distinguishes:
+\begin{itemize}[nosep]
+    \item \textbf{Active native compiled support} presently used positively in the suite;
+    \item \textbf{Derived native claims} stated directly in DAG + BDG + LLC language;
+    \item \textbf{Computation-verified quantities} obtained from explicit finite evaluation or certified enumeration;
+    \item \textbf{Deferred or archival cartographies} retained only as historical comparison, not as active proof support.
+\end{itemize}
+The aim of this paper is to establish the kernel of the framework in native terms. The discrete statement is primary. Historical continuum, AQFT, or on-shell readouts are not part of the active proof chain in the current suite pass.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This is the foundational kernel paper of the Relational Actualism suite. In the current native-first pass it provides:
+\begin{itemize}[nosep]
+    \item the ontological axioms and finitary growth rule;
+    \item the local-ledger / graph-cut layer of realized causal structure;
+    \item the Level-1 actualization criterion and its statistical selectivity readout;
+    \item the kernel-locality replacement family showing that admissibility depends only on realized past;
+    \item the arithmetic coefficient-inversion layer supporting the $d=4$ kernel.
+\end{itemize}
+Paper~II uses this kernel to build the matter / motif / force sector in native terms. Paper~III uses it to develop severance, boundary structure, and macroscopic response. Paper~IV extends the same kernel into complexity, life, and agency. Historical continuum bridge material is not part of the active suite support surface in the present revision.
+\end{tcolorbox}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Introduction}
+%% ═══════════════════════════════════════════════════════════
+
+Modern physics is extraordinarily effective at organizing measurements, yet its dominant formalisms remain patchwork descriptions rather than a single native account of Nature. Relational Actualism begins from the opposite end. It does not ask how a discrete graph might recover an already accepted continuum theory as an intermediate target. It asks instead what ontology is required if Nature consists of irreversible events, finite realized structure, and explicit causal precedence.
+
+RA's answer is that physical reality is a growing actualized causal DAG. An actualization event is an irreversible interaction that writes a permanent vertex into that graph. Potentia are the admissible unrealized extensions determined by the current graph. The measurement problem dissolves because eventhood is no longer secondary to a wave equation or observer update: the primitive physical fact is the writing of a vertex.
+
+The task of the present paper is intentionally narrow. It states the ontological commitments, the finitary growth rule, the BDG acceptance kernel, the active native support surface, and the immediate structural consequences that follow from them. Historical continuum readouts may still be useful as downstream cartography, but they are not the proof target of this paper and they are not counted as active support in the present suite pass.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Seven Axioms}
+\label{sec:axioms}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{axiom}[Causal graph ontology]
+\label{ax:graph}
+At every realized stage, the universe possesses an actualized causal graph $G_n=(V_n,\prec_n)$ whose vertices are irreversible actualization events and whose directed edges encode the causal order.
+\end{axiom}
+
+\begin{axiom}[Irreversibility]
+\label{ax:irrev}
+Once a vertex is actualized, it is not deleted. The realized graph only grows. This is not a dynamical law but a definitional property of actualization: an event that can be undone was not an actualization event.
+\end{axiom}
+
+\begin{axiom}[Structured potentia]
+\label{ax:potentia}
+The next physically possible actualizations are not arbitrary. They are determined by the current graph through a structured possibility set $\Pot(G_n)$ of admissible single-vertex extensions.
+\end{axiom}
+
+\begin{axiom}[BDG filtering]
+\label{ax:bdg}
+Candidate extensions are filtered by the four-dimensional Benincasa--Dowker--Glaser score
+\begin{equation}
+\label{eq:bdg}
+S(v,G)=c_0 + c_1 N_1(v)+c_2 N_2(v)+c_3 N_3(v)+c_4 N_4(v),
+\end{equation}
+with coefficients $(c_0,c_1,c_2,c_3,c_4)=(1,-1,9,-16,8)$, and are admissible only when $S>0$. Here $N_k(v)$ is the number of elements in the causal past of $v$ at depth $k$.
+\end{axiom}
+
+\begin{axiom}[Stochastic actualization]
+\label{ax:stochastic}
+Among admissible candidates, one is selected stochastically according to the RA selection weight on the current potentia. The framework therefore requires a normalized probability assignment on admissible single-vertex extensions, but it does not take any continuum wave-equation formalism as primitive.
+\end{axiom}
+
+\begin{axiom}[Local ledger conservation]
+\label{ax:llc}
+At every actualization vertex, the local ledger condition (LLC) holds: incoming and outgoing conserved charges balance locally. In equation form: $\sum_{\mathrm{out}}(v)=\sum_{\mathrm{in}}(v)$ for every vertex $v$.
+\end{axiom}
+
+\begin{axiom}[Finitary Actuality]
+\label{ax:finite}
+Every physically realized universe-state $U_n=(G_n,\Pot(G_n))$ has finite actual graph~$G_n$. All physically realized counts---vertices, links, boundary sets, admissible extensions---are finite. Infinite structures may be used as asymptotic or continuum idealizations, but are not ontologically actual.
+\end{axiom}
+
+\begin{remark}
+Axiom~\ref{ax:finite} is not an add-on. It is the explicit statement of the discrete-first methodology already built into the finite-step growth rule. Its function is to separate ontology from approximation: completed infinities are forbidden as physical states, while large-$N$ and continuum limits remain available as mathematical descriptions of finite-but-enormous graphs.
+\end{remark}
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Causal Graph}
+\label{sec:graph}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{definition}[Causal graph]
+$G=(V,\prec)$ is a locally finite partially ordered set where $V$ is a finite set of vertices (Axiom~\ref{ax:finite}), $\prec$ is a strict partial order satisfying irreflexivity ($v\not\prec v$), transitivity ($u\prec w$ and $w\prec v$ implies $u\prec v$), and local finiteness (every interval $\{w:u\prec w\prec v\}$ is finite).
+\end{definition}
+
+The partial order $\prec$ encodes causation. The irreflexivity and transitivity together make $(V,\prec)$ a directed acyclic graph (DAG). Acyclicity is not an additional assumption---it is the formal statement that causation is irreversible. A closed causal loop would require an event to cause itself, which Axiom~\ref{ax:irrev} rules out.
+
+\begin{definition}[Link]
+A pair $(u,v)$ with $u\prec v$ is a \emph{link} if there is no $w$ with $u\prec w\prec v$. Links are the nearest-neighbor causal relations---the irreducible edges of the graph.
+\end{definition}
+
+\begin{definition}[Chain and antichain]
+A \emph{chain} is a totally ordered subset of $V$. An \emph{antichain} is a subset where no two elements are comparable. Chains represent timelike worldlines; antichains represent spacelike-separated sets.
+\end{definition}
+
+\textbf{Time as the growing graph.} Time is not a background dimension in which the graph is embedded. Time \emph{is} the growth of the graph. The past is the part of the graph that has been written; the future is what has not yet been written; the present is the process of writing the next vertex. Proper time along a worldline is the count of actualization events along a chain. Relativistic time dilation is the statement that different chains through the same causal structure accumulate different numbers of events.
+
+The speed of light $c=l_P/t_P$ is the maximum distance a causal influence can travel in one actualization step---one Planck length per Planck time. This is not a separate law but a ratio of the graph's natural units.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The BDG Action and Its Integers}
+\label{sec:bdg}
+%% ═══════════════════════════════════════════════════════════
+
+The BDG action~\cite{Benincasa2010} is the native finite-depth filter used throughout RA. For a candidate vertex $v$ added to an existing causal set $C$, the increment depends only on the local ancestor census:
+\begin{equation}
+S(v,C) = \sum_{k=0}^{d/2} c_k \, N_k(v),
+\end{equation}
+where $N_k(v)$ counts elements of $C$ at depth $k$ in the causal past of $v$.
+
+For $d=4$:
+\begin{equation}
+\label{eq:bdg_d4}
+(c_0,c_1,c_2,c_3,c_4)=(1,-1,9,-16,8).
+\end{equation}
+
+These five integers are not fitted parameters. The active compiled support in the present paper is the arithmetic binomial-inversion layer in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}, which isolates the unique $d=4$ coefficient tuple from finite integer structure. Historical geometric identifications of the same tuple with particular continuum causal-diamond moment problems are downstream or external cartography and are not part of the active support surface here.
+
+\subsection{The second-order cancellation pattern}
+
+A fundamental arithmetic property of the $d=4$ BDG coefficients is the second-order cancellation pattern. Two distinct sums must be kept separate:
+\begin{align}
+\label{eq:full_sum}
+\text{(full sum, including birth term)}\quad & \sum_{k=0}^{4} c_k = 1-1+9-16+8 = 1,\\
+\label{eq:dalembert_sum}
+\text{(non-birth action sum)}\quad & \sum_{k=1}^{4} c_k = -1+9-16+8 = 0.
+\end{align}
+The first sum includes the birth coefficient $c_0=1$ and does not vanish. The second sum excludes the birth term and vanishes. Together with the algebraic constraints $c_0+c_1=0$ and $c_0+2c_1+c_2=c_4$, this gives the characteristic second-order cancellation pattern of the $d=4$ kernel. In the present paper that pattern is used natively as one strand of the multi-criterion argument for $d=4$ uniqueness (see \S\ref{sec:d4}); any continuum operator-language reading is downstream cartography.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Sequential Growth Rule}
+\label{sec:engine}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{definition}[Universe-state]
+At step $n$, the universe-state is the ordered pair
+\begin{equation}
+U_n=(G_n,\Pot(G_n)),
+\end{equation}
+where $G_n$ is the finite actualized graph and $\Pot(G_n)$ is the set of admissible single-vertex extensions.
+\end{definition}
+
+\begin{definition}[Sequential growth]
+Given $G_n$, a candidate past set $P\subseteq V_n$ is proposed. The new vertex $v_{n+1}$ is assigned the downward closure $\downarrow\!P$ as its causal past. The depth profile $(N_1,N_2,N_3,N_4)$ is computed from $P$ and $G_n$. The BDG score is evaluated via Eq.~(\ref{eq:bdg_d4}). If $S\le 0$, the candidate is filtered. Among admissible candidates ($S>0$), one is actualized stochastically to form $G_{n+1}$.
+\end{definition}
+
+\begin{proposition}[Finite potentia]
+For every physically realized $U_n$, the possibility set $\Pot(G_n)$ is finite.
+\end{proposition}
+\begin{proof}
+By Axiom~\ref{ax:finite}, $G_n$ is finite. Candidate past sets are subsets of a finite set, hence finite in number. After BDG filtering, the admissible subset remains finite.
+\end{proof}
+
+This is the \emph{Engine of Becoming}: the five-step process (propose, score, filter, select, actualize) by which the graph grows. It is the single dynamical law of RA. Later statistical, numerical, or cartographic descriptions are downstream of this process rather than constitutive of it.
+
+\subsection{The bimodal ontology}
+
+The universe-state $U_n=(G_n,\Pot(G_n))$ makes RA's ontology explicit: reality has two components. The actualized graph $G_n$ is the settled, irreversible past. The structured potentia $\Pot(G_n)$ is the unsettled but constrained space of possibilities for the next step. Both are real---$G_n$ is actual, $\Pot(G_n)$ is potential---and both are finite.
+
+This is neither a block universe (which denies the open future) nor a presentist ontology (which denies structure to the future). It is a \emph{bimodal} ontology in which becoming is a genuine physical process, not an illusion of subjective perspective. The arrow of time is not explained by the framework; it is \emph{encoded} in its most primitive commitment, since actualization is by definition irreversible.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The BDG Filter and Acceptance Kernel}
+\label{sec:filter}
+%% ═══════════════════════════════════════════════════════════
+
+In the Poisson-CSG approximation (the statistical limit of the sequential growth rule at density $\mu$), each $N_k$ is an independent Poisson random variable with parameter $\lambda_k=\mu^k/k!$. The acceptance probability is
+\begin{equation}
+\Pacc(\mu)=\mathbb{P}(S>0),
+\end{equation}
+and the acceptance kernel is the conditional distribution of the depth profile given admissibility:
+\begin{equation}
+K(\mathbf{N}|\mu)=\frac{\mathrm{Poisson}(\mathbf{N};\boldsymbol{\lambda}(\mu))\cdot\mathbf{1}[S(\mathbf{N})>0]}{\Pacc(\mu)}.
+\end{equation}
+
+\subsection{The actualization threshold}
+
+The quantity $\Delta S^*(\mu)=-\log\Pacc(\mu)$ measures the selectivity of the BDG filter at density $\mu$. At $\mu=1$ (the Planck density):
+\begin{equation}
+\Pacc(1)\approx 0.548, \qquad \Delta S^* \approx 0.601 \;\mathrm{nats}.
+\end{equation}
+This is not a free parameter. It is computed from the BDG integers alone.
+
+\subsection{Kernel saturation theorem}
+
+\begin{theorem}[Kernel--Poisson divergence identity]
+\label{thm:kl}
+For the BDG acceptance kernel:
+\begin{align}
+\Dkl(K(\cdot|\mu)\,\|\,\mathrm{Poisson}(\cdot;\boldsymbol{\lambda})) &= -\log\Pacc(\mu) = \Delta S^*(\mu), \label{eq:kl}\\
+\TV(K(\cdot|\mu),\,\mathrm{Poisson}(\cdot;\boldsymbol{\lambda})) &= 1-\Pacc(\mu). \label{eq:tv}
+\end{align}
+\end{theorem}
+\begin{proof}
+$K$ is a truncated Poisson: the ratio $K(\mathbf{N})/P(\mathbf{N})=1/\Pacc$ is constant on the support of $K$ (where $S>0$), and $K(\mathbf{N})=0$ elsewhere. For the KL divergence: $\Dkl=\sum_{\mathbf{N}} K(\mathbf{N})\log(K/P)=\log(1/\Pacc)=-\log\Pacc$. For total variation: $\TV=\frac{1}{2}\sum|K-P|=\frac{1}{2}[P_{\mathrm{acc}}(1/P_{\mathrm{acc}}-1)+(1-P_{\mathrm{acc}})]=1-\Pacc$.
+\end{proof}
+
+\begin{theorem}[Asymptotic saturation]
+\label{thm:saturation}
+For $d=4$ BDG coefficients: $\lim_{\mu\to\infty}\Pacc(\mu)=1$, with rate $\Pacc(\mu)\ge 1-O(\mu^{-4})$.
+\end{theorem}
+\begin{proof}
+$\mathbb{E}[S]\sim\frac{1}{3}\mu^4$ and $\sigma[S]\sim 1.63\mu^2$ for large $\mu$. Therefore $\mathbb{E}[S]/\sigma[S]\sim 0.204\mu^2\to\infty$. By Chebyshev's inequality, $\mathbb{P}(S\le 0)\le\sigma^2/\mathbb{E}[S]^2\to 0$.
+\end{proof}
+
+\begin{corollary}
+Both $\Dkl$ and $\TV$ vanish as $\mu\to\infty$. The acceptance kernel converges to the unconditioned Poisson distribution. The BDG filter loses all discriminatory power at high density.
+\end{corollary}
+
+The physical significance: at high density (approaching gravitational collapse), the filter saturates. Every candidate extension is admissible. The distinction between potentia and actuality---as mediated by the BDG filter---dissolves. This is the onset of \emph{causal severance}, developed in Paper~III.
+
+\subsection{The selectivity profile}
+
+Numerical evaluation (Monte Carlo, $2\times 10^5$ samples) gives:
+
+\begin{center}
+\begin{tabular}{rcccc}
+\toprule
+$\mu$ & $\Pacc$ & $\Delta S^*$ & $\TV$ & Regime \\
+\midrule
+0.5 & 0.641 & 0.445 & 0.359 & gentle \\
+1.0 & 0.548 & 0.601 & 0.452 & selective \\
+3.0 & 0.448 & 0.802 & 0.552 & strongly selective \\
+4.0 & 0.402 & 0.912 & 0.598 & maximum selectivity \\
+5.7 & 0.498 & 0.698 & 0.502 & weakening \\
+8.0 & 0.931 & 0.071 & 0.069 & near saturation \\
+10.0 & 1.000 & 0.000 & 0.000 & saturated \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The BDG filter is most selective at $\mu\approx 4$, where it rejects $\sim 60\%$ of candidates and carries $\Dkl\approx 0.9$ nats of information. Above $\mu\approx 10$, the filter is completely inert.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Actualization Criterion: Kernel First, Readouts Deferred}
+\label{sec:criterion}
+%% ═══════════════════════════════════════════════════════════
+
+Different statistical or continuum descriptions may be built on top of the kernel, but the active criterion of the framework is single and native.
+
+\subsection{Level 1 (Kernel): $S_{\mathrm{BDG}} > 0$}
+
+The primitive, finitary criterion is that a candidate vertex with ancestor profile $\mathbf{N}=(N_1,N_2,N_3,N_4)$ is admissible if and only if its BDG score is strictly positive:
+\begin{equation}
+\label{eq:level1}
+S_{\mathrm{BDG}}(\mathbf{N}) = c_0 + c_1 N_1 + c_2 N_2 + c_3 N_3 + c_4 N_4 > 0.
+\end{equation}
+This is the only active criterion. In the current suite pass, the native compiled support for the kernel side of this statement is the local-ledger / graph-cut chain in \texttt{RA\_GraphCore.lean} together with the replacement family in \texttt{RA\_O01\_KernelLocality\_v2.lean}, which establishes that admissibility depends only on realized past.
+
+\subsection{Statistical selectivity as a derived readout}
+
+A useful native readout of the kernel is statistical selectivity. In the Poisson-CSG regime at density $\mu$, the acceptance probability is
+\[
+\Pacc(\mu)=\mathbb{P}(S_{\mathrm{BDG}}>0),
+\]
+and the corresponding selectivity witness is
+\[
+\Delta S^*(\mu):=-\log \Pacc(\mu).
+\]
+At $\mu=1$, this gives the exact finite value $\Delta S^*\approx 0.601$ nats. This quantity is native because it is computed directly from the finite BDG filter; no continuum entropy dictionary is required.
+
+\subsection{Why the kernel-first hierarchy matters}
+
+Earlier versions of the project often presented entropic, AQFT, or on-shell descriptions as if they were co-equal with the kernel. Under the present native-first programme they are not. The logical order is:
+\begin{center}
+\begin{tabular}{clll}
+\toprule
+Layer & Statement & Role & Status \\
+\midrule
+1 & $S_{\mathrm{BDG}} > 0$ & Active kernel criterion & ANC / stated kernel \\
+2 & $\Pacc(\mu), \Delta S^*(\mu)$ & Statistical readout of the kernel & DR / CV \\
+3 & entropic, AQFT, on-shell, Lorentz-frame language & downstream cartography only & Deferred / Archived \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The point is not that later cartographies are forbidden forever. It is that they are not part of the active proof chain of the theory at this stage.
+
+\subsection{Historical bridge material (deferred)}
+
+Earlier drafts used finite-dimensional AQFT and Rindler-stationarity lemmas to discuss Unruh-style questions. Those results remain part of the restored historical baseline, but they are not counted as active native support in the present paper because they rely on imported bridge machinery rather than on a completed RA-native derivation. The kernel claim needed in this paper is only the native one: whether a candidate actualization is admissible depends on realized graph structure, not on a borrowed continuum state-space formalism.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Measurement Problem Dissolved in Native Terms}
+\label{sec:measurement}
+%% ═══════════════════════════════════════════════════════════
+
+In RA, the basic distinction is not between ``quantum'' and ``classical'' substances. It is between unrealized potentia and realized events. A candidate extension that remains below the kernel threshold stays unrealized; an actualization event writes a permanent vertex into the causal graph. The event is real, irreversible, and observer-independent.
+
+There is therefore no fundamental Heisenberg cut. Sparse-regime behaviour and dense-regime behaviour are two statistical regimes of the same graph-growth process. In sparse regimes, many admissible extensions fail to actualize and long unrealized histories remain relevant. In dense regimes, the filter approaches saturation, most admissible extensions actualize, and the dynamics become effectively deterministic. The measurement problem dissolves because actualization is primitive rather than emergent from observation.
+
+A familiar macroscopic object is not a single tenuous candidate history but a densely self-coupled actualization network. Its stability comes from persistent realized renewal, not from the need to invoke a special collapse postulate. The point of the kernel is precisely to replace borrowed observer-language with an explicit event-writing rule.
+
+\subsection{Historical wave-equation cartographies (deferred)}
+
+Earlier versions of the project described sparse-regime behaviour using Schr\"odinger-, Born-, or AQFT-style language. Those descriptions may still be useful as downstream cartography, but they are not part of the active support surface of this paper. The active native statement is simply this: low-density and high-density regimes are distinct statistical behaviours of the same BDG-filtered graph-growth process.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Finite Propagation, Event Counts, and Saturation}
+\label{sec:relativistic}
+%% ═══════════════════════════════════════════════════════════
+
+This section keeps only the native finite-structure content of the older kinematic discussion: finite propagation bandwidth, event-count time, and saturation / severance. Historical relativistic cartography is deferred.
+
+\subsection{The propagation ceiling as graph bandwidth ratio}
+
+The fundamental length and time scales of RA are the Planck length $\ell_P$ and the Planck time $t_P$. The growth rule proceeds in finite causal steps, so the maximum speed at which a causal influence can propagate is
+\begin{equation}
+\label{eq:c_bandwidth}
+\boxed{c = \frac{\ell_P}{t_P}.}
+\end{equation}
+This is the native finite-propagation statement: the graph has a bandwidth ceiling. Any historical identification of this quantity with continuum ``light cones'' is downstream cartography.
+
+\subsection{Proper time as event count}
+
+\begin{proposition}[Proper time as event count]
+\label{prop:proper_time}
+The proper time $\tau$ experienced by a physical system is the count of actualization events $N_{\mathrm{act}}$ that the system writes into the causal graph along its realized worldline, in units of $t_P$:
+\begin{equation}
+\tau = N_{\mathrm{act}} \cdot t_P.
+\end{equation}
+\end{proposition}
+
+Time dilation in historical continuum language is the downstream description of a native discrete fact: different realized trajectories accumulate different event counts between common boundary conditions.
+
+\subsection{Bandwidth saturation and severance onset}
+
+\begin{proposition}[Saturation and partition]
+\label{prop:singularity}
+The graph bandwidth is bounded: no realized vertex can carry more than a finite number of causal edges, and the local actualization rate is bounded by the finite growth rule. When the local graph approaches this bandwidth ceiling, the filter saturates and the graph partitions rather than diverges.
+\end{proposition}
+
+This is the native basis of the severance programme developed in Paper~III. The important statement is finitary: local overload terminates by partition, not by divergence to an actually-infinite quantity.
+
+\subsection{Historical relativistic cartography (deferred)}
+
+Earlier drafts expressed this section in special-relativistic and energy-frequency language. Those translations are not counted as active support in the current paper. The active native claims are only the bounded propagation ceiling, event-count time, and saturation / partition structure.
+
+\subsection{The D4U02 analytic gap}
+\label{sec:d4u02_gap}
+
+The uniqueness of $d=4$ (\S\ref{sec:d4}) rests in part on a numerical result: the BDG selectivity witness has its first local maximum at $\mu^*\approx 1.019$ for $d=4$. This has been established via the Stein--Papangelou identity combined with exact enumeration, with certified error bounds (see \texttt{d4u02\_proof\_v2}).
+
+The analytic closure---proving the cancellation pattern from BDG integer structure alone, without numeric evaluation---remains an open target. The natural strategy uses a contour-integral representation together with the vanishing identity $H_4(1)=0$ from the BDG conservation relation $\sum c_k=0$. Closing this analytically remains a tractable problem in native arithmetic combinatorics.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Uniqueness of $d=4$}
+\label{sec:d4}
+%% ═══════════════════════════════════════════════════════════
+
+The observed four-dimensionality of large-scale spacetime is not taken as a primitive input of RA. The active compiled support in the present paper concerns the arithmetic coefficient-inversion layer, and the broader case for $d=4$ is built by combining that arithmetic spine with additional native structural criteria.
+
+\subsection{The selectivity ceiling}
+
+Certified computation gives:
+\begin{center}
+\begin{tabular}{rccc}
+\toprule
+$d$ & $\mu^*$ & $|\mu^*-1|$ & finite motif richness? \\
+\midrule
+2 & 1.001 & 0.1\% & insufficient ($K=2$) \\
+3 & 0.890 & 11\% & insufficient ($K=3$) \\
+\textbf{4} & \textbf{1.019} & \textbf{1.9\%} & \textbf{sufficient ($K=5$)} \\
+5 & $>3.0$ & $>200\%$ & wrong selectivity scale \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Only $d=4$ places the first selectivity ceiling close to the kernel scale $\mu=1$ while also supplying the finite motif richness used in the Paper~II census.
+
+\subsection{The cascade exponent}
+
+The BDG cascade exponent $2N_c-1$ equals the cycle length $d+1$ only in $d=4$. This is the native renewal condition for finite cyclic motif persistence under the sequential growth rule.
+
+\subsection{The geometric identity}
+
+The identity
+\[
+\frac{4}{3}d! = d\cdot 2^{d-1}
+\]
+is satisfied only by $d=4$, giving $32=32$. In the present paper this is read as another native structural consistency condition for persistent finite organization. Historical continuum causal-diamond language may still serve as downstream interpretation, but it is not part of the active support surface here.
+
+\subsection{Arithmetic support versus geometric cartography}
+
+The active compiled support in Lean is the arithmetic coefficient-inversion layer in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}. Geometric identification of these integers with a particular continuum causal-diamond moment problem remains downstream cartography or external support, not active native compilation.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Arithmetic Coefficient Inversion and Historical Numerical Overlays}
+\label{sec:couplings}
+%% ═══════════════════════════════════════════════════════════
+
+The active native arithmetic result of this paper is the unique $d=4$ coefficient inversion from BDG integer structure. That compiled arithmetic core is carried by \texttt{RA\_O14\_ArithmeticCore\_v1.lean} and is part of the present active support surface.
+
+Earlier versions of the paper also used these integers to preview numerical overlays involving measured inverse fine-structure values, strong-coupling summaries, and Koide-style mass relations. Under the current framing discipline those overlays are not part of the active kernel chain. Some depend on historical theory objects as intermediates; others belong properly to the Nature-facing numerical programme of Paper~II.
+
+Accordingly, this paper no longer treats $\alpha_s$, $\alpha_{\mathrm{EM}}$, or Koide-style formulas as kernel support. Where historical numerical overlays remain useful, they should be read as archival provenance only and not as active native derivation.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Antichain Drift as a Local Graph Statistic}
+\label{sec:drift}
+%% ═══════════════════════════════════════════════════════════
+
+The BDG filter does not merely decide whether a candidate extension is admissible; it also biases the local width-versus-depth character of growth. In the current suite pass this is used only as a local graph statistic, not as a closed cosmological mechanism.
+
+\begin{theorem}[Antichain drift bound]
+\label{thm:drift}
+For the BDG-filtered Poisson-CSG at density $\mu<\mu_c\approx 1.25$:
+\begin{equation}
+\mathbb{E}[\Delta W\mid S>0] \ge 1-\mathbb{E}[N_1\mid S>0] > 0,
+\end{equation}
+where $\Delta W$ is the antichain width change per accepted vertex.
+\end{theorem}
+\begin{proof}[Proof sketch]
+When vertex $v$ is added with $k$ depth-1 parents in the current maximal antichain, $\Delta W=1-k$ (the $k$ parents are superseded; $v$ joins the antichain). Since $k\le N_1$, $\mathbb{E}[\Delta W]\ge 1-\mathbb{E}[N_1|S>0]$. Monte Carlo evaluation ($5\times 10^5$ samples) gives $\mathbb{E}[N_1|S>0]=0.663$ at $\mu=1.0$, yielding $\mathbb{E}[\Delta W]\ge +0.34$ per step.
+\end{proof}
+
+In native terms, the theorem says that low-to-moderate-density accepted growth tends to widen local antichain structure. That is a real graph statistic of the kernel. What the present paper does \emph{not} claim is that this theorem alone closes a cosmological expansion programme. Direct cosmological use of antichain drift is deferred to later work.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Formal Verification in Lean 4}
+\label{sec:lean}
+%% ═══════════════════════════════════════════════════════════
+
+The restored historical Lean baseline builds cleanly, but the present paper relies positively only on a narrow active native compiled support surface.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Result & File & Status \\
+\midrule
+Local ledger / graph-cut chain & \texttt{RA\_GraphCore.lean} & ANC \\
+Kernel locality / admissibility depends on realized past & \texttt{RA\_O01\_KernelLocality\_v2.lean} & ANC \\
+$d=4$ arithmetic coefficient inversion & \texttt{RA\_O14\_ArithmeticCore\_v1.lean} & ANC \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Status note.} The restored baseline also contains historical files such as \texttt{RA\_AmpLocality.lean}, \texttt{RA\_AQFT\_Proofs\_v10.lean}, \texttt{RA\_O14\_Uniqueness.lean}, and \texttt{RA\_D1\_Proofs.lean}. They remain valuable provenance, but they are not counted as active native support in this paper until their theorem families are rewritten and revalidated in RA-native terms. The compiled D1-native chain is instead used positively in Paper~II and in later papers only where explicitly inherited.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Suite-Level Downstream Targets}
+\label{sec:predictions}
+%% ═══════════════════════════════════════════════════════════
+
+This kernel paper does not treat bridge-level phenomenology as active support. Its job is to establish the native event-writing engine on which later, more domain-specific papers depend.
+
+Accordingly, the Nature-facing targets of the suite are distributed as follows:
+\begin{itemize}
+    \item \textbf{Paper~II:} motif census, finite closure lengths, measured mass / radius / range targets, and matter-sector structural asymmetry.
+    \item \textbf{Paper~III:} severance entropy, finite interface structure, sparse-regime large-radius response, lensing offset, and environment-dependent expansion signals.
+    \item \textbf{Paper~IV:} recursive closure, finite assembly depth, causal shielding, redundant boundary inscription, and bounded boundary turnover.
+\end{itemize}
+
+Bridge-level or historically hybrid tests---including BMV-style gravity mediation, WIMP-style dark-sector exclusions, Kinematic Coherence Bound, and spin-bath collapse formulas---should be read here only as deferred suite-level targets or archival provenance, not as active support of the present kernel paper.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Epistemic Status Summary}
+\label{sec:status}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{tcolorbox}[title=Scope of the active native support layer,colback=gray!5,colframe=gray!60]
+The presently active native compiled support of this paper consists of the graph-cut / local-ledger chain in \texttt{RA\_GraphCore.lean}, the kernel-locality replacement family in \texttt{RA\_O01\_KernelLocality\_v2.lean}, and the arithmetic coefficient-inversion layer in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}. Other historical Lean files remain part of the restored baseline, but are not currently counted as active native support until their theorem families are rewritten and revalidated in RA-native terms.
+\end{tcolorbox}
+
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Result & Basis & Status \\
+\midrule
+\multicolumn{3}{l}{\textit{Active native compiled support}} \\
+Local ledger / graph-cut partition & \texttt{RA\_GraphCore.lean} & ANC \\
+Kernel locality / admissibility depends on realized past & \texttt{RA\_O01\_KernelLocality\_v2.lean} & ANC \\
+$d=4$ arithmetic coefficient inversion & \texttt{RA\_O14\_ArithmeticCore\_v1.lean} & ANC \\
+\midrule
+\multicolumn{3}{l}{\textit{Derived native kernel claims}} \\
+Seven axioms (incl.\ Finitary Actuality) & Ontological commitments & Stated \\
+Sequential graph-growth rule & Axiomatic dynamics & Stated \\
+BDG acceptance kernel $K(\mathbf{N}|\mu)$ & Derived from growth rule + filter & DR \\
+Kernel--Poisson divergence identity & Theorem~\ref{thm:kl} & DR \\
+Asymptotic saturation $P_{\mathrm{acc}}\to 1$ & Theorem~\ref{thm:saturation} & DR \\
+Measurement problem dissolved in native terms & sparse vs.\ dense actualization regimes & DR \\
+Propagation ceiling $c=\ell_P/t_P$ & finite-step bandwidth ratio & DR \\
+Proper time as event count & Proposition~\ref{prop:proper_time} & DR \\
+Saturation $\to$ partition / severance onset & Proposition~\ref{prop:singularity} & DR \\
+$d=4$ multi-criterion uniqueness programme & arithmetic + structural criteria & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Computation-verified kernel quantities}} \\
+Selectivity witness at $\mu=1$ & exact finite evaluation of $\Pacc$ & CV \\
+D4U02 first local maximum $\mu^*\approx 1.019$ & certified enumeration / computation & CV \\
+Antichain drift lower bound at $\mu=1$ & Monte Carlo witness for local width growth & CV / AR \\
+\midrule
+\multicolumn{3}{l}{\textit{Deferred or archival cartographies}} \\
+AQFT / Unruh / Rindler stationarity chain & historical bridge baseline only & Deferred \\
+Lorentz-frame / on-shell / field-equation readouts & historical continuum cartography & Archived \\
+Coupling-constant and Koide overlays & historical numerical overlay & Archived \\
+BMV, KCB, spin-bath, and similar bridge tests & later-paper or deferred suite targets & Deferred \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Legend:} ANC = active native compiled support. DR = derived in native RA terms. CV = computation-verified. AR = argued. Deferred = not part of the active support surface in the present revision. Archived = retained only as historical comparison material.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+%% ═══════════════════════════════════════════════════════════
+
+From a single ontological commitment---that irreversible actualization events write permanent vertices into a growing causal graph filtered by the BDG action---this paper establishes the kernel of Relational Actualism in native terms: seven axioms, a sequential growth rule, the BDG acceptance kernel, the local-ledger / graph-cut layer, the kernel-locality replacement family, and the arithmetic coefficient-inversion spine supporting the $d=4$ kernel.
+
+The strongest results of the present paper are therefore finitary and structural. The measurement problem is dissolved by making actualization primitive; sparse and dense regimes become two behaviours of the same event-writing process; finite propagation, event-count time, and saturation / partition structure follow directly from the graph-growth picture; and the case for $d=4$ is stated as a native multi-criterion programme anchored by a compiled arithmetic core.
+
+Historical AQFT, Lorentz, on-shell, coupling-constant, and other bridge cartographies have been removed from the active proof line of the paper. They may remain useful as downstream comparisons, but they are not what makes RA succeed or fail. Papers~II--IV extend the same kernel natively into matter / motif structure, severance / cosmology, and complexity / life. The framework does not ask to be translated first. It asks to be tested directly against Nature on its own terms.
+
+%% ═══════════════════════════════════════════════════════════
+\section*{Acknowledgments}
+%% ═══════════════════════════════════════════════════════════
+
+This work was developed in collaboration with Claude (Anthropic, Opus 4.6) for computation, formal verification scaffolding, and manuscript preparation, and with ChatGPT (OpenAI, GPT-4o) for external review, proof structure, and the formulation of Axiom~7. AI contributions are limited to technical execution, review, and formal structuring; the ontological commitments, physical reasoning, and framework direction are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\bibitem{Dowker2013} F.~Dowker and L.~Glaser, ``Causal set d'Alembertians for various dimensions,'' \emph{Class. Quantum Grav.} \textbf{30}, 195016 (2013).
+\bibitem{Yeats2025} K.~Yeats, ``Hockey-stick-style identities and the moments of causal intervals in $d$-dimensional Lorentzian causal diamonds,'' \emph{Class. Quantum Grav.} \textbf{42}, 145003 (2025).
+\bibitem{Sorkin1997} R.~D.~Sorkin, ``Forks in the road on the way to quantum gravity,'' \emph{Int. J. Theor. Phys.} \textbf{36}, 2759 (1997).
+\bibitem{Rideout2000} D.~P.~Rideout and R.~D.~Sorkin, ``A classical sequential growth dynamics for causal sets,'' \emph{Phys. Rev. D} \textbf{61}, 024002 (2000).
+\bibitem{Bose2017} S.~Bose et al., ``Spin entanglement witness for quantum gravity,'' \emph{Phys. Rev. Lett.} \textbf{119}, 240401 (2017).
+\bibitem{Marletto2017} C.~Marletto and V.~Vedral, ``Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects of gravity,'' \emph{Phys. Rev. Lett.} \textbf{119}, 240402 (2017).
+\bibitem{D4U02} J.~F.~Sandeman, ``D4U02: The first local maximum of $\Delta S^*(\mu)$ for $d=4$ occurs at $\mu^*\approx 1.019$,'' proof document, April 2026.
+\bibitem{Homsak2024} V.~Hom\v{s}ak and S.~Veroni, ``Boltzmannian state counting for black hole entropy in causal set theory,'' \emph{Phys. Rev. D} \textbf{110}, 026015 (2024).
+\bibitem{Dou2003} D.~Dou and R.~D.~Sorkin, ``Black-hole entropy as causal links,'' \emph{Found. Phys.} \textbf{33}, 279 (2003).
+\end{thebibliography}
+
+\end{document}

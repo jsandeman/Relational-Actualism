@@ -1,0 +1,262 @@
+paper,line,tag,snippet
+P1,114,legacy-target,Relational Actualism (RA) is a foundational physics framework built on a single ontological commitment: that irreversible actualization events---interactions writing permanent vertices into a growing causal directed acyc
+P1,114,quantum-state-language,Relational Actualism (RA) is a foundational physics framework built on a single ontological commitment: that irreversible actualization events---interactions writing permanent vertices into a growing causal directed acyc
+P1,122,bridge-language,\item \textbf{Translation claims} relating discrete statements to familiar continuum formulations;
+P1,125,bridge-language,"The aim of this paper is to establish the kernel of the framework, not to complete the particle, gravitational, or complexity programmes in full. The discrete statement is primary; the continuum statement is its translat"
+P1,131,bridge-language,"\item \textbf{This paper provides:} the bimodal ontology, the seven axioms, the finite growth rule, the BDG kernel structure, and the basic discrete-to-continuum translation framework."
+P1,143,bridge-language,"Modern physics is spectacularly successful at prediction and embarrassingly incomplete at explanation. Two problems sit at its core. The first is ontological: quantum mechanics describes superpositions and probabilities,"
+P1,145,quantum-state-language,Relational Actualism proposes that both problems trace to a single omission: physics lacks a primitive account of \emph{when events become real}. The framework supplies one. An actualization event is an irreversible phys
+P1,191,bridge-language,"Every physically realized universe-state $U_n=(G_n,\Pot(G_n))$ has finite actual graph~$G_n$. All physically realized counts---vertices, links, boundary sets, admissible extensions---are finite. Infinite structures may b"
+P1,195,bridge-language,Axiom~\ref{ax:finite} is not an add-on. It is the explicit statement of the discrete-first methodology already built into the finite-step growth rule. Its function is to separate ontology from approximation: completed in
+P1,230,bridge-language,"where $N_k(v)$ counts elements of $C$ at depth $k$ in the causal past of $v$, and the coefficients $c_k$ are determined uniquely by the requirement that $S$ reproduces the scalar curvature of a $d$-dimensional Lorentzian"
+P1,249,bridge-language,The first sum includes the birth coefficient $c_0=1$ and does not vanish. The second sum excludes the birth term and is exactly the identity verified in Lean as \texttt{second\_order} in \texttt{RA\_O14\_Uniqueness.lean}
+P1,275,bridge-language,"This is the \emph{Engine of Becoming}: the five-step process (propose, score, filter, select, actualize) by which the graph grows. It is the single dynamical law of RA. Everything else---quantum mechanics, general relati"
+P1,331,quantum-state-language,"The physical significance: at high density (approaching gravitational collapse), the filter saturates. Every candidate extension is admissible. The distinction between potentia and actuality---as mediated by the BDG filt"
+P1,377,bridge-language,"In the continuum AQFT limit, the BDG score maps to the quantum relative entropy with respect to the vacuum. Level 2's Poisson-CSG threshold $\mu = 1$ translates to a threshold in relative entropy:"
+P1,384,quantum-state-language,\subsection{Level 4 (Operational): on-shell condition}
+P1,386,quantum-state-language,"In the perturbative regime where particle kinematics are well-defined, the entropic criterion reduces to the on-shell condition $p^\mu p_\mu = m^2 c^2$: only on-shell (real, energy-momentum-conserving) processes actualiz"
+P1,390,bridge-language,"Previous framings of RA sometimes conflated these four levels, treating the on-shell condition (Level 4) as the primitive statement. This created an apparent tension: how can ``on-shell'' mean anything on a discrete grap"
+P1,390,quantum-state-language,"Previous framings of RA sometimes conflated these four levels, treating the on-shell condition (Level 4) as the primitive statement. This created an apparent tension: how can ``on-shell'' mean anything on a discrete grap"
+P1,400,bridge-language,3 & $\Delta S(\rho\|\sigma_0) > \Delta S^*$ & Continuum AQFT & DR \\
+P1,401,quantum-state-language,4 & On-shell: $p^\mu p_\mu = m^2 c^2$ & Perturbative kinematics & Sufficient \\
+P1,419,bridge-language,"This is \texttt{rindler\_stationarity} in \texttt{RA\_AQFT\_Proofs\_v10.lean}. The theorem is proved modulo (i)~the sorry \texttt{Matrix.cfc\_conj\_unitary} (a general CFC-unitary commutation lemma, closable by copying t"
+P1,419,unitarity,"This is \texttt{rindler\_stationarity} in \texttt{RA\_AQFT\_Proofs\_v10.lean}. The theorem is proved modulo (i)~the sorry \texttt{Matrix.cfc\_conj\_unitary} (a general CFC-unitary commutation lemma, closable by copying t"
+P1,425,unitarity,Both observers agree: there is no physical actualization event. The Minkowski observer sees none (the vacuum is empty). The Rindler observer sees none (the thermal bath has constant relative entropy under modular flow). 
+P1,434,quantum-state-language,"In RA, a quantum state is any state with $\Delta S(\rho\|\sigma_0)$ below the actualization threshold $\Delta S^*$. It has not yet been written into the causal graph as a permanent event. An actualization event occurs wh"
+P1,438,quantum-state-language,"\textbf{Schr\""odinger's cat} is not in a superposition. A real cat is a densely self-coupled actualization network---trillions of atoms exchanging on-shell bosons millions of times per second. The cat is classical by con"
+P1,440,quantum-state-language,"The Born rule---the rule that the probability of a measurement outcome is the squared modulus of the wave function---is consistent with RA's quantum measure but is not derived from it. In RA, the Born rule is a constrain"
+P1,443,quantum-state-language,\label{sec:schrodinger_limit}
+P1,451,bridge-language,"where $K(x, y)$ is the BDG vertex kernel. In the continuum limit, this becomes a second-order partial differential equation of the Schr\""odinger type. The Schr\""odinger equation is not primitive; it is the Level-2 statis"
+P1,469,quantum-state-language,The speed of light is not a postulated constant; it is the maximum causal bandwidth of the growing graph. Light propagates at $c$ because photons are the fastest on-shell propagation pattern in the BDG structure---no fas
+P1,512,bridge-language,"This is fundamentally different from the standard GR picture. In GR, matter falling into a black hole is compressed into an infinitesimal region where the metric diverges. In RA, the infalling matter reaches the bandwidt"
+P1,514,bridge-language,"Paper~III develops this in detail: the BH interior is a daughter graph with its own LLC-consistent dynamics, and the entropy observable $\SRa = |L_\Sigma|$ counts the severed causal links at the partition boundary. The B"
+P1,540,bridge-language,$d$ & $\mu^*$ & $|\mu^*-1|$ & SM-compatible? \\
+P1,550,bridge-language,Only $d=4$ has its selectivity ceiling within $2\%$ of the Planck density $\mu=1$ \emph{and} has enough topology types ($K=5$) for the Standard Model particle spectrum.
+P1,567,quantum-state-language,The BDG coefficients determine the virtual-loop weight for a photon propagating through a quark loop:
+P1,573,legacy-target,\alpha_s(m_Z) = \frac{1}{\sqrt{W}} = \frac{1}{\sqrt{72}} \approx 0.11785.
+P1,575,legacy-target,"The PDG value is $0.1180\pm 0.0009$, a match to $0.13\%$. This is the UV fixed point of the BDG renormalization group. The IR fixed point is $\alpha_s=1/3$ (confinement)."
+P1,647,unitarity,\noindent$^\dagger$\textbf{Conditional Lean results in \texttt{RA\_AQFT\_v10.lean}:} the frame-independence and Rindler-stationarity theorems are proved in Lean modulo (a)~one sorry---the general CFC-unitary commutation 
+P1,662,legacy-target,"\textbf{WIMP prohibition.} Any particle that does not participate in on-shell actualization events has zero RA assembly depth and contributes zero weight to the metric source. WIMPs, axions, and sterile neutrinos are cat"
+P1,662,quantum-state-language,"\textbf{WIMP prohibition.} Any particle that does not participate in on-shell actualization events has zero RA assembly depth and contributes zero weight to the metric source. WIMPs, axions, and sterile neutrinos are cat"
+P1,670,quantum-state-language,\textbf{Spin-bath collapse timescale.} RA predicts a specific timescale $t^*\approx 0.274/g$ (where $g$ is the externally measured spin-bath coupling) for wave function collapse in superconducting circuit experiments. Th
+P1,678,bridge-language,"The Lean-verified core of this paper consists of: the kernel identities on the discrete DAG (LLC, graph-cut, Markov blanket, amplitude locality in the BDG increment model), the integer-arithmetic identities (BDG coeffici"
+P1,700,bridge-language,"Schr\""odinger eq.\ as low-$\mu$ limit & Continuum limit argument & DR \\"
+P1,714,legacy-target,$\alpha_s(m_Z)=1/\sqrt{72}$ & \texttt{d3\_alpha\_s\_proof.py} & CV \\
+P1,718,legacy-target,WIMP prohibition (categorical) & Paper~III developed & DR \\
+P1,720,quantum-state-language,$t^*=0.274/g$ spin-bath collapse & BDG integers + spin-bath model & DR \\
+P1,727,bridge-language,\noindent$^\dagger$\textbf{Conditional on:} the sorry \texttt{Matrix.cfc\_conj\_unitary} (trivially closable from Lean-QuantumInfo) and the QFT-imported axiom \texttt{vacuum\_lorentz\_invariant} in \texttt{RA\_AQFT\_Proo
+P1,736,bridge-language,"The claims in this paper are not uniformly rigorous. Some are Lean-verified theorems (the Kernel--Poisson identity, the integer-core coupling-constant identities, the BDG coefficient uniqueness at the arithmetic layer). "
+P2,38,bridge-language,"This paper develops the matter-and-force sector of Relational Actualism (RA) by relating stable particle classes, force mediation, and coupling hierarchy to the discrete topology of the actualization graph. The central c"
+P2,38,legacy-target,"This paper develops the matter-and-force sector of Relational Actualism (RA) by relating stable particle classes, force mediation, and coupling hierarchy to the discrete topology of the actualization graph. The central c"
+P2,48,bridge-language,"Where closure has not been achieved, this is stated explicitly. In particular, several mass and coupling relations remain conjectural or interpolative rather than theorem-level results. The discrete statement is primary;"
+P2,67,bridge-language,"The Standard Model of particle physics describes the observed menagerie of particles with extraordinary precision, but leaves its particle content, gauge structure, and parameter values as inputs. The purpose of Paper~II"
+P2,69,bridge-language,"This paper assumes the ontological framework of Paper~I: the growing causal graph, the BDG filter with coefficients $(1,-1,9,-16,8)$, and the sequential growth rule. All particle properties are properties of finite local"
+P2,89,bridge-language,"Among the results in this paper, the ones carrying the most conjectural weight are: the identification of the quark Koide breaking as a one-loop Casimir effect (PI); the Cabibbo-angle identification $|V_{us}|=\sin(2/9)$ "
+P2,89,legacy-target,"Among the results in this paper, the ones carrying the most conjectural weight are: the identification of the quark Koide breaking as a one-loop Casimir effect (PI); the Cabibbo-angle identification $|V_{us}|=\sin(2/9)$ "
+P2,103,bridge-language,The five types correspond to the particle families of the Standard Model:
+P2,143,legacy-target,\label{sec:alpha_s}
+P2,145,quantum-state-language,The BDG coefficients determine the virtual-loop weight through the following chain. Consider a photon propagating through a virtual quark loop. The photon enters at BDG depth $k=2$ (the shallowest depth carrying electrom
+P2,156,legacy-target,\boxed{\alpha_s(m_Z) = \frac{1}{\sqrt{72}} = \frac{1}{6\sqrt{2}} \approx 0.11785.}
+P2,159,legacy-target,"The PDG world average is $\alpha_s(m_Z)=0.1180\pm 0.0009$, a match to $0.13\%$ with zero free parameters."
+P2,162,legacy-target,"This is the UV fixed point of the BDG renormalization group. The IR fixed point is $\alpha_s\to 1/3$ as $\mu\to 0$, corresponding to confinement. Both fixed points are determined by BDG integer arithmetic."
+P2,179,legacy-target,\subsection{The Koide formula and SU(3)\texorpdfstring{$_{\mathrm{gen}}$}{gen}}
+P2,186,bridge-language,"Using 2022 PDG values, $K=0.666661$, agreeing with $2/3$ to one part in $10^5$. The Standard Model does not derive this relation; in RA, it is a theorem of BDG integer arithmetic, formally verified in Lean~4 (\texttt{koi"
+P2,194,legacy-target,\begin{proposition}[SU(3)$_{\mathrm{gen}}$ and the Koide formula]
+P2,226,legacy-target,"K = \frac{2}{3} + \frac{2^{d-1}\alpha_{\mathrm{EM}}}{\pi}\cdot\frac{Q_{N_1}^2}{9} + \frac{\alpha_s(\mu)}{\pi}\cdot C_{2,\mathrm{colour}},"
+P2,228,legacy-target,"where $d=4$ is the spacetime dimension, $\mu\approx 1.66$\,GeV is the hadronic-partonic crossover scale (between $m_c$ and $m_\tau$), and $C_{2,\mathrm{colour}}$ is the colour Casimir. No additional fit parameter is intr"
+P2,249,legacy-target,\subsection{The Cabibbo angle and the CKM hierarchy}
+P2,250,legacy-target,\label{sec:ckm}
+P2,268,legacy-target,\begin{conjecture}[Cabibbo angle from SU(3)$_{\mathrm{gen}}$]
+P2,269,legacy-target,\label{conj:cabibbo}
+P2,270,legacy-target,The lepton Koide angle $\theta_{\mathrm{lep}}=2/9$ predicts the Cabibbo angle:
+P2,280,legacy-target,"\delta = C_2(\mathrm{SU}(2)_{\mathrm{fund}})\cdot\frac{\alpha_s(\mu)}{\pi} = \frac{3}{4}\cdot\frac{\alpha_s(\mu)}{\pi},"
+P2,282,legacy-target,"where $C_2(\mathrm{SU}(2)_{\mathrm{fund}})=3/4$ is the quadratic Casimir of $\mathrm{SU}(2)$ in the fundamental representation and $\mu\approx 1.66$\,GeV. Numerically: $(3/4)(\alpha_s/\pi)=0.06660$ against the fitted $\d"
+P2,290,legacy-target,\begin{conjecture}[$|V_{cb}|$ from SU(3)$_{\mathrm{gen}}$ Haar measure]
+P2,292,legacy-target,The CKM element $|V_{cb}|$ satisfies:
+P2,294,legacy-target,|V_{cb}| = \frac{2}{\pi}\delta = \frac{3\alpha_s(\mu)}{2\pi^2}.
+P2,298,legacy-target,"Numerically: $3\alpha_s/(2\pi^2)=0.04240$ against the observed $|V_{cb}|=0.04221\pm 0.00078$ (PDG 2022), a $0.4\%$ match. As with the Cabibbo angle, this is a phenomenological identification (PI) supported by numerical p"
+P2,300,legacy-target,"Together, the two conjectures give all leading CKM parameters from two RA quantities---$\theta_0=2/9$ and $\alpha_s(\mu)/\pi$:"
+P2,304,legacy-target,CKM element & Formula & Error vs PDG \\
+P2,307,legacy-target,$\delta$ (angle displacement) & $(3/4)(\alpha_s/\pi)=0.0666$ & $0.1\%$ \\
+P2,375,bridge-language,This is the RA mechanism for dimensional transmutation: five powers of a small density parameter produce the twenty orders of magnitude separating the proton mass from the Planck mass. No renormalization group running is
+P2,433,bridge-language,"\paragraph{Flavor-singlet pseudoscalar ($\eta'$).} Among the light pseudoscalar mesons, the $\eta'$ is distinguished by its flavor-singlet structure: in the Standard Model, it is the pseudoscalar whose mass is not suppre"
+P2,445,bridge-language,"\paragraph{What we do not have.} We do not have an RA derivation of a Goldstone mechanism. In the Standard Model, the pion is a pseudo-Goldstone boson of spontaneously broken chiral $\mathrm{SU}(2)_L\times\mathrm{SU}(2)_"
+P2,455,bridge-language,"Option (3b) is worth emphasizing. The Goldstone framing is inherited from continuum quantum field theory, and it is not obvious that RA should reproduce it. The $11\%$ residual could instead be the signature of a differe"
+P2,491,bridge-language,"The energy weighting at the hadronic-partonic crossover scale $Q_{\mathrm{eff}}=2m_p$ (the $B\bar B$ pair threshold, the natural IR scale of QCD nuclear physics) uses $\alpha_s(2m_p)=0.312$ from standard SM QCD RG runnin"
+P2,491,legacy-target,"The energy weighting at the hadronic-partonic crossover scale $Q_{\mathrm{eff}}=2m_p$ (the $B\bar B$ pair threshold, the natural IR scale of QCD nuclear physics) uses $\alpha_s(2m_p)=0.312$ from standard SM QCD RG runnin"
+P2,493,legacy-target,f_0 = 17.32\times\alpha_s(2m_p) = 17.32\times 0.312 = 5.40.
+P2,497,bridge-language,\paragraph{Epistemic note.} The $17.32$ ratio is fully RA-native: it is derived from BDG exact enumeration with zero free parameters. The $\alpha_s(2m_p)=0.312$ factor is \emph{not} RA-native: it uses established SM QCD 
+P2,497,legacy-target,\paragraph{Epistemic note.} The $17.32$ ratio is fully RA-native: it is derived from BDG exact enumeration with zero free parameters. The $\alpha_s(2m_p)=0.312$ factor is \emph{not} RA-native: it uses established SM QCD 
+P2,536,legacy-target,"\paragraph{Asymptotic freedom at high $\mu$.} At short quark separation, the causal region between them is densely actualized. The $N_2$ spatial branching charge of each quark is distributed across many intermediate caus"
+P2,570,legacy-target,"\alpha_s(\mu) = \frac{1}{\sqrt{c_2\,S_{\mathrm{eff}}(\mu)}}."
+P2,574,legacy-target,"\alpha_s^{\mathrm{IR}} &= \lim_{\mu\to 0}\alpha_s(\mu) = \frac{1}{\sqrt{c_2\,c_0}} = \frac{1}{3}\quad (\text{confinement}),\\"
+P2,575,legacy-target,"\alpha_s^{\mathrm{UV}} &= \lim_{\mu\to\infty}\alpha_s(\mu) = \frac{1}{\sqrt{c_2\,c_4}} = \frac{1}{\sqrt{72}} = 0.11785\quad (\text{asymptotic freedom})."
+P2,577,legacy-target,"The IR fixed point corresponds to the dense, strongly-coupled confinement regime; the UV fixed point to the sparse, weakly-coupled asymptotic-freedom regime. Both are exact consequences of the BDG integers with no extern"
+P2,584,legacy-target,$\alpha_s(m_Z)$ & $1/\sqrt{72}=0.11785$ & $0.1180\pm 0.0009$ & $0.13\%$ & CV \\
+P2,601,bridge-language,"The Standard Model gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ is identified in this paper, at the DR/PI level, with the product of two independent geometric structures on the BDG-filtered growth "
+P2,653,bridge-language,The 3-sector structure at the minimum required for geometric phase is identified with $\mathrm{SU}(3)$. The inter-depth geometry of the BDG coefficients---through their sign alternation and magnitude asymmetry---is the c
+P2,664,bridge-language,\boxed{\mathrm{SU}(3)_{\mathrm{depth}}\times\mathrm{SU}(2)_{\mathrm{direction}}\times\mathrm{U}(1)_{\mathrm{phase}} \leftrightarrow \text{SM gauge group}.}
+P2,667,bridge-language,"In this proposal, the gauge group is the product of two independent geometric structures: inter-depth transfer (yielding $\mathrm{SU}(3)$ via the Berry-phase programme) and intra-depth boundary directions (yielding $\mat"
+P2,671,legacy-target,\label{sec:susy}
+P2,674,bridge-language,"Supersymmetry (SUSY) was motivated by three problems in the Standard Model. Within RA, each of those three problems receives a framework-internal reading that does not require supersymmetric partners to resolve it, and t"
+P2,674,legacy-target,"Supersymmetry (SUSY) was motivated by three problems in the Standard Model. Within RA, each of those three problems receives a framework-internal reading that does not require supersymmetric partners to resolve it, and t"
+P2,678,bridge-language,"The hierarchy problem asks why quantum loop corrections do not drive the Higgs mass to the Planck scale. In QFT, virtual particle loops generate corrections $\delta m_H^2\sim\Lambda_{\mathrm{UV}}^2$, requiring fine-tuned"
+P2,678,quantum-state-language,"The hierarchy problem asks why quantum loop corrections do not drive the Higgs mass to the Planck scale. In QFT, virtual particle loops generate corrections $\delta m_H^2\sim\Lambda_{\mathrm{UV}}^2$, requiring fine-tuned"
+P2,680,bridge-language,"In RA, mass is $f_0=mc^2/h$---the actualization frequency of a BDG pattern. There are no virtual loops in the QFT sense. Feynman diagram loops are a continuum approximation to the causal graph, and in a DAG they cannot l"
+P2,680,quantum-state-language,"In RA, mass is $f_0=mc^2/h$---the actualization frequency of a BDG pattern. There are no virtual loops in the QFT sense. Feynman diagram loops are a continuum approximation to the causal graph, and in a DAG they cannot l"
+P2,684,legacy-target,"SUSY's lightest supersymmetric particle (LSP)---the neutralino---was the leading dark matter candidate for decades. In RA, the WIMP prohibition (Paper~III) establishes that any particle that does not participate in on-sh"
+P2,684,quantum-state-language,"SUSY's lightest supersymmetric particle (LSP)---the neutralino---was the leading dark matter candidate for decades. In RA, the WIMP prohibition (Paper~III) establishes that any particle that does not participate in on-sh"
+P2,690,bridge-language,"SUSY modifies the running of the three gauge couplings so that they unify at a high scale $\sim 10^{16}$\,GeV. In RA, the coupling constants $\alpha_{\mathrm{EM}},\alpha_s,G_F$ are not free parameters to be unified---the"
+P2,690,legacy-target,"SUSY modifies the running of the three gauge couplings so that they unify at a high scale $\sim 10^{16}$\,GeV. In RA, the coupling constants $\alpha_{\mathrm{EM}},\alpha_s,G_F$ are not free parameters to be unified---the"
+P2,692,legacy-target,\subsection{Why SUSY algebra is not generated}
+P2,694,legacy-target,"In the RA pattern framework, fermions are 2-periodic BDG patterns and bosons are 1-periodic. SUSY would require that for every 2-periodic pattern there exists a corresponding 1-periodic pattern with the same mass and cha"
+P2,696,legacy-target,"The BDG growth dynamics do not generate this correspondence. A 2-periodic pattern is structurally different from a 1-periodic one: they have different $(N_1,N_2,N_3,N_4)$ profiles and therefore different actualization fr"
+P2,699,legacy-target,\section{Grand Unification: SU(3)$_{\mathrm{colour}}\times$SU(3)$_{\mathrm{gen}}$}
+P2,700,legacy-target,\label{sec:gut}
+P2,717,legacy-target,"At the Planck scale ($\mu\to\infty$), the combined symmetry group of the RA causal graph is $\mathrm{SU}(3)_{\mathrm{colour}}\times\mathrm{SU}(3)_{\mathrm{gen}}$, embedded in a unified group $G_{\mathrm{GUT}}$ acting on "
+P2,724,legacy-target,\sin^2\theta_W\Big|_{\mathrm{GUT}} = \frac{3}{8}.
+P2,726,legacy-target,"The observed value $\sin^2\theta_W\approx 0.231$ at the $Z$ mass scale is the result of renormalization group running from the Planck scale to the electroweak scale. In RA, this running is the $\mu$-dependence of the Poi"
+P2,728,legacy-target,\subsection{Why RA grand unification needs no SUSY}
+P2,730,legacy-target,"In conventional $\mathrm{SU}(5)$ GUTs, the three coupling constants do not quite meet without supersymmetric partners adjusting the RG flow. In RA, the unification at the Planck scale is structural: it is the $\mu\to\inf"
+P2,734,legacy-target,"In $\mathrm{SU}(5)$ GUTs, proton decay is predicted via $X$ boson exchange between colour and generation sectors. In RA, the colour and generation sectors are unified at the Planck scale, but the LLC (Lean-verified) exac"
+P2,787,bridge-language,"This matches the complete set of electric charges in the Standard Model: up quark $+2e/3$ ($Q_{N_1}=+2$), down quark $-e/3$ ($Q_{N_1}=-1$), electron $-e$ ($Q_{N_1}=-3$), neutrino $0$ ($Q_{N_1}=0$), $W^\pm$ ($Q_{N_1}=\pm "
+P2,794,bridge-language,The machinery developed in the preceding sections offers RA-native readings of three additional long-standing problems in physics. In each case the reading is not a full solution in the traditional sense but a reframing:
+P2,798,bridge-language,The QCD Lagrangian permits a CP-violating term $\mathcal{L}_\theta=\theta_{\mathrm{QCD}}(g^2/32\pi^2)G^{\mu\nu}\tilde G_{\mu\nu}$. The experimental bound $|\theta_{\mathrm{QCD}}|<10^{-10}$ implies this term is extraordin
+P2,800,bridge-language,The $\theta_{\mathrm{QCD}}$ term arises in QFT because the QCD vacuum is a superposition of topological sectors $|n\rangle$ indexed by the winding number $n\in\pi_3(\mathrm{SU}(3))=\mathbb{Z}$. These sectors are connecte
+P2,810,legacy-target,"\paragraph{No axion.} The Peccei--Quinn axion was introduced specifically to dynamically relax $\theta_{\mathrm{QCD}}$ to zero. Since RA gives $\theta_{\mathrm{QCD}}=0$ structurally, no axion field is required. RA predic"
+P2,814,unitarity,"Hawking's calculation shows that black holes emit thermal radiation. If the radiation is exactly thermal, it carries no information about infalling matter. This appears to violate the unitarity of quantum evolution, whic"
+P2,823,unitarity,"The LLC holds on both sides of every causal severance. Unitarity is preserved for the total system (parent + daughter). The apparent information loss for an exterior observer is a consequence of causal disconnection, not"
+P2,826,legacy-target,"\paragraph{Prediction: no Page curve.} The Page curve predicts that if a black hole radiates into a pure total state, the exterior radiation entropy should first increase and then decrease back to zero as the black hole "
+P2,885,bridge-language,5 topology types exhaust SM & Lean~4 (124 cases) & LV \\
+P2,893,legacy-target,$\alpha_s(m_Z)=1/\sqrt{72}$ & BDG UV fixed point & CV \\
+P2,894,legacy-target,$\alpha_s^{\mathrm{IR}}=1/3$ & BDG RG IR fixed point & CV \\
+P2,897,legacy-target,Cabibbo angle $|V_{us}|=\sin(2/9)$ & $\mathrm{SU}(3)_{\mathrm{gen}}$ motivated identification & PI (1.8\%) \\
+P2,908,bridge-language,"$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG enumeration + ext.\ SM RG & CV (0.3\%, w/ ext.\ input) \\"
+P2,908,legacy-target,"$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG enumeration + ext.\ SM RG & CV (0.3\%, w/ ext.\ input) \\"
+P2,921,legacy-target,$\mathrm{SU}(3)_{\mathrm{col}}\times\mathrm{SU}(3)_{\mathrm{gen}}$ GUT & $\mu\to\infty$ structural conjecture & CN \\
+P2,922,legacy-target,$\sin^2\theta_W=3/8$ at GUT scale & $\mathrm{SU}(5)$-type embedding (if GUT holds) & DR (conditional) \\
+P2,925,legacy-target,Absence of SUSY partners & BDG algebra not generated & DR \\
+P2,926,legacy-target,Absence of WIMPs & Paper~III ($P_{\mathrm{act}}$ filter) & DR \\
+P2,929,legacy-target,Absence of axion & $\theta_{\mathrm{QCD}}=0$ structurally & DR \\
+P2,930,legacy-target,No Page curve & Severance partition (not purification) & DR \\
+P2,941,bridge-language,"\section{What the Standard Model Gets Right, and Why}"
+P2,942,bridge-language,\label{sec:sm}
+P2,945,bridge-language,The Standard Model is not wrong. It is a spectacularly accurate effective description of the BDG filter's output in the selective regime. Its symmetry groups encode the geometric structure of the BDG depth profile (at th
+P2,947,bridge-language,"What the Standard Model cannot explain---why these groups, why these constants, why these particles---is not a failure of the Standard Model but, on this picture, a consequence of the fact that it describes the output wi"
+P2,956,bridge-language,"The paper therefore does not claim complete closure of the particle sector. Rather, it establishes a disciplined programme in which a substantial part of particle structure is constrained by discrete topology and renewal"
+P2,958,bridge-language,\paragraph{Open targets.} The following are the most important unresolved items in this paper's programme: (i)~full derivation of the Higgs-sector mass relation from BDG dynamics; (ii)~closure of the $W$-mass conjecture;
+P2,958,legacy-target,\paragraph{Open targets.} The following are the most important unresolved items in this paper's programme: (i)~full derivation of the Higgs-sector mass relation from BDG dynamics; (ii)~closure of the $W$-mass conjecture;
+P2,975,legacy-target,"\bibitem{Wyler1971} A.~Wyler, ``L'espace sym\'etrique du groupe des \'equations de Maxwell,'' \emph{C. R. Acad. Sci. Paris} \textbf{272A}, 186 (1971)."
+P2,976,legacy-target,"\bibitem{Cabibbo1963} N.~Cabibbo, ``Unitary symmetry and leptonic decays,'' \emph{Phys. Rev. Lett.} \textbf{10}, 531 (1963); M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,''"
+P2,976,unitarity,"\bibitem{Cabibbo1963} N.~Cabibbo, ``Unitary symmetry and leptonic decays,'' \emph{Phys. Rev. Lett.} \textbf{10}, 531 (1963); M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,''"
+P3,111,bridge-language,This paper develops the gravitational and cosmological sector of Relational Actualism (RA). Its core discrete results are threefold: gravity is treated as the large-scale description of the actualization graph in $d=4$; 
+P3,121,bridge-language,"The discrete statement is primary; continuum area laws, metric quantities, and cosmological parameter fits are treated as translations or phenomenological renderings of underlying discrete claims unless explicitly derive"
+P3,127,bridge-language,"\item \textbf{Assumed from Paper~I:} the foundational ontology, the actualization kernel, finitary actuality, and the discrete-to-continuum translation framework."
+P3,139,bridge-language,"Paper~III is the paper where RA meets the macroscopic universe. The causal graph of Paper~I, filtered by the BDG action and populated by the renewal motifs of Paper~II, must reproduce general relativity at large scales, "
+P3,141,bridge-language,"The central methodological commitment, inherited from Paper~I, is the distinction between discrete physics and continuum translation. The physical observables---vertex counts, link counts, boundary sizes, filter selectiv"
+P3,147,bridge-language,\textbf{Core derived architecture} (\S\S\ref{sec:gr}--\ref{sec:severance}). The first layer develops the paper's strongest discrete results: the treatment of gravity as the large-scale description of the actualization gr
+P3,149,bridge-language,"\textbf{Reinterpretation programme} (\S\S\ref{sec:darkmatter}--\ref{sec:cosmology}). The second layer uses this architecture to reinterpret several familiar continuum problems, including black-hole entropy, parts of the "
+P3,155,bridge-language,\label{sec:gr}
+P3,158,bridge-language,"RA does not modify general relativity. It derives it. This section gives the full chain, addresses the two apparent hard walls (the discrete-to-continuum Bianchi identity and Lorentz invariance), and shows that both diss"
+P3,169,bridge-language,"\textbf{Step 3 (LV).} $d=4$ dimensionality: the BDG closure theorem establishes that exactly five topology types exhaust the Standard Model, and the selectivity ceiling theorem D4U02 shows $\mu^* \approx 1.019$ only for "
+P3,179,quantum-state-language,"\textbf{Step 6 (DR).} The actualization projector $P_{\mathrm{act}}$ removes unactualized (virtual, off-shell) contributions from the stress-energy source. Virtual processes have $\Delta S(\rho \| \sigma_0) = 0$: they do"
+P3,187,bridge-language,"LV = Lean-verified. DR = derived (all steps explicit). Two caveats are needed to characterize the chain honestly. First, the Lean-verified steps (1--3) are machine-checked at the discrete combinatorial / topology-closure"
+P3,189,bridge-language,\subsection{The Bianchi identity as the continuum image of the LLC (DR)}
+P3,192,bridge-language,"A long-standing concern is the continuum identity $\nabla_\mu G^{\mu\nu} = 0$ (the contracted Bianchi identity). This is what guarantees $\nabla_\mu T^{\mu\nu} = 0$ in GR, the continuum form of energy--momentum conservat"
+P3,194,bridge-language,"The RA-internal proposal is that it is the continuum image of the LLC, not an additional fact requiring independent proof. This is a DR-level \emph{translation claim}, not a closed theorem chain: the discrete LLC is Lean"
+P3,196,bridge-language,"\begin{proposition}[Bianchi identity as continuum image of the LLC, DR]"
+P3,198,bridge-language,"Under the Benincasa--Dowker sprinkling limit, the discrete LLC $\sum_{\mathrm{out}}(v) = \sum_{\mathrm{in}}(v)$ maps to the continuum conservation law $\nabla_\mu T^{\mu\nu} = 0$. Given the Einstein equation (eq.~\ref{eq"
+P3,201,bridge-language,"This parallels a familiar situation in physics: Maxwell's equations can be written in four-component form ($F_{\mu\nu}$) or in three-component form ($\vec{E}, \vec{B}$). The three-component equation $\nabla \cdot \vec{B}"
+P3,201,legacy-target,"This parallels a familiar situation in physics: Maxwell's equations can be written in four-component form ($F_{\mu\nu}$) or in three-component form ($\vec{E}, \vec{B}$). The three-component equation $\nabla \cdot \vec{B}"
+P3,203,bridge-language,\textbf{Scope limit.} This proposition is DR-level: it identifies the continuum image of the LLC under the BD limit. It does \emph{not} constitute a machine-checked derivation of the Bianchi identity from RA primitives. 
+P3,205,bridge-language,"\subsection{Lorentz invariance as the continuum image of causal invariance (DR, conditional)}"
+P3,208,bridge-language,"A second long-standing concern is Lorentz invariance. The BDG action is covariant under the causal symmetries of the DAG (permutations of spacelike events, finite time-translations along the growth direction). In the con"
+P3,212,bridge-language,"\begin{proposition}[Lorentz invariance as continuum image of causal invariance, DR conditional]"
+P3,214,bridge-language,"The quantum measure $\mu_\sigma(S)$ is foliation-independent: for any two linear extensions $\sigma, \sigma'$ of the causal order with respect to observables $S$, $\mu_\sigma(S) = \mu_{\sigma'}(S)$. This is Lean-verified"
+P3,217,bridge-language,The discrete causal invariance says: the order in which spacelike-separated events are declared to have occurred does not affect the quantum measure of any set of observables. The continuum Lorentz invariance says: physi
+P3,219,bridge-language,"\textbf{Scope limit.} This is presented as a DR-level translation proposal, not a closed theorem chain. The discrete causal invariance is Lean-verified at the amplitude-locality layer; the continuum Lorentz covariance is"
+P3,224,bridge-language,Earlier framings of RA used Lovelock's theorem---which requires a smooth $d=4$ manifold---to establish that the Einstein equations are the unique second-order tensorial field equations consistent with diffeomorphism inva
+P3,228,bridge-language,"The field equation $G_{\mu\nu} = 8\pi G\, P_{\mathrm{act}}[T_{\mu\nu}]$ with $\Lambda = 0$ is the unique continuum field equation consistent with: (i)~the BDG uniqueness theorem, (ii)~the actualization projector $P_{\mat"
+P3,228,quantum-state-language,"The field equation $G_{\mu\nu} = 8\pi G\, P_{\mathrm{act}}[T_{\mu\nu}]$ with $\Lambda = 0$ is the unique continuum field equation consistent with: (i)~the BDG uniqueness theorem, (ii)~the actualization projector $P_{\mat"
+P3,231,bridge-language,"The framework does not require an independent derivation of Lorentz invariance in curved spacetime. Local Lorentz invariance is proposed as the continuum image of causal invariance (\S\ref{sec:lorentz_is_causal}), condit"
+P3,236,bridge-language,The vacuum energy catastrophe---the $10^{120}$-fold discrepancy between QFT's vacuum energy prediction and the observed $\Lambda$---does not arise in RA. The actualization projector $P_{\mathrm{act}}$ removes unactualize
+P3,236,quantum-state-language,The vacuum energy catastrophe---the $10^{120}$-fold discrepancy between QFT's vacuum energy prediction and the observed $\Lambda$---does not arise in RA. The actualization projector $P_{\mathrm{act}}$ removes unactualize
+P3,240,legacy-target,\subsection{The WIMP prohibition}
+P3,242,quantum-state-language,Any particle that does not participate in on-shell electromagnetic or strong interactions has zero RA assembly depth---it never crosses the actualization threshold through normal matter interactions. Within the RA sourci
+P3,244,legacy-target,\begin{proposition}[WIMP exclusion within the RA sourcing scheme]
+P3,245,legacy-target,"WIMPs, axions, and sterile neutrinos contribute zero weight to $P_{\mathrm{act}}[T_{\mu\nu}]$ and are therefore structurally excluded as gravitationally coupled dark matter candidates \emph{within} the RA $P_{\mathrm{act"
+P3,248,bridge-language,The exclusion is as strong as the RA sourcing scheme itself. Closing the full $P_{\mathrm{act}}$-to-metric source bridge to the level of a theorem chain remains open (Papers~I and~II list the relevant audit items). Takin
+P3,248,quantum-state-language,The exclusion is as strong as the RA sourcing scheme itself. Closing the full $P_{\mathrm{act}}$-to-metric source bridge to the level of a theorem chain remains open (Papers~I and~II list the relevant audit items). Takin
+P3,255,legacy-target,The WIMP prohibition tells us what dark matter \emph{is not}: it is not a new particle species. This section develops what dark matter \emph{is} in RA: a consequence of topology change in the causal graph at low actualiz
+P3,260,bridge-language,"In dense regions of the causal graph (galactic disks, stellar interiors), the Poisson-CSG parameter $\mu$ is close to or above unity. The graph is 4-dimensional: every vertex has ancestors at depths $N_1, N_2, N_3, N_4$ "
+P3,266,bridge-language,"In regions where the local actualization density $\mu(x)$ falls below a critical threshold $\mu_c \sim 10^{-2}$, the effective graph dimension reduces from 4 to 2. The LLC at this scale operates on a 2-dimensional causal"
+P3,326,bridge-language,"The prediction that distinguishes RA from standard GR is at \emph{very} large timescales: objects that have been causally isolated for $\gtrsim \tau_{\mathrm{eq}}$ might show small WEP violations, potentially testable wi"
+P3,332,legacy-target,"f_0 = \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} \times \alpha_s(2m_p) = 17.32 \times 0.312 = 5.40,"
+P3,338,bridge-language,consistent with the Planck value $\Omega_m \approx 0.315$. The derivation chain is entirely RA-native except for the $\alpha_s$ running (standard SM QCD RG from the UV fixed point $\alpha_s(m_Z) = 1/\sqrt{72}$).
+P3,338,legacy-target,consistent with the Planck value $\Omega_m \approx 0.315$. The derivation chain is entirely RA-native except for the $\alpha_s$ running (standard SM QCD RG from the UV fixed point $\alpha_s(m_Z) = 1/\sqrt{72}$).
+P3,351,bridge-language,"Severance replaces singularities. Where GR predicts infinite curvature (black hole interiors, the Big Bang), RA predicts causal termination: regions where the actualization density $\mu$ exceeds the saturation threshold "
+P3,456,bridge-language,"\textbf{This is the RA-native ``area law.''} The boundary vertex count $N_\partial$ IS the discrete boundary size---not an approximation to a continuum area, but the boundary size itself in RA-native units. The further q"
+P3,478,bridge-language,"The kernel saturation theorem provides the bridge: at horizon densities ($\mu\ll 1$), the BDG filter is inert ($\TV\approx 0$), so the unfiltered Poisson-CSG geometric constant applies directly."
+P3,521,legacy-target,$<1.25$ & Spatial expansion & Selective & $\checkmark$ (Thm~\ref{thm:drift}) \\
+P3,522,legacy-target,$\approx 1.25$ & Drift reversal & Transition & $\checkmark$ (crossover) \\
+P3,523,legacy-target,$3$--$5$ & Maximum selectivity & $\Dkl\approx 0.9$ & $\checkmark$ (Thm~\ref{thm:kl}) \\
+P3,524,legacy-target,$5$--$7$ & Filter weakening & $\TV$ declining & $\checkmark$ (MC) \\
+P3,525,legacy-target,$7$--$10$ & Near saturation & $\Dkl<0.3$ & $\checkmark$ (Thm~\ref{thm:saturation}) \\
+P3,526,legacy-target,$>10$ & Saturation $\to$ severance & $\TV=0$ & $\checkmark$ (Thm~\ref{thm:saturation}) \\
+P3,590,bridge-language,(a)~\emph{BDG $\to$ Einstein--Hilbert.} The $d=4$ BDG causal set action converges to the Einstein--Hilbert action in the continuum limit~\cite{Benincasa2010} (published theorem).
+P3,592,bridge-language,"(b)~\emph{$P_{\mathrm{act}}\to\Lambda=0$.} The actualization projector removes virtual (off-shell) contributions from the stress-energy tensor. The QFT vacuum energy comes entirely from virtual processes ($\Delta S=0$), "
+P3,592,quantum-state-language,"(b)~\emph{$P_{\mathrm{act}}\to\Lambda=0$.} The actualization projector removes virtual (off-shell) contributions from the stress-energy tensor. The QFT vacuum energy comes entirely from virtual processes ($\Delta S=0$), "
+P3,594,bridge-language,"(c)~\emph{GR with $\Lambda=0\to$ two expansion regimes.} The Friedmann equation $H^2=(8\pi G/3)\rho$ with $\Lambda=0$ gives: empty regions ($\rho\to 0$): $a(t)\propto t$ (Milne, $q=0$); matter regions ($\rho>0$): $a(t)\p"
+P3,608,bridge-language,"The corrected mechanism does not require the BDG filter to act at cosmic scales at all. The filter's role is indirect and foundational: it determines $d=4$ (BDG closure theorem), derives the Einstein--Hilbert action~\cit"
+P3,733,bridge-language,"Frame independence (finite-dim, AQFT layer) & Lean 4 + AQFT & LV conditional$^\dagger$ \\"
+P3,734,bridge-language,Rindler stationarity / Unruh (AQFT layer) & Lean 4 + AQFT & LV conditional$^\dagger$ \\
+P3,736,bridge-language,\multicolumn{3}{l}{\textit{GR derivation (continuum translation of discrete layer)}} \\
+P3,739,bridge-language,Bianchi as continuum image of LLC & BD limit of LLC & DR (translation claim) \\
+P3,740,bridge-language,Lorentz as continuum image of causal invariance & BD limit of discrete causal invariance & DR conditional$^\dagger$ \\
+P3,744,legacy-target,WIMP exclusion within $P_{\mathrm{act}}$ sourcing & $P_{\mathrm{act}}$ structure & DR \\
+P3,749,bridge-language,$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG path weights + SM RG & CV (w/ ext.\ input) \\
+P3,749,legacy-target,$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG path weights + SM RG & CV (w/ ext.\ input) \\
+P3,787,bridge-language,"\textbf{Legend:} LV = Lean-verified theorem. LV conditional$^\dagger$ = Lean-verified at stated layer, but inherits one live \texttt{sorry} and/or the \texttt{vacuum\_lorentz\_invariant} QFT axiom from the Paper~I AQFT l"
+P3,794,bridge-language,"This paper has developed the macroscopic sector of Relational Actualism from a common discrete core: the $d=4$ BDG growth law, the actualization projector, causal severance, and the discrete-to-continuum translation dict"
+P3,796,bridge-language,"Within that framework, three results are the strongest. First, gravity is treated as the large-scale description of the actualization graph in $d=4$, with the cosmological constant set structurally to zero by the actuali"
+P3,802,bridge-language,"The broader significance of the paper is thus not that every macroscopic phenomenon has already been fully derived, but that gravity, entropy, cosmology, and black-hole structure can now be organized by a single RA-nativ"
+P3,804,bridge-language,"Several open targets remain. On the entropy side, the discrete boundary law is established, but the precise continuum coefficient remains a translation problem. On the cosmological side, the EdS$\to$Milne transition hist"
+P3,806,bridge-language,"For now, the paper's strongest claim is more modest and, for that reason, more durable: a finite discrete theory with causal severance, a severed-link entropy observable, and structurally vanishing $\Lambda$ can already "
+P4,141,bridge-language,"The Relational Actualism programme began with the claim that irreversible actualization events are the primitive physical reality. Papers~I--III develop the consequences of this commitment, filtered through the BDG integ"
+P4,152,bridge-language,"These are not five independent coincidences. They are five proposed expressions of the same geometric fact: the Poisson-CSG graph at $\mu=1$ is at the edge of connectivity. The five contexts differ, however, in how fully"
+P4,236,quantum-state-language,\subsection{The on-shell bath identification}
+P4,240,quantum-state-language,"\item \textbf{Vibrational (optical phonon) bath:} $\tau_c=\tau_{\mathrm{vib}}\approx 20$\,fs, $\hbar\omega_{\mathrm{vib}}/(k_BT)\approx 0.76$--$2.5$. These modes are on-shell ($\hbar\omega \gtrsim k_BT\Delta S^*$)."
+P4,252,quantum-state-language,"This is the vibrational decoherence timescale. It is not a free parameter: $\Delta S^*=0.601$ is determined by the BDG integers, $\Gamma_{\mathrm{opt}}=k_BT/\hbar$ is determined by temperature, and $\Delta S_{\mathrm{per"
+P4,310,legacy-target,\subsection{Computational evidence from DFT calculations}
+P4,311,legacy-target,\label{sec:dft}
+P4,313,legacy-target,The F1 condition (quantum Darwinism redundancy) can be tested computationally via density functional theory (DFT) calculations on small prebiotic molecules. Using B3LYP/6-311+G* calculations on a representative set of pr
+P4,317,legacy-target,"These DFT results, combined with the non-Markovian decoherence analysis (\S\ref{sec:decoherence}), give quantitative support for the Causal Firewall conditions in the RNA-world parameter range. The computational protocol"
+P4,319,legacy-target,\paragraph{Audit status of the DFT/F1 artifact.} The B3LYP/6-311+G* protocol and the specific $R_{\mathrm{QD}}$ values for the representative molecule set are claimed at the CV (computation-verified) tier on the basis of
+P4,342,legacy-target,"\textbf{Computational evidence.} B3LYP/6-311+G* density functional theory calculations supporting Condition~F1 have been performed for small prebiotic molecules, verifying that the quantum Darwinism redundancy parameter "
+P4,351,legacy-target,"\paragraph{Scope note.} The results in this section---the Kinematic Coherence Bound, the spin-bath collapse timescale $t^*=0.274/g$, the Landauer bound, and the Maxwell's demon analysis---are inherited from the RAQI and "
+P4,351,quantum-state-language,"\paragraph{Scope note.} The results in this section---the Kinematic Coherence Bound, the spin-bath collapse timescale $t^*=0.274/g$, the Landauer bound, and the Maxwell's demon analysis---are inherited from the RAQI and "
+P4,376,quantum-state-language,"RA predicts qualitatively different decoherence below and above the on-shell threshold $\Delta S^*$. Below the threshold, environmental interactions do not actualize and therefore do not contribute to decoherence. Above "
+P4,378,quantum-state-language,\begin{conjecture}[Virtual/real distinction for QEC]
+P4,379,quantum-state-language,Operating qubits in a regime where the qubit--environment coupling energy is below the on-shell threshold $\Delta S^* \cdot k_B T \approx 0.601 k_B T$ should produce qualitatively suppressed decoherence---not just quanti
+P4,384,quantum-state-language,\subsection{Spin-bath collapse timescale}
+P4,387,quantum-state-language,"For a quantum system coupled to a spin bath with externally measured coupling strength $g$, RA predicts a specific timescale for wave function collapse:"
+P4,394,quantum-state-language,"This distinguishes RA from GRW (Ghirardi--Rimini--Weber) and CSL (continuous spontaneous localization) collapse models, which predict observable collapse timescales with different parameter dependences. Superconducting c"
+P4,396,legacy-target,\subsection{Landauer's principle from the causal DAG}
+P4,397,legacy-target,\label{sec:landauer}
+P4,399,legacy-target,"Landauer's principle states that erasing one bit of information requires dissipating at least $k_B T \ln 2$ of heat. In RA, this follows directly from the causal graph structure."
+P4,403,legacy-target,"The thermodynamic cost of one actualization event at temperature $T$ is $k_B T \Delta S^* \approx 0.6 k_B T$. For a process that overwrites information rather than creating it, the cost must be at least $k_B T \ln 2 \app"
+P4,405,legacy-target,\begin{proposition}[RA derivation of Landauer bound]
+P4,406,legacy-target,\label{prop:landauer}
+P4,407,legacy-target,The Landauer bound $\Delta E \geq k_B T \ln 2$ per bit erased is the thermodynamic cost of actualization at the minimum non-trivial information content. It follows from the BDG actualization threshold $\Delta S^*$ applie
+P4,410,legacy-target,\subsection{Maxwell's demon dissolved}
+P4,411,legacy-target,\label{sec:maxwell}
+P4,413,legacy-target,Maxwell's demon was a thought experiment designed to show that the second law of thermodynamics could be violated by an intelligent being sorting gas molecules by velocity. The standard resolution attributes the second l
+P4,415,legacy-target,"In RA, the demon's information-processing cost is not a separate postulate: it is the actualization cost of the demon's observations and decisions. Each measurement the demon makes about a molecule is an actualization ev"
+P4,513,bridge-language,\quad — Context 2 (galactic rotation/dim. reduction) & Paper~III continuum-bridge (DJW theorem) & DR conditional$^\dagger$ \\
+P4,520,quantum-state-language,"$\tau_d=20$\,fs at $T=300$\,K & $\Delta S^*$ + on-shell bath & CV \\"
+P4,524,legacy-target,B3LYP support for F1 & DFT computation (RACI supplement) & CV (not re-audited in suite pass) \\
+P4,533,quantum-state-language,Threshold decoherence behavior & Virtual/real distinction & Conjecture \\
+P4,534,quantum-state-language,$t^*=0.274/g$ (spin-bath collapse) & Parameter-free from $\Delta S^*$ & DR \\
+P4,535,legacy-target,Landauer bound $\geq k_B T \ln 2$ & Actualization thermodynamics & DR \\
+P4,536,legacy-target,Maxwell's demon dissolved & Information = actualization cost & DR \\
+P4,591,legacy-target,"\bibitem{Landauer1961} R.~Landauer, ``Irreversibility and heat generation in the computing process,'' \emph{IBM J. Res. Dev.} \textbf{5}, 183 (1961)."

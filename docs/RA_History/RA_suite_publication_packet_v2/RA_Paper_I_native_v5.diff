@@ -1,0 +1,48 @@
+--- RA_Paper_I_Kernel_and_Engine_native_v4.tex
++++ RA_Paper_I_Kernel_and_Engine_native_v5.tex
+@@ -107,7 +107,7 @@
+ {\large Joshua F. Sandeman}\\[0.25em]
+ {\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+ {\small sansuikyo@gmail.com}\\[0.5em]
+-{\normalsize Draft --- April 13, 2026}
++{\normalsize Draft --- April 22, 2026}
+ \end{center}
+ 
+ \begin{abstract}
+@@ -136,6 +136,18 @@
+ Across the suite, the rule is constant: RA's proof path runs through its own primitives, but the papers explicitly compare RA's claims with the existing theories that currently organize those same observable domains.
+ \end{tcolorbox}
+ 
++
++\begin{tcolorbox}[title=Active Native Support Surface Used Positively,colback=gray!5,colframe=gray!60]
++This paper relies positively only on the following active native support surface:
++\begin{itemize}[nosep]
++    \item \texttt{RA\_GraphCore.lean}: graph-cut and local-ledger baseline;
++    \item \texttt{RA\_O01\_KernelLocality\_v2.lean}: kernel locality and admissibility dependence on realized past;
++    \item \texttt{RA\_O14\_ArithmeticCore\_v1.lean}: the arithmetic coefficient spine presently used for direct measured-number targets.
++\end{itemize}
++Matter-sector, macroscopic, and complexity-level modules are downstream suite targets, not active compiled support used positively in this kernel paper.
++\end{tcolorbox}
++
++
+ %% ═══════════════════════════════════════════════════════════
+ \section{Introduction}
+ %% ═══════════════════════════════════════════════════════════
+@@ -148,7 +160,7 @@
+ 
+ The paper is also explicit about what it does \emph{not} close. It does not yet derive a full Born-like frequency law for all quantum experiments from the native stochastic kernel. It does not yet close the full macroscopic kinematic and gravitational programme. It does not yet provide a wholly native geometric proof that the $d=4$ coefficient tuple is the unique physically realized one; the currently compiled support is arithmetic, while some geometric identifications remain external or comparative. These are not embarrassments to be hidden. They are the clearest open targets of the kernel programme, and later sections state plausible native routes forward in each case.
+ 
+-The present paper is therefore best read as the kernel manifesto and kernel audit of the RA suite. It argues that the primitive physical fact is the writing of a vertex into a growing causal DAG, and that a surprising amount of structure follows already from that assumption once it is combined with the BDG filter and the LLC. Everything downstream in Papers~II--IV depends on whether this kernel is coherent.
++The present paper is therefore best read as the kernel statement and kernel audit of the RA suite. It argues that the primitive physical fact is the writing of a vertex into a growing causal DAG, and that a surprising amount of structure follows already from that assumption once it is combined with the BDG filter and the LLC. Everything downstream in Papers~II--IV depends on whether this kernel is coherent.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{The Seven Axioms}
+@@ -590,7 +602,7 @@
+ Comparative or still-hybrid tests---including BMV-style gravity mediation, dark-sector phenomenology, Kinematic Coherence Bound, and spin-bath collapse formulas---should be read here as deferred suite-level targets rather than as active support of the present kernel paper. Their proper scientific role is to test whether the native kernel can eventually address domains now organized by other theories, not to define the kernel in advance.
+ 
+ %% ═══════════════════════════════════════════════════════════
+-\section{Epistemic Status Summary}
++\section{What RA Explains Here, and What It Does Not Yet Explain}
+ \label{sec:status}
+ %% ═══════════════════════════════════════════════════════════
+ 

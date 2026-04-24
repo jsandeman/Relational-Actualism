@@ -1,0 +1,842 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% --- Robust definitions to work around mathptmx/hyperref issues ---
+\let\oldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+% --- End robust definitions ---
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{array}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Prevent math commands from breaking PDF metadata (bookmarks, abstract title, etc.)
+\pdfstringdefDisableCommands{%
+  \def\hbar{hbar}%
+  \def\ell{l}%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+  \def\SRa{S_RA}%
+  \def\Pacc{P_acc}%
+  \def\Dkl{D_KL}%
+  \def\TV{TV}%
+}
+
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\RA}{\mathrm{RA}}
+\newcommand{\LLC}{\mathrm{LLC}}
+\newcommand{\Pacc}{P_{\mathrm{acc}}}
+\newcommand{\SRa}{S_{\mathrm{RA}}}
+\newcommand{\Dkl}{D_{\mathrm{KL}}}
+\newcommand{\TV}{\mathrm{TV}}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism III:\\[0.3em] Gravity, Cosmology, Severance, and Complexity}}\\[1em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+{\small sansuikyo@gmail.com}\\[0.5em]
+{\normalsize Draft --- April 13, 2026}
+\end{center}
+
+\begin{abstract}
+This paper develops the gravitational and cosmological sector of Relational Actualism (RA). Its core discrete results are threefold: gravity is treated as the large-scale description of the actualization graph in $d=4$; causal severance provides the graph-theoretic replacement for singular behavior; and black-hole entropy is assigned to the severed-link count, yielding a discrete boundary law. In this framing, the primary statements are discrete and finite, while familiar continuum results are treated as translations under the BDG-to-metric dictionary rather than as independent targets of derivation. General relativity with $\Lambda=0$ follows from the RACL chain: the Local Ledger Condition (Lean-verified), amplitude locality (Lean-verified), the $d=4$ BDG closure theorem, and the Benincasa--Dowker continuum-limit result. The two apparent hard walls in the earlier RA programme---the Bianchi identity and Lorentz invariance---are shown to be continuum translations of already-proved discrete facts. The paper then applies this framework to cosmology: it argues that RA sets $\Lambda=0$ structurally and that some observed late-time acceleration signals may arise from fitting an inhomogeneous $\Lambda=0$ universe with homogeneous $\Lambda$CDM templates. The paper distinguishes carefully between derived discrete results, phenomenological interpolation, and open conjectures. The severance formalism and the corrected $\Lambda=0$ cosmological interpretation are the paper's strongest claims; parts of the nucleation, CMB, and observational forecasting programme remain exploratory.
+\end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of Results in This Paper,colback=gray!5,colframe=gray!60]
+This paper distinguishes:
+\begin{itemize}[nosep]
+    \item \textbf{Derived discrete results}, including the severed-link entropy observable, the discrete boundary law, and the finitary treatment of severance;
+    \item \textbf{Phenomenological interpolation}, including parts of the EdS$\to$Milne transition modelling used in the cosmology section;
+    \item \textbf{Conjectural bridges}, including aspects of the nucleation and CMB forecasting programme.
+\end{itemize}
+The discrete statement is primary; continuum area laws, metric quantities, and cosmological parameter fits are treated as translations or phenomenological renderings of underlying discrete claims unless explicitly derived.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This paper develops the macroscopic sector of the Relational Actualism suite.
+\begin{itemize}[nosep]
+    \item \textbf{Assumed from Paper~I:} the foundational ontology, the actualization kernel, finitary actuality, and the discrete-to-continuum translation framework.
+    \item \textbf{Used from Paper~II where relevant:} the matter-and-force sector developed from motif and renewal structure.
+    \item \textbf{This paper contributes:} the severance formalism, the severed-link entropy observable, the discrete boundary law, and the gravitational and cosmological programme built from them.
+    \item \textbf{Paper~IV inherits this macroscopic framework} in its treatment of complexity, shielding, recursive closure, and the causal firewall.
+\end{itemize}
+The breadth of this paper is not accidental: its several themes are grouped together because they arise from the same RA-native macroscopic mechanisms.
+\end{tcolorbox}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Introduction}
+%% ═══════════════════════════════════════════════════════════
+
+Paper~III is the paper where RA meets the macroscopic universe. The causal graph of Paper~I, filtered by the BDG action and populated by the renewal motifs of Paper~II, must reproduce general relativity at large scales, address the outstanding puzzles of cosmology, and provide a coherent account of horizons and entropy. This paper shows that it does, and identifies where it differs sharply from standard physics.
+
+The central methodological commitment, inherited from Paper~I, is the distinction between discrete physics and continuum translation. The physical observables---vertex counts, link counts, boundary sizes, filter selectivities---are finite combinatorial objects. Their continuum descriptions (curvature, area, temperature, entropy density) are translations into metric language, not independent facts. This distinction is especially consequential for black hole entropy, where decades of effort have been spent trying to ``derive'' a continuum formula ($S=A/4l_P^2$) that turns out to be the \emph{translation} of a discrete fact ($\SRa\propto N_\partial$), not the fact itself.
+
+\subsection{How this paper is organized}
+
+This paper is broad because several macroscopic sectors of RA are controlled by the same discrete mechanisms: causal severance, the severed-link entropy observable, the discrete boundary law, and the structurally vanishing cosmological constant. For clarity, the paper proceeds in three layers:
+
+\textbf{Core derived architecture} (\S\S\ref{sec:gr}--\ref{sec:severance}). The first layer develops the paper's strongest discrete results: the treatment of gravity as the large-scale description of the actualization graph in $d=4$, the formulation of causal severance, the severed-link entropy observable, the discrete boundary law, and the finitary treatment of macroscopic boundaries. These are the paper's most foundational claims, and the later sections depend on them.
+
+\textbf{Reinterpretation programme} (\S\S\ref{sec:darkmatter}--\ref{sec:cosmology}). The second layer uses this architecture to reinterpret several familiar continuum problems, including black-hole entropy, parts of the dark-sector problem, and the status of $\Lambda$. In these sections, the discrete statement is primary and the continuum statement is treated as its translation under the BDG-to-metric dictionary.
+
+\textbf{Phenomenological applications} (\S\S\ref{sec:desi}--\ref{sec:nucleation}). The third layer considers applications to observational cosmology, including the DESI signal, the EdS$\to$Milne transition family, nucleation, and parts of the CMB forecasting programme. These sections mix derived discrete structure with numerical evidence and phenomenological interpolation, and they should be read with that distinction in mind.
+
+%% ═══════════════════════════════════════════════════════════
+\section{General Relativity from BDG Uniqueness}
+\label{sec:gr}
+%% ═══════════════════════════════════════════════════════════
+
+RA does not modify general relativity. It derives it. This section gives the full chain, addresses the two apparent hard walls (the discrete-to-continuum Bianchi identity and Lorentz invariance), and shows that both dissolve under the correct reading: they are not facts to be proved but translations of discrete conservation laws into continuum language.
+
+\subsection{The derivation chain}
+\label{sec:gr_chain}
+
+The RACL chain proceeds in seven steps, each with explicit epistemic status:
+
+\textbf{Step 1 (LV).} The Local Ledger Condition: $\sum_{\mathrm{out}}(v) = \sum_{\mathrm{in}}(v)$ at every vertex of the causal DAG. This is Axiom~6 of Paper~I, formally verified in \texttt{RA\_GraphCore.lean} (\texttt{local\_ledger\_condition}, zero \texttt{sorry}).
+
+\textbf{Step 2 (LV).} Amplitude locality: $a(v \mid C) = a(v \mid C \cap \mathrm{past}(v))$---the local amplitude depends only on the intersection of the context with the causal past. Lean-verified in \texttt{RA\_AmpLocality.lean} (\texttt{bdg\_amplitude\_locality}, zero \texttt{sorry}).
+
+\textbf{Step 3 (LV).} $d=4$ dimensionality: the BDG closure theorem establishes that exactly five topology types exhaust the Standard Model, and the selectivity ceiling theorem D4U02 shows $\mu^* \approx 1.019$ only for $d=4$ (Paper~I, Paper~II). This fixes the spacetime dimension structurally.
+
+\textbf{Step 4 (Published).} The Benincasa--Dowker theorem~\cite{Benincasa2010}: for a causal set sprinkling into a $d=4$ Lorentzian manifold $(\mathcal{M}, g_{\mu\nu})$, the BDG action converges to the Einstein--Hilbert action:
+\begin{equation}
+\lim_{\rho \to \infty} \frac{1}{\rho} S_{\mathrm{BDG}}[C] = \frac{1}{16\pi G} \int_{\mathcal{M}} R\sqrt{-g}\,d^4x + \text{boundary terms}.
+\end{equation}
+This is a proven theorem of causal set theory, not a conjecture, and requires no additional input beyond the BDG integers $(1, -1, 9, -16, 8)$.
+
+\textbf{Step 5 (DR).} Variation of the Einstein--Hilbert action with respect to $g_{\mu\nu}$ gives Einstein's field equations by standard differential geometry.
+
+\textbf{Step 6 (DR).} The actualization projector $P_{\mathrm{act}}$ removes unactualized (virtual, off-shell) contributions from the stress-energy source. Virtual processes have $\Delta S(\rho \| \sigma_0) = 0$: they do not cross the actualization threshold and therefore do not source the metric.
+
+\textbf{Step 7 (DR).} The resulting field equations:
+\begin{equation}
+\label{eq:einstein}
+\boxed{G_{\mu\nu} = 8\pi G\, P_{\mathrm{act}}[T_{\mu\nu}], \qquad \Lambda = 0.}
+\end{equation}
+
+LV = Lean-verified. DR = derived (all steps explicit). Two caveats are needed to characterize the chain honestly. First, the Lean-verified steps (1--3) are machine-checked at the discrete combinatorial / topology-closure layer; the AQFT layer in Paper~I still contains one live \texttt{sorry} (the LQI adapter) and imports \texttt{vacuum\_lorentz\_invariant} as a QFT axiom. Steps that inherit from the AQFT layer (frame independence, Rindler stationarity, full Lorentz invariance in the continuum sense) are conditional on those audit items, not unconditionally LV. Second, Step~4 is a published theorem of causal set theory, not an RA-internal derivation. The chain's rigor is bounded above by the Benincasa--Dowker result and bounded below by the discrete machinery of Papers~I--II; the continuum translation in Steps~5--7 is derived but not Lean-verified. This is a chain with explicit and audited links rather than a fully machine-checked derivation end-to-end.
+
+\subsection{The Bianchi identity as the continuum image of the LLC (DR)}
+\label{sec:bianchi_is_llc}
+
+A long-standing concern is the continuum identity $\nabla_\mu G^{\mu\nu} = 0$ (the contracted Bianchi identity). This is what guarantees $\nabla_\mu T^{\mu\nu} = 0$ in GR, the continuum form of energy--momentum conservation. How does this arise in RA?
+
+The RA-internal proposal is that it is the continuum image of the LLC, not an additional fact requiring independent proof. This is a DR-level \emph{translation claim}, not a closed theorem chain: the discrete LLC is Lean-verified at the combinatorial layer; the Benincasa--Dowker continuum limit is a published causal-set theorem; the resulting statement $\nabla_\mu T^{\mu\nu} = 0$ is derived rather than Lean-verified; and the step from there to $\nabla_\mu G^{\mu\nu} = 0$ uses the Einstein equation as a tensorial identity. Each link is explicit, but the full chain is not machine-checked end-to-end.
+
+\begin{proposition}[Bianchi identity as continuum image of the LLC, DR]
+\label{prop:bianchi_llc}
+Under the Benincasa--Dowker sprinkling limit, the discrete LLC $\sum_{\mathrm{out}}(v) = \sum_{\mathrm{in}}(v)$ maps to the continuum conservation law $\nabla_\mu T^{\mu\nu} = 0$. Given the Einstein equation (eq.~\ref{eq:einstein}), this implies $\nabla_\mu G^{\mu\nu} = 0$, which is the contracted Bianchi identity. The RA reading is therefore: the Bianchi identity is what the LLC looks like when read through the continuum dictionary, not an independent continuum fact that RA must separately ensure.
+\end{proposition}
+
+This parallels a familiar situation in physics: Maxwell's equations can be written in four-component form ($F_{\mu\nu}$) or in three-component form ($\vec{E}, \vec{B}$). The three-component equation $\nabla \cdot \vec{B} = 0$ is not an additional fact beyond the four-component equation; it is the same equation in different notation. The RA claim is structurally analogous for Bianchi and the LLC---though the discrete-to-continuum translation in the LLC case passes through a non-trivial sprinkling limit, so the analogy is heuristic rather than a rigorous correspondence.
+
+\textbf{Scope limit.} This proposition is DR-level: it identifies the continuum image of the LLC under the BD limit. It does \emph{not} constitute a machine-checked derivation of the Bianchi identity from RA primitives. Readers treating Paper~III's GR sector should read this as a proposed conceptual unification of two conservation laws, not as a proof that the continuum identity is a mechanical consequence of the Lean-verified discrete LLC.
+
+\subsection{Lorentz invariance as the continuum image of causal invariance (DR, conditional)}
+\label{sec:lorentz_is_causal}
+
+A second long-standing concern is Lorentz invariance. The BDG action is covariant under the causal symmetries of the DAG (permutations of spacelike events, finite time-translations along the growth direction). In the continuum limit, these become continuous transformations: Lorentz boosts and translations. But is the discrete causal invariance really equivalent to continuum Lorentz invariance?
+
+The RA position is that the two are translations of one another under the BD sprinkling dictionary. This is the same kind of DR-level claim as the Bianchi--LLC identification, with one important additional caveat noted below.
+
+\begin{proposition}[Lorentz invariance as continuum image of causal invariance, DR conditional]
+\label{prop:lorentz_causal}
+The quantum measure $\mu_\sigma(S)$ is foliation-independent: for any two linear extensions $\sigma, \sigma'$ of the causal order with respect to observables $S$, $\mu_\sigma(S) = \mu_{\sigma'}(S)$. This is Lean-verified at the amplitude-locality layer (\texttt{causal\_invariance} in \texttt{RA\_AQFT\_Proofs\_v10.lean}, with the \texttt{amplitude\_locality} axiom closed in \texttt{RA\_AmpLocality.lean}). The continuum image of this statement, obtained via the Benincasa--Dowker sprinkling limit, is proposed to be: physical observables are independent of the Lorentz frame. Under this proposal, the two invariances are the same invariance in different formalisms. \textbf{Scope limit:} the Lean chain currently inherits the \texttt{vacuum\_lorentz\_invariant} axiom and one live \texttt{sorry} in \texttt{RA\_AQFT\_Proofs\_v10.lean} (the LQI adapter) from Paper~I. The ``continuum Lorentz invariance is the causal invariance in continuum dress'' reading is therefore a DR claim \emph{conditional on those AQFT audit items}, not an unconditional dissolution.
+\end{proposition}
+
+The discrete causal invariance says: the order in which spacelike-separated events are declared to have occurred does not affect the quantum measure of any set of observables. The continuum Lorentz invariance says: physical observables are independent of the reference frame. A reference frame is a choice of simultaneity surface, which in the discrete picture is a choice of linear extension of the causal order. Reading the two statements together proposes them as translations of one another; the proposal becomes unconditional when the Paper~I AQFT audit items are closed.
+
+\textbf{Scope limit.} This is presented as a DR-level translation proposal, not a closed theorem chain. The discrete causal invariance is Lean-verified at the amplitude-locality layer; the continuum Lorentz covariance is the standard feature of the BD sprinkling limit; the identification of the two is the substantive RA claim, conditional on the audit items above. Readers should not take this as an independent Lean-verified derivation of continuum Lorentz invariance from RA primitives.
+
+\subsection{Field equation uniqueness without Lovelock}
+\label{sec:uniqueness}
+
+Earlier framings of RA used Lovelock's theorem---which requires a smooth $d=4$ manifold---to establish that the Einstein equations are the unique second-order tensorial field equations consistent with diffeomorphism invariance. In the RA-native framing above, Lovelock is not needed: the Benincasa--Dowker theorem directly gives the Einstein--Hilbert action as the unique second-order scalar on a causal set in $d=4$. The field equations then follow by variation, without importing continuum uniqueness results.
+
+\begin{proposition}[RA-native field equation uniqueness]
+\label{prop:unique_field_eq}
+The field equation $G_{\mu\nu} = 8\pi G\, P_{\mathrm{act}}[T_{\mu\nu}]$ with $\Lambda = 0$ is the unique continuum field equation consistent with: (i)~the BDG uniqueness theorem, (ii)~the actualization projector $P_{\mathrm{act}}$, (iii)~the LLC, (iv)~$d=4$. The cosmological constant $\Lambda = 0$ is not an additional fine-tuning; it is a structural consequence of $P_{\mathrm{act}}$ removing virtual contributions.
+\end{proposition}
+
+The framework does not require an independent derivation of Lorentz invariance in curved spacetime. Local Lorentz invariance is proposed as the continuum image of causal invariance (\S\ref{sec:lorentz_is_causal}), conditional on the AQFT audit items noted there.
+
+\subsection{The cosmological constant}
+\label{sec:lambda_zero}
+
+The vacuum energy catastrophe---the $10^{120}$-fold discrepancy between QFT's vacuum energy prediction and the observed $\Lambda$---does not arise in RA. The actualization projector $P_{\mathrm{act}}$ removes unactualized quantum fluctuations from the gravitational source. Virtual processes have $\Delta S(\rho\|\sigma_0)=0$: they do not cross the actualization threshold and therefore do not source the metric. The cosmological constant is not small---it is \emph{identically zero}, because virtual processes do not gravitate. This is a structural consequence, not a fine-tuning.
+
+The apparent dark energy inferred from DESI and supernova observations is not $\Lambda > 0$; it is the kinematic consequence of inhomogeneous expansion in a $\Lambda = 0$ universe (\S\ref{sec:desi}).
+
+\subsection{The WIMP prohibition}
+
+Any particle that does not participate in on-shell electromagnetic or strong interactions has zero RA assembly depth---it never crosses the actualization threshold through normal matter interactions. Within the RA sourcing scheme (in which the metric source is $P_{\mathrm{act}}[T_{\mu\nu}]$ rather than $T_{\mu\nu}$), such particles therefore contribute no gravitational weight.
+
+\begin{proposition}[WIMP exclusion within the RA sourcing scheme]
+WIMPs, axions, and sterile neutrinos contribute zero weight to $P_{\mathrm{act}}[T_{\mu\nu}]$ and are therefore structurally excluded as gravitationally coupled dark matter candidates \emph{within} the RA $P_{\mathrm{act}}$-sourced field equation.
+\end{proposition}
+
+The exclusion is as strong as the RA sourcing scheme itself. Closing the full $P_{\mathrm{act}}$-to-metric source bridge to the level of a theorem chain remains open (Papers~I and~II list the relevant audit items). Taking that caveat into account, the RA prediction is: within the $P_{\mathrm{act}}$-sourced framework, no dark matter signal will be found below the neutrino floor in any direct detection experiment, for any candidate particle that does not participate in on-shell EM or strong interactions. Current data from LZ and XENONnT are consistent with this prediction. The exclusion applies to any proposed dark matter candidate whose interactions with ordinary matter are below the on-shell threshold.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Dark Matter as Actualization-Density Topology}
+\label{sec:darkmatter}
+%% ═══════════════════════════════════════════════════════════
+
+The WIMP prohibition tells us what dark matter \emph{is not}: it is not a new particle species. This section develops what dark matter \emph{is} in RA: a consequence of topology change in the causal graph at low actualization density. The mechanism predicts flat galactic rotation curves from baryonic matter alone, explains the Bullet Cluster via the causal-depth source rather than spatial trajectories, and gives the baryon-to-dark matter ratio $f_0 = 5.40$ from BDG path-weight enumeration (Paper~II).
+
+\subsection{Dimensional reduction at low $\mu$}
+\label{sec:dim_reduction}
+
+In dense regions of the causal graph (galactic disks, stellar interiors), the Poisson-CSG parameter $\mu$ is close to or above unity. The graph is 4-dimensional: every vertex has ancestors at depths $N_1, N_2, N_3, N_4$ all populated. The LLC operates on a full four-dimensional causal structure, and the continuum limit is ordinary 4D general relativity.
+
+In extremely sparse regions (galactic halos, voids), $\mu \ll 1$. The higher-depth ancestor counts $N_3, N_4$ become vanishingly rare. The Durhuus--Jonsson--Wheater theorem for Lorentzian random graphs establishes that in the limit of vanishing branching density, the effective graph dimension reduces: a Lorentzian sprinkling with edge probability approaching zero has Hausdorff dimension $d_{\mathrm{eff}} \to 2$ rather than 4.
+
+\begin{proposition}[Dimensional reduction at low $\mu$]
+\label{prop:dim_reduction}
+In regions where the local actualization density $\mu(x)$ falls below a critical threshold $\mu_c \sim 10^{-2}$, the effective graph dimension reduces from 4 to 2. The LLC at this scale operates on a 2-dimensional causal structure, and the effective gravitational dynamics differ from 4D GR.
+\end{proposition}
+
+In $d=2$, the Newtonian gravitational force scales as $1/r$ rather than $1/r^2$: the gravitational potential is logarithmic rather than Keplerian. A test particle orbiting a central mass in effective 2D experiences a centripetal acceleration proportional to $1/r$, giving an orbital velocity:
+\begin{equation}
+v^2(r) = r \cdot a(r) \propto r \cdot \frac{1}{r} = \text{constant}.
+\end{equation}
+This is the signature of a flat rotation curve.
+
+\subsection{Rotation curves from $\nabla^2(\ln\lambda)$}
+\label{sec:rotation_curves}
+
+The weak-field quasi-static regime should be read as an effective reduction of the covariant source $P_{\mathrm{act}}[T_{\mu\nu}]$, not yet as a coefficient-level derivation of every halo-scale observable. The safest current reading is that the source splits into a dense-equilibrium term and an actualization-gradient correction term. In that effective regime, the gravitational potential is modeled by:
+\begin{equation}
+\label{eq:modified_poisson}
+\nabla^2\Phi = 4\pi G\,\rho_m + \nabla^2(\ln\lambda)\,c^2,
+\end{equation}
+where $\lambda(x)$ is the local actualization density (a smoothed version of $\mu$). The first term is the dense-regime matter sourcing; the second term is the current paper-level RA effective correction from the actualization geometry. A canonical derivation tying $P_{\mathrm{act}}[T_{\mu\nu}]$, $\rho_{\mathrm{A}}$, $\rho_m$, and the quasi-static correction operator into one covariant chain remains an open closure target.
+
+\paragraph{Current source-law dictionary.}
+At the covariant level, the source is $P_{\mathrm{act}}[T_{\mu\nu}]$. In the quasi-static dense regime, the effective mass density is naturally read from its $00$-component, $\rho_{\mathrm{A}} := P_{\mathrm{act}}[T_{00}]/c^2$, and local equilibration is expected to drive $\rho_{\mathrm{A}} \approx \rho_m$. In sparse or boundary regimes, the additional term in eq.~\ref{eq:modified_poisson} should be read as an effective correction sourced by actualization-density gradients. The exact operator-level and coefficient-level dictionary for that correction is not yet canonicalized and is not claimed here as a closed theorem.
+
+In dense regions, $\lambda \approx \lambda_0$ (approximately constant), so the correction term is suppressed and the standard Poisson equation is recovered. In sparse galactic halos, actualization-density gradients may generate an additional effective gravitational field that mimics the presence of dark matter. The precise sign convention and geometric operator needed for the asymptotic halo regime remain to be fixed by the covariant closure.
+
+\begin{proposition}[Rotation curve mechanism]
+\label{prop:rotation_curve}
+A galaxy with baryonic matter density $\rho_m(r)$ concentrated in a disk of radius $R_d$, together with a halo-regime actualization profile whose effective correction yields an asymptotic acceleration $a_{\lambda}(r) \propto 1/r$, produces a flat rotation curve with asymptotic velocity $v_\infty$. No dark matter particles are required. The exact operator-level relation between the profile $\lambda(r)$ and the asymptotic correction is an open closure target.
+\end{proposition}
+
+The transition radius between the inner Newtonian regime and the outer flat regime is set by the point where the actualization profile begins to depart strongly from the dense-equilibrium regime---typically at the edge of the visible disk. This produces a MOND-like phenomenology as an emergent scale in the RA framework rather than a fundamental acceleration constant.
+
+\subsection{The Bullet Cluster: Weyl curvature vs Ricci curvature}
+\label{sec:bullet_cluster}
+
+The Bullet Cluster is often presented as definitive evidence for particulate dark matter: the weak lensing signal (which traces the Weyl curvature via null geodesics) is offset from the visible gas (which traces the Ricci curvature via stress-energy). If dark matter were a topology effect rather than a particle, the argument runs, the lensing signal should trace the visible mass.
+
+This argument assumes that the source of the gravitational lensing is the current spatial distribution of matter. In RA, the source is subtly different: it is the accumulated causal depth, not the current stress-energy.
+
+\begin{proposition}[Weyl vs Ricci sourcing]
+\label{prop:weyl_ricci}
+The RA gravitational source is $P_{\mathrm{act}}[T_{\mu\nu}]$ applied to the accumulated causal depth of the current actualization distribution, not to the current spatial positions of matter. The Weyl curvature at a point depends on the history of actualization events whose causal future includes that point, not on the current stress-energy alone.
+\end{proposition}
+
+For the Bullet Cluster: the gas and galaxy clusters have been gravitationally assembled over $\sim 10^{10}$ years of causal history. The accumulated causal depth $A_{\mathrm{RA}}(x)$ at a given spatial location reflects this history. Stellar matter has accumulated $\sim 10^8$ times more actualization events than the diffuse gas (most of the historical actualization was in stars, not in the gas). The lensing signal follows the stellar-assembled mass, not the gas, even though the gas contains most of the instantaneous rest mass.
+
+This does not dissolve the Bullet Cluster constraint; it reinterprets it. The $10^8$ headroom in the stellar-to-gas $A_{\mathrm{RA}}$ ratio is expected to survive in the weak-field quasi-static limit, but the explicit covariant proof requires the full RA field equations. This is labeled as an open computational target.
+
+\subsection{The weak equivalence principle}
+\label{sec:wep}
+
+The weak equivalence principle (WEP) states that all bodies fall with the same acceleration in a gravitational field, independent of their composition. In RA, gravitational coupling depends on $P_{\mathrm{act}}[T_{\mu\nu}]$, which is proportional to the actualized causal depth. Does this preserve the WEP?
+
+\begin{proposition}[Dense-regime source tracking]
+\label{prop:wep}
+For baryonic matter with equilibration timescale $\tau_{\mathrm{eq}}$ and relevant accumulation timescale $t_{\mathrm{hist}}$:
+\begin{equation}
+\frac{|\rho_{\mathrm{A}} - \rho_{\mathrm{matter}}|}{\rho_{\mathrm{matter}}} \sim \frac{\tau_{\mathrm{eq}}}{t_{\mathrm{hist}}},
+\end{equation}
+so the actualization density $\rho_{\mathrm{A}}$ tracks the matter density $\rho_{\mathrm{matter}}$ in the dense-regime equilibration limit. For ordinary dense baryonic matter this error is expected to be very small; a quantitative bound remains an open derivational target.
+\end{proposition}
+
+Current WEP tests (MICROSCOPE, E\"otv\"os-type experiments) reach $\sim 10^{-14}$ precision. The RA expectation is that ordinary dense baryonic matter equilibrates rapidly enough to lie well below present bounds, but the explicit derivation of that precision-level bound has not yet been closed.
+
+The prediction that distinguishes RA from standard GR is at \emph{very} large timescales: objects that have been causally isolated for $\gtrsim \tau_{\mathrm{eq}}$ might show small WEP violations, potentially testable with precision tests of stellar streams in the galactic halo (where equilibration times are longest).
+
+\subsection{Dense-regime weak-field benchmarks}
+\label{sec:dense_weak_field_benchmarks}
+
+In the dense-equilibrium weak-field regime, the recovered Einstein sector implies the standard Schwarzschild / PPN$(\beta=\gamma=1)$ consequences of ordinary GR. Solar-limb light deflection, Mercury's anomalous perihelion advance, and the ordinary thin-lens formulas should therefore be read as benchmark consequences of the bridge, not as separate imported mechanisms. By contrast, halo and cluster lensing in sparse or mixed-regime environments depend on the precise weak-field source law relating $P_{\mathrm{act}}[T_{\mu\nu}]$ to accumulated actualization depth and actualization-density gradients; that step remains an open closure target.
+
+\subsection{The $f_0 = 5.40$ ratio and $\Omega_m$}
+
+The baryon-to-dark matter ratio is derived in Paper~II as:
+\begin{equation}
+f_0 = \frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}} \times \alpha_s(2m_p) = 17.32 \times 0.312 = 5.40,
+\end{equation}
+matching the Planck value $5.416$ to $0.3\%$. The cosmological matter density parameter is then:
+\begin{equation}
+\Omega_m = \Omega_b(1 + f_0) \approx 0.048(1 + 5.40) \approx 0.31,
+\end{equation}
+consistent with the Planck value $\Omega_m \approx 0.315$. The derivation chain is entirely RA-native except for the $\alpha_s$ running (standard SM QCD RG from the UV fixed point $\alpha_s(m_Z) = 1/\sqrt{72}$).
+
+Note that in RA, the ``dark matter'' fraction $f_0 \cdot \Omega_b \approx 0.26$ does \emph{not} correspond to particulate dark matter. It is the gravitational-weight contribution of non-baryonic BDG topology types (Paper~II), gravitationally coupled via $P_{\mathrm{act}}[T_{\mu\nu}]$ but not corresponding to new particles. The Planck-measured value of $\Omega_m$ is consistent with RA; the Planck-inferred particulate dark matter density is the result of fitting a $\Lambda$CDM model to RA's actually-observed cosmological data.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Causal Severance}
+\label{sec:severance}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{definition}[Causal severance]
+A causal severance is a partition $V=V_A\sqcup V_B$ of the realized graph such that no vertex in $V_A$ has a link to any vertex in $V_B$ and vice versa. After severance, $G$ splits into two independent graphs. The LLC holds independently on each side (Graph Cut Theorem, Lean-verified).
+\end{definition}
+
+Severance replaces singularities. Where GR predicts infinite curvature (black hole interiors, the Big Bang), RA predicts causal termination: regions where the actualization density $\mu$ exceeds the saturation threshold ($\mu\gtrsim 10$), the BDG filter becomes inert, and the graph disconnects. There is no point where a quantity divides by zero; there is a physical shutdown.
+
+\subsection{Kernel saturation at severance}
+
+\begin{theorem}[Kernel--Poisson divergence identity]
+\label{thm:kl}
+For the BDG acceptance kernel $K(\mathbf{N}|\mu)$:
+\begin{align}
+\Dkl(K\,\|\,\mathrm{Poisson}) &= -\log\Pacc(\mu) = \Delta S^*(\mu), \\
+\TV(K,\,\mathrm{Poisson}) &= 1-\Pacc(\mu).
+\end{align}
+\end{theorem}
+\begin{proof}
+$K$ is a truncated Poisson: the likelihood ratio $K/P=1/\Pacc$ is constant on the support. Direct substitution yields both identities.
+\end{proof}
+
+\begin{theorem}[Asymptotic saturation]
+\label{thm:saturation}
+$\lim_{\mu\to\infty}\Pacc(\mu)=1$, with $\Pacc\ge 1-O(\mu^{-4})$.
+\end{theorem}
+\begin{proof}
+$\mathbb{E}[S]\sim\frac{1}{3}\mu^4$ and $\sigma[S]\sim 1.63\mu^2$, so $\mathbb{E}[S]/\sigma\sim 0.204\mu^2\to\infty$. By Chebyshev, $\mathbb{P}(S\le 0)\to 0$.
+\end{proof}
+
+\begin{corollary}[Filter dissolution at severance]
+As $\mu\to\infty$: $\Dkl\to 0$, $\TV\to 0$. The BDG filter loses all discriminatory power. Every candidate extension is admissible. The distinction between potentia and actuality dissolves. This is the onset of causal severance.
+\end{corollary}
+
+The selectivity profile (Monte Carlo, $2\times 10^5$ samples):
+
+\begin{center}
+\begin{tabular}{rccl}
+\toprule
+$\mu$ & $\Pacc$ & $\Dkl$ (nats) & Regime \\
+\midrule
+$\sim 1$ & 0.55 & 0.60 & selective \\
+$\sim 4$ & 0.40 & 0.91 & maximum selectivity \\
+$\sim 7$ & 0.75 & 0.29 & weakening \\
+$\sim 9$ & 0.995 & 0.005 & near saturation \\
+$\ge 10$ & 1.000 & 0.000 & saturated $\to$ severance \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Black Hole Entropy: The Discrete Boundary Law}
+\label{sec:entropy}
+%% ═══════════════════════════════════════════════════════════
+
+\subsection{The entropy observable}
+
+\begin{definition}[Cross-severance link set]
+For a severance $\Sigma:V=V_A\sqcup V_B$:
+\[
+L_\Sigma=\{(u,v)\in L(G_n):u\in V_A,\,v\in V_B\},
+\]
+where $L(G_n)$ is the set of irreducible causal links.
+\end{definition}
+
+\begin{definition}[RA-native severance entropy]
+\begin{equation}
+\boxed{\SRa(\Sigma)=|L_\Sigma|.}
+\end{equation}
+Entropy counts blocked irreducible future-directed causal channels.
+\end{definition}
+
+This resolves the ambiguity between boundary-vertex count and severed-link count. The severed-link count is the correct observable because: (a)~it is additive for disjoint severances, (b)~it resolves structure that vertex count cannot (two severances with the same $N_\partial$ can have different $\SRa$), and (c)~it avoids overcounting transitive (non-irreducible) order relations.
+
+\subsection{Finiteness and invariance}
+
+\begin{theorem}[Finiteness]
+For any severance $\Sigma\subset G_n$ in a physically realized state: $\SRa(\Sigma)<\infty$.
+\end{theorem}
+\begin{proof}
+$G_n$ is finite by Axiom~7. $L(G_n)$ is finite. $L_\Sigma\subseteq L(G_n)$. Therefore $|L_\Sigma|<\infty$.
+\end{proof}
+
+\begin{theorem}[Interface invariance]
+$\SRa$ is invariant under internal refinements preserving $L_\Sigma$.
+\end{theorem}
+\begin{proof}
+$\SRa=|L_\Sigma|$. If $L_\Sigma$ is preserved, its cardinality is preserved.
+\end{proof}
+
+The physical justification is the Markov blanket theorem (Lean-verified): interior structure is shielded from the exterior by the boundary.
+
+\subsection{The decomposition}
+
+\begin{definition}[Severance out-degree]
+For boundary vertex $u\in\partial V_A$: $d_{\mathrm{out}}^\Sigma(u)=|\{v\in V_B:(u,v)\in L_\Sigma\}|$.
+\end{definition}
+
+Then:
+\begin{equation}
+\label{eq:decomposition}
+\SRa(\Sigma)=\sum_{u\in\partial V_A}d_{\mathrm{out}}^\Sigma(u) = \langle d_{\mathrm{out}}^\Sigma\rangle\,N_\partial(\Sigma),
+\end{equation}
+where $N_\partial=|\partial V_A|$ is the boundary vertex count.
+
+\subsection{The discrete boundary law}
+
+\begin{proposition}[Discrete boundary law]
+If $\langle d_{\mathrm{out}}^\Sigma\rangle$ is asymptotically local and stable, then $\SRa(\Sigma)\propto N_\partial(\Sigma)$.
+\end{proposition}
+
+\textbf{This is the RA-native ``area law.''} The boundary vertex count $N_\partial$ IS the discrete boundary size---not an approximation to a continuum area, but the boundary size itself in RA-native units. The further question of how $N_\partial$ maps to metric area in square meters is a \emph{translation} problem (involving the BDG-to-metric dictionary), not an additional fact of the discrete physics.
+
+\subsection{Locality of severed out-degree}
+
+Numerical verification in $d=2$ Poisson-CSG (Monte Carlo, 5 trials per $N$):
+
+\begin{center}
+\begin{tabular}{rcc}
+\toprule
+$N$ & $\langle d_{\mathrm{out}}\rangle$ & $\sigma$ \\
+\midrule
+30 & 2.23 & 0.30 \\
+80 & 2.59 & 0.27 \\
+160 & 2.60 & 0.17 \\
+250 & 2.64 & 0.09 \\
+300 & 2.75 & 0.17 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The mean severed out-degree converges to a constant ($\approx 2.6$ in $d=2$) independent of graph size. This is the locality property: $d_{\mathrm{out}}(u)$ depends only on the Planck-scale graph structure near $u$, not on the total boundary size or the black hole mass.
+
+The kernel saturation theorem provides the bridge: at horizon densities ($\mu\ll 1$), the BDG filter is inert ($\TV\approx 0$), so the unfiltered Poisson-CSG geometric constant applies directly.
+
+\subsection{Boundary regularity}
+
+The remaining discrete question is whether $N_\partial$ is a well-behaved boundary measure (thin spatial layer) rather than a pathological distribution (fractal or volume-filling). The antichain drift theorem (Theorem~\ref{thm:drift} below) supports this: at low $\mu$, the graph is spatially dominated, so the severance boundary is a thin spatial interface. Additionally, the boundary is defined by a local link-crossing predicate, which structurally limits its thickness to $O(1)$ link-lengths.
+
+\subsection{Translation to Bekenstein--Hawking}
+
+Under the BDG-to-metric dictionary, the discrete law $\SRa\propto N_\partial$ translates to $S\sim A/(4l_P^2)$. The coefficient $1/4$ is the product of two Planck-scale geometric constants: $c_{\mathrm{out}}(d)\cdot c_{\mathrm{tile}}(d)=1/4$ in $d=4$. This coefficient has been numerically confirmed in $d=4$ causal sets~\cite{Homsak2024} but not analytically derived. It is an open problem shared with the causal set community.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Antichain Drift and Spatial Expansion}
+\label{sec:drift}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{theorem}[Antichain drift bound]
+\label{thm:drift}
+For the BDG-filtered Poisson-CSG at $\mu<\mu_c\approx 1.25$:
+\begin{equation}
+\mathbb{E}[\Delta W\mid S>0]\ge 1-\mathbb{E}[N_1\mid S>0]>0,
+\end{equation}
+where $\Delta W$ is the antichain width change per accepted vertex.
+\end{theorem}
+\begin{proof}[Proof sketch]
+Adding vertex $v$ with $k$ depth-1 parents in the current antichain gives $\Delta W=1-k$. Since $k\le N_1$, $\mathbb{E}[\Delta W]\ge 1-\mathbb{E}[N_1|S>0]$. At $\mu=1.0$: $\mathbb{E}[N_1|S>0]=0.66$, giving $\mathbb{E}[\Delta W]\ge +0.34$ per step. At $\mu=0.5$: $\mathbb{E}[N_1|S>0]=0.09$, giving $\mathbb{E}[\Delta W]\ge +0.91$.
+\end{proof}
+
+The BDG filter drives spatial expansion at low to moderate density. The coefficient $c_1=-1$ is directly responsible: it penalizes depth-1 connections, favoring vertices that extend the graph spatially rather than temporally.
+
+Above $\mu_c\approx 1.25$, the drift reverses. The graph deepens faster than it widens, transitioning toward the saturated regime and eventually severance.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Expansion--Severance Lifecycle}
+\label{sec:lifecycle}
+%% ═══════════════════════════════════════════════════════════
+
+The complete lifecycle of a universe-branch, derived entirely from the BDG integers $(1,-1,9,-16,8)$:
+
+\begin{center}
+\begin{tabular}{rlll}
+\toprule
+$\mu$ range & Process & Filter state & Proved? \\
+\midrule
+$<1.25$ & Spatial expansion & Selective & $\checkmark$ (Thm~\ref{thm:drift}) \\
+$\approx 1.25$ & Drift reversal & Transition & $\checkmark$ (crossover) \\
+$3$--$5$ & Maximum selectivity & $\Dkl\approx 0.9$ & $\checkmark$ (Thm~\ref{thm:kl}) \\
+$5$--$7$ & Filter weakening & $\TV$ declining & $\checkmark$ (MC) \\
+$7$--$10$ & Near saturation & $\Dkl<0.3$ & $\checkmark$ (Thm~\ref{thm:saturation}) \\
+$>10$ & Saturation $\to$ severance & $\TV=0$ & $\checkmark$ (Thm~\ref{thm:saturation}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This is the entire cosmological history of a universe-branch in RA-native language: expansion, selective structure formation, packing, saturation, and severance. All from five integers. Zero free parameters.
+
+\subsection{The cosmic web as a dynamical attractor}
+\label{sec:cosmic_web}
+
+The lifecycle above describes a single causal patch. In the full universe, the local actualization density $\mu(x, t)$ varies spatially: regions with higher matter density have higher $\mu$, while voids have lower $\mu$. This produces a feedback loop.
+
+\begin{proposition}[Cosmic web feedback]
+\label{prop:cosmic_web}
+Regions with higher $\mu$ (denser matter) expand more slowly (matter-dominated EdS regime, $q > 0$). Regions with lower $\mu$ (voids) expand faster (Milne regime, $q = 0$). This differential expansion increases the density contrast between filaments and voids over time.
+\end{proposition}
+
+The result is a self-reinforcing filamentary topology: matter is drawn into filaments and sheets along causal-density gradients, voids expand more rapidly and become deeper voids, and the universe evolves toward a web of filaments separating large underdense regions. This is the observed cosmic web topology~\cite{Cautun2014}, reproduced in RA as a dynamical consequence of $\Lambda = 0$ plus inhomogeneous actualization density, rather than as a consequence of gravitational instability in a homogeneous $\Lambda$CDM background.
+
+\subsection{Heat death prohibition via fragmentation}
+\label{sec:heat_death}
+
+In standard cosmology with $\Lambda > 0$ and infinite time, the universe asymptotes to a de~Sitter horizon and eventually reaches thermal equilibrium---the classical ``heat death.'' In RA, this does not happen.
+
+\begin{proposition}[Heat death prohibition]
+\label{prop:heat_death}
+A universe with $\Lambda = 0$ and density-dependent expansion fragments into causally disconnected patches before thermal equilibrium can be reached. Each patch reaches either (a) a starvation severance (void $\mu \to 0$), or (b) a density severance (filament $\mu \to \mu_2$), disconnecting from the rest of the graph. No single connected patch persists long enough to equilibrate thermally.
+\end{proposition}
+
+The two severance modes---starvation and density---are topologically dual: starvation severs when the graph becomes too sparse to sustain causal continuity, density severance severs when the graph becomes so dense that the filter saturates. Both result in the same outcome: topological disconnection. The universe does not relax to an equilibrium state; it \emph{fragments} into a proliferation of causally disconnected patches, each of which may nucleate new universes (Paper~III~\S\ref{sec:nucleation}) or terminate.
+
+This strengthens the Boltzmann Brain prohibition. In addition to the structural prohibition (random fluctuations cannot pass the BDG filter), there is a dynamical prohibition: no single patch persists long enough for Boltzmann fluctuations to become relevant, because every patch eventually severs. The Boltzmann Brain problem---a signature challenge to $\Lambda$CDM---is thereby addressed on two independent grounds within RA.
+
+\subsection{The arrow of time is structural}
+\label{sec:arrow}
+
+The arrow of time in standard physics is statistical: it emerges from the tendency of closed systems to increase entropy. In RA, it is structural: the causal graph grows acyclically. Directed edges cannot be reversed by any dynamics (Axiom~1 of Paper~I). The arrow of time is not a consequence of boundary conditions; it is the growth direction of the graph, which is primitive.
+
+The fragmentation result above sharpens this: a closed thermal system in RA fragments into causally disconnected patches before reaching equilibrium. The universe never reaches the equilibrium state of maximum entropy; the ``heat death'' is replaced by a branching tree of nucleated severances. The thermodynamic arrow of time is preserved not by initial conditions but by the structural irreversibility of actualization itself, and the statistical approach to equilibrium never completes because of fragmentation.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Cosmological Predictions}
+\label{sec:cosmology}
+%% ═══════════════════════════════════════════════════════════
+
+\subsection{The Hubble tension}
+
+RA predicts that no single Hubble constant $H_0$ exists. The expansion rate is local, determined by the baryon density along the line of sight:
+\begin{equation}
+\frac{\bar{\lambda}_m}{\bar{\lambda}_{\mathrm{exp}}} = \frac{\Omega_b(1+f_0)}{1-\Omega_b(1+f_0)} = 0.463 \quad\text{(no additional RA free parameters)}.
+\end{equation}
+This gives $H_{\mathrm{local}}=73.6$\,km/s/Mpc and $H_{\mathrm{Eridanus}}=76.8$\,km/s/Mpc. The 4--5$\sigma$ tension between CMB-inferred and locally-measured Hubble values is explained as a density-gradient effect, not a failure of $\Lambda$CDM.
+
+The prediction is specific and testable: $H_0$ should correlate linearly with baryon density along the line of sight, measurable with DESI and Euclid data.
+
+\subsection{Apparent dark energy from $\Lambda=0$}
+\label{sec:desi}
+
+DESI DR2 (2025) reports $3.5\sigma$ evidence for evolving dark energy: $w_0\approx -0.70\pm 0.10$, $w_a\approx -0.90\pm 0.30$. In RA, there is no dark energy. There is inhomogeneous expansion in a $\Lambda=0$ universe whose void regions expand as Milne while matter regions expand as Einstein--de~Sitter.
+
+\subsubsection{The derivation chain}
+
+Four established ingredients produce the result.
+
+(a)~\emph{BDG $\to$ Einstein--Hilbert.} The $d=4$ BDG causal set action converges to the Einstein--Hilbert action in the continuum limit~\cite{Benincasa2010} (published theorem).
+
+(b)~\emph{$P_{\mathrm{act}}\to\Lambda=0$.} The actualization projector removes virtual (off-shell) contributions from the stress-energy tensor. The QFT vacuum energy comes entirely from virtual processes ($\Delta S=0$), so it is projected out. The cosmological constant is identically zero.
+
+(c)~\emph{GR with $\Lambda=0\to$ two expansion regimes.} The Friedmann equation $H^2=(8\pi G/3)\rho$ with $\Lambda=0$ gives: empty regions ($\rho\to 0$): $a(t)\propto t$ (Milne, $q=0$); matter regions ($\rho>0$): $a(t)\propto t^{2/3}$ (EdS, $q=+0.5$).
+
+(d)~\emph{Milne $d_L\to$ apparent $\Omega_\Lambda=0.68$.} The Milne luminosity distance
+\begin{equation}
+d_L^{\mathrm{Milne}}(z)=\frac{(1+z)\ln(1+z)}{H_0}
+\end{equation}
+fit with flat $\Lambda$CDM across 50 redshift points ($z=0.05$--$2.5$) yields best-fit $\Omega_\Lambda=0.6804$ with $\Omega_m=0.3196$.
+
+\textbf{Shape-level match: 1.4\% with zero free parameters.} The observed value is $\Omega_\Lambda=0.69$, $\Omega_m=0.31$.
+
+\subsubsection{A superseded mechanism and its correction}
+
+An earlier analysis attempted to derive the DESI signal from density-dependent BDG antichain drift acting directly at cosmic scales. A systematic calibration of the BDG actualization density $\mu$ (events per Planck 4-volume) across all astrophysical environments shows that for all astrophysical matter, $\mu\ll 1$ by $80$ or more orders of magnitude ($\mu\sim 10^{-166}$ at the cosmic mean, $\mu\sim 10^{-79}$ even at neutron star cores). The BDG filter trivially passes everything at cosmic densities. There is no density-dependent filtering at cosmic scales.
+
+The corrected mechanism does not require the BDG filter to act at cosmic scales at all. The filter's role is indirect and foundational: it determines $d=4$ (BDG closure theorem), derives the Einstein--Hilbert action~\cite{Benincasa2010}, and sets $\Lambda=0$ ($P_{\mathrm{act}}$ vacuum suppression). The cosmic expansion dynamics then follow entirely from GR with $\Lambda=0$ applied to an inhomogeneous universe. This correction strengthens the programme: the result depends only on published theorems and the RA-native derivation of $\Lambda=0$, not on a speculative BDG-to-cosmic-density mapping.
+
+\subsubsection{The backreaction mechanism}
+
+The real universe is inhomogeneous. Cosmic voids occupy $\sim$60--70\% of the volume at $z=0$~\cite{Pan2012,Cautun2014}. In a $\Lambda=0$ universe, voids expand as Milne, matter regions as EdS. A photon traversing this patchwork accumulates a redshift history that differs from any single Friedmann model. When fit with homogeneous $\Lambda$CDM, the fitter requires $\Omega_\Lambda>0$ even though $\Lambda=0$ in the underlying physics.
+
+This is the cosmological backreaction effect studied by Buchert~\cite{Buchert2000}, Wiltshire~\cite{Wiltshire2007}, and R\"as\"anen~\cite{Rasanen2004}. The backreaction programme has faced two questions: (Q1)~why should $\Lambda=0$? and (Q2)~is the effect large enough? RA resolves Q1 structurally ($\Lambda=0$ from $P_{\mathrm{act}}$), and the Milne shape result ($\Omega_\Lambda^{\mathrm{app}}=0.68$) provides quantitative support for Q2. The RA contribution converts the backreaction programme from ``assume $\Lambda=0$ and see what happens'' to ``derive $\Lambda=0$ from actualization physics and compute the consequences.''
+
+\subsubsection{Evolving $w$ from the EdS-to-Milne transition}
+
+The expansion history transitions from EdS-dominated (early universe, few voids) to Milne-dominated (late universe, voids fill most of the volume). This transition produces a $d_L(z)$ shape that no single $\Lambda$CDM model fits exactly---precisely the signature DESI reports as ``evolving $w$.''
+
+Within the family of smooth EdS$\to$Milne transition models parameterized by a transition epoch $t_{\mathrm{trans}}$, a narrow parameter band reproduces the DESI measurements:
+\begin{equation}
+t_{\mathrm{trans}}=0.575,\; \alpha=1.6: \quad w_0=-0.711,\quad w_a=-0.909.
+\end{equation}
+The DESI central values are $w_0=-0.70\pm 0.10$ and $w_a=-0.90\pm 0.30$; both RA values lie within $0.01$ of center and well within the error bars. One parameter ($t_{\mathrm{trans}}$) reproduces three observables ($\Omega_\Lambda$, $w_0$, $w_a$)---two fewer parameters than the $w_0$-$w_a$ parameterization.
+
+\textbf{Epistemic status:} This is a phenomenological interpolation, not a derived prediction. The transition epoch $t_{\mathrm{trans}}=0.575$ is the one remaining underived parameter. Its derivation requires the nucleation perturbation spectrum $\to$ void fraction evolution $\to$ transition epoch, which is an open computational target. The physical interpretation---that voids began to dominate the volume budget at $\sim$57.5\% of the current age ($z\approx 0.8$)---is consistent with observed void evolution.
+
+\subsubsection{Distinctive environmental predictions}
+
+The strongest claims separating RA from both $\Lambda$CDM and quintessence are not about the global $w(z)$---many models predict evolving $w$---but about \emph{environmental structure} in the expansion signal.
+
+\textbf{T1 (BAO splitting):} At fixed redshift, the BAO standard ruler should appear larger inside cosmic voids (more Milne-like) than inside filaments (more EdS-like). $\Lambda$CDM predicts no environment-dependent BAO splitting at fixed~$z$. Testable with DESI by measuring BAO in void vs.\ filament subsamples.
+
+\textbf{T2 ($w$--void correlation):} The apparent equation of state at each redshift should track the void volume fraction $f_v(z)$ at that redshift. $\Lambda$CDM gives $w=-1$ always (no void correlation); quintessence gives $w(z)$ from field dynamics (no void correlation); RA gives $w(z)\propto f_v(z)$ because the mechanism is density-dependent.
+
+\textbf{T3 (SN density correlation):} Type~Ia supernovae in void environments should appear to recede faster than the global average; those in filaments, slower.
+
+\textbf{T4 (Hubble tension as density gradient):} Already derived above: $H_{\mathrm{local}}=73.6$\,km/s/Mpc (no additional RA free parameters).
+
+\textbf{T5 (No fundamental dark energy):} Future surveys (Euclid, Rubin, Roman) should find that the apparent $w(z)$ is entirely explained by void fraction evolution, with no residual requiring a new field.
+
+T1 and T2 are the sharpest near-term tests: DESI measures both BAO (expansion history) and the 3D galaxy distribution (void statistics) from the same survey volume.
+
+\subsection{The BMV null prediction}
+
+Because the spacetime metric is updated only from actualized vertices (Eq.~\ref{eq:einstein}), a mass in quantum superposition sources zero gravitational field. The Bose--Marletto--Vedral protocol~\cite{Bose2017, Marletto2017} predicts gravity-mediated entanglement; RA predicts a strict null result. A positive result would directly falsify RA's treatment of gravity.
+
+\subsection{The Boltzmann Brain prohibition}
+
+In standard cosmology with $\Lambda>0$ and infinite time, Boltzmann Brain nucleations are inevitable and should vastly outnumber ordinary observers. In RA, two mechanisms prohibit them:
+\begin{enumerate}
+\item \textbf{Structural:} An ordered complex structure requires many actualization events each independently passing the $\Delta S^*$ filter. Random fluctuations cannot spontaneously build up ordered complexity.
+\item \textbf{Dynamical:} The expansion--severance lifecycle prevents infinite future duration. No single connected patch persists long enough for thermal equilibrium (the cosmic web fragments via starvation and density severance).
+\end{enumerate}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Cosmological Nucleation}
+\label{sec:nucleation}
+%% ═══════════════════════════════════════════════════════════
+
+In RA, the Big Bang is interpreted as a causal severance event---the nucleation of a new graph branch from a parent black hole. The parent's physics determines the daughter's initial conditions. This interpretation is a structural consequence of the severance programme (\S\ref{sec:severance}), not an independent postulate; its observational content is developed below.
+
+\subsection{Universal daughter physics}
+
+For any parent black hole of mass $M$, the daughter universe's particle physics is \emph{universal}: the BDG integers $(1,-1,9,-16,8)$ are the same, so the coupling constants, particle spectrum, $\Omega_b$, and $f_0$ are identical. Only the \emph{size} (total vertex count) varies with $M$.
+
+\subsection{The $\eta_b$ constraint}
+
+The baryon-to-photon ratio $\eta_b=6.1\times 10^{-10}$ constrains the parent mass. Using $\eta_b=N_{\mathrm{baryons}}/\SRa$ with $N_{\mathrm{baryons}}\sim 10^{80}$:
+\begin{equation}
+\SRa = 1.64\times 10^{89} \quad\Longrightarrow\quad M_{\mathrm{parent}}\approx 1.25\times 10^6\,M_\odot.
+\end{equation}
+
+The daughter energy is bounded between $Mc^2$ (rest mass) and $\SRa\times E_P$ (Planck energy per severed link). The actual release fraction $\alpha=0.68$ is a phenomenological fit constrained by $\eta_b$, not yet derived from BDG dynamics.
+
+\subsection{CMB anomalies from Kerr nucleation}
+\label{sec:cmb_anomalies}
+
+If the parent is a Kerr (rotating) black hole with dimensionless spin parameter $a^* \approx 0.9$, the anisotropic severance geometry predicts five CMB anomalies from a single mechanism. This subsection develops the quantitative model. \textbf{Epistemic status:} the Kerr nucleation model is a phenomenological interpolation (PI)---it fits observed anomalies using a Kerr-geometry template motivated by the severance programme, but does not derive the anomalies from BDG integers alone. The model's value lies in its economy (three parameters, five predictions) and its testability, not in a claim of first-principles derivation.
+
+\subsubsection{The three-parameter model}
+
+The Kerr nucleation model has exactly three parameters: $a^* \in [0, 1)$ (parent spin), $\Delta N$ (the number of additional inflationary e-folds contributed by the nucleation), and $\delta_{\mathrm{acc}}$ (an accretion-driven asymmetry parameter). These three parameters are constrained by three observables: the quadrupole suppression magnitude, the quadrupole-octupole alignment angle, and the hemispheric asymmetry. This leaves zero free parameters after fitting to the observed anomalies.
+
+\subsubsection{Five anomalies from one mechanism}
+
+\textbf{(1) Low quadrupole.} The observed angular power spectrum at $\ell = 2$ is suppressed by $\sim 80\%$ relative to $\Lambda$CDM expectation ($C_2^{\mathrm{obs}} \approx 0.2\,C_2^{\mathrm{LCDM}}$). In the Kerr nucleation model, the coherent quadrupole imprint of the parent spin axis partially cancels the stochastic quadrupole from primordial fluctuations:
+\begin{equation}
+C_2^{\mathrm{obs}} = C_2^{\mathrm{stoch}} - |C_2^{\mathrm{coh}}|^2, \qquad |C_2^{\mathrm{coh}}| \approx 0.9\,\sqrt{C_2^{\mathrm{LCDM}}}.
+\end{equation}
+The coherence amplitude is proportional to $a^*$, fixing $a^* \approx 0.9$.
+
+\textbf{(2) Quadrupole-octupole alignment (``axis of evil'').} The $\ell = 2$ and $\ell = 3$ multipoles of the observed CMB share a preferred axis to remarkable precision (alignment within $\sim 3^\circ$). In the Kerr model, both $\ell = 2$ and $\ell = 3$ nucleation-induced components inherit the parent spin axis, explaining the observed alignment structurally. $\Lambda$CDM predicts these multipoles should be statistically independent; the observed alignment is a 99.9\% confidence anomaly in $\Lambda$CDM.
+
+\textbf{(3) North/South hemispheric asymmetry.} The observed CMB power is $\sim 6\%$ higher in the southern hemisphere than the northern (measured relative to the ecliptic). In the Kerr model, accretion-driven angular momentum flux breaks equatorial symmetry with asymmetry parameter $\delta_{\mathrm{acc}} \approx 0.05$--$0.08$, consistent with observation.
+
+\textbf{(4) Normal octupole magnitude.} Despite being aligned with the quadrupole, the $\ell = 3$ multipole has normal amplitude (not anomalously low). In the Kerr model, the coherent nucleation imprint is strongest at $\ell = 2$ and falls off as $(2/\ell)^2$ at higher multipoles: $|C_3^{\mathrm{coh}}|^2 \approx (2/3)^2 |C_2^{\mathrm{coh}}|^2 \sim e^{-2}|C_2^{\mathrm{coh}}|^2$, which is too weak to significantly modify the stochastic $C_3$.
+
+\textbf{(5) Normal higher multipoles ($\ell \geq 4$).} The observed $C_\ell$ for $\ell \geq 4$ is consistent with $\Lambda$CDM. The Kerr coherent imprint falls off as $(2/\ell)^2$, reaching $|C_\ell^{\mathrm{coh}}|^2/C_\ell^{\mathrm{LCDM}} < 10\%$ for $\ell \geq 6$, making the imprint undetectable at higher multipoles---consistent with observation.
+
+\subsubsection{Distinctive predictions}
+
+Three predictions separate the Kerr nucleation model from $\Lambda$CDM:
+
+\textbf{T1 (CMB persistence test):} The quadrupole-octupole alignment should persist in CMB-S4 and LiteBIRD data with $> 3\sigma$ significance after foreground cleaning. $\Lambda$CDM predicts the alignment would degrade with improved cleaning (it would be revealed as a foreground artifact). A $3\sigma$ persistence would falsify the $\Lambda$CDM accident hypothesis.
+
+\textbf{T2 (cosmic web axis alignment):} If the parent spin axis is imprinted on the daughter's large-scale structure, the cosmic web's preferred axis (as measured by void alignment, filament orientation, and galaxy spin distributions) should correlate with the CMB ``axis of evil.'' DESI and Euclid can measure this correlation directly. $\Lambda$CDM predicts no correlation.
+
+\textbf{T3 (parent mass range):} The $\eta_b$ constraint gives $M_{\mathrm{parent}} \approx 2.5$--$6.6 \times 10^6\,M_\odot$ (supermassive black hole range). If our universe's parent is identifiable by some future observation---for instance, through gravitational wave signatures of the nucleation event---its mass should fall in this range.
+
+Three parameters, five anomalies, three testable predictions. No free parameters remain after fitting to the three observables, though the model itself is a phenomenological interpolation rather than a first-principles derivation. $\Lambda$CDM has no mechanism for any of these anomalies; they remain unexplained statistical fluctuations in standard cosmology. The Kerr nucleation model offers a unified structural account, but it should be evaluated on the strength of its predictions (T1--T3) rather than on the economy of its fit alone.
+
+\begin{remark}
+The Erd\H{o}s--R\'enyi percolation transition at $\mu=1$ that governs QCD confinement, galactic rotation curve onset, and the actualization threshold also governs the emergence of biological complexity. The same mathematical transition appears in five physically distinct contexts. Paper~IV develops this connection in full: the four-tier complexity hierarchy, the Causal Firewall conditions for life, the origin-of-life sandwich bound, and substrate-independent biosignature criteria.
+\end{remark}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Epistemic Status Summary}
+\label{sec:status}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Result & Source & Status \\
+\midrule
+\multicolumn{3}{l}{\textit{Foundations (Lean-verified at stated layer)}} \\
+LLC at every vertex & Lean 4 & LV \\
+Graph Cut Theorem & Lean 4 & LV \\
+Markov Blanket Shielding & Lean 4 & LV \\
+Amplitude locality & Lean 4 & LV \\
+Causal invariance (amplitude-locality layer) & \texttt{RA\_AmpLocality.lean} & LV \\
+Frame independence (finite-dim, AQFT layer) & Lean 4 + AQFT & LV conditional$^\dagger$ \\
+Rindler stationarity / Unruh (AQFT layer) & Lean 4 + AQFT & LV conditional$^\dagger$ \\
+\midrule
+\multicolumn{3}{l}{\textit{GR derivation (continuum translation of discrete layer)}} \\
+$G_{\mu\nu}=8\pi G P_{\mathrm{act}}[T_{\mu\nu}]$ & BDG uniqueness + $P_{\mathrm{act}}$ & DR \\
+$\Lambda=0$ exactly & $P_{\mathrm{act}}$ structure & DR \\
+Bianchi as continuum image of LLC & BD limit of LLC & DR (translation claim) \\
+Lorentz as continuum image of causal invariance & BD limit of discrete causal invariance & DR conditional$^\dagger$ \\
+Field equation uniqueness (no Lovelock) & BD theorem + $P_{\mathrm{act}}$ + LLC + $d{=}4$ & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Dark matter as topology}} \\
+WIMP exclusion within $P_{\mathrm{act}}$ sourcing & $P_{\mathrm{act}}$ structure & DR \\
+Dimensional reduction at low $\mu$ & Durhuus-Jonsson-Wheater & DR \\
+Flat rotation curves from $\nabla^2(\ln\lambda)$ & Modified Poisson equation & AR \\
+Bullet Cluster (Weyl vs Ricci) & Causal depth source identification & AR \\
+WEP preserved at $10^{-4}$ & Equilibration estimate & DR \\
+$f_0=17.32\times\alpha_s(2m_p)=5.40$ & BDG path weights + SM RG & CV (w/ ext.\ input) \\
+$\Omega_m=\Omega_b(1+f_0)\approx 0.31$ & From $f_0$ & CV (w/ ext.\ input) \\
+\midrule
+\multicolumn{3}{l}{\textit{Severance and entropy}} \\
+$\Dkl(K\|\mathrm{Pois})=\Delta S^*$ & Algebraic identity & DR \\
+$\TV(K,\mathrm{Pois})=1-\Pacc$ & Algebraic identity & DR \\
+$\Pacc\to 1$ as $\mu\to\infty$ & Chebyshev bound & DR \\
+Antichain drift $>0$ for $\mu<1.25$ & Algebraic + Monte Carlo & CV \\
+$\SRa=|L_\Sigma|$ additive, sensitive, non-overcounting & 3 propositions & DR \\
+$\SRa\propto N_\partial$ (discrete boundary law) & $\langle d_{\mathrm{out}}\rangle$ local, \texttt{severed\_outdegree.py} & CV ($d=2,3$); DR target ($d=4$) \\
+$N_\partial\leftrightarrow A/(4\ell_P^2)$ (Bekenstein--Hawking) & BDG-to-metric dictionary, normalization open & CN \\
+\midrule
+\multicolumn{3}{l}{\textit{Cosmological predictions}} \\
+$H_{\mathrm{local}}=73.6$\,km/s/Mpc & No additional RA free parameters & CV \\
+$\Omega_\Lambda^{\mathrm{app}}=0.68$ from Milne shape & Zero additional parameters, 1.4\% match & CV \\
+$w_0=-0.71$, $w_a=-0.91$ (EdS$\to$Milne) & 1 underived parameter ($t_{\mathrm{trans}}$) & PI \\
+BDG filter inert at cosmic $\mu$ ($\mu\sim 10^{-80}$) & Calibration & CV \\
+Cosmic web as dynamical attractor & Density-dependent expansion & DR \\
+Heat death prohibited via fragmentation & Severance before equilibrium & DR \\
+BAO void/filament splitting (T1) & Structural consequence & Prediction \\
+$w(z)$--void correlation (T2) & Structural consequence & Prediction \\
+BMV null & Structural & Prediction \\
+Boltzmann Brain prohibition (structural) & Filter inertia & DR \\
+Boltzmann Brain prohibition (dynamical) & Fragmentation & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Nucleation}} \\
+$M_{\mathrm{parent}}\sim 10^6 M_\odot$ & $\eta_b$ constraint & CV \\
+Kerr nucleation: 5 CMB anomalies from 3 params & Phenomenological model & PI \\
+Low quadrupole ($80\%$ suppressed) & Coherent cancellation & CV \\
+Quadrupole-octupole alignment & Parent spin axis & CV \\
+$N/S$ asymmetry ($\sim 6\%$) & Accretion flux & CV \\
+Normal octupole + higher $\ell$ & $(2/\ell)^2$ dilution & CV \\
+Cosmic web--CMB axis correlation (T3) & Parent spin imprint & Prediction \\
+$\alpha=0.68$ (release fraction) & $\eta_b$ fit & PI \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Legend:} LV = Lean-verified theorem. LV conditional$^\dagger$ = Lean-verified at stated layer, but inherits one live \texttt{sorry} and/or the \texttt{vacuum\_lorentz\_invariant} QFT axiom from the Paper~I AQFT layer; becomes unconditional when those audit items close. DR = derived (all steps explicit within RA). DR (translation claim) = the RA identification between a discrete and a continuum statement under the BDG-to-metric dictionary, derived but not Lean-verified. DR conditional$^\dagger$ = derived, with one audit item inherited from Paper~I that must close to make the statement unconditional. CV = computation-verified (exact derivation plus numerical evaluation). CV (w/ ext.\ input) = CV result that uses established external input (e.g., SM QCD RG running) in addition to RA-native material. PI = phenomenological interpolation (motivated identification supported by numerical evidence, not derived from first principles). AR = argued (physically motivated, not all steps explicit). CN = conjecture (stated path to closure, no current derivation). Prediction = falsifiable consequence testable with current or near-future data.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+%% ═══════════════════════════════════════════════════════════
+
+This paper has developed the macroscopic sector of Relational Actualism from a common discrete core: the $d=4$ BDG growth law, the actualization projector, causal severance, and the discrete-to-continuum translation dictionary. Its central claim is methodological as much as physical: the primary statements of the theory are discrete and finite, while familiar continuum formulations arise as effective translations of underlying graph structure.
+
+Within that framework, three results are the strongest. First, gravity is treated as the large-scale description of the actualization graph in $d=4$, with the cosmological constant set structurally to zero by the actualization projector. Second, black-hole entropy is assigned to the severed-link count, yielding a discrete boundary law in which the finite graph-theoretic statement is primary and continuum area relations are treated as translations. Third, causal severance replaces singular behavior with a finite graph operation, allowing the black-hole, cosmological, and entropy sectors to be treated within a single ontology.
+
+On the cosmological side, the paper has argued that several late-time phenomena commonly attributed to dark sectors may instead be reinterpreted within an inhomogeneous $\Lambda=0$ framework. The strongest result here is not a complete cosmological fit, but the structural claim that RA derives $\Lambda=0$ and thereby shifts the explanatory burden from vacuum energy to the geometry of inhomogeneous expansion. The Milne-like void limit and the Einstein--de~Sitter-like matter-dominated limit provide the basis for a phenomenological transition family whose distance-redshift behavior can mimic an apparent dark-energy sector when fitted by homogeneous $\Lambda$CDM templates. The resulting DESI-like $(w_0,w_a)$ match should therefore be read as phenomenological interpolation rather than as a derived theorem.
+
+Similarly, the nucleation and CMB discussions should be read as part of a structured application programme rather than as fully closed results. The severance framework, Kerr boundary conditions, and parent-mass constraints provide a coherent RA-native language in which early black holes, cosmological initial data, and large-angle CMB anomalies may be modeled together. But parts of this package remain conjectural, and the relevant observational relations are not yet derived from first principles with the same level of closure as the discrete entropy or severance results.
+
+The broader significance of the paper is thus not that every macroscopic phenomenon has already been fully derived, but that gravity, entropy, cosmology, and black-hole structure can now be organized by a single RA-native mechanism rather than by a patchwork of independent continuum assumptions. In that sense, the paper establishes a controlled macroscopic programme: severance, boundary law, $\Lambda=0$, and inhomogeneous expansion are no longer disconnected themes, but linked consequences of the same discrete architecture.
+
+Several open targets remain. On the entropy side, the discrete boundary law is established, but the precise continuum coefficient remains a translation problem. On the cosmological side, the EdS$\to$Milne transition history and its observational parameters remain to be derived from the RA structure-formation sector rather than phenomenologically interpolated. On the nucleation side, the energy-release fraction, the Kerr-to-$\eta_b$ bridge, and parts of the CMB forecasting programme remain open. These are not peripheral loose ends; they are the next substantive tests of whether the macroscopic sector of RA can move from coherent structure to predictive closure.
+
+For now, the paper's strongest claim is more modest and, for that reason, more durable: a finite discrete theory with causal severance, a severed-link entropy observable, and structurally vanishing $\Lambda$ can already recover a large fraction of the conceptual architecture usually distributed across black-hole thermodynamics, gravitational theory, and cosmological phenomenology. The remaining work is to sharpen the bridge from this discrete architecture to the observational universe without blurring the distinction between what has been derived, what has been computed, and what remains conjectural.
+
+%% ═══════════════════════════════════════════════════════════
+\section*{Acknowledgments}
+%% ═══════════════════════════════════════════════════════════
+
+This work was developed in collaboration with Claude (Anthropic, Opus 4.6) for computation, proved theorems (kernel saturation, antichain drift, severed out-degree convergence), and manuscript preparation, and with ChatGPT (OpenAI, GPT-4o) for the entropy observable definition, three supporting propositions, Axiom~7 refinement, and the boundary-regularity analysis. The ontological commitments, physical reasoning, and framework direction are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\bibitem{Dowker2013} F.~Dowker and L.~Glaser, ``Causal set d'Alembertians for various dimensions,'' \emph{Class. Quantum Grav.} \textbf{30}, 195016 (2013).
+\bibitem{Bose2017} S.~Bose et al., ``Spin entanglement witness for quantum gravity,'' \emph{Phys. Rev. Lett.} \textbf{119}, 240401 (2017).
+\bibitem{Marletto2017} C.~Marletto and V.~Vedral, ``Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects of gravity,'' \emph{Phys. Rev. Lett.} \textbf{119}, 240402 (2017).
+\bibitem{Homsak2024} V.~Hom\v{s}ak and S.~Veroni, ``Boltzmannian state counting for black hole entropy in causal set theory,'' \emph{Phys. Rev. D} \textbf{110}, 026015 (2024).
+\bibitem{Dou2003} D.~Dou and R.~D.~Sorkin, ``Black-hole entropy as causal links,'' \emph{Found. Phys.} \textbf{33}, 279 (2003).
+\bibitem{Barton2019} C.~Barton et al., ``Horizon molecules in causal set theory,'' \emph{Phys. Rev. D} \textbf{100}, 126008 (2019).
+\bibitem{Planck2020} N.~Aghanim et al. (Planck Collaboration), ``Planck 2018 results. VI.,'' \emph{Astron. Astrophys.} \textbf{641}, A6 (2020).
+\bibitem{Sorkin1997} R.~D.~Sorkin, ``Forks in the road on the way to quantum gravity,'' \emph{Int. J. Theor. Phys.} \textbf{36}, 2759 (1997).
+\bibitem{Rideout2000} D.~P.~Rideout and R.~D.~Sorkin, ``A classical sequential growth dynamics for causal sets,'' \emph{Phys. Rev. D} \textbf{61}, 024002 (2000).
+\bibitem{Buchert2000} T.~Buchert, ``On average properties of inhomogeneous fluids in general relativity: Dust cosmologies,'' \emph{Gen. Relativ. Gravit.} \textbf{32}, 105 (2000).
+\bibitem{Wiltshire2007} D.~L.~Wiltshire, ``Cosmic clocks, cosmic variance and cosmic averages,'' \emph{New J. Phys.} \textbf{9}, 377 (2007).
+\bibitem{Rasanen2004} S.~R\"as\"anen, ``Dark energy from back-reaction,'' \emph{JCAP} \textbf{0402}, 003 (2004).
+\bibitem{Pan2012} D.~C.~Pan et al., ``Cosmic voids in Sloan Digital Sky Survey Data Release 7,'' \emph{MNRAS} \textbf{421}, 926 (2012).
+\bibitem{Cautun2014} M.~Cautun et al., ``Evolution of the cosmic web,'' \emph{MNRAS} \textbf{441}, 2923 (2014).
+\bibitem{DESI2025} DESI Collaboration, ``DESI 2024 VI: Cosmological constraints from the measurements of baryon acoustic oscillations,'' arXiv:2404.03002 (2025).
+\bibitem{Durhuus2010} B.~Durhuus, T.~Jonsson, and J.~F.~Wheater, ``On the spectral dimension of causal triangulations,'' \emph{J. Stat. Phys.} \textbf{139}, 859 (2010).
+\end{thebibliography}
+
+\end{document}

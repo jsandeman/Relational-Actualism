@@ -1,0 +1,252 @@
+# RA Results Master Registry v0.1
+# Date: April 2026
+# Purpose: single source-of-truth registry for Relational Actualism results,
+# their status, dependencies, paper usage, and storage locations.
+
+status_legend:
+  ANC: Active native compiled support (Lean theorem family, no sorry/admit in audited files)
+  DR: Derived native result (analytic or mathematical derivation stated in RA primitives)
+  CV: Computation-verified result (Python/MD numerical or symbolic verification)
+  PI: Provisional interpretation (native result with physical embedding still open)
+  CC: Comparative cartography (reader orientation or comparison with existing frameworks)
+  ONT: Open native target
+
+native_primitives:
+  - finite causal DAG
+  - BDG acceptance kernel
+  - Local Ledger Condition
+  - irreversible actualization
+  - structured potentia
+  - motif closure/renewal
+  - causal severance
+
+results:
+  - id: RA-I-KERNEL-LOCALITY
+    name: Kernel locality / admissibility depends only on realized past
+    domain: kernel
+    status: ANC
+    statement: BDG admissibility for a candidate extension depends only on its realized causal past and local interval data.
+    sources:
+      lean: [RA_O01_KernelLocality_v2.lean]
+    supports:
+      papers: [I, II, III, IV]
+      claims: [local growth kernel, native support surface]
+    dependencies: [BDG score, realized past]
+
+  - id: RA-I-BDG-D4-ARITHMETIC-SPINE
+    name: d=4 BDG arithmetic coefficient spine
+    domain: kernel
+    status: ANC
+    statement: The d=4 BDG action vector is isolated by finite arithmetic/binomial inversion, including the non-birth cancellation structure.
+    sources:
+      lean: [RA_O14_ArithmeticCore_v1.lean]
+    supports:
+      papers: [I, II, III]
+      claims: [BDG integer spine, d=4 kernel]
+    dependencies: [Yeats moments, binomial inversion]
+
+  - id: RA-II-FIVE-STABLE-MOTIF-SECTORS
+    name: Five stable motif sectors in the d=4 regime
+    domain: matter
+    status: ANC
+    statement: The stable d=4 regime yields five topologically distinct stability classes under admissible causal-diamond extension.
+    sources:
+      lean: [RA_D1_NativeKernel_v1.lean, RA_D1_NativeClosure_v1.lean]
+    supports:
+      papers: [II]
+      claims: [motif taxonomy, finite matter census]
+    dependencies: [BDG d=4 score, admissible extension]
+
+  - id: RA-II-CLOSURE-LENGTHS-3-4
+    name: Minimal finite closure lengths L_g=3 and L_q=4
+    domain: matter
+    status: ANC
+    statement: The two minimal branching motifs have finite closure lengths 3 and 4 under the native confinement chain.
+    sources:
+      lean: [RA_D1_NativeConfinement_v1.lean]
+    supports:
+      papers: [II]
+      claims: [finite closure windows, confinement as finite renewal]
+    dependencies: [minimal branching motifs, BDG filter]
+
+  - id: RA-II-EXTENSION-CENSUS
+    name: Exhaustive finite extension census
+    domain: matter
+    status: ANC
+    statement: Symmetric/asymmetric branching motifs and transition states have exhaustive finite one-step extension classifications under admissible BDG extension.
+    sources:
+      lean: [RA_D1_NativeClosure_v1.lean]
+    supports:
+      papers: [II]
+      claims: [motif closure, stable census]
+    dependencies: [BDG admissibility, branching motifs]
+
+  - id: RA-II-DEPTH2-LEDGER-ORIENTATION
+    name: Depth-2 ledger and orientation asymmetry
+    domain: matter
+    status: ANC
+    statement: The native ledger/orientation chain supports depth-2 ledger preservation, asymmetric escape, orientation asymmetry, and a unique symmetric stable endpoint.
+    sources:
+      lean: [RA_D1_NativeLedgerOrientation_v1.lean]
+    supports:
+      papers: [II]
+      claims: [charge/orientation programme, matter-sector asymmetry]
+    dependencies: [LLC, depth-2 motif structure]
+
+  - id: RA-II-KOIDE-KVAL-RATIO
+    name: Exact K=2/3 three-angle ratio identity
+    domain: matter_arithmetic
+    status: ANC
+    statement: The finite three-angle kval identity yields K = sum(kval^2)/(sum(kval))^2 = 2/3.
+    sources:
+      lean: [RA_KvalRatio.lean]
+    nature_target: observed charged-lepton three-mass ratio structure
+    supports:
+      papers: [II]
+      claims: [Koide-like Nature-facing ratio target]
+    caveat: Physical embedding of kval variables into measured rest masses remains open.
+    dependencies: [finite three-angle arithmetic]
+
+  - id: RA-II-STRONG-SCALE-1-SQRT72
+    name: Dimensionless strong-interaction scale 1/sqrt(72)
+    domain: matter_arithmetic
+    status: [DR, CV]
+    statement: BDG coefficients c2=9 and c4=8 yield alpha_RA,strong = 1/sqrt(c2*c4) = 1/sqrt(72) ≈ 0.117851.
+    sources:
+      python: [archive_unpacked/d3_alpha_s_proof.py]
+      lean_basis: [RA_O14_ArithmeticCore_v1.lean]
+    nature_target: measured dimensionless strong-interaction scale summaries
+    supports:
+      papers: [II]
+      claims: [interaction hierarchy, dimensionless strength scale]
+    caveat: Running-coupling language is comparative cartography, not native mechanism.
+    dependencies: [d=4 BDG coefficients]
+
+  - id: RA-II-MU-INT-QCD
+    name: Internal strong-density scale from BDG selectivity
+    domain: matter_arithmetic
+    status: [DR, CV]
+    statement: mu_int = exp(sqrt(4*Delta S*)) ≈ 4.71 with Delta S* = -log P_acc(1) ≈ 0.60069.
+    sources:
+      python: [archive_unpacked/d4u02_enumeration.py, archive_unpacked/mu_derivation.py]
+      md: [archive_unpacked/D4U02_analytic_proof.md]
+    nature_target: common internal density scale in strongly decaying motifs
+    supports:
+      papers: [II, III]
+      claims: [strong internal scale, motif decay programme]
+    caveat: Detailed lifetime spectrum remains downstream.
+    dependencies: [D4U02 acceptance enumeration, BDG selectivity]
+
+  - id: RA-II-PATH-WEIGHT-17-32
+    name: BDG path-weight ratio W_other/W_baryon ≈ 17.32
+    domain: matter_cosmology_bridge
+    status: [DR, CV]
+    statement: At mu=1, BDG admissible path-weight enumeration gives W_other/W_baryon ≈ 17.32, with W_baryon=3/2 exactly under the script's finite census.
+    sources:
+      python: [archive_unpacked/f0_enumeration.py]
+    nature_target: abundance-ratio and matter-sector partition targets
+    supports:
+      papers: [II]
+      claims: [path-weight asymmetry]
+    caveat: Later multiplication by QCD-running quantities is comparative/hybrid and not active native support.
+    dependencies: [BDG admissibility, finite path-weight census]
+
+  - id: RA-III-KERNEL-POISSON-DIVERGENCE
+    name: Kernel-Poisson divergence identity
+    domain: gravity_cosmology
+    status: DR
+    statement: For the BDG acceptance kernel K, D_KL(K||Poisson) = -log P_acc(mu) = Delta S*(mu), and TV(K,Poisson)=1-P_acc(mu).
+    sources:
+      python: [archive_unpacked/kernel_saturation.py]
+    supports:
+      papers: [I, III]
+      claims: [kernel saturation, selectivity]
+    dependencies: [truncated Poisson acceptance kernel]
+
+  - id: RA-III-D4U02-SELECTIVITY
+    name: D4U02 selectivity ceiling near mu=1
+    domain: gravity_cosmology
+    status: [DR, CV]
+    statement: D4U02 enumeration gives P_acc(1)≈0.54843555, Delta S*≈0.60069, and first selectivity maximum mu*≈1.019.
+    sources:
+      python: [archive_unpacked/d4u02_enumeration.py]
+      md: [archive_unpacked/D4U02_analytic_proof.md]
+    supports:
+      papers: [I, II, III]
+      claims: [d=4 selectivity, Planck-density operating point]
+    dependencies: [d=4 BDG score]
+
+  - id: RA-III-ASYMPTOTIC-SATURATION
+    name: High-density asymptotic saturation
+    domain: gravity_cosmology
+    status: DR
+    statement: For d=4 BDG coefficients, P_acc(mu)->1 at high density, with rate bounded as 1-O(mu^-4) in the idealized Poisson-CSG approximation.
+    sources:
+      python: [archive_unpacked/kernel_saturation.py]
+    supports:
+      papers: [I, III]
+      claims: [severance onset, filter dissolution]
+    dependencies: [BDG expectation and variance scaling]
+
+  - id: RA-III-ANTICHAIN-DRIFT
+    name: Antichain drift in accepted low-density growth
+    domain: cosmology
+    status: CV
+    statement: Accepted Poisson-CSG growth satisfies E[Delta W | S>0] >= 1 - E[N1 | S>0], with numerical witness E[Delta W | S>0] ≳ +0.34 at mu=1.
+    sources:
+      python: [archive_unpacked/antichain_drift.py]
+    supports:
+      papers: [I, III]
+      claims: [sparse-regime expansion-like graph statistic]
+    caveat: This is not by itself a closed cosmological expansion law.
+    dependencies: [BDG filter, antichain width statistic]
+
+  - id: RA-III-MACRO-KERNEL-DIM2
+    name: Two-dimensional joint BDG/LLC macro-kernel
+    domain: gravity_cosmology
+    status: ANC
+    statement: The joint kernel of trace, BDG, and LLC linear constraints on five-component macrospace has dimension two.
+    sources:
+      lean: [RA_BDG_LLC_Kernel.lean]
+    supports:
+      papers: [III]
+      claims: [constrained macroscopic response degrees]
+    caveat: Comparison to continuum gravitational polarizations is cartography only.
+    dependencies: [BDG linear constraint, LLC linear constraint]
+
+  - id: RA-III-SEVERED-LINK-ENTROPY
+    name: Severed-link entropy observable
+    domain: gravity_cosmology
+    status: DR
+    statement: For a causal severance Sigma, S_RA(Sigma)=|L_Sigma| counts blocked irreducible causal channels and is finite for finite realized graphs.
+    sources:
+      paper_derivation: [Paper III]
+      lean_basis: [RA_GraphCore.lean]
+    supports:
+      papers: [III]
+      claims: [black-hole entropy as blocked causal channels]
+    dependencies: [finite graph, link set, severance partition]
+
+  - id: RA-IV-CAUSAL-FIREWALL
+    name: Causal Firewall conditions
+    domain: complexity_life
+    status: DR
+    statement: Recursive closure requires redundant boundary inscription and bounded boundary turnover in a finite causal organization.
+    sources:
+      paper_derivation: [Paper IV]
+    supports:
+      papers: [IV]
+      claims: [life-like persistence, recursive closure]
+    dependencies: [boundary inscription, finite causal organization]
+
+  - id: RA-IV-ASSEMBLY-DEPTH
+    name: RA assembly depth programme
+    domain: complexity_life
+    status: PI
+    statement: RA assembly depth counts the minimum number of causally irreducible organizational layers needed to produce a stable organized structure.
+    sources:
+      paper_derivation: [Paper IV]
+    supports:
+      papers: [IV]
+      claims: [origin-of-life constraints, biosignatures]
+    caveat: Direct computation for prebiotic chemistries remains open.

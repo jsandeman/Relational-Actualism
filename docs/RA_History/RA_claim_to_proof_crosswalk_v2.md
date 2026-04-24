@@ -1,0 +1,68 @@
+# RA Claim-to-Proof Crosswalk v2
+
+This pass focuses on three claim clusters:
+
+1. Paper III GR-domain and weak-field bridge
+
+2. Paper II QFT-/SM-translation bridge
+
+3. Paper IV complexity / firewall / quantum-information extension
+
+
+Legend for `audit_status`:
+
+- `strong_formal_bedrock`: direct support in current default-root Lean with no live gaps observed
+
+- `conditionally_supported`: meaningful support, but current paper claim inherits disclosed Lean/AQFT assumptions or adapter gaps
+
+- `derived_but_not_formally_closed`: coherent paper-level derivation without a single load-bearing machine-checked endpoint
+
+- `legacy_dependent`: current suite text still depends on superseded material
+
+- `prototype_only`: executable witness is too preliminary for the paper rhetoric
+
+- `cross_paper_mismatch`: current papers disagree and must be canonicalized
+
+
+
+## P3_GR_bridge
+
+| cluster | claim_id | paper_claim | paper_status | paper_section | lean_anchor | lean_layer | lean_gap | script_anchor | script_status | audit_status | comment | next_action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P3_GR_bridge | P3-006 | Frame independence (finite-dimensional AQFT layer) | LV conditional† | Paper III §10 table / AQFT bridge inherited from Paper I | RA_AQFT_Proofs_v10.lean: frame-independence/Rindler layer | default root | 1 live sorry + vacuum_lorentz_invariant axiom + petz_monotonicity axiom |  |  | conditionally_supported | Useful formal support exists, but the paper already discloses this is conditional on the AQFT adapter layer. | Keep conditional flag explicit; do not treat as unconditional flagship closure. |
+| P3_GR_bridge | P3-007 | Rindler stationarity / Unruh resolution | LV conditional† | Paper I + Paper III foundations | RA_AQFT_Proofs_v10.lean | default root | same AQFT gaps as P3-006 | casimir_benchmark.py | runs_cleanly; physical argument restated; formal modular-flow proof still open in script text | conditionally_supported | Good for benchmark rhetoric, but still inherits the finite-dimensional/AQFT adapter limitations. | Promote only after closing/adopting the remaining AQFT proof gap. |
+| P3_GR_bridge | P3-008 | RA field equation G_{μν}=8πG P_act[T_{μν}] | DR | Paper III §2 | No direct single Lean theorem in default root; supported by P_act conservation, amplitude locality, AQFT bridge, BDG uniqueness | distributed across default root | continuum translation claim; not single-file machine-checked theorem |  |  | derived_but_not_formally_closed | Core GR-bridge claim is philosophically central and structurally coherent, but remains a distributed derivation rather than one load-bearing machine-checked theorem. | Produce a canonical GR-derivation note with exact dependency chain and assumptions. |
+| P3_GR_bridge | P3-009 | Λ = 0 exactly | DR | Paper III §2.5 / §10 | Supported by P_act structure; not found as dedicated default-root theorem | distributed / paper derivation | paper-level derivation, not machine-checked end-to-end | casimir_benchmark.py | runs_cleanly; illustrates vacuum subtraction and makes Λ-suppression argument | derived_plus_expository_script_support | Strong conceptual pillar, but the executable witness is expository and benchmark-oriented rather than a formal derivation engine. | Add a suite-primary derivation memo from P_act to vacuum-energy suppression and observable consequences. |
+| P3_GR_bridge | P3-010 | Bianchi ≡ LLC | DR (translation claim) | Paper III §2 / §10 | LLC + Graph Cut theorem in RA_GraphCore.lean | default root | translation from discrete conservation to continuum identity is paper-level, not direct Lean object | casimir_benchmark.py | runs_cleanly; bulk conservation checked explicitly in Casimir geometry | well_motivated_translation | This is one of the cleaner bridge claims: there is real discrete conservation bedrock plus a concrete benchmark geometry. | Codify a dedicated bridge note showing the exact dictionary from LLC to contracted Bianchi. |
+| P3_GR_bridge | P3-011 | Lorentz ≡ causal invariance | DR conditional† | Paper III §2 / §10 | RA_AmpLocality.lean + AQFT layer | default root + AQFT bridge | depends on amplitude locality/AQFT bridge context |  |  | conditionally_supported_translation | As stated by the paper, this is a dissolution claim, not a fresh independent theorem; it should remain explicitly conditional. | Keep conditional wording and avoid overselling as standalone proof of Lorentz invariance. |
+| P3_GR_bridge | P3-014 | Flat rotation curves from low-μ modification | AR | Paper III §4 / §10 | none in default root | script-only bridge | not formalized in Lean | ra_flat_rotation_curve.py | runs_cleanly; xi inferred from target v_flat | illustrative_not_first_principles | The current script is useful as a worked phenomenology toy model, but it calibrates xi from the target flat velocity rather than deriving it. | Derive xi from the covariant field equation or downgrade the current rhetoric. |
+| P3_GR_bridge | P3-015 | Bullet Cluster via accumulated causal depth (Weyl vs Ricci sourcing) | AR | Paper III §4.4 / §10 | none in default root | script-only bridge | ρ_A term not formally derived from P_act[T_{μν}] | bullet_cluster.py | runs_cleanly; script itself concludes 'framework consistent, not yet proved' | honest_but_open | This is a good example of healthy self-critique in the code: the framework survives the naive objection, but the quantitative proof is not done. | Formally derive ρ_A in the weak-field sourcing equation before treating Bullet Cluster as flagship support. |
+| P3_GR_bridge | P3-031 | DESI / apparent dark-energy fit family | PI/CV mixed | Paper III §§8–9 | none | phenomenology scripts | not formalized | ra_desi_verify.py | runs_cleanly; one-parameter transition family; Ω_m imported/fixed in fit | useful_phenomenology_not_closed | The script is valuable and transparent, but it openly retains an underived transition-time parameter and imported matter density. | Keep as phenomenological interpolation until t_trans and void-fraction evolution are derived. |
+
+
+## P2_QFT_bridge
+
+| cluster | claim_id | paper_claim | paper_status | paper_section | lean_anchor | lean_layer | lean_gap | script_anchor | script_status | audit_status | comment | next_action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P2_QFT_bridge | P2-001 | Five topology types exhaust the SM translation classes | LV | Paper II §2 | RA_D1_Proofs.lean : universe_closure | default root | none observed |  |  | strong_formal_bedrock | This is one of the cleanest suite results and a real formal anchor for Paper II. | Make this theorem the opening anchor for the P2 support chain. |
+| P2_QFT_bridge | P2-002 | Confinement depths L=3,4 | LV | Paper II §2.1 | RA_D1_Proofs.lean : confinement_lengths | default root | none observed |  |  | strong_formal_bedrock | Another clean core theorem with direct support in the current default root. | Use as second anchor before entering phenomenological mass/coupling claims. |
+| P2_QFT_bridge | P2-005/P2-006 | α_EM integer core and full 137.036 value | LV/CV | Paper II §3 | RA_Alpha_EM_Proof.lean / related scripts | default root support + scripts | full numeric layer depends on computational evaluation rather than one theorem | various proof scripts in RA_AQFT tree | not rerun in this pass | credible_but_needs_replay | Strong claimed result, but not yet replayed in this audit pass from a canonical end-to-end script. | Identify one canonical α_EM replay script and add it to the benchmark matrix. |
+| P2_QFT_bridge | P2-009 | Koide K = 2/3 for leptons | LV | Paper II §3 | RA_Koide.lean | default root | none observed for the exact relation |  |  | strong_formal_bedrock | This is the other major load-bearing formal result in Paper II besides topology closure/confinement. | Foreground as exact theorem distinct from the more speculative quark/CKM extensions. |
+| P2_QFT_bridge | P2-016 | m_p = m_P α_EM^5 / 2^28 = 941 MeV | PI (0.3%) | Paper II §4 | none | paper derivation / scripts | identification with proton mass is not formally derived | mass-cascade related scripts (not canonicalized in current pass) | not rerun in this pass | phenomenological_identification | This is exactly where the editorial catalog is right: the suite should say RA derives a BDG quantity and then identifies it with the proton mass. | Adopt the catalog's primacy inversion and split 'derived quantity' from 'empirical identification'. |
+| P2_QFT_bridge | P2-020 | f0 = 17.32 × α_s(2m_p) = 5.40 | CV | Paper II / Paper III dependency | none | script/computation layer | depends on external RG input | f0_enumeration.py and related scripts in src/RA_AQFT | not rerun in this pass | computation_supported_with_external_input | Useful bridge quantity, but not fully RA-closed because the running-coupling input is partly external. | Document exactly which RG inputs are external and whether the claim should remain CV. |
+| P2_QFT_bridge | P2-023 | μ_QCD = 4.7118 | CV | Paper II § selection-rule / σ-filter layer | none | script layer | not formalized in Lean | sigma_analysis.py / sigma_table.py / qcd_running_proof.py family | not rerun in this pass | high_value_computational_target | This looks like one of the best calculation-utility targets for a later replay audit. | Promote to benchmark queue after Casimir / weak-field / Mercury. |
+| P2_QFT_bridge | P2-028/P2-030 | Gauge-group identification and sin²θ_W = 3/8 at GUT scale | PI / DR conditional | Paper II §§6–7 | none | paper bridge only | no closed theorem chain from BDG primitives to continuum gauge group | berry_* scripts present in tree | not rerun in this pass | programme_level_bridge | The paper already warns this is not fully delivered. The audit should preserve that honesty. | Treat as bridge programme, not as current flagship recovery claim. |
+
+
+## P4_extension
+
+| cluster | claim_id | paper_claim | paper_status | paper_section | lean_anchor | lean_layer | lean_gap | script_anchor | script_status | audit_status | comment | next_action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| P4_extension | P4-002 | Hierarchical decoherence from Markov blanket shielding | DR | Paper IV §2.2 | markov_blanket_shielding in RA_Proofs_Lean4.lean / RA_Complexity_Proofs.lean, not in default-root RA_GraphCore.lean | nonroot / straggler support | Paper IV file attribution is currently blurred; theorem not in default root |  |  | support_exists_but_attribution_blurred | The structural idea is good, but the suite should state exactly which Lean file carries the theorem and whether it is part of the canonical root build. | Canonicalize theorem location or migrate it into the default root. |
+| P4_extension | P4-009/P4-013 | Causal Firewall and sandwich bound | DR | Paper IV §§3,6 | none in default root | paper derivation | depends partly on P4-002 and numerical firewall parameters |  |  | paper_level_extension | Reasonable as an extension framework, but not yet the kind of closure carried by Papers I–III core claims. | Keep clearly marked as extension-level and derivative of earlier machinery. |
+| P4_extension | P4-014 | B3LYP support for F1 | CV (not re-audited in suite pass) | Paper IV §5.2 / §10 |  |  | none relevant | No current suite-primary DFT artifact in uploaded core; Paper IV points to RACI supplement | not independently rerun | legacy_dependent | This is the single clearest Paper IV credibility problem in the current suite text. | Adopt editorial Option (b) now: soften to open computational target unless the DFT material is migrated into this suite. |
+| P4_extension | P4-015/P4-016/P4-017 | Assembly-depth worked examples and convergence | CV/CV/Conjecture | Paper IV §5 | assembly_index_correspondence theorem in RA_Complexity_Proofs.lean | nonroot / straggler | assembly formalization not canonicalized; examples not automated in current script | assembly_mapper.py | runs_cleanly but only prints basic topology for one small molecule | prototype_only | The current script is a topology diagnostic, not yet an RA assembly-depth calculator or KEGG/BiGG pipeline. | Do not oversell the E. coli / convergence programme until a real assembly-depth pipeline exists. |
+| P4_extension | P4-018 | KCB: N_max = η / p_th | DR | Paper IV §7.1 | none | paper derivation | suite-local derivation provenance unclear |  |  | cross_paper_mismatch | Paper IV gives η/p_th, but Paper I predictions section currently says η·p_th. The formula must be canonicalized before this can serve as a benchmark claim. | Resolve the formula mismatch across Papers I and IV before using KCB in public-facing benchmark rhetoric. |
+| P4_extension | P4-020/P4-021/P4-022 | spin-bath t*=0.274/g; Landauer; Maxwell's demon | DR | Paper IV §7 | none in canonical root | paper derivation / inherited programme layer | current Paper IV scope note explicitly makes RAQI/RAQM primary |  |  | needs_suite_primary_derivation | These can be good benchmark claims, but not while the paper itself says the load-bearing derivations live elsewhere. | Either derive them fully in the current suite or downgrade the epistemic status until that is done. |
+| P4_extension | P4-031/P4-032 | Artificial consciousness permitted; depth threshold ≳5 conjectured | DR / CN | Paper IV §9 | none | exploratory paper reasoning | not formalized |  |  | appropriately_exploratory | These are not problems if they remain explicitly exploratory. The paper is already careful about that. | Leave in exploratory compartment; do not let these claims contaminate the core audit of physical viability. |
+

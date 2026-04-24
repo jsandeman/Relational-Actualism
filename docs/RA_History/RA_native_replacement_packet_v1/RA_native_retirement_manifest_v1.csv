@@ -1,0 +1,26 @@
+artifact,action,reason
+RA_GraphCore.lean,keep_after_minor_rewrite,Retain RA_graph_cut_theorem; retire horizon alias and rename MarkovBlanket to CausalShield.
+RA_AmpLocality.lean,keep_after_minor_rewrite,Retain amplitude locality; rename quantum-facing declarations to extension-order language.
+RA_O14_Uniqueness.lean,split,Keep arithmetic core; move alpha overlays out of active root.
+RA_D1_Proofs.lean,split,Keep Sections 0–14 after native renaming; move Section 15 to translation archive and Section 16 to bridge archive.
+RA_BaryonChirality.lean,replace,Replace by a native orientation-and-ledger module without baryon/parity language.
+RA_AQFT_Proofs_v10.lean,archive_bridge,Bridge-only; not on native critical path.
+RA_AQFT_Proofs.lean,archive_bridge,Bridge-only; not on native critical path.
+RA_CFC_Port.lean,archive_bridge,Support file for bridge-only AQFT layer.
+RA_AQFT_CFC_Patch.lean,archive_bridge,Bridge-only patch file.
+RA_Alpha_EM_Proof.lean,retire_non_native,Targets alpha_EM and alpha_s as theory objects; replace by Nature-target derivation tasks.
+RA_Koide.lean,retire_non_native,Targets Koide formula directly; archive until a native family-mass derivation exists.
+RA_Spin2_Macro.lean,archive_bridge,Continuum/macro bridge; not on native critical path.
+RA_Proofs_Lean4.lean,manual_audit_then_archive,Mixed legacy file with bridge leakage.
+RA_PACT_conservation_lean.lean,archive_bridge,"P_act continuum bridge, not native frontier."
+D1_BDG_MCMC_simulation.py,retire_non_native,Uses G_F / Lambda_QCD / PDG targets directly.
+d1_BDG_string_tension.py,retire_non_native,Uses Lambda_QCD as mechanism.
+d3_alpha_s_BDG.py,retire_non_native,Targets alpha_s directly.
+d3_alpha_s_proof.py,retire_non_native,Targets alpha_s directly.
+qcd_running_proof.py,retire_non_native,QCD-running target is non-native.
+vwyler_proof.py,retire_non_native,Theory-object comparison script.
+branching_volume.py,rewrite_from_scratch,"Potentially useful, but must be rewritten from DAG+BDG+LLC and Nature-target observables only."
+sigma_analysis.py,rewrite_from_scratch,Current labels import G-parity / SU(3) / anomaly language.
+sigma_table.py,rewrite_from_scratch,Current labels import G-parity / isospin language.
+rho_native.py,rewrite_from_scratch,"Promising direction, but still mentions Lambda_QCD and bridge language."
+daughter_universe.py,rewrite_from_scratch,"Nature-facing target, but current script leaks QCD-scale machinery."

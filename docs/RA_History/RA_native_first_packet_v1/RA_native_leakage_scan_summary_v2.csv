@@ -1,0 +1,45 @@
+file,total_hits,forbidden_hits,bridge_hits,legacy_hits,triage_action,triage_note
+RA_D1_Proofs.lean,21,14,5,2,manual-audit,Inspect provenance and targets before reuse.
+d1_BDG_string_tension.py,14,14,0,0,quarantine,Explicit forbidden theory-object dependence.
+D1_BDG_MCMC_simulation.py,13,13,0,0,quarantine,Explicit forbidden theory-object dependence.
+d3i_complete.py,12,12,0,0,quarantine,Explicit forbidden theory-object dependence.
+daughter_universe.py,12,12,0,0,manual-audit,"Nature-facing target, but current script shows bridge/theory leakage."
+sigma_analysis.py,21,9,0,12,manual-audit,"Potential native content, but labels/categories appear imported."
+bdg_multicoupling.py,8,8,0,0,manual-audit,Inspect provenance and targets before reuse.
+d3_alpha_s_proof.py,8,8,0,0,quarantine,Explicit forbidden theory-object dependence.
+qcd_running_proof.py,7,7,0,0,quarantine,Explicit forbidden theory-object dependence.
+d2_two_phases.py,14,6,8,0,manual-audit,Inspect provenance and targets before reuse.
+hard_wall_4_summary.py,6,6,0,0,quarantine,Explicit forbidden theory-object dependence.
+pathwise_exit.py,9,5,0,4,manual-audit,"Potential native content, but labels/categories appear imported."
+mu_derivation.py,5,5,0,0,quarantine,Explicit forbidden theory-object dependence.
+sigma_table.py,6,4,0,2,manual-audit,"Potential native content, but labels/categories appear imported."
+vwyler_proof.py,3,3,0,0,quarantine,Explicit forbidden theory-object dependence.
+RA_Proofs_Lean4.lean,6,2,4,0,manual-audit,Inspect provenance and targets before reuse.
+rho_native.py,4,2,2,0,promising-after-cleanup,Promising native direction; remove external-theory inputs and imported labels first.
+RA_RASM_Verification.py,2,2,0,0,manual-audit,Inspect provenance and targets before reuse.
+d3_alpha_s_BDG.py,2,2,0,0,quarantine,Explicit forbidden theory-object dependence.
+mu_int_derive.py,2,2,0,0,manual-audit,Inspect provenance and targets before reuse.
+RA_Session_Log_Apr10.md,5,1,4,0,manual-audit,Inspect provenance and targets before reuse.
+branching_volume.py,3,1,1,1,manual-audit,"Potential native content, but labels/categories appear imported."
+RA_BDG_Simulation.py,2,1,0,1,manual-audit,Inspect provenance and targets before reuse.
+f0_enumeration.py,1,1,0,0,manual-audit,Inspect provenance and targets before reuse.
+n_eff_alternative.py,1,1,0,0,manual-audit,Inspect provenance and targets before reuse.
+rindler_relative_entropy.py,97,0,97,0,archive-bridge,"Bridge-only material, not on native critical path."
+casimir_benchmark.py,32,0,32,0,archive-bridge,"Bridge-only material, not on native critical path."
+ra_calibration.py,25,0,25,0,manual-audit,Inspect provenance and targets before reuse.
+RA_AQFT_Proofs_v10.lean,21,0,21,0,archive-bridge,"Bridge-only material, not on native critical path."
+born_rule_derivation.py,11,0,11,0,manual-audit,Inspect provenance and targets before reuse.
+berry_bridge.py,10,0,10,0,manual-audit,Inspect provenance and targets before reuse.
+RA_PACT_conservation_lean.lean,6,0,6,0,manual-audit,Inspect provenance and targets before reuse.
+bullet_cluster.py,6,0,6,0,manual-audit,Inspect provenance and targets before reuse.
+RA_AQFT_Proofs.lean,5,0,5,0,archive-bridge,"Bridge-only material, not on native critical path."
+RA_CFC_Port.lean,4,0,4,0,archive-bridge,"Bridge-only material, not on native critical path."
+berry_transfer.py,3,0,3,0,manual-audit,Inspect provenance and targets before reuse.
+cross_dimensional_exclusion.py,3,0,3,0,manual-audit,Inspect provenance and targets before reuse.
+RA_AQFT_CFC_Patch.lean,2,0,2,0,archive-bridge,"Bridge-only material, not on native critical path."
+RA_AmpLocality.lean,2,0,2,0,manual-audit,Inspect provenance and targets before reuse.
+lakefile.lean,2,0,2,0,manual-audit,Inspect provenance and targets before reuse.
+t1_forecast_deliverables.py,2,0,2,0,manual-audit,Inspect provenance and targets before reuse.
+berry_final.py,1,0,1,0,manual-audit,Inspect provenance and targets before reuse.
+berry_theorems.py,1,0,1,0,manual-audit,Inspect provenance and targets before reuse.
+ra_early_bh.py,1,0,1,0,manual-audit,Inspect provenance and targets before reuse.

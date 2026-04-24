@@ -1,0 +1,72 @@
+--- native_v2_prev
++++ native_v2
+@@ -277,19 +277,13 @@
+ \label{sec:sandwich}
+ %% ═══════════════════════════════════════════════════════════
+ 
+-Any proposed prebiotic mechanism must produce a system with RA assembly depth within a computable range.
+-
+-\textbf{Lower bound:} $\tilde{A}_{\mathrm{RA}}\ge 2$. An autocatalytic cycle requires at least two linked causally irreducible actualization layers forming a closed loop. A single layer cannot be self-replicating---it has no internal feedback.
+-
+-\textbf{Upper bound:} $\tilde{A}_{\mathrm{RA}}\le A_{\max}(\ell, T, \lambda_{\mathrm{reorg}})$, where $A_{\max}$ is the maximum assembly depth sustainable at the local causal density, temperature, and bath coupling. This is computable from the non-Markovian decoherence timescale (\S\ref{sec:decoherence}) and the BDG causal graph topology at the Planck scale.
+-
+-The sandwich bound constrains any proposed origin-of-life candidate:
+-\begin{equation}
+-2 \le \tilde{A}_{\mathrm{RA}}(M_0) \le A_{\max}(\ell, T, \lambda_{\mathrm{reorg}}),
+-\end{equation}
+-where $M_0$ is the first self-replicating molecule. RNA-world, metabolism-first, and crystal-template scenarios can each be quantitatively evaluated against this bound.
+-
+-\textbf{Computational evidence.} B3LYP/6-311+G* density functional theory calculations supporting Condition~F1 have been performed for small prebiotic molecules, verifying that the quantum Darwinism redundancy parameter exceeds unity for molecular environments at biological temperatures~\cite{Sandeman2026RACI}.
++Any proposed prebiotic mechanism must produce a system whose finite assembly depth lies inside a persistence window wide enough for recursive closure to begin.
++
++\textbf{Lower bound:} $\tilde{A}_{\mathrm{RA}}\ge 2$. An autocatalytic or self-maintaining onset requires at least two linked causally irreducible layers forming a feedback-bearing organization. A single layer cannot maintain its own boundary conditions.
++
++\textbf{Upper bound:} the boundary turnover rate of the local environment must not exceed the re-inscription rate available to the candidate organization. In the present revision this upper bound is expressed operationally, not yet by a closed first-principles formula.
++
++The sandwich bound therefore constrains any proposed origin-of-life candidate by a pair of native inequalities: enough assembly depth to sustain feedback, and enough persistence to keep the resulting boundary from being overwritten. RNA-world, metabolism-first, and mineral-template scenarios can all be evaluated against this native pair of constraints without importing a separate decoherence theory.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{Deferred Boundary-Computation Targets}
+@@ -306,21 +300,21 @@
+ 
+ The Causal Firewall gives three universal biosignature criteria that do not presuppose any specific chemistry:
+ 
+-\textbf{B1 (Redundant information recording):} The environment satisfies F1---it supports quantum Darwinism, meaning actualized states are redundantly recorded in environmental degrees of freedom.
+-
+-\textbf{B2 (Controlled decoherence):} The environment satisfies F2---the Unruh temperature is far below the ambient thermal temperature, ensuring finite and controlled actualization rates.
+-
+-\textbf{B3 (Edge-of-chaos density):} The local causal actualization density operates near $\mu\approx 1$---the percolation threshold at which the causal graph transitions from isolated clusters to a giant connected component.
++\textbf{B1 (Redundant boundary inscription):} the local organization satisfies F1, so boundary outcomes are written redundantly across multiple channels.
++
++\textbf{B2 (Bounded boundary turnover):} the local organization satisfies F2, so ambient overwrite activity does not outrun interior re-inscription.
++
++\textbf{B3 (Closure-supporting density):} the local causal actualization density operates in the connectivity window in which recursive organization can persist rather than fragment.
+ 
+ \subsection{Falsifiable predictions}
+ 
+-\textbf{Structural impossibility:} Life is structurally impossible in environments where $T_U\sim T_{\mathrm{env}}$. This excludes neutron star surfaces, black hole vicinities, and the first microseconds after cosmological nucleation. The prediction is categorical, not statistical.
+-
+-\textbf{Substrate universality:} All extraterrestrial life---regardless of molecular substrate---satisfies F1, F2, and B3. This predicts that SETI searches weighted by B1--B3 will outperform searches weighted by conventional habitable-zone criteria (liquid water, Earth-like temperature).
+-
+-\textbf{Causal depth as selection pressure:} Causal depth is an independent selection pressure in natural selection, distinct from energy efficiency and reproductive rate. Organisms with greater causal depth (more actualization layers between environmental input and behavioral output) have a structural advantage in complex environments. This is testable via comparative analysis of causal depth across taxa.
+-
+-\textbf{Assembly convergence:} The RA assembly depth and the Assembly Theory index converge for molecules with $A>15$. Systematic computation across the KEGG/BiGG metabolic network would test this conjecture.
++\textbf{Structural impossibility:} life is structurally impossible in environments whose boundary turnover outruns the maximum re-inscription rate of candidate organized networks. This excludes sufficiently violent environments even when abundant chemistry is present.
++
++\textbf{Substrate universality:} any extraterrestrial life---regardless of molecular substrate---must satisfy B1--B3. This predicts that SETI searches weighted by boundary maintenance, persistence, and closure-supporting density should outperform searches weighted only by conventional habitable-zone criteria.
++
++\textbf{Causal depth as selection pressure:} causal depth is an independent selection pressure in natural selection, distinct from energy efficiency and reproductive rate. Organisms with greater causal depth (more actualization layers between environmental input and behavioural output) should have a structural advantage in complex environments. This is testable via comparative analysis of causal depth across taxa.
++
++\textbf{External-comparison convergence:} systematic comparison of $\tilde{A}_{\mathrm{RA}}$ with external complexity indices across KEGG/BiGG reaction networks is a downstream empirical project, not an active theorem of this paper.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{Perception, Agency, and Consciousness: Structural Constraints}
+@@ -408,7 +402,7 @@
+ \end{tabular}
+ \end{center}
+ 
+-\textbf{Legend:} LV = Lean-verified theorem. DR = derived (all steps explicit within RA). CV = computation-verified (exact derivation plus numerical evaluation). PI = phenomenological interpolation (motivated identification supported by numerical evidence, not derived from first principles). AR = argued (physically motivated, not all steps explicit). CN = conjecture (stated path to closure, no current derivation). Prediction = falsifiable consequence testable with current or near-future data.
++\textbf{Legend:} DR = derived in native RA terms. CV = computation-verified. AR = argued. CN = conjecture. Deferred = not part of the active support surface in the present revision. Retired = removed from active support because it depended on non-native machinery or legacy artifacts.
+ 
+ %% ═══════════════════════════════════════════════════════════
+ \section{Conclusion}

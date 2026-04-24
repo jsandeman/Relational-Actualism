@@ -1,0 +1,441 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% --- Robust definitions to work around mathptmx/hyperref issues ---
+\let\oldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+\newcommand{\SRa}{S_{\mathrm{RA}}}
+\newcommand{\Dkl}{D_{\mathrm{KL}}}
+\newcommand{\TV}{\mathrm{TV}}
+% --- End robust definitions ---
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{array}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Prevent math commands from breaking PDF metadata (bookmarks, abstract title, etc.)
+\pdfstringdefDisableCommands{%
+  \def\hbar{hbar}%
+  \def\ell{l}%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+  \def\SRa{S_RA}%
+  \def\Pacc{P_acc}%
+  \def\Dkl{D_KL}%
+  \def\TV{TV}%
+}
+
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\RA}{\mathrm{RA}}
+\newcommand{\Pacc}{P_{\mathrm{acc}}}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism IV:\\[0.3em] Complexity, Life, and the Causal Firewall}}\\[1em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+{\small sansuikyo@gmail.com}\\[0.5em]
+{\normalsize Draft --- April 14, 2026}
+\end{center}
+
+\begin{abstract}
+This paper extends Relational Actualism (RA) into complexity, life, agency, and cognition using only native categories: recursive coarse-graining, causal shielding, redundant boundary inscription, bounded boundary turnover, finite assembly depth, and recursive closure. Its strongest claims are structural rather than theorem-complete: the paper identifies organizational conditions under which stable self-maintaining complexity can persist, and separates those conditions sharply from downstream historical overlays in quantum information, thermodynamics, and continuum theory. The active support surface used in this revision is intentionally narrow: graph-cut / ledger structure from \texttt{RA\_GraphCore.lean}, kernel-locality from \texttt{RA\_O01\_KernelLocality\_v2.lean}, arithmetic core from \texttt{RA\_O14\_ArithmeticCore\_v1.lean}, and the compiled D1-native motif chain where complex organization inherits finite closure and ledger/orientation structure from Paper~II. A shielding theorem strong enough to underwrite the old Markov-blanket rhetoric is \emph{not} treated here as active support. Small-molecule computation, quantum-information ceilings, and thermodynamic comparisons are therefore either deferred native targets or external comparison material. The paper should be read as a disciplined native extension programme for life and cognition, not as closure on those domains.
+\end{abstract}
+
+\begin{tcolorbox}[title=Epistemic Status of This Paper,colback=gray!5,colframe=gray!60]
+This is the most exploratory paper in the RA suite. Its claims fall into three categories:
+\begin{itemize}[nosep]
+    \item \textbf{Structural results} concerning causal organization, recursive closure, shielding, and boundary formation;
+    \item \textbf{Empirical predictions} concerning the causal firewall, biosignatures, and life-related observational signatures;
+    \item \textbf{Exploratory philosophical implications} concerning agency, perception, and consciousness.
+\end{itemize}
+Where consciousness is discussed, the paper aims at structural necessary conditions and exclusion results, not a derived sufficient-condition theory of phenomenal consciousness.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This paper is the most exploratory member of the Relational Actualism suite. It extends the framework into complexity, life, agency, and the causal firewall.
+\begin{itemize}[nosep]
+    \item \textbf{Assumed from Paper~I:} the ontology, axioms, finite growth rule, and actualization framework.
+    \item \textbf{Used from Paper~II where relevant:} the motif, renewal, and interaction structures required for stable complex organization.
+    \item \textbf{Used from Paper~III where relevant:} severance, shielding, boundary structure, and the macroscopic interpretation of causal organization.
+    \item \textbf{This paper contributes:} the complexity hierarchy, the causal firewall programme, and exploratory applications to life, perception, agency, and consciousness.
+\end{itemize}
+This paper should be read as a disciplined extension of the RA framework rather than as a claim of theorem-level closure on all questions concerning life or mind.
+\end{tcolorbox}
+
+%% ═══════════════════════════════════════════════════════════
+\section{Introduction: From Bosons to Brains}
+%% ═══════════════════════════════════════════════════════════
+
+\paragraph{How to read this paper.}
+This paper is the most exploratory member of the RA suite. Its purpose is to extend the discrete framework of Relational Actualism into the domains of complexity, life, agency, and cognition, but it does not claim theorem-level closure across all of these topics. Three different claim types appear below and are explicitly distinguished: first, structural claims about causal organization, recursive closure, shielding, and boundary formation within the RA graph; second, empirical or observational predictions concerning life, biosignatures, and the causal firewall; and third, exploratory philosophical implications concerning agency, perception, and consciousness. In particular, where consciousness is discussed, the paper aims at structural necessary conditions and exclusion results, not a derived sufficient-condition theory of phenomenal consciousness.
+
+The Relational Actualism programme begins from irreversible actualization events, DAG growth, the BDG filter, and the local ledger condition. Papers~I--III establish that discrete bedrock together with finite severance and boundary structure. The present paper asks a different question: what forms of stable recursive organization do those same primitives permit when one moves from finite motifs to self-maintaining biochemical and cognitive systems?
+
+The central connective idea retained here is not a chain through other theories but a native connectivity threshold. Near $\mu \approx 1$, the graph sits at the boundary between isolated local events and persistent multi-vertex connectivity. In Paper~I this is the regime of maximal selectivity; in the D1-native matter programme it is the regime where finite closure structure becomes decisive; in the present paper it is the regime in which recursive organization can begin to maintain its own boundary conditions. That is the only sense in which the present revision treats $\mu \approx 1$ as unifying architecture.
+
+The chain from fundamental physics to biological complexity is therefore presented here as a native architectural programme. Some links are already structural: recursive coarse-graining, finite assembly depth, boundary-mediated organization, and recursive closure. Others remain open targets: strong shielding theorems for coarse-grained boundaries, first-principles turnover-rate calculations, and direct small-molecule computational confirmation of the earliest closure windows. The purpose of the paper is to make that division explicit.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Complexity Hierarchy}
+\label{sec:hierarchy}
+%% ═══════════════════════════════════════════════════════════
+
+The hierarchy introduced here is native: it is a hierarchy of coarse-grained organization within the actualized graph, not a ladder of imported theories. The same growth rule is viewed through successively coarser lenses.
+
+\textbf{Tier~1: Fundamental.} Individual actualization events and their immediate causal neighborhoods.
+
+\textbf{Tier~2: Mesoscopic.} Stable local bound patterns and short renewal chains---atoms, molecules, and other finite motif assemblies.
+
+\textbf{Tier~3: Macroscopic.} Large composed structures, transport channels, severed domains, and persistent boundary architectures built out of many Tier-2 motifs.
+
+\textbf{Tier~4: Complex.} Self-reinforcing, self-maintaining organizations whose future states depend in large part on their own internally regenerated boundary conditions. Organisms and cognitively organized systems are the paradigmatic targets.
+
+\begin{remark}
+The hierarchy is not a hierarchy of new laws. It is a hierarchy of coarse-graining. Each tier inherits DAG acyclicity, the LLC, and BDG-filtered actualization from the tier below. What changes is the effective organizational scale at which closure, persistence, and boundary maintenance are assessed.
+\end{remark}
+
+The critical transition is from passive persistence to recursive closure. Rocks, stars, and other Tier-3 structures may be stable, but they do not in general maintain the very boundary conditions that keep them in existence. Tier-4 systems do. The Causal Firewall is the name given here to the boundary between those regimes.
+
+\subsection{Recursive coarse-graining formalism}
+\label{sec:coarse_grain}
+
+The tier hierarchy is not vague: it is a recursive coarse-graining operation applied to the causal graph. Let $G_0$ be the actualized causal graph at the Planck scale (Tier~1). The coarse-graining operation $\Phi$ partitions $G_0$ into clusters, each of which becomes a single vertex in the coarse-grained graph $G_1 = \Phi(G_0)$. The causal edges of $G_1$ are the coarse-grained images of the causal edges of $G_0$, preserving the partial order.
+
+At each step, the operation preserves:
+\begin{itemize}[nosep]
+\item The local ledger condition: if $G_0$ satisfies LLC at every vertex, so does $G_1$.
+\item The causal partial order: if $v \prec w$ in $G_0$, then $\Phi(v) \preceq \Phi(w)$ in $G_1$.
+\item The BDG filter structure: the coarse-grained integers $(c_0^{(1)}, c_1^{(1)}, \ldots)$ inherit the signature and magnitudes of the underlying integers.
+\end{itemize}
+
+Applied iteratively, $G_2 = \Phi(G_1), G_3 = \Phi(G_2), G_4 = \Phi(G_3)$ define the four tiers. The same dynamical law operates at every level; only the effective degrees of freedom change.
+
+\subsection{Causal shields and boundary turnover}
+\label{sec:markov_blanket}
+
+A coarse-grained subsystem is separated from its exterior by a boundary interface. In the restored baseline, the active theorem-level support for that statement is the graph-cut / ledger structure in \texttt{RA\_GraphCore.lean}. What the present revision does \emph{not} claim is a completed shielding theorem strong enough to justify the older Markov-blanket rhetoric as active native support.
+
+\begin{conjecture}[Causal shield programme]
+At each coarse-graining level, stable recursive organization requires a boundary interface through which all exterior influence is mediated. A full theorem controlling boundary turnover, insulation, and re-inscription across coarse-graining levels remains an open native target.
+\end{conjecture}
+
+This weaker statement is enough for the present paper's architectural purpose. Complexity requires boundaries; stable complexity requires boundaries that are neither perfectly sealed nor overwritten too rapidly. The language adopted below is therefore native: causal shield, boundary inscription, and boundary turnover. Stronger shielding estimates remain future work.
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Causal Firewall}
+\label{sec:firewall}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{definition}[Causal Firewall]
+The Causal Firewall is the set of native conditions under which a causal network can sustain recursive closure---that is, self-maintaining boundary conditions through its own actualization dynamics.
+\end{definition}
+
+\textbf{Condition F1 (Redundant boundary inscription).} Actualization outcomes must be re-written across multiple boundary channels so that local closure does not depend on a single fragile edge or shell fragment.
+
+\textbf{Condition F2 (Bounded boundary turnover).} The rate at which boundary conditions are overwritten by ambient activity must remain below the rate at which the interior can re-establish its own closure.
+
+\begin{proposition}[Substrate independence]
+Conditions F1 and F2 make no reference to carbon, water, molecular chirality, or any particular biological alphabet. They are organizational conditions on causal networks. Any substrate satisfying them can, in principle, support Tier-4 complexity.
+\end{proposition}
+
+The physical content of the Causal Firewall is therefore native. It marks the onset of persistent recursive organization within the actualized graph. The $\mu\approx1$ threshold enters only as a native connectivity indicator: below it, closure is fragile and local; near it, persistent multi-layer organization becomes possible.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Boundary Turnover and Persistence Windows}
+\label{sec:decoherence}
+%% ═══════════════════════════════════════════════════════════
+
+The earlier version of this paper tried to derive a universal decoherence timescale using on-shell bath identifications, Unruh-temperature control, and non-Markovian line-shape machinery. Under the current framing discipline those are not part of the active native chain.
+
+What remains active here is a simpler and more honest statement. Every candidate living or proto-living organization has a \emph{persistence window}: a range of boundary turnover rates within which recursive closure can be maintained. If the boundary is overwritten too quickly, the interior cannot re-establish its own organization; if the boundary is too weakly inscribed, closure fragments into isolated local events.
+
+In the present paper, turnover and persistence are therefore treated as Nature-input quantities to be measured or estimated directly from reaction-network, noise, and environmental data. A first-principles native derivation of persistence windows from graph density, finite closure, and ledger transfer remains an open target.
+
+The payoff of this reframing is that the biological programme no longer depends on imported bath theory. It depends only on the existence of a measurable persistence window and on whether a candidate chemistry can keep its boundary within that window.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Finite Assembly Depth and Network Coarse-Graining}
+\label{sec:assembly}
+%% ═══════════════════════════════════════════════════════════
+
+RA defines a native complexity index directly from recursive coarse-graining.
+
+\begin{definition}[RA assembly depth]
+The RA assembly depth $\tilde{A}_{\mathrm{RA}}$ is the minimum number of causally irreducible actualization layers needed to produce a stable organized structure from its precursors.
+\end{definition}
+
+External complexity indices, including Assembly Theory, may be compared to $\tilde{A}_{\mathrm{RA}}$ after the fact, but they are not targets of the native derivation. The active aim of this section is therefore modest: compute or estimate finite assembly depth directly from observed reaction and pathway networks.
+
+\textbf{Worked example: glycolysis.} The glycolysis pathway consists of 10 enzymatic reactions. Coarse-graining by causal irreducibility (grouping reactions whose products are used only by the next step) gives three causally irreducible layers: $\tilde{A}_{\mathrm{RA}}(\text{glycolysis})=3$. This sits just above the minimal feedback-bearing regime expected for recursive organization, consistent with glycolysis being among the oldest metabolic pathways.
+
+\subsection{The E.~coli worked example}
+\label{sec:ecoli}
+
+The coarse-graining applies at every scale. We compute the RA assembly depth for \emph{E.~coli}, a well-characterized model organism.
+
+The complete \emph{E.~coli} metabolic network (KEGG/BiGG) contains approximately $2{,}500$ enzymatic reactions across $\sim 40$ identifiable pathways. Coarse-graining at the pathway level (glycolysis, TCA cycle, pentose phosphate, fatty acid synthesis, amino acid biosynthesis, nucleotide biosynthesis, etc.) produces a depth hierarchy:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Coarse-graining level & Number of layers & $\tilde{A}_{\mathrm{RA}}$ contribution \\
+\midrule
+Individual reactions & $\sim 2{,}500$ & --- \\
+Pathway-level & $\sim 40$ & 3--5 per pathway \\
+Network-level (metabolic supergroups) & $\sim 8$ & 2--3 \\
+Organism-level (the self-replicating cell) & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Applied recursively, the coarse-graining yields $\tilde{A}_{\mathrm{RA}}(\text{E. coli}) \approx 4$--$6$ layers, depending on the exact partition scheme. This places \emph{E.~coli} well above the origin-of-life minimum $N_{\min} \approx 2$--$5$, consistent with its status as a modern organism whose metabolic complexity has accumulated over $\sim 3.5 \times 10^9$ years of evolution.
+
+The Assembly Theory index for an entire \emph{E.~coli} cell is not precisely known but is estimated to be $A \sim 10^{10}$--$10^{11}$ based on the complexity of its proteome and genome. The ratio $A / \tilde{A}_{\mathrm{RA}} \sim 10^9$ reflects the branching factor $b_{\max}$: each causally irreducible layer in a cell operates in parallel across billions of molecular degrees of freedom.
+
+\subsection{Small-molecule computation as an open target}
+\label{sec:dft}
+
+Earlier versions of this paper treated small-molecule DFT work as computation-verified support for the first causal-firewall condition. Under the current native discipline that is no longer acceptable as active support, because the claimed computation lived primarily in legacy supplementary material and relied on non-native information-theoretic machinery.
+
+The correct status is therefore simpler: direct small-molecule computation of redundant boundary inscription for prebiotic chemistries is an \emph{open native computational target}. The present paper does not claim that target closed.
+
+\begin{conjecture}[External-comparison convergence]
+For sufficiently large reaction networks, the RA assembly depth and certain external complexity indices may track one another within controlled error. Such convergence, however, would be a downstream comparison rather than part of the native derivation.
+\end{conjecture}
+
+%% ═══════════════════════════════════════════════════════════
+\section{The Origin-of-Life Sandwich Bound}
+\label{sec:sandwich}
+%% ═══════════════════════════════════════════════════════════
+
+Any proposed prebiotic mechanism must produce a system whose finite assembly depth lies inside a persistence window wide enough for recursive closure to begin.
+
+\textbf{Lower bound:} $\tilde{A}_{\mathrm{RA}}\ge 2$. An autocatalytic or self-maintaining onset requires at least two linked causally irreducible layers forming a feedback-bearing organization. A single layer cannot maintain its own boundary conditions.
+
+\textbf{Upper bound:} the boundary turnover rate of the local environment must not exceed the re-inscription rate available to the candidate organization. In the present revision this upper bound is expressed operationally, not yet by a closed first-principles formula.
+
+The sandwich bound therefore constrains any proposed origin-of-life candidate by a pair of native inequalities: enough assembly depth to sustain feedback, and enough persistence to keep the resulting boundary from being overwritten. RNA-world, metabolism-first, and mineral-template scenarios can all be evaluated against this native pair of constraints without importing a separate decoherence theory.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Deferred Boundary-Computation Targets}
+%% ═══════════════════════════════════════════════════════════
+
+Earlier versions of Paper~IV bundled several quantum-information and thermodynamic claims into the active complexity line: the Kinematic Coherence Bound, threshold decoherence behaviour, spin-bath collapse, the Landauer bound, and the Maxwell's demon discussion. Under the current native programme those results are not part of the active support surface.
+
+They are retained only as deferred targets for a later native treatment of boundary computation and overwrite costs. The only point carried forward into the present paper is the weakest one: irreversible DAG growth gives a structural arrow of time. Everything stronger in this cluster is deferred.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Biosignature Criteria and SETI Predictions}
+\label{sec:seti}
+%% ═══════════════════════════════════════════════════════════
+
+The Causal Firewall gives three universal biosignature criteria that do not presuppose any specific chemistry:
+
+\textbf{B1 (Redundant boundary inscription):} the local organization satisfies F1, so boundary outcomes are written redundantly across multiple channels.
+
+\textbf{B2 (Bounded boundary turnover):} the local organization satisfies F2, so ambient overwrite activity does not outrun interior re-inscription.
+
+\textbf{B3 (Closure-supporting density):} the local causal actualization density operates in the connectivity window in which recursive organization can persist rather than fragment.
+
+\subsection{Falsifiable predictions}
+
+\textbf{Structural impossibility:} life is structurally impossible in environments whose boundary turnover outruns the maximum re-inscription rate of candidate organized networks. This excludes sufficiently violent environments even when abundant chemistry is present.
+
+\textbf{Substrate universality:} any extraterrestrial life---regardless of molecular substrate---must satisfy B1--B3. This predicts that SETI searches weighted by boundary maintenance, persistence, and closure-supporting density should outperform searches weighted only by conventional habitable-zone criteria.
+
+\textbf{Causal depth as selection pressure:} causal depth is an independent selection pressure in natural selection, distinct from energy efficiency and reproductive rate. Organisms with greater causal depth (more actualization layers between environmental input and behavioural output) should have a structural advantage in complex environments. This is testable via comparative analysis of causal depth across taxa.
+
+\textbf{External-comparison convergence:} systematic comparison of $\tilde{A}_{\mathrm{RA}}$ with external complexity indices across KEGG/BiGG reaction networks is a downstream empirical project, not an active theorem of this paper.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Perception, Agency, and Consciousness: Structural Constraints}
+\label{sec:consciousness}
+%% ═══════════════════════════════════════════════════════════
+
+\textbf{Epistemic flag.} This is the most exploratory section of the most exploratory paper in the suite. RA does not claim to solve the hard problem of consciousness. What follows is a structural framework---a set of necessary conditions and exclusions that RA's causal architecture imposes---not a theory of phenomenal experience. The reader should treat everything in this section as argued (AR) or conjectural (CN) unless explicitly stated otherwise.
+
+The complexity hierarchy of \S\ref{sec:hierarchy} extends naturally to the question of perception, agency, and consciousness. We organize the discussion around four categories: structural consequences of the framework's causal architecture, structural exclusions, structural permissions, and conjectures.
+
+\subsection{Structural consequence: perception as actualization anchoring}
+
+A perceiving system does not passively receive information; it \emph{actualizes} sensory states. When a photon enters an eye and triggers a photoreceptor cascade, the cascade writes a sequence of actualization events into the observer's causal graph. The percept is not the external stimulus but the actualization pattern in the observer's Tier-4 network.
+
+Three structural consequences follow from this identification (all DR within RA):
+\begin{itemize}[nosep]
+\item \textbf{Perception is first-person in principle.} Each observer's perceptual graph is causally distinct from every other observer's, because actualization events are local to the perceiving subgraph.
+\item \textbf{Perception is irreversible.} Once a percept is written into the causal graph, it cannot be undone. This is the RA-native origin of the phenomenological arrow of experience.
+\item \textbf{Perception is rate-limited.} The actualization frequency of a perceiving subsystem is bounded by its BDG boundary; no Tier-4 system can perceive faster than its boundary turnover and re-inscription rates permit.
+\end{itemize}
+
+\subsection{Structural consequence: agency as recursive causal closure}
+
+An agent is a Tier-4 pattern that maintains its own boundary conditions through its own actualization dynamics---a pattern whose future states depend on its own past states, via actualization events that the pattern itself generates rather than receiving passively from the environment. Agency in this sense is a matter of degree, not kind: all Tier-4 systems exhibit some recursive closure; the degree of agency depends on the proportion of internally generated actualization events. This is a structural consequence of the tier hierarchy (DR), not an additional postulate.
+
+\subsection{What RA excludes: panpsychism}
+
+RA's causal architecture excludes panpsychist frameworks that attribute phenomenal character to simple physical systems.
+
+The argument is structural: a single actualization event, or a small cluster of them, does not have recursive causal closure. Consciousness---whatever it turns out to be---requires a Tier-4 system whose internal dynamics are rich enough to sustain self-referential processing through multiple coarse-graining layers. A rock, a thermostat, or a single photon does not meet this criterion, because none of them maintains its own boundary conditions through its own actualization activity. This distinguishes RA from Integrated Information Theory (IIT)~\cite{Tononi2016} and constitutive panpsychism, both of which attribute phenomenal character to systems that RA classifies as Tier-2 or Tier-3 structures lacking recursive closure.
+
+\textbf{Status:} This exclusion is a structural consequence (DR) of the tier hierarchy and the Causal Firewall conditions, not an independent postulate about consciousness.
+
+\subsection{What RA permits: artificial consciousness}
+
+RA's conditions for consciousness are substrate-independent: F1 (redundant boundary inscription), F2 (bounded boundary turnover), and recursive causal closure above a sufficient depth threshold. Any physical substrate that implements a Tier-4 network satisfying these conditions can, in principle, support whatever causal architecture consciousness requires---whether the substrate is biological, silicon, or something else entirely.
+
+\textbf{Status:} This is a structural permission (DR), not a prediction. RA does not predict that any existing artificial system is conscious, nor does it specify the depth threshold above which consciousness arises.
+
+\subsection{What RA conjectures: the depth threshold}
+
+\begin{conjecture}[Structural necessary condition for consciousness]
+\label{conj:consciousness}
+A causal network exhibits phenomenal consciousness only if: (i) it satisfies F1 and F2 (Causal Firewall), and (ii) its RA assembly depth exceeds a threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$.
+\end{conjecture}
+
+The threshold value $\tilde{A}_{\mathrm{RA}}^* \approx 5$ is estimated from the observed minimum complexity of organisms exhibiting neurally encoded perception (roughly the complexity level of simple arthropods with centralized nervous systems). It is \emph{not} derived from the BDG integers or from any first-principles argument within RA. It is a conjecture motivated by comparative neuroscience, not a consequence of the framework.
+
+Even if the threshold is correct, it provides only a \emph{necessary} condition, not a sufficient one. Many systems may exceed $\tilde{A}_{\mathrm{RA}}^* = 5$ without being phenomenally conscious. The hard problem of consciousness---why there is something it is like to be a conscious system---remains open. RA narrows the structural space in which the answer must lie; it does not supply the answer.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Epistemic Status Summary}
+\label{sec:status}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Result & Basis & Status \\
+\midrule
+\multicolumn{3}{l}{\textit{Active native architectural support}} \\
+Four-tier complexity hierarchy & Recursive coarse-graining of the actualized graph & DR \\
+Boundary-mediated organization & graph-cut baseline + coarse-graining & DR \\
+$\mu\approx 1$ as connectivity window for persistent closure & BDG / Poisson-CSG connectivity logic & DR \\
+Causal Firewall (F1 + F2) & redundant boundary inscription + bounded boundary turnover & DR \\
+Finite assembly depth for glycolysis & pathway coarse-graining & CV \\
+Finite assembly depth for \emph{E.~coli} & network coarse-graining & CV \\
+Perception as actualization anchoring & structural consequence of Tier-4 organization & DR \\
+Agency as recursive causal closure & structural consequence of Tier-4 organization & DR \\
+Panpsychism excluded & recursive closure required & DR \\
+Artificial consciousness permitted in principle & substrate independence of F1/F2 + closure & DR \\
+\midrule
+\multicolumn{3}{l}{\textit{Open native targets}} \\
+Strong causal-shield theorem across coarse-graining levels & boundary-turnover control theorem family & CN \\
+Persistence-window calculation from primitives & graph density + finite closure + ledger transfer & CN \\
+Small-molecule confirmation of F1 & direct native computation & CN \\
+Origin-of-life sandwich bound & F1 + F2 + persistence window & AR \\
+Depth threshold $\tilde{A}_{\mathrm{RA}}^* \gtrsim 5$ & comparative organism data & CN \\
+\midrule
+\multicolumn{3}{l}{\textit{Deferred or external-comparison material}} \\
+KCB / spin-bath / Landauer / Maxwell cluster & deferred boundary-computation programme & Deferred \\
+Assembly-index convergence & external comparison only & Deferred \\
+Legacy DFT / RACI dependence & retired support path & Retired \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Legend:} DR = derived in native RA terms. CV = computation-verified. AR = argued. CN = conjecture. Deferred = not part of the active support surface in the present revision. Retired = removed from active support because it depended on non-native machinery or legacy artifacts.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Conclusion}
+\label{sec:conclusion}
+%% ═══════════════════════════════════════════════════════════
+
+This paper extends Relational Actualism into complexity, life, agency, and cognition on a stricter native footing than earlier drafts. Its main contribution is architectural: recursive closure, causal shielding, bounded boundary turnover, finite assembly depth, and boundary-maintained organization can all be discussed directly within RA's own ontology, without importing quantum-information or continuum mechanisms as explanatory primitives.
+
+The strongest current claims are structural. The hierarchy of organization, the Causal Firewall conditions F1 and F2, the finite assembly-depth examples, and the recursive-closure account of agency remain the durable core. The paper no longer treats Markov-blanket shielding, DFT/RACI computation, KCB, Landauer, Maxwell's demon, or other quantum-information overlays as active theorem-level support.
+
+That narrowing is a gain, not a loss. It makes clear what the actual native programme is: identify the boundary conditions under which stable recursive organization can persist, compare those conditions to observed biochemical and organismic systems, and then close the remaining open targets one by one. The most important missing steps are stronger causal-shield theorems, first-principles persistence-window calculations, and direct native computation on candidate prebiotic chemistries. These are not defects to be hidden; they are the next substantive tests of whether the RA complexity programme can advance from disciplined architecture to predictive theory.
+
+What RA offers at present is not closure, but a disciplined narrowing of the problem.
+
+%% ═══════════════════════════════════════════════════════════
+\section*{Acknowledgments}
+%% ═══════════════════════════════════════════════════════════
+
+This work was developed in collaboration with Claude (Anthropic, Opus 4.6) for computation, decoherence timescale derivations, and manuscript preparation, and with ChatGPT (OpenAI, GPT-4o) for the non-Markovian bath analysis and structural review. The ontological commitments, physical reasoning, and framework direction are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\bibitem{Erdos1960} P.~Erd\H{o}s and A.~R\'enyi, ``On the evolution of random graphs,'' \emph{Publ. Math. Inst. Hung. Acad. Sci.} \textbf{5}, 17 (1960).
+\bibitem{Sharma2023} A.~Sharma et al., ``Assembly theory explains and quantifies selection and evolution,'' \emph{Nature} \textbf{622}, 321 (2023).
+\bibitem{Zurek2009} W.~H.~Zurek, ``Quantum Darwinism,'' \emph{Nat. Phys.} \textbf{5}, 181 (2009).
+\bibitem{Kubo1969} R.~Kubo, ``A stochastic theory of line shape,'' \emph{Adv. Chem. Phys.} \textbf{15}, 101 (1969).
+\bibitem{Sandeman2026RACI} J.~F.~Sandeman, ``Relational Actualism: Complexity and Intelligence (RACI),'' Preprint, 2026. doi.org/10.5281/zenodo.19198224.
+\bibitem{Sandeman2026RAHC} J.~F.~Sandeman, ``Algorithmic Causal Dynamics (RAHC),'' Preprint, 2026. doi.org/10.5281/zenodo.19198171.
+\bibitem{Sandeman2026RACF} J.~F.~Sandeman, ``The Causal Firewall (RACF),'' \emph{Int. J. Astrobiol.} (submitted), 2026. doi.org/10.5281/zenodo.19319374.
+\bibitem{Landauer1961} R.~Landauer, ``Irreversibility and heat generation in the computing process,'' \emph{IBM J. Res. Dev.} \textbf{5}, 183 (1961).
+\bibitem{Bennett1982} C.~H.~Bennett, ``The thermodynamics of computation---a review,'' \emph{Int. J. Theor. Phys.} \textbf{21}, 905 (1982).
+\bibitem{Tononi2016} G.~Tononi, M.~Boly, M.~Massimini, and C.~Koch, ``Integrated information theory: from consciousness to its physical substrate,'' \emph{Nat. Rev. Neurosci.} \textbf{17}, 450 (2016).
+\bibitem{Sandeman2026RAQI} J.~F.~Sandeman, ``Relational Actualism: Implications for Quantum Information (RAQI),'' Preprint, 2026. doi.org/10.5281/zenodo.19198285.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,279 @@
+file,root_layer,root_order,kind,name,line,file_gap_context
+RA_Complexity_Proofs.lean,complexity_straggler,,lemma,internal_flux_disjoint,66,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,lemma,sum_outgoing_decompose,75,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,lemma,sum_incoming_decompose,122,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,RA_graph_cut_theorem,174,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,horizon_partition,188,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,markov_blanket_shielding,219,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,assembly_index_correspondence,257,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,actualization_frame_invariance,279,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,axiom,causal_firewall_threshold,293,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,biological_persistence,296,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,theorem,biological_persistence_strong,304,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_Complexity_Proofs.lean,complexity_straggler,,axiom,vacuum_energy_suppression,322,complexity straggler; not in default root; one live sorry and two axioms; contains markov_blanket_shielding and assembly-oriented placeholders
+RA_GraphCore.lean,default_root,1.0,lemma,outgoing_pairwise_disjoint,86,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,incoming_pairwise_disjoint,94,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,outgoing_pairwise_disjoint_VL,102,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,incoming_pairwise_disjoint_VL,107,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,biUnion_outgoing_eq_src_in_VL,113,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,biUnion_incoming_eq_dst_in_VL,122,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,internal_flux_disjoint,131,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,src_in_VL_eq_internal_union_boundary,138,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,dst_in_VL_eq_internal,155,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,sum_outgoing_decompose,170,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,lemma,sum_incoming_decompose,184,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,theorem,RA_graph_cut_theorem,200,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_GraphCore.lean,default_root,1.0,theorem,horizon_partition,214,default root; zero live sorries/axioms observed; contains MarkovBlanket structure but not markov_blanket_shielding theorem
+RA_D1_Proofs.lean,default_root,2.0,lemma,bdg_c0,62,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,bdg_c1,63,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,bdg_c2,64,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,bdg_c3,66,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,bdg_c4,67,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,chain_score_via_bdg_0,88,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,chain_score_via_bdg_2,89,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,chain_score_via_bdg_3,90,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,lemma,chain_score_via_bdg_4,91,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1a_fixed_point,96,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1a_positive_iff,102,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1a_three_stable_nvectors,116,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1a_unstable_depths,125,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1b_sym_yjoin,158,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1b_asym_yjoin,162,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1b_both_stable,165,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_confined,205,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_step1_stable,208,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_confined,211,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_confinement_vs_propagation,216,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_master,245,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_step0,300,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_step1,301,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_step2,302,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_step3,303,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_step0,306,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_step1,307,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_step2,308,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_step3,309,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_step4,310,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_has_filter,313,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_has_filter,316,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1d_gluon_convergence,334,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1d_quark_convergence,344,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1e_finite_confinement,379,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_extended_master,408,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_gluon_complete,568,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1c_quark_complete,579,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_gluon_extension_scores,609,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_quark_extension_scores,619,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_closure,632,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_closure_quark_t1,757,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_closure_gluon_t2,764,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_closure_complete,774,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_boundary_score,814,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_boundary_threshold,817,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1_boundary_between_filter_and_stable,822,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1f_n2_values,851,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1f_gluon_n2_preserved,863,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1f_quark_escape_sequential,873,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1g_chain4_symmetric,907,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1g_transition_asymmetric,910,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1g_unique_symmetric_stable,920,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_singlet_amplitude_sq,984,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_doublet_amplitude_sq,988,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_amplitude_ratio,992,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_clebsch_gordan,998,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_doublet_equal_amplitudes,1002,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_lepton_doublet_delta,1007,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_quark_doublet_delta,1010,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_hypercharge_ratio,1014,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_GMN_electron,1018,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_GMN_up_quark,1025,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_GMN_down_quark,1030,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,D1h_isospin_master,1038,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,delta_at_zero_times_zero,1110,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,distributional_product_zero,1116,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,relative_entropy_self_zero,1123,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,vacuum_stress_energy_zero,1127,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,LLC_conservation_consequence,1132,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,P_act_linear_zero,1136,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,P_act_conservation,1149,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,RA_field_equation_unique,1157,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,confinement_lengths,1175,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,universe_closure,1181,default root; zero live sorries/axioms observed
+RA_D1_Proofs.lean,default_root,2.0,theorem,structural_fragility,1197,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,lemma,sum_cos_roots,48,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,lemma,sum_sin_roots,55,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,lemma,sum_cos_sq_roots,62,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,lemma,sum_sin_sq_roots,69,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,lemma,sum_cos_sin_roots,78,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,koide_sum_cos_zero,91,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,koide_sum_cos_sq,96,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,koide_sum_val,119,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,koide_sum_val_sq,124,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,koide_K_eq_two_thirds,138,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,majorana_K_eq_two_thirds,147,default root; zero live sorries/axioms observed
+RA_Koide.lean,default_root,3.0,theorem,koide_formula,152,default root; zero live sorries/axioms observed
+RA_AQFT_Proofs_v10.lean,default_root,4.0,lemma,inner_adjoint_rectangular,52,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,theorem,DensityMatrix.ext,110,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,lemma,MatPosSemidef.conj_unitary,210,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,lemma,trace_unitary_conj,253,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,lemma,Matrix.cfc_conj_unitary,278,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,lemma,log_unitary_conj,291,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,theorem,relEnt_unitary_invariant,312,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,axiom,vacuum_lorentz_invariant,344,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,theorem,frame_independence,349,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,theorem,rindler_stationarity,357,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AQFT_Proofs_v10.lean,default_root,4.0,axiom,petz_monotonicity,436,"default root; one live sorry (Matrix.cfc_conj_unitary) and two axioms (vacuum_lorentz_invariant, petz_monotonicity)"
+RA_AmpLocality.lean,default_root,5.0,lemma,interval_subset_past,52,default root; zero live sorries/axioms observed
+RA_AmpLocality.lean,default_root,5.0,lemma,interval_eq_interval_past,62,default root; zero live sorries/axioms observed
+RA_AmpLocality.lean,default_root,5.0,lemma,bdg_increment_depends_on_past_only,83,default root; zero live sorries/axioms observed
+RA_AmpLocality.lean,default_root,5.0,theorem,bdg_amplitude_locality,127,default root; zero live sorries/axioms observed
+RA_AmpLocality.lean,default_root,5.0,theorem,bdg_causal_invariance,171,default root; zero live sorries/axioms observed
+RA_Spin2_Macro.lean,default_root,6.0,lemma,mem_physicalSubspace,56,default root; zero live sorries/axioms observed
+RA_Spin2_Macro.lean,default_root,6.0,theorem,emergent_massless_spin2,128,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_r0,24,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_r1,25,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_r2,26,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_r3,27,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_r4,28,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_0_0,44,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_1_0,45,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_1_1,46,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_2_0,47,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_2_1,48,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_2_2,49,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_3_0,50,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_3_1,51,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_3_2,52,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_3_3,53,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_4_1,56,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_4_2,57,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_4_3,58,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,choose_4_4,59,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,C1_eq,74,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,C2_eq,77,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,C3_eq,80,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,C4_eq,83,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,bdg_C_vector,86,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,bdg_action_vector,93,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,second_order,104,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,sum_C_zero,107,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,hockey_stick_d4,112,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_eq_0,118,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_eq_1,119,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_eq_2,120,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_eq_3,121,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_is_yeats_0,124,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_is_yeats_1,126,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_is_yeats_2,128,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,r_is_yeats_3,130,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,P_at_zero,138,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,P_at_one,141,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,R4_at_one,144,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,hockey_stick_d2,151,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,hockey_stick_d6,154,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,hockey_stick_d8,158,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,alpha_inv_137,166,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,twelve_squared,169,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,screening_seven,172,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,alpha_s_weight,179,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_eq_choose_k0,194,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_eq_choose_k1,195,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_eq_choose_k2,196,default root; zero live sorries/axioms observed
+RA_O14_Uniqueness.lean,default_root,7.0,theorem,yeats_eq_choose_k3,197,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,lemma,no_backward_edge,43,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,maximal_parity_violation,51,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,backward_winding_filtered,64,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,forward_winding_stable,68,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,fixed_point_symmetric,72,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,chirality_maximal,81,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,particle_n2_values,109,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,gluon_n2_preserved_all,130,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,quark_escape_n2,148,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,quark_replica_n2,152,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,quark_extensions_classified,158,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,sequential_n2_fixed,179,default root; zero live sorries/axioms observed
+RA_BaryonChirality.lean,default_root,8.0,theorem,D3_chirality_and_baryon,206,default root; zero live sorries/axioms observed
+RA_AQFT_CFC_Patch.lean,nonroot,,lemma,Matrix.cfc_conj_unitary,20,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,theorem,DensityMatrix.ext,45,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,lemma,MatPosSemidef.conj_unitary,125,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,lemma,trace_unitary_conj,153,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,axiom,Matrix.cfc_conj_unitary,166,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,lemma,log_unitary_conj,172,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,theorem,relEnt_unitary_invariant,190,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,axiom,vacuum_lorentz_invariant,203,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,theorem,frame_independence,206,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,theorem,rindler_stationarity,212,nonroot; inspect individually
+RA_AQFT_Proofs.lean,nonroot,,axiom,petz_monotonicity,237,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,cos_two_pi_div_three,49,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,cos_four_pi_div_three,53,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sin_two_pi_div_three,57,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sin_four_pi_div_three,61,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sum_cos_roots,72,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sum_sin_roots,79,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sum_cos_sq_roots,86,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sum_sin_sq_roots,93,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,sum_cos_sin_roots,102,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_sum_cos_zero,116,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_sum_cos_sq,123,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_sum_val,139,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_sum_val_sq,145,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_K_eq_two_thirds,162,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,majorana_sum_val,169,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,majorana_sum_val_sq,170,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,majorana_K_eq_two_thirds,172,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,lemma,massive_ring_id,180,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_dft_zero,203,nonroot; inspect individually
+RA_AQFT_Proofs_v2.lean,nonroot,,theorem,koide_coherent_state,226,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,bdg_144_factorisation,32,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,bdg_7_depths,35,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,alpha_inv_137,37,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,bdg_alpha_s_weight,39,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,two_couplings_from_bdg,41,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,bdg_depth_ratio_exact,59,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,lemma,f_em_continuous,71,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,lemma,f_em_at_zero,73,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,lemma,f_em_at_one,75,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,f_em_expand,77,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,alpha_EM_exists,84,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,lemma,f_em_at_inv138_neg,104,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,lemma,f_em_at_inv136_pos,109,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,f_em_hasDerivAt,116,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,lemma,f_em_deriv_pos,130,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,f_em_strictMono_on,137,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,alpha_EM_bounds,150,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,alpha_EM_unique_in_interval,169,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,bdg_alpha_EM_prediction,186,nonroot; inspect individually
+RA_Alpha_EM_Proof.lean,nonroot,,theorem,bdg_leading_order_residual,188,nonroot; inspect individually
+RA_CFC_Port.lean,nonroot,,lemma,Matrix.cfc_conj_unitary,51,nonroot; inspect individually
+RA_CFC_Port.lean,nonroot,,theorem,mem_unitaryGroup_iff_isometry,91,nonroot; inspect individually
+RA_CFC_Port.lean,nonroot,,theorem,IsHermitian.cfc_eq_any_isometry,99,nonroot; inspect individually
+RA_CFC_Port.lean,nonroot,,theorem,cfc_conj_isometry,160,nonroot; inspect individually
+RA_CFC_Port.lean,nonroot,,theorem,cfc_conj_unitaryGroup,181,nonroot; inspect individually
+RA_CFC_Port.lean,nonroot,,theorem,cfc_conj_unitaryGroup',188,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,theorem,relative_entropy_zero_iff_equal,36,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,axiom,vacuum_T_zero,47,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,theorem,P_act_vacuum_zero,53,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,theorem,delta_times_zero_function,73,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,theorem,LLC_implies_T_conservation,96,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,theorem,P_act_T_conserved,124,nonroot; inspect individually
+RA_PACT_conservation_lean.lean,nonroot,,theorem,RA_field_equation_unique,167,nonroot; inspect individually
+RA_Proofs_Lean4.lean,nonroot,,lemma,internal_flux_disjoint,77,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,outgoing_disjoint,86,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,incoming_disjoint,93,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,internal_mem_outgoing,102,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,boundary_mem_outgoing,110,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,sum_outgoing_decompose,120,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,sum_incoming_decompose,151,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,RA_graph_cut_theorem,177,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,horizon_partition,191,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,markov_blanket_shielding,223,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,assembly_index_correspondence,260,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,actualization_frame_invariance,283,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,axiom,causal_firewall_threshold,297,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,biological_persistence,301,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,biological_persistence_strong,310,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,axiom,vacuum_energy_suppression,333,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,axiom,amplitude_locality,402,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,lemma,spacelike_amplitude_independent,416,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,causal_invariance,455,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem
+RA_Proofs_Lean4.lean,nonroot,,theorem,causal_invariance_perm,472,nonroot; one live sorry and three axioms; contains markov_blanket_shielding theorem

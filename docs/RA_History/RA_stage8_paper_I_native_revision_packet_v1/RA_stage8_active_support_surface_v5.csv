@@ -1,0 +1,14 @@
+paper,claim_or_surface,basis,status
+Paper I,local ledger / graph-cut partition,RA_GraphCore.lean,active native compiled support
+Paper I,kernel locality / admissibility depends on realized past,RA_O01_KernelLocality_v2.lean,active native compiled support
+Paper I,d=4 arithmetic coefficient inversion,RA_O14_ArithmeticCore_v1.lean,active native compiled support
+Paper I,BDG acceptance kernel,growth rule + filter,derived native support
+Paper I,selectivity witness ΔS*(μ),finite evaluation of P_acc,computation-verified native readout
+Paper I,measurement problem dissolved,sparse vs dense actualization regimes,derived native support
+Paper I,finite propagation / event-count time,bandwidth ratio + realized event count,derived native support
+Paper I,saturation -> partition / severance onset,native finite graph argument,derived native support
+Paper I,d=4 multi-criterion kernel,arithmetic core + structural criteria,derived native programme
+Paper I,AQFT / Unruh / Rindler chain,historical bridge baseline only,deferred
+Paper I,on-shell / Lorentz / field-equation language,historical continuum cartography,archived
+Paper I,coupling-constant / Koide overlays,historical numerical cartography,archived
+Paper I,BMV / KCB / spin-bath / similar bridge tests,later-paper suite targets,deferred

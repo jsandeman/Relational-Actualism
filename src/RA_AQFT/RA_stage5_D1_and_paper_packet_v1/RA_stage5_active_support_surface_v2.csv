@@ -1,0 +1,17 @@
+module,declaration_or_family,status,active_now,paper_use
+RA_GraphCore.lean,RA_graph_cut_theorem,proved native baseline,Yes,Paper I kernel support; weak Paper IV boundary architecture
+RA_GraphCore.lean,horizon_partition,proved native baseline alias,Yes,Paper I presentation support only
+RA_O01_KernelLocality_v2.lean,bdg_kernel_depends_on_realized_past,proved standalone native replacement,Yes,Paper I and restricted Paper III support
+RA_O01_KernelLocality_v2.lean,bdg_kernel_locality,proved standalone native replacement,Yes,Paper I and restricted Paper III support
+RA_O01_KernelLocality_v2.lean,admissibility_depends_on_realized_past,proved standalone native replacement,Yes,Paper I support
+RA_O14_ArithmeticCore_v1.lean,bdg_C_vector,proved standalone arithmetic core,Yes,Paper I d=4 coefficient inversion
+RA_O14_ArithmeticCore_v1.lean,bdg_action_vector,proved standalone arithmetic core,Yes,Paper I d=4 coefficient inversion
+RA_O14_ArithmeticCore_v1.lean,second_order,proved standalone arithmetic core,Yes,Paper I arithmetic layer only
+RA_D1_NativeKernel_v1.lean,branching_stability_window,source-level native rewrite draft,No,Paper II support after compile only
+RA_D1_NativeConfinement_v1.lean,finite_closure_length,source-level native rewrite draft,No,Paper II support after compile only
+RA_D1_NativeClosure_v1.lean,closure_under_admissible_extension,source-level native rewrite draft,No,Paper II support after compile only
+RA_D1_NativeLedgerOrientation_v1.lean,depth2_ledger_preserved_symmetric / orientation_asymmetry,source-level native rewrite draft,No,Paper II / IV support after compile only
+RA_AmpLocality.lean,bdg_causal_invariance,deferred bridge,No,Do not use as active Paper III support
+RA_Proofs_Lean4.lean,markov_blanket_shielding,historical baseline only,No,Do not use as active Paper IV support
+RA_O14_Uniqueness.lean,alpha_inv_137,historical overlay / deferred native rewrite,No,Do not use as active Paper I support
+RA_D1_Proofs.lean,confinement_lengths / universe_closure / structural_fragility,restored historical baseline only,No,Use only as baseline while native rewrite compiles

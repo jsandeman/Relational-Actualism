@@ -1,0 +1,53 @@
+--- RA_Paper_II_Matter_Forces_and_Motifs_native_v4.tex
++++ RA_Paper_II_Matter_Forces_and_Motifs_native_v5.tex
+@@ -124,21 +124,13 @@
+ Across the suite, the rule is constant: RA's proof path runs through its own primitives, but each paper explicitly compares RA's claims with the established theories that presently organize the same observational domain.
+ \end{tcolorbox}
+ 
+-%% ═══════════════════════════════════════════════════════════
+-\section{Introduction}
+-%% ═══════════════════════════════════════════════════════════
+-
+-Nature presents masses, radii, lifetimes, interaction ranges, and matter-sector asymmetries. The aim of Paper~II is to confront that domain directly from RA's own primitives: DAG growth, the BDG acceptance kernel, the local ledger condition, and finite motif renewal. The paper is not written as if the Standard Model did not exist; it is written on the stronger claim that the Standard Model's successes define an empirical domain RA must address, but not the mechanism RA must borrow.
+-
+-That distinction is especially important because RA is not ``out of the blue.'' Its immediate mathematical lineage is causal set theory \cite{Bombelli1987,Sorkin1997,Rideout2000}. Like causal set theory, RA treats physical reality as a locally finite causal order and takes sequential growth seriously. Like the BDG programme, it uses a native discrete action \cite{Benincasa2010,Dowker2013}. What RA adds is what allows a matter programme to become possible: irreversible actualization as a primitive event, the realized/potentia split, the local ledger condition at every vertex, and the use of the $d=4$ BDG score itself as the local event-acceptance filter. In that sense RA should be read as a causal-set theory with additional dynamical and ontological structure, not as a rejection of the causal-set programme.
+-
+-Compared with the Standard Model, the difference is more dramatic. Standard particle physics organizes the same empirical domain by quantum fields, gauge representations, spontaneous symmetry breaking, and renormalization. RA instead proposes that the observed regularities of matter are consequences of a finite census of stable motifs selected by the BDG kernel and sustained by closure/renewal conditions. The comparison matters scientifically because both frameworks aim at the same observed world. But the mechanism is different, and in some places RA has no direct analogue of the standard-theory construct. For example, RA does not begin from gauge groups or running couplings as primitive objects; it begins from closure burden, depth structure, and ledger flow. Where a later cartography to Standard Model language exists, it is secondary.
+-
+-The active compiled support surface used positively in this paper is deliberately narrow:
++
++\begin{tcolorbox}[title=Active Native Support Surface Used Positively,colback=gray!5,colframe=gray!60]
++This paper relies positively only on the following active native support surface:
+ \begin{itemize}[nosep]
+-    \item \texttt{RA\_GraphCore.lean}: graph-cut and local-ledger baseline,
+-    \item \texttt{RA\_O01\_KernelLocality\_v2.lean}: kernel locality and admissibility dependence on realized past,
+-    \item \texttt{RA\_O14\_ArithmeticCore\_v1.lean}: the arithmetic coefficient spine for direct measured-number targets,
++    \item \texttt{RA\_GraphCore.lean}: graph-cut and local-ledger baseline;
++    \item \texttt{RA\_O01\_KernelLocality\_v2.lean}: kernel locality and admissibility dependence on realized past;
++    \item \texttt{RA\_O14\_ArithmeticCore\_v1.lean}: the arithmetic coefficient spine for direct measured-number targets;
+     \item the compiled D1-native chain:
+     \begin{itemize}[nosep]
+         \item \texttt{RA\_D1\_NativeKernel\_v1.lean},
+@@ -147,7 +139,21 @@
+         \item \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}.
+     \end{itemize}
+ \end{itemize}
+-Those modules are sufficient to make the structural core of the present paper real rather than aspirational.
++Continuum field, gauge, and running-coupling overlays remain comparative cartography rather than active native compiled support.
++\end{tcolorbox}
++
++
++%% ═══════════════════════════════════════════════════════════
++\section{Introduction}
++%% ═══════════════════════════════════════════════════════════
++
++Nature presents masses, radii, lifetimes, interaction ranges, and matter-sector asymmetries. The aim of Paper~II is to confront that domain directly from RA's own primitives: DAG growth, the BDG acceptance kernel, the local ledger condition, and finite motif renewal. The paper is not written as if the Standard Model did not exist; it is written on the stronger claim that the Standard Model's successes define an empirical domain RA must address, but not the mechanism RA must borrow.
++
++That distinction is especially important because RA is not ``out of the blue.'' Its immediate mathematical lineage is causal set theory \cite{Bombelli1987,Sorkin1997,Rideout2000}. Like causal set theory, RA treats physical reality as a locally finite causal order and takes sequential growth seriously. Like the BDG programme, it uses a native discrete action \cite{Benincasa2010,Dowker2013}. What RA adds is what allows a matter programme to become possible: irreversible actualization as a primitive event, the realized/potentia split, the local ledger condition at every vertex, and the use of the $d=4$ BDG score itself as the local event-acceptance filter. In that sense RA should be read as a causal-set theory with additional dynamical and ontological structure, not as a rejection of the causal-set programme.
++
++Compared with the Standard Model, the difference is more dramatic. Standard particle physics organizes the same empirical domain by quantum fields, gauge representations, spontaneous symmetry breaking, and renormalization. RA instead proposes that the observed regularities of matter are consequences of a finite census of stable motifs selected by the BDG kernel and sustained by closure/renewal conditions. The comparison matters scientifically because both frameworks aim at the same observed world. But the mechanism is different, and in some places RA has no direct analogue of the standard-theory construct. For example, RA does not begin from gauge groups or running couplings as primitive objects; it begins from closure burden, depth structure, and ledger flow. Where a later cartography to Standard Model language exists, it is secondary.
++
++The active compiled support surface used positively in this paper is listed explicitly in the support box above. That surface is deliberately narrow: it is large enough to ground the structural claims made here, but not enlarged by comparison layers or still-open overlays.
+ 
+ The remainder of the paper follows a simple pattern. Each major section states the RA-native claim first, then names the observational target, then compares RA's mechanism with the Standard Model or causal set theory where that comparison is scientifically useful, and then states what remains open.
+ 

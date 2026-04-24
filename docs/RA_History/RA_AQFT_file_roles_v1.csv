@@ -1,0 +1,6 @@
+file,role,default_root,status,notes
+RA_AQFT_Proofs_v10.lean,canonical AQFT root,yes,patched; compile verify pending,imports RA_CFC_Port and discharges Matrix.cfc_conj_unitary in proposed patch
+RA_CFC_Port.lean,support port,no (imported support),active support,Mathlib-only CFC port; preferred closure path
+RA_AQFT_CFC_Patch.lean,archival helper,no,archival,early direct-LQI dependency sketch
+RA_AQFT_Proofs.lean,shadow file,no,noncanonical,multiple live executable sorries and axioms
+lakefile.lean,build governance,n/a,patched comments,clarifies canonical vs archival AQFT files

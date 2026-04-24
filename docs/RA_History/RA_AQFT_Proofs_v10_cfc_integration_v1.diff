@@ -1,0 +1,102 @@
+--- RA_AQFT_Proofs_v10.lean
++++ RA_AQFT_Proofs_v10.lean
+@@ -1,7 +1,8 @@
+ import Mathlib
++import RA_CFC_Port
+ 
+ /-!
+-# RA_AQFT_Proofs.lean  (v10.0 — sorry-free modulo QFT axiom)
++# RA_AQFT_Proofs.lean  (v10.1 — proposed CFC integration via RA_CFC_Port)
+ ## Relational Actualism — AQFT Stage 2
+ ### Joshua F. Sandeman, March 2026
+ 
+@@ -14,7 +15,7 @@
+ 
+ ## Sorry inventory (v10)
+ 
+-PROVED (no sorry):
++PATCHED (static, compile verification pending):
+   All structural definitions, all proved lemmas from v9,
+   log_unitary_conj (via Matrix.cfc_conj_unitary),
+   vacuumState.pos, rindlerThermal.pos (via positivity),
+@@ -31,10 +32,23 @@
+   petz_monotonicity : data processing inequality
+     (proved in LQI; adapter between DensityMatrix and MState needed)
+ 
++Note:
++  The remaining load-bearing non-library input for frame_independence and
++  rindler_stationarity is vacuum_lorentz_invariant. petz_monotonicity is
++  not used by that theorem chain.
++
+ ## Key reference
+ Meiburg, Lessa, Soldati (2025). A Formalization of the Generalized
+ Quantum Stein's Lemma in Lean. arXiv:2510.08672.
+ Library: https://github.com/Timeroot/Lean-QuantumInfo
++
++## Audit note
++This file has been patched statically in the present audit environment by
++importing the local Mathlib-only port RA_CFC_Port.lean and replacing the
++remaining executable CFC `sorry` with a direct call to Matrix.cfc_conj_isometry.
++Because this environment does not have `lean`/`lake` installed, compile
++verification on the pinned toolchain (Lean 4.29.0 + mathlib rev
++8f1377de1fe0f57f74d9e3eddb3e1ed2e30a9cf9) remains to be done in-repo.
+ -/
+ 
+ noncomputable section
+@@ -257,7 +271,7 @@
+   rw [h, U.hUU, Matrix.one_mul]
+ 
+ -- =====================================================================
+--- 8. LOG COMMUTES WITH UNITARY CONJUGATION  [PROVED via LQI]
++-- 8. LOG COMMUTES WITH UNITARY CONJUGATION  [PATCHED via RA_CFC_Port]
+ -- =====================================================================
+ 
+ /-!
+@@ -274,17 +288,17 @@
+ -/
+ 
+ /-- General CFC commutes with unitary conjugation.
+-    Copied from Lean-QuantumInfo / Isometry.lean (Meiburg et al. 2025). -/
++    Integrated here via the local Mathlib-only support port in
++    RA_CFC_Port.lean. -/
+ lemma Matrix.cfc_conj_unitary (U : UnitaryMatrix n)
+     (M : Matrix (Fin n) (Fin n) ℂ) (f : ℝ → ℝ) :
+     cfc f (U.mat * M * U.mat.conjTranspose) =
+     U.mat * cfc f M * U.mat.conjTranspose := by
+-  /- The proof uses CFC naturality: for a *-homomorphism φ,
+-     cfc f (φ M) = φ (cfc f M).
+-     Unitary conjugation Ad_U : M ↦ UMU† is a *-automorphism,
+-     so the result follows from cfc_map_unitaryConj or similar.
+-     Lean-QuantumInfo Isometry.lean contains the complete proof. -/
+-  sorry -- Replace with: exact Matrix.cfc_conj_unitary_of_lqi U M f
++  have hU_iso : U.mat.Isometry := by
++    simpa [Matrix.Isometry] using U.hUU
++  have hUct_iso : U.mat.conjTranspose.Isometry := by
++    simpa [Matrix.Isometry, Matrix.conjTranspose_conjTranspose] using U.hUU'
++  simpa using (Matrix.cfc_conj_isometry (A := M) (u := U.mat) f hU_iso hUct_iso)
+ 
+ /-- log(UMU†) = U log(M) U† for Hermitian M.
+     Proved as a one-line corollary of Matrix.cfc_conj_unitary with f = Real.log. -/
+@@ -456,7 +470,7 @@
+ | unitaryConj                     | PROVED (all fields)                      |
+ | trace_unitary_conj              | PROVED                                   |
+ | Matrix.log' (CFC definition)    | PROVED (definitional)                    |
+-| Matrix.cfc_conj_unitary         | SORRY — copy from LQI Isometry.lean      |
++| Matrix.cfc_conj_unitary         | PATCHED via RA_CFC_Port (compile verify pending) |
+ | log_unitary_conj                | PROVED (1 line from cfc_conj_unitary)    |
+ | quantumRelEnt (full definition) | PROVED (CFC-based)                       |
+ | relEnt_unitary_invariant        | PROVED (from log_unitary_conj + trace)   |
+@@ -469,9 +483,10 @@
+ 
+ ## Remaining work (2 items)
+ 
+-1. Copy `Matrix.cfc_conj_unitary` proof from LQI Isometry.lean.
+-   Once copied, the sorry in this file disappears and the file is
+-   sorry-free modulo the two axioms.
++1. Verify the imported `RA_CFC_Port.lean` integration on the pinned
++   Lean 4.29 / mathlib toolchain and keep only the Mathlib-only path in
++   the canonical root. Until that compile check is run, the CFC closure
++   should be described as patched rather than fully discharged.
+ 
+ 2. Discharge `petz_monotonicity` by importing LQI and writing the
+    ~50-line adapter DensityMatrix ↔ MState.

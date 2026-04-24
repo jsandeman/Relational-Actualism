@@ -1,0 +1,15 @@
+paper,claim_or_surface,basis,status
+Paper II,motif kernel and minimal branching classes,RA_D1_NativeKernel_v1.lean,active native compiled support
+Paper II,finite closure lengths,RA_D1_NativeConfinement_v1.lean,active native compiled support
+Paper II,closure census,RA_D1_NativeClosure_v1.lean,active native compiled support
+Paper II,depth-2 ledger preservation / orientation asymmetry,RA_D1_NativeLedgerOrientation_v1.lean,active native compiled support
+Paper II,graph cut / local ledger partition,RA_GraphCore.lean,active native compiled support
+Paper II,d=4 arithmetic coefficient inversion,RA_O14_ArithmeticCore_v1.lean,active native compiled support
+Paper II,running alpha_s / Koide / CKM / gauge cartography,historical overlays,"archived overlay, not active support"
+Paper IV,recursive coarse-graining hierarchy,paper-local native derivation programme,active native structural programme
+Paper IV,boundary-mediated organization,RA_GraphCore.lean + paper-local coarse-graining,active native support / structural derivation
+Paper IV,F1 redundant boundary inscription / F2 bounded boundary turnover,paper-local native definitions,active native structural programme
+Paper IV,finite assembly depth examples,network coarse-graining examples,active native computation
+Paper IV,Markov blanket shielding theorem,historical baseline only,"open target, not active support"
+Paper IV,DFT / RACI F1 computation,legacy supplement,retired support path
+Paper IV,KCB / Landauer / Maxwell / spin-bath,legacy quantum-information cluster,"deferred, not active support"

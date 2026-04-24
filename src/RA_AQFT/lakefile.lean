@@ -6,27 +6,62 @@ package «RelationalActualism»
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git"
 
--- CFC proof chain ported from Lean-QuantumInfo (see RA_CFC_Port.lean header).
--- No LQI dependency needed; port is Mathlib-only. Toolchain mismatch with LQI
--- (LQI on v4.23-rc2, RA on v4.29) is sidestepped.
+/-
+  Active roots (Apr 21, 2026 — post rename pass).
+
+  This iteration completed two passes on the same day:
+    1. Cleanup pass — fixed import plumbing and 2 small bugs in
+       RA_MotifDynamics_Core; restored RA_GraphCore, RA_AmpLocality,
+       RA_Koide, RA_Spin2_Macro, RA_CausalOrientation_Core to roots.
+    2. Rename pass — renamed SM-flavored identifiers in RA_D1_Core_draft to
+       motif-native names (gluon→sym_branch, quark→asym_branch,
+       confinement→filter_horizon, n2→depth2, etc.). File renames:
+         RA_Koide.lean        → RA_KvalRatio.lean
+         RA_Spin2_Macro.lean  → RA_BDG_LLC_Kernel.lean
+
+  Structure:
+    Tier A (fully native bedrock):
+      RA_GraphCore, RA_O14_Uniqueness_Core_draft,
+      RA_BDG_Coefficient_Arithmetic
+    Tier B (native content + native names):
+      RA_D1_Core_draft, RA_KvalRatio, RA_BDG_LLC_Kernel
+    Tier C (half-native — Complex.exp amplitude, flagged for later review):
+      RA_AmpLocality
+    Native-vocabulary wrappers:
+      RA_GraphCore_Native, RA_AmpLocality_Native,
+      RA_MotifDynamics_Core, RA_CausalOrientation_Core
+
+  Retired from active roots (archival files remain in directory):
+    RA_AQFT_Proofs_v10  — QFT-as-mechanism (IC46 framing violation)
+    RA_CFC_Port         — support for AQFT, broken against current Mathlib
+    RA_BaryonChirality  — faithfully renamed in RA_CausalOrientation_Core
+    RA_Koide            — renamed to RA_KvalRatio
+    RA_Spin2_Macro      — renamed to RA_BDG_LLC_Kernel
+-/
 
 @[default_target]
 lean_lib «RelationalActualism» where
   roots := #[
-    -- Core graph-theoretic foundations (L01, L02, L03)
+    -- Tier A — bedrock
     `RA_GraphCore,
-    -- BDG particle classification (L08, L10, L11, L12, D1a–D1h)
-    `RA_D1_Proofs,
-    -- Koide lepton mass formula (L09)
-    `RA_Koide,
-    -- AQFT: frame independence, Rindler, CPTP (L04–L07)
-    `RA_AQFT_Proofs_v10,
-    -- Amplitude locality + causal invariance (O01, O02)
+    `RA_O14_Uniqueness_Core_draft,
+    `RA_BDG_Coefficient_Arithmetic,
+
+    -- Tier B — native content
+    `RA_D1_Core_draft,
+    `RA_KvalRatio,
+    `RA_BDG_LLC_Kernel,
+    `RA_D1_NativeKernel_v1,
+    `RA_D1_NativeConfinement_v1,
+    `RA_D1_NativeClosure_v1,
+    `RA_D1_NativeLedgerOrientation_v1,
+
+    -- Tier C — flagged for native-content review (not yet repaired)
     `RA_AmpLocality,
-    -- Spin-2 DOF count (O10s)
-    `RA_Spin2_Macro,
-    -- BDG uniqueness: Yeats → Möbius → coefficients (O14)
-    `RA_O14_Uniqueness,
-    -- Baryon conservation + chirality (D3a, D3b)
-    `RA_BaryonChirality
+
+    -- Native-vocabulary wrappers
+    `RA_GraphCore_Native,
+    `RA_AmpLocality_Native,
+    `RA_MotifDynamics_Core,
+    `RA_CausalOrientation_Core
   ]

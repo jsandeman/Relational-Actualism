@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["4e04931a6f4dec39.olean"],
+  "i": "076042e6ebb44d57.ilean",
+  "c": "b46e1792f09ac65e.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Cli/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/batteries/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/Qq/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/aesop/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/plausible/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean /Users/jsandeman/.elan/toolchains/leanprover--lean4---v4.29.0/bin/lean /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_MotifDynamics_Core.lean -o /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_MotifDynamics_Core.olean -i /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/lib/lean/RA_MotifDynamics_Core.ilean -c /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_MotifDynamics_Core.c --setup /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/.lake/build/ir/RA_MotifDynamics_Core.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["RA_MotifDynamics_Core:deps",
+   [["deps",
+     [["RelationalActualism/RelationalActualism:extraDep",
+       [["@RelationalActualism:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["RA_D1_Core_draft transitive imports (legacy)", "15a7311642f564e0"],
+        ["RA_D1_Core_draft:importAllArts", "c3b191b5c9d0da8b"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.29.0, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740",
+   "60bb08ef22408c8a"],
+  ["/Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT/RA_MotifDynamics_Core.lean",
+   "798ca9eecde92eb1"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: RA_MotifDynamics_Core", "31045993b6e4fd77"],
+  ["Package.id?: (some RelationalActualism)", "e09e9957965f872f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "d4065ed2399a4b93"}

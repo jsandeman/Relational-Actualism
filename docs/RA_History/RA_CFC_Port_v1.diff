@@ -1,0 +1,34 @@
+--- RA_CFC_Port.lean
++++ RA_CFC_Port.lean
+@@ -42,7 +42,17 @@
+   - commute_euclideanLin, directSumDecomposition, exists_unitary, exists_cfc
+   - iSup_mono_bot, orthogonalFamily_eigenspace_inf_eigenspace'
+ 
++  Canonical role in the present RA repo:
++  this file is a supporting Mathlib-only port meant to be imported by the
++  canonical AQFT root RA_AQFT_Proofs_v10.lean. It is not itself a default
++  root theorem file, but it is the preferred closure path for the remaining
++  CFC lemma on the v4.29 toolchain.
++
+   Integration recipe for RA_AQFT_Proofs_v10.lean:
++  Audit note: in RA_AQFT_Proofs_v10.lean the correct field order is
++  `U.hUU` for `U.mat.Isometry` and `U.hUU'` for `U.mat.conjTranspose.Isometry`.
++  Earlier scratch examples that swap these are wrong.
++
+   Replace the sorry in RA's existing Matrix.cfc_conj_unitary with a call to
+   Matrix.cfc_conj_isometry from this port. RA's UnitaryMatrix bundles both
+   U * Uᴴ = 1 and Uᴴ * U = 1 (under field names like hUU, hUU'); use whichever
+@@ -54,11 +64,10 @@
+             U.mat * cfc f M * U.mat.conjTranspose := by
+         apply Matrix.cfc_conj_isometry f
+         · -- U.mat.Isometry  i.e.  U.matᴴ * U.mat = 1
+-          exact U.hUU'   -- or whichever RA field has this signature
++          exact U.hUU    -- in RA_AQFT_Proofs_v10.lean: hUU = Uᴴ * U = 1
+         · -- U.mat.conjTransposeᴴ * U.mat.conjTranspose = 1
+           --   i.e. U.mat * U.matᴴ = 1 after conjTranspose_conjTranspose
+-          simp only [Matrix.Isometry, Matrix.conjTranspose_conjTranspose]
+-          exact U.hUU    -- or whichever RA field has this signature
++          simpa [Matrix.Isometry, Matrix.conjTranspose_conjTranspose] using U.hUU'
+ -/
+ 
+ -- Imports: HermitianFunctionalCalculus transitively pulls in

@@ -1,0 +1,10 @@
+symbol_or_phrase,safe_canonical_reading_now,status,current_layer,note
+P_act[T_{μν}],covariant actualized stress source,DR bridge claim,Paper III covariant bridge,top-level source
+ρ_A,effective quasi-static source from P_act[T_{00}]/c^2,bridge-level definition,dense-regime weak field,tracks ρ_m under equilibration
+ρ_m,ordinary matter density,continuum variable,weak-field Poisson term,dense-regime recovered source
+λ(x),local actualization density (smoothed μ),paper-level variable,Paper III §3.2,drives effective correction ansatz
+𝒟_λ[λ],effective actualization-gradient correction operator,AR / not canonicalized,current ansatz c^2∇²lnλ,operator/sign/geometry still open
+ρ_corr,bookkeeping effective density with 4πG ρ_corr := 𝒟_λ[λ],bookkeeping only,script/paper bridge,avoid stronger claims than source law supports
+A_RA(x),accumulated causal depth / historical source,AR / covariant map open,Bullet Cluster discussion,not yet canonically identified with ρ_A or 𝒟_λ
+Dense weak-field law,∇²Φ ≈ 4πGρ_A ≈ 4πGρ_m,CV conditional on GR bridge,Solar-system benchmarks,safe dense-regime benchmark layer
+Sparse effective law,∇²Φ = 4πGρ_A + 𝒟_λ[λ],effective ansatz,rotation-curve layer,coefficient-level closure still open

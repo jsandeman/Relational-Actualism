@@ -1,0 +1,98 @@
+old_file,line,old_name,old_status,replacement_action,replacement_name_or_target,note
+RA_AmpLocality.lean,144,quantum_measure,native_candidate_rewrite,rename_native,extension_order_measure,Rename quantum-measure language into extension-order language.
+RA_AmpLocality.lean,171,bdg_causal_invariance,native_candidate_rewrite,rename_native,extension_order_invariance,"Keep theorem content, rename away from quantum-measure vocabulary."
+RA_BaryonChirality.lean,43,no_backward_edge,native_core,keep,no_reverse_precedence,Already native in substance; rename only if desired for vocabulary uniformity.
+RA_BaryonChirality.lean,51,maximal_parity_violation,native_candidate_rewrite,rename_native,one_way_precedence,Keep theorem content; replace parity language with causal-orientation language.
+RA_BaryonChirality.lean,64,backward_winding_filtered,native_candidate_rewrite,rename_native,reverse_winding_filtered,Rename into orientation language.
+RA_BaryonChirality.lean,68,forward_winding_stable,native_candidate_rewrite,rename_native,forward_winding_stable,Already close; keep but remove particle-physics framing in comments.
+RA_BaryonChirality.lean,72,fixed_point_symmetric,native_candidate_rewrite,rename_native,fixed_point_orientation_symmetric,Rename into orientation language.
+RA_BaryonChirality.lean,81,chirality_maximal,native_candidate_rewrite,rename_native,orientation_one_way,Rename into orientation language.
+RA_BaryonChirality.lean,109,particle_n2_values,mixed_rewrite,rename_native,motif_depth2_profiles,"Keep arithmetic content, remove particle labels."
+RA_BaryonChirality.lean,130,gluon_n2_preserved_all,mixed_rewrite,rename_native,symmetric_branch_depth2_preserved_all,"Keep exhaustive result, remove gluon label."
+RA_BaryonChirality.lean,148,quark_escape_n2,mixed_rewrite,rename_native,chain_escape_depth2_profile,"Keep arithmetic content, remove quark label."
+RA_BaryonChirality.lean,152,quark_replica_n2,mixed_rewrite,rename_native,asymmetric_branch_replica_depth2_profile,"Keep arithmetic content, remove quark label."
+RA_BaryonChirality.lean,158,quark_extensions_classified,mixed_rewrite,rename_native,asymmetric_branch_extensions_classified,"Keep exhaustive result, remove quark label."
+RA_BaryonChirality.lean,179,sequential_n2_fixed,native_candidate_rewrite,rename_native,chain_depth2_fixed,Keep theorem content; rename into chain/depth language.
+RA_BaryonChirality.lean,206,D3_chirality_and_baryon,non_native,split_and_replace,orientation_and_depth2_ledger_core,Replace composite theorem by two native theorems: orientation one-way + depth-2 ledger preservation.
+RA_D1_Proofs.lean,62,bdg_c0,native_candidate_rewrite,rename_native,bdg_weight_birth,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,63,bdg_c1,native_candidate_rewrite,rename_native,bdg_weight_depth1,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,64,bdg_c2,native_candidate_rewrite,rename_native,bdg_weight_depth2,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,66,bdg_c3,native_candidate_rewrite,rename_native,bdg_weight_depth3,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,67,bdg_c4,native_candidate_rewrite,rename_native,bdg_weight_depth4,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,116,D1a_three_stable_nvectors,native_candidate_rewrite,rename_native,stable_chain_profiles,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,125,D1a_unstable_depths,native_candidate_rewrite,rename_native,chain_unstable_depths,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,158,D1b_sym_yjoin,native_candidate_rewrite,rename_native,symmetric_branch_join_stable,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,162,D1b_asym_yjoin,native_candidate_rewrite,rename_native,asymmetric_branch_join_stable,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,165,D1b_both_stable,native_candidate_rewrite,rename_native,minimal_branch_joins_stable,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,205,D1c_gluon_confined,native_candidate_rewrite,rename_native,symmetric_branch_extension_filtered_after_one,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,208,D1c_quark_step1_stable,native_candidate_rewrite,rename_native,asymmetric_branch_extension_step1_stable,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,211,D1c_quark_confined,native_candidate_rewrite,rename_native,asymmetric_branch_extension_filtered_after_two,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,216,D1c_confinement_vs_propagation,native_candidate_rewrite,rename_native,branch_motif_bounded_vs_chain_persistent,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,245,D1_master,native_candidate_rewrite,rename_native,chain_and_branch_base_classification,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,300,D1c_gluon_step0,native_candidate_rewrite,rename_native,symmetric_branch_step0,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,301,D1c_gluon_step1,native_candidate_rewrite,rename_native,symmetric_branch_step1,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,302,D1c_gluon_step2,native_candidate_rewrite,rename_native,symmetric_branch_step2,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,303,D1c_gluon_step3,native_candidate_rewrite,rename_native,symmetric_branch_step3,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,306,D1c_quark_step0,native_candidate_rewrite,rename_native,asymmetric_branch_step0,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,307,D1c_quark_step1,native_candidate_rewrite,rename_native,asymmetric_branch_step1,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,308,D1c_quark_step2,native_candidate_rewrite,rename_native,asymmetric_branch_step2,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,309,D1c_quark_step3,native_candidate_rewrite,rename_native,asymmetric_branch_step3,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,310,D1c_quark_step4,native_candidate_rewrite,rename_native,asymmetric_branch_step4,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,313,D1c_gluon_has_filter,native_candidate_rewrite,rename_native,symmetric_branch_has_filter,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,316,D1c_quark_has_filter,native_candidate_rewrite,rename_native,asymmetric_branch_has_filter,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,334,D1d_gluon_convergence,native_candidate_rewrite,rename_native,symmetric_branch_extension_converges_to_filter,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,344,D1d_quark_convergence,native_candidate_rewrite,rename_native,asymmetric_branch_extension_converges_to_filter,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,372,gluon_confinement_length,native_candidate_rewrite,rename_native,symmetric_branch_window,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,375,quark_confinement_length,native_candidate_rewrite,rename_native,asymmetric_branch_window,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,379,D1e_finite_confinement,native_candidate_rewrite,rename_native,finite_branch_window,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,408,D1_extended_master,native_candidate_rewrite,rename_native,motif_extension_classification,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,491,extensionScore_gluon,native_candidate_rewrite,rename_native,extensionScore_sym_branch,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,509,extensionScore_quark,native_candidate_rewrite,rename_native,extensionScore_asym_branch,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,527,gluon_ext_scores_correct,native_candidate_rewrite,rename_native,sym_branch_extension_scores_correct,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,545,quark_ext_scores_correct,native_candidate_rewrite,rename_native,asym_branch_extension_scores_correct,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,568,D1c_gluon_complete,native_candidate_rewrite,rename_native,symmetric_branch_extension_exhaustive,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,579,D1c_quark_complete,native_candidate_rewrite,rename_native,asymmetric_branch_extension_exhaustive,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,609,D1_gluon_extension_scores,native_candidate_rewrite,rename_native,symmetric_branch_extension_score_table,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,619,D1_quark_extension_scores,native_candidate_rewrite,rename_native,asymmetric_branch_extension_score_table,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,632,D1_closure,native_candidate_rewrite,rename_native,motif_closure_base,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,657,extensionScore_quark_t1,native_candidate_rewrite,rename_native,extensionScore_asym_branch_transition1,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,691,extensionScore_gluon_t2,native_candidate_rewrite,rename_native,extensionScore_sym_branch_transition2,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,757,D1_closure_quark_t1,native_candidate_rewrite,rename_native,asym_branch_transition1_closure,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,764,D1_closure_gluon_t2,native_candidate_rewrite,rename_native,sym_branch_transition2_closure,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,774,D1_closure_complete,native_candidate_rewrite,rename_native,motif_closure_complete,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,851,D1f_n2_values,native_candidate_rewrite,rename_native,depth2_load_profiles,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,863,D1f_gluon_n2_preserved,native_candidate_rewrite,rename_native,symmetric_branch_depth2_preserved,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,873,D1f_quark_escape_sequential,native_candidate_rewrite,rename_native,asym_branch_escape_to_chain_preserves_depth2,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,907,D1g_chain4_symmetric,native_candidate_rewrite,rename_native,chain_depth4_orientation_symmetric,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,910,D1g_transition_asymmetric,native_candidate_rewrite,rename_native,transition_profile_orientation_asymmetric,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,920,D1g_unique_symmetric_stable,native_candidate_rewrite,rename_native,unique_symmetric_stable_profile,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,984,D1h_singlet_amplitude_sq,non_native,reframe_nature_target,predict_branching_amplitude_single_channel,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,988,D1h_doublet_amplitude_sq,non_native,reframe_nature_target,predict_branching_amplitude_two_channel,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,992,D1h_amplitude_ratio,non_native,reframe_nature_target,predict_measured_amplitude_ratio,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,998,D1h_clebsch_gordan,non_native,reframe_nature_target,derive_ra_internal_coupling_combinatorics,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1002,D1h_doublet_equal_amplitudes,non_native,reframe_nature_target,derive_equal_two_channel_weights,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1007,D1h_lepton_doublet_delta,non_native,reframe_nature_target,predict_measured_doublet_splitting_light_family,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1010,D1h_quark_doublet_delta,non_native,reframe_nature_target,predict_measured_doublet_splitting_hadronic_family,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1014,D1h_hypercharge_ratio,non_native,reframe_nature_target,predict_charge_coupling_ratio_from_llc,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1018,D1h_GMN_electron,non_native,reframe_nature_target,predict_measured_charge_pattern_electron_family,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1025,D1h_GMN_up_quark,non_native,reframe_nature_target,predict_measured_charge_pattern_up_family,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1030,D1h_GMN_down_quark,non_native,reframe_nature_target,predict_measured_charge_pattern_down_family,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1038,D1h_isospin_master,non_native,reframe_nature_target,derive_ra_family_orientation_and_pairing_rule,Replace imported SM/QFT object with a direct Nature-target research task.
+RA_D1_Proofs.lean,1110,delta_at_zero_times_zero,deferred_bridge,archive_bridge,,Bridge-only distributional lemma; archive outside the native root.
+RA_D1_Proofs.lean,1116,distributional_product_zero,deferred_bridge,archive_bridge,,Bridge-only distributional lemma; archive outside the native root.
+RA_D1_Proofs.lean,1123,relative_entropy_self_zero,deferred_bridge,archive_bridge,,AQFT bridge lemma; archive outside the native root.
+RA_D1_Proofs.lean,1127,vacuum_stress_energy_zero,deferred_bridge,archive_bridge,,Bridge-only vacuum statement; archive outside the native root.
+RA_D1_Proofs.lean,1132,LLC_conservation_consequence,deferred_bridge,archive_bridge,,"Bridge-only consequence; native root should keep LLC itself, not the continuum translation."
+RA_D1_Proofs.lean,1136,P_act_linear_zero,deferred_bridge,archive_bridge,,Bridge-only P_act lemma; archive outside native root.
+RA_D1_Proofs.lean,1149,P_act_conservation,deferred_bridge,archive_bridge,,Bridge-only theorem; archive outside native root.
+RA_D1_Proofs.lean,1157,RA_field_equation_unique,deferred_bridge,archive_bridge,,Bridge-only theorem; archive outside native root.
+RA_D1_Proofs.lean,1175,confinement_lengths,native_candidate_rewrite,rename_native,motif_window_lengths,Mathematical content is native; replace translation-facing labels with motif/depth/orientation language.
+RA_D1_Proofs.lean,1181,universe_closure,mixed_rewrite,retire_alias,,KB/translation alias; remove from native root.
+RA_D1_Proofs.lean,1197,structural_fragility,mixed_rewrite,retire_alias,,KB/translation alias; remove from native root.
+RA_GraphCore.lean,214,horizon_partition,mixed_rewrite,retire_alias,RA_graph_cut_theorem,Remove alias from native root; keep graph-cut theorem as canonical statement.
+RA_GraphCore.lean,224,MarkovBlanket,native_candidate_rewrite,rename_native,CausalShield,Rename imported Markov vocabulary to native causal-shield vocabulary and add theorem closure later.
+RA_GraphCore.lean,235,MarkovBlanket.boundary,native_candidate_rewrite,rename_native,CausalShield.boundary,Rename imported Markov vocabulary to native causal-shield vocabulary.
+RA_O14_Uniqueness.lean,166,alpha_inv_137,non_native,reframe_nature_target,predict_observed_fine_structure_constant,Do not keep SM-style overlay theorem; replace with a direct Nature-target derivation task.
+RA_O14_Uniqueness.lean,169,twelve_squared,non_native,retire_overlay,,Pure arithmetic helper for the alpha overlay; remove from active native root.
+RA_O14_Uniqueness.lean,172,screening_seven,non_native,retire_overlay,,Pure arithmetic helper for the alpha overlay; remove from active native root until a direct Nature-target chain exists.
+RA_O14_Uniqueness.lean,179,alpha_s_weight,non_native,reframe_nature_target,predict_hadronic_interaction_strength_pattern,Do not keep α_s overlay theorem; replace with a direct Nature-target derivation task.

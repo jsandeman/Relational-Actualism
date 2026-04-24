@@ -1,0 +1,25 @@
+paper,section,current_item,issue_class,action,native_replacement,note
+P3,Abstract,gravity/GR bridge framing,bridge-language,rewrite,native macroscopic programme,"Remove derivation-of-GR framing; foreground severance, finite boundary law, and Nature-facing observables."
+P3,1. Introduction,must reproduce GR,bridge-language,rewrite,predict measured macroscopic regularities,"Success criterion becomes observed orbits, lensing, expansion, CMB anomalies."
+P3,2.1-2.5,Einstein-Hilbert / Bianchi / Lorentz / field equation chain,deferred-bridge,archive,continuum cartography appendix,Keep only as archival mapping; not active theorem chain.
+P3,2.3,Lorentz invariance IS causal invariance,bridge-language,rewrite,extension-order invariance,"Keep the discrete theorem, retire Lorentz as target label."
+P3,2.4,field equation uniqueness without Lovelock,bridge-language,archive,macroscopic observables docket,Do not present field equation uniqueness as active milestone.
+P3,2.5,cosmological constant via vacuum-energy catastrophe,bridge-language,rewrite,no-gravity-from-unactualized structure (native hypothesis),"Phrase directly against observed expansion data, not QFT vacuum catastrophe."
+P3,2.6,WIMP prohibition,legacy-target,rewrite,direct-detection null prediction,"Name experiments or null signatures, not theory-object candidates."
+P3,3.1-3.3,dark matter / MOND / Weyl-Ricci framing,mixed-rewrite,rewrite,sparse-regime topology and historical source depth,Keep direct galaxy/cluster observables only.
+P3,3.2,weak-field metric source law with nabla^2 ln lambda,hybrid-closure,downgrade,native sparse-regime source task,Do not present coefficient-level closure as active.
+P3,3.3,Bullet Cluster via P_act[T] and Weyl curvature,hybrid-closure,rewrite,historical source-depth hypothesis,Quantitative map remains open.
+P3,3.4,WEP against GR framing,bridge-language,rewrite,composition-independence empirical constraint,Compare directly to measured universality-of-fall data.
+P3,8-9,DESI/Kerr/CMB via imported templates,mixed-rewrite,rewrite,observable anomaly fit kernel,"If Kerr-like template is used, label it as temporary fit kernel only."
+P4,Abstract,QCD / quantum Darwinism / Unruh / KCB / Landauer chain,mixed-rewrite,rewrite,recursive closure and causal shield,Remove imported mechanisms and targets from abstract.
+P4,1. Introduction,Papers I-III generate QM/SM/GR/cosmology,legacy-target,rewrite,Papers I-III establish discrete bedrock,No imported theory named as target of generation.
+P4,1. Introduction,five-context mu=1 list,legacy-target,rewrite,single native connectivity threshold,Keep only closure/connectivity role within RA graph.
+P4,2.2,Markov blanket theorem,mixed-rewrite,rename,causal shield theorem,Retire public Markov vocabulary in active paper.
+P4,3,F1 = quantum Darwinism redundancy,legacy-target,replace,redundant boundary inscription,New condition should be graph-native.
+P4,3,F2 = non-relativistic decoherence control / Unruh,legacy-target,replace,bounded boundary turnover,Use empirical turnover/noise data only as anchors.
+P4,4-6,DFT/B3LYP/RACI support,non-native,retire,reaction-network persistence calculations,Move DFT material out of active proof chain.
+P4,5,Assembly Theory convergence,legacy-target,downgrade,external comparison note,Keep A_RA primary; A is external comparison only.
+P4,6,"Amax(l,T,lambda_reorg)",legacy-target,rewrite,native persistence-window bound,Define using direct closure / turnover variables.
+P4,7,KCB / spin-bath / Landauer / Maxwell,non-native,archive,deferred bridge appendix,Remove from active paper.
+P4,8-9,consciousness threshold as quasi-theorem,mixed-rewrite,downgrade,comparative-organism conjecture,"Keep only as empirical conjecture, not theorem-adjacent."
+P4,10-11,status table and conclusion still foreground hybrid items,mixed-rewrite,rewrite,native-only status table,Only list active-root structural and empirical claims.
