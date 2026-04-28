@@ -1,0 +1,74 @@
+path,lineno,claim_ref,context
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,170,D1,"print(""D1 BDG-FILTER MCMC — PHYSICAL EXTRACTION"")"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,226,D1,"print(""SUMMARY OF D1 STATUS"")"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,236,D1,"print(""REMAINING OPEN (true D1 frontier):"")"
+src/RA_AQFT/casimir_benchmark.py,3,D3,Relational Actualism — D3 Bianchi Compatibility and D2 Unruh Benchmark
+src/RA_AQFT/casimir_benchmark.py,3,D2,Relational Actualism — D3 Bianchi Compatibility and D2 Unruh Benchmark
+src/RA_AQFT/casimir_benchmark.py,17,D3,Physical basis — D3 (Bianchi compatibility):
+src/RA_AQFT/casimir_benchmark.py,33,D2,Physical basis — D2 (Unruh reconciliation / frame-independence):
+src/RA_AQFT/casimir_benchmark.py,64,D2,"Remaining formal open scope for D2: the formal proof that P_act, defined"
+src/RA_AQFT/casimir_benchmark.py,71,D2,Version: 2 — updated to reflect D2 stationarity resolution and Kinematic Snap
+src/RA_AQFT/casimir_benchmark.py,79,D3,"print(""D3 Bianchi Compatibility and D2 Unruh Resolution"")"
+src/RA_AQFT/casimir_benchmark.py,79,D2,"print(""D3 Bianchi Compatibility and D2 Unruh Resolution"")"
+src/RA_AQFT/casimir_benchmark.py,109,D3,# ── 2. CONSERVATION CHECK (Bianchi / D3 test) ─────────────────────────
+src/RA_AQFT/casimir_benchmark.py,110,D3,"print(""\n── 2. Local conservation ∂_μ T^μν = 0 (D3 Bianchi check) ──"")"
+src/RA_AQFT/casimir_benchmark.py,124,D3,# ── 3. THE RA PRESCRIPTION (D3) ───────────────────────────────────────
+src/RA_AQFT/casimir_benchmark.py,125,D3,"print(""── 3. The RA-modified stress-energy (D3 prescription) ────────"")"
+src/RA_AQFT/casimir_benchmark.py,185,D2,# ── 6. D2 UNRUH RESOLUTION: STATIONARITY CRITERION ───────────────────
+src/RA_AQFT/casimir_benchmark.py,186,D2,"print(""── 6. D2 Unruh resolution: the stationarity criterion ────────"")"
+src/RA_AQFT/casimir_benchmark.py,189,D2,THE FRAME-DEPENDENCE OBJECTION (red-team attack on D2):
+src/RA_AQFT/casimir_benchmark.py,250,D2,REMAINING FORMAL OPEN SCOPE FOR D2:
+src/RA_AQFT/casimir_benchmark.py,259,D3,"print(""── 7. Formal theorem statement (D3 + D2 combined) ────────────"")"
+src/RA_AQFT/casimir_benchmark.py,259,D2,"print(""── 7. Formal theorem statement (D3 + D2 combined) ────────────"")"
+src/RA_AQFT/casimir_benchmark.py,272,D2,COROLLARY (D2 Unruh stationarity):
+src/RA_AQFT/casimir_benchmark.py,287,D3,"print(""SUMMARY: D3 + D2 BENCHMARK RESULTS"")"
+src/RA_AQFT/casimir_benchmark.py,287,D2,"print(""SUMMARY: D3 + D2 BENCHMARK RESULTS"")"
+src/RA_AQFT/casimir_benchmark.py,291,D3,# D3 results
+src/RA_AQFT/casimir_benchmark.py,300,D2,# D2 results
+src/RA_AQFT/casimir_benchmark.py,309,D2,"(""P_act modular flow commutativity (D2)"",      ""OPEN (AQFT proof)""),"
+src/RA_AQFT/casimir_benchmark.py,323,D3,D3 STATUS: Substantially resolved. The vacuum-subtraction prescription
+src/RA_AQFT/casimir_benchmark.py,328,D2,D2 STATUS: Physically resolved via the Kinematic Snap and stationarity
+src/RA_AQFT/cross_dimensional_exclusion.py,1,D4U02,"""""""Cross-dimensional exclusion — fast version using D4U02 known values."""""""
+src/RA_AQFT/cross_dimensional_exclusion.py,8,D4U02,# Use D4U02 proven values + computed stable type counts
+src/RA_AQFT/cross_dimensional_exclusion.py,9,D4U02,"# Selectivity data from D4U02 §7 (exact enumeration, published)"
+src/RA_AQFT/cross_dimensional_exclusion.py,13,D4U02,"'mu_star': 1.001,  # D4U02"
+src/RA_AQFT/cross_dimensional_exclusion.py,20,D4U02,"'mu_star': 0.890,  # D4U02"
+src/RA_AQFT/cross_dimensional_exclusion.py,27,D4U02,"'mu_star': 1.019,  # D4U02"
+src/RA_AQFT/cross_dimensional_exclusion.py,34,D4U02,"'mu_star': 3.0,  # D4U02: ""> 3.0"""
+src/RA_AQFT/cross_dimensional_exclusion.py,74,D4U02,"- Selectivity (μ*): D4U02 §7 (exact enumeration, all dimensions)"
+src/RA_AQFT/cross_dimensional_exclusion.py,1,D4U02,"""""""Cross-dimensional exclusion — fast version using D4U02 known values."""""""
+src/RA_AQFT/cross_dimensional_exclusion.py,8,D4U02,# Use D4U02 proven values + computed stable type counts
+src/RA_AQFT/cross_dimensional_exclusion.py,9,D4U02,"# Selectivity data from D4U02 §7 (exact enumeration, published)"
+src/RA_AQFT/cross_dimensional_exclusion.py,13,D4U02,"'mu_star': 1.001,  # D4U02"
+src/RA_AQFT/cross_dimensional_exclusion.py,20,D4U02,"'mu_star': 0.890,  # D4U02"
+src/RA_AQFT/cross_dimensional_exclusion.py,27,D4U02,"'mu_star': 1.019,  # D4U02"
+src/RA_AQFT/cross_dimensional_exclusion.py,34,D4U02,"'mu_star': 3.0,  # D4U02: ""> 3.0"""
+src/RA_AQFT/cross_dimensional_exclusion.py,74,D4U02,"- Selectivity (μ*): D4U02 §7 (exact enumeration, all dimensions)"
+src/RA_AQFT/d1_BDG_string_tension.py,2,D1,D1 partial closure: BDG flux tube model gives m_p = sqrt(c4 * sigma_BDG)
+src/RA_AQFT/d1_BDG_string_tension.py,16,D1,D1 status after this computation:
+src/RA_AQFT/d1_BDG_string_tension.py,48,D1,m_p_PDG = 938.272  # MeV (input / to be predicted by D1)
+src/RA_AQFT/d1_BDG_string_tension.py,69,D1,"print(""When D1 MCMC gives sigma: m_p = sqrt(c4 * sigma) predicted, zero external inputs."")"
+src/RA_AQFT/d2_two_phases.py,2,D2,D2 Part 3: Two-Phase Structure and the CMB Argument
+src/RA_AQFT/d2_two_phases.py,96,D1,vertices are recognizable as elementary particle types (D1 catalogue).
+src/RA_AQFT/d2_two_phases.py,113,D1,This is a testable relation once V_coh is derived from D1 (Hard Wall 1).
+src/RA_AQFT/d2_two_phases.py,183,D2,"print(""SUMMARY OF D2 RESULTS"")"
+src/RA_AQFT/d2_two_phases.py,205,D2,- V_coh derivation (Hard Wall 1 of D2)
+src/RA_AQFT/d2_two_phases.py,206,D2,- String tension σ from μ_stable (Hard Wall 2 of D2)
+src/RA_AQFT/d3_alpha_s_BDG.py,2,D3,D3 EXTENDED: Wyler formula for α_EM and BDG formula for α_s(m_Z).
+src/RA_AQFT/d3i_complete.py,2,D3-,D3-i: RA Renormalization Group — complete results.
+src/RA_AQFT/d3i_complete.py,12,D1,Open (D1): derive Lambda_QCD -> m0 from BDG string tension sigma.
+src/RA_AQFT/d4u02_enumeration.py,2,D4U02,Canonical D4U02 Enumeration
+src/RA_AQFT/d4u02_enumeration.py,14,D4U02,This is the CANONICAL reference script for d=4 D4U02 computations.
+src/RA_AQFT/d4u02_enumeration.py,152,D4U02,"print(""D4U02 Certified Computation (d=4)"")"
+src/RA_AQFT/d4u02_enumeration.py,2,D4U02,Canonical D4U02 Enumeration
+src/RA_AQFT/d4u02_enumeration.py,14,D4U02,This is the CANONICAL reference script for d=4 D4U02 computations.
+src/RA_AQFT/d4u02_enumeration.py,152,D4U02,"print(""D4U02 Certified Computation (d=4)"")"
+src/RA_AQFT/n_eff_mc_test.py,18,D4U02,Filter: vertex accepted iff S > 0 (same convention as D4U02 setup)
+src/RA_AQFT/n_eff_mc_test.py,18,D4U02,Filter: vertex accepted iff S > 0 (same convention as D4U02 setup)
+src/RA_AQFT/o14_proof.py,8,D4U02,(3) D4U02 dimension selection [d=4 uniquely]
+src/RA_AQFT/o14_proof.py,347,D4U02,D4U02 establishes that d=4 is the unique dimension where the
+src/RA_AQFT/o14_proof.py,408,D4U02,Step E (D4U02):
+src/RA_AQFT/o14_proof.py,8,D4U02,(3) D4U02 dimension selection [d=4 uniquely]
+src/RA_AQFT/o14_proof.py,347,D4U02,D4U02 establishes that d=4 is the unique dimension where the
+src/RA_AQFT/o14_proof.py,408,D4U02,Step E (D4U02):
+src/RA_AQFT/rindler_relative_entropy.py,17,D2,record-forming event. See RAGC Section on D2 for the precise

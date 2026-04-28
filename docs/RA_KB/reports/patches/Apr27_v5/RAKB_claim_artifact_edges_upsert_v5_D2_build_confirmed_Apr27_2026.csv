@@ -1,0 +1,21 @@
+claim_id,claim_name,claim_node_type,artifact_id,filename,artifact_type,relation,source_span,verification_status,notes
+RA-KERNEL-001,Four-dimensional BDG acceptance kernel,claim,ART-LEAN-RA_BDG_Coefficient_Arithmetic,RA_BDG_Coefficient_Arithmetic.lean,lean,proves,,lean_build_confirmed_no_sorry,BDG coefficient vector wrapper; currently imports O14 uniqueness draft; dedupe import patch recommended
+RA-ARITH-001,BDG coefficient arithmetic spine,claim,ART-LEAN-RA_BDG_Coefficient_Arithmetic,RA_BDG_Coefficient_Arithmetic.lean,lean,proves,,lean_build_confirmed_no_sorry,BDG coefficient arithmetic spine
+RA-ARITH-002,Second-order cancellation pattern,claim,ART-LEAN-RA_BDG_Coefficient_Arithmetic,RA_BDG_Coefficient_Arithmetic.lean,lean,proves,,lean_build_confirmed_no_sorry,second-order / hockey-stick balance
+RA-ARITH-001,BDG coefficient arithmetic spine,claim,ART-LEAN-RA_O14_ArithmeticCore_v1,RA_O14_ArithmeticCore_v1.lean,lean,proves,,lean_build_confirmed_no_sorry,canonical arithmetic core root
+RA-ARITH-001,BDG coefficient arithmetic spine,claim,ART-LEAN-RA_O14_Uniqueness_Core_draft,RA_O14_Uniqueness_Core_draft.lean,lean,legacy_duplicate_support,,lean_build_confirmed_transitive_import,rich O14 source; duplicate declarations with RA_O14_ArithmeticCore_v1
+RA-LLC-001,Local Ledger Condition,claim,ART-LEAN-RA_GraphCore,RA_GraphCore.lean,lean,proves,,lean_build_confirmed_no_sorry,core graph/local ledger support
+RA-OPEN-006,Causal shield theorem,issue,ART-LEAN-RA_GraphCore,RA_GraphCore.lean,lean,supports,,lean_build_confirmed_no_sorry,general covariance / graph invariance support surface; exact claim mapping requires TeX audit
+RA-KERNEL-002,Kernel locality,claim,ART-LEAN-RA_AmpLocality,RA_AmpLocality.lean,lean,proves_or_bridge_proves,,lean_build_confirmed_no_sorry_bridge_review,Tier C bridge-reviewed amplitude locality source
+RA-KERNEL-002,Kernel locality,claim,ART-LEAN-RA_AmpLocality_Native,RA_AmpLocality_Native.lean,lean,native_wrapper_for,,lean_build_confirmed_no_sorry,vocabulary wrapper around RA_AmpLocality
+RA-MOTIF-002,Stable motif census,claim,ART-LEAN-RA_D1_Core_draft,RA_D1_Core_draft.lean,lean,restoration_source,,lean_build_confirmed_no_sorry_namespace_hazard,rich D1 source; duplicate names with clean native chain
+RA-MOTIF-003,Minimal closure windows,claim,ART-LEAN-RA_D1_Core_draft,RA_D1_Core_draft.lean,lean,restoration_source,,lean_build_confirmed_no_sorry_namespace_hazard,rich D1 source
+RA-MOTIF-004,Extension census,claim,ART-LEAN-RA_D1_Core_draft,RA_D1_Core_draft.lean,lean,restoration_source,,lean_build_confirmed_no_sorry_namespace_hazard,rich D1 source
+RA-MOTIF-005,Depth-2 ledger/orientation structure,claim,ART-LEAN-RA_D1_Core_draft,RA_D1_Core_draft.lean,lean,restoration_source,,lean_build_confirmed_no_sorry_namespace_hazard,rich D1 source
+RA-MOTIF-007,Confinement as finite renewal,claim,ART-LEAN-RA_D1_Core_draft,RA_D1_Core_draft.lean,lean,restoration_source,,lean_build_confirmed_no_sorry_namespace_hazard,rich D1 source
+RA-MOTIF-008,Orientation/chirality theorem family,claim,ART-LEAN-RA_D1_Core_draft,RA_D1_Core_draft.lean,lean,restoration_source,,lean_build_confirmed_no_sorry_namespace_hazard,rich D1 source
+RA-GRAV-003,Causal severance,claim,ART-LEAN-RA_D3_CausalSeverance,RA_D3_CausalSeverance.lean,lean,supports,,lean_build_confirmed_no_sorry,filename normalized from Sevrence to Severance
+RA-GRAV-004,Severed-link entropy observable,claim,ART-LEAN-RA_D3_CausalSeverance,RA_D3_CausalSeverance.lean,lean,supports,,lean_build_confirmed_no_sorry,causal severance / entropy candidate support
+RA-COMP-003,Causal Firewall conditions,claim,ART-LEAN-RA_D4_CausalFirewall,RA_D4_CausalFirewall.lean,lean,supports,,lean_build_confirmed_no_sorry,causal firewall structural support
+RA-COMP-007,Origin-of-life sandwich bound,claim,ART-LEAN-RA_D4_CausalFirewall,RA_D4_CausalFirewall.lean,lean,supports,,lean_build_confirmed_no_sorry,origin-of-life / firewall support candidate
+RA-PRED-002,Proton mass scale target,target,ART-LEAN-RA_D2_HadronMassTriad,RA_D2_HadronMassTriad.lean,lean,candidate_support,,user_reported_lake_build_confirmed_no_sorry_updated_lakefile_pending_fresh_log,Updated lakefile includes RA_D2_HadronMassTriad as an active root; user reports build succeeds. Archive fresh lake_build log for fully reproducible evidence.

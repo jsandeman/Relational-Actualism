@@ -1,0 +1,68 @@
+path,lineno,scope,call,context
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,51,compute_bdg_statistics,np.random.default_rng,rng = np.random.default_rng(42)
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,55,compute_bdg_statistics,rng.poisson,"N1 = rng.poisson(lams[0], n_samples)"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,56,compute_bdg_statistics,rng.poisson,"N2 = rng.poisson(lams[1], n_samples)"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,57,compute_bdg_statistics,rng.poisson,"N3 = rng.poisson(lams[2], n_samples)"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,58,compute_bdg_statistics,rng.poisson,"N4 = rng.poisson(lams[3], n_samples)"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,82,run_phase_diagram,np.random.default_rng,rng = np.random.default_rng(42)
+src/RA_AQFT/RA_BDG_Simulation.py,207,chain_extend,np.random.choice,"mode = np.random.choice(['chain', 'yjoin'], p=[0.7, 0.3])"
+src/RA_AQFT/RA_BDG_Simulation.py,211,chain_extend,np.random.randint,v = np.random.randint(n)
+src/RA_AQFT/RA_BDG_Simulation.py,217,chain_extend,np.random.randint,v1 = np.random.randint(n)
+src/RA_AQFT/RA_BDG_Simulation.py,225,chain_extend,np.random.choice,v2 = np.random.choice(candidates)
+src/RA_AQFT/RA_BDG_Simulation.py,240,run_csg_simulation,np.random.seed,np.random.seed(seed)
+src/RA_AQFT/antichain_drift.py,22,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/antichain_drift.py,88,conditional_moments,np.random.poisson,"N[:, k] = np.random.poisson(lam[k], N_samples)"
+src/RA_AQFT/antichain_drift.py,187,prob_N1_zero,np.random.poisson,"N[:, k] = np.random.poisson(lam[k], N_samples)"
+src/RA_AQFT/bdg_multicoupling.py,32,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/d2_two_phases.py,11,phase_analysis,np.random.default_rng,rng = np.random.default_rng(seed)
+src/RA_AQFT/d2_two_phases.py,12,phase_analysis,rng.poisson,"N1 = rng.poisson(mu,     n_samples)"
+src/RA_AQFT/d2_two_phases.py,13,phase_analysis,rng.poisson,"N2 = rng.poisson(mu**2,  n_samples)"
+src/RA_AQFT/d2_two_phases.py,14,phase_analysis,rng.poisson,"N3 = rng.poisson(mu**3,  n_samples)"
+src/RA_AQFT/d2_two_phases.py,15,phase_analysis,rng.poisson,"N4 = rng.poisson(mu**4,  n_samples)"
+src/RA_AQFT/d4u02_enumeration.py,50,enumerate_S_distribution,poisson_pmfs.append,poisson_pmfs.append(pmf)
+src/RA_AQFT/kernel_saturation.py,18,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/kernel_saturation.py,79,P_acc_mc,np.random.poisson,"N_k = np.random.poisson(lam[k], N_samples)"
+src/RA_AQFT/n_eff_alternative.py,22,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/n_eff_alternative.py,27,,np.random.poisson,"N1 = np.random.poisson(lam[0], n_samples)"
+src/RA_AQFT/n_eff_alternative.py,28,,np.random.poisson,"N2 = np.random.poisson(lam[1], n_samples)"
+src/RA_AQFT/n_eff_alternative.py,29,,np.random.poisson,"N3 = np.random.poisson(lam[2], n_samples)"
+src/RA_AQFT/n_eff_alternative.py,30,,np.random.poisson,"N4 = np.random.poisson(lam[3], n_samples)"
+src/RA_AQFT/n_eff_factorization.py,11,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/n_eff_factorization.py,20,,np.random.poisson,"N1 = np.random.poisson(lam[0], n_samples)"
+src/RA_AQFT/n_eff_factorization.py,21,,np.random.poisson,"N2 = np.random.poisson(lam[1], n_samples)"
+src/RA_AQFT/n_eff_factorization.py,22,,np.random.poisson,"N3 = np.random.poisson(lam[2], n_samples)"
+src/RA_AQFT/n_eff_factorization.py,23,,np.random.poisson,"N4 = np.random.poisson(lam[3], n_samples)"
+src/RA_AQFT/n_eff_mc_test.py,25,,np.random.seed,np.random.seed(42)  # reproducibility
+src/RA_AQFT/n_eff_mc_test.py,37,sample_bdg_profile,np.random.poisson,"N = np.column_stack([np.random.poisson(lam[k-1], n_samples) for k in range(1,5)])"
+src/RA_AQFT/n_eff_mc_test.py,193,poisson_entropy,stats.poisson.pmf,"p = stats.poisson.pmf(k, lam)"
+src/RA_AQFT/n_eff_mc_test.py,197,,poisson_entropy,H_total = sum(poisson_entropy(l) for l in rates)
+src/RA_AQFT/o14_incidence_algebra.py,493,compute_delta_s_star,np.random.poisson,"samples = np.array([np.random.poisson(lam, n_samples) for lam in lambdas]).T"
+src/RA_AQFT/ra_dark_energy.py,21,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/ra_dark_energy.py,39,E_N1_given_accepted,np.random.poisson,"N1 = np.random.poisson(lam[0], N_samples)"
+src/RA_AQFT/ra_dark_energy.py,40,E_N1_given_accepted,np.random.poisson,"N2 = np.random.poisson(lam[1], N_samples)"
+src/RA_AQFT/ra_dark_energy.py,41,E_N1_given_accepted,np.random.poisson,"N3 = np.random.poisson(lam[2], N_samples)"
+src/RA_AQFT/ra_dark_energy.py,42,E_N1_given_accepted,np.random.poisson,"N4 = np.random.poisson(lam[3], N_samples)"
+src/RA_AQFT/ra_early_bh.py,23,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/ra_structure_formation.py,29,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/ra_structure_formation.py,47,compute_drift,np.random.poisson,"N1 = np.random.poisson(lam[0], N_samples)"
+src/RA_AQFT/ra_structure_formation.py,48,compute_drift,np.random.poisson,"N2 = np.random.poisson(lam[1], N_samples)"
+src/RA_AQFT/ra_structure_formation.py,49,compute_drift,np.random.poisson,"N3 = np.random.poisson(lam[2], N_samples)"
+src/RA_AQFT/ra_structure_formation.py,50,compute_drift,np.random.poisson,"N4 = np.random.poisson(lam[3], N_samples)"
+src/RA_AQFT/ra_structure_formation.py,164,simulate_sorting,np.random.lognormal,"mu = np.random.lognormal(np.log(mu_0) - sigma_mu**2/2, sigma_mu, N_reg)"
+src/RA_AQFT/rindler_relative_entropy.py,373,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/rindler_relative_entropy.py,376,,np.random.randn,"A = np.random.randn(n_test, n_test) + 1j*np.random.randn(n_test, n_test)"
+src/RA_AQFT/rindler_relative_entropy.py,376,,np.random.randn,"A = np.random.randn(n_test, n_test) + 1j*np.random.randn(n_test, n_test)"
+src/RA_AQFT/rindler_relative_entropy.py,379,,np.random.randn,"B = np.random.randn(n_test, n_test) + 1j*np.random.randn(n_test, n_test)"
+src/RA_AQFT/rindler_relative_entropy.py,379,,np.random.randn,"B = np.random.randn(n_test, n_test) + 1j*np.random.randn(n_test, n_test)"
+src/RA_AQFT/rindler_relative_entropy.py,383,,np.random.randn,"C = np.random.randn(n_test, n_test) + 1j*np.random.randn(n_test, n_test)"
+src/RA_AQFT/rindler_relative_entropy.py,383,,np.random.randn,"C = np.random.randn(n_test, n_test) + 1j*np.random.randn(n_test, n_test)"
+src/RA_AQFT/severed_outdegree.py,20,,np.random.seed,np.random.seed(42)
+src/RA_AQFT/severed_outdegree.py,42,simulate_2d,np.random.uniform,"t = np.random.uniform(-L_box/2, L_box/2)"
+src/RA_AQFT/severed_outdegree.py,43,simulate_2d,np.random.uniform,"x = np.random.uniform(-L_box/2, L_box/2)"
+src/RA_AQFT/severed_outdegree.py,177,simulate_3d,np.random.uniform,"t = np.random.uniform(-L_box/2, L_box/2)"
+src/RA_AQFT/severed_outdegree.py,178,simulate_3d,np.random.uniform,"x = np.random.uniform(-L_box/2, L_box/2)"
+src/RA_AQFT/severed_outdegree.py,179,simulate_3d,np.random.uniform,"y = np.random.uniform(-L_box/2, L_box/2)"
+src/ra_audit.py,61,,np.random.poisson,"N1 = np.random.poisson(lam[0], N_samples)"
+src/ra_audit.py,62,,np.random.poisson,"N2 = np.random.poisson(lam[1], N_samples)"
+src/ra_audit.py,63,,np.random.poisson,"N3 = np.random.poisson(lam[2], N_samples)"
+src/ra_audit.py,64,,np.random.poisson,"N4 = np.random.poisson(lam[3], N_samples)"

@@ -1,0 +1,5 @@
+⚠ [8275/8284] Replayed RA_D3_CosmologicalExpansion
+warning: RA_D3_CosmologicalExpansion.lean:35:50: unused variable `hN2`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (8284 jobs).

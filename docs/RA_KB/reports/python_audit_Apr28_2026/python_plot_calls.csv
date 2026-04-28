@@ -1,0 +1,12 @@
+path,lineno,scope,call,context
+src/RA_AQFT/ra_flat_rotation_curve.py,50,,plt.figure,"plt.figure(figsize=(10, 6))"
+src/RA_AQFT/ra_flat_rotation_curve.py,53,,plt.plot,"plt.plot(r_kpc, v_accumulated / 1000, '--', color='blue', label='Accumulated Causal Depth ($T_{00}^{(A)}$)')"
+src/RA_AQFT/ra_flat_rotation_curve.py,54,,plt.plot,"plt.plot(r_kpc, v_lambda / 1000, ':', color='red', label='Actualization Gradient ($\\Theta_{00}^{(\\lambda)}$)')"
+src/RA_AQFT/ra_flat_rotation_curve.py,55,,plt.plot,"plt.plot(r_kpc, v_effective / 1000, '-', color='black', linewidth=2.5, label='Total RA Effective Velocity')"
+src/RA_AQFT/ra_flat_rotation_curve.py,66,,plt.show,plt.show()
+src/RA_AQFT/t1_forecast_deliverables_v2.py,24,,matplotlib.use,matplotlib.use('Agg')  # non-interactive backend
+src/RA_AQFT/t1_forecast_deliverables_v2.py,302,deliverable_4,plt.subplots,"fig, ax = plt.subplots(figsize=(9, 6))"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,304,deliverable_4,ax.plot,"ax.plot(z_fine, dap_perp_B, label=r'$\Delta\alpha_\perp$ (Model B: curved)',"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,306,deliverable_4,ax.plot,"ax.plot(z_fine, dap_perp_A, label=r'$\Delta\alpha_\perp$ (Model A: flat)',"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,310,deliverable_4,ax.plot,"ax.plot(z_fine, dap_par, label=r'$\Delta\alpha_\parallel$ (endpoint)',"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,330,deliverable_4,plt.savefig,"plt.savefig(output_path, dpi=120)"

@@ -1,0 +1,38 @@
+path,status,observation
+src/RA_AQFT/d4u02_enumeration.py,ok,Self-test ALL PASS; P_acc=0.548435673810; Delta_S_star=0.600685282698; mu*=1.018777361164; mu_QCD=4.7118366652.
+src/RA_AQFT/f0_enumeration.py,ok,W_other/W_baryon=17.3152; native ratio stable to max_n=12; f0 comparison uses external alpha_s(2m_p).
+src/RA_AQFT/qcd_running_proof.py,ok,alpha_s(m_Z)=1/sqrt(72)=0.117851; alpha_s(2m_p)=0.3117; f0=5.3979.
+src/RA_AQFT/d3_alpha_s_proof.py,ok,alpha_s(m_Z)=1/sqrt(9*8)=0.117851.
+src/RA_AQFT/vwyler_proof.py,ok,V_eff(1)=1; T(ph->q)=72; alpha_s=1/sqrt(72)=0.117851.
+src/RA_AQFT/cross_dimensional_exclusion.py,ok,Reports d=4 as unique survivor under combined selectivity/topology/dAlembertian/gravity criteria; uses preloaded D4U02 values.
+src/RA_AQFT/d3_alpha_s_BDG.py,ok,alpha_EM Wyler and alpha_s BDG comparison; f0≈5.37 with alpha_s factor.
+src/RA_AQFT/d3i_complete.py,ok,IR alpha_s=1/3; Lambda_QCD_RA≈0.3257 GeV; f0≈5.2888; hybrid RG caveats.
+src/RA_AQFT/d1_BDG_string_tension.py,ok,Lambda_QCD_RA≈331.73 MeV; f0≈5.3847; still uses m_p/PDG calibration.
+src/RA_AQFT/d2_two_phases.py,ok,Two-phase/confinement/CMB hard-wall argument; remaining hard walls listed.
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,ok,"Reports resolved L1, m_p, phase diagram, G_F, path-weight ratio; remaining open Λ_QCD and EW scale."
+src/RA_AQFT/RA_BDG_Simulation.py,ok,Reports small catalogue of stable N-vector types; full proof still requires complete enumeration.
+src/RA_AQFT/RA_RASM_Verification.py,ok,52/52 checks pass; script labels some checks native and others hybrid/PDG.
+src/RA_AQFT/mu_derivation.py,ok,Best-fit μ≈4.71061; exp(l_RA)=4.71187; match 0.027%; derived against resonance lifetime.
+src/RA_AQFT/pathwise_exit.py,ok,Ordering I<II<III≤IV reproduced; f_frag and flavor-rearrangement costs approximate.
+src/RA_AQFT/rho_native.py,ok,Kendall tau 0.545 for same-force resonances; μ currently fitted from τ_ρ.
+src/RA_AQFT/sigma_analysis.py,ok,Reports σ-filter selection rules; empirical resonance classification remains involved.
+src/RA_AQFT/sigma_table.py,ok,Produces ranked σ table for resonance classes; empirical bridge table.
+src/RA_AQFT/n_eff_factorization.py,ok,Explores N_eff=64 interpretations and caveats; 132 accepted profiles noted.
+src/RA_AQFT/n_eff_alternative.py,ok,Interprets N_eff=64 as lattice volume in effective depth-space; candidate support.
+src/RA_AQFT/n_eff_mc_test.py,timeout_8s,Static OK but short smoke test timed; archive full run before using as support.
+src/RA_AQFT/RA_D1_Proof.py,timeout_8s,Static OK but short smoke test timed; likely exhaustive proof harness; needs full runtime log.
+src/RA_AQFT/ra_desi_verify.py,ok,Runs; explicitly lists one parameter t_trans and imported observational ingredients.
+src/RA_AQFT/t1_forecast_deliverables_v2.py,ok,"Runs and writes endpoint_ap_table.csv, toy_model_bracket_table.csv, sensitivity_matrix.csv, endpoint_splitting_plot.png; caveats explicit."
+src/RA_AQFT/ra_dark_energy.py,ok,Runs; lists testable predictions for environment-sensitive expansion/voids.
+src/RA_AQFT/ra_flat_rotation_curve.py,ok_with_warnings,Runs with SyntaxWarning for docstring backslash and non-interactive plt.show warning.
+src/RA_AQFT/ra_verify_heraclitus.py,timeout_30s,Static OK but timed before output due fine-grid optimization; needs fast/cached mode.
+src/RA_AQFT/born_rule_derivation.py,ok,Runs; derives Born rule from local QFT/Poisson actualization language; bridge/non-target.
+src/RA_AQFT/casimir_benchmark.py,ok,Runs; D2/D3 physical resolution with formal AQFT target open; bridge benchmark.
+src/RA_AQFT/rindler_relative_entropy.py,ok,Runs; explicitly stage-1 AQFT proof program with modular-algebra target open.
+src/RA_AQFT/berry_final.py,ok,Runs; sector-count/gauge-holonomy structural identification with open mapping caveats.
+src/RA_AQFT/berry_gauge.py,ok,Runs; states gauge hierarchy/open questions; restoration source.
+src/RA_Complexity/assembly_mapper.py,ok,"Runs; Dimethyl phosphate topology: 7 atoms, 6 bonds, max assembly index 5."
+data/DFT_Survey/actualization_thermo.py,error_missing_dependency,Fails locally: ModuleNotFoundError: pyscf.
+data/DFT_Survey/thermo_batch_b3lyp.py,error_missing_dependency,Fails locally: ModuleNotFoundError: pyscf.
+src/RA_AQFT/mu_int_derive.py,compile_error,SyntaxError: invalid character em dash in f-string at line 132.
+src/ra_audit.py,ok,Runs; summarizes zero-parameter/one-scale/observational-input/unverified quantitative claims.

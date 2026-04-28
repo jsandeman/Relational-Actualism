@@ -1,0 +1,45 @@
+claim_id,claim_name,claim_node_type,artifact_id,filename,artifact_type,relation,source_span,verification_status,notes
+RA-D4-001,D4U02 selectivity ceiling,claim,ART-0001,D4U02_analytic_proof.md,md,prose_derivation,,uploaded_verified,cited source artifact
+RA-D4-002,D4U02 modular barrier,claim,ART-0001,D4U02_analytic_proof.md,md,prose_derivation,,uploaded_verified,cited source artifact
+RA-GRAV-006,Joint BDG/LLC macro-kernel dimension,claim,ART-0002,RA_BDG_LLC_Kernel.lean,lean,formal_source,,uploaded_verified,cited source artifact
+RA-MOTIF-008,Orientation/chirality theorem family,claim,ART-0003,RA_CausalOrientation_Core.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-002,Stable motif census,claim,ART-0004,RA_D1_NativeClosure_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-004,Extension census,claim,ART-0004,RA_D1_NativeClosure_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-003,Minimal closure windows,claim,ART-0005,RA_D1_NativeConfinement_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-007,Confinement as finite renewal,claim,ART-0005,RA_D1_NativeConfinement_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-002,Stable motif census,claim,ART-0006,RA_D1_NativeKernel_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-005,Depth-2 ledger/orientation structure,claim,ART-0007,RA_D1_NativeLedgerOrientation_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-006,Signed three-direction charge spectrum,claim,ART-0007,RA_D1_NativeLedgerOrientation_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-MOTIF-008,Orientation/chirality theorem family,claim,ART-0007,RA_D1_NativeLedgerOrientation_v1.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-LLC-001,Local Ledger Condition,claim,ART-0008,RA_GraphCore_Native.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-COMP-003,Causal Firewall conditions,claim,ART-0008,RA_GraphCore_Native.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-OPEN-006,Causal shield theorem,issue,ART-0008,RA_GraphCore_Native.lean,lean,formal_source,,uploaded_compiles_user_verified,cited source artifact
+RA-ARITH-003,Koide ratio identity,claim,ART-0009,RA_KvalRatio.lean,lean,formal_source,,uploaded_verified,cited source artifact
+RA-KERNEL-002,Kernel locality,claim,ART-0010,RA_O01_KernelLocality_v2.lean,lean,formal_source,,uploaded_verified,cited source artifact
+RA-KERNEL-001,Four-dimensional BDG acceptance kernel,claim,ART-0011,RA_O14_ArithmeticCore_v1.lean,lean,formal_source,,uploaded_verified,cited source artifact
+RA-ARITH-001,BDG coefficient arithmetic spine,claim,ART-0011,RA_O14_ArithmeticCore_v1.lean,lean,formal_source,,uploaded_verified,cited source artifact
+RA-ARITH-002,Second-order cancellation pattern,claim,ART-0011,RA_O14_ArithmeticCore_v1.lean,lean,formal_source,,uploaded_verified,cited source artifact
+RA-GRAV-007,Antichain drift local statistic,claim,ART-0012,antichain_drift.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-PRED-006,Rotation-curve / lensing source-law target,target,ART-0013,bullet_cluster.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-ARITH-004,Dimensionless strong-interaction scale,claim,ART-0014,d3_alpha_s_proof.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-D4-001,D4U02 selectivity ceiling,claim,ART-0015,d4u02_enumeration.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-ARITH-005,Internal density scale from selectivity,claim,ART-0015,d4u02_enumeration.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-OPEN-005,Low-l CMB / Axis-of-Evil severance inheritance,issue,ART-0016,daughter_universe.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-PRED-007,Axis-of-Evil / low-l alignment target,target,ART-0016,daughter_universe.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-ARITH-006,BDG path-weight ratio,claim,ART-0017,f0_enumeration.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-PRED-004,f0 path-weight comparison target,target,ART-0017,f0_enumeration.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-GRAV-001,Kernel–Poisson divergence identity,claim,ART-0018,kernel_saturation.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-GRAV-002,Asymptotic kernel saturation,claim,ART-0018,kernel_saturation.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-GRAV-003,Causal severance,claim,ART-0018,kernel_saturation.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-ARITH-005,Internal density scale from selectivity,claim,ART-0019,mu_derivation.py,py,computational_source,,uploaded_verified,cited source artifact
+RA-NONTARGET-002,QCD running as non-mechanism,framing,ART-0020,qcd_running_proof.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-PRED-004,f0 path-weight comparison target,target,ART-0020,qcd_running_proof.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-PRED-005,Local Hubble/environment target,target,ART-0021,ra_calibration.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-OPEN-004,Environment-sensitive expansion law,issue,ART-0022,ra_dark_energy.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-PRED-005,Local Hubble/environment target,target,ART-0022,ra_dark_energy.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-OPEN-004,Environment-sensitive expansion law,issue,ART-0023,ra_desi_verify.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-PRED-005,Local Hubble/environment target,target,ART-0023,ra_desi_verify.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-PRED-006,Rotation-curve / lensing source-law target,target,ART-0024,ra_flat_rotation_curve.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-ARCH-001,Sigma-filter PDG classification,archived,ART-0025,sigma_analysis.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-ARCH-001,Sigma-filter PDG classification,archived,ART-0026,sigma_table.py,py,candidate_support,,uploaded_unverified_exploratory,cited source artifact
+RA-ARITH-004,Dimensionless strong-interaction scale,claim,ART-0027,vwyler_proof.py,py,computational_source,,uploaded_verified,cited source artifact

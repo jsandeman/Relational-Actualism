@@ -1,0 +1,29 @@
+action,source_path,destination_path,rationale
+archive,RA_results_master_v0_1.yaml,archive/legacy_registries/RA_results_master_v0_1.yaml,Legacy monolithic registry or registry summary; superseded by typed v0.5 files.
+archive,RA_results_master_v0_2.yaml,archive/legacy_registries/RA_results_master_v0_2.yaml,Legacy monolithic registry or registry summary; superseded by typed v0.5 files.
+archive,RA_results_master_v0_3_expanded.yaml,archive/legacy_registries/RA_results_master_v0_3_expanded.yaml,Legacy monolithic registry or registry summary; superseded by typed v0.5 files.
+archive,RA_results_master_v0_3_summary.md,archive/legacy_registries/RA_results_master_v0_3_summary.md,Legacy monolithic registry or registry summary; superseded by typed v0.5 files.
+archive,RA_results_master_v0_4_5.yaml,archive/legacy_registries/RA_results_master_v0_4_5.yaml,Legacy monolithic registry or registry summary; superseded by typed v0.5 files.
+archive,RA_dependency_graph_analysis_v0_3.md,archive/derived_outputs/v0_3/RA_dependency_graph_analysis_v0_3.md,Versioned derived graph/metric output; regenerate from active registry instead of keeping at repo root.
+archive,RA_dependency_graph_v0_3.dot,archive/derived_outputs/v0_3/RA_dependency_graph_v0_3.dot,Versioned derived graph/metric output; regenerate from active registry instead of keeping at repo root.
+archive,RA_dependency_graph_v0_3.png,archive/derived_outputs/v0_3/RA_dependency_graph_v0_3.png,Versioned derived graph/metric output; regenerate from active registry instead of keeping at repo root.
+archive,RA_dependency_metrics_v0_3.csv,archive/derived_outputs/v0_3/RA_dependency_metrics_v0_3.csv,Versioned derived graph/metric output; regenerate from active registry instead of keeping at repo root.
+archive,RAKB_v0_4_5_dependency_analysis.md,archive/derived_outputs/v0_4_5/RAKB_v0_4_5_dependency_analysis.md,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RAKB_v0_4_5_validation_audit.md,archive/derived_outputs/v0_4_5/RAKB_v0_4_5_validation_audit.md,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RA_artifact_inventory_v0_4_5.csv,archive/derived_outputs/v0_4_5/RA_artifact_inventory_v0_4_5.csv,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RA_dependency_graph_v0_4_5_proof_only.dot,archive/derived_outputs/v0_4_5/RA_dependency_graph_v0_4_5_proof_only.dot,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RA_dependency_graph_v0_4_5_proof_only.png,archive/derived_outputs/v0_4_5/RA_dependency_graph_v0_4_5_proof_only.png,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RA_dependency_metrics_v0_4_5_proof_only.csv,archive/derived_outputs/v0_4_5/RA_dependency_metrics_v0_4_5_proof_only.csv,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RA_prose_only_DR_audit_v0_4_5.csv,archive/derived_outputs/v0_4_5/RA_prose_only_DR_audit_v0_4_5.csv,v0.4.5 audit/derived output; superseded by v0.5 registry and reports but preserved for provenance.
+archive,RA_targeted_prediction_search_matches_Apr20_Apr24.csv,archive/prediction_linkage_audits/2026-04-20_to_2026-04-24/RA_targeted_prediction_search_matches_Apr20_Apr24.csv,String-search/candidate prediction-linkage audit; useful provenance but not active support evidence.
+archive,RA_targeted_prediction_search_report.md,archive/prediction_linkage_audits/2026-04-20_to_2026-04-24/RA_targeted_prediction_search_report.md,String-search/candidate prediction-linkage audit; useful provenance but not active support evidence.
+archive,RAKB_prediction_linkage_candidates/RA_prediction_source_candidates_ranked.csv,archive/prediction_linkage_audits/2026-04-20_to_2026-04-24/RA_prediction_source_candidates_ranked.csv,String-search/candidate prediction-linkage audit; useful provenance but not active support evidence.
+archive,RAKB_prediction_linkage_candidates/RA_prediction_source_linkage_candidate_report.md,archive/prediction_linkage_audits/2026-04-20_to_2026-04-24/RA_prediction_source_linkage_candidate_report.md,String-search/candidate prediction-linkage audit; useful provenance but not active support evidence.
+archive,RAKB_Update_Prompt.txt,archive/prompt_protocols_v0_4/RAKB_Update_Prompt.txt,Assistant prompt protocol from the monolithic registry workflow; replaced by v0.5 typed layout plus validator.
+archive,RA_Dependency_Analysis_Prompt.txt,archive/prompt_protocols_v0_4/RA_Dependency_Analysis_Prompt.txt,Assistant prompt protocol from the monolithic registry workflow; replaced by v0.5 typed layout plus validator.
+archive,RA_Integrity_Check_Prompt.txt,archive/prompt_protocols_v0_4/RA_Integrity_Check_Prompt.txt,Assistant prompt protocol from the monolithic registry workflow; replaced by v0.5 typed layout plus validator.
+archive,RA_Paper_Sync_Prompt.txt,archive/prompt_protocols_v0_4/RA_Paper_Sync_Prompt.txt,Assistant prompt protocol from the monolithic registry workflow; replaced by v0.5 typed layout plus validator.
+archive,RA_Target_Prompt.txt,archive/prompt_protocols_v0_4/RA_Target_Prompt.txt,Assistant prompt protocol from the monolithic registry workflow; replaced by v0.5 typed layout plus validator.
+archive,RA_Audit_Consolidation_Apr20_Apr24.md,archive/audit_logs/RA_Audit_Consolidation_Apr20_Apr24.md,"Historical consolidation/audit note; preserve as provenance, not active registry state."
+archive,rakb_pipeline.py,archive/legacy_scripts/rakb_pipeline_v0_4_scaffold.py,Placeholder scaffold tied to old field names and monolithic registry; replaced by v0.5 validator.
+archive,README_RAKB.md,archive/legacy_readmes/README_RAKB_v0_4.md,README describes old monolithic workflow; replaced by README_RAKB_v0_5.md.

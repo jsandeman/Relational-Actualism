@@ -1,0 +1,5 @@
+path,lineno,scope,call,context
+src/RA_AQFT/t1_forecast_deliverables_v2.py,145,deliverable_1,open,"with open(output_path, 'w', newline='') as f:"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,196,deliverable_2,open,"with open(output_path, 'w', newline='') as f:"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,258,deliverable_3,open,"with open(output_path, 'w', newline='') as f:"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,330,deliverable_4,plt.savefig,"plt.savefig(output_path, dpi=120)"

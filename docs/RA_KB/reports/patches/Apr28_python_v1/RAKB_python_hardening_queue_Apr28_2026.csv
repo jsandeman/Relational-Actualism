@@ -1,0 +1,10 @@
+path,severity,issue,recommended_action
+src/RA_AQFT/mu_int_derive.py,blocker,SyntaxError: unquoted em dash in f-string at line 132.,Apply patch_mu_int_derive_syntax.diff; rerun py_compile and smoke test.
+src/RA_AQFT/ra_flat_rotation_curve.py,minor,Invalid escape sequence in docstring; plt.show warning in noninteractive environments.,Use raw docstring or escaped backslashes; save figure instead of show for reproducible output.
+src/RA_AQFT/ra_verify_heraclitus.py,medium,Fine-grid optimization timed before output under 30s smoke test.,"Add --fast mode, cache intermediate grid, reduce default N_int, and put execution under main guard."
+data/DFT_Survey/actualization_thermo.py,blocker_for_reproduction,Requires PySCF/RDKit environment; local run failed on missing pyscf.,Add requirements/environment file and archive successful DFT output before using as evidence.
+data/DFT_Survey/thermo_batch_b3lyp.py,blocker_for_reproduction,Requires PySCF/RDKit environment; local run failed on missing pyscf.,Add requirements/environment file and archive successful DFT output before using as evidence.
+src/RA_AQFT/RA_D1_Proof.py,medium,No main guard; short smoke test timed; top-level exhaustive computation on import.,"Wrap main() in if __name__ == ""__main__""; archive full runtime log."
+src/RA_AQFT/n_eff_mc_test.py,medium,No main guard; short smoke test timed; stochastic/MC support needs output archive.,"Add CLI sample-size options, main guard, and stable CSV output."
+many src/RA_AQFT/*.py,medium,Most scripts execute at import because they lack main guards.,"For every evidence script, define functions plus explicit CLI main; make imports side-effect free."
+forecast/phenomenology scripts,medium,Several scripts use observational or external-theory constants but do not carry a machine-readable provenance ledger.,"Create constants_provenance.csv with constant, value, source, RA-native/measured/imported category."
