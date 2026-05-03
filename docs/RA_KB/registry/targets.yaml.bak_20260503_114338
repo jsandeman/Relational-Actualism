@@ -237,8 +237,6 @@ targets:
   - bmv_coherence_budget.csv
   - bdg_actualization.py
   - bdg_actualization_regimes.csv
-  - bmv_discrimination_sweep.py
-  - bmv_discrimination_sweep.csv
   proof_dependencies:
   - RA-ONT-001
   - RA-LLC-001
@@ -266,16 +264,7 @@ targets:
     regime (mu ~ 3-5, P_acc ~ 0.4). The BDG suppression factor is bounded above
     because P_acc never falls below ~0.4 in the d=4 kernel; therefore BDG
     suppression alone cannot rescue the BMV protocol at the Bose 2017 mass
-    scale (gap of ~10^7 between Gamma_cand and gamma_ESD remains). Tier 4
-    discrimination-sweep characterizes the (m, T, env, geometry) frontier
-    where the protocol is empirically distinguishing. At dX=1 um and d=2 um
-    under Bose-ideal env, m >= 3e-14 kg is required. Under frozen-lab env
-    (P=1e-15 Pa, T=0.01 K), m >= 1e-15 kg is required. At nanoscale geometry
-    (dX=10 nm, d=20 nm) under frozen-lab env, m >= 3e-18 kg is required. The
-    Carney 1e-19 kg target sits one decade below even the most aggressive
-    sweep frontier, so is not directly empirically distinguishing under the
-    assumptions of this sweep; verifying RA's null at that scale would require
-    parameters beyond those modeled here.
+    scale (gap of ~10^7 between Gamma_cand and gamma_ESD remains).
   next_tasks:
   - 'Tier 3b closure (open): pin down the BDG kernel parameter mu from first
     principles by specifying the test-mass graph-patch model and the dictionary
@@ -286,11 +275,10 @@ targets:
     (lambda_pos = Gamma_cand * P_acc(mu) with the BDG kernel as the filter).
     Would lift Tier 3b from CV (computes-verified) to LV (lean-build-confirmed)
     if completed.'
-  - 'Tier 5 (open): characterize the experimental frontier with realistic
-    near-term parameters (cold atoms, optomechanical traps, levitated
-    nanoparticles) rather than the idealized cryo-UHV / frozen-lab limits
-    used in Tier 4; cross-reference with Carney 2021 / Pikovski 2017
-    decoherence channels (photon recoil, magnetic noise, vibration).'
+  - 'Tier 4 (open): re-run the comparator at the Carney-style smaller-mass regime
+    (m ~ 1e-19 kg, dX ~ 1 um, sub-Hz protocols) to characterize the discriminator
+    regime where BMV experiments can plausibly clear ESD, and where RA vs.
+    quantized-gravity becomes empirically distinguishable.'
   - Reconcile RA_BMV_Note.tex with current registry status terminology and migrate
     the note from docs/RA_History into the canonical paper bundle if promoted.
   source_status:
@@ -299,8 +287,6 @@ targets:
     bmv_coherence_budget.csv: generated_source_audit
     bdg_actualization.py: uploaded_smoke_tested_ok
     bdg_actualization_regimes.csv: generated_source_audit
-    bmv_discrimination_sweep.py: uploaded_smoke_tested_ok
-    bmv_discrimination_sweep.csv: generated_source_audit
   legacy_proof_status: DR
   legacy_support_status: CV
   target_type: phenomenological_target
