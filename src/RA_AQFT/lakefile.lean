@@ -44,8 +44,13 @@ lean_lib «RelationalActualism» where
   roots := #[
     -- Tier A — bedrock
     `RA_GraphCore,
-    `RA_O14_Uniqueness_Core_draft,
+    `RA_O14_ArithmeticCore_v1,
     `RA_BDG_Coefficient_Arithmetic,
+    `RA_BDG_ActualizationRate,  -- Tier 3c (May 3 2026): formalizes the
+                                -- BDG-kernel actualization-rate construction
+                                -- λ_pos = Γ_cand · P_acc(μ); arithmetic and
+                                -- algebraic content (probability layer is
+                                -- abstract, deferred to Tier 3d).
 
     -- Tier B — native content
     `RA_D1_Core_draft,
@@ -55,6 +60,22 @@ lean_lib «RelationalActualism» where
     `RA_D1_NativeConfinement_v1,
     `RA_D1_NativeClosure_v1,
     `RA_D1_NativeLedgerOrientation_v1,
+    `RA_D1_GraphCutCombinatorics,
+    `RA_D1_NativeDimensionality_v1,
+    `RA_ActualizationSelector_v1,
+    `RA_FrontierIncidence_v1,
+    `RA_FrontierGraphBridge_v1,
+    `RA_HasseFrontier_v1,
+    `RA_HasseFrontier_Maximal_v1,
+    `RA_HasseFrontier_FiniteMax_v1,
+    `RA_HasseFrontier_FiniteMaxExist_v1,
+    `RA_IncidenceCharge_v1,
+    `RA_IncidenceSignSource_v1,
+    `RA_GraphOrientationChart_v1,
+    `RA_GraphOrientationClosure_v1,
+    `RA_D3_CausalSeverance,
+    `RA_D3_CosmologicalExpansion,
+    `RA_D4_CausalFirewall,
 
     -- Tier C — flagged for native-content review (not yet repaired)
     `RA_AmpLocality,
@@ -63,5 +84,7 @@ lean_lib «RelationalActualism» where
     `RA_GraphCore_Native,
     `RA_AmpLocality_Native,
     `RA_MotifDynamics_Core,
-    `RA_CausalOrientation_Core
+    `RA_CausalOrientation_Core,
+    `RA_D2_MatterCartography,
+    `RA_D2_HadronMassTriad
   ]

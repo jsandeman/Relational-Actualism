@@ -239,7 +239,6 @@ targets:
   - bdg_actualization_regimes.csv
   - bmv_discrimination_sweep.py
   - bmv_discrimination_sweep.csv
-  - RA_BDG_ActualizationRate.lean
   proof_dependencies:
   - RA-ONT-001
   - RA-LLC-001
@@ -276,29 +275,17 @@ targets:
     Carney 1e-19 kg target sits one decade below even the most aggressive
     sweep frontier, so is not directly empirically distinguishing under the
     assumptions of this sweep; verifying RA's null at that scale would require
-    parameters beyond those modeled here. Tier 3c (Lean) lifts the algebraic
-    content of Tier 3b from CV to LV via RA_BDG_ActualizationRate.lean
-    (lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free,
-    added to the Tier-A bedrock active roots in lakefile.lean). Probability-
-    theoretic closure (Tier 3d, P_acc as a measure-theoretic acceptance
-    probability) remains open.
+    parameters beyond those modeled here.
   next_tasks:
   - 'Tier 3b closure (open): pin down the BDG kernel parameter mu from first
     principles by specifying the test-mass graph-patch model and the dictionary
     mapping (m, dX, environmental coupling) to candidate-generation parameters.
     Requires open mass-emergence work (RA-MOTIF-* and Causal Firewall claims).
     Without this, lambda_pos remains parametric in mu.'
-  - 'Tier 3c partial (done): the algebraic content of the actualization-rate
-    construction is lean-build-confirmed via RA_BDG_ActualizationRate.lean
-    (added to lakefile.lean Tier A bedrock, builds with zero warnings / sorry
-    / admit / axiom). Defines BDGProfile, bdg_action, accepts predicate,
-    actualization_rate, and proves bridge / bilinearity / monotonicity /
-    upper-bound theorems.'
-  - 'Tier 3d (open): probability-theoretic closure of Tier 3c. Replace the
-    abstract real parameter P_acc with a measure-theoretic acceptance
-    probability over Poisson-CSG profile distributions, using Mathlib''s
-    MeasureTheory and Probability namespaces. Would let Lean prove (rather
-    than just state) the saturation theorem and the bridge limit.'
+  - 'Tier 3c (open): Lean formalization of the actualization-rate construction
+    (lambda_pos = Gamma_cand * P_acc(mu) with the BDG kernel as the filter).
+    Would lift Tier 3b from CV (computes-verified) to LV (lean-build-confirmed)
+    if completed.'
   - 'Tier 5 (open): characterize the experimental frontier with realistic
     near-term parameters (cold atoms, optomechanical traps, levitated
     nanoparticles) rather than the idealized cryo-UHV / frozen-lab limits
@@ -314,7 +301,6 @@ targets:
     bdg_actualization_regimes.csv: generated_source_audit
     bmv_discrimination_sweep.py: uploaded_smoke_tested_ok
     bmv_discrimination_sweep.csv: generated_source_audit
-    RA_BDG_ActualizationRate.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free
   legacy_proof_status: DR
   legacy_support_status: CV
   target_type: phenomenological_target
