@@ -214,3 +214,48 @@ targets:
   target_type: phenomenological_target
   target_status: open
   auxiliary_support_status: provisional_interpretation
+- id: RA-PRED-008
+  name: BMV gravity-mediated entanglement null target
+  domain: prediction
+  papers:
+  - BMV-Note
+  statement: Predict a strict null entanglement-witness signal in the Bose-Marletto-Vedral
+    protocol. In the branch-coherent regime, the Step-5 metric is sourced only by
+    the actualized causal ledger (Step-4 inscriptions), so the gravitational phase
+    is common-mode across positional branches and the entangling phase invariant
+    Delta_phi_grav = phi_LL + phi_RR - phi_LR - phi_RL vanishes identically. Falsified
+    by any nonzero gravity-mediated concurrence or negativity above experimental
+    floor after exclusion of nongravitational channels.
+  nature_targets:
+  - BMV-protocol entanglement witness measurement (Bose et al. 2017; Marletto-Vedral
+    2017)
+  ra_observable: branch-coherent gravitational phase invariant Delta_phi_grav from
+    Step-2/Step-5 separation
+  sources:
+  - RA_BMV_Note.tex
+  - bmv_comparator.py
+  proof_dependencies:
+  - RA-ONT-001
+  - RA-LLC-001
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Prediction holds only within the branch-coherent regime; positional Step-4
+    actualization during the interaction window would close the regime and produce
+    an environmentally-mediated (not gravitational) signal. The bmv_comparator establishes
+    the discriminator scale against quantized and semiclassical alternatives but
+    does not supply an independent RA derivation; the null is structural.
+  next_tasks:
+  - Derive positional actualization rate lambda from BDG kernel saturation to delimit
+    the branch-coherent window for given (m, dX, environment) parameters.
+  - Add Lindblad decoherence layer to bmv_comparator to quantify the coherence budget
+    required to distinguish RA from quantized gravity at given experimental sensitivity.
+  - Reconcile RA_BMV_Note.tex with current registry status terminology and migrate
+    the note from docs/RA_History into the canonical paper bundle if promoted.
+  source_status:
+    RA_BMV_Note.tex: uploaded_verified
+    bmv_comparator.py: uploaded_smoke_tested_ok
+  legacy_proof_status: DR
+  legacy_support_status: CV
+  target_type: phenomenological_target
+  target_status: open
+  auxiliary_support_status: comparative_cartography
