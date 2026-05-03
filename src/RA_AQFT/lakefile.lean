@@ -51,6 +51,11 @@ lean_lib «RelationalActualism» where
                                 -- λ_pos = Γ_cand · P_acc(μ); arithmetic and
                                 -- algebraic content (probability layer is
                                 -- abstract, deferred to Tier 3d).
+    `RA_BDG_PAccMeasure,        -- Tier 3d (May 3 2026): measure-theoretic
+                                -- interface — lifts P_acc from abstract real
+                                -- to (Measure BDGProfile → ℝ) via Mathlib's
+                                -- MeasureTheory; full Poisson-CSG product
+                                -- construction (Tier 3e) still open.
 
     -- Tier B — native content
     `RA_D1_Core_draft,

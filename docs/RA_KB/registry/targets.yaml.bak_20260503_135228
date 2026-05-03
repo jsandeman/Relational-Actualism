@@ -240,7 +240,6 @@ targets:
   - bmv_discrimination_sweep.py
   - bmv_discrimination_sweep.csv
   - RA_BDG_ActualizationRate.lean
-  - RA_BDG_PAccMeasure.lean
   proof_dependencies:
   - RA-ONT-001
   - RA-LLC-001
@@ -280,12 +279,9 @@ targets:
     parameters beyond those modeled here. Tier 3c (Lean) lifts the algebraic
     content of Tier 3b from CV to LV via RA_BDG_ActualizationRate.lean
     (lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free,
-    added to the Tier-A bedrock active roots in lakefile.lean). Tier 3d
-    (interface) lifts the abstract real parameter P_acc to a measure-
-    theoretic quantity via RA_BDG_PAccMeasure.lean, proving the trivial
-    saturation point (Dirac at empty profile gives P_acc = 1) and the
-    upper bound on probability measures. The full Poisson-CSG product
-    construction (Tier 3e) and asymptotic saturation theorem remain open.
+    added to the Tier-A bedrock active roots in lakefile.lean). Probability-
+    theoretic closure (Tier 3d, P_acc as a measure-theoretic acceptance
+    probability) remains open.
   next_tasks:
   - 'Tier 3b closure (open): pin down the BDG kernel parameter mu from first
     principles by specifying the test-mass graph-patch model and the dictionary
@@ -298,18 +294,11 @@ targets:
     / admit / axiom). Defines BDGProfile, bdg_action, accepts predicate,
     actualization_rate, and proves bridge / bilinearity / monotonicity /
     upper-bound theorems.'
-  - 'Tier 3d interface (done): measure-theoretic lift of P_acc to a
-    function (Measure BDGProfile -> R), build-confirmed via
-    RA_BDG_PAccMeasure.lean. Proves the trivial saturation point (Dirac
-    at empty profile gives P_acc = 1), bounds on probability measures,
-    and composition with Tier 3c actualization_rate.'
-  - 'Tier 3e (open): construct the joint Poisson-CSG measure
-    bdgProfileMeasure : R≥0 -> Measure BDGProfile as a product of 4
-    independent Poissons with rates mu^(k+1)/(k+1)! using Mathlib''s
-    poissonMeasure and Measure.prod. Then formalize P_acc as a function
-    of mu via this construction, and prove the asymptotic saturation
-    theorem (lim_{mu -> infty} P_acc(mu) = 1) using the Chebyshev bound
-    in kernel_saturation.py.'
+  - 'Tier 3d (open): probability-theoretic closure of Tier 3c. Replace the
+    abstract real parameter P_acc with a measure-theoretic acceptance
+    probability over Poisson-CSG profile distributions, using Mathlib''s
+    MeasureTheory and Probability namespaces. Would let Lean prove (rather
+    than just state) the saturation theorem and the bridge limit.'
   - 'Tier 5 (open): characterize the experimental frontier with realistic
     near-term parameters (cold atoms, optomechanical traps, levitated
     nanoparticles) rather than the idealized cryo-UHV / frozen-lab limits
@@ -326,7 +315,6 @@ targets:
     bmv_discrimination_sweep.py: uploaded_smoke_tested_ok
     bmv_discrimination_sweep.csv: generated_source_audit
     RA_BDG_ActualizationRate.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free
-    RA_BDG_PAccMeasure.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free
   legacy_proof_status: DR
   legacy_support_status: CV
   target_type: phenomenological_target
