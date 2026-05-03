@@ -1,0 +1,13 @@
+mu,P_acc,suppression_factor,regime
+0.1000,0.904800,1.105217,near_saturation
+0.3000,0.749295,1.334588,gentle
+1.0000,0.547455,1.826634,selective
+2.0000,0.533665,1.873835,selective
+3.0000,0.448615,2.229083,strongly_selective
+4.0000,0.402340,2.485460,strongly_selective
+5.0000,0.429550,2.328018,strongly_selective
+6.0000,0.546900,1.828488,selective
+8.0000,0.931365,1.073693,near_saturation
+10.0000,0.999960,1.000040,saturated
+20.0000,1.000000,1.000000,saturated
+50.0000,1.000000,1.000000,saturated

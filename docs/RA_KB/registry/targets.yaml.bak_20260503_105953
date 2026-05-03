@@ -235,8 +235,6 @@ targets:
   - RA_BMV_Note.tex
   - bmv_comparator.py
   - bmv_coherence_budget.csv
-  - bdg_actualization.py
-  - bdg_actualization_regimes.csv
   proof_dependencies:
   - RA-ONT-001
   - RA-LLC-001
@@ -257,24 +255,14 @@ targets:
     is not reachable for the original Bose 2017 mass scale under any realistic
     laboratory conditions; smaller test masses (m <= 1e-19 kg) or extreme
     isolation beyond current capability would be required for the experiment to
-    have discriminating power. Tier 3b (BDG-kernel-derived lambda_pos =
-    Gamma_cand * P_acc(mu)) recovers the bridge interpretation in the saturated
-    regime (mu > ~8, P_acc > 0.99) and predicts ~2-2.5x suppression of
-    positional decoherence relative to standard theory in the strongly-selective
-    regime (mu ~ 3-5, P_acc ~ 0.4). The BDG suppression factor is bounded above
-    because P_acc never falls below ~0.4 in the d=4 kernel; therefore BDG
-    suppression alone cannot rescue the BMV protocol at the Bose 2017 mass
-    scale (gap of ~10^7 between Gamma_cand and gamma_ESD remains).
+    have discriminating power.
   next_tasks:
-  - 'Tier 3b closure (open): pin down the BDG kernel parameter mu from first
-    principles by specifying the test-mass graph-patch model and the dictionary
-    mapping (m, dX, environmental coupling) to candidate-generation parameters.
-    Requires open mass-emergence work (RA-MOTIF-* and Causal Firewall claims).
-    Without this, lambda_pos remains parametric in mu.'
-  - 'Tier 3c (open): Lean formalization of the actualization-rate construction
-    (lambda_pos = Gamma_cand * P_acc(mu) with the BDG kernel as the filter).
-    Would lift Tier 3b from CV (computes-verified) to LV (lean-build-confirmed)
-    if completed.'
+  - 'Tier 3b (open): derive lambda_pos directly from the BDG kernel K(N|mu) =
+    Poisson(N;lambda) * indicator[S>0] / P_acc applied to the test-mass graph
+    patch, rather than identifying via the bridge to standard decoherence theory.
+    Connects to kernel_saturation.py and RA-GRAV-001..003. A native derivation
+    would let RA make its own prediction for lambda_pos rather than inheriting
+    standard decoherence rates.'
   - 'Tier 4 (open): re-run the comparator at the Carney-style smaller-mass regime
     (m ~ 1e-19 kg, dX ~ 1 um, sub-Hz protocols) to characterize the discriminator
     regime where BMV experiments can plausibly clear ESD, and where RA vs.
@@ -285,8 +273,6 @@ targets:
     RA_BMV_Note.tex: uploaded_verified
     bmv_comparator.py: uploaded_smoke_tested_ok
     bmv_coherence_budget.csv: generated_source_audit
-    bdg_actualization.py: uploaded_smoke_tested_ok
-    bdg_actualization_regimes.csv: generated_source_audit
   legacy_proof_status: DR
   legacy_support_status: CV
   target_type: phenomenological_target
