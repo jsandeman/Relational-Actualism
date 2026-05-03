@@ -234,7 +234,6 @@ targets:
   sources:
   - RA_BMV_Note.tex
   - bmv_comparator.py
-  - bmv_coherence_budget.csv
   proof_dependencies:
   - RA-ONT-001
   - RA-LLC-001
@@ -244,26 +243,17 @@ targets:
     actualization during the interaction window would close the regime and produce
     an environmentally-mediated (not gravitational) signal. The bmv_comparator establishes
     the discriminator scale against quantized and semiclassical alternatives but
-    does not supply an independent RA derivation; the null is structural. Tier 2
-    establishes that decoherence above gamma_ESD ~ 0.06 /s (Bose 2017 nominal,
-    parallel geometry) drives the quantized-gravity signal to identically zero
-    via Yu-Eberly entanglement sudden death; in that regime the experiment cannot
-    discriminate RA from quantized gravity even in principle.
+    does not supply an independent RA derivation; the null is structural.
   next_tasks:
-  - 'Tier 3 (in progress): identify positional actualization rate lambda_pos with
-    standard environmental decoherence rate Gamma_decoh in the bridge interpretation;
-    add BMVEnvironment with gas/blackbody decoherence formulas and report whether
-    realistic experimental conditions clear gamma_ESD.'
-  - 'Tier 3b (open): derive lambda_pos directly from the BDG kernel K(N|mu) =
-    Poisson(N;lambda) * indicator[S>0] / P_acc applied to the test-mass graph
-    patch, rather than identifying via the bridge to standard decoherence theory.
-    Connects to kernel_saturation.py and RA-GRAV-001..003.'
+  - Derive positional actualization rate lambda from BDG kernel saturation to delimit
+    the branch-coherent window for given (m, dX, environment) parameters.
+  - Add Lindblad decoherence layer to bmv_comparator to quantify the coherence budget
+    required to distinguish RA from quantized gravity at given experimental sensitivity.
   - Reconcile RA_BMV_Note.tex with current registry status terminology and migrate
     the note from docs/RA_History into the canonical paper bundle if promoted.
   source_status:
     RA_BMV_Note.tex: uploaded_verified
     bmv_comparator.py: uploaded_smoke_tested_ok
-    bmv_coherence_budget.csv: generated_source_audit
   legacy_proof_status: DR
   legacy_support_status: CV
   target_type: phenomenological_target

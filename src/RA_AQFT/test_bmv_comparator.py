@@ -15,9 +15,14 @@ from bmv_comparator import (
     BMVParams,
     BOSE_2017,
     MODELS,
+    NO_DECOHERENCE,
+    DecoherenceParams,
     branch_phases,
+    coherence_budget_scan,
     concurrence,
+    critical_gamma,
     density_matrix,
+    density_matrix_with_decoherence,
     negativity,
     partial_transpose_B,
     phase_invariant,
@@ -137,6 +142,104 @@ def test_parallel_geometry_validation() -> None:
     check("  ValueError raised for d <= dX", raised)
 
 
+# ── Tier 2: decoherence tests ────────────────────────────────────────
+def test_decoherence_zero_reproduces_unitary() -> None:
+    print("\n[10] gamma=0 reproduces the unitary (Tier 1) result")
+    t_array = np.linspace(0.0, BOSE_2017.T, 11)
+    res_unitary = sweep(BOSE_2017, t_array, "quantized")
+    res_decoh0 = sweep(BOSE_2017, t_array, "quantized", decoherence=NO_DECOHERENCE)
+    err_c = float(np.max(np.abs(res_unitary["concurrence"] - res_decoh0["concurrence"])))
+    err_n = float(np.max(np.abs(res_unitary["negativity"] - res_decoh0["negativity"])))
+    check("  concurrence matches unitary at gamma=0", err_c < 1e-12, f"err={err_c:.2e}")
+    check("  negativity matches unitary at gamma=0", err_n < 1e-12, f"err={err_n:.2e}")
+
+
+def test_decoherence_preserves_trace_and_hermiticity() -> None:
+    print("\n[11] Local sigma_z dephasing preserves trace and Hermiticity")
+    decoh = DecoherenceParams.symmetric(2.0)  # strong dephasing
+    psi = state_quantized(BOSE_2017, BOSE_2017.T)
+    rho = density_matrix_with_decoherence(psi, BOSE_2017.T, decoh)
+    tr = float(np.real(np.trace(rho)))
+    herm_err = float(np.max(np.abs(rho - rho.conj().T)))
+    check("  trace == 1", abs(tr - 1.0) < 1e-12, f"tr={tr:.6f}")
+    check("  Hermitian (rho == rho^†)", herm_err < 1e-14, f"err={herm_err:.2e}")
+
+
+def test_decoherence_preserves_positivity() -> None:
+    print("\n[12] Decohered density matrix is positive semi-definite")
+    decoh = DecoherenceParams.symmetric(0.5)
+    psi = state_quantized(BOSE_2017, BOSE_2017.T)
+    rho = density_matrix_with_decoherence(psi, BOSE_2017.T, decoh)
+    eigvals = np.linalg.eigvalsh(rho)
+    min_eig = float(np.min(eigvals))
+    check("  all eigenvalues >= -1e-12", min_eig >= -1e-12, f"min eig={min_eig:.2e}")
+
+
+def test_decoherence_kills_entanglement_in_limit() -> None:
+    print("\n[13] gamma → ∞ kills concurrence (quantized model)")
+    t_array = np.linspace(0.01, BOSE_2017.T, 11)
+    res_strong = sweep(BOSE_2017, t_array, "quantized",
+                       decoherence=DecoherenceParams.symmetric(1e6))
+    c_max = float(np.max(res_strong["concurrence"]))
+    check("  C_max < 1e-6 at very strong gamma", c_max < 1e-6, f"C_max={c_max:.2e}")
+
+
+def test_RA_unaffected_by_decoherence() -> None:
+    print("\n[14] RA model: concurrence still ≡ 0 with decoherence on")
+    t_array = np.linspace(0.0, BOSE_2017.T, 11)
+    res = sweep(BOSE_2017, t_array, "RA",
+                decoherence=DecoherenceParams.symmetric(1.0))
+    c_max = float(np.max(res["concurrence"]))
+    check("  RA concurrence with gamma=1/s < 1e-10", c_max < 1e-10, f"C_max={c_max:.2e}")
+
+
+def test_coherence_budget_monotone_decreasing() -> None:
+    print("\n[15] Quantized-gravity max-concurrence is monotone decreasing in gamma")
+    gamma_array = np.logspace(-2, 1, 21)
+    scan = coherence_budget_scan(BOSE_2017, gamma_array, model="quantized", n_t=21)
+    diffs = np.diff(scan["max_concurrence"])
+    # allow tiny numerical noise
+    monotone = bool(np.all(diffs <= 1e-12))
+    check("  C_max[i+1] <= C_max[i] for all i", monotone,
+          f"max increase = {float(np.max(diffs)):.2e}")
+    check("  C_max strictly decreases (not constant)",
+          scan["max_concurrence"][0] > scan["max_concurrence"][-1] + 1e-6,
+          f"C_max[0]={scan['max_concurrence'][0]:.4f}, "
+          f"C_max[-1]={scan['max_concurrence'][-1]:.4f}")
+
+
+def test_entanglement_sudden_death() -> None:
+    print("\n[16b] Entanglement sudden death: C drops to identically 0 above some gamma")
+    # at gamma = 0.5/s, decoherence is far stronger than the entangling rate;
+    # the state should be truly separable (C exactly 0), not just suppressed.
+    decoh = DecoherenceParams.symmetric(0.5)
+    ts = np.linspace(0.0, BOSE_2017.T, 21)
+    cs = []
+    for t in ts:
+        rho = density_matrix_with_decoherence(state_quantized(BOSE_2017, t), t, decoh)
+        cs.append(concurrence(rho))
+    c_max = float(max(cs))
+    check("  C(t) == 0 exactly for all t at gamma=0.5/s",
+          c_max == 0.0, f"max C = {c_max:.4e}")
+    # naive coherence-decay would predict C ≈ 0.156 * exp(-2.5) ≈ 0.013, not 0;
+    # the fact that C is identically zero is the ESD signature.
+
+
+def test_critical_gamma_basic() -> None:
+    print("\n[16] critical_gamma returns a sensible threshold")
+    gamma_array = np.logspace(-3, 2, 81)
+    scan = coherence_budget_scan(BOSE_2017, gamma_array, model="quantized")
+    g_low = critical_gamma(scan, 0.001)
+    g_high = critical_gamma(scan, 0.1)
+    check("  critical_gamma(C=0.001) > critical_gamma(C=0.1)",
+          g_low > g_high, f"g(0.001)={g_low:.3e}, g(0.1)={g_high:.3e}")
+    # for C floor above the gamma=0 maximum, returns 0.0
+    c_unattainable = scan["max_concurrence"][0] * 1.5
+    g_unattainable = critical_gamma(scan, c_unattainable)
+    check("  critical_gamma returns 0 when floor is unreachable",
+          g_unattainable == 0.0, f"g={g_unattainable}")
+
+
 # ── runner ───────────────────────────────────────────────────────────
 def main() -> int:
     print("=" * 78)
@@ -152,6 +255,14 @@ def main() -> int:
         test_phase_invariant_geometry,
         test_perpendicular_geometry_still_entangles,
         test_parallel_geometry_validation,
+        test_decoherence_zero_reproduces_unitary,
+        test_decoherence_preserves_trace_and_hermiticity,
+        test_decoherence_preserves_positivity,
+        test_decoherence_kills_entanglement_in_limit,
+        test_RA_unaffected_by_decoherence,
+        test_coherence_budget_monotone_decreasing,
+        test_entanglement_sudden_death,
+        test_critical_gamma_basic,
     ]:
         fn()
     print("\n" + "=" * 78)

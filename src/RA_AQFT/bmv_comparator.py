@@ -99,6 +99,37 @@ class BMVParams:
 BOSE_2017 = BMVParams()
 
 
+@dataclass(frozen=True)
+class DecoherenceParams:
+    """Local position-basis dephasing rates (per second) on each mass.
+
+    Models the dominant BMV decoherence channel: environmental scattering
+    (background gas, blackbody, residual photons) that distinguishes |L>
+    from |R>. Equivalent Lindblad operators L_X = sqrt(gamma_X) sigma_z^X
+    on each mass, where sigma_z is diagonal in the |L>, |R> basis.
+
+    Because [H_grav, sigma_z^X] = 0 for the BMV Hamiltonian (both
+    diagonal in the position basis), the master equation has a closed
+    form: each off-diagonal density-matrix element rho_{(ij),(kl)} is
+    multiplied by exp(-Gamma_eff * t) where
+        Gamma_eff = gamma_A * [i != k] + gamma_B * [j != l].
+    Diagonal elements (populations) are unchanged. Trace and CP-positivity
+    are preserved.
+
+    Bose 2017 estimate: gamma <= 0.4 / s required for the protocol.
+    Achievable in good vacuum (1e-6 Pa) with diamond traps at low T.
+    """
+    gamma_A: float = 0.0   # 1/s, local dephasing on mass A
+    gamma_B: float = 0.0   # 1/s, local dephasing on mass B
+
+    @classmethod
+    def symmetric(cls, gamma: float) -> "DecoherenceParams":
+        return cls(gamma_A=gamma, gamma_B=gamma)
+
+
+NO_DECOHERENCE = DecoherenceParams()
+
+
 # ── Branch phases ─────────────────────────────────────────────────────
 def branch_phases(p: BMVParams, t: float) -> dict[str, float]:
     """Quantized-gravity Newtonian branch phases at time t.
@@ -172,6 +203,43 @@ def density_matrix(state: np.ndarray) -> np.ndarray:
     return np.outer(state, np.conj(state))
 
 
+# Off-diagonal decoherence factor table for local sigma_z dephasing.
+# basis indexing: (i, j) ∈ {0,1}² with 0=L, 1=R; flat index 2i+j.
+# Gamma_eff(ij, kl) = gamma_A * [i!=k] + gamma_B * [j!=l].
+def _flip_count_table() -> tuple[np.ndarray, np.ndarray]:
+    """Returns (n_A, n_B) where n_A[a,b] = [i_a != i_b], n_B[a,b] = [j_a != j_b]."""
+    n_A = np.zeros((4, 4), dtype=int)
+    n_B = np.zeros((4, 4), dtype=int)
+    for a in range(4):
+        ia, ja = a >> 1, a & 1
+        for b in range(4):
+            ib, jb = b >> 1, b & 1
+            n_A[a, b] = int(ia != ib)
+            n_B[a, b] = int(ja != jb)
+    return n_A, n_B
+
+
+_NA, _NB = _flip_count_table()
+
+
+def density_matrix_with_decoherence(
+    state: np.ndarray,
+    t: float,
+    decoh: DecoherenceParams,
+) -> np.ndarray:
+    """Apply local-dephasing Lindblad evolution to the unitary state.
+
+    Closed-form: rho_{ab}(t) = rho_{ab}^{unitary}(t) * exp(-Gamma_eff(a,b) * t).
+    Diagonals unchanged ⇒ trace preserved; positivity preserved (each
+    coherence factor is real and ≤ 1).
+    """
+    rho = density_matrix(state)
+    if decoh.gamma_A == 0.0 and decoh.gamma_B == 0.0:
+        return rho
+    gamma_eff = decoh.gamma_A * _NA + decoh.gamma_B * _NB
+    return rho * np.exp(-gamma_eff * t)
+
+
 def partial_transpose_B(rho: np.ndarray) -> np.ndarray:
     """Partial transpose on the second qubit. rho is 4x4 in basis |ij>."""
     rho_pt = np.empty_like(rho)
@@ -241,8 +309,13 @@ def sweep(
     p: BMVParams,
     t_array: np.ndarray,
     model: str,
+    decoherence: DecoherenceParams = NO_DECOHERENCE,
 ) -> dict[str, np.ndarray]:
-    """Compute (Delta phi, negativity, concurrence) over a time sweep."""
+    """Compute (Delta phi, negativity, concurrence) over a time sweep.
+
+    With decoherence != NO_DECOHERENCE, applies local sigma_z dephasing
+    on each mass during the unitary evolution (see DecoherenceParams).
+    """
     state_fn = MODELS[model]
     n = len(t_array)
     out = {
@@ -256,10 +329,84 @@ def sweep(
             out["delta_phi"][i] = phase_invariant(branch_phases(p, t))
         else:
             out["delta_phi"][i] = 0.0
-        rho = density_matrix(state_fn(p, t))
+        rho = density_matrix_with_decoherence(state_fn(p, t), t, decoherence)
         out["negativity"][i] = negativity(rho)
         out["concurrence"][i] = concurrence(rho)
     return out
+
+
+# ── Tier 2: coherence-budget scan ─────────────────────────────────────
+def coherence_budget_scan(
+    p: BMVParams,
+    gamma_array: np.ndarray,
+    model: str = "quantized",
+    n_t: int = 51,
+) -> dict[str, np.ndarray]:
+    """For each gamma (symmetric per-mass dephasing), return the maximum
+    concurrence and negativity achieved over the interaction window [0, T].
+
+    The output is the experimental discriminator curve: at each gamma,
+    can the model produce a witnessable signal? For RA and semiclassical
+    models the curve is identically zero. For quantized gravity it
+    decreases monotonically with gamma; the gamma at which the curve
+    crosses an experimental sensitivity floor is the maximum tolerated
+    decoherence rate.
+    """
+    t_array = np.linspace(0.0, p.T, n_t)
+    state_fn = MODELS[model]
+    n = len(gamma_array)
+    out = {
+        "gamma": np.asarray(gamma_array, dtype=float),
+        "tau_coh_s": np.where(np.asarray(gamma_array) > 0.0,
+                              1.0 / np.where(np.asarray(gamma_array) > 0.0,
+                                             gamma_array, 1.0),
+                              np.inf),
+        "max_concurrence": np.zeros(n),
+        "max_negativity": np.zeros(n),
+        "t_at_peak_s": np.zeros(n),
+    }
+    for i, g in enumerate(gamma_array):
+        decoh = DecoherenceParams.symmetric(float(g))
+        cs = np.zeros(len(t_array))
+        ns = np.zeros(len(t_array))
+        for k, t in enumerate(t_array):
+            rho = density_matrix_with_decoherence(state_fn(p, t), t, decoh)
+            cs[k] = concurrence(rho)
+            ns[k] = negativity(rho)
+        i_peak = int(np.argmax(cs))
+        out["max_concurrence"][i] = cs[i_peak]
+        out["max_negativity"][i] = ns[i_peak]
+        out["t_at_peak_s"][i] = t_array[i_peak]
+    return out
+
+
+def critical_gamma(
+    scan: dict[str, np.ndarray],
+    sensitivity_floor: float,
+) -> float:
+    """Largest gamma at which max_concurrence still exceeds the
+    sensitivity_floor (linearly interpolated). Returns +inf if the
+    floor is never reached, 0.0 if it is exceeded at gamma=0 only.
+    """
+    g = scan["gamma"]
+    c = scan["max_concurrence"]
+    above = c >= sensitivity_floor
+    if not above.any():
+        return 0.0
+    if above.all():
+        return float("inf")
+    # find the largest gamma where c crosses sensitivity_floor going down
+    # (assumes c is monotonically decreasing in gamma — true for the
+    #  closed-form local-dephasing model)
+    idx = int(np.argmax(~above))  # first False after Trues
+    if idx == 0:
+        return 0.0
+    g_lo, g_hi = g[idx - 1], g[idx]
+    c_lo, c_hi = c[idx - 1], c[idx]
+    if c_lo == c_hi:
+        return float(g_lo)
+    frac = (c_lo - sensitivity_floor) / (c_lo - c_hi)
+    return float(g_lo + frac * (g_hi - g_lo))
 
 
 def write_csv(results: dict[str, dict[str, np.ndarray]], path: Path) -> None:
@@ -331,18 +478,90 @@ def main() -> None:
     write_csv(results, out_path)
     print(f"\nResults written to: {out_path}")
 
+    # ── Tier 2: coherence-budget scan ────────────────────────────────
+    print("\n" + "=" * 78)
+    print("TIER 2 — COHERENCE BUDGET (local sigma_z dephasing per mass)")
+    print("=" * 78)
+    gamma_array = np.logspace(-3, 2, 81)  # 1e-3 .. 1e2 per second, 5 decades
+    scan_q = coherence_budget_scan(BOSE_2017, gamma_array, model="quantized")
+    scan_ra = coherence_budget_scan(BOSE_2017, gamma_array, model="RA")
+
+    print(f"\n  Sweeping gamma over [{gamma_array[0]:.0e}, {gamma_array[-1]:.0e}] /s "
+          f"({len(gamma_array)} points, log-spaced)")
+    print(f"  At each gamma: max concurrence over t in [0, {BOSE_2017.T} s]")
+
+    print("\n  gamma (1/s)   tau_coh (s)   C_max (quantized)   C_max (RA)")
+    print("  " + "-" * 60)
+    sample_idx = [0, 16, 32, 48, 64, 80]  # spaced log samples
+    for i in sample_idx:
+        g = scan_q["gamma"][i]
+        tau = 1.0 / g if g > 0 else float("inf")
+        print(f"  {g:>10.3e}   {tau:>9.2e}   {scan_q['max_concurrence'][i]:>17.4e}"
+              f"   {scan_ra['max_concurrence'][i]:>10.2e}")
+
+    # critical gamma for several sensitivity floors
+    print("\n  Critical decoherence rate for the quantized-gravity model")
+    print("  to remain detectable at given experimental concurrence floor:")
+    print("\n  C_floor       gamma_crit (1/s)   tau_coh_min (s)")
+    print("  " + "-" * 50)
+    for c_floor in [0.001, 0.005, 0.01, 0.05, 0.1]:
+        g_crit = critical_gamma(scan_q, c_floor)
+        tau_min = 1.0 / g_crit if 0 < g_crit < float("inf") else float("inf")
+        print(f"  {c_floor:>5.3f}    {g_crit:>12.4e}      {tau_min:>10.3e}")
+
+    # locate the ESD threshold (gamma at which C drops identically to 0)
+    nonzero = scan_q["max_concurrence"] > 0.0
+    if nonzero.any() and not nonzero.all():
+        i_esd = int(np.argmax(~nonzero))  # first index where C == 0
+        g_esd_lo = scan_q["gamma"][i_esd - 1]
+        g_esd_hi = scan_q["gamma"][i_esd]
+        print(f"\n  Entanglement sudden death (Yu-Eberly) onset:")
+        print(f"    gamma_ESD ∈ [{g_esd_lo:.3e}, {g_esd_hi:.3e}] /s")
+        print(f"    Above this threshold, C(t) ≡ 0 for all t in [0, T] —")
+        print(f"    not asymptotic decay; the state becomes truly separable.")
+
+    # write Tier 2 CSV
+    budget_path = Path(__file__).parent / "bmv_coherence_budget.csv"
+    with budget_path.open("w", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["gamma_per_s", "tau_coh_s",
+                    "C_max_quantized", "N_max_quantized", "t_at_peak_s_quantized",
+                    "C_max_RA", "N_max_RA"])
+        for i in range(len(gamma_array)):
+            g = gamma_array[i]
+            tau = 1.0 / g if g > 0 else float("inf")
+            w.writerow([
+                f"{g:.6e}",
+                f"{tau:.6e}",
+                f"{scan_q['max_concurrence'][i]:.6e}",
+                f"{scan_q['max_negativity'][i]:.6e}",
+                f"{scan_q['t_at_peak_s'][i]:.6e}",
+                f"{scan_ra['max_concurrence'][i]:.6e}",
+                f"{scan_ra['max_negativity'][i]:.6e}",
+            ])
+    print(f"\n  Coherence-budget table written to: {budget_path}")
+
     # falsification reminder
     print("\n" + "=" * 78)
-    print("FALSIFICATION CONDITION")
+    print("FALSIFICATION CONDITION (Tier 1 + Tier 2)")
     print("=" * 78)
+    g_crit_01 = critical_gamma(scan_q, 0.01)
     print("""\
-A measured nonzero concurrence (or negativity above the experimental floor)
-attributed to gravity, after exclusion of all nongravitational channels,
-falsifies the RA Step-2/Step-5 separation. The Bose 2017 nominal protocol
-predicts (under quantized gravity) a concurrence of order
-{:.3f} at T = {:.2f}s, giving the experiment in-principle discriminating
-power against the RA-null floor.""".format(
-        results["quantized"]["concurrence"][-1], BOSE_2017.T
+Tier 1: a measured nonzero concurrence attributed to gravity (after
+exclusion of nongravitational channels) falsifies the RA Step-2/Step-5
+separation. At Bose 2017 nominal parameters with no decoherence the
+quantized-gravity prediction is C ≈ {c_q:.3f} at T = {T:.2f}s.
+
+Tier 2: the experiment can only discriminate models if the coherence
+time tau_coh = 1/gamma is long enough to preserve a witnessable signal.
+For an experimental sensitivity floor of C >= 0.01 the quantized-gravity
+prediction requires gamma <= {g_crit:.3e} /s, i.e., tau_coh >= {tau_min:.3e} s.
+A null result above this gamma threshold is decoherence-limited and
+does NOT discriminate RA from quantized gravity.""".format(
+        c_q=results["quantized"]["concurrence"][-1],
+        T=BOSE_2017.T,
+        g_crit=g_crit_01,
+        tau_min=1.0 / g_crit_01 if g_crit_01 > 0 else float("inf"),
     ))
 
 
