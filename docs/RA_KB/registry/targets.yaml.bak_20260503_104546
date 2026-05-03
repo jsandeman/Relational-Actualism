@@ -246,27 +246,18 @@ targets:
     the discriminator scale against quantized and semiclassical alternatives but
     does not supply an independent RA derivation; the null is structural. Tier 2
     establishes that decoherence above gamma_ESD ~ 0.06 /s (Bose 2017 nominal,
-    parallel geometry; ~0.13 /s perpendicular) drives the quantized-gravity signal
-    to identically zero via Yu-Eberly entanglement sudden death; in that regime
-    the experiment cannot discriminate RA from quantized gravity even in principle.
-    Tier 3a (bridge interpretation lambda_pos = Gamma_decoh) shows that gas-collision
-    decoherence at the m=1e-14 kg, dX=250 um scale exceeds gamma_ESD by ~10^7
-    even at idealized cryogenic UHV (1e-12 Pa, 0.1 K). The branch-coherent regime
-    is not reachable for the original Bose 2017 mass scale under any realistic
-    laboratory conditions; smaller test masses (m <= 1e-19 kg) or extreme
-    isolation beyond current capability would be required for the experiment to
-    have discriminating power.
+    parallel geometry) drives the quantized-gravity signal to identically zero
+    via Yu-Eberly entanglement sudden death; in that regime the experiment cannot
+    discriminate RA from quantized gravity even in principle.
   next_tasks:
+  - 'Tier 3 (in progress): identify positional actualization rate lambda_pos with
+    standard environmental decoherence rate Gamma_decoh in the bridge interpretation;
+    add BMVEnvironment with gas/blackbody decoherence formulas and report whether
+    realistic experimental conditions clear gamma_ESD.'
   - 'Tier 3b (open): derive lambda_pos directly from the BDG kernel K(N|mu) =
     Poisson(N;lambda) * indicator[S>0] / P_acc applied to the test-mass graph
     patch, rather than identifying via the bridge to standard decoherence theory.
-    Connects to kernel_saturation.py and RA-GRAV-001..003. A native derivation
-    would let RA make its own prediction for lambda_pos rather than inheriting
-    standard decoherence rates.'
-  - 'Tier 4 (open): re-run the comparator at the Carney-style smaller-mass regime
-    (m ~ 1e-19 kg, dX ~ 1 um, sub-Hz protocols) to characterize the discriminator
-    regime where BMV experiments can plausibly clear ESD, and where RA vs.
-    quantized-gravity becomes empirically distinguishable.'
+    Connects to kernel_saturation.py and RA-GRAV-001..003.'
   - Reconcile RA_BMV_Note.tex with current registry status terminology and migrate
     the note from docs/RA_History into the canonical paper bundle if promoted.
   source_status:

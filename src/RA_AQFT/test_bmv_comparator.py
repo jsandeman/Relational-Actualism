@@ -14,15 +14,21 @@ import numpy as np
 from bmv_comparator import (
     BMVParams,
     BOSE_2017,
+    BOSE_2017_PERP,
+    BMVEnvironment,
     MODELS,
     NO_DECOHERENCE,
     DecoherenceParams,
+    actualization_rate_from_environment,
+    blackbody_decoherence_rate,
     branch_phases,
     coherence_budget_scan,
     concurrence,
     critical_gamma,
     density_matrix,
     density_matrix_with_decoherence,
+    gas_collision_rate,
+    in_branch_coherent_regime,
     negativity,
     partial_transpose_B,
     phase_invariant,
@@ -225,6 +231,21 @@ def test_entanglement_sudden_death() -> None:
     # the fact that C is identically zero is the ESD signature.
 
 
+def test_perpendicular_geometry_larger_budget() -> None:
+    print("\n[16c] Perpendicular geometry gives larger coherence budget than parallel")
+    gamma_array = np.logspace(-3, 1, 41)
+    scan_par = coherence_budget_scan(BOSE_2017,      gamma_array, n_t=21)
+    scan_per = coherence_budget_scan(BOSE_2017_PERP, gamma_array, n_t=21)
+    g_par = critical_gamma(scan_par, 0.01)
+    g_per = critical_gamma(scan_per, 0.01)
+    check("  perpendicular gamma_crit > parallel gamma_crit (at C=0.01)",
+          g_per > g_par, f"par={g_par:.3e}, perp={g_per:.3e}")
+    check("  perpendicular peak C > parallel peak C",
+          scan_per["max_concurrence"][0] > scan_par["max_concurrence"][0],
+          f"par={scan_par['max_concurrence'][0]:.3f}, "
+          f"perp={scan_per['max_concurrence'][0]:.3f}")
+
+
 def test_critical_gamma_basic() -> None:
     print("\n[16] critical_gamma returns a sensible threshold")
     gamma_array = np.logspace(-3, 2, 81)
@@ -238,6 +259,53 @@ def test_critical_gamma_basic() -> None:
     g_unattainable = critical_gamma(scan, c_unattainable)
     check("  critical_gamma returns 0 when floor is unreachable",
           g_unattainable == 0.0, f"g={g_unattainable}")
+
+
+# ── Tier 3: positional actualization rate tests ──────────────────────
+def test_environment_rates_scale_with_pressure() -> None:
+    print("\n[17] gas-collision rate scales linearly with pressure")
+    env_lo = BMVEnvironment(pressure_Pa=1e-12, T_gas_K=4.0)
+    env_hi = BMVEnvironment(pressure_Pa=1e-6,  T_gas_K=4.0)
+    g_lo = gas_collision_rate(env_lo, BOSE_2017)
+    g_hi = gas_collision_rate(env_hi, BOSE_2017)
+    ratio = g_hi / g_lo
+    check("  rate ratio ~ pressure ratio (1e6)",
+          5e5 < ratio < 5e6, f"ratio = {ratio:.3e}")
+
+
+def test_blackbody_T9_scaling() -> None:
+    print("\n[18] blackbody-photon rate scales as T^9")
+    p = BOSE_2017
+    g_1K = blackbody_decoherence_rate(BMVEnvironment(T_blackbody_K=1.0), p)
+    g_2K = blackbody_decoherence_rate(BMVEnvironment(T_blackbody_K=2.0), p)
+    ratio = g_2K / g_1K
+    expected = 2.0 ** 9
+    rel_err = abs(ratio - expected) / expected
+    check("  rate(2K)/rate(1K) ~ 2^9 = 512", rel_err < 1e-9,
+          f"ratio={ratio:.1f}, expected={expected}")
+
+
+def test_room_temperature_violates_branch_coherent_regime() -> None:
+    print("\n[19] Room-temperature high vacuum violates branch-coherent regime")
+    env_room = BMVEnvironment(pressure_Pa=1e-6, T_gas_K=300.0, T_blackbody_K=300.0)
+    # use a representative gamma_ESD; any reasonable Bose 2017 protocol
+    # has gamma_ESD in [0.01, 1] /s
+    v = in_branch_coherent_regime(env_room, BOSE_2017, gamma_esd=0.06)
+    check("  branch_coherent == False at room temp", not v["branch_coherent"],
+          f"lambda_pos = {v['lambda_pos_per_s']:.3e} /s")
+    check("  lambda_pos >> gamma_ESD by many decades",
+          v["margin_factor"] < 1e-3,
+          f"margin = {v['margin_factor']:.3e}x (i.e. {1/v['margin_factor']:.1e}x over budget)")
+
+
+def test_actualization_rate_components() -> None:
+    print("\n[20] actualization_rate_from_environment returns gas + blackbody = total")
+    env = BMVEnvironment(pressure_Pa=1e-10, T_gas_K=4.0, T_blackbody_K=4.0)
+    rates = actualization_rate_from_environment(env, BOSE_2017)
+    check("  gas + blackbody == total",
+          abs(rates["gas"] + rates["blackbody"] - rates["total"]) < 1e-30,
+          f"gas={rates['gas']:.3e}, bb={rates['blackbody']:.3e}, "
+          f"total={rates['total']:.3e}")
 
 
 # ── runner ───────────────────────────────────────────────────────────
@@ -262,7 +330,12 @@ def main() -> int:
         test_RA_unaffected_by_decoherence,
         test_coherence_budget_monotone_decreasing,
         test_entanglement_sudden_death,
+        test_perpendicular_geometry_larger_budget,
         test_critical_gamma_basic,
+        test_environment_rates_scale_with_pressure,
+        test_blackbody_T9_scaling,
+        test_room_temperature_violates_branch_coherent_regime,
+        test_actualization_rate_components,
     ]:
         fn()
     print("\n" + "=" * 78)

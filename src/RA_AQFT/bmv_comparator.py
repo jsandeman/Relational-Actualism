@@ -97,6 +97,11 @@ class BMVParams:
 
 
 BOSE_2017 = BMVParams()
+BOSE_2017_PERP = BMVParams(geometry="perpendicular", d=200.0e-6, dX=250.0e-6)
+"""Bose 2017 paper's actual geometry: closer approach (d < dX) but
+splitting perpendicular to the line of centers, so d_LR = d_RL = sqrt(d^2 + dX^2).
+Yields larger Delta phi than the default parallel geometry and a roughly 2x
+larger coherence budget."""
 
 
 @dataclass(frozen=True)
@@ -128,6 +133,107 @@ class DecoherenceParams:
 
 
 NO_DECOHERENCE = DecoherenceParams()
+
+
+# ── Tier 3: positional actualization rate from environment ────────────
+@dataclass(frozen=True)
+class BMVEnvironment:
+    """Experimental environment for the BMV apparatus.
+
+    Used in Tier 3 to estimate the positional actualization rate
+    lambda_pos via the bridge interpretation lambda_pos = Gamma_decoh.
+
+    Default: a near-ideal cryogenic UHV setup. Realistic experimental
+    conditions are typically orders of magnitude worse than these
+    defaults.
+    """
+    pressure_Pa: float = 1.0e-12       # background gas pressure
+    T_gas_K: float = 0.1               # gas temperature
+    T_blackbody_K: float = 0.1         # background radiation temperature
+    gas_molar_mass_kg: float = 4.65e-26  # N2 molecule (default)
+
+
+# physical constants for environment computations
+_K_BOLTZ = 1.380649e-23  # J/K
+
+
+def gas_collision_rate(env: BMVEnvironment, p: BMVParams) -> float:
+    """Position-distinguishing gas-collision decoherence rate (1/s).
+
+    Standard estimate: rate at which background-gas molecules scatter
+    off the test mass and acquire which-path information. The
+    geometric cross-section is taken to be pi * dX^2 (each scattered
+    molecule resolves the L vs R alternative when its de Broglie
+    wavelength is shorter than dX, which holds for thermal gas).
+    """
+    n_gas = env.pressure_Pa / (_K_BOLTZ * env.T_gas_K)
+    v_thermal = sqrt(8.0 * _K_BOLTZ * env.T_gas_K / (3.14159265 * env.gas_molar_mass_kg))
+    sigma_eff = 3.14159265 * p.dX * p.dX
+    return n_gas * v_thermal * sigma_eff
+
+
+def blackbody_decoherence_rate(env: BMVEnvironment, p: BMVParams) -> float:
+    """Blackbody-photon scattering decoherence rate (1/s).
+
+    Order-of-magnitude scaling from Joos-Zeh / Romero-Isart:
+    Gamma_BB ~ 1e36 * (T_BB/300)^9 * dX^2 (SI units, dX in m).
+
+    The T^9 dependence makes blackbody negligible at cryogenic
+    temperatures; gas collisions dominate.
+    """
+    return 1.0e36 * (env.T_blackbody_K / 300.0)**9 * p.dX * p.dX
+
+
+def actualization_rate_from_environment(
+    env: BMVEnvironment, p: BMVParams
+) -> dict[str, float]:
+    """RA positional actualization rate lambda_pos (1/s) via the bridge
+    interpretation lambda_pos = Gamma_decoh = Gamma_gas + Gamma_BB.
+
+    BRIDGE INTERPRETATION (not native derivation):
+      Each environmental scattering event in standard physics
+      corresponds, in RA, to a Step-4 actualization that records
+      position information about the test mass — the local DAG
+      gains a vertex whose causal structure distinguishes L from R.
+      Therefore the BDG-kernel positional actualization rate equals
+      the conventional decoherence rate to leading order.
+
+    NATIVE DERIVATION (open; tracked in RA-PRED-008.next_tasks 3b):
+      A first-principles derivation would specify the test mass's
+      graph patch, apply the BDG kernel K(N|mu) = Poisson(N;lambda) *
+      [S>0] / P_acc with environmentally-determined mu, and count
+      position-distinguishing actualization events directly. That
+      derivation is outside Tier 3a scope.
+    """
+    g_gas = gas_collision_rate(env, p)
+    g_bb = blackbody_decoherence_rate(env, p)
+    return {
+        "gas": g_gas,
+        "blackbody": g_bb,
+        "total": g_gas + g_bb,
+    }
+
+
+def in_branch_coherent_regime(
+    env: BMVEnvironment,
+    p: BMVParams,
+    gamma_esd: float,
+) -> dict[str, float | bool]:
+    """Test whether the experimental environment keeps the protocol
+    in the branch-coherent regime (lambda_pos < gamma_ESD).
+
+    Returns a dict with components and verdict.
+    """
+    rates = actualization_rate_from_environment(env, p)
+    lam = rates["total"]
+    return {
+        "lambda_pos_per_s": lam,
+        "gamma_ESD_per_s": gamma_esd,
+        "margin_factor": gamma_esd / lam if lam > 0 else float("inf"),
+        "branch_coherent": lam < gamma_esd,
+        "gas_rate_per_s": rates["gas"],
+        "blackbody_rate_per_s": rates["blackbody"],
+    }
 
 
 # ── Branch phases ─────────────────────────────────────────────────────
@@ -485,6 +591,7 @@ def main() -> None:
     gamma_array = np.logspace(-3, 2, 81)  # 1e-3 .. 1e2 per second, 5 decades
     scan_q = coherence_budget_scan(BOSE_2017, gamma_array, model="quantized")
     scan_ra = coherence_budget_scan(BOSE_2017, gamma_array, model="RA")
+    scan_q_perp = coherence_budget_scan(BOSE_2017_PERP, gamma_array, model="quantized")
 
     print(f"\n  Sweeping gamma over [{gamma_array[0]:.0e}, {gamma_array[-1]:.0e}] /s "
           f"({len(gamma_array)} points, log-spaced)")
@@ -510,22 +617,52 @@ def main() -> None:
         print(f"  {c_floor:>5.3f}    {g_crit:>12.4e}      {tau_min:>10.3e}")
 
     # locate the ESD threshold (gamma at which C drops identically to 0)
-    nonzero = scan_q["max_concurrence"] > 0.0
-    if nonzero.any() and not nonzero.all():
-        i_esd = int(np.argmax(~nonzero))  # first index where C == 0
-        g_esd_lo = scan_q["gamma"][i_esd - 1]
-        g_esd_hi = scan_q["gamma"][i_esd]
+    def _esd_bracket(scan: dict[str, np.ndarray]) -> tuple[float, float] | None:
+        nz = scan["max_concurrence"] > 0.0
+        if not nz.any() or nz.all():
+            return None
+        i = int(np.argmax(~nz))
+        return float(scan["gamma"][i - 1]), float(scan["gamma"][i])
+
+    bracket = _esd_bracket(scan_q)
+    if bracket is not None:
         print(f"\n  Entanglement sudden death (Yu-Eberly) onset:")
-        print(f"    gamma_ESD ∈ [{g_esd_lo:.3e}, {g_esd_hi:.3e}] /s")
+        print(f"    gamma_ESD ∈ [{bracket[0]:.3e}, {bracket[1]:.3e}] /s")
         print(f"    Above this threshold, C(t) ≡ 0 for all t in [0, T] —")
         print(f"    not asymptotic decay; the state becomes truly separable.")
 
-    # write Tier 2 CSV
+    # ── geometry comparison: parallel vs perpendicular ───────────────
+    print("\n  Geometry comparison (Bose 2017 nominal, T=2.5s):")
+    print(f"    {'metric':<40}{'parallel':>14}{'perpendicular':>16}")
+    print("    " + "-" * 70)
+    print(f"    {'unitary peak C':<40}"
+          f"{scan_q['max_concurrence'][0]:>14.4f}"
+          f"{scan_q_perp['max_concurrence'][0]:>16.4f}")
+    bracket_p = _esd_bracket(scan_q_perp)
+    g_esd_par = bracket[1] if bracket else float('inf')
+    g_esd_per = bracket_p[1] if bracket_p else float('inf')
+    print(f"    {'gamma_ESD upper bound (1/s)':<40}"
+          f"{g_esd_par:>14.3e}{g_esd_per:>16.3e}")
+    g_par_001 = critical_gamma(scan_q, 0.01)
+    g_per_001 = critical_gamma(scan_q_perp, 0.01)
+    print(f"    {'gamma_crit at C=0.01 (1/s)':<40}"
+          f"{g_par_001:>14.3e}{g_per_001:>16.3e}")
+    print(f"    {'tau_coh required at C=0.01 (s)':<40}"
+          f"{1.0/g_par_001:>14.2f}{1.0/g_per_001:>16.2f}")
+    print("\n    Perpendicular gives ~2x larger budget because Delta phi is")
+    print("    ~2x larger at the closer approach distance d=200 um (vs d=450 um")
+    print("    in the parallel geometry where d > dX is required).")
+
+    # write Tier 2 CSV (parallel + perpendicular side by side)
     budget_path = Path(__file__).parent / "bmv_coherence_budget.csv"
     with budget_path.open("w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["gamma_per_s", "tau_coh_s",
-                    "C_max_quantized", "N_max_quantized", "t_at_peak_s_quantized",
+                    "C_max_quantized_parallel", "N_max_quantized_parallel",
+                    "t_at_peak_s_parallel",
+                    "C_max_quantized_perpendicular",
+                    "N_max_quantized_perpendicular",
+                    "t_at_peak_s_perpendicular",
                     "C_max_RA", "N_max_RA"])
         for i in range(len(gamma_array)):
             g = gamma_array[i]
@@ -536,14 +673,56 @@ def main() -> None:
                 f"{scan_q['max_concurrence'][i]:.6e}",
                 f"{scan_q['max_negativity'][i]:.6e}",
                 f"{scan_q['t_at_peak_s'][i]:.6e}",
+                f"{scan_q_perp['max_concurrence'][i]:.6e}",
+                f"{scan_q_perp['max_negativity'][i]:.6e}",
+                f"{scan_q_perp['t_at_peak_s'][i]:.6e}",
                 f"{scan_ra['max_concurrence'][i]:.6e}",
                 f"{scan_ra['max_negativity'][i]:.6e}",
             ])
     print(f"\n  Coherence-budget table written to: {budget_path}")
 
+    # ── Tier 3: positional actualization rate from environment ────────
+    print("\n" + "=" * 78)
+    print("TIER 3 — POSITIONAL ACTUALIZATION RATE (bridge interpretation)")
+    print("=" * 78)
+    print("""\
+RA reinterpretation: each environmental scattering event = one Step-4
+actualization that records position info ⇒ lambda_pos = Gamma_decoh.
+A native BDG-kernel derivation is open (tracked in RA-PRED-008 Tier 3b).
+""")
+    g_esd_par = bracket[1] if bracket else float("inf")
+
+    scenarios = [
+        ("Bose 2017 ideal (cryo UHV)",
+         BMVEnvironment(pressure_Pa=1e-12, T_gas_K=0.1, T_blackbody_K=0.1)),
+        ("Standard UHV at 4 K",
+         BMVEnvironment(pressure_Pa=1e-10, T_gas_K=4.0, T_blackbody_K=4.0)),
+        ("Standard UHV at 77 K (LN2)",
+         BMVEnvironment(pressure_Pa=1e-9, T_gas_K=77.0, T_blackbody_K=77.0)),
+        ("Room-temperature high vacuum",
+         BMVEnvironment(pressure_Pa=1e-6, T_gas_K=300.0, T_blackbody_K=300.0)),
+    ]
+    print(f"  Bose 2017 nominal (parallel geometry), gamma_ESD <= {g_esd_par:.3e} /s")
+    print(f"\n  {'Scenario':<32}{'lambda_pos':>14}{'margin':>14}{'coherent?':>12}")
+    print("  " + "-" * 72)
+    for name, env in scenarios:
+        v = in_branch_coherent_regime(env, BOSE_2017, g_esd_par)
+        margin = v["margin_factor"]
+        margin_str = (f"{margin:.2e}x" if margin < 1e6 else "huge")
+        verdict = "YES" if v["branch_coherent"] else "NO"
+        print(f"  {name:<32}{v['lambda_pos_per_s']:>11.3e} /s"
+              f"{margin_str:>14}{verdict:>12}")
+    print("\n  Component breakdown (Bose 2017 ideal scenario):")
+    rates = actualization_rate_from_environment(scenarios[0][1], BOSE_2017)
+    print(f"    gas-collision rate     : {rates['gas']:.3e} /s")
+    print(f"    blackbody-photon rate  : {rates['blackbody']:.3e} /s")
+    print(f"    total lambda_pos       : {rates['total']:.3e} /s")
+    print(f"    gamma_ESD margin       : {g_esd_par/rates['total']:.2e}x"
+          if rates['total'] > 0 else "    gamma_ESD margin       : infinite")
+
     # falsification reminder
     print("\n" + "=" * 78)
-    print("FALSIFICATION CONDITION (Tier 1 + Tier 2)")
+    print("FALSIFICATION CONDITION (Tier 1 + Tier 2 + Tier 3)")
     print("=" * 78)
     g_crit_01 = critical_gamma(scan_q, 0.01)
     print("""\
@@ -557,7 +736,15 @@ time tau_coh = 1/gamma is long enough to preserve a witnessable signal.
 For an experimental sensitivity floor of C >= 0.01 the quantized-gravity
 prediction requires gamma <= {g_crit:.3e} /s, i.e., tau_coh >= {tau_min:.3e} s.
 A null result above this gamma threshold is decoherence-limited and
-does NOT discriminate RA from quantized gravity.""".format(
+does NOT discriminate RA from quantized gravity.
+
+Tier 3: in the bridge interpretation, lambda_pos = Gamma_decoh, so the
+above gamma threshold is also the maximum tolerable RA Step-4 positional
+actualization rate. For the Bose 2017 nominal protocol this requires
+extreme cryogenic UHV conditions (pressure < 1e-11 Pa, T < ~1 K). At
+standard cryogenic vacuum (4K, 1e-10 Pa) the gas-collision rate alone
+already exceeds gamma_ESD. The native BDG-kernel derivation of
+lambda_pos (Tier 3b) remains open.""".format(
         c_q=results["quantized"]["concurrence"][-1],
         T=BOSE_2017.T,
         g_crit=g_crit_01,
