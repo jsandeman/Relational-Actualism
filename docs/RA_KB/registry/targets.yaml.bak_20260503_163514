@@ -241,8 +241,6 @@ targets:
   - bmv_discrimination_sweep.csv
   - RA_BDG_ActualizationRate.lean
   - RA_BDG_PAccMeasure.lean
-  - bmv_mu_dictionary.py
-  - bmv_mu_dictionary_predictions.csv
   proof_dependencies:
   - RA-ONT-001
   - RA-LLC-001
@@ -289,16 +287,11 @@ targets:
     upper bound on probability measures. The full Poisson-CSG product
     construction (Tier 3e) and asymptotic saturation theorem remain open.
   next_tasks:
-  - 'Tier 3b closure (in progress): the BMV-specific mu-identification
-    question is cataloged in bmv_mu_dictionary.py with five candidate
-    dictionaries (env x Planck-time, atom count, geometric, dimensionality
-    mu=d=4, log mass-ratio) and tracked as the new RAKB issue
-    RA-OPEN-BMV-MU-DICTIONARY-001. Finding: 4 of 5 candidates collapse
-    to the Tier 3a bridge limit (BDG saturation) for macroscopic test
-    masses; only the kernel-structural conjecture mu=d=4 (Dictionary D)
-    predicts a NEW signal (~2.5x universal positional-decoherence
-    suppression). Full closure requires upstream RA-OPEN-MU-ESTIMATOR-001
-    plus mass-emergence work (RA-MOTIF-* and Causal Firewall claims).'
+  - 'Tier 3b closure (open): pin down the BDG kernel parameter mu from first
+    principles by specifying the test-mass graph-patch model and the dictionary
+    mapping (m, dX, environmental coupling) to candidate-generation parameters.
+    Requires open mass-emergence work (RA-MOTIF-* and Causal Firewall claims).
+    Without this, lambda_pos remains parametric in mu.'
   - 'Tier 3c partial (done): the algebraic content of the actualization-rate
     construction is lean-build-confirmed via RA_BDG_ActualizationRate.lean
     (added to lakefile.lean Tier A bedrock, builds with zero warnings / sorry
@@ -334,8 +327,6 @@ targets:
     bmv_discrimination_sweep.csv: generated_source_audit
     RA_BDG_ActualizationRate.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free
     RA_BDG_PAccMeasure.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom_warning_free
-    bmv_mu_dictionary.py: uploaded_smoke_tested_ok
-    bmv_mu_dictionary_predictions.csv: generated_source_audit
   legacy_proof_status: DR
   legacy_support_status: CV
   target_type: phenomenological_target

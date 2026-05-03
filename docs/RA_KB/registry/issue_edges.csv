@@ -1,6 +1,6 @@
 src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
-RA-ONT-003,RA-KERNEL-004,proof_dependency,claim,issue,Structured potentia / adjacent possible,Stochastic actualization kernel requirement
-RA-KERNEL-003,RA-KERNEL-004,proof_dependency,claim,issue,Finite potentia,Stochastic actualization kernel requirement
+RA-ONT-003,RA-KERNEL-004,proof_dependency,claim,issue,Structured potentia / adjacent possible,Actualization selector / local frequency-kernel requirement
+RA-KERNEL-003,RA-KERNEL-004,proof_dependency,claim,issue,Finite potentia,Actualization selector / local frequency-kernel requirement
 RA-KERNEL-004,RA-KERNEL-005,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Discrete covariance target
 RA-KERNEL-002,RA-KERNEL-005,proof_dependency,claim,issue,Kernel locality,Discrete covariance target
 RA-MOTIF-002,RA-OPEN-001,proof_dependency,claim,issue,Stable motif census,Full motif-to-spectrum cartography
@@ -22,3 +22,75 @@ RA-KERNEL-004,RA-OPEN-009,proof_dependency,issue,issue,Stochastic actualization 
 RA-KERNEL-005,RA-OPEN-009,proof_dependency,issue,issue,Discrete covariance target,RA-native frequency law
 RA-MOTIF-002,RA-MOTIF-009,proof_dependency,claim,issue,Stable motif census,Type IV exact-zero motif target
 RA-MOTIF-005,RA-MOTIF-009,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Type IV exact-zero motif target
+RA-D4-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,D4U02 selectivity ceiling,Edge-level sign-source for signed N1 charge
+RA-LLC-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Local Ledger Condition,Edge-level sign-source for signed N1 charge
+RA-MOTIF-005,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Edge-level sign-source for signed N1 charge
+RA-MOTIF-006,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Signed three-direction charge spectrum,Edge-level sign-source for signed N1 charge
+RA-ONT-001,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Finite causal graph ontology,RA-native candidate measure for sequential BDG growth
+RA-ONT-003,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Structured potentia / adjacent possible,Derived growth measure as selector shadow
+RA-KERNEL-002,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Kernel locality,Derived growth measure as selector shadow
+RA-KERNEL-004,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,issue,issue,Actualization selector / local frequency-kernel requirement,Derived growth measure as selector shadow
+RA-KERNEL-005,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,issue,issue,Discrete covariance target,RA-native candidate measure for sequential BDG growth
+RA-ONT-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,claim,issue,Finite causal graph ontology,Frontier/incidence normal form for actualization candidates
+RA-KERNEL-002,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,claim,issue,Kernel locality,Frontier/incidence normal form for actualization candidates
+RA-KERNEL-004,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Hasse/frontier normal form for one-vertex actualization
+RA-KERNEL-005,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,Discrete covariance target,Hasse/frontier normal form for one-vertex actualization
+RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,RA-native candidate measure for sequential BDG growth,Hasse/frontier normal form for one-vertex actualization
+RA-KERNEL-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,Poisson-CSG as effective selector-shadow regime
+RA-KERNEL-002,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,claim,issue,Kernel locality,Finite RA growth versus accepted-conditional Poisson-CSG
+RA-KERNEL-004,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Finite RA growth versus accepted-conditional Poisson-CSG
+RA-ARITH-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,claim,issue,BDG coefficient arithmetic spine,Poisson-CSG as effective selector-shadow regime
+RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,Poisson-CSG as effective selector-shadow regime
+RA-KERNEL-004,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,RA-native finite-graph local density estimator
+RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,RA-native finite-graph local density estimator
+RA-OPEN-POISSON-DYNAMICS-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,Finite RA growth versus accepted-conditional Poisson-CSG,RA-native finite-graph local density estimator
+RA-KERNEL-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,Action/future-volume weighting as derived selector shadow
+RA-KERNEL-004,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Uniform versus action-weighted actualization among admitted candidates
+RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,Action/future-volume weighting as derived selector shadow
+RA-OPEN-POISSON-DYNAMICS-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,Finite RA growth versus accepted-conditional Poisson-CSG,Uniform versus action-weighted actualization among admitted candidates
+RA-OPEN-FRONTIER-NORMAL-FORM-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,issue,issue,Frontier/incidence normal form for actualization candidates,Edge-level sign-source for signed N1 charge
+RA-LLC-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,claim,issue,Local Ledger Condition,Topological/incidence derivation of the RA ledger rule
+RA-MOTIF-006,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,claim,issue,Signed three-direction charge spectrum,Topological/incidence derivation of the RA ledger rule
+RA-OPEN-CHARGE-SIGN-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,issue,issue,Edge-level sign-source for signed N1 charge,Topological/incidence derivation of the RA ledger rule
+RA-OPEN-FRONTIER-NORMAL-FORM-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,issue,issue,Frontier/incidence normal form for actualization candidates,Topological/incidence derivation of the RA ledger rule
+RA-ONT-001,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Finite causal graph ontology,RA-native actualization selector
+RA-ONT-002,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Irreversible actualization,RA-native actualization selector
+RA-ONT-003,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Structured potentia / adjacent possible,RA-native actualization selector
+RA-KERNEL-001,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,RA-native actualization selector
+RA-KERNEL-002,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Kernel locality,RA-native actualization selector
+RA-KERNEL-003,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Finite potentia,RA-native actualization selector
+RA-KERNEL-004,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,issue,issue,Actualization selector / local frequency-kernel requirement,RA-native actualization selector
+RA-LLC-001,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Local Ledger Condition,RA-native actualization selector
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,RA-native actualization selector,Selector Closure Theorem
+RA-OPEN-FRONTIER-NORMAL-FORM-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,Frontier/incidence normal form for actualization candidates,Selector Closure Theorem
+RA-OPEN-NO-HISTORY-QUOTIENT-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,No actual-history quotient principle,Selector Closure Theorem
+RA-OPEN-RELATIONAL-DETERMINACY-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,Relational determinacy and no primitive randomness,Selector Closure Theorem
+RA-KERNEL-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,Selector Closure Theorem
+RA-KERNEL-002,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Kernel locality,Selector Closure Theorem
+RA-KERNEL-003,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Finite potentia,Selector Closure Theorem
+RA-LLC-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Local Ledger Condition,Selector Closure Theorem
+RA-ONT-001,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,claim,issue,Finite causal graph ontology,No actual-history quotient principle
+RA-ONT-002,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,claim,issue,Irreversible actualization,No actual-history quotient principle
+RA-ONT-004,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,claim,issue,Finitary Actuality,No actual-history quotient principle
+RA-KERNEL-005,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,issue,issue,Discrete covariance target,No actual-history quotient principle
+RA-ONT-002,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,claim,issue,Irreversible actualization,Relational determinacy and no primitive randomness
+RA-ONT-003,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,claim,issue,Structured potentia / adjacent possible,Relational determinacy and no primitive randomness
+RA-KERNEL-004,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,issue,issue,Actualization selector / local frequency-kernel requirement,Relational determinacy and no primitive randomness
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,issue,issue,RA-native actualization selector,Relational determinacy and no primitive randomness
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,issue,issue,RA-native actualization selector,Derived growth measure as selector shadow
+RA-KERNEL-003,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Finite potentia,Derived growth measure as selector shadow
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,RA-native actualization selector,Frontier/incidence normal form for actualization candidates
+RA-OPEN-NO-HISTORY-QUOTIENT-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,No actual-history quotient principle,Frontier/incidence normal form for actualization candidates
+RA-LLC-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,claim,issue,Local Ledger Condition,Frontier/incidence normal form for actualization candidates
+RA-MOTIF-005,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Topological/incidence derivation of the RA ledger rule
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,issue,issue,RA-native actualization selector,Topological/incidence derivation of the RA ledger rule
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,issue,issue,RA-native actualization selector,Poisson-CSG as effective selector-shadow regime
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,RA-native actualization selector,RA-native finite-graph local density estimator
+RA-KERNEL-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,RA-native finite-graph local density estimator
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,RA-native actualization selector,Action/future-volume weighting as derived selector shadow
+RA-OPEN-TOPOLOGICAL-LEDGER-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,issue,issue,Topological/incidence derivation of the RA ledger rule,Edge-level sign-source for signed N1 charge
+RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,BMV apparatus mu-dictionary identification
+RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,RA-native actualization selector,BMV apparatus mu-dictionary identification
+RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,BMV apparatus mu-dictionary identification
+RA-MOTIF-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Native motif sector definition,BMV apparatus mu-dictionary identification
+RA-KERNEL-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Kernel locality,BMV apparatus mu-dictionary identification

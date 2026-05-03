@@ -1,0 +1,6 @@
+dictionary,provenance,mu,P_acc,suppression_factor,regime,lambda_pos_per_s,bridge_lambda_pos_per_s,deviates_from_bridge
+A_env_planck,conjecture,6.666856e-38,1.000000,1.000000,saturated,1.236607e+06,1.236607e+06,0
+B_atom_count,conjecture,6.022141e+12,1.000000,1.000000,saturated,1.236607e+06,1.236607e+06,0
+C_geometric,conjecture,5.724275e+124,1.000000,1.000000,saturated,1.236607e+06,1.236607e+06,0
+D_dimensionality,kernel-structural conjecture,4.000000e+00,0.404360,2.473044,strongly_selective,5.000346e+05,1.236607e+06,1
+E_log_mass_ratio,cartographic (QFT-analogy),1.459320e+01,1.000000,1.000000,saturated,1.236607e+06,1.236607e+06,0

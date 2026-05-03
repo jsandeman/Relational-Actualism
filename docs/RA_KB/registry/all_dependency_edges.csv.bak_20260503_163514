@@ -165,8 +165,3 @@ RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,iss
 RA-KERNEL-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,RA-native finite-graph local density estimator
 RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,RA-native actualization selector,Action/future-volume weighting as derived selector shadow
 RA-OPEN-TOPOLOGICAL-LEDGER-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,issue,issue,Topological/incidence derivation of the RA ledger rule,Edge-level sign-source for signed N1 charge
-RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,BMV apparatus mu-dictionary identification
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,RA-native actualization selector,BMV apparatus mu-dictionary identification
-RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,BMV apparatus mu-dictionary identification
-RA-MOTIF-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Native motif sector definition,BMV apparatus mu-dictionary identification
-RA-KERNEL-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Kernel locality,BMV apparatus mu-dictionary identification
