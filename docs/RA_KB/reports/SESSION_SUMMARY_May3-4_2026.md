@@ -31,6 +31,9 @@ working tree is in sync with the index.
 ## Commits in chronological order (most recent first)
 
 ```
+(berry follow-up: archive 7 intermediate berry_*.py; keep _final + _theorems)
+a284e29  Python + Julia cleanup pass — rename, archive deprecated, archive Julia entirely
+19a9b14  Session summary doc for May 3-4 2026 work
 2c42da0  Sync working-tree to repo: track untracked work + fix .gitignore
 b42b902  Lean corpus cleanup pass — drop version suffixes, archive deprecated, integrate motif-commit
 4b30f95  v2 lit-review integration: per-channel constraints falsify all Dict-D variants
@@ -48,6 +51,43 @@ af443ed  Tier 2 geometry + Tier 3 (environment bridge)
 c85cabc  Tier 1 — three-model comparator + RA-PRED-008
 e62fe4d  (start of session: Project audit Stages A-D)
 ```
+
+## Theme 3: Python + Julia housekeeping
+
+Companion to the Lean cleanup. Per user directive after reviewing the
+held-back items:
+
+**Python renames** (RA-prefixed CamelCase → snake_case):
+  RA_BDG_Simulation.py   → bdg_simulation.py
+  RA_D1_Proof.py         → d1_proof.py
+  RA_RASM_Verification.py → rasm_verification.py
+
+**Promotion**: `t1_forecast_deliverables_v2.py` promoted to canonical
+filename `t1_forecast_deliverables.py`; v1 archived.
+
+**Python archived** (26 files in `archive_python_deprecated_May4_2026.zip`):
+- 17 `apply_*_upserts.py` one-shot RAKB migration scripts
+- 1 superseded `t1_forecast_deliverables.py` v1
+- 1 forecast variant (the v1 is preserved as
+  `t1_forecast_deliverables_v1_for_archive.py` inside the zip)
+- **7 intermediate berry_*.py iterative-work scripts** (berry_bridge,
+  berry_computation, berry_decomposition, berry_derive_f, berry_gauge,
+  berry_thinning, berry_transfer). Per `RA_Berry_Phase_Derived.md` the
+  Berry-phase derivation went through 8 successive computations;
+  user kept `berry_final.py` and `berry_theorems.py` as the
+  breakthrough modules.
+
+**Held-in-tree** (per user decision):
+- `mu_int_derive.py` — RAKB status `blocked_repair_required`; user kept.
+- `actualization_thermo.py` — RAKB status
+  `blocked_missing_dependency_pending_reproduction`; user kept.
+
+**Julia archived** (entire `src/RAGrowSim/` subtree, 56 files, 2.3 MB,
+plus standalone `src/RAGrowSim.tar.gz`) → `archive_julia_ragrowsim_May4_2026.zip`.
+
+**Active Python tools kept in `docs/RA_KB/scripts/`**:
+  validate_rakb_v0_5.py, ra_python_static_audit.py,
+  rakb_extract_bibitems.py, rakb_generate_tex_ids.py
 
 ---
 
