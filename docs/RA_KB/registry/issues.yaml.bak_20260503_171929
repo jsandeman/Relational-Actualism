@@ -810,8 +810,6 @@ issues:
   sources:
   - bdg_decoherence_predictions.py
   - bdg_decoherence_predictions.csv
-  - bdg_decoherence_channels.py
-  - bdg_decoherence_channels_matrix.csv
   - bmv_mu_dictionary.py
   - bdg_actualization.py
   proof_dependencies:
@@ -836,29 +834,16 @@ issues:
   - Replace the simplified gas-collision cross-section with proper
     de-Broglie-corrected cross-sections for sub-um dX scenarios
     (Joos-Zeh full formula).
-  - 'Pull primary-literature decoherence measurements for the cataloged
-    systems to refine the measurement_precision_factor and channel-budget
-    breakdowns. Channel weights in bdg_decoherence_channels.py are
-    training-data synthesis, not primary citations from Arndt / Kasevich /
-    Aspelmeyer groups; a real lit-review pass would tighten the verdict
-    significantly.'
-  - 'Channel-resolved analysis (bdg_decoherence_channels.py) tested four
-    Dict-D variants with restricted filter masks (uniform, multi-vertex
-    only, gas only, BMV-specific). Result: even the most restricted
-    variant (D_gas_only, filter applies only to gas collisions) is
-    constrained by Arndt-style molecular interferometry, where gas weight
-    in the channel budget is ~50-55% and measurement precision is ~10-20%.
-    The escape routes are narrower than initially suggested by Tier 3b.'
-  - 'Determine which decoherence channels the BDG filter actually applies
-    to from RA principles (RA-OPEN-MU-ESTIMATOR-001 closure dependent).
-    The empirical constraint is now sharp — any future RA-derived filter
-    that affects gas + blackbody channels by more than ~10-20% is in
-    tension with mature molecular interferometry.'
+  - Pull primary-literature decoherence measurements for the cataloged
+    systems to refine the measurement_precision_factor.
+  - Determine which decoherence channels the BDG filter actually applies
+    to (RA-OPEN-MU-ESTIMATOR-001 closure dependent).
+  - If a refined Dictionary D' applies only to a subset of channels, compute
+    the predicted residual suppression and re-check the empirical
+    constraints.
   source_status:
     bdg_decoherence_predictions.py: uploaded_smoke_tested_ok
     bdg_decoherence_predictions.csv: generated_source_audit
-    bdg_decoherence_channels.py: uploaded_smoke_tested_ok
-    bdg_decoherence_channels_matrix.csv: generated_source_audit
   legacy_proof_status: ONT
   issue_status: open
   issue_kind: empirical_constraint
