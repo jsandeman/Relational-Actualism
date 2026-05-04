@@ -1,0 +1,7 @@
+nodes=9 edges=11 motifs=15
+summary={'version': '0.5', 'nodes': 9, 'edges': 11, 'motifs': 15, 'severance_evaluations': 72, 'fragility_profiles': 18, 'sweep_rows': 18, 'total_lost_support': 32, 'total_lost_readiness': 40, 'total_lost_strict_commit': 48, 'total_lost_selected_commit': 40}
+summary_csv=outputs/ra_causal_dag_severance_summary_v0_5.csv
+severance_csv=outputs/ra_causal_dag_severance_evaluations_v0_5.csv
+fragility_csv=outputs/ra_causal_dag_fragility_profiles_v0_5.csv
+prediction_md=outputs/ra_causal_dag_severance_predictions_v0_5.md
+state_json=outputs/ra_causal_dag_severance_state_v0_5.json

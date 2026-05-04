@@ -1,0 +1,7 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-SEVERANCE-002,RA-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Destroyed support cuts are not ready after severance,Post-severance reachability profiles formalize causal-support disruption
+RA-MOTIF-SEVERANCE-003,RA-MOTIF-SEVERANCE-002,proof_dependency,claim,claim,Destroyed support blocks post-severance commitment,Destroyed support cuts are not ready after severance
+RA-SIM-MOTIF-SEVERANCE-002,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Support loss and readiness loss are separately measured,Causal-severance interventions operationalize support disruption
+RA-SIM-MOTIF-SEVERANCE-003,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Finality-depth shift is measured under support disruption,Causal-severance interventions operationalize support disruption
+RA-SIM-MOTIF-SEVERANCE-004,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Recovery length measures post-severance readiness restoration,Causal-severance interventions operationalize support disruption
+RA-SIM-MOTIF-SEVERANCE-005,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,"Selector stress is separated from support, ledger, and orientation degradation",Causal-severance interventions operationalize support disruption

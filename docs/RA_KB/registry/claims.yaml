@@ -2008,3 +2008,262 @@ claims:
   claim_kind: interpretive_bridge
   formal_anchor: OrientationConflictWitness ; OrientationActualizationContext.conflict_witness
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026
+- id: RA-MOTIF-SEVERANCE-001
+  name: Post-severance reachability profiles formalize causal-support disruption
+  domain: matter
+  papers:
+  - II
+  statement: A causal severance profile can be represented as a post-severance reachability relation over graph vertices, enabling support-cut readiness to be evaluated after disruption without mutating
+    the underlying graph ontology.
+  nature_targets:
+  - actualization fragility
+  - causal-support disruption
+  ra_observable: causal_support_survival
+  sources:
+  - RA_MotifCausalSeveranceBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-ORIENT-SUPPORT-001
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifCausalSeveranceBridge` succeeded, 8281 jobs; no sorry/admit/axiom in installed module). Promoted past the packet proposed source_level_formal_bridge_pending_local_compile.
+  next_tasks:
+  - Compile RA_MotifCausalSeveranceBridge.lean locally and promote status if no sorry/admit/axiom.
+  source_status:
+    RA_MotifCausalSeveranceBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: GraphCausalSeveranceProfile ; GraphReadyAtAfterSeverance
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+- id: RA-MOTIF-SEVERANCE-002
+  name: Destroyed support cuts are not ready after severance
+  domain: matter
+  papers:
+  - II
+  statement: If at least one required support vertex in a support cut fails to reach a site under a severance profile, then the support cut is not ready at that site after severance.
+  nature_targets:
+  - support readiness failure
+  - actualization fragility
+  ra_observable: readiness_survival
+  sources:
+  - RA_MotifCausalSeveranceBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-SEVERANCE-001
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifCausalSeveranceBridge` succeeded, 8281 jobs; no sorry/admit/axiom in installed module). Promoted past the packet proposed source_level_formal_bridge_pending_local_compile.
+  next_tasks:
+  - Compile and
+  - if successful
+  - promote to lean_verified_or_compiled_native.
+  source_status:
+    RA_MotifCausalSeveranceBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: GraphSupportCutDestroyedAt ; GraphSupportCutDestroyedAt.not_ready_after
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+- id: RA-MOTIF-SEVERANCE-003
+  name: Destroyed support blocks post-severance commitment
+  domain: matter
+  papers:
+  - II
+  statement: A motif cannot commit after severance through a support cut that has been destroyed at the relevant site.
+  nature_targets:
+  - commitment survival
+  - actualization fragility
+  ra_observable: commit_survival
+  sources:
+  - RA_MotifCausalSeveranceBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-SEVERANCE-002
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifCausalSeveranceBridge` succeeded, 8281 jobs; no sorry/admit/axiom in installed module). Promoted past the packet proposed source_level_formal_bridge_pending_local_compile.
+  next_tasks:
+  - Compile and connect to simulator v0.5 diagnostics.
+  source_status:
+    RA_MotifCausalSeveranceBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: GraphCommitsAfterSeverance ; GraphCommitBlockedBySupportDestruction
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+- id: RA-SIM-MOTIF-SEVERANCE-001
+  name: Causal-severance interventions operationalize support disruption
+  domain: matter
+  papers:
+  - II
+  statement: Simulator v0.5 implements RA-native causal-severance interventions that perturb edge availability, frontier support availability, support delay, orientation certification, local ledger certification,
+    and selector stress.
+  nature_targets:
+  - actualization fragility
+  - support disruption
+  ra_observable: causal_severance_intervention_response
+  sources:
+  - ra_causal_dag_simulator.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026_Report.md
+  proof_dependencies:
+  - RA-MOTIF-ORIENT-SUPPORT-001
+  restoration_preconditions: []
+  caveats: Simulator diagnostic only; not an empirical physical law.
+  next_tasks:
+  - Compare fragility profiles across graph-generation regimes.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: unittest_validated
+  claim_kind: derived_result
+  formal_anchor: CausalSeveranceIntervention ; evaluate_severance ; run_severance_workbench
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+- id: RA-SIM-MOTIF-SEVERANCE-002
+  name: Support loss and readiness loss are separately measured
+  domain: matter
+  papers:
+  - II
+  statement: Simulator v0.5 separates support-certification loss from causal-readiness loss, allowing orientation/ledger failures to be distinguished from reachability/frontier failures.
+  nature_targets:
+  - support certification
+  - readiness survival
+  ra_observable: support_readiness_failure_mode
+  sources:
+  - ra_causal_dag_simulator.py
+  - ra_causal_dag_severance_evaluations_v0_5.csv
+  proof_dependencies:
+  - RA-SIM-MOTIF-SEVERANCE-001
+  restoration_preconditions: []
+  caveats: Diagnostic categories are simulator-side operational categories.
+  next_tasks:
+  - Align the failure categories with compiled severance bridge predicates.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: unittest_validated
+  claim_kind: derived_result
+  formal_anchor: SeveranceEvaluation.lost_support ; SeveranceEvaluation.lost_readiness
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+- id: RA-SIM-MOTIF-SEVERANCE-003
+  name: Finality-depth shift is measured under support disruption
+  domain: matter
+  papers:
+  - II
+  statement: Simulator v0.5 records how finite-run finality depth changes when support is delayed, disrupted, or certification-degraded.
+  nature_targets:
+  - causal finality
+  - actualization recovery
+  ra_observable: finality_depth_shift
+  sources:
+  - ra_causal_dag_simulator.py
+  - ra_causal_dag_finality_depth_shift_v0_5.csv
+  proof_dependencies:
+  - RA-SIM-MOTIF-SEVERANCE-001
+  restoration_preconditions: []
+  caveats: Finite-run finality is a simulator diagnostic and not yet an asymptotic theorem.
+  next_tasks:
+  - Run larger graph ensembles once simulator performance is optimized.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: unittest_validated
+  claim_kind: derived_result
+  formal_anchor: min_finality_depth ; finality_depth_shift
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+- id: RA-SIM-MOTIF-SEVERANCE-004
+  name: Recovery length measures post-severance readiness restoration
+  domain: matter
+  papers:
+  - II
+  statement: Simulator v0.5 records the first later causal depth at which a disrupted support cut becomes ready again, when such a site exists in the finite run.
+  nature_targets:
+  - actualization recovery
+  - causal support restoration
+  ra_observable: recovery_length_after_severance
+  sources:
+  - ra_causal_dag_simulator.py
+  - ra_causal_dag_recovery_lengths_v0_5.csv
+  proof_dependencies:
+  - RA-SIM-MOTIF-SEVERANCE-001
+  restoration_preconditions: []
+  caveats: Recovery is measured inside the finite generated graph; absence of recovery is finite-run absence, not asymptotic impossibility.
+  next_tasks:
+  - Add ensemble-level recovery distributions.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: unittest_validated
+  claim_kind: derived_result
+  formal_anchor: readiness_recovery_length ; recovery_length
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+- id: RA-SIM-MOTIF-SEVERANCE-005
+  name: Selector stress is separated from support, ledger, and orientation degradation
+  domain: matter
+  papers:
+  - II
+  statement: Simulator v0.5 includes selector-stress interventions that increase incompatible alternatives without directly damaging support reachability or orientation/ledger certification, allowing selected-commitment
+    effects to be separated from support failure.
+  nature_targets:
+  - selector closure
+  - unresolved incompatibility
+  - actualization ambiguity
+  ra_observable: selector_stress_response
+  sources:
+  - ra_causal_dag_simulator.py
+  - ra_causal_dag_severance_sweep_v0_5.csv
+  proof_dependencies:
+  - RA-SIM-MOTIF-SEVERANCE-001
+  restoration_preconditions: []
+  caveats: Selector-stress policies remain simulator-side experimental policies.
+  next_tasks:
+  - Compare selector-stress behavior with Lean selector-completeness predicates.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: unittest_validated
+  claim_kind: derived_result
+  formal_anchor: CausalSeveranceIntervention(mode=selector_stress) ; selected_commit_bool
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001

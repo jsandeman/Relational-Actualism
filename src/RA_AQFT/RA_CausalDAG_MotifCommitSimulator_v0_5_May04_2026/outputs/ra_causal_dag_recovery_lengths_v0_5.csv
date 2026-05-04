@@ -1,0 +1,73 @@
+motif,site,mode,severity,seed,support_width,before_supported,before_ready,before_strict_commits,before_selected_commits,after_supported,after_ready,after_strict_commits,after_selected_commits,lost_support,lost_readiness,lost_strict_commit,lost_selected_commit,finality_depth_before,finality_depth_after,finality_depth_shift,recovery_length,intervention_detail
+renewal_1,1,edge_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,0,0,0,0,removed_edges=[]
+renewal_2,2,edge_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,1,1,0,0,removed_edges=[]
+renewal_3,3,edge_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,2,2,0,0,removed_edges=[]
+renewal_4,4,edge_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,3,3,0,0,removed_edges=[]
+renewal_1,1,edge_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,,,0,"removed_edges=[(0, 1)]"
+renewal_2,2,edge_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,3,2,1,"removed_edges=[(1, 2)]"
+renewal_3,3,edge_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,5,3,0,"removed_edges=[(2, 3), (1, 2)]"
+renewal_4,4,edge_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,,,2,"removed_edges=[(3, 4), (0, 1)]"
+renewal_1,1,edge_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,,,0,"removed_edges=[(0, 1)]"
+renewal_2,2,edge_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,3,2,0,"removed_edges=[(1, 2), (0, 1)]"
+renewal_3,3,edge_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,5,3,0,"removed_edges=[(1, 2), (0, 1), (2, 3)]"
+renewal_4,4,edge_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,,,0,"removed_edges=[(3, 4), (2, 3), (0, 1), (1, 2)]"
+renewal_1,1,frontier_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,0,0,0,0,dropped_support_vertices=[]
+renewal_2,2,frontier_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,1,1,0,0,dropped_support_vertices=[]
+renewal_3,3,frontier_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,2,2,0,0,dropped_support_vertices=[]
+renewal_4,4,frontier_dropout,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,3,3,0,0,dropped_support_vertices=[]
+renewal_1,1,frontier_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,,,,dropped_support_vertices=[0]
+renewal_2,2,frontier_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,,,,dropped_support_vertices=[1]
+renewal_3,3,frontier_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,,,,dropped_support_vertices=[2]
+renewal_4,4,frontier_dropout,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,,,,dropped_support_vertices=[3]
+renewal_1,1,frontier_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,,,,dropped_support_vertices=[0]
+renewal_2,2,frontier_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,,,,dropped_support_vertices=[1]
+renewal_3,3,frontier_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,,,,dropped_support_vertices=[2]
+renewal_4,4,frontier_dropout,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,,,,dropped_support_vertices=[3]
+renewal_1,1,support_delay,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,0,0,0,0,delay_depth=0
+renewal_2,2,support_delay,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,1,1,0,0,delay_depth=0
+renewal_3,3,support_delay,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,2,2,0,0,delay_depth=0
+renewal_4,4,support_delay,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,3,3,0,0,delay_depth=0
+renewal_1,1,support_delay,0.5,101,1,True,True,True,True,True,False,False,False,False,True,True,True,0,2,2,2,delay_depth=2
+renewal_2,2,support_delay,0.5,101,1,True,True,True,True,True,False,False,False,False,True,True,True,1,3,2,2,delay_depth=2
+renewal_3,3,support_delay,0.5,101,1,True,True,True,True,True,False,False,False,False,True,True,True,2,4,2,2,delay_depth=2
+renewal_4,4,support_delay,0.5,101,1,True,True,True,True,True,False,False,False,False,True,True,True,3,5,2,2,delay_depth=2
+renewal_1,1,support_delay,1.0,101,1,True,True,True,True,True,False,False,False,False,True,True,True,0,5,5,5,delay_depth=5
+renewal_2,2,support_delay,1.0,101,1,True,True,True,True,True,False,False,False,False,True,True,True,1,6,5,5,delay_depth=5
+renewal_3,3,support_delay,1.0,101,1,True,True,True,True,True,False,False,False,False,True,True,True,2,7,5,5,delay_depth=5
+renewal_4,4,support_delay,1.0,101,1,True,True,True,True,True,False,False,False,False,True,True,True,3,8,5,,delay_depth=5
+renewal_1,1,orientation_degradation,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,0,0,0,0,orientation_degradation_severity=0.0
+renewal_2,2,orientation_degradation,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,1,1,0,0,orientation_degradation_severity=0.0
+renewal_3,3,orientation_degradation,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,2,2,0,0,orientation_degradation_severity=0.0
+renewal_4,4,orientation_degradation,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,3,3,0,0,orientation_degradation_severity=0.0
+renewal_1,1,orientation_degradation,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,0,0,0,orientation_degradation_severity=0.5
+renewal_2,2,orientation_degradation,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,1,0,0,orientation_degradation_severity=0.5
+renewal_3,3,orientation_degradation,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,2,0,0,orientation_degradation_severity=0.5
+renewal_4,4,orientation_degradation,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,3,0,0,orientation_degradation_severity=0.5
+renewal_1,1,orientation_degradation,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,0,0,0,orientation_degradation_severity=1.0
+renewal_2,2,orientation_degradation,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,1,0,0,orientation_degradation_severity=1.0
+renewal_3,3,orientation_degradation,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,2,0,0,orientation_degradation_severity=1.0
+renewal_4,4,orientation_degradation,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,3,0,0,orientation_degradation_severity=1.0
+renewal_1,1,ledger_failure,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,0,0,0,0,ledger_failure_severity=0.0
+renewal_2,2,ledger_failure,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,1,1,0,0,ledger_failure_severity=0.0
+renewal_3,3,ledger_failure,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,2,2,0,0,ledger_failure_severity=0.0
+renewal_4,4,ledger_failure,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,3,3,0,0,ledger_failure_severity=0.0
+renewal_1,1,ledger_failure,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,0,0,0,ledger_failure_severity=0.5
+renewal_2,2,ledger_failure,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,1,0,0,ledger_failure_severity=0.5
+renewal_3,3,ledger_failure,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,2,0,0,ledger_failure_severity=0.5
+renewal_4,4,ledger_failure,0.5,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,3,0,0,ledger_failure_severity=0.5
+renewal_1,1,ledger_failure,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,0,0,0,0,ledger_failure_severity=1.0
+renewal_2,2,ledger_failure,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,1,1,0,0,ledger_failure_severity=1.0
+renewal_3,3,ledger_failure,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,2,2,0,0,ledger_failure_severity=1.0
+renewal_4,4,ledger_failure,1.0,101,1,True,True,True,True,False,False,False,False,True,True,True,True,3,3,0,0,ledger_failure_severity=1.0
+renewal_1,1,selector_stress,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,0,0,0,0,added_incompatible_competitors=0 domain=severance_selector_stress:renewal_1:1
+renewal_2,2,selector_stress,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,1,1,0,0,added_incompatible_competitors=0 domain=severance_selector_stress:renewal_2:2
+renewal_3,3,selector_stress,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,2,2,0,0,added_incompatible_competitors=0 domain=severance_selector_stress:renewal_3:3
+renewal_4,4,selector_stress,0.0,101,1,True,True,True,True,True,True,True,True,False,False,False,False,3,3,0,0,added_incompatible_competitors=0 domain=severance_selector_stress:renewal_4:4
+renewal_1,1,selector_stress,0.5,101,1,True,True,True,True,True,True,False,True,False,False,True,False,0,0,0,0,added_incompatible_competitors=2 domain=severance_selector_stress:renewal_1:1
+renewal_2,2,selector_stress,0.5,101,1,True,True,True,True,True,True,False,True,False,False,True,False,1,1,0,0,added_incompatible_competitors=2 domain=severance_selector_stress:renewal_2:2
+renewal_3,3,selector_stress,0.5,101,1,True,True,True,True,True,True,False,True,False,False,True,False,2,2,0,0,added_incompatible_competitors=2 domain=severance_selector_stress:renewal_3:3
+renewal_4,4,selector_stress,0.5,101,1,True,True,True,True,True,True,False,True,False,False,True,False,3,3,0,0,added_incompatible_competitors=2 domain=severance_selector_stress:renewal_4:4
+renewal_1,1,selector_stress,1.0,101,1,True,True,True,True,True,True,False,True,False,False,True,False,0,0,0,0,added_incompatible_competitors=3 domain=severance_selector_stress:renewal_1:1
+renewal_2,2,selector_stress,1.0,101,1,True,True,True,True,True,True,False,True,False,False,True,False,1,1,0,0,added_incompatible_competitors=3 domain=severance_selector_stress:renewal_2:2
+renewal_3,3,selector_stress,1.0,101,1,True,True,True,True,True,True,False,True,False,False,True,False,2,2,0,0,added_incompatible_competitors=3 domain=severance_selector_stress:renewal_3:3
+renewal_4,4,selector_stress,1.0,101,1,True,True,True,True,True,True,False,True,False,False,True,False,3,3,0,0,added_incompatible_competitors=3 domain=severance_selector_stress:renewal_4:4

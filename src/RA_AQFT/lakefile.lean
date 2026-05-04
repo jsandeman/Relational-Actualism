@@ -114,6 +114,10 @@ lean_lib «RelationalActualism» where
     `RA_MotifOrientationSupportBridge,  -- (May 4 2026) certificate-level
                                 -- bridge from graph-orientation closure into
                                 -- motif support / selector closure.
+    `RA_MotifCausalSeveranceBridge,     -- (May 4 2026) post-severance
+                                -- readiness / commitment / depth-finality
+                                -- predicates over the graph motif-commit
+                                -- stack; abstract reachability profile.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,
