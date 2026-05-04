@@ -1,0 +1,13 @@
+test_demo_runs_and_reports_orientation_failures (test_v0_4_orientation_support.OrientationSupportV04Tests.test_demo_runs_and_reports_orientation_failures) ... ok
+test_missing_sign_source_blocks_support (test_v0_4_orientation_support.OrientationSupportV04Tests.test_missing_sign_source_blocks_support) ... ok
+test_non_seven_qN1_blocks_support (test_v0_4_orientation_support.OrientationSupportV04Tests.test_non_seven_qN1_blocks_support) ... ok
+test_orientation_conflict_witness_blocks_strict_commit (test_v0_4_orientation_support.OrientationSupportV04Tests.test_orientation_conflict_witness_blocks_strict_commit) ... ok
+test_orientation_witness_allows_certified_support (test_v0_4_orientation_support.OrientationSupportV04Tests.test_orientation_witness_allows_certified_support) ... ok
+test_orientation_witness_required_blocks_missing_witness (test_v0_4_orientation_support.OrientationSupportV04Tests.test_orientation_witness_required_blocks_missing_witness) ... ok
+test_selector_stalemate_records_unresolved_equal_rank_conflict (test_v0_4_orientation_support.OrientationSupportV04Tests.test_selector_stalemate_records_unresolved_equal_rank_conflict) ... ok
+test_unsupported_incompatible_competitor_does_not_block (test_v0_4_orientation_support.OrientationSupportV04Tests.test_unsupported_incompatible_competitor_does_not_block) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.051s
+
+OK

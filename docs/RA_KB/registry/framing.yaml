@@ -256,3 +256,36 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: RA_MotifOrientationSupportBridge ; RA_GraphOrientationClosure ; RA_MotifSelectorClosure
   packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-SIM-MOTIF-ORIENT-METHOD-001
+  name: Orientation-gated simulator semantics remain RA-native modeling, not inherited-theory simulation
+  domain: framing
+  papers:
+  - II
+  statement: >-
+    The v0.4 causal-DAG motif-commit simulator explores RA-native orientation support
+    witnesses, causal support cuts, certified readiness, selector closure, selected commitment,
+    and causal finality. It is not a simulator of QM, GR, blockchain consensus, voting, or
+    message rounds. Inherited-theory terms may appear only as negative-scope or comparison
+    language.
+  nature_targets:
+  - RA-native actualization dynamics
+  - empirical correspondence only in explicitly marked comparison sections
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/README_RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026.md
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/reports/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026_Report.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-ORIENT-METHOD-001
+  restoration_preconditions: []
+  caveats: Simulator semantics are RA-native and should not be reworded as quantum, relativistic, or consensus primitives.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026

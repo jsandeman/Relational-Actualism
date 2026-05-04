@@ -1,0 +1,3 @@
+seed,steps,nodes,edges,motifs,use_orientation_conflicts,sites,total_strict_committed,total_strict_blocked,total_selector_committed,total_selector_rejected,total_selector_stalemates,total_unsupported,total_orientation_failures,mean_support_width,last_site
+17,24,25,33,41,False,24,328,70,363,35,0,140,68,1.0,24
+17,24,25,33,41,True,24,328,70,363,35,0,140,68,1.0,24

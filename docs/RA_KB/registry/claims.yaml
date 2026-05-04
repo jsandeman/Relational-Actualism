@@ -1822,3 +1822,189 @@ claims:
   claim_kind: formalized_result
   formal_anchor: GraphOrientationUnresolvedIncompatibilityAt ; GraphOrientationUnresolvedIncompatibilityAt.has_conflict_witness
   packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-SIM-MOTIF-ORIENT-001
+  name: Simulator v0.4 implements orientation-gated support certification
+  domain: complexity
+  papers:
+  - II
+  statement: >-
+    The v0.4 causal-DAG simulator requires a graph-oriented support witness before a motif
+    candidate can count as supported by its causal support cut.
+  nature_targets:
+  - RA-native actualization dynamics on finite causal graphs
+  - support-certification behavior of motif candidates
+  - selector-mediated actualization behavior under oriented conflict
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/simulator/ra_causal_dag_simulator.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/tests/test_v0_4_orientation_support.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/reports/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026_Report.md
+  proof_dependencies:
+  - RA-MOTIF-ORIENT-SUPPORT-001
+  - RA-MOTIF-ORIENT-SUPPORT-002
+  - RA-MOTIF-COMMIT-007
+  restoration_preconditions: []
+  caveats: >-
+    This is a simulator-validated modeling claim, not a Lean theorem. The simulator
+    uses an operational carrier-representation proxy documented in the report.
+  next_tasks:
+  - Revisit simulator carrier semantics if GraphMotifCandidate carrier is represented more literally.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+    test_v0_4_orientation_support.py: python_unittest_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_ra_native_model
+  legacy_support_status: none
+  auxiliary_support_status: simulator_validated
+  claim_kind: interpretive_bridge
+  formal_anchor: RA_MotifOrientationSupportBridge ; GraphOrientationSupportCertifier ; GraphOrientedMotifSupport ; OrientationClosureCertificate
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026
+- id: RA-SIM-MOTIF-ORIENT-002
+  name: Orientation witness gates separate finite support from certified orientation support
+  domain: complexity
+  papers:
+  - II
+  statement: >-
+    A finite Hasse-frontier support cut is not sufficient by itself in simulator v0.4;
+    certification also requires frontier sufficiency, local ledger compatibility, selector
+    compatibility, native-evidence discipline, valid sign links, and seven-value N1 ledger
+    evidence.
+  nature_targets:
+  - RA-native actualization dynamics on finite causal graphs
+  - support-certification behavior of motif candidates
+  - selector-mediated actualization behavior under oriented conflict
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/simulator/ra_causal_dag_simulator.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/tests/test_v0_4_orientation_support.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/reports/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026_Report.md
+  proof_dependencies:
+  - RA-SIM-MOTIF-ORIENT-001
+  - RA-MOTIF-ORIENT-SUPPORT-002
+  - RA-MOTIF-ORIENT-SUPPORT-003
+  restoration_preconditions: []
+  caveats: >-
+    This is a simulator-validated modeling claim, not a Lean theorem. The simulator
+    uses an operational carrier-representation proxy documented in the report.
+  next_tasks:
+  - Revisit simulator carrier semantics if GraphMotifCandidate carrier is represented more literally.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+    test_v0_4_orientation_support.py: python_unittest_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_ra_native_model
+  legacy_support_status: none
+  auxiliary_support_status: simulator_validated
+  claim_kind: interpretive_bridge
+  formal_anchor: GraphOrientationSupportCertifier.evaluate ; SupportEvaluation.failed_gates
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026
+- id: RA-SIM-MOTIF-ORIENT-003
+  name: Unsupported orientation-defective competitors do not block certified-ready motifs
+  domain: complexity
+  papers:
+  - II
+  statement: >-
+    In simulator v0.4, an incompatible candidate whose orientation witness fails support
+    certification does not block a supported and ready competitor.
+  nature_targets:
+  - RA-native actualization dynamics on finite causal graphs
+  - support-certification behavior of motif candidates
+  - selector-mediated actualization behavior under oriented conflict
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/simulator/ra_causal_dag_simulator.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/tests/test_v0_4_orientation_support.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/reports/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026_Report.md
+  proof_dependencies:
+  - RA-SIM-MOTIF-ORIENT-001
+  - RA-MOTIF-COMMIT-008
+  restoration_preconditions: []
+  caveats: >-
+    This is a simulator-validated modeling claim, not a Lean theorem. The simulator
+    uses an operational carrier-representation proxy documented in the report.
+  next_tasks:
+  - Revisit simulator carrier semantics if GraphMotifCandidate carrier is represented more literally.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+    test_v0_4_orientation_support.py: python_unittest_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_ra_native_model
+  legacy_support_status: none
+  auxiliary_support_status: simulator_validated
+  claim_kind: interpretive_bridge
+  formal_anchor: test_unsupported_incompatible_competitor_does_not_block ; MotifCommitProtocol.blockers
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026
+- id: RA-SIM-MOTIF-ORIENT-004
+  name: Selector closure runs downstream of orientation-certified readiness
+  domain: complexity
+  papers:
+  - II
+  statement: >-
+    The selector layer sees only motifs that pass orientation-gated support certification
+    and causal readiness.
+  nature_targets:
+  - RA-native actualization dynamics on finite causal graphs
+  - support-certification behavior of motif candidates
+  - selector-mediated actualization behavior under oriented conflict
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/simulator/ra_causal_dag_simulator.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/tests/test_v0_4_orientation_support.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/reports/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026_Report.md
+  proof_dependencies:
+  - RA-SIM-MOTIF-ORIENT-001
+  - RA-MOTIF-SELECTOR-002
+  - RA-MOTIF-SELECTOR-004
+  restoration_preconditions: []
+  caveats: >-
+    This is a simulator-validated modeling claim, not a Lean theorem. The simulator
+    uses an operational carrier-representation proxy documented in the report.
+  next_tasks:
+  - Revisit simulator carrier semantics if GraphMotifCandidate carrier is represented more literally.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+    test_v0_4_orientation_support.py: python_unittest_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_ra_native_model
+  legacy_support_status: none
+  auxiliary_support_status: simulator_validated
+  claim_kind: interpretive_bridge
+  formal_anchor: MotifCommitProtocol.eligible_at ; SelectorPolicy.select ; selected_decision
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026
+- id: RA-SIM-MOTIF-ORIENT-005
+  name: Simulator incompatibility can be witnessed by orientation conflict domains
+  domain: complexity
+  papers:
+  - II
+  statement: >-
+    v0.4 records orientation conflict witnesses for incompatible motif candidates sharing
+    an orientation conflict domain, grounding simulator incompatibility in native witness
+    rows rather than bare conflict labels.
+  nature_targets:
+  - RA-native actualization dynamics on finite causal graphs
+  - support-certification behavior of motif candidates
+  - selector-mediated actualization behavior under oriented conflict
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/simulator/ra_causal_dag_simulator.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/tests/test_v0_4_orientation_support.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/reports/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026_Report.md
+  proof_dependencies:
+  - RA-MOTIF-ORIENT-SUPPORT-005
+  - RA-SIM-MOTIF-ORIENT-001
+  restoration_preconditions: []
+  caveats: >-
+    This is a simulator-validated modeling claim, not a Lean theorem. The simulator
+    uses an operational carrier-representation proxy documented in the report.
+  next_tasks:
+  - Revisit simulator carrier semantics if GraphMotifCandidate carrier is represented more literally.
+  source_status:
+    ra_causal_dag_simulator.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+    test_v0_4_orientation_support.py: python_unittest_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_ra_native_model
+  legacy_support_status: none
+  auxiliary_support_status: simulator_validated
+  claim_kind: interpretive_bridge
+  formal_anchor: OrientationConflictWitness ; OrientationActualizationContext.conflict_witness
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026

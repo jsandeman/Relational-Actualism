@@ -1,0 +1,364 @@
+site,component_id,candidates,selected,rejected,stalemate,reason,selector_mode,selector_tie_policy
+1,0,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+1,1,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+2,0,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+2,1,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+2,2,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+3,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+3,1,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+3,2,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+3,3,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+3,4,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+4,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+4,1,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+4,2,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+4,3,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+4,4,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+5,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+5,1,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+5,2,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+5,3,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+5,4,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+5,5,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+6,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+6,1,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+6,2,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+6,3,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+6,4,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+6,5,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+6,6,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+7,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+7,1,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+7,2,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+7,3,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+7,4,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+7,5,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+7,6,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+7,7,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+8,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+8,1,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+8,2,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+8,3,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+8,4,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+8,5,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+8,6,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+8,7,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+8,8,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+8,9,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+9,0,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+9,1,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+9,2,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+9,3,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+9,4,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+9,5,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+9,6,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+9,7,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+9,8,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+9,9,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+9,10,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+10,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+10,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+10,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+10,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+10,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+10,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+10,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+10,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+10,8,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+10,9,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+10,10,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+10,11,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+10,12,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+11,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+11,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+11,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+11,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+11,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+11,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+11,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+11,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+11,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+11,9,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+11,10,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+11,11,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+11,12,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+11,13,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+12,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+12,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+12,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+12,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+12,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+12,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+12,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+12,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+12,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+12,9,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+12,10,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+12,11,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+12,12,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+12,13,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+12,14,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+13,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+13,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+13,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+13,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+13,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+13,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+13,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+13,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+13,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+13,9,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+13,10,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+13,11,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+13,12,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+13,13,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+13,14,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+13,15,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+14,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+14,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+14,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+14,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+14,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+14,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+14,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+14,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+14,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+14,9,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+14,10,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+14,11,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+14,12,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+14,13,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+14,14,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+14,15,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+14,16,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+15,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+15,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+15,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+15,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+15,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+15,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+15,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+15,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+15,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+15,9,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+15,10,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+15,11,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+15,12,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+15,13,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+15,14,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+15,15,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+15,16,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+15,17,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+16,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+16,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+16,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+16,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+16,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+16,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+16,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+16,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+16,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+16,9,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+16,10,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+16,11,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+16,12,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+16,13,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+16,14,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+16,15,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+16,16,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+16,17,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+17,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+17,1,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+17,2,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+17,3,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+17,4,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+17,5,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+17,6,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+17,7,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+17,8,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+17,9,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+17,10,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+17,11,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+17,12,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+17,13,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+17,14,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+17,15,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+17,16,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+17,17,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+17,18,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+18,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+18,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+18,2,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+18,3,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+18,4,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+18,5,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+18,6,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+18,7,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+18,8,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+18,9,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+18,10,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+18,11,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+18,12,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+18,13,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+18,14,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+18,15,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+18,16,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+18,17,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+18,18,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+18,19,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+18,20,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+19,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+19,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+19,2,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+19,3,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+19,4,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+19,5,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+19,6,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+19,7,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+19,8,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+19,9,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+19,10,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+19,11,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+19,12,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+19,13,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+19,14,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+19,15,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+19,16,"[""renewal_19""]","[""renewal_19""]",[],False,singleton_component_selected,greedy,lexicographic
+19,17,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+19,18,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+19,19,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+19,20,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+19,21,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+20,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+20,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+20,2,"[""choice_A_20""]","[""choice_A_20""]",[],False,singleton_component_selected,greedy,lexicographic
+20,3,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+20,4,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+20,5,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+20,6,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+20,7,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+20,8,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+20,9,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+20,10,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+20,11,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+20,12,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+20,13,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+20,14,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+20,15,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+20,16,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+20,17,"[""renewal_19""]","[""renewal_19""]",[],False,singleton_component_selected,greedy,lexicographic
+20,18,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+20,19,"[""renewal_20""]","[""renewal_20""]",[],False,singleton_component_selected,greedy,lexicographic
+20,20,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+20,21,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+20,22,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+20,23,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+21,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+21,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+21,2,"[""choice_A_20""]","[""choice_A_20""]",[],False,singleton_component_selected,greedy,lexicographic
+21,3,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+21,4,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+21,5,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+21,6,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+21,7,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+21,8,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+21,9,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+21,10,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+21,11,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+21,12,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+21,13,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+21,14,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+21,15,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+21,16,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+21,17,"[""renewal_19""]","[""renewal_19""]",[],False,singleton_component_selected,greedy,lexicographic
+21,18,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+21,19,"[""renewal_20""]","[""renewal_20""]",[],False,singleton_component_selected,greedy,lexicographic
+21,20,"[""renewal_21""]","[""renewal_21""]",[],False,singleton_component_selected,greedy,lexicographic
+21,21,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+21,22,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+21,23,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+21,24,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+22,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+22,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+22,2,"[""choice_A_20""]","[""choice_A_20""]",[],False,singleton_component_selected,greedy,lexicographic
+22,3,"[""choice_A_22"", ""choice_B_22""]","[""choice_A_22""]","[""choice_B_22""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+22,4,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+22,5,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+22,6,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+22,7,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+22,8,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+22,9,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+22,10,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+22,11,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+22,12,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+22,13,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+22,14,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+22,15,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+22,16,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+22,17,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+22,18,"[""renewal_19""]","[""renewal_19""]",[],False,singleton_component_selected,greedy,lexicographic
+22,19,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+22,20,"[""renewal_20""]","[""renewal_20""]",[],False,singleton_component_selected,greedy,lexicographic
+22,21,"[""renewal_21""]","[""renewal_21""]",[],False,singleton_component_selected,greedy,lexicographic
+22,22,"[""renewal_22""]","[""renewal_22""]",[],False,singleton_component_selected,greedy,lexicographic
+22,23,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+22,24,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+22,25,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+22,26,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+23,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+23,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+23,2,"[""choice_A_20""]","[""choice_A_20""]",[],False,singleton_component_selected,greedy,lexicographic
+23,3,"[""choice_A_22"", ""choice_B_22""]","[""choice_A_22""]","[""choice_B_22""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+23,4,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+23,5,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+23,6,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+23,7,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+23,8,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+23,9,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+23,10,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+23,11,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+23,12,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+23,13,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+23,14,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+23,15,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+23,16,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+23,17,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+23,18,"[""renewal_19""]","[""renewal_19""]",[],False,singleton_component_selected,greedy,lexicographic
+23,19,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+23,20,"[""renewal_20""]","[""renewal_20""]",[],False,singleton_component_selected,greedy,lexicographic
+23,21,"[""renewal_21""]","[""renewal_21""]",[],False,singleton_component_selected,greedy,lexicographic
+23,22,"[""renewal_22""]","[""renewal_22""]",[],False,singleton_component_selected,greedy,lexicographic
+23,23,"[""renewal_23""]","[""renewal_23""]",[],False,singleton_component_selected,greedy,lexicographic
+23,24,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+23,25,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+23,26,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+23,27,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
+24,0,"[""choice_A_10"", ""choice_B_10""]","[""choice_A_10""]","[""choice_B_10""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+24,1,"[""choice_A_18""]","[""choice_A_18""]",[],False,singleton_component_selected,greedy,lexicographic
+24,2,"[""choice_A_20""]","[""choice_A_20""]",[],False,singleton_component_selected,greedy,lexicographic
+24,3,"[""choice_A_22"", ""choice_B_22""]","[""choice_A_22""]","[""choice_B_22""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+24,4,"[""choice_A_3""]","[""choice_A_3""]",[],False,singleton_component_selected,greedy,lexicographic
+24,5,"[""choice_A_5""]","[""choice_A_5""]",[],False,singleton_component_selected,greedy,lexicographic
+24,6,"[""choice_A_8"", ""choice_B_8""]","[""choice_A_8""]","[""choice_B_8""]",False,greedy_compatible_subset_selected,greedy,lexicographic
+24,7,"[""choice_B_7""]","[""choice_B_7""]",[],False,singleton_component_selected,greedy,lexicographic
+24,8,"[""genesis_seed""]","[""genesis_seed""]",[],False,singleton_component_selected,greedy,lexicographic
+24,9,"[""renewal_1""]","[""renewal_1""]",[],False,singleton_component_selected,greedy,lexicographic
+24,10,"[""renewal_10""]","[""renewal_10""]",[],False,singleton_component_selected,greedy,lexicographic
+24,11,"[""renewal_11""]","[""renewal_11""]",[],False,singleton_component_selected,greedy,lexicographic
+24,12,"[""renewal_12""]","[""renewal_12""]",[],False,singleton_component_selected,greedy,lexicographic
+24,13,"[""renewal_13""]","[""renewal_13""]",[],False,singleton_component_selected,greedy,lexicographic
+24,14,"[""renewal_14""]","[""renewal_14""]",[],False,singleton_component_selected,greedy,lexicographic
+24,15,"[""renewal_15""]","[""renewal_15""]",[],False,singleton_component_selected,greedy,lexicographic
+24,16,"[""renewal_17""]","[""renewal_17""]",[],False,singleton_component_selected,greedy,lexicographic
+24,17,"[""renewal_18""]","[""renewal_18""]",[],False,singleton_component_selected,greedy,lexicographic
+24,18,"[""renewal_19""]","[""renewal_19""]",[],False,singleton_component_selected,greedy,lexicographic
+24,19,"[""renewal_2""]","[""renewal_2""]",[],False,singleton_component_selected,greedy,lexicographic
+24,20,"[""renewal_20""]","[""renewal_20""]",[],False,singleton_component_selected,greedy,lexicographic
+24,21,"[""renewal_21""]","[""renewal_21""]",[],False,singleton_component_selected,greedy,lexicographic
+24,22,"[""renewal_22""]","[""renewal_22""]",[],False,singleton_component_selected,greedy,lexicographic
+24,23,"[""renewal_23""]","[""renewal_23""]",[],False,singleton_component_selected,greedy,lexicographic
+24,24,"[""renewal_24""]","[""renewal_24""]",[],False,singleton_component_selected,greedy,lexicographic
+24,25,"[""renewal_3""]","[""renewal_3""]",[],False,singleton_component_selected,greedy,lexicographic
+24,26,"[""renewal_6""]","[""renewal_6""]",[],False,singleton_component_selected,greedy,lexicographic
+24,27,"[""renewal_8""]","[""renewal_8""]",[],False,singleton_component_selected,greedy,lexicographic
+24,28,"[""renewal_9""]","[""renewal_9""]",[],False,singleton_component_selected,greedy,lexicographic
