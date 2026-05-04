@@ -1026,36 +1026,34 @@ claims:
   auxiliary_support_status: none_recorded
   claim_kind: formalized_result
 - id: RA-MOTIF-COMMIT-001
-  name: Hasse-frontier as causal support cut
+  name: Motif candidates as finite carrier sets
   domain: matter
   papers:
   - II
-  statement: 'A finite Hasse frontier of a causal-set graph can be repackaged as a causal support cut for motif
-    readiness. A motif is ready at a site exactly when every Hasse-frontier support vertex causally reaches
-    that site. This is the RA-native object underlying motif-commit semantics; it replaces engineered
-    distributed-systems vocabulary (quorum, leader) with finite frontier/incidence data.'
+  statement: 'A motif candidate is a finite carrier set in the actualization vocabulary. Formalized as
+    `MotifCandidate V` (Layer 1, over ActualizationDAG) and `GraphMotifCandidate G` (Layer 2, over the
+    concrete ActualizationGraph / Hasse-frontier ladder). At this stage motif candidates are finite
+    carrier sets only — physical admissibility (BDG profile, incidence, orientation closure, ledger
+    certificates) is left to later refinements.'
   nature_targets:
-  - motif readiness predicate on actualization sites
-  - finite causal support requirement for motif commitment
-  ra_observable: finite Hasse-frontier causal support cut
+  - finite carrier ontology for motif candidates
+  - separation of carrier finiteness from physical admissibility
+  ra_observable: MotifCandidate / GraphMotifCandidate carrier set
   sources:
   - RA_MotifCommitProtocol.lean
   - RA_HasseFrontier_FiniteMaxExist.lean
   - RA_O01_KernelLocality.lean
   proof_dependencies:
-  - RA-LLC-001
   - RA-MOTIF-001
   framing_links: []
   restoration_preconditions: []
-  caveats: 'Source-level Lean module compiles; full lake-build closure confirmed. Layer 1 (ActualizationDAG)
-    and Layer 2 (ActualizationGraph / Hasse-frontier ladder) both formalized. The bridge theorem
-    `GraphReadyAt_supportCutOfFiniteHasseFrontier_iff` is the operative result.'
+  caveats: 'Motif candidates are finite carrier sets only; no physical admissibility or stability is
+    asserted by this definition alone. Refinements should equip MotifCandidate with BDG profile +
+    incidence + orientation + ledger + closure certificates.'
   next_tasks:
   - Refine MotifCandidate to carry BDG profile + incidence + orientation + ledger + closure certificates.
-  - Connect to D2 hadron-mass-triad and D3 cosmological-expansion native witnesses where motif commitment
-    interacts with cosmological severance.
   source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
     RA_O01_KernelLocality.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
     RA_HasseFrontier_FiniteMaxExist.lean: lean_build_confirmed_no_sorry
   legacy_proof_status: ANC
@@ -1063,86 +1061,307 @@ claims:
   legacy_support_status: none
   auxiliary_support_status: none_recorded
   claim_kind: formalized_result
-  formal_anchor: supportCutOfFiniteHasseFrontier
-  formal_bridge_theorem: GraphReadyAt_supportCutOfFiniteHasseFrontier_iff
+  formal_anchor: MotifCandidate ; GraphMotifCandidate
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
 - id: RA-MOTIF-COMMIT-002
-  name: Readiness is support-cut containment in realized causal past
+  name: Causal support cuts encode finite readiness evidence
   domain: matter
   papers:
   - II
-  statement: 'A motif is ready at a site x exactly when its support cut is contained in the realized causal
-    past of x. Formalized as DAGReadyAt_iff_support_subset_realized_past.'
+  statement: 'A causal support cut is a finite carrier of vertex evidence whose realization in a causal
+    past will license motif readiness. Formalized as `CausalSupportCut V` (Layer 1) and `GraphSupportCut G`
+    (Layer 2). At this stage support-cut objects carry finite support plus placeholder minimal/sufficient
+    propositions; real validity is mediated by the `supports` relation in the commit context (RA-MOTIF-COMMIT-007).'
   nature_targets:
-  - motif readiness criterion via causal-past subset relation
-  ra_observable: DAGReadyAt predicate
+  - finite-evidence ontology for motif readiness
+  - separation of cut carrier from cut certification
+  ra_observable: CausalSupportCut / GraphSupportCut object
   sources:
   - RA_MotifCommitProtocol.lean
   proof_dependencies:
   - RA-MOTIF-COMMIT-001
   framing_links: []
   restoration_preconditions: []
-  caveats: ''
+  caveats: 'Validity of a support cut for a given motif is not asserted by this definition; it is mediated
+    by `DAGCommitContext.supports` / `GraphCommitContext.supports` in RA-MOTIF-COMMIT-007.'
   next_tasks: []
   source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
   auxiliary_support_status: none_recorded
   claim_kind: formalized_result
-  formal_anchor: DAGReadyAt_iff_support_subset_realized_past
+  formal_anchor: CausalSupportCut ; GraphSupportCut
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
 - id: RA-MOTIF-COMMIT-003
+  name: Readiness is support containment in the causal past
+  domain: matter
+  papers:
+  - II
+  statement: 'A motif is ready at a site x exactly when its support cut is contained in the realized causal
+    past of x — readiness is causal-past inclusion, not vote aggregation. Formalized at Layer 1 by
+    `DAGReadyAt` together with the equivalence `DAGReadyAt_iff_support_subset_realized_past`, and at
+    Layer 2 by `GraphReadyAt`.'
+  nature_targets:
+  - motif readiness criterion via causal-past subset relation
+  - replacement of engineered quorum vocabulary by finite-evidence containment
+  ra_observable: DAGReadyAt / GraphReadyAt predicate
+  sources:
+  - RA_MotifCommitProtocol.lean
+  - RA_O01_KernelLocality.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-002
+  - RA-LLC-001
+  framing_links: []
+  restoration_preconditions: []
+  caveats: 'Readiness is causal-past inclusion, not vote aggregation; this is the load-bearing departure
+    from engineered consensus protocols.'
+  next_tasks: []
+  source_status:
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+    RA_O01_KernelLocality.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGReadyAt ; DAGReadyAt_iff_support_subset_realized_past ; GraphReadyAt
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-COMMIT-004
   name: Readiness is monotone toward the causal future
   domain: matter
   papers:
   - II
   statement: 'If a motif is ready at site x and y is in the causal future of x, then the motif is also ready
-    at y. Formalized at both Layer 1 (DAGReadyAt.future_mono) and Layer 2 (GraphReadyAt.future_mono).'
+    at y. Once support evidence lies in a causal past, later sites retain that readiness evidence.
+    Formalized at both Layer 1 (`DAGReadyAt.future_mono`) and Layer 2 (`GraphReadyAt.future_mono`).'
   nature_targets:
   - irreversibility of readiness once support cut is realized
   ra_observable: monotonicity of readiness toward causal future
   sources:
   - RA_MotifCommitProtocol.lean
   proof_dependencies:
-  - RA-MOTIF-COMMIT-002
+  - RA-MOTIF-COMMIT-003
   framing_links: []
   restoration_preconditions: []
   caveats: ''
   next_tasks: []
   source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
   auxiliary_support_status: none_recorded
   claim_kind: formalized_result
-  formal_anchor: DAGReadyAt.future_mono / GraphReadyAt.future_mono
-- id: RA-MOTIF-COMMIT-004
-  name: Committed motif excludes ready incompatible motifs at same site
+  formal_anchor: DAGReadyAt.future_mono ; GraphReadyAt.future_mono
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-COMMIT-005
+  name: Hasse frontiers generate graph-native causal support cuts
   domain: matter
   papers:
   - II
-  statement: 'If a motif is committed at a causal site, then no incompatible motif can be ready at the same
-    site. Formalized at both Layer 1 (DAGCommitsAt.excludes_incompatible_same_site) and Layer 2
-    (GraphCommitsAt.excludes_incompatible_same_site). This formalizes the RA-native consensus property —
-    once a motif is inscribed at a site, no contradictory motif can co-occur there.'
+  statement: 'A finite Hasse frontier of an actualization graph induces a graph-native causal support
+    cut: the support set is exactly the set of frontier-Hasse-maximal vertices. Formalized as
+    `supportCutOfFiniteHasseFrontier` together with the membership characterization
+    `mem_supportCutOfFiniteHasseFrontier_iff`. This is the central bridge from RA frontier geometry to
+    motif-commit readiness.'
   nature_targets:
-  - mutual exclusion of incompatible motifs at the same actualization site
-  - RA-native consensus property
-  ra_observable: DAGCommitsAt / GraphCommitsAt exclusion predicate
+  - bridge from finite Hasse-frontier geometry to motif-commit readiness
+  - graph-native finite-evidence object for motif readiness
+  ra_observable: supportCutOfFiniteHasseFrontier construction
   sources:
   - RA_MotifCommitProtocol.lean
+  - RA_HasseFrontier.lean
+  - RA_HasseFrontier_FiniteMaxExist.lean
   proof_dependencies:
   - RA-MOTIF-COMMIT-002
   framing_links: []
   restoration_preconditions: []
-  caveats: ''
+  caveats: 'Replaces engineered distributed-systems vocabulary (quorum, leader) with finite Hasse-frontier
+    incidence data. Subsumes the prior coarser RA-MOTIF-COMMIT-001 (Hasse-frontier as causal support cut)
+    in the May-04-2026 motif-commit packet renumbering.'
   next_tasks: []
   source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+    RA_HasseFrontier_FiniteMaxExist.lean: lean_build_confirmed_no_sorry
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
   auxiliary_support_status: none_recorded
   claim_kind: formalized_result
-  formal_anchor: DAGCommitsAt.excludes_incompatible_same_site / GraphCommitsAt.excludes_incompatible_same_site
+  formal_anchor: supportCutOfFiniteHasseFrontier ; mem_supportCutOfFiniteHasseFrontier_iff
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-COMMIT-006
+  name: Hasse-frontier readiness is reachability from every frontier support vertex
+  domain: matter
+  papers:
+  - II
+  statement: 'A motif is ready at a site x for the Hasse-frontier-derived support cut exactly when every
+    Hasse-frontier support vertex causally reaches x. Formalized as
+    `GraphReadyAt_supportCutOfFiniteHasseFrontier_iff`. This is the formal hinge for the RA / consensus
+    analogy: quorum visibility is replaced by causal reachability from a finite Hasse frontier.'
+  nature_targets:
+  - causal-reachability characterization of motif readiness
+  - finite-frontier visibility ontology for motif commitment
+  ra_observable: Hasse-frontier-readiness equivalence
+  sources:
+  - RA_MotifCommitProtocol.lean
+  - RA_HasseFrontier.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-005
+  framing_links: []
+  restoration_preconditions: []
+  caveats: 'Quorum visibility is replaced by causal reachability from a finite Hasse frontier; the bridge
+    theorem `GraphReadyAt_supportCutOfFiniteHasseFrontier_iff` is the operative result.'
+  next_tasks: []
+  source_status:
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: GraphReadyAt_supportCutOfFiniteHasseFrontier_iff
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-COMMIT-007
+  name: Commit contexts certify valid support relations
+  domain: matter
+  papers:
+  - II
+  statement: 'A commit context carries a `supports` relation that certifies which support cuts are
+    admissible evidence for which motif candidates. Formalized as `DAGCommitContext.supports` and
+    `GraphCommitContext.supports`, and threaded through the commit rules `DAGCommitsAt.supports` and
+    `GraphCommitsAt.supports`. This is the context-gated semantic repair: arbitrary finite cuts are
+    separated from certified support evidence so that motif commitment cannot be triggered by carrier
+    coincidence alone.'
+  nature_targets:
+  - certification of support evidence as admissible for a given motif
+  - separation of carrier-finiteness from physical admissibility
+  ra_observable: DAGCommitContext.supports / GraphCommitContext.supports relation
+  sources:
+  - RA_MotifCommitProtocol.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-001
+  - RA-MOTIF-COMMIT-002
+  framing_links: []
+  restoration_preconditions: []
+  caveats: 'Subsequent modules should instantiate `supports` using BDG locality, finite frontier data,
+    orientation closure, and ledger checks.'
+  next_tasks:
+  - Instantiate `supports` via BDG locality and finite-Hasse-frontier certificates.
+  - Instantiate `incompatible` via orientation closure, local ledger constraints, or selector closure.
+  source_status:
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGCommitContext.supports ; GraphCommitContext.supports ; DAGCommitsAt.supports ; GraphCommitsAt.supports
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-COMMIT-008
+  name: Committed motifs exclude certified-ready incompatible competitors at the same site
+  domain: matter
+  papers:
+  - II
+  statement: 'If a motif is committed at a causal site, then no certified-ready incompatible motif can
+    co-occur at the same site. Exclusion is stated in terms of certified support and incompatibility,
+    not messages or votes. Formalized at both Layer 1 (`DAGCommitsAt.no_ready_incompatible_same_site`,
+    `DAGCommitsAt.excludes_incompatible_same_site`) and Layer 2
+    (`GraphCommitsAt.no_ready_incompatible_same_site`, `GraphCommitsAt.excludes_incompatible_same_site`).'
+  nature_targets:
+  - mutual exclusion of certified-ready incompatible motifs at the same actualization site
+  - RA-native local-safety property for motif commitment
+  ra_observable: DAGCommitsAt / GraphCommitsAt exclusion predicate (context-gated)
+  sources:
+  - RA_MotifCommitProtocol.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-003
+  - RA-MOTIF-COMMIT-007
+  framing_links: []
+  restoration_preconditions: []
+  caveats: 'Local safety theorem for motif commit. Subsumes the prior coarser RA-MOTIF-COMMIT-004
+    (Committed motif excludes ready incompatible motifs at same site) in the May-04-2026 packet
+    renumbering; semantics tightened by the context-gated `supports` relation (RA-MOTIF-COMMIT-007).'
+  next_tasks: []
+  source_status:
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGCommitsAt.no_ready_incompatible_same_site ; DAGCommitsAt.excludes_incompatible_same_site ; GraphCommitsAt.no_ready_incompatible_same_site ; GraphCommitsAt.excludes_incompatible_same_site
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-COMMIT-009
+  name: Motif finalization as readiness above a causal depth
+  domain: matter
+  papers:
+  - II
+  statement: 'Depth-indexed finalization: a motif is finalized at depth d when every site at causal
+    depth at least d is ready for it. Formalized at Layer 1 by `DAGFinalizedAtDepth` together with
+    `DAGFinalizedAtDepth.future_depth_mono`, and at Layer 2 by `GraphFinalizedAtDepth` together with
+    `GraphFinalizedAtDepth.future_depth_mono`. Defines the depth-indexed finalization vocabulary and
+    proves monotonicity under restriction to deeper sites.'
+  nature_targets:
+  - depth-indexed finality vocabulary for motif commitment
+  - causal-inevitability characterization of finalization
+  ra_observable: DAGFinalizedAtDepth / GraphFinalizedAtDepth predicate
+  sources:
+  - RA_MotifCommitProtocol.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-003
+  framing_links: []
+  restoration_preconditions: []
+  caveats: 'Currently a depth-indexed readiness statement; strengthening to future-extension inevitability
+    is listed as a remaining gap.'
+  next_tasks:
+  - Strengthen finality from depth-indexed readiness to future-extension inevitability.
+  source_status:
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGFinalizedAtDepth ; DAGFinalizedAtDepth.future_depth_mono ; GraphFinalizedAtDepth ; GraphFinalizedAtDepth.future_depth_mono
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-CONSENSUS-BRIDGE-001
+  name: Consensus quorums admit an RA-native reinterpretation as causal support cuts
+  domain: matter
+  papers:
+  - II
+  statement: 'Engineered distributed-consensus quorums admit an RA-native reinterpretation in which the
+    quorum object is a finite causal support cut, quorum visibility is causal reachability from a finite
+    Hasse frontier, and decision finality is depth-indexed inevitability of readiness. Anchored by the
+    formal bridge surface `CausalSupportCut`, `supportCutOfFiniteHasseFrontier`, and
+    `GraphReadyAt_supportCutOfFiniteHasseFrontier_iff` together with the certified-support and exclusion
+    surface (RA-MOTIF-COMMIT-007 / RA-MOTIF-COMMIT-008). This is not a claim that RA systems literally
+    run engineered consensus protocols; it records a structural correspondence over partial orders,
+    frontier support, readiness, exclusion, and finality.'
+  nature_targets:
+  - structural correspondence between consensus quorums and finite causal support cuts
+  - RA-native interpretation of quorum visibility as causal reachability from a Hasse frontier
+  ra_observable: causal-support-cut / Hasse-frontier reinterpretation of quorum semantics
+  sources:
+  - RA_MotifCommitProtocol.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-005
+  - RA-MOTIF-COMMIT-006
+  - RA-MOTIF-COMMIT-008
+  framing_links: []
+  restoration_preconditions: []
+  caveats: 'Interpretive bridge — translation only, not a claim that RA systems run engineered consensus.
+    The mechanisms (Hasse-frontier support, certified support, same-site exclusion) are RA-native;
+    consensus vocabulary is used as analogy, not mechanism.'
+  next_tasks: []
+  source_status:
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: interpretive_formal_bridge
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: interpretive_bridge
+  formal_anchor: CausalSupportCut ; supportCutOfFiniteHasseFrontier ; GraphReadyAt_supportCutOfFiniteHasseFrontier_iff
+  packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026

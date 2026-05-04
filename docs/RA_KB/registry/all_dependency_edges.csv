@@ -172,8 +172,18 @@ RA-MOTIF-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Native m
 RA-KERNEL-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Kernel locality,BMV apparatus mu-dictionary identification
 RA-OPEN-BMV-MU-DICTIONARY-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,BMV apparatus mu-dictionary identification,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
 RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
-RA-LLC-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Local Ledger Condition,Hasse-frontier as causal support cut
-RA-MOTIF-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Native motif sector definition,Hasse-frontier as causal support cut
-RA-MOTIF-COMMIT-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Hasse-frontier as causal support cut,Readiness is support-cut containment in realized causal past
-RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Readiness is support-cut containment in realized causal past,Readiness is monotone toward the causal future
-RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-004,proof_dependency,claim,claim,Readiness is support-cut containment in realized causal past,Committed motif excludes ready incompatible motifs at same site
+RA-MOTIF-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Native motif sector definition,Motif candidates as finite carrier sets
+RA-MOTIF-COMMIT-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Motif candidates as finite carrier sets,Causal support cuts encode finite readiness evidence
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Causal support cuts encode finite readiness evidence,Readiness is support containment in the causal past
+RA-LLC-001,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Local Ledger Condition,Readiness is support containment in the causal past
+RA-MOTIF-COMMIT-003,RA-MOTIF-COMMIT-004,proof_dependency,claim,claim,Readiness is support containment in the causal past,Readiness is monotone toward the causal future
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-005,proof_dependency,claim,claim,Causal support cuts encode finite readiness evidence,Hasse frontiers generate graph-native causal support cuts
+RA-MOTIF-COMMIT-005,RA-MOTIF-COMMIT-006,proof_dependency,claim,claim,Hasse frontiers generate graph-native causal support cuts,Hasse-frontier readiness is reachability from every frontier support vertex
+RA-MOTIF-COMMIT-001,RA-MOTIF-COMMIT-007,proof_dependency,claim,claim,Motif candidates as finite carrier sets,Commit contexts certify valid support relations
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-007,proof_dependency,claim,claim,Causal support cuts encode finite readiness evidence,Commit contexts certify valid support relations
+RA-MOTIF-COMMIT-003,RA-MOTIF-COMMIT-008,proof_dependency,claim,claim,Readiness is support containment in the causal past,Committed motifs exclude certified-ready incompatible competitors at the same site
+RA-MOTIF-COMMIT-007,RA-MOTIF-COMMIT-008,proof_dependency,claim,claim,Commit contexts certify valid support relations,Committed motifs exclude certified-ready incompatible competitors at the same site
+RA-MOTIF-COMMIT-003,RA-MOTIF-COMMIT-009,proof_dependency,claim,claim,Readiness is support containment in the causal past,Motif finalization as readiness above a causal depth
+RA-MOTIF-COMMIT-005,RA-CONSENSUS-BRIDGE-001,interpretive_dependency,claim,claim,Hasse frontiers generate graph-native causal support cuts,Consensus quorums admit an RA-native reinterpretation as causal support cuts
+RA-MOTIF-COMMIT-006,RA-CONSENSUS-BRIDGE-001,interpretive_dependency,claim,claim,Hasse-frontier readiness is reachability from every frontier support vertex,Consensus quorums admit an RA-native reinterpretation as causal support cuts
+RA-MOTIF-COMMIT-008,RA-CONSENSUS-BRIDGE-001,interpretive_dependency,claim,claim,Committed motifs exclude certified-ready incompatible competitors at the same site,Consensus quorums admit an RA-native reinterpretation as causal support cuts

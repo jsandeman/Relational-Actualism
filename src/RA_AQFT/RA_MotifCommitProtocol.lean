@@ -2,7 +2,7 @@ import RA_O01_KernelLocality
 import RA_HasseFrontier_FiniteMaxExist
 
 /-!
-# RA_MotifCommitProtocol_v2
+# RA_MotifCommitProtocol
 
 Consensus-inspired motif commit semantics, expressed in RA-native vocabulary.
 
@@ -11,7 +11,7 @@ into the formal layer.  The operative object is a finite causal support cut:
 a finite set of already-actualized supports whose presence in a realized past
 makes a motif candidate ready for actualization.
 
-Layer 1 works directly over `ActualizationDAG` from `RA_O01_KernelLocality_v2`.
+Layer 1 works directly over `ActualizationDAG` from `RA_O01_KernelLocality`.
 Layer 2 works over the concrete `ActualizationGraph` / Hasse-frontier ladder.
 -/
 
@@ -75,6 +75,10 @@ This keeps the commit skeleton independent of any one concrete orientation,
 ledger, or selector-closure package. -/
 structure DAGCommitContext
     (G : _root_.ActualizationDAG V) where
+  /-- `supports M Q` says that `Q` is an admissible/sufficient support cut
+  for motif `M` in this context. Later modules should instantiate this using
+  BDG locality, finite frontier data, orientation closure, and ledger checks. -/
+  supports : MotifCandidate V → CausalSupportCut V → Prop
   incompatible : MotifCandidate V → MotifCandidate V → Prop
 
 /-- A motif commits at `x` when its support cut is ready at `x`, and no ready
@@ -82,8 +86,10 @@ motif incompatible with it is also available in that same causal past. -/
 def DAGCommitsAt
     (G : _root_.ActualizationDAG V) (Γ : DAGCommitContext G)
     (M : MotifCandidate V) (Q : CausalSupportCut V) (x : V) : Prop :=
+  Γ.supports M Q ∧
   DAGReadyAt G Q x ∧
-    ∀ M' Q', DAGReadyAt G Q' x → ¬ Γ.incompatible M M'
+    ∀ M' Q', Γ.supports M' Q' → DAGReadyAt G Q' x →
+      ¬ Γ.incompatible M M'
 
 /-- A committed motif is ready. -/
 theorem DAGCommitsAt.ready
@@ -91,7 +97,29 @@ theorem DAGCommitsAt.ready
     (M : MotifCandidate V) (Q : CausalSupportCut V) (x : V)
     (h : DAGCommitsAt G Γ M Q x) :
     DAGReadyAt G Q x :=
+  h.2.1
+
+/-- A committed motif is certified by its supplied support cut. -/
+theorem DAGCommitsAt.supports
+    (G : _root_.ActualizationDAG V) (Γ : DAGCommitContext G)
+    (M : MotifCandidate V) (Q : CausalSupportCut V) (x : V)
+    (h : DAGCommitsAt G Γ M Q x) :
+    Γ.supports M Q :=
   h.1
+
+/-- Direct local exclusion form: a committed motif rules out every ready motif
+whose support cut is certified and which is incompatible with it at the same
+causal site. -/
+theorem DAGCommitsAt.no_ready_incompatible_same_site
+    (G : _root_.ActualizationDAG V) (Γ : DAGCommitContext G)
+    (M M' : MotifCandidate V)
+    (Q Q' : CausalSupportCut V) (x : V)
+    (h : DAGCommitsAt G Γ M Q x)
+    (hsupp' : Γ.supports M' Q')
+    (hready' : DAGReadyAt G Q' x)
+    (hinc : Γ.incompatible M M') :
+    False :=
+  h.2.2 M' Q' hsupp' hready' hinc
 
 /-- Local safety: once `M₁` commits at `x`, no motif incompatible with `M₁` can
 also commit at `x`. -/
@@ -103,7 +131,8 @@ theorem DAGCommitsAt.excludes_incompatible_same_site
     (hinc : Γ.incompatible M₁ M₂) :
     ¬ DAGCommitsAt G Γ M₂ Q₂ x := by
   intro h₂
-  exact h₁.2 M₂ Q₂ h₂.1 hinc
+  exact DAGCommitsAt.no_ready_incompatible_same_site
+    G Γ M₁ M₂ Q₁ Q₂ x h₁ h₂.1 h₂.2.1 hinc
 
 /-- Depth-finality: all sites at depth at least `d` have the support cut in
 their realized past.  This is the RA analogue of finality as causal inevitability. -/
@@ -160,6 +189,9 @@ theorem GraphReadyAt.future_mono
 /-- Concrete graph commit context. -/
 structure GraphCommitContext
     (G : _root_.ActualizationGraph) where
+  /-- `supports M Q` says that `Q` is an admissible/sufficient support cut for
+  graph motif `M` in this context. -/
+  supports : GraphMotifCandidate G → GraphSupportCut G → Prop
   incompatible : GraphMotifCandidate G → GraphMotifCandidate G → Prop
 
 /-- Concrete graph commit rule. -/
@@ -167,8 +199,10 @@ def GraphCommitsAt
     (G : _root_.ActualizationGraph) (Γ : GraphCommitContext G)
     (M : GraphMotifCandidate G) (Q : GraphSupportCut G)
     (x : GraphVertex G) : Prop :=
+  Γ.supports M Q ∧
   GraphReadyAt G Q x ∧
-    ∀ M' Q', GraphReadyAt G Q' x → ¬ Γ.incompatible M M'
+    ∀ M' Q', Γ.supports M' Q' → GraphReadyAt G Q' x →
+      ¬ Γ.incompatible M M'
 
 /-- A concrete committed graph motif is ready. -/
 theorem GraphCommitsAt.ready
@@ -177,7 +211,30 @@ theorem GraphCommitsAt.ready
     (x : GraphVertex G)
     (h : GraphCommitsAt G Γ M Q x) :
     GraphReadyAt G Q x :=
+  h.2.1
+
+/-- A committed graph motif is certified by its supplied support cut. -/
+theorem GraphCommitsAt.supports
+    (G : _root_.ActualizationGraph) (Γ : GraphCommitContext G)
+    (M : GraphMotifCandidate G) (Q : GraphSupportCut G)
+    (x : GraphVertex G)
+    (h : GraphCommitsAt G Γ M Q x) :
+    Γ.supports M Q :=
   h.1
+
+/-- Direct local exclusion form: a committed graph motif rules out every ready
+motif whose support cut is certified and which is incompatible with it at the
+same concrete graph site. -/
+theorem GraphCommitsAt.no_ready_incompatible_same_site
+    (G : _root_.ActualizationGraph) (Γ : GraphCommitContext G)
+    (M M' : GraphMotifCandidate G)
+    (Q Q' : GraphSupportCut G) (x : GraphVertex G)
+    (h : GraphCommitsAt G Γ M Q x)
+    (hsupp' : Γ.supports M' Q')
+    (hready' : GraphReadyAt G Q' x)
+    (hinc : Γ.incompatible M M') :
+    False :=
+  h.2.2 M' Q' hsupp' hready' hinc
 
 /-- Concrete graph safety: incompatible motifs cannot both commit at the same
 actualization site. -/
@@ -189,7 +246,8 @@ theorem GraphCommitsAt.excludes_incompatible_same_site
     (hinc : Γ.incompatible M₁ M₂) :
     ¬ GraphCommitsAt G Γ M₂ Q₂ x := by
   intro h₂
-  exact h₁.2 M₂ Q₂ h₂.1 hinc
+  exact GraphCommitsAt.no_ready_incompatible_same_site
+    G Γ M₁ M₂ Q₁ Q₂ x h₁ h₂.1 h₂.2.1 hinc
 
 /-- The finite Hasse frontier of a graph-native candidate past, repackaged as a
 support cut.

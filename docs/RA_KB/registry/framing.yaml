@@ -81,3 +81,106 @@ framing_policies:
   legacy_support_status: CC
   framing_kind: negative_scope_or_translation_policy
   auxiliary_support_status: comparative_cartography
+- id: RA-METHOD-001
+  name: Nature is the target of RA, not prior theoretical formalisms
+  domain: framing
+  papers:
+  - I
+  - II
+  - III
+  - IV
+  statement: 'Relational Actualism is to be evaluated against Nature: observations,
+    experiments, invariances, regularities, scaling laws, limiting regimes, and novel
+    predictions. Quantum Mechanics, General Relativity, classical mechanics, Newtonian
+    gravity, and distributed-consensus systems are not fundamental targets for RA''s
+    ontology or formal apparatus.'
+  nature_targets:
+  - observed phenomena across scales
+  - empirical invariances and scaling laws
+  - novel predictions distinguishing RA from prior theories
+  ra_observable: null
+  sources:
+  - RA_MethodGuardrails_NatureAsTarget_Report_May04_2026.md
+  proof_dependencies: []
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Inherited theory vocabulary is permitted only as comparison or correspondence
+    language, not as ontological commitment.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: 'RAKB methodological guardrail: target discipline for RA development'
+  packet_origin: apply_ra_method_guardrails_upsert.py (May04_2026)
+- id: RA-METHOD-002
+  name: Correspondence recovery concerns empirical content, not inherited ontology
+  domain: framing
+  papers:
+  - I
+  - II
+  - III
+  - IV
+  statement: 'When RA is compared with QM, GR, or classical theories, the goal is
+    to recover the observed phenomena and successful limiting predictions of those
+    theories where empirically required. RA need not adopt their primitive entities,
+    interpretive commitments, or mathematical formalisms as fundamental.'
+  nature_targets:
+  - empirical content of QM/GR/classical regimes
+  - limiting and coarse-grained correspondence regimes
+  ra_observable: null
+  sources:
+  - RA_MethodGuardrails_NatureAsTarget_Report_May04_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-NONTARGET-001
+  - RA-NONTARGET-002
+  - RA-NONTARGET-003
+  restoration_preconditions: []
+  caveats: Correspondence is empirical-content recovery; ontology is RA-native.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: 'RAKB methodological guardrail: correspondence-regime discipline'
+  packet_origin: apply_ra_method_guardrails_upsert.py (May04_2026)
+- id: RA-MOTIF-COMMIT-METHOD-001
+  name: Motif-commit simulations are RA-native actualization models, not QM or consensus
+    simulations
+  domain: framing
+  papers:
+  - II
+  statement: 'The causal-DAG motif-commit simulator explores RA-native structures:
+    pre-actualized multiplicity, candidate motif families, causal support cuts, certified
+    readiness, incompatibility, selector closure, commitment, and causal finality.
+    Distributed consensus and quantum superposition are comparison analogies only;
+    they are not the formal targets of the simulator. If RA recovers QM/GR-like empirical
+    regimes, this should be by correspondence or limiting behavior, not by importing
+    their conceptual apparatus as primitive.'
+  nature_targets:
+  - RA-native motif-commitment dynamics on finite causal graphs
+  - empirical correspondence regimes for motif-commit phenomena
+  ra_observable: null
+  sources:
+  - RA_MotifCommitProtocol.lean
+  - RA_CausalDAG_MotifCommitSimulator_v0_1_May04_2026
+  - RA_MethodGuardrails_NatureAsTarget_Report_May04_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-CONSENSUS-BRIDGE-001
+  restoration_preconditions: []
+  caveats: 'Forward-references RA_CausalDAG_MotifCommitSimulator_v0_2 and v0_3 in
+    its formal_anchor; only v0_1 is currently realized.'
+  next_tasks:
+  - Realize v0_2 / v0_3 simulator iterations with explicit RA-native vocabulary discipline.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifCommitProtocol ; RA_CausalDAG_MotifCommitSimulator_v0_1 ;
+    RA_CausalDAG_MotifCommitSimulator_v0_2 ; RA_CausalDAG_MotifCommitSimulator_v0_3
+  packet_origin: apply_ra_method_guardrails_upsert.py (May04_2026)
