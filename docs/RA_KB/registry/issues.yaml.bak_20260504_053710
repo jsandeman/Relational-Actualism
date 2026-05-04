@@ -540,7 +540,7 @@ issues:
   ra_observable: oriented frontier incidence ledger
   sources:
   - RAKB Actualization Selector Framework Report Apr29 2026
-  - RA_D1_NativeLedgerOrientation.lean
+  - RA_D1_NativeLedgerOrientation_v1.lean
   - RA_CausalOrientation_Core.lean
   proof_dependencies:
   - RA-MOTIF-005

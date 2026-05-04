@@ -57,3 +57,10 @@ RA-COMP-004,RA-COMP-007,proof_dependency,claim,claim,RA assembly depth,Origin-of
 RA-COMP-003,RA-COMP-008,proof_dependency,claim,claim,Causal Firewall conditions,Substrate-independent biosignature criteria
 RA-MOTIF-005,RA-MOTIF-008,proof_dependency,claim,claim,Depth-2 ledger/orientation structure,Orientation/chirality theorem family
 RA-LLC-001,RA-MOTIF-008,proof_dependency,claim,claim,Local Ledger Condition,Orientation/chirality theorem family
+RA-D4-001,RA-MOTIF-006,proof_dependency,claim,claim,D4U02 selectivity ceiling,Signed three-direction charge spectrum
+RA-LLC-001,RA-MOTIF-006,proof_dependency,claim,claim,Local Ledger Condition,Signed three-direction charge spectrum
+RA-LLC-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Local Ledger Condition,Hasse-frontier as causal support cut
+RA-MOTIF-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Native motif sector definition,Hasse-frontier as causal support cut
+RA-MOTIF-COMMIT-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Hasse-frontier as causal support cut,Readiness is support-cut containment in realized causal past
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Readiness is support-cut containment in realized causal past,Readiness is monotone toward the causal future
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-004,proof_dependency,claim,claim,Readiness is support-cut containment in realized causal past,Committed motif excludes ready incompatible motifs at same site

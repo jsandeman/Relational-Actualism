@@ -139,7 +139,7 @@ claims:
   - event admissibility
   ra_observable: BDG local acceptance score S(v,G)
   sources:
-  - RA_O14_ArithmeticCore.lean
+  - RA_O14_ArithmeticCore_v1.lean
   - RA Paper I §BDG
   proof_dependencies:
   - RA-ONT-003
@@ -148,7 +148,7 @@ claims:
   caveats: The positivity criterion remains a foundational postulate/selection rule.
   next_tasks: []
   source_status:
-    RA_O14_ArithmeticCore.lean: uploaded_verified
+    RA_O14_ArithmeticCore_v1.lean: uploaded_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -164,7 +164,7 @@ claims:
   - local causal dynamics
   ra_observable: local realized-past dependence of admissibility
   sources:
-  - RA_O01_KernelLocality.lean
+  - RA_O01_KernelLocality_v2.lean
   proof_dependencies:
   - RA-KERNEL-001
   - RA-ONT-001
@@ -173,7 +173,7 @@ claims:
   caveats: Covariant history measure remains open.
   next_tasks: []
   source_status:
-    RA_O01_KernelLocality.lean: uploaded_verified
+    RA_O01_KernelLocality_v2.lean: uploaded_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -213,7 +213,7 @@ claims:
   - four-dimensional event kernel
   ra_observable: null
   sources:
-  - RA_O14_ArithmeticCore.lean
+  - RA_O14_ArithmeticCore_v1.lean
   proof_dependencies:
   - RA-KERNEL-001
   framing_links: []
@@ -221,7 +221,7 @@ claims:
   caveats: Geometric continuum identification remains comparative.
   next_tasks: []
   source_status:
-    RA_O14_ArithmeticCore.lean: uploaded_verified
+    RA_O14_ArithmeticCore_v1.lean: uploaded_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -237,7 +237,7 @@ claims:
   - stable kernel arithmetic
   ra_observable: null
   sources:
-  - RA_O14_ArithmeticCore.lean
+  - RA_O14_ArithmeticCore_v1.lean
   proof_dependencies:
   - RA-ARITH-001
   framing_links: []
@@ -245,7 +245,7 @@ claims:
   caveats: Interpretation as geometric closure is downstream.
   next_tasks: []
   source_status:
-    RA_O14_ArithmeticCore.lean: uploaded_verified
+    RA_O14_ArithmeticCore_v1.lean: uploaded_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -444,8 +444,8 @@ claims:
   - number/type of particle-like motifs
   ra_observable: finite count of stable motif classes under admissible extension
   sources:
-  - RA_D1_NativeKernel.lean
-  - RA_D1_NativeClosure.lean
+  - RA_D1_NativeKernel_v1.lean
+  - RA_D1_NativeClosure_v1.lean
   proof_dependencies:
   - RA-MOTIF-001
   - RA-D4-001
@@ -454,8 +454,8 @@ claims:
   caveats: Exact observational cartography remains open.
   next_tasks: []
   source_status:
-    RA_D1_NativeKernel.lean: uploaded_compiles_user_verified
-    RA_D1_NativeClosure.lean: uploaded_compiles_user_verified
+    RA_D1_NativeKernel_v1.lean: uploaded_compiles_user_verified
+    RA_D1_NativeClosure_v1.lean: uploaded_compiles_user_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -472,7 +472,7 @@ claims:
   - confinement-like behavior
   ra_observable: minimal motif closure lengths L_g and L_q
   sources:
-  - RA_D1_NativeConfinement.lean
+  - RA_D1_NativeConfinement_v1.lean
   proof_dependencies:
   - RA-MOTIF-002
   framing_links: []
@@ -480,7 +480,7 @@ claims:
   caveats: Terminology Lg/Lq should remain native or clearly cartographic.
   next_tasks: []
   source_status:
-    RA_D1_NativeConfinement.lean: uploaded_compiles_user_verified
+    RA_D1_NativeConfinement_v1.lean: uploaded_compiles_user_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -497,7 +497,7 @@ claims:
   - motif transition structure
   ra_observable: null
   sources:
-  - RA_D1_NativeClosure.lean
+  - RA_D1_NativeClosure_v1.lean
   proof_dependencies:
   - RA-MOTIF-003
   framing_links: []
@@ -505,7 +505,7 @@ claims:
   caveats: Full spectrum mapping remains open.
   next_tasks: []
   source_status:
-    RA_D1_NativeClosure.lean: uploaded_compiles_user_verified
+    RA_D1_NativeClosure_v1.lean: uploaded_compiles_user_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -522,7 +522,7 @@ claims:
   - matter-sector asymmetry
   ra_observable: null
   sources:
-  - RA_D1_NativeLedgerOrientation.lean
+  - RA_D1_NativeLedgerOrientation_v1.lean
   proof_dependencies:
   - RA-LLC-001
   - RA-MOTIF-002
@@ -531,7 +531,7 @@ claims:
   caveats: Baryon chirality interpretation requires careful cartography.
   next_tasks: []
   source_status:
-    RA_D1_NativeLedgerOrientation.lean: uploaded_compiles_user_verified
+    RA_D1_NativeLedgerOrientation_v1.lean: uploaded_compiles_user_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
@@ -555,7 +555,7 @@ claims:
   sources:
   - RA Paper II §9.2, Charge quantization in units of e/3
   - RA_Suite_Editorial_Catalog.md, Paper II charge-quantization correction
-  - RA_D1_NativeLedgerOrientation.lean
+  - RA_D1_NativeLedgerOrientation_v1.lean
   - RA_CausalOrientation_Core.lean
   - RA_GraphCore.lean
   proof_dependencies:
@@ -576,7 +576,7 @@ claims:
   - Normalize N1/N2 notation across Paper II and the RAKB.
   - Add a small Lean module proving the seven-value range conditional on a signed local ledger frame.
   source_status:
-    RA_D1_NativeLedgerOrientation.lean: lean_build_confirmed_no_sorry; depth-2 ledger/orientation support
+    RA_D1_NativeLedgerOrientation_v1.lean: lean_build_confirmed_no_sorry; depth-2 ledger/orientation support
     RA_CausalOrientation_Core.lean: lean_build_confirmed_no_sorry; candidate orientation/sign-source support
     RA_GraphCore.lean: lean_build_confirmed_no_sorry; LLC/cut-conservation support
     RA Paper II §9.2: canonical_text_source
@@ -607,7 +607,7 @@ claims:
   - confinement-like observations
   ra_observable: null
   sources:
-  - RA_D1_NativeConfinement.lean
+  - RA_D1_NativeConfinement_v1.lean
   - RA Paper II
   proof_dependencies:
   - RA-MOTIF-003
@@ -617,7 +617,7 @@ claims:
   caveats: No direct scattering/hadronization predictions yet.
   next_tasks: []
   source_status:
-    RA_D1_NativeConfinement.lean: uploaded_compiles_user_verified
+    RA_D1_NativeConfinement_v1.lean: uploaded_compiles_user_verified
   legacy_proof_status: DR
   proof_status: derived_native
   legacy_support_status: none
@@ -1008,7 +1008,7 @@ claims:
   ra_observable: orientation class of admissible motif extension under local ledger preservation
   sources:
   - RA_CausalOrientation_Core.lean
-  - RA_D1_NativeLedgerOrientation.lean
+  - RA_D1_NativeLedgerOrientation_v1.lean
   proof_dependencies:
   - RA-MOTIF-005
   - RA-LLC-001
@@ -1019,130 +1019,9 @@ claims:
   - Audit RA_CausalOrientation_Core.lean imports and theorem family against current Lean tree.
   source_status:
     RA_CausalOrientation_Core.lean: uploaded_compiles_user_verified
-    RA_D1_NativeLedgerOrientation.lean: uploaded_compiles_user_verified
+    RA_D1_NativeLedgerOrientation_v1.lean: uploaded_compiles_user_verified
   legacy_proof_status: ANC
   proof_status: lean_verified_or_compiled_native
   legacy_support_status: none
   auxiliary_support_status: none_recorded
   claim_kind: formalized_result
-- id: RA-MOTIF-COMMIT-001
-  name: Hasse-frontier as causal support cut
-  domain: matter
-  papers:
-  - II
-  statement: 'A finite Hasse frontier of a causal-set graph can be repackaged as a causal support cut for motif
-    readiness. A motif is ready at a site exactly when every Hasse-frontier support vertex causally reaches
-    that site. This is the RA-native object underlying motif-commit semantics; it replaces engineered
-    distributed-systems vocabulary (quorum, leader) with finite frontier/incidence data.'
-  nature_targets:
-  - motif readiness predicate on actualization sites
-  - finite causal support requirement for motif commitment
-  ra_observable: finite Hasse-frontier causal support cut
-  sources:
-  - RA_MotifCommitProtocol.lean
-  - RA_HasseFrontier_FiniteMaxExist.lean
-  - RA_O01_KernelLocality.lean
-  proof_dependencies:
-  - RA-LLC-001
-  - RA-MOTIF-001
-  framing_links: []
-  restoration_preconditions: []
-  caveats: 'Source-level Lean module compiles; full lake-build closure confirmed. Layer 1 (ActualizationDAG)
-    and Layer 2 (ActualizationGraph / Hasse-frontier ladder) both formalized. The bridge theorem
-    `GraphReadyAt_supportCutOfFiniteHasseFrontier_iff` is the operative result.'
-  next_tasks:
-  - Refine MotifCandidate to carry BDG profile + incidence + orientation + ledger + closure certificates.
-  - Connect to D2 hadron-mass-triad and D3 cosmological-expansion native witnesses where motif commitment
-    interacts with cosmological severance.
-  source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
-    RA_O01_KernelLocality.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
-    RA_HasseFrontier_FiniteMaxExist.lean: lean_build_confirmed_no_sorry
-  legacy_proof_status: ANC
-  proof_status: lean_verified_or_compiled_native
-  legacy_support_status: none
-  auxiliary_support_status: none_recorded
-  claim_kind: formalized_result
-  formal_anchor: supportCutOfFiniteHasseFrontier
-  formal_bridge_theorem: GraphReadyAt_supportCutOfFiniteHasseFrontier_iff
-- id: RA-MOTIF-COMMIT-002
-  name: Readiness is support-cut containment in realized causal past
-  domain: matter
-  papers:
-  - II
-  statement: 'A motif is ready at a site x exactly when its support cut is contained in the realized causal
-    past of x. Formalized as DAGReadyAt_iff_support_subset_realized_past.'
-  nature_targets:
-  - motif readiness criterion via causal-past subset relation
-  ra_observable: DAGReadyAt predicate
-  sources:
-  - RA_MotifCommitProtocol.lean
-  proof_dependencies:
-  - RA-MOTIF-COMMIT-001
-  framing_links: []
-  restoration_preconditions: []
-  caveats: ''
-  next_tasks: []
-  source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
-  legacy_proof_status: ANC
-  proof_status: lean_verified_or_compiled_native
-  legacy_support_status: none
-  auxiliary_support_status: none_recorded
-  claim_kind: formalized_result
-  formal_anchor: DAGReadyAt_iff_support_subset_realized_past
-- id: RA-MOTIF-COMMIT-003
-  name: Readiness is monotone toward the causal future
-  domain: matter
-  papers:
-  - II
-  statement: 'If a motif is ready at site x and y is in the causal future of x, then the motif is also ready
-    at y. Formalized at both Layer 1 (DAGReadyAt.future_mono) and Layer 2 (GraphReadyAt.future_mono).'
-  nature_targets:
-  - irreversibility of readiness once support cut is realized
-  ra_observable: monotonicity of readiness toward causal future
-  sources:
-  - RA_MotifCommitProtocol.lean
-  proof_dependencies:
-  - RA-MOTIF-COMMIT-002
-  framing_links: []
-  restoration_preconditions: []
-  caveats: ''
-  next_tasks: []
-  source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
-  legacy_proof_status: ANC
-  proof_status: lean_verified_or_compiled_native
-  legacy_support_status: none
-  auxiliary_support_status: none_recorded
-  claim_kind: formalized_result
-  formal_anchor: DAGReadyAt.future_mono / GraphReadyAt.future_mono
-- id: RA-MOTIF-COMMIT-004
-  name: Committed motif excludes ready incompatible motifs at same site
-  domain: matter
-  papers:
-  - II
-  statement: 'If a motif is committed at a causal site, then no incompatible motif can be ready at the same
-    site. Formalized at both Layer 1 (DAGCommitsAt.excludes_incompatible_same_site) and Layer 2
-    (GraphCommitsAt.excludes_incompatible_same_site). This formalizes the RA-native consensus property —
-    once a motif is inscribed at a site, no contradictory motif can co-occur there.'
-  nature_targets:
-  - mutual exclusion of incompatible motifs at the same actualization site
-  - RA-native consensus property
-  ra_observable: DAGCommitsAt / GraphCommitsAt exclusion predicate
-  sources:
-  - RA_MotifCommitProtocol.lean
-  proof_dependencies:
-  - RA-MOTIF-COMMIT-002
-  framing_links: []
-  restoration_preconditions: []
-  caveats: ''
-  next_tasks: []
-  source_status:
-    RA_MotifCommitProtocol.lean: lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
-  legacy_proof_status: ANC
-  proof_status: lean_verified_or_compiled_native
-  legacy_support_status: none
-  auxiliary_support_status: none_recorded
-  claim_kind: formalized_result
-  formal_anchor: DAGCommitsAt.excludes_incompatible_same_site / GraphCommitsAt.excludes_incompatible_same_site

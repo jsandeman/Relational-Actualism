@@ -172,3 +172,8 @@ RA-MOTIF-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Native m
 RA-KERNEL-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Kernel locality,BMV apparatus mu-dictionary identification
 RA-OPEN-BMV-MU-DICTIONARY-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,BMV apparatus mu-dictionary identification,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
 RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
+RA-LLC-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Local Ledger Condition,Hasse-frontier as causal support cut
+RA-MOTIF-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Native motif sector definition,Hasse-frontier as causal support cut
+RA-MOTIF-COMMIT-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Hasse-frontier as causal support cut,Readiness is support-cut containment in realized causal past
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Readiness is support-cut containment in realized causal past,Readiness is monotone toward the causal future
+RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-004,proof_dependency,claim,claim,Readiness is support-cut containment in realized causal past,Committed motif excludes ready incompatible motifs at same site

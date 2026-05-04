@@ -1,4 +1,4 @@
-import RA_D1_NativeKernel_v1
+import RA_D1_NativeKernel
 
 /-!
 # RA_D1_NativeConfinement_v1

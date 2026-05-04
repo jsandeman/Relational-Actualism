@@ -1,5 +1,5 @@
 import RA_AmpLocality
-import RA_D1_Core_draft
+import RA_D1_Core
 
 /-!
 # RA_CausalOrientation_Core
