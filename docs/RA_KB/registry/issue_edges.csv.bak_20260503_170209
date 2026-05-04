@@ -94,5 +94,3 @@ RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependenc
 RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,BMV apparatus mu-dictionary identification
 RA-MOTIF-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Native motif sector definition,BMV apparatus mu-dictionary identification
 RA-KERNEL-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Kernel locality,BMV apparatus mu-dictionary identification
-RA-OPEN-BMV-MU-DICTIONARY-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,BMV apparatus mu-dictionary identification,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
-RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,Empirical constraints on BDG-suppression dictionaries from decoherence experiments

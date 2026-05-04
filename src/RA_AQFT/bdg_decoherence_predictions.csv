@@ -1,0 +1,6 @@
+scenario,description,field_maturity,m_kg,dX_m,pressure_Pa,T_gas_K,gamma_standard_per_s,gamma_RA_dict_D_per_s,suppression_factor,measurement_precision_factor,in_tension_with_data,distinguishable
+atom_interferometry_Cs,"Cs atom interferometry (cold-atom, room-T vacuum)",mature,2.200e-25,1.000e-03,1.000e-09,300.00,1.000000e+30,4.043600e+29,2.473044,0.100,1,1
+molecular_interferometry_C60,C60 fullerene interferometry (Arndt et al. style),mature,1.200e-24,1.000e-07,1.000e-07,300.00,1.968300e+26,7.959018e+25,2.473044,0.200,1,1
+molecular_interferometry_oligoporphyrin,Large-molecule (~10 kDa) interferometry,mature,1.600e-23,1.000e-07,1.000e-09,300.00,1.000000e+22,4.043600e+21,2.473044,0.200,1,1
+levitated_nanosphere_silica,Levitated silica nanosphere (~100 nm radius),developing,1.000e-18,1.000e-09,1.000e-10,4.00,1.331861e+01,5.385512e+00,2.473044,0.300,0,1
+bmv_bose2017_nominal,"BMV Bose 2017 nominal (m=1e-14 kg, dX=250 um)",speculative,1.000e-14,2.500e-04,1.000e-12,0.10,1.236607e+06,5.000346e+05,2.473044,1.000,0,0
