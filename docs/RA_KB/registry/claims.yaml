@@ -1365,3 +1365,219 @@ claims:
   claim_kind: interpretive_bridge
   formal_anchor: CausalSupportCut ; supportCutOfFiniteHasseFrontier ; GraphReadyAt_supportCutOfFiniteHasseFrontier_iff
   packet_origin: RA_MotifCommitProtocol_CompileConfirmed_May04_2026
+- id: RA-MOTIF-SELECTOR-001
+  name: Certified readiness combines support certification and causal readiness
+  domain: matter
+  papers:
+  - II
+  statement: 'Certified readiness at a causal site is the conjunction of commit-context
+    support certification and support-cut readiness at that site. Formalized at Layer 1
+    by `DAGCertifiedReadyAt` and at Layer 2 by `GraphCertifiedReadyAt`.'
+  nature_targets:
+  - certification predicate over motif/support-cut pairs at an actualization site
+  ra_observable: DAGCertifiedReadyAt / GraphCertifiedReadyAt predicate
+  sources:
+  - RA_MotifSelectorClosure.lean
+  - RA_MotifCommitProtocol.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-003
+  - RA-MOTIF-COMMIT-007
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Source-level Lean module compiles cleanly under lake build (assistant-side
+    `lake build RA_MotifSelectorClosure` succeeded, no sorry/admit/axiom).'
+  next_tasks: []
+  source_status:
+    RA_MotifSelectorClosure.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+    RA_MotifCommitProtocol.lean: user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGCertifiedReadyAt ; GraphCertifiedReadyAt
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026
+- id: RA-MOTIF-SELECTOR-002
+  name: Selector closure selects only certified-ready motif/support-cut pairs
+  domain: matter
+  papers:
+  - II
+  statement: 'A selector closure at a causal site selects motif/support-cut pairs only
+    when those pairs are certified-ready at that site, and selected pairs must be
+    pairwise compatible under the local RA incompatibility relation. Formalized as
+    `DAGSelectorClosureAt` (Layer 1) and `GraphSelectorClosureAt` (Layer 2), with
+    `DAGSelectedCommitsAt.of_selected` / `GraphSelectedCommitsAt.of_selected` providing
+    the witness from selected to selected-commit.'
+  nature_targets:
+  - site-local selector layer over certified-ready motif/support-cut pairs
+  - pairwise compatibility constraint on selected alternatives
+  ra_observable: DAGSelectorClosureAt / GraphSelectorClosureAt structure
+  sources:
+  - RA_MotifSelectorClosure.lean
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-001
+  - RA-MOTIF-COMMIT-008
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'The `selected` field is a predicate; concrete instantiations (BDG locality,
+    orientation closure, ledger checks, simulator policies) remain downstream.'
+  next_tasks:
+  - Instantiate `selected` via BDG locality / orientation closure / ledger constraints.
+  source_status:
+    RA_MotifSelectorClosure.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGSelectorClosureAt ; GraphSelectorClosureAt ; DAGSelectedCommitsAt.of_selected ; GraphSelectedCommitsAt.of_selected
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026
+- id: RA-MOTIF-SELECTOR-003
+  name: Selected commitment is distinct from strict commitment
+  domain: matter
+  papers:
+  - II
+  statement: 'Selected commitment requires certified readiness and selection by a
+    local selector closure. Strict commitment further requires exclusion of all
+    certified-ready incompatible alternatives at the same causal site. Formalized
+    by `DAGSelectedCommitsAt` / `GraphSelectedCommitsAt` (selected branch) versus
+    `DAGCommitsAt` / `GraphCommitsAt` (strict branch).'
+  nature_targets:
+  - distinction between selected actualization and strict (no-incompatible-competitor)
+    actualization
+  ra_observable: DAGSelectedCommitsAt / GraphSelectedCommitsAt vs DAGCommitsAt / GraphCommitsAt
+  sources:
+  - RA_MotifSelectorClosure.lean
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-002
+  - RA-MOTIF-COMMIT-008
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: ''
+  next_tasks: []
+  source_status:
+    RA_MotifSelectorClosure.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGSelectedCommitsAt ; GraphSelectedCommitsAt ; DAGSelectedCommitsAt.to_strict_commits_of_complete ; GraphSelectedCommitsAt.to_strict_commits_of_complete
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026
+- id: RA-MOTIF-SELECTOR-004
+  name: Complete selector closure recovers strict motif commitment
+  domain: matter
+  papers:
+  - II
+  statement: 'If a selector closure is complete over certified-ready alternatives at
+    a site (every certified-ready motif/support-cut pair is selected), then selected
+    commitment implies the strict motif-commit predicate. Formalized as
+    `DAGSelectedCommitsAt.to_strict_commits_of_complete` (Layer 1) and
+    `GraphSelectedCommitsAt.to_strict_commits_of_complete` (Layer 2).'
+  nature_targets:
+  - reduction theorem from complete-closure selected commitment to strict commitment
+  ra_observable: to_strict_commits_of_complete reduction
+  sources:
+  - RA_MotifSelectorClosure.lean
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-002
+  - RA-MOTIF-SELECTOR-003
+  - RA-MOTIF-COMMIT-008
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Complete closure is strong and often inappropriate when unresolved
+    incompatible alternatives are present; partial selector closure is the more
+    physically natural mode.'
+  next_tasks: []
+  source_status:
+    RA_MotifSelectorClosure.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGSelectedCommitsAt.to_strict_commits_of_complete ; GraphSelectedCommitsAt.to_strict_commits_of_complete
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026
+- id: RA-MOTIF-SELECTOR-005
+  name: Unresolved incompatibility marks RA-native actualization ambiguity
+  domain: matter
+  papers:
+  - II
+  statement: 'Unresolved incompatibility at a causal site witnesses certified-ready
+    incompatible motif/support-cut alternatives for which neither alternative is
+    selected, marking an unresolved local actualization condition for downstream
+    saturation or severance analysis. Formalized as `DAGUnresolvedIncompatibilityAt`
+    (Layer 1) and `GraphUnresolvedIncompatibilityAt` (Layer 2).'
+  nature_targets:
+  - local actualization-ambiguity witness for downstream severance analysis
+  ra_observable: DAGUnresolvedIncompatibilityAt / GraphUnresolvedIncompatibilityAt
+  sources:
+  - RA_MotifSelectorClosure.lean
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Linkage to D3 causal severance is downstream and not yet formal; the
+    selector module only states the unresolved-ambiguity witness predicate.'
+  next_tasks:
+  - Formalize the bridge from unresolved incompatibility to D3 causal-severance witnesses.
+  source_status:
+    RA_MotifSelectorClosure.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGUnresolvedIncompatibilityAt ; GraphUnresolvedIncompatibilityAt
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026
+- id: RA-MOTIF-SELECTOR-006
+  name: Hasse-frontier-selected commitment carries frontier reachability to the site
+  domain: matter
+  papers:
+  - II
+  statement: 'When selected graph commitment uses a finite Hasse-frontier support cut,
+    readiness entails reachability from every Hasse-frontier support vertex to the
+    actualization site. Formalized as `GraphHasseFrontierSelectedCommitsAt` together
+    with the reachability extraction `GraphHasseFrontierSelectedCommitsAt.frontier_reaches_site`.'
+  nature_targets:
+  - reachability-from-frontier characterization of selected motif commitment
+  ra_observable: GraphHasseFrontierSelectedCommitsAt / .frontier_reaches_site
+  sources:
+  - RA_MotifSelectorClosure.lean
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-005
+  - RA-MOTIF-COMMIT-006
+  - RA-MOTIF-SELECTOR-003
+  framing_links:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: ''
+  next_tasks: []
+  source_status:
+    RA_MotifSelectorClosure.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: GraphHasseFrontierSelectedCommitsAt ; GraphHasseFrontierSelectedCommitsAt.frontier_reaches_site
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026

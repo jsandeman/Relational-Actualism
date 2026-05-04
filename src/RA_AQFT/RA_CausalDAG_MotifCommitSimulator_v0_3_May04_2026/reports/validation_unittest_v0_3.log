@@ -1,0 +1,17 @@
+test_default_exact_support_still_available (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_default_exact_support_still_available) ... ok
+test_depth_finality (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_depth_finality) ... ok
+test_greedy_selector_resolves_conflict_by_priority (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_greedy_selector_resolves_conflict_by_priority) ... ok
+test_hasse_frontier_of_downset (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_hasse_frontier_of_downset) ... ok
+test_lexicographic_policy_breaks_equal_priority_tie (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_lexicographic_policy_breaks_equal_priority_tie) ... ok
+test_ready_at_and_future_monotonicity (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_ready_at_and_future_monotonicity) ... ok
+test_selector_component_records_suppression (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_selector_component_records_suppression) ... ok
+test_selector_none_reproduces_strict_blocking (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_selector_none_reproduces_strict_blocking) ... ok
+test_stalemate_policy_refuses_name_tiebreak (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_stalemate_policy_refuses_name_tiebreak) ... ok
+test_strict_incompatible_ready_motifs_block_each_other (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_strict_incompatible_ready_motifs_block_each_other) ... ok
+test_support_certifier_rejects_wrong_hasse_cut (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_support_certifier_rejects_wrong_hasse_cut) ... ok
+test_unsupported_competitor_does_not_block_supported_motif (test_ra_causal_dag_simulator.TestRACausalDAGSimulatorV03.test_unsupported_competitor_does_not_block_supported_motif) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+OK

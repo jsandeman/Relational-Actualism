@@ -1,0 +1,6 @@
+RA Motif Selector Closure bridge apply
+project: /mnt/data/_ra_lean_context_gated_test
+packet:  /mnt/data/RA_MotifSelectorClosure_FormalBridge_May04_2026
+dry-run: True
+[dry-run] copy /mnt/data/RA_MotifSelectorClosure_FormalBridge_May04_2026/lean/RA_MotifSelectorClosure.lean -> /mnt/data/_ra_lean_context_gated_test/RA_MotifSelectorClosure.lean
+[dry-run] would insert `RA_MotifSelectorClosure into /mnt/data/_ra_lean_context_gated_test/lakefile.lean

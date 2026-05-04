@@ -1,0 +1,755 @@
+--- /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_2_May04_2026/simulator/ra_causal_dag_simulator.py	2026-05-04 19:19:45.859798694 +0000
++++ /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_3_May04_2026/simulator/ra_causal_dag_simulator.py	2026-05-04 19:25:38.815167089 +0000
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env python3
+ """
+-RA causal-DAG motif-commit simulator v0.2
++RA causal-DAG motif-commit simulator v0.3
+ 
+ This simulator mirrors the vocabulary of RA_MotifCommitProtocol.lean and adds
+-an explicit graph-native support-certification layer.
++an explicit selector-closure layer downstream of strict commit semantics.
+ 
+ Lean-to-Python correspondence:
+ 
+@@ -25,9 +25,12 @@
+   CommitContext.incompatible
+     ↔ CommitContext.incompatible
+ 
+-  CommitsAt
++  Strict CommitsAt
+     ↔ MotifCommitProtocol.decision(...).commits
+ 
++  Selector-closed commit
++    ↔ MotifCommitProtocol.selected_decision(...).commits
++
+   FinalizedAtDepth
+     ↔ CausalDAG.finalized_at_depth
+ 
+@@ -35,8 +38,17 @@
+ votes, leaders, or message rounds. The central RA-native question is:
+ 
+   Which motif candidates have certified support cuts whose support vertices lie
+-  in the causal past of a site, and which of those are excluded by certified-
+-  ready incompatible competitors?
++  in the causal past of a site, which are excluded by certified-ready
++  incompatible competitors under strict CommitsAt, and how can a downstream
++  selector closure narrow mutually incompatible alternatives before commit?
++
++Important boundary:
++
++  The strict decision path is the direct simulator counterpart of the compiled
++  RA_MotifCommitProtocol interface. The selector-closed path is a downstream
++  experimental extension meant to model how RA_ActualizationSelector-style
++  closure could narrow the eligible frontier before strict incompatibility
++  exclusion is evaluated.
+ """
+ from __future__ import annotations
+ 
+@@ -58,10 +70,10 @@
+     """Finite motif candidate with carrier, support cut, and optional metadata.
+ 
+     `exclusion_domain` is a simulator convenience for defining incompatibility:
+-    two certified candidates with the same non-null exclusion domain and distinct
+-    names are treated as incompatible by the default context.
++    two candidates with the same non-null exclusion domain and distinct names are
++    treated as incompatible by the default context.
+ 
+-    Metadata keys used by the v0.2 support certifier:
++    Metadata keys used by the support certifier:
+       - candidate_past: list[int] or set[int]
+       - bdg_local_ok: bool, default True
+       - ledger_local_ok: bool, default True
+@@ -120,6 +132,8 @@
+ 
+ @dataclass(frozen=True)
+ class CommitDecision:
++    """Strict Lean-style motif-commit decision."""
++
+     motif: str
+     site: NodeId
+     supported: bool
+@@ -129,6 +143,69 @@
+     support_failures: Tuple[str, ...] = ()
+ 
+ 
++@dataclass(frozen=True)
++class SelectorComponentTrace:
++    component_id: int
++    candidates: Tuple[str, ...]
++    selected: Tuple[str, ...]
++    rejected: Tuple[str, ...]
++    stalemate: bool
++    reason: str
++
++    def to_row(self, site: NodeId) -> Dict[str, object]:
++        return {
++            "site": site,
++            "component_id": self.component_id,
++            "candidates": list(self.candidates),
++            "selected": list(self.selected),
++            "rejected": list(self.rejected),
++            "stalemate": self.stalemate,
++            "reason": self.reason,
++        }
++
++
++@dataclass(frozen=True)
++class SelectorClosureResult:
++    """Result of narrowing certified-ready motifs at a site."""
++
++    site: NodeId
++    mode: str
++    tie_policy: str
++    eligible: Tuple[str, ...]
++    selected: Tuple[str, ...]
++    rejected: Tuple[str, ...]
++    stalemates: Tuple[str, ...]
++    components: Tuple[SelectorComponentTrace, ...]
++
++    def selected_set(self) -> Set[str]:
++        return set(self.selected)
++
++    def rejected_set(self) -> Set[str]:
++        return set(self.rejected)
++
++    def stalemate_set(self) -> Set[str]:
++        return set(self.stalemates)
++
++    def component_rows(self) -> List[Dict[str, object]]:
++        return [c.to_row(self.site) for c in self.components]
++
++
++@dataclass(frozen=True)
++class SelectedCommitDecision:
++    """Commit decision after selector closure has narrowed eligible motifs."""
++
++    motif: str
++    site: NodeId
++    supported: bool
++    ready: bool
++    selected: bool
++    commits: bool
++    selector_reason: str
++    strict_blocked_by: Tuple[str, ...] = ()
++    selected_blocked_by: Tuple[str, ...] = ()
++    support_failures: Tuple[str, ...] = ()
++
++
+ class CausalDAG:
+     """Append-only finite DAG with edges oriented from causal past to future."""
+ 
+@@ -151,6 +228,7 @@
+         for p in parent_set:
+             self.children[p].add(node)
+         self.depth[node] = 0 if not parent_set else 1 + max(self.depth[p] for p in parent_set)
++        self._ancestors_cache.clear()
+         return node
+ 
+     @property
+@@ -255,7 +333,7 @@
+ 
+ 
+ class GraphSupportCertifier:
+-    """Concrete v0.2 instantiation of `CommitContext.supports`.
++    """Concrete instantiation of `CommitContext.supports`.
+ 
+     A support cut is certified for a motif when the finite cut is graph-native,
+     matches the motif's declared cut, is the Hasse frontier of the motif's
+@@ -443,8 +521,189 @@
+         )
+ 
+ 
++class SelectorPolicy:
++    """Downstream selector closure over certified-ready motif candidates.
++
++    Modes:
++      - none: select every eligible motif; this reproduces strict blocking when
++        incompatible eligible candidates remain selected.
++      - greedy: build a deterministic compatible subset of eligible motifs.
++
++    Tie policies for greedy mode:
++      - lexicographic: use priority, support width, kind rank, and name as a
++        deterministic total order.
++      - stalemate: if the top-ranked alternatives in a connected incompatibility
++        component are tied before name-breaking and mutually incompatible, select
++        none from that component and record a stalemate.
++
++    The selector is an experimental downstream layer. It is not part of the
++    compiled RA_MotifCommitProtocol interface; it is meant to explore how
++    RA_ActualizationSelector-style closure could feed that interface.
++    """
++
++    def __init__(self, mode: str = "greedy", tie_policy: str = "lexicographic") -> None:
++        if mode not in {"none", "greedy"}:
++            raise ValueError("mode must be 'none' or 'greedy'")
++        if tie_policy not in {"lexicographic", "stalemate"}:
++            raise ValueError("tie_policy must be 'lexicographic' or 'stalemate'")
++        self.mode = mode
++        self.tie_policy = tie_policy
++
++    def select(
++        self,
++        *,
++        site: NodeId,
++        candidates: Sequence[MotifCandidate],
++        context: CommitContext,
++    ) -> SelectorClosureResult:
++        eligible = tuple(sorted(candidates, key=lambda m: m.name))
++        if self.mode == "none":
++            component = SelectorComponentTrace(
++                component_id=0,
++                candidates=tuple(m.name for m in eligible),
++                selected=tuple(m.name for m in eligible),
++                rejected=(),
++                stalemate=False,
++                reason="selector_disabled_all_eligible_selected",
++            )
++            return SelectorClosureResult(
++                site=site,
++                mode=self.mode,
++                tie_policy=self.tie_policy,
++                eligible=tuple(m.name for m in eligible),
++                selected=tuple(m.name for m in eligible),
++                rejected=(),
++                stalemates=(),
++                components=(component,) if eligible else (),
++            )
++
++        components = self._conflict_components(eligible, context)
++        selected_names: List[str] = []
++        rejected_names: List[str] = []
++        stalemate_names: List[str] = []
++        traces: List[SelectorComponentTrace] = []
++
++        for idx, comp in enumerate(components):
++            comp_sorted = tuple(sorted(comp, key=lambda m: m.name))
++            if len(comp_sorted) == 1:
++                m = comp_sorted[0]
++                selected_names.append(m.name)
++                traces.append(SelectorComponentTrace(
++                    component_id=idx,
++                    candidates=(m.name,),
++                    selected=(m.name,),
++                    rejected=(),
++                    stalemate=False,
++                    reason="singleton_component_selected",
++                ))
++                continue
++
++            if self.tie_policy == "stalemate":
++                top = self._top_pre_name_rank_group(comp_sorted)
++                if len(top) > 1 and self._contains_incompatible_pair(top, context):
++                    names = tuple(m.name for m in sorted(comp_sorted, key=lambda m: m.name))
++                    rejected_names.extend(names)
++                    stalemate_names.extend(names)
++                    traces.append(SelectorComponentTrace(
++                        component_id=idx,
++                        candidates=names,
++                        selected=(),
++                        rejected=names,
++                        stalemate=True,
++                        reason="top_rank_tie_without_selector_break",
++                    ))
++                    continue
++
++            local_selected: List[MotifCandidate] = []
++            local_rejected: List[MotifCandidate] = []
++            for motif in sorted(comp_sorted, key=self._total_order_key):
++                if all(not self._incompatible_symmetric(motif, chosen, context) for chosen in local_selected):
++                    local_selected.append(motif)
++                else:
++                    local_rejected.append(motif)
++
++            selected_names.extend(m.name for m in local_selected)
++            rejected_names.extend(m.name for m in local_rejected)
++            traces.append(SelectorComponentTrace(
++                component_id=idx,
++                candidates=tuple(m.name for m in comp_sorted),
++                selected=tuple(m.name for m in sorted(local_selected, key=lambda m: m.name)),
++                rejected=tuple(m.name for m in sorted(local_rejected, key=lambda m: m.name)),
++                stalemate=False,
++                reason="greedy_compatible_subset_selected",
++            ))
++
++        return SelectorClosureResult(
++            site=site,
++            mode=self.mode,
++            tie_policy=self.tie_policy,
++            eligible=tuple(m.name for m in eligible),
++            selected=tuple(sorted(selected_names)),
++            rejected=tuple(sorted(rejected_names)),
++            stalemates=tuple(sorted(stalemate_names)),
++            components=tuple(traces),
++        )
++
++    @staticmethod
++    def _incompatible_symmetric(a: MotifCandidate, b: MotifCandidate, context: CommitContext) -> bool:
++        return context.incompatible(a, b) or context.incompatible(b, a)
++
++    def _conflict_components(
++        self,
++        candidates: Sequence[MotifCandidate],
++        context: CommitContext,
++    ) -> List[Tuple[MotifCandidate, ...]]:
++        remaining = set(range(len(candidates)))
++        components: List[Tuple[MotifCandidate, ...]] = []
++        while remaining:
++            start = remaining.pop()
++            stack = [start]
++            comp_indices = {start}
++            while stack:
++                i = stack.pop()
++                for j in list(remaining):
++                    if self._incompatible_symmetric(candidates[i], candidates[j], context):
++                        remaining.remove(j)
++                        comp_indices.add(j)
++                        stack.append(j)
++            components.append(tuple(candidates[i] for i in sorted(comp_indices, key=lambda k: candidates[k].name)))
++        return sorted(components, key=lambda comp: tuple(m.name for m in comp))
++
++    @staticmethod
++    def _kind_rank(kind: str) -> int:
++        # Lower is preferred after priority and support width.
++        return {
++            "seed": 0,
++            "renewal": 1,
++            "alternative": 2,
++            "generic": 3,
++        }.get(kind, 4)
++
++    def _rank_without_name(self, motif: MotifCandidate) -> Tuple[int, int, int]:
++        # Higher priority is better; smaller support width is treated as a more
++        # parsimonious support boundary; kind rank gives stable domain ordering.
++        return (-motif.priority, len(motif.support_cut), self._kind_rank(motif.kind))
++
++    def _total_order_key(self, motif: MotifCandidate) -> Tuple[int, int, int, str]:
++        return (*self._rank_without_name(motif), motif.name)
++
++    def _top_pre_name_rank_group(self, candidates: Sequence[MotifCandidate]) -> Tuple[MotifCandidate, ...]:
++        ordered = sorted(candidates, key=self._rank_without_name)
++        if not ordered:
++            return ()
++        best_key = self._rank_without_name(ordered[0])
++        return tuple(m for m in ordered if self._rank_without_name(m) == best_key)
++
++    def _contains_incompatible_pair(self, candidates: Sequence[MotifCandidate], context: CommitContext) -> bool:
++        for i, a in enumerate(candidates):
++            for b in candidates[i + 1:]:
++                if self._incompatible_symmetric(a, b, context):
++                    return True
++        return False
++
++
+ class MotifCommitProtocol:
+-    """Strict RA motif-commit semantics over a CausalDAG."""
++    """Strict and selector-closed RA motif-commit semantics over a CausalDAG."""
+ 
+     def __init__(self, dag: CausalDAG, motifs: Sequence[MotifCandidate], context: Optional[CommitContext] = None) -> None:
+         self.dag = dag
+@@ -466,6 +725,10 @@
+     def ready(self, motif: MotifCandidate, site: NodeId) -> bool:
+         return self.dag.ready_at(motif.support_cut, site)
+ 
++    def eligible_at(self, site: NodeId) -> Tuple[MotifCandidate, ...]:
++        """Certified-ready motifs at a site."""
++        return tuple(m for m in self.motifs if self.supported(m) and self.ready(m, site))
++
+     def blockers(self, motif: MotifCandidate, site: NodeId) -> Tuple[MotifCandidate, ...]:
+         if not self.supported(motif) or not self.ready(motif, site):
+             return ()
+@@ -482,6 +745,7 @@
+         return tuple(blocked_by)
+ 
+     def decision(self, motif: MotifCandidate, site: NodeId) -> CommitDecision:
++        """Strict counterpart of `GraphCommitsAt`."""
+         evaluation = self.support_evaluation(motif)
+         supported = evaluation.supported
+         ready = self.ready(motif, site) if supported else False
+@@ -502,6 +766,71 @@
+     def committed_at(self, site: NodeId) -> Tuple[MotifCandidate, ...]:
+         return tuple(m for m in self.motifs if self.decision(m, site).commits)
+ 
++    def selector_closure_at(self, site: NodeId, selector: Optional[SelectorPolicy] = None) -> SelectorClosureResult:
++        selector = selector or SelectorPolicy()
++        return selector.select(site=site, candidates=self.eligible_at(site), context=self.context)
++
++    def selected_blockers(
++        self,
++        motif: MotifCandidate,
++        site: NodeId,
++        closure: SelectorClosureResult,
++    ) -> Tuple[MotifCandidate, ...]:
++        if motif.name not in closure.selected_set():
++            return ()
++        selected_names = closure.selected_set()
++        selected_motifs = [m for m in self.motifs if m.name in selected_names and m.name != motif.name]
++        return tuple(m for m in selected_motifs if self.context.incompatible(motif, m))
++
++    def selected_decision(
++        self,
++        motif: MotifCandidate,
++        site: NodeId,
++        selector: Optional[SelectorPolicy] = None,
++        closure: Optional[SelectorClosureResult] = None,
++    ) -> SelectedCommitDecision:
++        strict = self.decision(motif, site)
++        closure = closure or self.selector_closure_at(site, selector)
++        selected = motif.name in closure.selected_set()
++        selected_blocked = self.selected_blockers(motif, site, closure) if selected else ()
++
++        if not strict.supported:
++            selector_reason = "not_supported"
++        elif not strict.ready:
++            selector_reason = "not_ready"
++        elif selected and not selected_blocked:
++            selector_reason = "selected"
++        elif selected and selected_blocked:
++            selector_reason = "selected_but_blocked_by_selected_competitor"
++        elif motif.name in closure.stalemate_set():
++            selector_reason = "selector_stalemate"
++        elif motif.name in closure.rejected_set():
++            selector_reason = "rejected_by_selector"
++        else:
++            selector_reason = "not_eligible"
++
++        return SelectedCommitDecision(
++            motif=motif.name,
++            site=site,
++            supported=strict.supported,
++            ready=strict.ready,
++            selected=selected,
++            commits=strict.supported and strict.ready and selected and not selected_blocked,
++            selector_reason=selector_reason,
++            strict_blocked_by=strict.blocked_by,
++            selected_blocked_by=tuple(b.name for b in selected_blocked),
++            support_failures=strict.support_failures,
++        )
++
++    def selected_decisions_at(self, site: NodeId, selector: Optional[SelectorPolicy] = None) -> Tuple[SelectedCommitDecision, ...]:
++        closure = self.selector_closure_at(site, selector)
++        return tuple(self.selected_decision(m, site, selector, closure) for m in self.motifs)
++
++    def selected_committed_at(self, site: NodeId, selector: Optional[SelectorPolicy] = None) -> Tuple[MotifCandidate, ...]:
++        decisions = self.selected_decisions_at(site, selector)
++        committed_names = {d.motif for d in decisions if d.commits}
++        return tuple(m for m in self.motifs if m.name in committed_names)
++
+ 
+ def _metadata_with_gates(
+     *,
+@@ -554,13 +883,16 @@
+     defect_rate: float = 0.12,
+     max_support_width: Optional[int] = None,
+     max_depth_span: Optional[int] = None,
+-) -> Tuple[CausalDAG, List[MotifCandidate], List[dict[str, object]], List[dict[str, object]]]:
++    selector_mode: str = "greedy",
++    selector_tie_policy: str = "lexicographic",
++) -> Tuple[CausalDAG, List[MotifCandidate], List[dict[str, object]], List[dict[str, object]], List[dict[str, object]]]:
+     """Generate a small append-only RA causal-DAG and motif-candidate stream.
+ 
+-    The demo includes two separate failure modes:
++    The demo includes three separate behaviors:
+       1. certified-ready incompatible alternatives block each other under the
+          strict Lean-style `CommitsAt` predicate;
+-      2. support-certification defects fail before readiness/commit is evaluated.
++      2. support-certification defects fail before readiness/commit is evaluated;
++      3. selector closure can narrow certified-ready alternatives before commit.
+     """
+     rng = random.Random(seed)
+     dag = CausalDAG()
+@@ -568,8 +900,9 @@
+     motifs: List[MotifCandidate] = []
+     rows: List[dict[str, object]] = []
+     support_rows: List[dict[str, object]] = []
++    selector_rows: List[dict[str, object]] = []
++    selector = SelectorPolicy(mode=selector_mode, tie_policy=selector_tie_policy)
+ 
+-    # Genesis seed motif: empty support is immediately ready at every site.
+     motifs.append(MotifCandidate(
+         name="genesis_seed",
+         carrier=frozenset({genesis}),
+@@ -594,8 +927,6 @@
+         k = rng.randint(1, min(max_parents, len(parent_pool)))
+         parents = set(rng.sample(parent_pool, k=k))
+ 
+-        # Occasionally add one non-maximal parent to make Hasse-frontier
+-        # extraction visibly remove redundant support.
+         if len(existing) > 2 and rng.random() < 0.35:
+             parents.add(rng.choice(existing))
+ 
+@@ -616,6 +947,7 @@
+             support_cut=support_cut,
+             kind="renewal",
+             exclusion_domain=None,
++            priority=2,
+             metadata={**stable_metadata, "support_width": len(support_cut)},
+         )
+         motifs.append(stable)
+@@ -637,6 +969,8 @@
+                 defect_rate=defect_rate,
+                 past_size=len(past),
+             )
++            # Usually equal priority, so lexicographic selector breaks symmetry;
++            # a future stochastic/physical selector could replace this.
+             motifs.append(MotifCandidate(
+                 name=f"choice_A_{site}",
+                 carrier=frozenset({site}),
+@@ -658,10 +992,17 @@
+ 
+         context = make_context(dag, max_support_width=max_support_width, max_depth_span=max_depth_span)
+         protocol = MotifCommitProtocol(dag, motifs, context)
+-        decisions = protocol.decisions_at(site)
+-        committed = [d.motif for d in decisions if d.commits]
+-        blocked = [d.motif for d in decisions if d.ready and not d.commits and d.blocked_by]
+-        unsupported = [d.motif for d in decisions if not d.supported]
++        strict_decisions = protocol.decisions_at(site)
++        closure = protocol.selector_closure_at(site, selector)
++        selected_decisions = tuple(protocol.selected_decision(m, site, selector, closure) for m in motifs)
++
++        strict_committed = [d.motif for d in strict_decisions if d.commits]
++        strict_blocked = [d.motif for d in strict_decisions if d.ready and not d.commits and d.blocked_by]
++        unsupported = [d.motif for d in strict_decisions if not d.supported]
++        selected_committed = [d.motif for d in selected_decisions if d.commits]
++        selector_rejected = [d.motif for d in selected_decisions if d.selector_reason == "rejected_by_selector"]
++        selector_stalemates = [d.motif for d in selected_decisions if d.selector_reason == "selector_stalemate"]
++        selected_blocked = [d.motif for d in selected_decisions if d.selected_blocked_by]
+ 
+         for motif in motifs:
+             evaluation = protocol.support_evaluation(motif)
+@@ -669,8 +1010,13 @@
+             row["site"] = site
+             support_rows.append(row)
+ 
++        for component_row in closure.component_rows():
++            component_row["selector_mode"] = selector.mode
++            component_row["selector_tie_policy"] = selector.tie_policy
++            selector_rows.append(component_row)
++
+         failure_histogram: Dict[str, int] = {}
+-        for d in decisions:
++        for d in strict_decisions:
+             for failure in d.support_failures:
+                 failure_histogram[failure] = failure_histogram.get(failure, 0) + 1
+ 
+@@ -682,37 +1028,57 @@
+             "hasse_frontier_support_cut": sorted(support_cut),
+             "support_width": len(support_cut),
+             "introduced_conflict": introduced_conflict,
+-            "ready_count": sum(1 for d in decisions if d.ready),
+-            "supported_count": sum(1 for d in decisions if d.supported),
++            "selector_mode": selector.mode,
++            "selector_tie_policy": selector.tie_policy,
++            "eligible_count": len(closure.eligible),
++            "selected_count": len(closure.selected),
++            "strict_ready_count": sum(1 for d in strict_decisions if d.ready),
++            "strict_supported_count": sum(1 for d in strict_decisions if d.supported),
+             "unsupported_count": len(unsupported),
+-            "committed_count": len(committed),
+-            "blocked_count": len(blocked),
+-            "committed_motifs": committed,
+-            "blocked_ready_motifs": blocked,
++            "strict_committed_count": len(strict_committed),
++            "strict_blocked_count": len(strict_blocked),
++            "selector_committed_count": len(selected_committed),
++            "selector_rejected_count": len(selector_rejected),
++            "selector_stalemate_count": len(selector_stalemates),
++            "selector_selected_blocked_count": len(selected_blocked),
++            "strict_committed_motifs": strict_committed,
++            "strict_blocked_ready_motifs": strict_blocked,
++            "selector_committed_motifs": selected_committed,
++            "selector_rejected_motifs": selector_rejected,
++            "selector_stalemate_motifs": selector_stalemates,
+             "unsupported_motifs": unsupported,
+             "support_failure_histogram": failure_histogram,
+         })
+ 
+-    return dag, motifs, rows, support_rows
++    return dag, motifs, rows, support_rows, selector_rows
+ 
+ 
+ def summarize_run(rows: Sequence[Mapping[str, object]]) -> Dict[str, object]:
+     if not rows:
+         return {
+             "sites": 0,
+-            "total_committed": 0,
+-            "total_blocked": 0,
++            "total_strict_committed": 0,
++            "total_strict_blocked": 0,
++            "total_selector_committed": 0,
++            "total_selector_rejected": 0,
++            "total_selector_stalemates": 0,
+             "total_unsupported": 0,
+             "mean_support_width": 0.0,
+         }
+-    total_committed = sum(int(r.get("committed_count", 0)) for r in rows)
+-    total_blocked = sum(int(r.get("blocked_count", 0)) for r in rows)
++    total_strict_committed = sum(int(r.get("strict_committed_count", 0)) for r in rows)
++    total_strict_blocked = sum(int(r.get("strict_blocked_count", 0)) for r in rows)
++    total_selector_committed = sum(int(r.get("selector_committed_count", 0)) for r in rows)
++    total_selector_rejected = sum(int(r.get("selector_rejected_count", 0)) for r in rows)
++    total_selector_stalemates = sum(int(r.get("selector_stalemate_count", 0)) for r in rows)
+     total_unsupported = sum(int(r.get("unsupported_count", 0)) for r in rows)
+     mean_width = sum(int(r.get("support_width", 0)) for r in rows) / len(rows)
+     return {
+         "sites": len(rows),
+-        "total_committed": total_committed,
+-        "total_blocked": total_blocked,
++        "total_strict_committed": total_strict_committed,
++        "total_strict_blocked": total_strict_blocked,
++        "total_selector_committed": total_selector_committed,
++        "total_selector_rejected": total_selector_rejected,
++        "total_selector_stalemates": total_selector_stalemates,
+         "total_unsupported": total_unsupported,
+         "mean_support_width": round(mean_width, 4),
+         "last_site": rows[-1].get("site"),
+@@ -721,40 +1087,48 @@
+ 
+ def run_parameter_sweep(
+     *,
+-    seeds: Sequence[int] = (11, 17, 23, 31),
+-    conflict_rates: Sequence[float] = (0.0, 0.15, 0.30, 0.50),
+-    defect_rates: Sequence[float] = (0.0, 0.10, 0.25),
+-    steps: int = 32,
++    seeds: Sequence[int] = (11, 17),
++    conflict_rates: Sequence[float] = (0.0, 0.30),
++    defect_rates: Sequence[float] = (0.0, 0.10),
++    selector_modes: Sequence[str] = ("none", "greedy"),
++    selector_tie_policies: Sequence[str] = ("lexicographic", "stalemate"),
++    steps: int = 24,
+     max_parents: int = 3,
+     max_support_width: Optional[int] = None,
+     max_depth_span: Optional[int] = None,
+ ) -> List[Dict[str, object]]:
+     out: List[Dict[str, object]] = []
+-    for conflict_rate in conflict_rates:
+-        for defect_rate in defect_rates:
+-            for seed in seeds:
+-                dag, motifs, rows, _support_rows = generate_growth_demo(
+-                    steps=steps,
+-                    seed=seed,
+-                    max_parents=max_parents,
+-                    conflict_rate=conflict_rate,
+-                    defect_rate=defect_rate,
+-                    max_support_width=max_support_width,
+-                    max_depth_span=max_depth_span,
+-                )
+-                summary = summarize_run(rows)
+-                out.append({
+-                    "seed": seed,
+-                    "steps": steps,
+-                    "nodes": len(dag.nodes),
+-                    "edges": len(dag.edges),
+-                    "motifs": len(motifs),
+-                    "conflict_rate": conflict_rate,
+-                    "defect_rate": defect_rate,
+-                    "max_support_width": max_support_width,
+-                    "max_depth_span": max_depth_span,
+-                    **summary,
+-                })
++    for selector_mode in selector_modes:
++        for selector_tie_policy in selector_tie_policies:
++            for conflict_rate in conflict_rates:
++                for defect_rate in defect_rates:
++                    for seed in seeds:
++                        dag, motifs, rows, _support_rows, _selector_rows = generate_growth_demo(
++                            steps=steps,
++                            seed=seed,
++                            max_parents=max_parents,
++                            conflict_rate=conflict_rate,
++                            defect_rate=defect_rate,
++                            max_support_width=max_support_width,
++                            max_depth_span=max_depth_span,
++                            selector_mode=selector_mode,
++                            selector_tie_policy=selector_tie_policy,
++                        )
++                        summary = summarize_run(rows)
++                        out.append({
++                            "seed": seed,
++                            "steps": steps,
++                            "nodes": len(dag.nodes),
++                            "edges": len(dag.edges),
++                            "motifs": len(motifs),
++                            "conflict_rate": conflict_rate,
++                            "defect_rate": defect_rate,
++                            "selector_mode": selector_mode,
++                            "selector_tie_policy": selector_tie_policy,
++                            "max_support_width": max_support_width,
++                            "max_depth_span": max_depth_span,
++                            **summary,
++                        })
+     return out
+ 
+ 
+@@ -783,10 +1157,12 @@
+     motifs: Sequence[MotifCandidate],
+     rows: Sequence[Mapping[str, object]],
+     support_rows: Sequence[Mapping[str, object]],
++    selector_rows: Sequence[Mapping[str, object]],
+     path: Path,
+ ) -> None:
+     path.parent.mkdir(parents=True, exist_ok=True)
+     payload = {
++        "version": "0.3",
+         "nodes": list(dag.nodes),
+         "edges": [list(e) for e in dag.edges],
+         "depth": {str(k): v for k, v in dag.depth.items()},
+@@ -805,6 +1181,7 @@
+         ],
+         "site_summaries": list(rows),
+         "support_evaluations": list(support_rows),
++        "selector_components": list(selector_rows),
+     }
+     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding='utf-8')
+ 
+@@ -818,14 +1195,17 @@
+     parser.add_argument('--defect-rate', type=float, default=0.12)
+     parser.add_argument('--max-support-width', type=int, default=None)
+     parser.add_argument('--max-depth-span', type=int, default=None)
+-    parser.add_argument('--csv', type=Path, default=Path('outputs/ra_causal_dag_demo_summary_v0_2.csv'))
+-    parser.add_argument('--support-csv', type=Path, default=Path('outputs/ra_causal_dag_support_evaluations_v0_2.csv'))
+-    parser.add_argument('--json', type=Path, default=Path('outputs/ra_causal_dag_demo_state_v0_2.json'))
+-    parser.add_argument('--sweep-csv', type=Path, default=Path('outputs/ra_causal_dag_parameter_sweep_v0_2.csv'))
++    parser.add_argument('--selector-mode', choices=['none', 'greedy'], default='greedy')
++    parser.add_argument('--selector-tie-policy', choices=['lexicographic', 'stalemate'], default='lexicographic')
++    parser.add_argument('--csv', type=Path, default=Path('outputs/ra_causal_dag_demo_summary_v0_3.csv'))
++    parser.add_argument('--support-csv', type=Path, default=Path('outputs/ra_causal_dag_support_evaluations_v0_3.csv'))
++    parser.add_argument('--selector-csv', type=Path, default=Path('outputs/ra_causal_dag_selector_components_v0_3.csv'))
++    parser.add_argument('--json', type=Path, default=Path('outputs/ra_causal_dag_demo_state_v0_3.json'))
++    parser.add_argument('--sweep-csv', type=Path, default=Path('outputs/ra_causal_dag_parameter_sweep_v0_3.csv'))
+     parser.add_argument('--run-sweep', action='store_true')
+     args = parser.parse_args()
+ 
+-    dag, motifs, rows, support_rows = generate_growth_demo(
++    dag, motifs, rows, support_rows, selector_rows = generate_growth_demo(
+         steps=args.steps,
+         seed=args.seed,
+         max_parents=args.max_parents,
+@@ -833,21 +1213,25 @@
+         defect_rate=args.defect_rate,
+         max_support_width=args.max_support_width,
+         max_depth_span=args.max_depth_span,
++        selector_mode=args.selector_mode,
++        selector_tie_policy=args.selector_tie_policy,
+     )
+     rows_to_csv(rows, args.csv)
+     rows_to_csv(support_rows, args.support_csv)
+-    dump_state_json(dag, motifs, rows, support_rows, args.json)
++    rows_to_csv(selector_rows, args.selector_csv)
++    dump_state_json(dag, motifs, rows, support_rows, selector_rows, args.json)
+     print(f"nodes={len(dag.nodes)} edges={len(dag.edges)} motifs={len(motifs)}")
+     print(f"summary={summarize_run(rows)}")
+     print(f"summary_csv={args.csv}")
+     print(f"support_csv={args.support_csv}")
++    print(f"selector_csv={args.selector_csv}")
+     print(f"state_json={args.json}")
+     if rows:
+         print("last_site_summary=" + json.dumps(rows[-1], sort_keys=True))
+ 
+     if args.run_sweep:
+         sweep_rows = run_parameter_sweep(
+-            steps=max(args.steps, 32),
++            steps=args.steps,
+             max_parents=args.max_parents,
+             max_support_width=args.max_support_width,
+             max_depth_span=args.max_depth_span,

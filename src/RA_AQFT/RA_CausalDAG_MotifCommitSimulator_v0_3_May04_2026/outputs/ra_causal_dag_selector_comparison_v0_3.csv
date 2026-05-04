@@ -1,0 +1,4 @@
+selector_mode,selector_tie_policy,seed,steps,nodes,edges,motifs,conflict_rate,defect_rate,sites,total_strict_committed,total_strict_blocked,total_selector_committed,total_selector_rejected,total_selector_stalemates,total_unsupported,mean_support_width,last_site
+none,lexicographic,17,24,25,31,37,0.3,0.12,24,324,136,324,0,0,26,1.0,24
+greedy,lexicographic,17,24,25,31,37,0.3,0.12,24,324,136,392,68,0,26,1.0,24
+greedy,stalemate,17,24,25,31,37,0.3,0.12,24,324,136,324,0,136,26,1.0,24

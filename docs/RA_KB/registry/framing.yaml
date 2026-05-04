@@ -184,3 +184,38 @@ framing_policies:
   formal_anchor: RA_MotifCommitProtocol ; RA_CausalDAG_MotifCommitSimulator_v0_1 ;
     RA_CausalDAG_MotifCommitSimulator_v0_2 ; RA_CausalDAG_MotifCommitSimulator_v0_3
   packet_origin: apply_ra_method_guardrails_upsert.py (May04_2026)
+- id: RA-MOTIF-SELECTOR-METHOD-001
+  name: Selector closure is an RA-native actualization layer, not an imported tie-breaker
+  domain: framing
+  papers:
+  - II
+  statement: 'Selector closure in the motif-commit programme is to be developed as
+    an RA-native layer over certified-ready motif/support-cut pairs. Simulator policies
+    such as greedy lexicographic choice or stalemate recording are experimental
+    implementations and are not fundamental RA principles. The Lean formal layer
+    (`RA_MotifSelectorClosure`) keeps `selected` abstract; concrete instantiations
+    (BDG locality, orientation closure, ledger checks) remain downstream of the bridge.'
+  nature_targets:
+  - RA-native selector-closure layer over certified-ready motif/support-cut pairs
+  - separation of formal selector predicate from simulator tie-break heuristics
+  ra_observable: null
+  sources:
+  - RA_MotifSelectorClosure.lean
+  - RA_CausalDAG_MotifCommitSimulator_v0_3_May04_2026
+  - RA_MotifSelectorClosure_FormalBridge_Report_May04_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lexicographic / stalemate / greedy policies in the v0.3 simulator are
+    simulator conveniences, not RA theorems. Only the abstract selector-closure
+    surface and its consequences are RA-native formal claims.'
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifSelectorClosure
+  packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026

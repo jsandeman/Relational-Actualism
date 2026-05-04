@@ -1,0 +1,7 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@ -1,6 +1,6 @@
+-    `RA_MotifCommitProtocol,
++    `RA_MotifCommitProtocol,
++    `RA_MotifSelectorClosure,
+     `RA_D3_CausalSeverance,

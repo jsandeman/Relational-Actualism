@@ -1,0 +1,12 @@
+simulator_v0_3_concept,lean_bridge_anchor,guardrail_note
+MotifCandidate,RA_MotifCommitProtocol.MotifCandidate / GraphMotifCandidate,RA-native finite candidate carrier; not a QM state vector
+SupportCut,RA_MotifCommitProtocol.CausalSupportCut / GraphSupportCut,Finite support evidence; not a quorum vote
+CommitContext.supports,RA_MotifCommitProtocol.DAGCommitContext.supports / GraphCommitContext.supports,Certification relation; future BDG/frontier/ledger attachment point
+ready_at,RA_MotifCommitProtocol.DAGReadyAt / GraphReadyAt,Causal-past inclusion or reachability; not observer-dependent measurement
+certified_ready,RA_MotifSelectorClosure.DAGCertifiedReadyAt / GraphCertifiedReadyAt,Support certification plus readiness at a local site
+strict decision,RA_MotifCommitProtocol.DAGCommitsAt / GraphCommitsAt,Strict exclusion among all certified-ready incompatible competitors
+selector_closure_at,RA_MotifSelectorClosure.DAGSelectorClosureAt / GraphSelectorClosureAt,Abstract selectedness over certified-ready motif/support-cut pairs; no greedy algorithm imported into Lean
+selected_decision,RA_MotifSelectorClosure.DAGSelectedCommitsAt / GraphSelectedCommitsAt,Selected commit under selector closure; downstream from strict motif commit
+selector completeness,RA_MotifSelectorClosure.DAGSelectorCompleteAt / GraphSelectorCompleteAt,Strong condition under which selected commit recovers strict commit
+selector stalemate,RA_MotifSelectorClosure.DAGUnresolvedIncompatibilityAt / GraphUnresolvedIncompatibilityAt,Unresolved actualization ambiguity; not a probability or wavefunction claim
+Hasse-frontier selected commit,RA_MotifSelectorClosure.GraphHasseFrontierSelectedCommitsAt,Selected graph commit with finite-Hasse-frontier support cut

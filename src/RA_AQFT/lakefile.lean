@@ -108,6 +108,9 @@ lean_lib «RelationalActualism» where
     `RA_MotifCommitProtocol,    -- (May 4 2026) consensus-inspired motif-commit
                                 -- semantics; finite-Hasse-frontier ↔ causal-
                                 -- support-cut bridge for motif readiness.
+    `RA_MotifSelectorClosure,   -- (May 4 2026) selector-closure bridge for
+                                -- motif-commit semantics; certified-readiness
+                                -- → selector closure → selected commitment.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

@@ -1,0 +1,17 @@
+file: RA_MotifSelectorClosure.lean
+lines: 312
+sorry_count: 0
+admit_count: 0
+axiom_count: 0
+imports: ['import RA_MotifCommitProtocol']
+contains_DAGCertifiedReadyAt: True
+contains_DAGSelectorClosureAt: True
+contains_DAGSelectorCompleteAt: True
+contains_DAGSelectedCommitsAt: True
+contains_DAGUnresolvedIncompatibilityAt: True
+contains_GraphCertifiedReadyAt: True
+contains_GraphSelectorClosureAt: True
+contains_GraphSelectorCompleteAt: True
+contains_GraphSelectedCommitsAt: True
+contains_GraphUnresolvedIncompatibilityAt: True
+contains_GraphHasseFrontierSelectedCommitsAt: True
