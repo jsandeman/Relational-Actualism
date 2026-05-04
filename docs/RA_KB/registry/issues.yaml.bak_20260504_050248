@@ -815,7 +815,6 @@ issues:
   - bmv_mu_dictionary.py
   - bdg_actualization.py
   - lit_review_response_decoherence_budgets_May3_2026.md
-  - decoherence_litreview_v2.md
   proof_dependencies:
   - RA-OPEN-BMV-MU-DICTIONARY-001
   - RA-OPEN-MU-ESTIMATOR-001
@@ -835,64 +834,49 @@ issues:
 
     '
   next_tasks:
-  - 'v1 lit-review pass DONE (2026-05-03), then SUPERSEDED by v2 (2026-05-04).
-    See docs/RA_KB/reports/decoherence_litreview_v2.md.'
-  - 'v2 review identified critical issues with the v1 analysis — (1)
-    Lindblad additivity is NOT universally valid (atom-IF, heavy-mol
-    nominal, diamond-NV CoM, BMV all have schema-incompatible dominant
-    residual mechanisms); (2) the right analytical framing is per-channel
-    constraint from engineered-condition measurements, NOT cumulative-Γ
-    across mixed scenarios. Refactored bdg_decoherence_channels.py to
-    v2 schema (split scenarios by protocol_variant; split channels;
-    added channel_additivity_valid + unknown_fraction; added
-    per_channel_constraints function for the proper analytical move).'
-  - 'POST-V2 VERDICT — All 4 enumerated Dict-D variants (D_uniform,
-    D_multi_vertex_only, D_gas_only, D_BMV_specific) are FALSIFIED at
-    greater than 3σ by per-channel engineered-condition measurements.
-    Each touches at least one of {gas, BB_self, trap_photon_recoil},
-    all of which have direct Lindblad-vs-data agreement at 10-15%
-    precision in clean engineered runs (Hornberger 2003 for gas,
-    Hackermüller 2004 for BB, Delić 2020 for trap-photon recoil).
-    Dict-D as a universal kernel-structural conjecture (μ=d=4
-    universally) is broadly closed by direct measurement.'
-  - 'The v1 verdict ("D_multi_vertex_only and D_gas_only consistent with
-    measured mature data") was WRONG — an artifact of using cumulative-Γ
-    across mixed-channel nominal scenarios as the analytical framing.
-    The v2 per-channel framing (Hornberger 2003 directly bounds Γ_gas
-    suppression at <10%, Dict-D predicts 60% suppression, ratio is 6σ)
-    closes the question much more cleanly.'
-  - 'Surviving escape routes for any future RA-derived suppression
-    mechanism (post-v2) — (a) a non-universal μ-dictionary where
-    μ(scenario) varies and lands in the saturated (P_acc → 1) regime
-    for all scenarios with high-precision per-channel measurements;
-    (b) a filter that touches ONLY channels for which no high-precision
-    engineered measurement exists (spontaneous emission, laser phase
-    noise) — but these are single-photon events not multi-vertex
-    actualization candidates by any natural reading; (c) Dict-D-as-
-    universal is wrong, requiring a different μ-dictionary entirely.'
-  - 'Schema extensions recommended by v2 for v3 — magnetic_gradient_noise
-    (BMV-class), charge_multipole_coupling, anharmonic_trap_dephasing
-    (trapped-lattice atom IF), instrumental_visibility_loss (matter-wave
-    IF), graphitization_internal_thermal (diamond/optical-trap). These
-    are NOT Lindblad position-decoherence channels but are dominant
-    feasibility constraints in real experiments.'
-  - Pin or remove the carney_small_mass_proposal scenario (still
-    underspecified per v2).
-  - Replace the simplified gas-collision cross-section in
-    bmv_comparator.gas_collision_rate with proper de-Broglie-corrected
-    cross-sections for sub-um dX scenarios (Joos-Zeh full formula).
-  - 'For the broader RA-PRED-008 target — the v2 verdict means the
-    "new prediction angle" via Dict-D-style universal positional-
-    decoherence suppression is closed empirically. Future work on
-    RA-OPEN-MU-ESTIMATOR-001 should aim at scenario-dependent μ
-    rather than μ=d=4 universally; the constraint envelope is sharp.'
+  - 'Lit-review pass DONE (2026-05-03). Channel weights and measurement
+    precisions in bdg_decoherence_channels.py refined against primary
+    sources (Asenbaum 2017, Panda 2023, Hornberger 2003-2004,
+    Hackermüller 2003-2004, Stibor 2004, Eibenberger 2013, Fein 2019,
+    Delić 2020, Magrini 2021, Tebbenjohanns 2021, Romero-Isart 2011,
+    Bose 2017, Frangeskou 2018, Jin 2024). See
+    docs/RA_KB/reports/lit_review_response_decoherence_budgets_May3_2026.md.'
+  - 'Post-lit-review verdict on Dict-D variants — D_uniform remains
+    FALSIFIED across measured mature data. D_multi_vertex_only and
+    D_gas_only now CONSISTENT with all measured mature data (reversal
+    of the pre-lit-review verdict; due to the nominal-vs-engineered
+    operating-conditions correction in C60 weights). Both still weakly
+    constrained by the theoretical-extrapolation oligoporphyrin
+    weights (heavy-molecule channel-resolved budget is a genuine
+    literature gap). D_BMV_specific in tension with opto-silica
+    (trap-photon dominant there per Delić 2020 / Magrini 2021).'
+  - 'Schema gaps flagged by lit review — (a) "photon_recoil" mis-bins
+    atom-IF noise (should split into spontaneous_emission + laser
+    phase noise; coherent Bragg/Raman pulses do not decohere in the
+    ideal limit). (b) precision factors blur three different epistemic
+    regimes (contrast precision, Γ-from-fit precision,
+    theoretical-model uncertainty). (c) operating_conditions field
+    added to schema; could be more granular.'
+  - Replace the simplified gas-collision cross-section with proper
+    de-Broglie-corrected cross-sections for sub-um dX scenarios
+    (Joos-Zeh full formula). Still relevant for sub-um dX cases.
+  - Pin or remove the carney_small_mass_proposal scenario (lit review
+    flagged as underspecified — does not correspond to a single primary
+    source; class-typical values not traceable).
+  - 'Determine which decoherence channels the BDG filter actually
+    applies to from RA principles (RA-OPEN-MU-ESTIMATOR-001 closure
+    dependent). Post-lit-review empirical envelope on any RA-derived
+    filter is — touching gas+BB channels by more than the
+    oligoporphyrin extrapolation weight (~75%) is constrained;
+    touching trap_photon broadly is constrained by opto-silica;
+    touching gas alone (or gas+BB) is currently CONSISTENT with all
+    measured mature data, leaving an open prediction window.'
   source_status:
     bdg_decoherence_predictions.py: uploaded_smoke_tested_ok
     bdg_decoherence_predictions.csv: generated_source_audit
     bdg_decoherence_channels.py: uploaded_smoke_tested_ok
     bdg_decoherence_channels_matrix.csv: generated_source_audit
     lit_review_response_decoherence_budgets_May3_2026.md: uploaded_verified
-    decoherence_litreview_v2.md: uploaded_verified
   legacy_proof_status: ONT
   issue_status: open
   issue_kind: empirical_constraint
