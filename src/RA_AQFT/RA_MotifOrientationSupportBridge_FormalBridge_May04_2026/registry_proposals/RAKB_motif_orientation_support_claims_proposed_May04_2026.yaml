@@ -1,0 +1,144 @@
+- id: RA-MOTIF-ORIENT-SUPPORT-001
+  name: Graph-oriented motif support witnesses certify finite frontier support
+  domain: motif_actualization
+  papers:
+  - II
+  statement: A graph-oriented motif support witness combines a motif carrier, a graph-native Hasse candidate past, a graph-orientation closure certificate, and local frontier/ledger sufficiency obligations; when certified, its support cut is the finite Hasse-frontier support cut for that past.
+  formal_anchor: 'RA_MotifOrientationSupportBridge: GraphOrientedMotifSupport; GraphOrientedMotifSupport.certified; GraphOrientedMotifSupport.support_eq_hasse_frontier'
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-005
+  - RA-MOTIF-COMMIT-006
+  - RA-MOTIF-SELECTOR-001
+  - RA_GraphOrientationClosure
+  methodological_guardrails:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  legacy_proof_status: DR
+  legacy_support_status: DR
+  auxiliary_support_status: source_level_formal_bridge_pending_compile
+  caveats: The witness still contains proposition-valued frontier sufficiency and local ledger compatibility obligations; the hard derivation of those obligations is downstream.
+  next_tasks:
+  - Compile RA_MotifOrientationSupportBridge locally.
+  - Replace proposition-valued sufficiency obligations with concrete RA graph/frontier/ledger derivations where possible.
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-MOTIF-ORIENT-SUPPORT-002
+  name: Graph-oriented support instantiates the motif commit support relation
+  domain: motif_actualization
+  papers:
+  - II
+  statement: Orientation-certified support for a motif/support-cut pair can instantiate the GraphCommitContext.supports field used by motif commitment and selector closure.
+  formal_anchor: 'RA_MotifOrientationSupportBridge: GraphOrientationSupports; GraphOrientationActualizationContext.toCommitContext'
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-007
+  - RA-MOTIF-ORIENT-SUPPORT-001
+  methodological_guardrails:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  legacy_proof_status: DR
+  legacy_support_status: DR
+  auxiliary_support_status: source_level_formal_bridge_pending_compile
+  caveats: The context fixes support as existence of an oriented support witness; incompatibility remains context supplied but must be witnessed.
+  next_tasks:
+  - Develop concrete constructors for GraphOrientationSupports from existing orientation closure certificates.
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-MOTIF-ORIENT-SUPPORT-003
+  name: Selected orientation commitment carries Hasse-frontier reachability
+  domain: motif_actualization
+  papers:
+  - II
+  statement: In a graph-orientation actualization context, a selected commitment carries an oriented support witness and entails reachability from every Hasse-frontier support vertex of that witness to the selected site.
+  formal_anchor: 'RA_MotifOrientationSupportBridge: GraphOrientationSelectedCommitsAt.has_oriented_frontier_witness'
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-006
+  - RA-MOTIF-ORIENT-SUPPORT-001
+  - RA-MOTIF-ORIENT-SUPPORT-002
+  methodological_guardrails:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  legacy_proof_status: DR
+  legacy_support_status: DR
+  auxiliary_support_status: source_level_formal_bridge_pending_compile
+  caveats: This is a bridge theorem; it does not assert that every RA actualization has already been reduced to graph-orientation support.
+  next_tasks:
+  - Add simulator diagnostics that distinguish orientation-supported selected commitments from merely support-cut-supported selected commitments.
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-MOTIF-ORIENT-SUPPORT-004
+  name: Graph-oriented support witnesses induce deterministic incidence signs and seven-value ledger signatures
+  domain: motif_actualization
+  papers:
+  - II
+  statement: A graph-oriented motif support witness inherits the deterministic incidence sign source and seven-value N1 ledger signature already provided by the graph-orientation closure layer.
+  formal_anchor: 'RA_MotifOrientationSupportBridge: GraphOrientedMotifSupport.signSource; GraphOrientedMotifSupport.signSource_eval; GraphOrientedMotifSupport.ledger_qN1_seven'
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies:
+  - RA_GraphOrientationClosure
+  - RA_IncidenceSignSource
+  - RA-MOTIF-ORIENT-SUPPORT-001
+  methodological_guardrails:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  legacy_proof_status: DR
+  legacy_support_status: DR
+  auxiliary_support_status: source_level_formal_bridge_pending_compile
+  caveats: The bridge reuses existing orientation/ledger theorem surfaces; it does not yet derive orientation data directly from primitive graph growth.
+  next_tasks:
+  - Tie local_ledger_compatible in GraphOrientedMotifSupport to concrete LLC or D1 ledger theorems.
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-MOTIF-ORIENT-SUPPORT-005
+  name: Orientation incompatibility must be witness-grounded
+  domain: motif_actualization
+  papers:
+  - II
+  statement: In a graph-orientation actualization context, the incompatibility relation supplied to motif commitment must be accompanied by a graph-orientation conflict witness and a symmetry discipline.
+  formal_anchor: 'RA_MotifOrientationSupportBridge: GraphOrientationConflictWitness; GraphOrientationActualizationContext; GraphOrientationActualizationContext.incompatible_symm'
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-002
+  - RA_GraphOrientationClosure
+  methodological_guardrails:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  legacy_proof_status: DR
+  legacy_support_status: DR
+  auxiliary_support_status: source_level_formal_bridge_pending_compile
+  caveats: The bridge does not prescribe a single incompatibility rule; it requires that any rule used here be witnessed by native orientation conflict evidence.
+  next_tasks:
+  - Define concrete orientation-conflict predicates using frontier polarity, boundary ledger, or closure incoherence.
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
+- id: RA-MOTIF-ORIENT-SUPPORT-006
+  name: Unresolved orientation incompatibility carries a native conflict witness
+  domain: motif_actualization
+  papers:
+  - II
+  statement: If unresolved incompatibility occurs in a graph-orientation selector context, then the unresolved pair carries a graph-orientation conflict witness.
+  formal_anchor: 'RA_MotifOrientationSupportBridge: GraphOrientationUnresolvedIncompatibilityAt; GraphOrientationUnresolvedIncompatibilityAt.has_conflict_witness'
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies:
+  - RA-MOTIF-SELECTOR-005
+  - RA-MOTIF-ORIENT-SUPPORT-005
+  methodological_guardrails:
+  - RA-METHOD-001
+  - RA-MOTIF-COMMIT-METHOD-001
+  legacy_proof_status: DR
+  legacy_support_status: DR
+  auxiliary_support_status: source_level_formal_bridge_pending_compile
+  caveats: This records RA-native unresolved actualization structure; comparison vocabulary must remain outside the formal statement.
+  next_tasks:
+  - Explore whether unresolved orientation incompatibility is a natural entry point for severance/saturation analysis.
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026

@@ -1,0 +1,16 @@
+claim_id,artifact_id,edge_type,notes
+RA-MOTIF-ORIENT-SUPPORT-001,ART-MOTIF-ORIENT-BRIDGE-LEAN-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-001,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-002,ART-MOTIF-ORIENT-BRIDGE-LEAN-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-002,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-003,ART-MOTIF-ORIENT-BRIDGE-LEAN-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-003,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-004,ART-MOTIF-ORIENT-BRIDGE-LEAN-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-004,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-005,ART-MOTIF-ORIENT-BRIDGE-LEAN-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-005,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-006,ART-MOTIF-ORIENT-BRIDGE-LEAN-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-SUPPORT-006,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,formal_anchor,Source-level pending compile formal bridge anchor.
+RA-MOTIF-ORIENT-METHOD-001,ART-MOTIF-ORIENT-BRIDGE-REPORT-May04-2026,methodological_support,Report records guardrail discipline.
+RA-MOTIF-ORIENT-METHOD-001,ART-MOTIF-ORIENT-BRIDGE-NOTE-May04-2026,bridge_context,Bridge note records RA-native vocabulary discipline.
+RA-MOTIF-ORIENT-METHOD-001,ART-MOTIF-ORIENT-SIM-BRIDGE-NOTE-v0_4-May04-2026,simulator_bridge_context,Bridge note records RA-native simulator v0.4 vocabulary target.

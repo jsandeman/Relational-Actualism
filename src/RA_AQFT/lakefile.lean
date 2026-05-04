@@ -111,6 +111,9 @@ lean_lib «RelationalActualism» where
     `RA_MotifSelectorClosure,   -- (May 4 2026) selector-closure bridge for
                                 -- motif-commit semantics; certified-readiness
                                 -- → selector closure → selected commitment.
+    `RA_MotifOrientationSupportBridge,  -- (May 4 2026) certificate-level
+                                -- bridge from graph-orientation closure into
+                                -- motif support / selector closure.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

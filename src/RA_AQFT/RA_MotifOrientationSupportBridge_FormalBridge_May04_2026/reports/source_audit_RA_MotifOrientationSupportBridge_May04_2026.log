@@ -1,0 +1,12 @@
+RA_MotifOrientationSupportBridge source audit — May 4, 2026
+
+File: lean/RA_MotifOrientationSupportBridge.lean
+Lines: 273
+sorry_count: 0
+admit_count: 0
+axiom_count: 0
+Imports:
+  import RA_MotifSelectorClosure
+  import RA_GraphOrientationClosure
+
+Compile status: pending local Lean check.

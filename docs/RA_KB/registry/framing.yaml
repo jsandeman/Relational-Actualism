@@ -219,3 +219,40 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: RA_MotifSelectorClosure
   packet_origin: RA_MotifSelectorClosure_FormalBridge_May04_2026
+- id: RA-MOTIF-ORIENT-METHOD-001
+  name: Orientation support is an RA-native evidence source for motif actualization
+  domain: framing
+  papers:
+  - II
+  statement: 'The motif-orientation support bridge treats graph orientation closure,
+    Hasse-frontier support, local ledger compatibility, and selector closure as
+    RA-native actualization structures. It is not an import of external charge
+    ontology, quantum collapse language, voting, quorum logic, or engineered
+    consensus mechanics. The Lean formal layer (`RA_MotifOrientationSupportBridge`)
+    keeps frontier sufficiency and ledger compatibility abstract; concrete
+    instantiations remain downstream.'
+  nature_targets:
+  - RA-native actualization dynamics on finite causal graphs
+  - orientation and boundary-ledger regularities as internal RA structures
+  - empirical correspondence regimes only after RA-native dynamics are specified
+  ra_observable: null
+  sources:
+  - RA_MotifOrientationSupportBridge.lean
+  - RA_MotifOrientationSupportBridge_FormalBridge_Report_May04_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-MOTIF-SELECTOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'External-theory language may be used only in explicitly marked comparison
+    sections, not as formal ontology.'
+  next_tasks:
+  - Keep simulator and Lean bridge descriptions in RA-native vocabulary.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifOrientationSupportBridge ; RA_GraphOrientationClosure ; RA_MotifSelectorClosure
+  packet_origin: RA_MotifOrientationSupportBridge_FormalBridge_May04_2026
