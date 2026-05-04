@@ -1,0 +1,1768 @@
+{
+  "depth": {
+    "0": 0,
+    "1": 1,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "19": 19,
+    "2": 2,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9
+  },
+  "edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      13
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      14
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      8,
+      12
+    ],
+    [
+      8,
+      20
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      11,
+      16
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      13,
+      22
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      15,
+      18
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      17,
+      21
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      20
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      23,
+      24
+    ]
+  ],
+  "motifs": [
+    {
+      "carrier": [
+        0
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "seed",
+      "metadata": {},
+      "name": "genesis_seed",
+      "priority": 0,
+      "support_cut": []
+    },
+    {
+      "carrier": [
+        1
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          0
+        ],
+        "past_size": 1
+      },
+      "name": "renewal_1",
+      "priority": 0,
+      "support_cut": [
+        0
+      ]
+    },
+    {
+      "carrier": [
+        2
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          1
+        ],
+        "past_size": 2
+      },
+      "name": "renewal_2",
+      "priority": 0,
+      "support_cut": [
+        1
+      ]
+    },
+    {
+      "carrier": [
+        3
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          2
+        ],
+        "past_size": 3
+      },
+      "name": "renewal_3",
+      "priority": 0,
+      "support_cut": [
+        2
+      ]
+    },
+    {
+      "carrier": [
+        3
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_3",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_A_3",
+      "priority": 1,
+      "support_cut": [
+        2
+      ]
+    },
+    {
+      "carrier": [
+        3
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_3",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_B_3",
+      "priority": 1,
+      "support_cut": [
+        2
+      ]
+    },
+    {
+      "carrier": [
+        4
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          3
+        ],
+        "past_size": 4
+      },
+      "name": "renewal_4",
+      "priority": 0,
+      "support_cut": [
+        3
+      ]
+    },
+    {
+      "carrier": [
+        5
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          4
+        ],
+        "past_size": 5
+      },
+      "name": "renewal_5",
+      "priority": 0,
+      "support_cut": [
+        4
+      ]
+    },
+    {
+      "carrier": [
+        5
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_5",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_A_5",
+      "priority": 1,
+      "support_cut": [
+        4
+      ]
+    },
+    {
+      "carrier": [
+        5
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_5",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_B_5",
+      "priority": 1,
+      "support_cut": [
+        4
+      ]
+    },
+    {
+      "carrier": [
+        6
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          5
+        ],
+        "past_size": 6
+      },
+      "name": "renewal_6",
+      "priority": 0,
+      "support_cut": [
+        5
+      ]
+    },
+    {
+      "carrier": [
+        7
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          6
+        ],
+        "past_size": 7
+      },
+      "name": "renewal_7",
+      "priority": 0,
+      "support_cut": [
+        6
+      ]
+    },
+    {
+      "carrier": [
+        8
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          7
+        ],
+        "past_size": 8
+      },
+      "name": "renewal_8",
+      "priority": 0,
+      "support_cut": [
+        7
+      ]
+    },
+    {
+      "carrier": [
+        9
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          8
+        ],
+        "past_size": 9
+      },
+      "name": "renewal_9",
+      "priority": 0,
+      "support_cut": [
+        8
+      ]
+    },
+    {
+      "carrier": [
+        10
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          9
+        ],
+        "past_size": 10
+      },
+      "name": "renewal_10",
+      "priority": 0,
+      "support_cut": [
+        9
+      ]
+    },
+    {
+      "carrier": [
+        11
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          10
+        ],
+        "past_size": 11
+      },
+      "name": "renewal_11",
+      "priority": 0,
+      "support_cut": [
+        10
+      ]
+    },
+    {
+      "carrier": [
+        12
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          8,
+          11
+        ],
+        "past_size": 12
+      },
+      "name": "renewal_12",
+      "priority": 0,
+      "support_cut": [
+        11
+      ]
+    },
+    {
+      "carrier": [
+        12
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_12",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_A_12",
+      "priority": 1,
+      "support_cut": [
+        11
+      ]
+    },
+    {
+      "carrier": [
+        12
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_12",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_B_12",
+      "priority": 1,
+      "support_cut": [
+        11
+      ]
+    },
+    {
+      "carrier": [
+        13
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          1,
+          12
+        ],
+        "past_size": 13
+      },
+      "name": "renewal_13",
+      "priority": 0,
+      "support_cut": [
+        12
+      ]
+    },
+    {
+      "carrier": [
+        14
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          4,
+          13
+        ],
+        "past_size": 14
+      },
+      "name": "renewal_14",
+      "priority": 0,
+      "support_cut": [
+        13
+      ]
+    },
+    {
+      "carrier": [
+        15
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          14
+        ],
+        "past_size": 15
+      },
+      "name": "renewal_15",
+      "priority": 0,
+      "support_cut": [
+        14
+      ]
+    },
+    {
+      "carrier": [
+        16
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          11,
+          15
+        ],
+        "past_size": 16
+      },
+      "name": "renewal_16",
+      "priority": 0,
+      "support_cut": [
+        15
+      ]
+    },
+    {
+      "carrier": [
+        16
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_16",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_A_16",
+      "priority": 1,
+      "support_cut": [
+        15
+      ]
+    },
+    {
+      "carrier": [
+        16
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_16",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_B_16",
+      "priority": 1,
+      "support_cut": [
+        15
+      ]
+    },
+    {
+      "carrier": [
+        17
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          16
+        ],
+        "past_size": 17
+      },
+      "name": "renewal_17",
+      "priority": 0,
+      "support_cut": [
+        16
+      ]
+    },
+    {
+      "carrier": [
+        18
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          15,
+          17
+        ],
+        "past_size": 18
+      },
+      "name": "renewal_18",
+      "priority": 0,
+      "support_cut": [
+        17
+      ]
+    },
+    {
+      "carrier": [
+        18
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_18",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_A_18",
+      "priority": 1,
+      "support_cut": [
+        17
+      ]
+    },
+    {
+      "carrier": [
+        18
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_18",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_B_18",
+      "priority": 1,
+      "support_cut": [
+        17
+      ]
+    },
+    {
+      "carrier": [
+        19
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          18
+        ],
+        "past_size": 19
+      },
+      "name": "renewal_19",
+      "priority": 0,
+      "support_cut": [
+        18
+      ]
+    },
+    {
+      "carrier": [
+        20
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          8,
+          19
+        ],
+        "past_size": 20
+      },
+      "name": "renewal_20",
+      "priority": 0,
+      "support_cut": [
+        19
+      ]
+    },
+    {
+      "carrier": [
+        21
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          17,
+          20
+        ],
+        "past_size": 21
+      },
+      "name": "renewal_21",
+      "priority": 0,
+      "support_cut": [
+        20
+      ]
+    },
+    {
+      "carrier": [
+        22
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          13,
+          21
+        ],
+        "past_size": 22
+      },
+      "name": "renewal_22",
+      "priority": 0,
+      "support_cut": [
+        21
+      ]
+    },
+    {
+      "carrier": [
+        22
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_22",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_A_22",
+      "priority": 1,
+      "support_cut": [
+        21
+      ]
+    },
+    {
+      "carrier": [
+        22
+      ],
+      "certified": true,
+      "exclusion_domain": "choice_at_22",
+      "kind": "alternative",
+      "metadata": {},
+      "name": "choice_B_22",
+      "priority": 1,
+      "support_cut": [
+        21
+      ]
+    },
+    {
+      "carrier": [
+        23
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          22
+        ],
+        "past_size": 23
+      },
+      "name": "renewal_23",
+      "priority": 0,
+      "support_cut": [
+        22
+      ]
+    },
+    {
+      "carrier": [
+        24
+      ],
+      "certified": true,
+      "exclusion_domain": null,
+      "kind": "renewal",
+      "metadata": {
+        "parents": [
+          23
+        ],
+        "past_size": 24
+      },
+      "name": "renewal_24",
+      "priority": 0,
+      "support_cut": [
+        23
+      ]
+    }
+  ],
+  "nodes": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "site_summaries": [
+    {
+      "blocked_count": 0,
+      "blocked_ready_motifs": [],
+      "candidate_past_size": 1,
+      "committed_count": 2,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1"
+      ],
+      "depth": 1,
+      "hasse_frontier_support_cut": [
+        0
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        0
+      ],
+      "ready_count": 2,
+      "site": 1
+    },
+    {
+      "blocked_count": 0,
+      "blocked_ready_motifs": [],
+      "candidate_past_size": 2,
+      "committed_count": 3,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2"
+      ],
+      "depth": 2,
+      "hasse_frontier_support_cut": [
+        1
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        1
+      ],
+      "ready_count": 3,
+      "site": 2
+    },
+    {
+      "blocked_count": 2,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3"
+      ],
+      "candidate_past_size": 3,
+      "committed_count": 4,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3"
+      ],
+      "depth": 3,
+      "hasse_frontier_support_cut": [
+        2
+      ],
+      "introduced_conflict": true,
+      "parents": [
+        2
+      ],
+      "ready_count": 6,
+      "site": 3
+    },
+    {
+      "blocked_count": 2,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3"
+      ],
+      "candidate_past_size": 4,
+      "committed_count": 5,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4"
+      ],
+      "depth": 4,
+      "hasse_frontier_support_cut": [
+        3
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        3
+      ],
+      "ready_count": 7,
+      "site": 4
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 5,
+      "committed_count": 6,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5"
+      ],
+      "depth": 5,
+      "hasse_frontier_support_cut": [
+        4
+      ],
+      "introduced_conflict": true,
+      "parents": [
+        4
+      ],
+      "ready_count": 10,
+      "site": 5
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 6,
+      "committed_count": 7,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6"
+      ],
+      "depth": 6,
+      "hasse_frontier_support_cut": [
+        5
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        5
+      ],
+      "ready_count": 11,
+      "site": 6
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 7,
+      "committed_count": 8,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7"
+      ],
+      "depth": 7,
+      "hasse_frontier_support_cut": [
+        6
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        6
+      ],
+      "ready_count": 12,
+      "site": 7
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 8,
+      "committed_count": 9,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8"
+      ],
+      "depth": 8,
+      "hasse_frontier_support_cut": [
+        7
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        7
+      ],
+      "ready_count": 13,
+      "site": 8
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 9,
+      "committed_count": 10,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9"
+      ],
+      "depth": 9,
+      "hasse_frontier_support_cut": [
+        8
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        8
+      ],
+      "ready_count": 14,
+      "site": 9
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 10,
+      "committed_count": 11,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10"
+      ],
+      "depth": 10,
+      "hasse_frontier_support_cut": [
+        9
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        9
+      ],
+      "ready_count": 15,
+      "site": 10
+    },
+    {
+      "blocked_count": 4,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5"
+      ],
+      "candidate_past_size": 11,
+      "committed_count": 12,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11"
+      ],
+      "depth": 11,
+      "hasse_frontier_support_cut": [
+        10
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        10
+      ],
+      "ready_count": 16,
+      "site": 11
+    },
+    {
+      "blocked_count": 6,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12"
+      ],
+      "candidate_past_size": 12,
+      "committed_count": 13,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12"
+      ],
+      "depth": 12,
+      "hasse_frontier_support_cut": [
+        11
+      ],
+      "introduced_conflict": true,
+      "parents": [
+        8,
+        11
+      ],
+      "ready_count": 19,
+      "site": 12
+    },
+    {
+      "blocked_count": 6,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12"
+      ],
+      "candidate_past_size": 13,
+      "committed_count": 14,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13"
+      ],
+      "depth": 13,
+      "hasse_frontier_support_cut": [
+        12
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        1,
+        12
+      ],
+      "ready_count": 20,
+      "site": 13
+    },
+    {
+      "blocked_count": 6,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12"
+      ],
+      "candidate_past_size": 14,
+      "committed_count": 15,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14"
+      ],
+      "depth": 14,
+      "hasse_frontier_support_cut": [
+        13
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        4,
+        13
+      ],
+      "ready_count": 21,
+      "site": 14
+    },
+    {
+      "blocked_count": 6,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12"
+      ],
+      "candidate_past_size": 15,
+      "committed_count": 16,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15"
+      ],
+      "depth": 15,
+      "hasse_frontier_support_cut": [
+        14
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        14
+      ],
+      "ready_count": 22,
+      "site": 15
+    },
+    {
+      "blocked_count": 8,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16"
+      ],
+      "candidate_past_size": 16,
+      "committed_count": 17,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16"
+      ],
+      "depth": 16,
+      "hasse_frontier_support_cut": [
+        15
+      ],
+      "introduced_conflict": true,
+      "parents": [
+        11,
+        15
+      ],
+      "ready_count": 25,
+      "site": 16
+    },
+    {
+      "blocked_count": 8,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16"
+      ],
+      "candidate_past_size": 17,
+      "committed_count": 18,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17"
+      ],
+      "depth": 17,
+      "hasse_frontier_support_cut": [
+        16
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        16
+      ],
+      "ready_count": 26,
+      "site": 17
+    },
+    {
+      "blocked_count": 10,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18"
+      ],
+      "candidate_past_size": 18,
+      "committed_count": 19,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18"
+      ],
+      "depth": 18,
+      "hasse_frontier_support_cut": [
+        17
+      ],
+      "introduced_conflict": true,
+      "parents": [
+        15,
+        17
+      ],
+      "ready_count": 29,
+      "site": 18
+    },
+    {
+      "blocked_count": 10,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18"
+      ],
+      "candidate_past_size": 19,
+      "committed_count": 20,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18",
+        "renewal_19"
+      ],
+      "depth": 19,
+      "hasse_frontier_support_cut": [
+        18
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        18
+      ],
+      "ready_count": 30,
+      "site": 19
+    },
+    {
+      "blocked_count": 10,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18"
+      ],
+      "candidate_past_size": 20,
+      "committed_count": 21,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18",
+        "renewal_19",
+        "renewal_20"
+      ],
+      "depth": 20,
+      "hasse_frontier_support_cut": [
+        19
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        8,
+        19
+      ],
+      "ready_count": 31,
+      "site": 20
+    },
+    {
+      "blocked_count": 10,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18"
+      ],
+      "candidate_past_size": 21,
+      "committed_count": 22,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18",
+        "renewal_19",
+        "renewal_20",
+        "renewal_21"
+      ],
+      "depth": 21,
+      "hasse_frontier_support_cut": [
+        20
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        17,
+        20
+      ],
+      "ready_count": 32,
+      "site": 21
+    },
+    {
+      "blocked_count": 12,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18",
+        "choice_A_22",
+        "choice_B_22"
+      ],
+      "candidate_past_size": 22,
+      "committed_count": 23,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18",
+        "renewal_19",
+        "renewal_20",
+        "renewal_21",
+        "renewal_22"
+      ],
+      "depth": 22,
+      "hasse_frontier_support_cut": [
+        21
+      ],
+      "introduced_conflict": true,
+      "parents": [
+        13,
+        21
+      ],
+      "ready_count": 35,
+      "site": 22
+    },
+    {
+      "blocked_count": 12,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18",
+        "choice_A_22",
+        "choice_B_22"
+      ],
+      "candidate_past_size": 23,
+      "committed_count": 24,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18",
+        "renewal_19",
+        "renewal_20",
+        "renewal_21",
+        "renewal_22",
+        "renewal_23"
+      ],
+      "depth": 23,
+      "hasse_frontier_support_cut": [
+        22
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        22
+      ],
+      "ready_count": 36,
+      "site": 23
+    },
+    {
+      "blocked_count": 12,
+      "blocked_ready_motifs": [
+        "choice_A_3",
+        "choice_B_3",
+        "choice_A_5",
+        "choice_B_5",
+        "choice_A_12",
+        "choice_B_12",
+        "choice_A_16",
+        "choice_B_16",
+        "choice_A_18",
+        "choice_B_18",
+        "choice_A_22",
+        "choice_B_22"
+      ],
+      "candidate_past_size": 24,
+      "committed_count": 25,
+      "committed_motifs": [
+        "genesis_seed",
+        "renewal_1",
+        "renewal_2",
+        "renewal_3",
+        "renewal_4",
+        "renewal_5",
+        "renewal_6",
+        "renewal_7",
+        "renewal_8",
+        "renewal_9",
+        "renewal_10",
+        "renewal_11",
+        "renewal_12",
+        "renewal_13",
+        "renewal_14",
+        "renewal_15",
+        "renewal_16",
+        "renewal_17",
+        "renewal_18",
+        "renewal_19",
+        "renewal_20",
+        "renewal_21",
+        "renewal_22",
+        "renewal_23",
+        "renewal_24"
+      ],
+      "depth": 24,
+      "hasse_frontier_support_cut": [
+        23
+      ],
+      "introduced_conflict": false,
+      "parents": [
+        23
+      ],
+      "ready_count": 37,
+      "site": 24
+    }
+  ]
+}
