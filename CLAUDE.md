@@ -115,3 +115,103 @@ epistemic-status tags (LV/DR/CV) for PRs that don't meet the bar.
 - Don't promote a result into `claims.yaml` without LV/DR/CV evidence; route it through `issues.yaml`, `targets.yaml`, or `restoration_candidates.csv`.
 - Don't hand-edit `% RAKB:` comments in TeX — regenerate from the registry.
 - Don't reactivate retired Lean roots (see `lakefile.lean` docstring) without restating the reason for retirement.
+
+## RAKB packet-application workflow
+
+Packets that arrive under `src/RA_AQFT/<Name>_FormalBridge_<Date>/` or `docs/RA_KB/<Name>_<Date>/` typically ship `lean/`, `patches/`, `scripts/apply_*.py`, `registry_proposals/`, and `reports/`. The apply scripts assume a flatter or older registry shape than the active RAKB v0.5; do not run them blindly. Workflow:
+
+1. **Inspect first.** Read the apply script and every file under `registry_proposals/`. Verify which target files the script writes (`claims.csv` vs `claims.yaml`, etc.) and what its key fields are.
+2. **Dry-run.** Every apply script has `--dry-run`. Use it.
+3. **Lean install:** copy the module + patch the lakefile via the script. Then *manually inspect* the lakefile around the insertion point — apply scripts consistently insert mid-comment-block (between `` `Foo, `` and its dangling `--` continuation lines) and need rejoining.
+4. **Lake build before promoting status.** Lean toolchain is at `/Users/jsandeman/.elan/bin/lake`; you can compile. Run `lake build <ModuleName>` from `src/RA_AQFT/` to get full Tier-B closure. Do **not** rely on the prior session's "user_local_compile_confirmed" — refresh stale `.olean`s by rebuilding the upstream first if needed.
+5. **Translate proposals into the active schema** rather than running the proposals-apply script. Specifically:
+   - claim entries → `claims.yaml` (NOT `claims.csv`); fill in **all** v0.5 fields (see schema reference below).
+   - methodological/modeling guardrails → `framing.yaml` with `framing_kind: methodological_guardrail | modeling_guardrail`, NOT `claims.yaml`.
+   - artifacts → `artifacts.csv` with the active 14-column header.
+   - edges → `claim_artifact_edges.csv` (12 columns, watch for unquoted commas in `claim_name`).
+   - dependencies → both `claim_edges.csv` and `all_dependency_edges.csv`. Strip file-name "deps" (only claim IDs go in edge files).
+6. **Status promotion rule.** If `lake build` closes with no `sorry`/`admit`/`axiom`, promote the packet's `source_level_*_pending_compile` to `proof_status: lean_verified_or_compiled_native` and `source_status: {<file>: lean_build_confirmed_no_sorry_no_admit_no_axiom}`. If only `lake env lean <file>.lean` succeeds (without `lake build`), use `user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom` for the file source_status.
+7. **Backups.** Make `*.bak_YYYYMMDD_HHMMSS` for every registry file you modify. Never edit the existing `*.bak_*` files.
+8. **Validate.** `python scripts/validate_rakb_v0_5.py` from `docs/RA_KB/`. The validator FAILS on missing `artifact_id` in `claim_artifact_edges`; it WARNS on missing claim_id, so warnings are real bugs. Common cause of false fails: an unquoted comma in `claim_name` shifts CSV columns — quote names containing commas.
+9. **Regen paper IDs.** `cd docs/RA_Canonical_Papers && make -f Makefile.rakb ids`. Expect 0 `id_warnings`. `unmapped_sections: 95` is pre-existing, ignore.
+10. **Don't track `.DS_Store`.** Packet zips often carry one at the root. The repo has zero tracked `.DS_Store`. Stage subdirectories explicitly when adding a packet.
+11. **Don't push to `main`.** Direct push is policy-denied. Either open a PR (`gh pr create`) or hand the push back to the user; do not chase workarounds.
+
+## RAKB v0.5 active-schema reference
+
+Use these exact field names — apply scripts often use leaner schemas; reject those.
+
+**`claims.yaml` entry** (top-level shape: `{registry_version: ..., claims: [...]}`):
+```yaml
+- id: <RA-…>                               # unique across all node sets
+  name: <one-line>
+  domain: <kernel|matter|gravity|complexity|framing>
+  papers: [I|II|III|IV, ...]
+  statement: <prose>
+  nature_targets: [<...>]
+  ra_observable: <name|null>
+  sources: [<file or doc names>]
+  proof_dependencies: [<RA-… ids only>]
+  framing_links: [<RA-METHOD-/RA-NONTARGET-/RA-…-METHOD-…>]
+  restoration_preconditions: []
+  caveats: <prose>
+  next_tasks: []
+  source_status:
+    <filename>: <lean_build_confirmed_no_sorry_no_admit_no_axiom |
+                 user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom |
+                 lean_env_compile_confirmed_no_sorry_no_admit_no_axiom>
+  legacy_proof_status: <ANC|DR|STATED|...>
+  proof_status: <axiom_or_stated_foundation |
+                 lean_verified_or_compiled_native |
+                 interpretive_formal_bridge | ...>
+  legacy_support_status: <none|...>
+  auxiliary_support_status: <none_recorded|...>
+  claim_kind: <foundation | formalized_result | derived_result | interpretive_bridge>
+  formal_anchor: <Lean-decl-list joined by ' ; '>
+  packet_origin: <packet directory name>      # for claims added via packet
+```
+
+**`framing.yaml` entry** (top-level shape: `{registry_version: ..., framing_policies: [...]}`). Differences from claims:
+- No `proof_status`; use `legacy_proof_status` only.
+- Use `framing_kind: <negative_scope_or_translation_policy | methodological_guardrail | modeling_guardrail>` instead of `claim_kind`.
+- `auxiliary_support_status: methodological_guardrail_recorded | modeling_discipline_recorded | comparative_cartography`.
+
+**`artifacts.csv` header** (14 columns):
+```
+artifact_id,filename,type,status,artifact_role,supports_results,repo_relative_path,sha256,git_sha,path_observed,notes,migration_note,path,role
+```
+- `supports_results` is `;`-joined claim IDs.
+- `type` examples: `lean`, `md`, `diff`, `dir`, `log`, `zip`.
+- Common `artifact_role`: `formal_source`, `formalization_module`, `formal_bridge_report`, `bridge_mapping`, `methodology_report`, `packet_provenance`, `lakefile_patch`, `source_audit`.
+
+**`claim_artifact_edges.csv` header** (12 columns):
+```
+claim_id,claim_name,claim_node_type,artifact_id,filename,artifact_type,relation,source_span,verification_status,notes,node_type,type
+```
+- `claim_node_type`: `claim` for claims.yaml entries, `framing` for framing.yaml entries (the validator union of node sets accepts both).
+- `relation` examples: `formal_anchor`, `proves`, `formal_source`, `formal_bridge_report`, `bridge_mapping`, `compile_confirmation_report`, `lakefile_patch`, `methodological_anchor`, `packet_provenance`, `source_audit`.
+- **Quote `claim_name` if it contains a comma** — otherwise CSV column-shift bugs the validator.
+
+**`claim_edges.csv` / `all_dependency_edges.csv` header** (7 columns):
+```
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+```
+- `kind` used so far: `proof_dependency`, `interpretive_dependency`.
+- `claim_edges.csv` strictly enforces `src/dst ∈ claims.yaml` (validator FAILS on misses).
+- `all_dependency_edges.csv` is broader — claims/issues/targets/framing all valid.
+
+## Recurring Lean-module fixes for packet sources
+
+1. **`Σ` is reserved.** Lean 4 reserves `Σ` for the dependent-pair (`Sigma`) binder; packet authors keep using it as an identifier for "selector closure". Run a `Σ → S` rename across the whole installed module before `lake build`. Recompute SHA after.
+2. **`Type`-valued witnesses can't sit under `And` in `Prop`.** When a packet writes `∃ …, P ∧ MyWitnessStruct M₁ M₂ ∧ Q` and `MyWitnessStruct` is a `structure` (so `Type`, not `Prop`), wrap with `Nonempty (…)` and on the proof side wrap the call with an anonymous constructor `⟨…⟩`. Don't try to make the structure a `Prop` — it's intentionally `Type` so downstream code can pattern-match the witness data.
+3. **Stale `.olean`s.** If you edit an upstream module, downstream `lake env lean <new>.lean` may report nonsense errors (e.g. "field `supports` does not exist") because the cached olean is from before the edit. Run `lake build <upstream-module>` first to refresh, then check the new module.
+4. **Lakefile insertion is mid-comment-block.** The apply scripts insert `` `NewModule, `` immediately after `` `OldModule, `` whose comment continues on the next 2–3 lines (`-- …`). Result: the new entry appears between `OldModule` and its own comment continuation, which then visually attaches to the new entry. Manual fix: move the new entry below the dangling `--` lines and give it its own short comment.
+5. **`lexical check: no sorry/admit/axiom`** is necessary but not sufficient. Always also run `lake build`.
+
+## RAKB-update rejection list (things that have wasted time)
+
+- Don't run `apply_ra_method_guardrails_upsert.py` (or analogues) without redirecting claims output away from `claims.csv`. The repo has no `claims.csv`; running it creates an orphan.
+- Don't promote a "modeling discipline" or "methodological guardrail" into `claims.yaml`. Always `framing.yaml` with the right `framing_kind`.
+- Don't trust the SHA recorded in a packet's proposed `artifacts.csv` for the *installed* module — you almost always edit the module before build closes (Σ rename, `Nonempty` wrap, etc.), so the installed SHA differs from the packet original. Record both: `Packet original SHA <a>; installed SHA <b> after <change>` in the artifact `notes`.
+- Don't `git add <packet-root>/` when the packet root has a `.DS_Store`. Add subdirectories explicitly.
+- Don't try `git push origin main`. Hand it to the user.
