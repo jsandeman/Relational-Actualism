@@ -1,0 +1,2 @@
+run_id,date,artifact_id,path,command,working_directory,python_version,environment_file,input_files,output_files,random_seed,deterministic,exit_status,stdout_log,stderr_log,output_hashes,claim_ids,reviewer,notes
+RUN-YYYYMMDD-001,YYYY-MM-DD,ART-PY-EXAMPLE,src/RA_AQFT/example.py,"python src/RA_AQFT/example.py",.,"python --version",requirements-free or env export,"input.csv","output.csv",none,yes,0,logs/stdout.txt,logs/stderr.txt,"sha256:...",RA-PRED-XXX,,

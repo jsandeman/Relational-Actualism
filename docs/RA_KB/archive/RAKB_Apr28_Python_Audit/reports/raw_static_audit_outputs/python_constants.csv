@@ -1,0 +1,81 @@
+path,lineno,scope,name,value,context
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,29,,Lambda_QCD,0.332,"Lambda_QCD = 0.332       # GeV (PDG Λ_QCD^{MS-bar}, n_f=3)"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,36,,GF_PDG,1.1663788e-05,GF_PDG     = 1.1663788e-5  # GeV^{-2}
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,37,,alpha_s_2mp,0.311,alpha_s_2mp = 0.311      # FLAG 2021
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,84,run_phase_diagram,mu_values,"[0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 0.8, 1.0, 1.5, 2.0, 3.0, 5.0, 10.0]","mu_values = [0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5,"
+src/RA_AQFT/D1_BDG_MCMC_simulation.py,156,self_dual_analysis,mu_sd,1.0,mu_sd = 1.0
+src/RA_AQFT/RA_D1_Proof.py,37,,BDG,"(1, -1, 9, -16, 8)","BDG = (1, -1, 9, -16, 8)"
+src/RA_AQFT/RA_RASM_Verification.py,10,,PASS,[],PASS=[]; FAIL=[]
+src/RA_AQFT/RA_RASM_Verification.py,10,,FAIL,[],PASS=[]; FAIL=[]
+src/RA_AQFT/RA_RASM_Verification.py,20,,mmu,0.10565837755,me=0.51099895e-3; mmu=0.10565837755; mtau=1.77686
+src/RA_AQFT/RA_RASM_Verification.py,21,,muq,0.00216,muq=2.16e-3; mc=1.27; mt=172.76
+src/RA_AQFT/RA_RASM_Verification.py,25,,alphaSMZ,0.118,alphaEM=1/137.035999084; alphaSMZ=0.118; MZ=91.2; mp=0.938272046
+src/RA_AQFT/RA_RASM_Verification.py,25,,MZ,91.2,alphaEM=1/137.035999084; alphaSMZ=0.118; MZ=91.2; mp=0.938272046
+src/RA_AQFT/antichain_drift.py,160,,crossover_mu,None,crossover_mu = None
+src/RA_AQFT/bdg_multicoupling.py,57,,alpha_s,0.118,alpha_s = 0.118
+src/RA_AQFT/bdg_multicoupling.py,61,,Lambda_QCD,200,Lambda_QCD = 200  # MeV
+src/RA_AQFT/berry_computation.py,128,,mu,1.5,mu = 1.5
+src/RA_AQFT/berry_derive_f.py,54,,N0,"[1, 1, 0, 0]","N0 = [1, 1, 0, 0]"
+src/RA_AQFT/berry_derive_f.py,55,,mu_values,"[1.0, 1.5, 2.0, 4.712]","mu_values = [1.0, 1.5, 2.0, 4.712]  # include μ_QCD"
+src/RA_AQFT/berry_thinning.py,106,,N0,"[1, 1, 0, 0]","N0 = [1, 1, 0, 0]"
+src/RA_AQFT/berry_transfer.py,84,,N0,"[1, 1, 0, 0]","N0 = [1, 1, 0, 0]"
+src/RA_AQFT/born_rule_derivation.py,98,,sigma_val,1.0,sigma_val = 1.0
+src/RA_AQFT/born_rule_derivation.py,155,,sigma_val,0.5,sigma_val = 0.5  # narrower wavepackets → less overlap → cleaner test
+src/RA_AQFT/branching_volume.py,263,,mu,4.71,mu = 4.71
+src/RA_AQFT/bullet_cluster.py,35,,G,6.674e-11,G       = 6.674e-11
+src/RA_AQFT/bullet_cluster.py,64,,sigma_Coulomb,1e-19,sigma_Coulomb  = 1e-19           # m^2 (Coulomb cross section at cluster T)
+src/RA_AQFT/d1_BDG_string_tension.py,26,,W,17.3151,W = 17.3151
+src/RA_AQFT/d1_BDG_string_tension.py,48,,m_p_PDG,938.272,m_p_PDG = 938.272  # MeV (input / to be predicted by D1)
+src/RA_AQFT/d1_BDG_string_tension.py,60,,FLAG,0.3024,FLAG  = 0.3024
+src/RA_AQFT/d3i_complete.py,19,,W,17.3151,W = 17.3151
+src/RA_AQFT/d3i_complete.py,20,,L,4,"L = 4            # quark filtration length (Lean-verified, RATM)"
+src/RA_AQFT/d4u02_enumeration.py,31,,BDG_D4,"(1, -1, 9, -16, 8)","BDG_D4 = (1, -1, 9, -16, 8)"
+src/RA_AQFT/d4u02_enumeration.py,122,tight_N_max,M,0,M = 0
+src/RA_AQFT/daughter_universe.py,34,,mu_2,5.7,mu_2 = 5.7       # severance threshold
+src/RA_AQFT/daughter_universe.py,35,,mu_QCD,4.712,mu_QCD = 4.712   # hadronic condensation
+src/RA_AQFT/daughter_universe.py,136,daughter_properties,Lambda_QCD_eV,200000000.0,Lambda_QCD_eV = 200e6  # eV
+src/RA_AQFT/daughter_universe.py,168,daughter_properties,Omega_b,0.0493,"Omega_b = 0.0493  # from f_0 and BDG (derived, not fitted)"
+src/RA_AQFT/daughter_universe.py,198,,masses,<nonliteral>,masses = [
+src/RA_AQFT/f0_enumeration.py,56,,C0,"(1, -1, 9, -16, 8)","C0, C1, C2, C3, C4 = 1, -1, 9, -16, 8"
+src/RA_AQFT/f0_enumeration.py,56,,C1,"(1, -1, 9, -16, 8)","C0, C1, C2, C3, C4 = 1, -1, 9, -16, 8"
+src/RA_AQFT/f0_enumeration.py,56,,C2,"(1, -1, 9, -16, 8)","C0, C1, C2, C3, C4 = 1, -1, 9, -16, 8"
+src/RA_AQFT/f0_enumeration.py,56,,C3,"(1, -1, 9, -16, 8)","C0, C1, C2, C3, C4 = 1, -1, 9, -16, 8"
+src/RA_AQFT/f0_enumeration.py,56,,C4,"(1, -1, 9, -16, 8)","C0, C1, C2, C3, C4 = 1, -1, 9, -16, 8"
+src/RA_AQFT/f0_enumeration.py,74,,BARYON_VECS,"{(2, 1, 0, 0), (1, 1, 1, 1)}","BARYON_VECS = {(2, 1, 0, 0),   # quark"
+src/RA_AQFT/f0_enumeration.py,77,,ELEMENTARY_VECS,"{(1, 1, 0, 0), (0, 0, 0, 0), (1, 2, 0, 0), (2, 1, 0, 0), (1, 1, 1, 1)}","ELEMENTARY_VECS = {(0, 0, 0, 0),   # lepton-like singlet (S=1)"
+src/RA_AQFT/mu_derivation.py,245,,best_mu,None,best_mu = None; best_err = 999
+src/RA_AQFT/n_eff_factorization.py,85,,cumulative,0.0,cumulative = 0.0
+src/RA_AQFT/o14_incidence_algebra.py,481,compute_delta_s_star,c0_coeff,1,c0_coeff = 1  # birth term (not part of N_k)
+src/RA_AQFT/o14_incidence_algebra.py,487,compute_delta_s_star,coeffs,<nonliteral>,"coeffs = [c1, c2, c3, c4]"
+src/RA_AQFT/o14_proof.py,84,binomial_inversion,C,[],C = []
+src/RA_AQFT/pathwise_exit.py,372,,mu_base,4.71,mu_base = 4.71  # calibrated from ρ
+src/RA_AQFT/ra_calibration.py,24,,E_P,1956000000.0,E_P = 1.956e9      # Planck energy (J)
+src/RA_AQFT/ra_calibration.py,26,,T_P,1.416e+32,T_P = 1.416e32     # Planck temperature (K)
+src/RA_AQFT/ra_calibration.py,62,,sigma_T,6.652e-29,sigma_T = 6.652e-29  # Thomson cross section
+src/RA_AQFT/ra_calibration.py,102,,sigma_eff,1e-20,sigma_eff = 1e-20  # atomic interaction cross-section
+src/RA_AQFT/ra_calibration.py,109,,sigma_strong,1e-30,sigma_strong = 1e-30  # strong force cross-section (fm²)
+src/RA_AQFT/ra_dark_energy.py,141,density_distribution,sigma_ln,0.01,sigma_ln = 0.01  # early universe: nearly uniform
+src/RA_AQFT/ra_early_bh.py,108,,G_N,6.674e-11,G_N = 6.674e-11      # m³ kg⁻¹ s⁻²
+src/RA_AQFT/ra_early_bh.py,123,,Omega_b,0.049,Omega_b = 0.049        # baryon fraction
+src/RA_AQFT/ra_early_bh.py,124,,Omega_m,0.31,Omega_m = 0.31         # total matter fraction
+src/RA_AQFT/ra_flat_rotation_curve.py,14,,G,6.6743e-11,G = 6.67430e-11        # Gravitational constant (m^3 kg^-1 s^-2)
+src/RA_AQFT/ra_structure_formation.py,82,,dmu,0.02,dmu = 0.02
+src/RA_AQFT/ra_structure_formation.py,170,simulate_sorting,mu_c,1.25,mu_c = 1.25  # drift crossover
+src/RA_AQFT/ra_structure_formation.py,201,,mu_c,1.25,mu_c = 1.25
+src/RA_AQFT/ra_structure_formation.py,293,,mu_0_best,1.1,mu_0_best = 1.1  # will be refined
+src/RA_AQFT/rho_native.py,234,,best_mu,None,best_mu = None
+src/RA_AQFT/rindler_relative_entropy.py,304,,beta_omega,1.0,beta_omega = 1.0
+src/RA_AQFT/sigma_analysis.py,75,,mu_rho,4.71,mu_rho = 4.71
+src/RA_AQFT/sigma_analysis.py,102,,sigma,0,sigma = 0
+src/RA_AQFT/sigma_table.py,228,,mu_rho,4.71,mu_rho = 4.71
+src/RA_AQFT/sigma_table.py,229,,mu_delta,4.71,mu_delta = 4.71
+src/RA_AQFT/sigma_table.py,259,,sigma_eff,0,sigma_eff = 0
+src/RA_AQFT/t1_forecast_deliverables.py,25,,H0,1.0,"H0 = 1.0  # natural units, c = 1 c/H_0 = 1"
+src/RA_AQFT/t1_forecast_deliverables.py,175,deliverable_3,sigmas,"[0.02, 0.04, 0.06, 0.08]","sigmas = [0.02, 0.04, 0.06, 0.08]"
+src/RA_AQFT/t1_forecast_deliverables_v2.py,226,deliverable_3,sigmas,"[0.02, 0.04, 0.06, 0.08]","sigmas = [0.02, 0.04, 0.06, 0.08]"
+src/ra_audit.py,94,,alpha_s_pdg,0.118,alpha_s_pdg = 0.1180
+src/ra_audit.py,158,,Lambda_QCD,0.332,Lambda_QCD = 0.332  # GeV (this is an EXTERNAL input!)
+src/ra_audit.py,234,,alpha_s_mp,0.313,alpha_s_mp = 0.313  # approximate from RG running
+src/ra_audit.py,292,,Omega_b,0.049,Omega_b = 0.049  # OBSERVED (Planck)
+src/ra_audit.py,293,,f0_val,5.42,f0_val = 5.42    # DERIVED (from BDG)
+src/ra_audit.py,296,,H_CMB,67.4,H_CMB = 67.4  # OBSERVED (Planck)

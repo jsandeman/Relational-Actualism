@@ -1,0 +1,17 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-ARITH-001,RA-PRED-001,proof_dependency,claim,target,BDG coefficient arithmetic spine,Fine-structure inverse target
+RA-MOTIF-006,RA-PRED-001,proof_dependency,claim,target,Signed three-direction charge spectrum,Fine-structure inverse target
+RA-MOTIF-003,RA-PRED-002,proof_dependency,claim,target,Minimal closure windows,Proton mass scale target
+RA-ARITH-003,RA-PRED-002,proof_dependency,claim,target,Koide ratio identity,Proton mass scale target
+RA-ARITH-005,RA-PRED-002,proof_dependency,claim,target,Internal density scale from selectivity,Proton mass scale target
+RA-MOTIF-009,RA-PRED-003,proof_dependency,issue,target,Type IV exact-zero motif target,Higgs-scale / scalar benchmark target
+RA-ARITH-001,RA-PRED-003,proof_dependency,claim,target,BDG coefficient arithmetic spine,Higgs-scale / scalar benchmark target
+RA-ARITH-006,RA-PRED-004,proof_dependency,claim,target,BDG path-weight ratio,f0 path-weight comparison target
+RA-ARITH-004,RA-PRED-004,proof_dependency,claim,target,Dimensionless strong-interaction scale,f0 path-weight comparison target
+RA-OPEN-004,RA-PRED-005,proof_dependency,issue,target,Environment-sensitive expansion law,Local Hubble/environment target
+RA-GRAV-007,RA-PRED-005,proof_dependency,claim,target,Antichain drift local statistic,Local Hubble/environment target
+RA-OPEN-003,RA-PRED-006,proof_dependency,issue,target,Coefficient-level orbital/lensing source law,Rotation-curve / lensing source-law target
+RA-GRAV-006,RA-PRED-006,proof_dependency,claim,target,Joint BDG/LLC macro-kernel dimension,Rotation-curve / lensing source-law target
+RA-GRAV-007,RA-PRED-006,proof_dependency,claim,target,Antichain drift local statistic,Rotation-curve / lensing source-law target
+RA-OPEN-005,RA-PRED-007,proof_dependency,issue,target,Low-l CMB / Axis-of-Evil severance inheritance,Axis-of-Evil / low-l alignment target
+RA-GRAV-003,RA-PRED-007,proof_dependency,claim,target,Causal severance,Axis-of-Evil / low-l alignment target

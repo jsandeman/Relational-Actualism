@@ -1,0 +1,104 @@
+# RAKB charge/ledger governance upsert v1
+# Purpose:
+#   1. Refine existing RA-MOTIF-006 rather than duplicating it as RA-MATTER-CHARGE-001.
+#   2. Add RA-OPEN-CHARGE-SIGN-001 as the explicit formalization target for the missing edge-level sign-source rule.
+# Apply with scripts/apply_rakb_charge_upserts.py from docs/RA_KB.
+claims_upsert:
+  - id: RA-MOTIF-006
+    name: Signed three-direction charge spectrum
+    domain: matter
+    papers:
+      - II
+    statement: >
+      In the d=4 / 3+1D sector, the electric-charge translation of the signed
+      immediate-predecessor ledger has seven possible integer values,
+      Q_N1 ∈ {-3,-2,-1,0,+1,+2,+3}, with Q_e = (e/3) Q_N1. This is the
+      RA-native seven-value signature; mapping those values to Standard Model
+      particle labels is translation/cartography, not the mechanism.
+    nature_targets:
+      - electric charge quantization pattern
+      - finite graph-native charge signatures
+    ra_observable: signed N1 ledger charge-spectrum observable
+    sources:
+      - RA Paper II §9.2, Charge quantization in units of e/3
+      - RA_Suite_Editorial_Catalog.md, Paper II charge-quantization correction
+      - RA_D1_NativeLedgerOrientation_v1.lean
+      - RA_CausalOrientation_Core.lean
+      - RA_GraphCore.lean
+    proof_dependencies:
+      - RA-D4-001
+      - RA-LLC-001
+      - RA-MOTIF-005
+    caveats: >
+      The seven-value signature is source-backed and paper-projected, but the
+      edge-level sign-source function s(edge, local_context) -> {-1,0,+1} is
+      not yet formally derived from the graph alone. N1 is used here for the
+      electric translation channel; N2 spatial winding/branching remains the
+      strong/baryonic ledger channel. The Standard Model particle assignment is
+      downstream cartography, not the RA-native mechanism.
+    next_tasks:
+      - Formalize the edge-level sign-source rule or prove that Q_N1 is fixed by parent structure plus LLC.
+      - Normalize N1/N2 notation across Paper II and the RAKB.
+      - Add a small Lean module proving the seven-value range conditional on a signed local ledger frame.
+    source_status:
+      RA_D1_NativeLedgerOrientation_v1.lean: lean_build_confirmed_no_sorry; depth-2 ledger/orientation support
+      RA_CausalOrientation_Core.lean: lean_build_confirmed_no_sorry; candidate orientation/sign-source support
+      RA_GraphCore.lean: lean_build_confirmed_no_sorry; LLC/cut-conservation support
+      RA Paper II §9.2: canonical_text_source
+      RA_Suite_Editorial_Catalog.md: editorial_status_correction
+    proof_status: derived_native
+    auxiliary_support_status: source_backed_pending_edge_sign_formalization
+    claim_kind: derived_result
+    aliases:
+      - RA-MATTER-CHARGE-001
+    open_issues:
+      - RA-OPEN-CHARGE-SIGN-001
+    normalization_note: >
+      This upsert intentionally refines the existing RA-MOTIF-006 node instead
+      of adding a duplicate RA-MATTER-CHARGE-001 node. Use RA-MATTER-CHARGE-001
+      only as an alias until a future namespace migration is deliberately made.
+issues_upsert:
+  - id: RA-OPEN-CHARGE-SIGN-001
+    name: Edge-level sign-source for signed N1 charge
+    domain: matter
+    papers:
+      - II
+    statement: >
+      Define a graph-native function assigning {-1,0,+1} signed N1 ledger
+      contribution to immediate-predecessor edges, or prove that the signed
+      N1 value is uniquely determined by parent structure, propagated local
+      orientation, and the Local Ledger Condition.
+    nature_targets:
+      - charge assignment during graph growth
+      - charged motif simulation
+      - electric-charge formalization
+    ra_observable: edge-level signed N1 ledger rule
+    sources:
+      - RA-MOTIF-006
+      - RA_D1_NativeLedgerOrientation_v1.lean
+      - RA_CausalOrientation_Core.lean
+      - RA_GraphCore.lean
+      - RAKB_Ledger_Rule_Analysis_Apr28_2026.md
+    proof_dependencies:
+      - RA-D4-001
+      - RA-LLC-001
+      - RA-MOTIF-005
+      - RA-MOTIF-006
+    caveats: >
+      The issue is not whether the seven-value charge signature exists; that is
+      already represented by RA-MOTIF-006. The open problem is the sign-source:
+      whether signed N1 edge increments are induced by a topological incidence
+      rule, by a propagated local orientation frame, or by a constrained ledger
+      enumeration that still requires a deeper graph-native derivation.
+    next_tasks:
+      - Specify a candidate local orientation/incidence rule on finite DAG stars and cuts.
+      - Prove Q_N1 range {-3,...,+3} from rank<=3 parent stars and sign values {-1,0,+1}.
+      - Prove vertexwise LLC implies cut conservation for the signed charge current.
+      - Test the rule on canonical D1 motifs, including the asymmetric branch 0→1→3, 2→3.
+      - Decide whether the sign convention is a gauge choice/global orientation or physical structure.
+    legacy_proof_status: ONT
+    issue_status: open
+    issue_kind: formalization_target
+    legacy_support_status: DR
+    auxiliary_support_status: source_backed_problem_definition
+    priority: high

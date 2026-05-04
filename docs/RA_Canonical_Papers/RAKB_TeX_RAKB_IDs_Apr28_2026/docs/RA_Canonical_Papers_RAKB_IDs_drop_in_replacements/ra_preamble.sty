@@ -1,0 +1,63 @@
+% ra_preamble.sty — Shared preamble for the RA paper suite
+\ProvidesPackage{ra_preamble}
+
+% ── Standard packages ──────────────────────────────────────────
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=green!50!black,urlcolor=blue!70!black]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{mdframed}
+\usepackage{microtype}
+
+% ── Theorem environments ──────────────────────────────────────
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── Status badges ─────────────────────────────────────────────
+\definecolor{lvgreen}{RGB}{34,139,34}
+\definecolor{cvblue}{RGB}{30,90,160}
+\definecolor{drorange}{RGB}{180,100,20}
+\definecolor{aryellow}{RGB}{160,140,0}
+\definecolor{opred}{RGB}{180,40,40}
+
+% Aliases used in mdframed environments
+\definecolor{cv_blue}{RGB}{30,90,160}
+\definecolor{lv_green}{RGB}{34,139,34}
+\definecolor{dr_orange}{RGB}{180,100,20}
+\definecolor{ar_yellow}{RGB}{160,140,0}
+
+\newcommand{\statusLV}{\textsuperscript{\textcolor{lvgreen}{\scriptsize\textbf{[LV]}}}}
+\newcommand{\statusCV}{\textsuperscript{\textcolor{cvblue}{\scriptsize\textbf{[CV]}}}}
+\newcommand{\statusDR}{\textsuperscript{\textcolor{drorange}{\scriptsize\textbf{[DR]}}}}
+\newcommand{\statusAR}{\textsuperscript{\textcolor{aryellow}{\scriptsize\textbf{[AR]}}}}
+\newcommand{\statusOP}{\textsuperscript{\textcolor{opred}{\scriptsize\textbf{[OP]}}}}
+
+% ── Custom commands ───────────────────────────────────────────
+\newcommand{\Pact}{P_{\rm act}}
+
+% ── Lean code box ─────────────────────────────────────────────
+\newmdenv[
+  backgroundcolor=gray!8,
+  linecolor=green!40!black,
+  linewidth=1.5pt,
+  leftline=true,
+  rightline=false,
+  topline=false,
+  bottomline=false,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  skipabove=12pt,
+  skipbelow=12pt
+]{leanbox}

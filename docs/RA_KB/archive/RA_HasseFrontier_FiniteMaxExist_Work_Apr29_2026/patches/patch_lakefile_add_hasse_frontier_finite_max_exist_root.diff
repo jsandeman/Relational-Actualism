@@ -1,0 +1,8 @@
+diff --git a/src/RA_AQFT/lakefile.lean b/src/RA_AQFT/lakefile.lean
+--- a/src/RA_AQFT/lakefile.lean
++++ b/src/RA_AQFT/lakefile.lean
+@@
+   `RA_HasseFrontier_Maximal_v1,
+   `RA_HasseFrontier_FiniteMax_v1,
++  `RA_HasseFrontier_FiniteMaxExist_v1,
+*** End Patch

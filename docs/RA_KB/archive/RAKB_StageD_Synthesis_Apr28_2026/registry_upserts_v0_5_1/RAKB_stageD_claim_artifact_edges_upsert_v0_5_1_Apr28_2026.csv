@@ -1,0 +1,2 @@
+claim_id,claim_name,claim_node_type,artifact_id,filename,artifact_type,relation,source_span,verification_status,notes
+RA-PRED-002,Proton mass scale target,target,ART-LEAN-RA_D2_HadronMassTriad,RA_D2_HadronMassTriad.lean,lean,candidate_support,HadronTriad / triad_ledger_capacity theorem family,lean_build_confirmed_no_sorry,"D2 root is covered by fresh Apr27 D2root Lake build log; still candidate support for the proton mass programme, not a complete proton-mass derivation."

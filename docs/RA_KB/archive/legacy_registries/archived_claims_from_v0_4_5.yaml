@@ -1,0 +1,53 @@
+registry_version: 0.5.0-migration-draft
+migration_source: RA_results_master_v0_4_5.yaml
+generated_from_zip: RAKB.zip
+generated_on: '2026-04-27'
+note: Typed split of the v0.4.5 monolithic registry. Scientific content is not independently
+  reverified here because source corpus files were not bundled in the ZIP.
+schema_note: Archived claims from the v0.4.5 registry, preserved for provenance but
+  excluded from active proof metrics.
+archived_claims:
+- id: RA-ARCH-001
+  name: Sigma-filter PDG classification
+  domain: matter
+  papers:
+  - II
+  proof_status: ARCH
+  support_status: CC
+  statement: Prior sigma-filter classification used PDG/SM labels and is not active
+    native support.
+  nature_targets:
+  - lifetime classification
+  ra_observable: null
+  sources:
+  - sigma_analysis.py
+  - sigma_table.py
+  proof_dependencies: []
+  framing_links: []
+  restoration_preconditions:
+  - RA-OPEN-002
+  caveats: Can be restored only after RA-derived labels replace imported quantum numbers.
+  next_tasks: []
+  source_status:
+    sigma_analysis.py: uploaded_unverified_exploratory
+    sigma_table.py: uploaded_unverified_exploratory
+- id: RA-ARCH-002
+  name: BMV null prediction
+  domain: gravity
+  papers:
+  - III
+  proof_status: ARCH
+  support_status: CC
+  statement: Prior BMV-style null prediction remains comparative/provisional until
+    reformulated in RA-native observables.
+  nature_targets:
+  - gravity-mediated entanglement experiments
+  ra_observable: null
+  sources:
+  - bmv-related scripts if present
+  proof_dependencies: []
+  framing_links: []
+  restoration_preconditions:
+  - RA-KERNEL-004
+  caveats: May be theory-artifact entanglement framing.
+  next_tasks: []

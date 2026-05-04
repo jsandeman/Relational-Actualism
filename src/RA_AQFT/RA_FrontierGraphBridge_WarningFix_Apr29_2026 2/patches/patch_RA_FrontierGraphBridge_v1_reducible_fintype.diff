@@ -1,0 +1,14 @@
+--- a/src/RA_AQFT/RA_FrontierGraphBridge_v1.lean
++++ b/src/RA_AQFT/RA_FrontierGraphBridge_v1.lean
+@@ -44,7 +44,10 @@
+ 
+ This is separated from `graphUniverseState` to avoid Lean inferring the wrong
+ ambient vertex type when elaborating `Fintype.ofFinset` inside a structure
+-literal. -/
++literal.  Lean treats definitions returning class types specially; marking this
++helper reducible keeps instance search/transparency behavior explicit and avoids
++the class-type warning. -/
++@[reducible]
+ noncomputable def graphVertexFintype (G : _root_.ActualizationGraph) :
+     Fintype (GraphVertex G) :=
+   { elems := G.V.attach

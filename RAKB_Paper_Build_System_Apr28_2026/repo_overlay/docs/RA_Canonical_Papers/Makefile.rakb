@@ -1,0 +1,50 @@
+# Makefile.rakb -- paper-generation helpers for docs/RA_Canonical_Papers.
+# Usage from docs/RA_Canonical_Papers:
+#   make -f Makefile.rakb ids
+#   make -f Makefile.rakb ids-plan
+#   make -f Makefile.rakb compile-generated
+#   make -f Makefile.rakb bib-audit
+
+REPO ?= ../..
+OUT ?= RAKB_TeX_RAKB_IDs_Apr28_2026
+PLAN ?= $(OUT)/reports/RAKB_stageD_tex_rakb_comment_plan_Apr28_2026.csv
+
+.PHONY: ids ids-plan check-ids compile-generated bib-audit clean-generated
+
+ids:
+	cd $(REPO) && python docs/RA_KB/scripts/rakb_generate_tex_ids.py \
+	  --repo . \
+	  --output-root docs/RA_Canonical_Papers/$(OUT) \
+	  --mapping-source registry \
+	  --drop-in
+
+ids-plan:
+	cd $(REPO) && python docs/RA_KB/scripts/rakb_generate_tex_ids.py \
+	  --repo . \
+	  --output-root docs/RA_Canonical_Papers/$(OUT) \
+	  --plan-csv docs/RA_Canonical_Papers/$(PLAN) \
+	  --mapping-source plan \
+	  --drop-in \
+	  --fail-on-unmatched
+
+check-ids:
+	cd $(REPO) && python docs/RA_KB/scripts/rakb_generate_tex_ids.py \
+	  --repo . \
+	  --output-root docs/RA_Canonical_Papers/$(OUT) \
+	  --mapping-source auto \
+	  --drop-in \
+	  --fail-on-unmatched
+
+compile-generated:
+	cd $(OUT)/generated_tex && latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
+
+bib-audit:
+	cd $(REPO) && python docs/RA_KB/scripts/rakb_extract_bibitems.py \
+	  --repo . \
+	  --out docs/RA_Canonical_Papers/$(OUT)/reports \
+	  --bib-out docs/RA_Canonical_Papers/common/ra_references_seed_from_bibitems.bib
+
+clean-generated:
+	rm -rf $(OUT)/generated_tex/*.aux $(OUT)/generated_tex/*.bbl $(OUT)/generated_tex/*.blg \
+	  $(OUT)/generated_tex/*.log $(OUT)/generated_tex/*.out $(OUT)/generated_tex/*.fls \
+	  $(OUT)/generated_tex/*.fdb_latexmk

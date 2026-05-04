@@ -1,0 +1,11 @@
+action_id,priority,area,action,rationale
+A1,high,registry,Add Stage C canonical TeX source-text references,Merge reviewed `source_text_references_upsert_v1` after checking section labels; this lets every paper section point into RAKB nodes.
+A2,high,registry,Add Stage C restoration candidates,Merge only after review; candidates include kinematic results present in canonical TeX but not in claims.yaml and absent historical targets.
+A3,high,Paper I / registry,Decide whether c-bandwidth and proper-time results are claims,They are explicit in Paper I and historical D48/D49; either promote to claims.yaml or keep as restoration candidates.
+A4,high,Paper I / registry,Keep frequency law open,Historical D50 is absent and should sit under RA-OPEN-009 until derived.
+A5,medium,Paper II,"Restore optional caveated target table for proton stability, Majorana, Regge if desired",Only as targets/candidates; avoid active-support phrasing unless source support is mapped.
+A6,medium,Paper III,Do not restore RACL/field-equation uniqueness chain as active theorem,D09-D12 are absent because the current paper deliberately avoids continuum field-equation proof claims. Preserve as bridge-cartography if needed.
+A7,medium,Paper III,Consider a caveated cosmology-consequences subsection,"D16 heat-death, D18 cosmic web, D20 DESI w0/wa can be preserved as targets/candidates if source provenance is retained."
+A8,medium,Paper IV,"Keep Markov blanket, DFT, KCB, spin-bath, Landauer claims non-active",Current Paper IV correctly demotes them; KCB/spin-bath may be explicit deferred targets rather than active support.
+A9,low,Lean/source,Clean unused hN2 warning,Rename hN2 to _hN2 in RA_D3_CosmologicalExpansion.lean.
+A10,medium,papers,Add RAKB IDs as comments or margin notes in canonical TeX,No canonical TeX currently contains explicit RA-* IDs; adding `% RAKB: RA-...` comments will make future audits deterministic.

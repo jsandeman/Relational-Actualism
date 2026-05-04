@@ -1,0 +1,505 @@
+% RAKB-ID annotated source generated 2026-04-28 from Stage D comment plan.
+% RAKB-ID mode: non-rendering TeX comments only; mathematical/prose content unchanged.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% --- Robust definitions to work around mathptmx/hyperref issues ---
+\let\oldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+% --- End robust definitions ---
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{longtable}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\pdfstringdefDisableCommands{%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+}
+
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\RA}{\ensuremath{\mathrm{RA}}}
+\newcommand{\bdg}{\ensuremath{\mathrm{BDG}}}
+\newcommand{\LLC}{\ensuremath{\mathrm{LLC}}}
+\newcommand{\Pacc}{\ensuremath{P_{\mathrm{acc}}}}
+
+\begin{document}
+\begin{center}
+{\LARGE \textbf{Relational Actualism II:\\[0.3em] Emergent Matter and Interaction from Discrete Motif Structure}}\\[1em]
+{\large Joshua F. Sandeman}\\[0.25em]
+{\normalsize Independent Researcher, Salem, Oregon}\\[0.15em]
+{\small sansuikyo@gmail.com}\\[0.5em]
+{\normalsize Draft --- April 22, 2026}
+\end{center}
+
+\begin{abstract}
+This paper develops the matter and interaction programme of Relational Actualism (RA), extending a discrete causal-set-based framework in which physical reality is modeled as a finite growing causal graph. Instead of treating particles and forces as fundamental fields or gauge representations, RA attributes observed matter structure to a finite census of stable motifs selected by a local BDG acceptance kernel and sustained by closure and renewal conditions.
+
+The paper addresses the same observational domain as particle physics---masses, lifetimes, interaction ranges, charge regularities, and matter-sector asymmetries---while proposing a distinct underlying mechanism based on discrete causal structure rather than continuum field dynamics. It compares RA throughout with the empirical domains ordinarily organized by the Standard Model while keeping the proof path native. Its strongest present claims are structural and compiled: a finite motif census in the stable $d=4$ regime, finite closure lengths for the two minimal branching motifs, a depth-2 ledger / orientation theorem family, and the arithmetic coefficient spine used for direct Nature-facing numerical targets. Where RA reaches familiar observables by a different route---for example, closure burden instead of boson mass as the source of finite range, or severance boundary data instead of dynamical baryogenesis as the source of matter-sector excess---that difference is stated directly.
+
+Where quantitative closure is not yet achieved---including proton-mass completion, scattering predictions, decay predictions, and full mapping to observed particle spectra---the paper states explicit native routes forward within the motif-based framework.
+\end{abstract}
+
+
+\begin{tcolorbox}[title=Epistemic Status of This Paper,colback=gray!5,colframe=gray!60]
+This paper uses four epistemic registers and keeps them separate:
+\begin{itemize}[nosep]
+    \item \textbf{Active native compiled support}: theorem families presently compiled and used positively in the paper's support surface;
+    \item \textbf{Derived native claims}: arguments stated directly in DAG + BDG + LLC + measured-Nature language;
+    \item \textbf{Comparative cartography}: explicit comparison with causal set theory and the Standard Model's empirical domain, without treating either as RA's target or mechanism;
+    \item \textbf{Open native targets}: observables or mechanisms RA has not yet closed, together with the most plausible route forward now visible.
+\end{itemize}
+The paper is therefore not written as a development diary and not written as though existing particle physics were scientifically irrelevant. RA's native statement comes first, comparison comes second, and unfinished sectors are stated plainly.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Place of This Paper in the RA Suite,colback=gray!5,colframe=gray!60]
+This is the matter-and-interaction paper of the Relational Actualism suite.
+\begin{itemize}[nosep]
+    \item \textbf{Paper~I} establishes the ontology, axioms, BDG kernel, local ledger structure, kernel locality, and the arithmetic $d=4$ coefficient spine.
+    \item \textbf{Paper~II} uses that kernel to build a finite matter programme from stable motifs, closure windows, renewal structure, and orientation asymmetry.
+    \item \textbf{Paper~III} carries the same mechanism into severance, boundary structure, and macroscopic observational response.
+    \item \textbf{Paper~IV} extends the framework into recursive closure, life, agency, and the causal firewall.
+\end{itemize}
+Across the suite, the rule is constant: RA's proof path runs through its own primitives, but each paper explicitly compares RA's claims with the established theories that presently organize the same observational domain.
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[title=Active Native Support Surface Used Positively,colback=gray!5,colframe=gray!60]
+This paper relies positively only on the following active native support surface:
+\begin{itemize}[nosep]
+    \item \texttt{RA\_GraphCore.lean}: graph-cut and local-ledger baseline;
+    \item \texttt{RA\_O01\_KernelLocality\_v2.lean}: kernel locality and admissibility dependence on realized past;
+    \item \texttt{RA\_O14\_ArithmeticCore\_v1.lean}: the arithmetic coefficient spine for direct measured-number targets;
+    \item \texttt{RA\_KvalRatio.lean}: the exact three-angle $K=2/3$ ratio identity;
+    \item the compiled D1-native chain:
+    \begin{itemize}[nosep]
+        \item \texttt{RA\_D1\_NativeKernel\_v1.lean},
+        \item \texttt{RA\_D1\_NativeConfinement\_v1.lean},
+        \item \texttt{RA\_D1\_NativeClosure\_v1.lean},
+        \item \texttt{RA\_D1\_NativeLedgerOrientation\_v1.lean}.
+    \end{itemize}
+\end{itemize}
+Continuum field, gauge, and running-coupling overlays remain comparative cartography rather than active native compiled support. Numerical scripts such as \texttt{d3\_alpha\_s\_proof.py}, \texttt{mu\_derivation.py}, \texttt{d4u02\_enumeration.py}, and \texttt{f0\_enumeration.py} are used only as derived-native or computation-verified support where their inputs are RA-native.
+\end{tcolorbox}
+
+
+%% ═══════════════════════════════════════════════════════════
+\section{Introduction}
+%% ═══════════════════════════════════════════════════════════
+
+Nature presents masses, radii, lifetimes, interaction ranges, and matter-sector asymmetries. The aim of Paper~II is to confront that domain directly from RA's own primitives: DAG growth, the BDG acceptance kernel, the local ledger condition, and finite motif renewal. The paper is not written as if the Standard Model did not exist; it is written on the stronger claim that Nature defines the empirical domain, while the Standard Model is the dominant current organization of that domain and not the mechanism RA must borrow.
+
+That distinction is especially important because RA is not ``out of the blue.'' Its immediate mathematical lineage is causal set theory \cite{Bombelli1987,Sorkin1997,Rideout2000}. Like causal set theory, RA treats physical reality as a locally finite causal order and takes sequential growth seriously. Like the BDG programme, it uses a native discrete action \cite{Benincasa2010,Dowker2013}. What RA adds is what allows a matter programme to become possible: irreversible actualization as a primitive event, the realized/potentia split, the local ledger condition at every vertex, and the use of the $d=4$ BDG score itself as the local event-acceptance filter. In that sense RA should be read as a causal-set theory with additional dynamical and ontological structure, not as a rejection of the causal-set programme.
+
+Compared with the Standard Model, the difference is more dramatic. Standard particle physics organizes the same empirical domain by quantum fields, gauge representations, spontaneous symmetry breaking, and renormalization. RA instead proposes that the observed regularities of matter are consequences of a finite census of stable motifs selected by the BDG kernel and sustained by closure/renewal conditions. The comparison matters scientifically because both frameworks aim at the same observed world. But the mechanism is different, and in some places RA has no direct analogue of the standard-theory construct. For example, RA does not begin from gauge groups or running couplings as primitive objects; it begins from closure burden, depth structure, and ledger flow. Where a later cartography to Standard Model language exists, it is secondary.
+
+The active compiled support surface used positively in this paper is listed explicitly in the support box above. That surface is deliberately narrow: it is large enough to ground the structural claims made here, but not enlarged by comparison layers or still-open overlays.
+
+The remainder of the paper follows a simple pattern. Each major section states the RA-native claim first, then names the observational target, then compares RA's mechanism with the Standard Model or causal set theory where that comparison is scientifically useful, and then states what remains open.
+
+%% ═══════════════════════════════════════════════════════════
+\section{From Causal Set Theory to a Matter Programme}
+%% ═══════════════════════════════════════════════════════════
+
+Causal set theory already tells us that a locally finite causal order can carry spacetime information. What it does not by itself provide is a native account of why only some local growth patterns persist as stable matter sectors, why finite closure windows should exist, or how local conservation bookkeeping should constrain admissible growth at each vertex. RA adds precisely those elements.
+
+\begin{definition}[Native motif sector]
+A \emph{motif sector} is a family of local realized-growth patterns classified by BDG depth counts $(N_1,N_2,N_3,N_4)$ together with their closure, renewal, and ledger behaviour under admissible extension.
+\end{definition}
+
+The move from ``causal order'' to ``matter programme'' therefore has four steps:
+\begin{enumerate}[nosep]
+    \item the causal graph is locally finite and acyclic (shared with CST);
+    \item actualization is filtered locally by the $d=4$ BDG score (RA addition);
+    \item the \LLC\ constrains what may be created, propagated, or severed (RA addition);
+    \item stable observed sectors correspond to motif families that persist under repeated admissible extension (RA addition).
+\end{enumerate}
+
+\paragraph{Compare and contrast.} Relative to CST, the novel step is not discreteness itself but the claim that the same discrete substrate also carries stable matter structure once actualization, ledger balance, and finite renewal are made primitive. Relative to the Standard Model, the novel step is even sharper: the organizing categories are not fields and representations but motif classes, closure windows, and ledger/orientation structure.
+
+\paragraph{Open target.} A fully native derivation of all observed matter families from motif structure alone does not yet exist. The present paper establishes the first stable census and several hard constraints, not the final observational cartography.
+
+%% ═══════════════════════════════════════════════════════════
+% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007
+\section{Stable Motif Sectors in the $d=4$ Regime}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{theorem}[Finite stable census --- active compiled support]
+In the stable $d=4$ regime, the current native closure chain yields exactly five topologically distinct stability classes under admissible causal-diamond extension.
+\end{theorem}
+
+This theorem is the compiled backbone of the paper's matter taxonomy. The claim is native: it is a theorem about motif classes under the BDG kernel. Any subsequent identification with familiar particle sectors is comparative cartography rather than proof content.
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.08\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}}
+\toprule
+Type & Native motif description & Minimal depth & Comparison with familiar particle-sector language \\
+\midrule
+I & depth-4 branching-stable bound motif & 4 & closest to what current particle theory treats as deeply confined composite matter sectors \\
+II & depth-3 mediator motif with finite closure & 3 & closest to short-range binding mediators \\
+III & depth-1 ledger-balanced propagation motif & 1 & closest to neutral long-range interaction carriers \\
+IV & depth-2 scalar stabilization motif & 2 & closest to scalar mass-setting behaviour \\
+V & depth-1 terminal ledger motif & 1 & closest to terminal charged / neutral matter motifs \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007
+\subsection{Finite closure lengths}
+
+\begin{theorem}[Minimal closure windows --- active compiled support]
+The two minimal branching motifs have finite closure lengths $L_g=3$ and $L_q=4$ in the present native confinement chain.
+\end{theorem}
+
+These are among the most important differences between RA and both CST and the Standard Model. Raw CST does not by itself assign closure windows to matter sectors. The Standard Model explains finite-range binding and confinement through a field-theoretic dynamics of exchange and running couplings. RA instead says that some motifs literally close in a finite number of admissible steps, while others do not. Finite closure is therefore not a secondary effect but a structural property of the growth rule.
+
+\paragraph{Nature-facing target.} The immediate empirical role of these closure windows is to constrain observed persistence scales, bound-state radii, and which composite structures can remain stable long enough to be measured.
+
+\paragraph{Open target.} The present theorem family gives finite closure lengths for the minimal motifs, but it does not yet yield a complete lifetime spectrum or a first-principles scattering theory. Those remain major native targets.
+
+% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007
+\subsection{Extension census and admissible closure}
+
+The finite closure statement above is sharpened by the native extension census in \texttt{RA\_D1\_NativeClosure\_v1.lean}. In that file, the one-step extension classes for the minimal symmetric and asymmetric branching motifs, and their transition states, are exhaustively classified under admissible BDG extension. The resulting support surface includes:
+\begin{itemize}[nosep]
+    \item a 15-case one-step census for the symmetric branching motif;
+    \item a 15-case one-step census for the asymmetric branching motif;
+    \item a 31-case transition-state census for the asymmetric branch;
+    \item a 63-case transition-state census for the symmetric branch;
+    \item closure under admissible extension and a boundary-threshold case.
+\end{itemize}
+
+\paragraph{Status.} Active native compiled support: \texttt{RA\_D1\_NativeClosure\_v1.lean}. The physical interpretation of these extension classes as observed matter sectors remains downstream cartography.
+
+% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007
+\subsection{Three persistence sectors}
+
+At the broadest level, the five classes collapse into three experimentally recognizable persistence sectors:
+\begin{itemize}[nosep]
+    \item \textbf{terminal motifs}: finite ledger-balanced endpoints that behave like isolated matter quanta,
+    \item \textbf{bound motifs}: motifs whose stability is tied to finite branching closure and repeated renewal,
+    \item \textbf{mediator motifs}: motifs whose primary role is to transmit closure burden or ledger influence rather than to terminate it.
+\end{itemize}
+
+\paragraph{Compare and contrast.} The Standard Model starts from a distinction among fermions, gauge bosons, and scalar fields. RA reaches a partially overlapping empirical classification, but it does so from persistence behaviour rather than from spin-statistics plus gauge representation. That difference matters because it changes what counts as explanatory. In RA, the primitive question is not ``which field transforms under which group,'' but ``which motifs persist under admissible extension and what closure burden do they carry?''
+
+%% ═══════════════════════════════════════════════════════════
+% RAKB: RA-ARITH-001;RA-ARITH-003;RA-ARITH-004;RA-ARITH-005;RA-ARITH-006;RA-PRED-001;RA-PRED-002
+\section{Arithmetic Spine and Nature-Facing Numerical Targets}
+%% ═══════════════════════════════════════════════════════════
+
+The compiled arithmetic core from Paper~I provides the strongest present route from native structure to measured numbers. In this paper it serves two functions. First, it fixes the $d=4$ coefficient spine on which the motif programme rests. Second, it supports direct measurable-number targets without importing running couplings as theoretical objects.
+
+% RAKB: RA-PRED-001
+\subsection{The measured fine-structure constant as a direct target}
+
+A key example is the observed inverse fine-structure constant, approximately $137.036$. In the standard framework this number is embedded in a renormalization story and becomes a scale-dependent running coupling. In RA, by contrast, the active numerical target is simply the measured number Nature presents. The arithmetic core supports that number through the coefficient inversion layer rather than through continuum renormalization flow.
+
+\paragraph{Compare and contrast.} The shared empirical domain is the same measured constant. The difference is the mechanism. QED treats the value as part of a renormalized field-theoretic interaction strength; RA treats it as a measured number to be predicted from the discrete arithmetic and growth structure. That is one of the clearest cases where RA seeks the same observable by a fundamentally different mathematical path.
+
+\paragraph{Open target.} The arithmetic result is strong, but its physical embedding into the full matter architecture is not complete until the force-range and scattering programme is closed natively.
+
+% RAKB: RA-ARITH-003
+\subsection{The three-angle $K=2/3$ ratio identity}
+
+A restored native arithmetic result concerns the exact ratio
+\begin{equation}
+K:=\frac{\sum_k \mathrm{kval}(\theta,k)^2}{\left(\sum_k \mathrm{kval}(\theta,k)\right)^2}=\frac{2}{3}.
+\end{equation}
+The theorem is a purely finite trigonometric/arithmetic identity in the RA support corpus. It is not imported from the Standard Model, nor from a field-theoretic mass formula.
+
+\paragraph{Status.} Active native compiled mathematical support: \texttt{RA\_KvalRatio.lean}. The Nature-facing target is the observed three-mass ratio structure conventionally summarized by the charged-lepton Koide relation. The native physical embedding of \(\mathrm{kval}\) variables into measured rest masses remains an explicit open step; the restored claim here is the exact ratio identity and its relevance as a Nature-facing target, not a completed mass-generation theorem.
+
+% RAKB: RA-ARITH-004
+\subsection{A dimensionless strong-interaction scale from BDG arithmetic}
+
+The BDG integer spine also yields the dimensionless scale
+\begin{equation}
+\alpha_{\mathrm{RA,strong}}=\frac{1}{\sqrt{c_2c_4}}=\frac{1}{\sqrt{9\cdot 8}}=\frac{1}{\sqrt{72}}\approx 0.117851.
+\end{equation}
+This number is derived from the same \(d=4\) BDG coefficients used by the growth kernel. It should not be read as an imported running coupling. The Nature-facing comparison is that measured high-energy strong-interaction summaries lie numerically near this value; the RA-native object is the dimensionless scale extracted from the finite coefficient product \(c_2c_4\).
+
+\paragraph{Status.} Derived native / computation-verified support: \texttt{d3\_alpha\_s\_proof.py}; arithmetic basis inherited from \texttt{RA\_O14\_ArithmeticCore\_v1.lean}. Legacy running-coupling language is comparative cartography only.
+
+% RAKB: RA-ARITH-005
+\subsection{BDG selectivity and the internal strong-density scale}
+
+The D4U02 enumeration gives the Planck-density acceptance value
+\begin{equation}
+P_{\mathrm{acc}}(1)\approx 0.54843555,
+\qquad
+\Delta S^*:=-\log P_{\mathrm{acc}}(1)\approx 0.60069\;\mathrm{nats}.
+\end{equation}
+From this native selectivity scale the internal density
+\begin{equation}
+\mu_{\mathrm{int}}=\exp\!\left(\sqrt{4\Delta S^*}\right)\approx 4.71
+\end{equation}
+is obtained without fitting a particle-specific parameter. In RA language, this is the operating density at which the graph's correlation structure matches the fundamental discrimination length set by the BDG filter.
+
+\paragraph{Status.} Derived native / computation-verified support: \texttt{d4u02\_enumeration.py} and \texttt{mu\_derivation.py}. The Nature-facing target is the common internal scale appearing in strongly decaying motifs; detailed lifetime spectra remain part of the downstream decay programme.
+
+% RAKB: RA-ARITH-006;RA-PRED-004
+\subsection{BDG path-weight ratio}
+
+A second restored computation is the finite path-weight ratio
+\begin{equation}
+\frac{W_{\mathrm{other}}}{W_{\mathrm{baryon}}}\approx 17.32,
+\end{equation}
+computed from the \(d=4\) BDG admissibility condition at \(\mu=1\). The baryonic weight is the exact finite sum \(W_{\mathrm{baryon}}=3/2\), while \(W_{\mathrm{other}}\) is the admissible non-elementary, non-baryonic path-weight census after excluding the elementary profiles specified in the script.
+
+\paragraph{Status.} Derived native / computation-verified support: \texttt{f0\_enumeration.py}. Later use of this ratio in comparison with cosmological abundance summaries is comparative cartography unless and until the full RA source law is derived natively.
+
+% RAKB: RA-PRED-002;RA-MATTER-NEFF-001;RA-MATTER-HADRON-TRIAD-001
+\subsection{Proton-scale cascade as a native numerical programme}
+
+The most ambitious numerical construction in the present paper remains the proton-scale cascade. The native idea is that a stable bound motif sustained by the minimal branching mediator should generate a multiplicative suppression from the Planck scale through repeated finite closure. In the current programme, that enters through the schematic relation
+\begin{equation}
+\frac{m_p}{m_P} \sim \frac{\mu_p^5}{c_4},
+\end{equation}
+with $c_4=8$ the fourth BDG coefficient and $\mu_p$ an internal actualization-density parameter.
+
+In the present state of the theory, the cascade is not yet a theorem. The most successful numerical closure still uses the additional working identification
+\begin{equation}
+\mu_p = \frac{N_{\mathrm{eff}}\,\alpha_{\mathrm{obs}}}{32\,L_q^3},
+\end{equation}
+where $L_q=4$ is the compiled minimal closure length and $\alpha_{\mathrm{obs}}\approx 1/137.036$ is the measured fine-structure constant. With the conjectural but structurally motivated identification $N_{\mathrm{eff}}=L_q^3=64$, the resulting proton mass is about $941\,\mathrm{MeV}$ and the proton radius follows as
+\begin{equation}
+ r_p \approx L_q\,\frac{\hbar}{m_p c},
+\end{equation}
+which lands near the observed proton charge radius.
+
+\paragraph{Compare and contrast.} Standard particle physics distributes proton-scale mass across confinement, chiral structure, and electroweak mass input. RA is trying something materially different: a closure-burden cascade tied to a discrete internal density and finite renewal geometry. If the programme succeeds, its explanatory strength will lie precisely in the fact that the route is not a disguised version of QCD. If it fails, it will fail on its own terms.
+
+\paragraph{Open target.} The open step is clear and should be stated explicitly: derive $N_{\mathrm{eff}}$ natively from motif self-consistency instead of using the current closure-volume hypothesis. That is the main route to moving the proton programme from phenomenological interpolation to theorem-level closure.
+
+% RAKB: RA-PRED-003;RA-PRED-002;RA-MATTER-HADRON-TRIAD-001
+\subsection{Secondary measured targets}
+
+Three additional measured targets remain in view but are not yet closed strongly enough to be promoted to the paper's active support surface: the neutron-proton splitting, the pion scale, and the masses usually discussed as Higgs and $W$ benchmarks. They remain useful because they test whether the same motif/closure logic can organize more than one measured scale. But in the present revision they are explicitly downstream and provisional.
+
+%% ═══════════════════════════════════════════════════════════
+% RAKB: RA-MOTIF-007;RA-OPEN-002
+\section{Interaction Hierarchy by Closure Burden and Renewal}
+%% ═══════════════════════════════════════════════════════════
+
+The most important physical comparison in this paper is with the observed hierarchy of interaction strength and range. Standard particle physics explains that hierarchy through gauge fields, mediator masses, confinement, and renormalization. RA proposes a different ordering principle: interaction behaviour is controlled by motif depth, closure burden, and renewal cost.
+
+% RAKB: RA-MOTIF-007;RA-OPEN-002
+\subsection{Long-range propagation}
+
+Depth-1 ledger-balanced propagation motifs are the natural candidates for long-range influence in RA. Because they are not closure-burdened in the same way as branching bound motifs, their transmission is not cut off by the same finite window that produces short-range behaviour elsewhere.
+
+\paragraph{Compare and contrast.} In the Standard Model, long range is tied to a massless gauge field. In RA, long range is tied to low closure burden and ledger-balanced propagation through the realized graph. The observable target is similar --- a force law with macroscopic reach --- but the mechanism is different.
+
+\paragraph{Open target.} The present paper does not yet derive the full Coulombic force law or scattering cross sections from first principles. That remains part of the larger native observational programme.
+
+% RAKB: RA-MOTIF-007;RA-OPEN-002
+\subsection{Finite-range weak interaction analogue}
+
+Finite-range interaction in RA appears when the relevant motif carries a closure debt that must be paid within a small number of admissible steps. The range is then not a consequence of mediator mass in the usual field-theoretic sense, but of the finite extension window itself.
+
+\paragraph{Compare and contrast.} This is one of the clearest examples of mechanism difference. Standard electroweak theory says the range is finite because the mediating bosons are massive. RA says the range is finite because the motif cannot remain admissible beyond its closure debt. The same empirical phenomenon is targeted, but the explanatory object is different.
+
+\paragraph{Open target.} The current closure theorem family supports the existence of finite windows, but not yet the quantitative range formula for all observed weak processes.
+
+% RAKB: RA-MOTIF-007;RA-OPEN-002
+\subsection{Confinement as finite renewal}
+
+For the strongly bound sector, the key claim is even more radical: confinement is not a late effective phenomenon but a primitive consequence of finite renewal and repeated closure. The bound motif does not admit an indefinitely isolated extension as a free terminal object. The system therefore stays composite.
+
+\paragraph{Compare and contrast.} This is the paper's cleanest contrast with QCD. QCD explains confinement through the dynamics of a nonabelian field theory and the associated running behaviour. RA explains confinement as the failure of certain motifs to exist as free stable termini outside a finite renewal pattern. If this programme is right, then ``confinement'' belongs to the ontology of allowable motifs before it belongs to the phenomenology of hadronic spectra.
+
+\paragraph{Open target.} The present paper establishes minimal closure windows and a stable motif census, but it does not yet provide direct jet, hadronization, or scattering predictions. Those remain high-value future targets.
+
+%% ═══════════════════════════════════════════════════════════
+% RAKB: RA-MOTIF-006;RA-MOTIF-008;RA-MATTER-ASYMMETRY-001
+\section{Orientation, Charge, and Matter-Sector Excess}
+%% ═══════════════════════════════════════════════════════════
+
+% RAKB: RA-MOTIF-006;RA-MOTIF-008
+\subsection{Signed three-direction charge spectrum}
+
+The compiled ledger/orientation chain supports the claim that, in the observed $3+1$ regime, signed charge may be organized by three independent spatial directions. The resulting charge spectrum is
+\begin{equation}
+Q \in \left\{-e,-\frac{2e}{3},-\frac{e}{3},0,+\frac{e}{3},+\frac{2e}{3},+e\right\}.
+\end{equation}
+
+\paragraph{Nature-facing target.} The target is the observed quantization pattern of electric charge.
+
+\paragraph{Compare and contrast.} Standard particle physics encodes charge through a gauge representation and charge operator. RA instead ties the same empirical pattern to signed orientation and ledger structure in three spatial directions. This is a direct example of the doctrine you asked for: same observable pattern, different mathematical route.
+
+\paragraph{Open target.} The present theorem family yields the quantized pattern, but it does not yet derive the complete observed charge assignments of every measured species without additional observational cartography.
+
+% RAKB: RA-GRAV-003;RA-GRAV-004;RA-NOPAGE-001
+\subsection{Severance and information partition}
+
+RA's severance picture matters already in Paper~II because it changes how one thinks about conservation. The primitive claim is not global Hilbert-space unitarity; it is local ledger preservation plus causal partition. When a region severs, information is not destroyed but repartitioned across causally disconnected components.
+
+\paragraph{Compare and contrast.} This is not just a different derivation of a standard result; it is a different kind of mechanism. The standard black-hole information discussion is framed as a conflict between quantum unitarity and thermal radiation. RA's severance picture starts from ledger preservation and causal disconnection instead. The distinction becomes central in Paper~III, but it already affects how matter-sector bookkeeping is interpreted here.
+
+% RAKB: RA-MATTER-ASYMMETRY-001
+\subsection{Matter-sector excess as a severance initial condition}
+
+The observed universe contains a persistent matter-sector excess. In standard cosmology this is framed as a baryogenesis problem and is attacked through Sakharov-style dynamical conditions. RA offers a different possibility: the excess is a severance initial condition encoded in the boundary data of a daughter region rather than a dynamically generated asymmetry during later evolution.
+
+\paragraph{Compare and contrast.} The observable target is the same --- the measured matter excess. The mechanism is different. Standard cosmology asks how an initially symmetric plasma became asymmetric. RA asks what ledger data were inherited across severance. This is a particularly important case because the RA mechanism has no close standard-theory analogue.
+
+\paragraph{Open target.} The quantitative value of the matter excess is not yet derived from first principles. The native route forward is to compute the admissible boundary data at severance and propagate the resulting ledger imbalance into late-time observables.
+
+%% ═══════════════════════════════════════════════════════════
+% RAKB: RA-D4-001;RA-ARITH-005;RA-MOTIF-002;RA-OPEN-002
+\section{Selective Regime and Motif Selection}
+%% ═══════════════════════════════════════════════════════════
+
+The BDG filter does not weight all depth profiles equally. In the selective regime ($\mu\approx 3$--$5$), Monte Carlo sampling of the native kernel exhibits a characteristic pattern:
+
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$\mu$ & $\Delta N_1$ & $\Delta N_2$ & $\Delta N_3$ & $\Delta N_4$ \\
+\midrule
+1.0 & $-0.34$ & $+0.32$ & $-0.14$ & $+0.03$ \\
+2.0 & $-0.12$ & $+0.58$ & $-0.66$ & $+0.16$ \\
+4.0 & $-0.05$ & $+1.10$ & $-2.51$ & $+1.32$ \\
+4.7 & $-0.06$ & $+1.17$ & $-3.17$ & $+1.93$ \\
+7.0 & $-0.02$ & $+0.60$ & $-2.66$ & $+2.18$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Here $\Delta N_k=\mathbb{E}[N_k\mid S>0]-\mathbb{E}[N_k]$ measures the shift induced by the BDG acceptance filter.
+
+The pattern is stable: shallow and depth-3 ancestry are disfavoured, while depth-2 and depth-4 ancestry are favoured. The filter therefore selects wide, deep, sparse structure. In RA's matter programme, that is the statistical origin of motif selectivity.
+
+\paragraph{Compare and contrast.} In effective field theory, one often summarizes observed spectra by writing down the field content that works and then studying how couplings run across scales. RA proposes instead that part of the observed spectrum is already being selected by the acceptance statistics of the discrete growth process itself. If correct, this is one of the framework's deepest explanatory advantages.
+
+\paragraph{Open target.} The statistical selectivity profile is not yet the same thing as a complete observed spectrum. Turning this regime into direct branching fractions, lifetimes, and production rates remains a major unfinished part of the programme.
+
+%% ═══════════════════════════════════════════════════════════
+\section{What RA Explains Here, and What It Does Not Yet Explain}
+%% ═══════════════════════════════════════════════════════════
+
+\begin{center}
+\small
+\begin{longtable}{p{0.36\linewidth}p{0.22\linewidth}p{0.28\linewidth}}
+\toprule
+Claim or target & Current basis & Status \\
+\midrule
+Five stable motif sectors in the $d=4$ regime & compiled native closure chain & Active compiled support \\
+Minimal closure lengths $L_g=3$, $L_q=4$ & compiled native confinement chain & Active compiled support \\
+Depth-2 orientation and quantized charge pattern & compiled native ledger/orientation chain & Active compiled support \\
+Exact $K=2/3$ ratio identity & \texttt{RA\_KvalRatio.lean} & Active compiled mathematical support \\
+Extension census and admissible closure & \texttt{RA\_D1\_NativeClosure\_v1.lean} & Active compiled support \\
+Dimensionless strong-interaction scale $1/\sqrt{72}$ & BDG coefficient product + \texttt{d3\_alpha\_s\_proof.py} & DR / CV \\
+Internal density $\mu_{\mathrm{int}}=\exp(\sqrt{4\Delta S^*})$ & D4U02 enumeration + \texttt{mu\_derivation.py} & DR / CV \\
+BDG path-weight ratio $W_{\mathrm{other}}/W_{\mathrm{baryon}}\approx17.32$ & \texttt{f0\_enumeration.py} & DR / CV \\
+Arithmetic coefficient spine and direct measured-number target for $\alpha^{-1}_{\mathrm{obs}}$ & compiled arithmetic core & Active compiled / CV \\
+Proton mass and radius programme & native cascade + closure hypothesis $N_{\mathrm{eff}}=L_q^3$ & PI / CN \\
+Complete force-range formulae and scattering predictions & closure-burden logic only & Open native target \\
+Complete cartography from motif sectors to all observed particle species & partial only & Open native target \\
+Quantitative matter-sector excess from severance boundary data & structural severance picture only & Open native target \\
+Historical gauge / flavour / unification overlays & comparison only & Downstream cartography \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\paragraph{Why this honesty matters.} The paper's ambition is high, but the support surface is deliberately narrow. RA's credibility here does not come from pretending that every observed particle-physics regularity is already derived. It comes from making the structural core precise, using comparison with the Standard Model to clarify empirical stakes, and then stating plainly which steps remain to be done.
+
+%% ═══════════════════════════════════════════════════════════
+\section{Conclusion}
+%% ═══════════════════════════════════════════════════════════
+
+Paper~II argues that the matter-and-interaction domain can be approached natively from RA's own discrete engine and that doing so becomes easier, not harder, once the framework is placed explicitly in the lineage of causal set theory. CST supplies the causal-order background. RA adds the ontological and dynamical ingredients needed for a matter programme: primitive actualization, BDG filtering, the local ledger condition, and finite renewal motifs.
+
+The strongest present result is therefore not that RA has already replaced the Standard Model numerically. It is that RA now has a compiled structural spine from which a different kind of matter theory can actually be built: a finite stable motif census, finite closure windows, orientation-based charge quantization, and an arithmetic route to measured-number targets. Those results address the same empirical world that current particle theory addresses, but they do so by a mathematically different route.
+
+The most important open targets are equally clear: complete proton-scale closure, direct force-range and scattering predictions, lifetime and decay calculations, sharper cartography from motifs to measured species, and a quantitative computation of the matter-sector excess from severance boundary data. If RA succeeds, its explanatory strength will lie not in reproducing the Standard Model's machinery under different names, but in showing that much of the same observed regularity can arise from a more primitive causal-combinatorial engine while also reaching domains --- especially severance and boundary inheritance --- where the standard frameworks offer no close analogue.
+
+%% ═══════════════════════════════════════════════════════════
+\section*{Acknowledgments}
+%% ═══════════════════════════════════════════════════════════
+
+As in Paper~I, this work was developed in collaboration with Claude (Anthropic) for computation and manuscript preparation, and with ChatGPT (OpenAI) for external review and proof-structure analysis. The ontological commitments, physical reasoning, and framework direction are the author's.
+
+\begin{thebibliography}{99}
+\bibitem{Benincasa2010} D.~M.~T.~Benincasa and F.~Dowker, ``The scalar curvature of a causal set,'' \emph{Phys. Rev. Lett.} \textbf{104}, 181301 (2010).
+\bibitem{Dowker2013} F.~Dowker and L.~Glaser, ``Causal set d'Alembertians for various dimensions,'' \emph{Class. Quantum Grav.} \textbf{30}, 195016 (2013).
+\bibitem{Yeats2025} K.~Yeats, ``Hockey-stick-style identities and the moments of causal intervals in $d$-dimensional Lorentzian causal diamonds,'' \emph{Class. Quantum Grav.} \textbf{42}, 145003 (2025).
+\bibitem{Bombelli1987} L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin, ``Space-time as a causal set,'' \emph{Phys. Rev. Lett.} \textbf{59}, 521 (1987).
+\bibitem{Sorkin1997} R.~D.~Sorkin, ``Forks in the road on the way to quantum gravity,'' \emph{Int. J. Theor. Phys.} \textbf{36}, 2759 (1997).
+\bibitem{Rideout2000} D.~P.~Rideout and R.~D.~Sorkin, ``A classical sequential growth dynamics for causal sets,'' \emph{Phys. Rev. D} \textbf{61}, 024002 (2000).
+\bibitem{PDG2022} R.~L.~Workman et al. (Particle Data Group), ``Review of Particle Physics,'' \emph{PTEP} \textbf{2022}, 083C01 (2022), and 2024 update.
+\bibitem{Koide1983} Y.~Koide, ``New viewpoint in the charged lepton mass relation,'' \emph{Phys. Lett. B} \textbf{120}, 161 (1983).
+\bibitem{Cabibbo1963} N.~Cabibbo, ``Unitary symmetry and leptonic decays,'' \emph{Phys. Rev. Lett.} \textbf{10}, 531 (1963); M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,'' \emph{Prog. Theor. Phys.} \textbf{49}, 652 (1973).
+\bibitem{GeorgiGlashow1974} H.~Georgi and S.~L.~Glashow, ``Unity of all elementary-particle forces,'' \emph{Phys. Rev. Lett.} \textbf{32}, 438 (1974).
+\end{thebibliography}
+
+\end{document}

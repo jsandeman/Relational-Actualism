@@ -1,0 +1,123 @@
+% ra_suite.sty -- shared TeX style layer for the Relational Actualism paper suite.
+% This file is intentionally conservative. It mirrors the package/macro surface
+% already used by the canonical April 2026 RA papers and adds optional RAKB ID
+% display support.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ra_suite}[2026/04/28 Relational Actualism shared paper style]
+
+% Options
+\newif\ifRAKBShowIDs
+\RAKBShowIDsfalse
+\DeclareOption{showrakbids}{\RAKBShowIDstrue}
+\ProcessOptions\relax
+
+% Page/font/math basics
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{mathptmx}
+\RequirePackage{courier}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+\RequirePackage{enumitem}
+\RequirePackage{xcolor}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{booktabs}
+\RequirePackage{tcolorbox}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setstretch{1.08}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+
+% Robust definitions for mathptmx/hyperref interactions.
+\let\RAoldhbar\hbar
+\DeclareRobustCommand{\hbar}{\ensuremath{\hslash}}
+\providecommand{\SRa}{\ensuremath{S_{\mathrm{RA}}}}
+\providecommand{\Pacc}{\ensuremath{P_{\mathrm{acc}}}}
+\providecommand{\Dkl}{\ensuremath{D_{\mathrm{KL}}}}
+\providecommand{\TV}{\ensuremath{\mathrm{TV}}}
+\providecommand{\RA}{Relational Actualism}
+\providecommand{\BDG}{Benincasa--Dowker--Glaser}
+\providecommand{\LLC}{Local Ledger Condition}
+
+% Optional visible RAKB marks. By default these are non-rendering.
+% The generator primarily writes source comments: % RAKB: RA-...
+\newcommand{\RAKBID}[1]{%
+  \ifRAKBShowIDs
+    \marginpar{\raggedright\scriptsize\ttfamily RAKB: #1}%
+  \fi
+}
+
+% Shared theorem-like environments. \providecommand cannot guard \newtheorem,
+% so use a small existence check for common names.
+\@ifundefined{axiom}{\newtheorem{axiom}{Axiom}}{}
+\@ifundefined{definition}{\newtheorem{definition}{Definition}}{}
+\@ifundefined{theorem}{\newtheorem{theorem}{Theorem}}{}
+\@ifundefined{lemma}{\newtheorem{lemma}{Lemma}}{}
+\@ifundefined{proposition}{\newtheorem{proposition}{Proposition}}{}
+\@ifundefined{conjecture}{\newtheorem{conjecture}{Conjecture}}{}
+\@ifundefined{corollary}{\newtheorem{corollary}{Corollary}}{}
+
+% Prevent common math commands from breaking PDF metadata/bookmarks.
+\pdfstringdefDisableCommands{%
+  \def\hbar{hbar}%
+  \def\ell{l}%
+  \def\Delta{Delta}%
+  \def\Lambda{Lambda}%
+  \def\Omega{Omega}%
+  \def\rho{rho}%
+  \def\sigma{sigma}%
+  \def\mu{mu}%
+  \def\Pi{Pi}%
+  \def\alpha{alpha}%
+  \def\beta{beta}%
+  \def\gamma{gamma}%
+  \def\tau{tau}%
+  \def\theta{theta}%
+  \def\kappa{kappa}%
+  \def\lambda{lambda}%
+  \def\nu{nu}%
+  \def\pi{pi}%
+  \def\phi{phi}%
+  \def\psi{psi}%
+  \def\chi{chi}%
+  \def\xi{xi}%
+  \def\eta{eta}%
+  \def\zeta{zeta}%
+  \def\varepsilon{epsilon}%
+  \def\varphi{phi}%
+  \def\mathrm#1{#1}%
+  \def\mathbf#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\mathbb#1{#1}%
+  \def\text#1{#1}%
+  \def\sqrt#1{sqrt(#1)}%
+  \def\frac#1#2{#1/#2}%
+  \def\cdot{*}%
+  \def\times{x}%
+  \def\leq{<=}%
+  \def\geq{>=}%
+  \def\approx{~}%
+  \def\to{->}%
+  \def\rightarrow{->}%
+  \def\leftarrow{<-}%
+  \def\infty{inf}%
+  \def\sum{sum}%
+  \def\int{int}%
+  \def\prod{prod}%
+  \def\partial{d}%
+  \def\nabla{grad}%
+  \def\propto{prop}%
+  \def\ldots{...}%
+  \def\cdots{...}%
+  \def\dots{...}%
+  \def\pm{+/-}%
+  \def\SRa{S_RA}%
+  \def\Pacc{P_acc}%
+  \def\Dkl{D_KL}%
+  \def\TV{TV}%
+}

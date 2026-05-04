@@ -1,0 +1,845 @@
+registry_version: '0.3'
+date: '2026-04-24'
+description: Expanded RA results registry with dependencies, sources, status, paper projections, and Nature-facing targets.
+results:
+- id: RA-ONT-001
+  name: Finite causal graph ontology
+  status: STATED
+  domain: kernel
+  papers:
+  - I
+  statement: The realized universe-state contains a finite actualized causal DAG G_n=(V_n,≺_n).
+  sources:
+  - RA Paper I, Axiom 1
+  - RA Paper I, Axiom 7
+  dependencies: []
+  nature_targets:
+  - discrete event structure
+  - causal order
+  caveats: Axiomatic foundation, not derived.
+- id: RA-ONT-002
+  name: Irreversible actualization
+  status: STATED
+  domain: kernel
+  papers:
+  - I
+  statement: Actualization writes an irreversible vertex into the realized graph.
+  sources:
+  - RA Paper I, Axiom 2
+  dependencies:
+  - RA-ONT-001
+  nature_targets:
+  - event definiteness
+  - irreversibility
+  caveats: Primitive RA commitment.
+- id: RA-ONT-003
+  name: Structured potentia / adjacent possible
+  status: STATED
+  domain: kernel
+  papers:
+  - I
+  statement: At stage n, the universe-state is U_n=(G_n,Π(G_n)), with Π(G_n) the structured set of admissible one-vertex extensions.
+  sources:
+  - RA Paper I, Axiom 3
+  dependencies:
+  - RA-ONT-001
+  nature_targets:
+  - open future
+  - possible event formation
+  caveats: Requires full measure formalization.
+- id: RA-ONT-004
+  name: Finitary Actuality
+  status: STATED
+  domain: kernel
+  papers:
+  - I
+  statement: Every physically realized graph and physically realized count is finite; infinities appear only as idealizations.
+  sources:
+  - RA Paper I, Axiom 7
+  dependencies:
+  - RA-ONT-001
+  nature_targets:
+  - finite physical counts
+  caveats: Axiomatic.
+- id: RA-LLC-001
+  name: Local Ledger Condition
+  status: STATED
+  domain: kernel
+  papers:
+  - I
+  - II
+  - III
+  - IV
+  statement: At every actualized vertex, incoming and outgoing conserved ledger quantities balance locally.
+  sources:
+  - RA Paper I, Axiom 6
+  - RA_GraphCore.lean
+  dependencies:
+  - RA-ONT-002
+  nature_targets:
+  - local conservation regularities
+  caveats: Formal content depends on ledger object definitions.
+- id: RA-KERNEL-001
+  name: Four-dimensional BDG acceptance kernel
+  status: ANC
+  domain: kernel
+  papers:
+  - I
+  statement: S=1−N1+9N2−16N3+8N4 and candidate extensions are admissible only when S>0.
+  sources:
+  - RA_O14_ArithmeticCore_v1.lean
+  - RA Paper I §BDG
+  dependencies:
+  - RA-ONT-003
+  nature_targets:
+  - event admissibility
+  caveats: The positivity criterion remains a foundational postulate/selection rule.
+- id: RA-KERNEL-002
+  name: Kernel locality
+  status: ANC
+  domain: kernel
+  papers:
+  - I
+  statement: BDG admissibility depends only on the realized past / local interval data of a candidate.
+  sources:
+  - RA_O01_KernelLocality_v2.lean
+  dependencies:
+  - RA-KERNEL-001
+  - RA-ONT-001
+  nature_targets:
+  - local causal dynamics
+  caveats: Covariant history measure remains open.
+- id: RA-KERNEL-003
+  name: Finite potentia
+  status: DR
+  domain: kernel
+  papers:
+  - I
+  statement: For finite G_n, the admissible adjacent possible Π(G_n) is finite.
+  sources:
+  - RA Paper I, finite potentia proposition
+  dependencies:
+  - RA-ONT-004
+  - RA-ONT-003
+  - RA-KERNEL-001
+  nature_targets:
+  - finite event alternatives
+  caveats: Assumes finite candidate past-set construction.
+- id: RA-KERNEL-004
+  name: Stochastic actualization kernel requirement
+  status: ONT
+  domain: kernel
+  papers:
+  - I
+  statement: RA requires a normalized local selection weight on admissible one-vertex extensions.
+  sources:
+  - RA Paper I, Axiom 5
+  dependencies:
+  - RA-ONT-003
+  - RA-KERNEL-003
+  nature_targets:
+  - event frequencies
+  - repeated experiment statistics
+  caveats: Full local measure family not yet closed.
+- id: RA-KERNEL-005
+  name: Discrete covariance target
+  status: ONT
+  domain: kernel
+  papers:
+  - I
+  statement: The induced measure on completed histories should factor through unlabeled causal-set isomorphism classes.
+  sources:
+  - RA Paper I, CST/CSG covariance remark
+  dependencies:
+  - RA-KERNEL-004
+  - RA-KERNEL-002
+  nature_targets:
+  - label-independent physics
+  caveats: Not yet theorem-level.
+- id: RA-ARITH-001
+  name: BDG coefficient arithmetic spine
+  status: ANC
+  domain: arithmetic
+  papers:
+  - I
+  statement: The d=4 BDG action vector is (-1,9,-16,8) with birth term c0=1.
+  sources:
+  - RA_O14_ArithmeticCore_v1.lean
+  dependencies:
+  - RA-KERNEL-001
+  nature_targets:
+  - four-dimensional event kernel
+  caveats: Geometric continuum identification remains comparative.
+- id: RA-ARITH-002
+  name: Second-order cancellation pattern
+  status: ANC
+  domain: arithmetic
+  papers:
+  - I
+  statement: 'The non-birth action sum vanishes: -1+9-16+8=0, while the full sum with c0 is 1.'
+  sources:
+  - RA_O14_ArithmeticCore_v1.lean
+  dependencies:
+  - RA-ARITH-001
+  nature_targets:
+  - stable kernel arithmetic
+  caveats: Interpretation as geometric closure is downstream.
+- id: RA-D4-001
+  name: D4U02 selectivity ceiling
+  status: CV
+  domain: arithmetic
+  papers:
+  - I
+  - III
+  statement: The d=4 selectivity profile has first local maximum near μ*=1.019.
+  sources:
+  - d4u02_enumeration.py
+  - D4U02_analytic_proof.md
+  dependencies:
+  - RA-KERNEL-001
+  - RA-ARITH-001
+  nature_targets:
+  - observed dimensionality
+  - kernel scale selection
+  caveats: Analytic closure remains open.
+- id: RA-D4-002
+  name: D4U02 modular barrier
+  status: DR
+  domain: arithmetic
+  papers:
+  - I
+  statement: The d=4 kernel exhibits a modular barrier structure constraining self-sustained actualization.
+  sources:
+  - D4U02_analytic_proof.md
+  dependencies:
+  - RA-D4-001
+  - RA-ARITH-002
+  nature_targets:
+  - dimension selection
+  caveats: Needs final formalization.
+- id: RA-ARITH-003
+  name: Koide ratio identity
+  status: ANC
+  domain: arithmetic
+  papers:
+  - II
+  statement: The three-angle kval construction satisfies K=2/3 exactly.
+  sources:
+  - RA_KvalRatio.lean
+  dependencies:
+  - RA-ARITH-001
+  nature_targets:
+  - charged lepton mass-ratio regularity
+  caveats: Physical embedding into rest masses remains open.
+- id: RA-ARITH-004
+  name: Dimensionless strong-interaction scale
+  status: DR_CV
+  domain: arithmetic
+  papers:
+  - II
+  statement: RA arithmetic gives α_RA,strong=1/sqrt(72)≈0.117851.
+  sources:
+  - d3_alpha_s_proof.py
+  - vwyler_proof.py
+  dependencies:
+  - RA-ARITH-001
+  nature_targets:
+  - dimensionless interaction-strength measurement
+  caveats: Comparison to QCD α_s is cartography, not mechanism.
+- id: RA-ARITH-005
+  name: Internal density scale from selectivity
+  status: DR_CV
+  domain: arithmetic
+  papers:
+  - II
+  - III
+  statement: μ_int=exp(sqrt(4ΔS*))≈4.71 from BDG selectivity.
+  sources:
+  - mu_derivation.py
+  - d4u02_enumeration.py
+  dependencies:
+  - RA-D4-001
+  - RA-GRAV-001
+  nature_targets:
+  - hadronic-scale regularities
+  caveats: Physical embedding remains partially interpretive.
+- id: RA-ARITH-006
+  name: BDG path-weight ratio
+  status: CV
+  domain: arithmetic
+  papers:
+  - II
+  statement: W_other/W_baryon≈17.32 from finite path-weight enumeration.
+  sources:
+  - f0_enumeration.py
+  dependencies:
+  - RA-ARITH-001
+  - RA-MOTIF-002
+  nature_targets:
+  - lifetime hierarchy / matter-sector weight regularity
+  caveats: Downstream uses require care.
+- id: RA-MOTIF-001
+  name: Native motif sector definition
+  status: STATED
+  domain: matter
+  papers:
+  - II
+  statement: Motif sectors are local realized-growth patterns classified by BDG depth counts, closure, renewal, and ledger behavior.
+  sources:
+  - RA Paper II
+  dependencies:
+  - RA-KERNEL-001
+  - RA-LLC-001
+  nature_targets:
+  - particle-like classes
+  caveats: Mapping to all observed species remains open.
+- id: RA-MOTIF-002
+  name: Stable motif census
+  status: ANC
+  domain: matter
+  papers:
+  - II
+  statement: The d=4 regime yields a finite census of topologically distinct stability classes under admissible extension.
+  sources:
+  - RA_D1_NativeKernel_v1.lean
+  - RA_D1_NativeClosure_v1.lean
+  dependencies:
+  - RA-MOTIF-001
+  - RA-D4-001
+  nature_targets:
+  - number/type of particle-like motifs
+  caveats: Exact observational cartography remains open.
+- id: RA-MOTIF-003
+  name: Minimal closure windows
+  status: ANC
+  domain: matter
+  papers:
+  - II
+  statement: The two minimal branching motifs have finite closure lengths Lg=3 and Lq=4.
+  sources:
+  - RA_D1_NativeConfinement_v1.lean
+  dependencies:
+  - RA-MOTIF-002
+  nature_targets:
+  - finite interaction ranges
+  - confinement-like behavior
+  caveats: Terminology Lg/Lq should remain native or clearly cartographic.
+- id: RA-MOTIF-004
+  name: Extension census
+  status: ANC
+  domain: matter
+  papers:
+  - II
+  statement: Admissible extension classes for symmetric/asymmetric and transition-state motifs are exhaustively classified in finite cases.
+  sources:
+  - RA_D1_NativeClosure_v1.lean
+  dependencies:
+  - RA-MOTIF-003
+  nature_targets:
+  - motif transition structure
+  caveats: Full spectrum mapping remains open.
+- id: RA-MOTIF-005
+  name: Depth-2 ledger/orientation structure
+  status: ANC
+  domain: matter
+  papers:
+  - II
+  statement: Depth-2 ledger preservation and orientation asymmetry constrain admissible motif transitions.
+  sources:
+  - RA_D1_NativeLedgerOrientation_v1.lean
+  dependencies:
+  - RA-LLC-001
+  - RA-MOTIF-002
+  nature_targets:
+  - charge/orientation regularities
+  - matter-sector asymmetry
+  caveats: Baryon chirality interpretation requires careful cartography.
+- id: RA-MOTIF-006
+  name: Signed three-direction charge spectrum
+  status: DR
+  domain: matter
+  papers:
+  - II
+  statement: Three signed spatial orientations yield Q∈{−e,−2e/3,−e/3,0,e/3,2e/3,e}.
+  sources:
+  - RA_D1_NativeLedgerOrientation_v1.lean
+  - RA Paper II
+  dependencies:
+  - RA-MOTIF-005
+  nature_targets:
+  - electric charge quantization pattern
+  caveats: Complete species assignment remains open.
+- id: RA-MOTIF-007
+  name: Confinement as finite renewal
+  status: DR
+  domain: matter
+  papers:
+  - II
+  statement: Some bound motifs do not admit indefinitely isolated free terminal extension and persist only through finite renewal.
+  sources:
+  - RA_D1_NativeConfinement_v1.lean
+  - RA Paper II
+  dependencies:
+  - RA-MOTIF-003
+  - RA-MOTIF-004
+  nature_targets:
+  - bound-state persistence
+  - confinement-like observations
+  caveats: No direct scattering/hadronization predictions yet.
+- id: RA-OPEN-001
+  name: Full motif-to-spectrum cartography
+  status: ONT
+  domain: matter
+  papers:
+  - II
+  statement: Derive the complete observed particle/motif spectrum from RA-native motif taxonomy and closure dynamics.
+  sources:
+  - RA Paper II
+  dependencies:
+  - RA-MOTIF-002
+  - RA-MOTIF-003
+  - RA-MOTIF-005
+  nature_targets:
+  - particle multiplicity
+  - masses
+  - lifetimes
+  caveats: Major open programme.
+- id: RA-OPEN-002
+  name: Scattering and decay predictions
+  status: ONT
+  domain: matter
+  papers:
+  - II
+  statement: Derive observable scattering cross-sections and decay/lifetime patterns from motif renewal and ledger dynamics.
+  sources:
+  - RA Paper II
+  dependencies:
+  - RA-MOTIF-007
+  - RA-KERNEL-004
+  nature_targets:
+  - cross-sections
+  - decay rates
+  - lifetimes
+  caveats: Requires native statistical dynamics.
+- id: RA-ARCH-001
+  name: Sigma-filter PDG classification
+  status: ARCH_CC
+  domain: matter
+  papers:
+  - II
+  statement: Prior sigma-filter classification used PDG/SM labels and is not active native support.
+  sources:
+  - sigma_analysis.py
+  - sigma_table.py
+  dependencies:
+  - RA-OPEN-002
+  nature_targets:
+  - lifetime classification
+  caveats: Can be restored only after RA-derived labels replace imported quantum numbers.
+- id: RA-GRAV-001
+  name: Kernel–Poisson divergence identity
+  status: DR_CV
+  domain: gravity
+  papers:
+  - I
+  - III
+  statement: For the truncated BDG acceptance kernel, D_KL=-log P_acc=ΔS* and TV=1-P_acc.
+  sources:
+  - kernel_saturation.py
+  - RA Paper I/III
+  dependencies:
+  - RA-KERNEL-001
+  nature_targets:
+  - kernel selectivity
+  - high-density behavior
+  caveats: Poisson-CSG approximation.
+- id: RA-GRAV-002
+  name: Asymptotic kernel saturation
+  status: DR_CV
+  domain: gravity
+  papers:
+  - I
+  - III
+  statement: For d=4 BDG coefficients, P_acc(μ)→1 at high density with O(μ^-4) bound structure.
+  sources:
+  - kernel_saturation.py
+  dependencies:
+  - RA-GRAV-001
+  - RA-D4-001
+  nature_targets:
+  - collapse/high-density regimes
+  caveats: Physical severance onset requires further dynamics.
+- id: RA-GRAV-003
+  name: Causal severance
+  status: DR_PI
+  domain: gravity
+  papers:
+  - III
+  statement: A finite graph partition terminates causal contact when kernel saturation removes discriminatory event formation.
+  sources:
+  - RA Paper III
+  - kernel_saturation.py
+  dependencies:
+  - RA-GRAV-002
+  - RA-ONT-004
+  nature_targets:
+  - black hole interiors
+  - singular limits
+  - causal disconnection
+  caveats: Local onset dynamics still open.
+- id: RA-GRAV-004
+  name: Severed-link entropy observable
+  status: DR
+  domain: gravity
+  papers:
+  - III
+  statement: RA-native severance entropy is S_RA(Σ)=|L_Σ|, the count of blocked irreducible causal links.
+  sources:
+  - RA Paper III
+  dependencies:
+  - RA-GRAV-003
+  - RA-ONT-004
+  nature_targets:
+  - black-hole entropy
+  - horizon thermodynamics
+  caveats: Metric prefactor translation open.
+- id: RA-GRAV-005
+  name: Discrete boundary law
+  status: DR
+  domain: gravity
+  papers:
+  - III
+  statement: If severed out-degree is asymptotically local/stable, severance entropy scales with boundary vertex count.
+  sources:
+  - RA Paper III
+  dependencies:
+  - RA-GRAV-004
+  nature_targets:
+  - area-law behavior
+  caveats: Coefficient 1/4 not derived natively.
+- id: RA-GRAV-006
+  name: Joint BDG/LLC macro-kernel dimension
+  status: ANC
+  domain: gravity
+  papers:
+  - III
+  statement: The joint trace/BDG/LLC macro-kernel on Fin 5 → ℝ has dimension 2.
+  sources:
+  - RA_BDG_LLC_Kernel.lean
+  dependencies:
+  - RA-LLC-001
+  - RA-KERNEL-001
+  nature_targets:
+  - macroscopic response degrees of freedom
+  caveats: Do not identify with spin-2/gravitons except as cartography.
+- id: RA-GRAV-007
+  name: Antichain drift local statistic
+  status: CV
+  domain: cosmology
+  papers:
+  - I
+  - III
+  statement: BDG-filtered Poisson-CSG growth gives positive accepted antichain drift near μ=1, about +0.34.
+  sources:
+  - antichain_drift.py
+  dependencies:
+  - RA-KERNEL-001
+  - RA-GRAV-001
+  nature_targets:
+  - expansion-like graph behavior
+  caveats: Not a complete cosmological expansion law.
+- id: RA-OPEN-003
+  name: Coefficient-level orbital/lensing source law
+  status: ONT
+  domain: gravity
+  papers:
+  - III
+  statement: Derive exact source coefficients for orbital response and gravitational lensing from finite graph quantities.
+  sources:
+  - RA Paper III
+  dependencies:
+  - RA-GRAV-006
+  - RA-GRAV-007
+  nature_targets:
+  - rotation curves
+  - lensing maps
+  caveats: Major open target.
+- id: RA-OPEN-004
+  name: Environment-sensitive expansion law
+  status: ONT
+  domain: cosmology
+  papers:
+  - III
+  statement: Derive H(z), BAO shifts, and supernova residual correlations from finite inhomogeneous graph structure.
+  sources:
+  - ra_dark_energy.py
+  - ra_desi_verify.py
+  - RA Paper III
+  dependencies:
+  - RA-GRAV-007
+  nature_targets:
+  - redshift-distance relations
+  - BAO
+  - supernova residuals
+  caveats: Current scripts are exploratory phenomenology.
+- id: RA-OPEN-005
+  name: Low-l CMB / Axis-of-Evil severance inheritance
+  status: ONT_PI
+  domain: cosmology
+  papers:
+  - III
+  statement: Explain large-angle CMB alignments from finite inherited boundary data of a daughter graph.
+  sources:
+  - daughter_universe.py
+  - RA Paper III
+  dependencies:
+  - RA-GRAV-003
+  nature_targets:
+  - Axis of Evil
+  - low-l CMB anomalies
+  caveats: Exploratory.
+- id: RA-ARCH-002
+  name: BMV null prediction
+  status: ARCH_CC
+  domain: gravity
+  papers:
+  - III
+  statement: Prior BMV-style null prediction remains comparative/provisional until reformulated in RA-native observables.
+  sources:
+  - bmv-related scripts if present
+  dependencies:
+  - RA-KERNEL-004
+  nature_targets:
+  - gravity-mediated entanglement experiments
+  caveats: May be theory-artifact entanglement framing.
+- id: RA-COMP-001
+  name: Tier hierarchy
+  status: DR
+  domain: complexity
+  papers:
+  - IV
+  statement: Organized systems can be described by coarse-grained tiers from event-level actualization to recursively self-maintaining organizations.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-ONT-001
+  - RA-LLC-001
+  nature_targets:
+  - multi-scale organization
+  caveats: Faithful coarse-graining theorem open.
+- id: RA-COMP-002
+  name: Recursive closure
+  status: DR
+  domain: complexity
+  papers:
+  - IV
+  statement: A subsystem exhibits recursive closure when its future admissible extensions depend on boundary conditions re-inscribed by its own history.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-001
+  - RA-KERNEL-002
+  nature_targets:
+  - self-maintaining organization
+  caveats: Quantitative threshold open.
+- id: RA-COMP-003
+  name: Causal Firewall conditions
+  status: DR
+  domain: complexity
+  papers:
+  - IV
+  statement: Stable recursive organization requires redundant boundary inscription and bounded boundary turnover.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-002
+  nature_targets:
+  - life-like persistence
+  - agency conditions
+  caveats: Full shield theorem open.
+- id: RA-COMP-004
+  name: RA assembly depth
+  status: DR
+  domain: complexity
+  papers:
+  - IV
+  statement: RA assembly depth is the minimum number of causally irreducible organizational layers needed to produce a stable structure.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-001
+  nature_targets:
+  - biological organization
+  - assembly complexity
+  caveats: Operational estimates need computational formalization.
+- id: RA-COMP-005
+  name: Glycolysis assembly depth estimate
+  status: PI
+  domain: complexity
+  papers:
+  - IV
+  statement: A conservative causal coarse-graining gives A_RA(glycolysis)=3.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-004
+  nature_targets:
+  - metabolic pathway organization
+  caveats: Illustrative; needs native computational implementation.
+- id: RA-COMP-006
+  name: E. coli assembly depth estimate
+  status: PI
+  domain: complexity
+  papers:
+  - IV
+  statement: Whole-cell E. coli metabolic organization estimates to A_RA≈4–6 after coarse-graining.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-004
+  nature_targets:
+  - cellular organization
+  caveats: Partition-dependent estimate.
+- id: RA-COMP-007
+  name: Origin-of-life sandwich bound
+  status: DR_PI
+  domain: complexity
+  papers:
+  - IV
+  statement: Viable prebiotic organization requires minimum feedback-bearing assembly depth and environmental overwrite below persistence capacity.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-003
+  - RA-COMP-004
+  nature_targets:
+  - origin-of-life constraints
+  caveats: Quantitative persistence formula open.
+- id: RA-COMP-008
+  name: Substrate-independent biosignature criteria
+  status: DR_PI
+  domain: complexity
+  papers:
+  - IV
+  statement: Biosignature criteria include redundant boundary inscription, bounded boundary turnover, and closure-supporting density.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-003
+  nature_targets:
+  - astrobiology
+  - SETI
+  - artificial life
+  caveats: Needs empirical operationalization.
+- id: RA-OPEN-006
+  name: Causal shield theorem
+  status: ONT
+  domain: complexity
+  papers:
+  - IV
+  statement: Prove stable recursive organization requires mediated boundary interfaces across faithful coarse-graining levels.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-003
+  nature_targets:
+  - persistent biological organization
+  caveats: Major open theorem.
+- id: RA-OPEN-007
+  name: Persistence-window formula
+  status: ONT
+  domain: complexity
+  papers:
+  - IV
+  statement: Derive a closed native formula for boundary overwrite/re-inscription viability windows.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-003
+  - RA-COMP-007
+  nature_targets:
+  - life-like persistence under environmental forcing
+  caveats: High-priority computational/theoretical target.
+- id: RA-OPEN-008
+  name: Consciousness threshold problem
+  status: ONT_PI
+  domain: complexity
+  papers:
+  - IV
+  statement: Determine necessary and possibly sufficient RA conditions for phenomenal consciousness beyond recursive closure.
+  sources:
+  - RA Paper IV
+  dependencies:
+  - RA-COMP-002
+  - RA-COMP-003
+  - RA-COMP-004
+  nature_targets:
+  - cognition
+  - agency
+  - consciousness
+  caveats: Exploratory; no sufficient theory claimed.
+- id: RA-NONTARGET-001
+  name: Born rule as non-target
+  status: CC
+  domain: framing
+  papers:
+  - I
+  - IV
+  statement: The Born rule is not Nature itself; observed frequency regularities are the Nature-facing target.
+  sources:
+  - RA_Framing_Discipline_v3
+  dependencies:
+  - RA-KERNEL-004
+  nature_targets:
+  - repeated experimental frequencies
+  caveats: Need RA-native frequency law.
+- id: RA-OPEN-009
+  name: RA-native frequency law
+  status: ONT
+  domain: kernel
+  papers:
+  - I
+  statement: Derive repeated-actualization frequency regularities from the stochastic actualization kernel without importing Hilbert-space Born-rule ontology.
+  sources:
+  - RA Paper I
+  - RA_Framing_Discipline_v3
+  dependencies:
+  - RA-KERNEL-004
+  - RA-KERNEL-005
+  nature_targets:
+  - experimental outcome frequencies
+  caveats: Major foundational open target.
+- id: RA-NONTARGET-002
+  name: QCD running as non-mechanism
+  status: CC
+  domain: framing
+  papers:
+  - II
+  statement: QCD running couplings are comparative cartography; RA targets measured interaction-strength patterns through RA-native observables.
+  sources:
+  - RA_Framing_Discipline_v3
+  - qcd_running_proof.py
+  dependencies:
+  - RA-ARITH-004
+  nature_targets:
+  - interaction strength measurements
+  caveats: Do not use as active native proof.
+- id: RA-NONTARGET-003
+  name: Metric field as non-primitive
+  status: CC
+  domain: framing
+  papers:
+  - I
+  - III
+  statement: Metric geometry is not RA's primitive substrate; RA targets observed gravitational phenomena via finite graph structure.
+  sources:
+  - RA_Framing_Discipline_v3
+  - RA Paper III
+  dependencies:
+  - RA-ONT-001
+  - RA-GRAV-006
+  nature_targets:
+  - orbital response
+  - lensing
+  - horizon phenomena
+  caveats: Effective metric translations may be downstream.

@@ -1,0 +1,6 @@
+--- a/src/RA_AQFT/ra_flat_rotation_curve.py
++++ b/src/RA_AQFT/ra_flat_rotation_curve.py
+@@ -1,4 +1,4 @@
+-"""
++r"""
+ Relational Actualism: Galactic Rotation Curve Model

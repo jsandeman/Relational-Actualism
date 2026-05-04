@@ -1,0 +1,64 @@
+id,name,domain,proof_status,support_status,proof_out_degree,proof_in_degree,proof_downstream_reach,papers
+RA-ONT-001,Finite causal graph ontology,kernel,STATED,none,5,0,57,I
+RA-ONT-003,Structured potentia / adjacent possible,kernel,STATED,none,3,1,49,I
+RA-KERNEL-001,Four-dimensional BDG acceptance kernel,kernel,ANC,none,8,1,48,I
+RA-ONT-002,Irreversible actualization,kernel,STATED,none,1,1,31,I
+RA-LLC-001,Local Ledger Condition,kernel,STATED,none,5,1,30,"I,II,III,IV"
+RA-ARITH-001,BDG coefficient arithmetic spine,arithmetic,ANC,none,7,1,27,I
+RA-D4-001,D4U02 selectivity ceiling,arithmetic,DR,CV,4,2,23,"I,III"
+RA-MOTIF-001,Native motif sector definition,matter,STATED,none,1,2,15,II
+RA-MOTIF-002,Stable motif census,matter,ANC,none,5,2,14,II
+RA-GRAV-001,Kernel–Poisson divergence identity,gravity,DR,CV,3,1,13,"I,III"
+RA-ONT-004,Finitary Actuality,kernel,STATED,none,3,1,10,I
+RA-COMP-001,Tier hierarchy,complexity,DR,none,2,2,10,IV
+RA-KERNEL-002,Kernel locality,kernel,ANC,none,2,2,9,I
+RA-MOTIF-005,Depth-2 ledger/orientation structure,matter,ANC,none,4,2,6,II
+RA-COMP-002,Recursive closure,complexity,DR,none,2,2,6,IV
+RA-COMP-003,Causal Firewall conditions,complexity,DR,none,5,1,5,IV
+RA-MOTIF-003,Minimal closure windows,matter,ANC,none,4,1,5,II
+RA-COMP-004,RA assembly depth,complexity,DR,none,4,1,5,IV
+RA-GRAV-002,Asymptotic kernel saturation,gravity,DR,CV,1,2,5,"I,III"
+RA-GRAV-007,Antichain drift local statistic,cosmology,DR,CV,4,2,4,"I,III"
+RA-GRAV-003,Causal severance,gravity,DR,PI,3,2,4,III
+RA-KERNEL-003,Finite potentia,kernel,DR,none,1,3,4,I
+RA-KERNEL-004,Stochastic actualization kernel requirement,kernel,ONT,none,3,2,3,I
+RA-GRAV-006,Joint BDG/LLC macro-kernel dimension,gravity,ANC,none,2,2,2,III
+RA-MOTIF-004,Extension census,matter,ANC,none,1,1,2,II
+RA-KERNEL-005,Discrete covariance target,kernel,ONT,none,1,2,1,I
+RA-ARITH-002,Second-order cancellation pattern,arithmetic,ANC,none,1,1,1,I
+RA-ARITH-003,Koide ratio identity,arithmetic,ANC,none,1,1,1,II
+RA-ARITH-004,Dimensionless strong-interaction scale,arithmetic,DR,CV,1,1,1,II
+RA-ARITH-005,Internal density scale from selectivity,arithmetic,DR,CV,1,2,1,"II,III"
+RA-ARITH-006,BDG path-weight ratio,arithmetic,DR,CV,1,2,1,II
+RA-MOTIF-006,Signed three-direction charge spectrum,matter,DR,none,1,1,1,II
+RA-MOTIF-007,Confinement as finite renewal,matter,DR,none,1,2,1,II
+RA-GRAV-004,Severed-link entropy observable,gravity,DR,none,1,2,1,III
+RA-OPEN-003,Coefficient-level orbital/lensing source law,gravity,ONT,none,1,2,1,III
+RA-OPEN-004,Environment-sensitive expansion law,cosmology,ONT,none,1,1,1,III
+RA-OPEN-005,Low-l CMB / Axis-of-Evil severance inheritance,cosmology,ONT,PI,1,1,1,III
+RA-COMP-007,Origin-of-life sandwich bound,complexity,DR,PI,1,2,1,IV
+RA-MOTIF-009,Type IV exact-zero motif target,matter,ONT,PI,1,2,1,II
+RA-D4-002,D4U02 modular barrier,arithmetic,DR,none,0,2,0,I
+RA-OPEN-001,Full motif-to-spectrum cartography,matter,ONT,none,0,3,0,II
+RA-OPEN-002,Scattering and decay predictions,matter,ONT,none,0,2,0,II
+RA-ARCH-001,Sigma-filter PDG classification,matter,ARCH,CC,0,0,0,II
+RA-GRAV-005,Discrete boundary law,gravity,DR,none,0,1,0,III
+RA-ARCH-002,BMV null prediction,gravity,ARCH,CC,0,0,0,III
+RA-COMP-005,Glycolysis assembly depth estimate,complexity,DR,PI,0,1,0,IV
+RA-COMP-006,E. coli assembly depth estimate,complexity,DR,PI,0,1,0,IV
+RA-COMP-008,Substrate-independent biosignature criteria,complexity,DR,PI,0,1,0,IV
+RA-OPEN-006,Causal shield theorem,complexity,ONT,none,0,1,0,IV
+RA-OPEN-007,Persistence-window formula,complexity,ONT,none,0,2,0,IV
+RA-OPEN-008,Consciousness threshold problem,complexity,ONT,PI,0,3,0,IV
+RA-NONTARGET-001,Born rule as non-target,framing,DR,CC,0,0,0,"I,IV"
+RA-OPEN-009,RA-native frequency law,kernel,ONT,none,0,2,0,I
+RA-NONTARGET-002,QCD running as non-mechanism,framing,DR,CC,0,0,0,II
+RA-NONTARGET-003,Metric field as non-primitive,framing,DR,CC,0,0,0,"I,III"
+RA-MOTIF-008,Orientation/chirality theorem family,matter,ANC,none,0,2,0,II
+RA-PRED-001,Fine-structure inverse target,prediction,ONT,PI,0,2,0,II
+RA-PRED-002,Proton mass scale target,prediction,ONT,PI,0,3,0,II
+RA-PRED-003,Higgs-scale / scalar benchmark target,prediction,ONT,PI,0,2,0,II
+RA-PRED-004,f0 path-weight comparison target,prediction,DR,CC,0,2,0,"II,III"
+RA-PRED-005,Local Hubble/environment target,prediction,ONT,PI,0,2,0,III
+RA-PRED-006,Rotation-curve / lensing source-law target,prediction,ONT,PI,0,3,0,III
+RA-PRED-007,Axis-of-Evil / low-l alignment target,prediction,ONT,PI,0,2,0,III

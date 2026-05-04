@@ -1,0 +1,5 @@
+file,compile_check,status,notes
+RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026_rakb_ids.tex,latexmk -pdf -interaction=nonstopmode -halt-on-error,passed,Comment-only RAKB annotations did not break TeX compilation.
+RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026_rakb_ids.tex,latexmk -pdf -interaction=nonstopmode -halt-on-error,passed,Comment-only RAKB annotations did not break TeX compilation.
+RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026_rakb_ids.tex,latexmk -pdf -interaction=nonstopmode -halt-on-error,passed,Comment-only RAKB annotations did not break TeX compilation.
+RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026_rakb_ids.tex,latexmk -pdf -interaction=nonstopmode -halt-on-error,passed,Comment-only RAKB annotations did not break TeX compilation.

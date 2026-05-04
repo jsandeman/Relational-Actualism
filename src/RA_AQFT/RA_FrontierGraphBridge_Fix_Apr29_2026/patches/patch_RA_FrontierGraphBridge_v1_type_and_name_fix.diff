@@ -1,0 +1,38 @@
+--- /mnt/data/RA_FrontierGraphBridge_Work_Apr29_2026/lean/RA_FrontierGraphBridge_v1.lean	2026-04-29 17:08:33.595988142 +0000
++++ /mnt/data/RA_FrontierGraphBridge_Fix_Apr29_2026/lean/RA_FrontierGraphBridge_v1.lean	2026-04-29 17:11:01.846908440 +0000
+@@ -40,13 +40,22 @@
+ abbrev GraphVertex (G : _root_.ActualizationGraph) : Type :=
+   {v : _root_.Vertex // v ∈ G.V}
+ 
++/-- The finite type instance for the subtype of vertices actually present in `G`.
++
++This is separated from `graphUniverseState` to avoid Lean inferring the wrong
++ambient vertex type when elaborating `Fintype.ofFinset` inside a structure
++literal. -/
++noncomputable def graphVertexFintype (G : _root_.ActualizationGraph) :
++    Fintype (GraphVertex G) :=
++  { elems := G.V.attach
++    complete := by
++      intro x
++      simp }
++
+ /-- A concrete finite graph gives an abstract RA universe-state by taking its
+ finite vertex set as the state vertex type. -/
+ noncomputable def graphUniverseState (G : _root_.ActualizationGraph) : UniverseState :=
+-  { Vertex := GraphVertex G
+-    vertexFinite := Fintype.ofFinset G.V.attach (by
+-      intro x
+-      simp) }
++  ⟨GraphVertex G, graphVertexFintype G⟩
+ 
+ /-- Conservative causal order induced by the graph topological order.
+ 
+@@ -203,7 +212,7 @@
+     {G : _root_.ActualizationGraph} (B : GraphCutFrontierBridge G)
+     (h_ledger : ∀ v ∈ B.cut.V_L, _root_.satisfies_local_ledger G v) :
+     SevenCharge (GraphCutFrontierBridge.boundaryLedger B h_ledger).qN1 :=
+-  boundaryLedger_qN1_seven (GraphCutFrontierBridge.boundaryLedger B h_ledger)
++  (GraphCutFrontierBridge.boundaryLedger B h_ledger).qN1_seven
+ 
+ /-!
+ ## What remains hard

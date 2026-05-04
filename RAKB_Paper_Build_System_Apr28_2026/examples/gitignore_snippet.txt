@@ -1,0 +1,9 @@
+# RA paper generated build products
+/docs/RA_Canonical_Papers/**/*.aux
+/docs/RA_Canonical_Papers/**/*.bbl
+/docs/RA_Canonical_Papers/**/*.blg
+/docs/RA_Canonical_Papers/**/*.fls
+/docs/RA_Canonical_Papers/**/*.fdb_latexmk
+/docs/RA_Canonical_Papers/**/*.log
+/docs/RA_Canonical_Papers/**/*.out
+/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/*.pdf

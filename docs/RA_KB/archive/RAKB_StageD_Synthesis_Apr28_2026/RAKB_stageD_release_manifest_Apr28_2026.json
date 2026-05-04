@@ -1,0 +1,58 @@
+{
+  "release_candidate": "RAKB v0.5.1",
+  "generated_on": "2026-04-28",
+  "basis": {
+    "validated_core_counts": {
+      "claims": 39,
+      "issues": 12,
+      "targets": 7,
+      "framing": 3,
+      "archived": 2,
+      "claim_edges": 58,
+      "all_dependency_edges": 97,
+      "artifacts": 187,
+      "claim_artifact_edges": 180
+    },
+    "post_stageC_expected_counts": {
+      "source_text_references": 245,
+      "restoration_candidates": 25,
+      "stageC_source_text_reference_upserts": 205,
+      "stageC_restoration_candidate_upserts": 16
+    },
+    "lean_environment": {
+      "lean": "4.29.0",
+      "lake": "5.0.0-src+98dc76e",
+      "git_commit": "2698aa72490ef585692f1d708ec3c92d6d555bba",
+      "build_result": "Build completed successfully (8284 jobs); one unused-variable warning in RA_D3_CosmologicalExpansion"
+    },
+    "stage_status": {
+      "Stage A": "Lean/formal layer build-confirmed no sorry/admit; one interface axiom.",
+      "Stage B": "Python/computation layer source-audited and registry-integrated; partial smoke-test status.",
+      "Stage C": "Canonical TeX crosswalk/restoration audit complete; source-text references/restoration candidates applied locally by user.",
+      "Stage D": "Synthesis/release readiness packet generated."
+    }
+  },
+  "release_assessment": "release_ready_with_caveats",
+  "non_blocking_caveats": [
+    "CausalGraph interface axiom remains",
+    "unused hN2 warning remains",
+    "Python layer not fully reproduced end-to-end",
+    "canonical TeX has no explicit RA-* comments yet"
+  ],
+  "packet_files": [
+    "RAKB_StageD_Synthesis_Report_Apr28_2026.md",
+    "RAKB_v0_5_1_release_notes_Apr28_2026.md",
+    "README_StageD_Synthesis_Apr28_2026.md",
+    "docs/RAKB_stageD_next_actions_Apr28_2026.md",
+    "patches/patch_RA_D3_CosmologicalExpansion_unused_hN2.diff",
+    "registry_upserts_v0_5_1/RAKB_stageD_artifacts_upsert_v0_5_1_Apr28_2026.csv",
+    "registry_upserts_v0_5_1/RAKB_stageD_claim_artifact_edges_upsert_v0_5_1_Apr28_2026.csv",
+    "reports/RAKB_stageD_attention_index_Apr28_2026.csv",
+    "reports/RAKB_stageD_evidence_health_summary_Apr28_2026.csv",
+    "reports/RAKB_stageD_gap_register_Apr28_2026.csv",
+    "reports/RAKB_stageD_node_coverage_matrix_Apr28_2026.csv",
+    "reports/RAKB_stageD_promotion_and_restoration_queue_Apr28_2026.csv",
+    "reports/RAKB_stageD_tex_rakb_comment_plan_Apr28_2026.csv",
+    "scripts/apply_rakb_stageD_v0_5_1_upserts.py"
+  ]
+}

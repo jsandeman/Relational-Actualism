@@ -1,0 +1,2 @@
+artifact_id,path,type,sha256,git_sha,role,status,domain,notes
+ART-PY-EXAMPLE,src/RA_AQFT/example.py,python,<from_python_file_inventory.csv>,<git_rev_parse_HEAD>,computational_derivation_candidate,uploaded_static_audited,<domain_guess>,Promote only after execution reproduction.

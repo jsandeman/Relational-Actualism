@@ -1,0 +1,13 @@
+id,name,support_status,domain,papers,nature_targets,caveats
+RA-KERNEL-003,Finite potentia,none,kernel,I,finite event alternatives,Assumes finite candidate past-set construction.
+RA-GRAV-004,Severed-link entropy observable,none,gravity,III,black-hole entropy;horizon thermodynamics,Metric prefactor translation open.
+RA-GRAV-005,Discrete boundary law,none,gravity,III,area-law behavior,Prefactor matching measured horizon entropy not yet derived natively.
+RA-COMP-001,Tier hierarchy,none,complexity,IV,multi-scale organization,Faithful coarse-graining theorem open.
+RA-COMP-002,Recursive closure,none,complexity,IV,self-maintaining organization,Quantitative threshold open.
+RA-COMP-004,RA assembly depth,none,complexity,IV,biological organization;assembly complexity,Operational estimates need computational formalization.
+RA-COMP-005,Glycolysis assembly depth estimate,PI,complexity,IV,metabolic pathway organization,Illustrative; needs native computational implementation.
+RA-COMP-006,E. coli assembly depth estimate,PI,complexity,IV,cellular organization,Partition-dependent estimate.
+RA-COMP-007,Origin-of-life sandwich bound,PI,complexity,IV,origin-of-life constraints,Quantitative persistence formula open.
+RA-COMP-008,Substrate-independent biosignature criteria,PI,complexity,IV,astrobiology;SETI;artificial life,Needs empirical operationalization.
+RA-NONTARGET-001,Born rule as non-target,CC,framing,"I,IV",repeated experimental frequencies,Need RA-native frequency law.
+RA-NONTARGET-003,Metric field as non-primitive,CC,framing,"I,III",orbital response;lensing;horizon phenomena,Effective metric translations may be downstream.

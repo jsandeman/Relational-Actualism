@@ -1,0 +1,84 @@
+paper,section_level,section_title,rakb_comment,mapped_node_ids,coverage_status,section_word_count
+Paper I,subsection,From causal order to universe-state,% RAKB: RA-ONT-001;RA-LLC-001,RA-ONT-001;RA-LLC-001,mapped,82
+Paper I,subsection,Relation to classical sequential growth,% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,mapped,112
+Paper I,section,The Seven Axioms,% RAKB: RA-ONT-001;RA-ONT-002;RA-ONT-003;RA-ONT-004;RA-LLC-001;RA-KERNEL-003,RA-ONT-001;RA-ONT-002;RA-ONT-003;RA-ONT-004;RA-LLC-001;RA-KERNEL-003,mapped,360
+Paper I,section,The BDG Action and Its Integers,% RAKB: RA-KERNEL-001;RA-ARITH-001;RA-ARITH-002,RA-KERNEL-001;RA-ARITH-001;RA-ARITH-002,mapped,257
+Paper I,subsection,The second-order cancellation pattern,% RAKB: RA-KERNEL-001;RA-ARITH-001;RA-ARITH-002,RA-KERNEL-001;RA-ARITH-001;RA-ARITH-002,mapped,122
+Paper I,section,The Sequential Growth Rule,% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,mapped,234
+Paper I,subsection,A worked toy growth step,% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,mapped,198
+Paper I,subsection,The bimodal ontology,% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004,mapped,143
+Paper I,section,The BDG Filter and Acceptance Kernel,% RAKB: RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002,RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002,mapped,62
+Paper I,subsection,The actualization threshold,% RAKB: RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002,RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002,mapped,42
+Paper I,subsection,Kernel saturation theorem,% RAKB: RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002,RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002,mapped,201
+Paper I,subsection,The selectivity profile,% RAKB: RA-D4-001;RA-ARITH-005,RA-D4-001;RA-ARITH-005,mapped,115
+Paper I,section,"The Actualization Criterion: Kernel First, Comparative Readouts Second",% RAKB: RA-KERNEL-001;RA-KERNEL-004;RA-D4-001,RA-KERNEL-001;RA-KERNEL-004;RA-D4-001,mapped,179
+Paper I,section,The Measurement Problem Dissolved in Native Terms,% RAKB: RA-ONT-002;RA-OPEN-009,RA-ONT-002;RA-OPEN-009,mapped,267
+Paper I,section,"Finite Propagation, Event Counts, and Saturation",% RAKB: RA-KIN-BANDWIDTH-001,RA-KIN-BANDWIDTH-001,mapped,71
+Paper I,subsection,The propagation ceiling as graph bandwidth ratio,% RAKB: RA-KIN-BANDWIDTH-001,RA-KIN-BANDWIDTH-001,mapped,96
+Paper I,subsection,Proper time as event count,% RAKB: RA-KIN-PROPER-TIME-001,RA-KIN-PROPER-TIME-001,mapped,110
+Paper I,subsection,Bandwidth saturation and severance onset,% RAKB: RA-GRAV-003;RA-GRAV-SINGULARITY-001,RA-GRAV-003;RA-GRAV-SINGULARITY-001,mapped,128
+Paper I,subsection,The D4U02 analytic gap,% RAKB: RA-D4-001;RA-D4-002,RA-D4-001;RA-D4-002,mapped,102
+Paper I,section,The Present Case for d=4,% RAKB: RA-D4-001;RA-D4-002;RA-ARITH-001;RA-ARITH-005;RA-MOTIF-002,RA-D4-001;RA-D4-002;RA-ARITH-001;RA-ARITH-005;RA-MOTIF-002,mapped,86
+Paper I,subsection,The cascade exponent,% RAKB: RA-D4-CASCADE-001,RA-D4-CASCADE-001,mapped,36
+Paper I,subsection,The geometric identity,% RAKB: RA-ARITH-003,RA-ARITH-003,mapped,57
+Paper I,section,"Arithmetic Core, Measured Numbers, and Non-kernel Overlays",% RAKB: RA-ARITH-001;RA-ARITH-002;RA-PRED-001;RA-ARITH-003,RA-ARITH-001;RA-ARITH-002;RA-PRED-001;RA-ARITH-003,mapped,212
+Paper I,section,Antichain Drift as a Local Graph Statistic,% RAKB: RA-GRAV-007,RA-GRAV-007,mapped,266
+Paper I,section,Formal Verification in Lean 4,% RAKB: RA-LLC-001;RA-KERNEL-002;RA-ARITH-001,RA-LLC-001;RA-KERNEL-002;RA-ARITH-001,mapped,174
+Paper I,section,Suite-Level Downstream Targets,% RAKB: RA-PRED-001;RA-PRED-002;RA-PRED-003;RA-PRED-004;RA-PRED-005;RA-PRED-006;RA-PRED-007,RA-PRED-001;RA-PRED-002;RA-PRED-003;RA-PRED-004;RA-PRED-005;RA-PRED-006;RA-PRED-007,mapped,173
+Paper II,section,Stable Motif Sectors in the d=4 Regime,% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,mapped,183
+Paper II,subsection,Finite closure lengths,% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,mapped,170
+Paper II,subsection,Extension census and admissible closure,% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,mapped,115
+Paper II,subsection,Three persistence sectors,% RAKB: RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,RA-MOTIF-001;RA-MOTIF-002;RA-MOTIF-003;RA-MOTIF-004;RA-MOTIF-007,mapped,135
+Paper II,section,Arithmetic Spine and Nature-Facing Numerical Targets,% RAKB: RA-ARITH-001;RA-ARITH-003;RA-ARITH-004;RA-ARITH-005;RA-ARITH-006;RA-PRED-001;RA-PRED-002,RA-ARITH-001;RA-ARITH-003;RA-ARITH-004;RA-ARITH-005;RA-ARITH-006;RA-PRED-001;RA-PRED-002,mapped,50
+Paper II,subsection,The measured fine-structure constant as a direct target,% RAKB: RA-PRED-001,RA-PRED-001,mapped,155
+Paper II,subsection,The three-angle K=2/3 ratio identity,% RAKB: RA-ARITH-003,RA-ARITH-003,mapped,112
+Paper II,subsection,A dimensionless strong-interaction scale from BDG arithmetic,% RAKB: RA-ARITH-004,RA-ARITH-004,mapped,101
+Paper II,subsection,BDG selectivity and the internal strong-density scale,% RAKB: RA-ARITH-005,RA-ARITH-005,mapped,103
+Paper II,subsection,BDG path-weight ratio,% RAKB: RA-ARITH-006;RA-PRED-004,RA-ARITH-006;RA-PRED-004,mapped,93
+Paper II,subsection,Proton-scale cascade as a native numerical programme,% RAKB: RA-PRED-002;RA-MATTER-NEFF-001;RA-MATTER-HADRON-TRIAD-001,RA-PRED-002;RA-MATTER-NEFF-001;RA-MATTER-HADRON-TRIAD-001,mapped,276
+Paper II,subsection,Secondary measured targets,% RAKB: RA-PRED-003;RA-PRED-002;RA-MATTER-HADRON-TRIAD-001,RA-PRED-003;RA-PRED-002;RA-MATTER-HADRON-TRIAD-001,mapped,68
+Paper II,section,Interaction Hierarchy by Closure Burden and Renewal,% RAKB: RA-MOTIF-007;RA-OPEN-002,RA-MOTIF-007;RA-OPEN-002,mapped,50
+Paper II,subsection,Long-range propagation,% RAKB: RA-MOTIF-007;RA-OPEN-002,RA-MOTIF-007;RA-OPEN-002,mapped,123
+Paper II,subsection,Finite-range weak interaction analogue,% RAKB: RA-MOTIF-007;RA-OPEN-002,RA-MOTIF-007;RA-OPEN-002,mapped,126
+Paper II,subsection,Confinement as finite renewal,% RAKB: RA-MOTIF-007;RA-OPEN-002,RA-MOTIF-007;RA-OPEN-002,mapped,150
+Paper II,section,"Orientation, Charge, and Matter-Sector Excess",% RAKB: RA-MOTIF-006;RA-MOTIF-008;RA-MATTER-ASYMMETRY-001,RA-MOTIF-006;RA-MOTIF-008;RA-MATTER-ASYMMETRY-001,mapped,0
+Paper II,subsection,Signed three-direction charge spectrum,% RAKB: RA-MOTIF-006;RA-MOTIF-008,RA-MOTIF-006;RA-MOTIF-008,mapped,131
+Paper II,subsection,Severance and information partition,% RAKB: RA-GRAV-003;RA-GRAV-004;RA-NOPAGE-001,RA-GRAV-003;RA-GRAV-004;RA-NOPAGE-001,mapped,109
+Paper II,subsection,Matter-sector excess as a severance initial condition,% RAKB: RA-MATTER-ASYMMETRY-001,RA-MATTER-ASYMMETRY-001,mapped,145
+Paper II,section,Selective Regime and Motif Selection,% RAKB: RA-D4-001;RA-ARITH-005;RA-MOTIF-002;RA-OPEN-002,RA-D4-001;RA-ARITH-005;RA-MOTIF-002;RA-OPEN-002,mapped,235
+Paper III,section,From Causal Set Theory to a Macroscopic Programme,% RAKB: RA-GRAV-003;RA-GRAV-004;RA-GRAV-005;RA-OPEN-003;RA-OPEN-004,RA-GRAV-003;RA-GRAV-004;RA-GRAV-005;RA-OPEN-003;RA-OPEN-004,mapped,319
+Paper III,section,Causal Severance: A Finite Alternative to Singular Continuation,% RAKB: RA-GRAV-002;RA-GRAV-003,RA-GRAV-002;RA-GRAV-003,mapped,171
+Paper III,subsection,Kernel saturation,% RAKB: RA-GRAV-002;RA-GRAV-003,RA-GRAV-002;RA-GRAV-003,mapped,398
+Paper III,section,Discrete Boundary Law and Black-Hole Entropy,% RAKB: RA-GRAV-005,RA-GRAV-005,mapped,1
+Paper III,subsection,The entropy observable,% RAKB: RA-GRAV-004,RA-GRAV-004,mapped,110
+Paper III,subsection,Finiteness and interface invariance,% RAKB: RA-GRAV-004,RA-GRAV-004,mapped,53
+Paper III,subsection,Boundary decomposition,% RAKB: RA-GRAV-005,RA-GRAV-005,mapped,256
+Paper III,section,Joint BDG/LLC Macro-Kernel,% RAKB: RA-GRAV-006,RA-GRAV-006,mapped,92
+Paper III,section,Sparse-Regime Response: Orbital Profiles and Lensing,% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003,RA-GRAV-007;RA-PRED-006;RA-OPEN-003,mapped,67
+Paper III,subsection,Antichain drift as a sparse-growth statistic,% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003,RA-GRAV-007;RA-PRED-006;RA-OPEN-003,mapped,116
+Paper III,subsection,Sparse-regime topology transition,% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003,RA-GRAV-007;RA-PRED-006;RA-OPEN-003,mapped,161
+Paper III,subsection,Large-radius orbital response,% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003,RA-GRAV-007;RA-PRED-006;RA-OPEN-003,mapped,103
+Paper III,subsection,Historical source depth and lensing offset,% RAKB: RA-PRED-006;RA-OPEN-003,RA-PRED-006;RA-OPEN-003,mapped,114
+Paper III,subsection,Weak-equivalence tracking,% RAKB: RA-PRED-006;RA-OPEN-003,RA-PRED-006;RA-OPEN-003,mapped,102
+Paper III,section,"Expansion, Inhomogeneity, and the Cosmological-Constant Question",% RAKB: RA-PRED-005;RA-OPEN-004,RA-PRED-005;RA-OPEN-004,mapped,147
+Paper III,subsection,Environment-sensitive expansion as a native target,% RAKB: RA-PRED-005;RA-OPEN-004,RA-PRED-005;RA-OPEN-004,mapped,126
+Paper III,subsection,Immediate observational targets,% RAKB: RA-PRED-005;RA-OPEN-004,RA-PRED-005;RA-OPEN-004,mapped,75
+Paper III,section,"Nucleation, Rotating Boundaries, and Low- l Anomalies",% RAKB: RA-PRED-007;RA-OPEN-005,RA-PRED-007;RA-OPEN-005,mapped,175
+Paper III,subsection,Rotating-boundary fit kernels,% RAKB: RA-PRED-007;RA-OPEN-005,RA-PRED-007;RA-OPEN-005,mapped,117
+Paper IV,section,From Causal Set Theory to a Complexity Programme,% RAKB: RA-COMP-001;RA-COMP-002,RA-COMP-001;RA-COMP-002,mapped,228
+Paper IV,section,Recursive Closure and the Causal Firewall,% RAKB: RA-COMP-002;RA-COMP-003;RA-COMP-008,RA-COMP-002;RA-COMP-003;RA-COMP-008,mapped,240
+Paper IV,subsection,Causal shields and boundary turnover,% RAKB: RA-OPEN-006;RA-COMP-003,RA-OPEN-006;RA-COMP-003,mapped,242
+Paper IV,section,Persistence Windows and Environmental Overwrite,% RAKB: RA-OPEN-007;RA-COMP-003,RA-OPEN-007;RA-COMP-003,mapped,218
+Paper IV,section,Finite Assembly Depth and Reaction-Network Coarse-Graining,% RAKB: RA-COMP-004,RA-COMP-004,mapped,85
+Paper IV,subsection,A minimal closure-bearing example: glycolysis,% RAKB: RA-COMP-005,RA-COMP-005,mapped,83
+Paper IV,subsection,The E.~coli worked example,% RAKB: RA-COMP-006,RA-COMP-006,mapped,110
+Paper IV,subsection,Prebiotic chemistries as an open computational target,% RAKB: RA-COMP-DFT-F1-001;RA-OPEN-007,RA-COMP-DFT-F1-001;RA-OPEN-007,mapped,161
+Paper IV,section,Origin-of-Life Constraints and Biosignature Criteria,% RAKB: RA-COMP-007;RA-COMP-008,RA-COMP-007;RA-COMP-008,mapped,32
+Paper IV,subsection,The origin-of-life sandwich bound,% RAKB: RA-COMP-007,RA-COMP-007,mapped,140
+Paper IV,subsection,Biosignature criteria and SETI predictions,% RAKB: RA-COMP-008,RA-COMP-008,mapped,167
+Paper IV,section,"Perception, Agency, and Consciousness: Structural Constraints",% RAKB: RA-OPEN-008;RA-COMP-002,RA-OPEN-008;RA-COMP-002,mapped,41
+Paper IV,subsection,Perception as actualization anchoring,% RAKB: RA-OPEN-008;RA-COMP-002,RA-OPEN-008;RA-COMP-002,mapped,156
+Paper IV,subsection,Agency as recursive causal closure,% RAKB: RA-OPEN-008;RA-COMP-002,RA-OPEN-008;RA-COMP-002,mapped,101
+Paper IV,subsection,What RA excludes: simple panpsychism,% RAKB: RA-OPEN-008;RA-COMP-002,RA-OPEN-008;RA-COMP-002,mapped,94
+Paper IV,subsection,What RA permits: artificial consciousness,% RAKB: RA-OPEN-008;RA-COMP-002,RA-OPEN-008;RA-COMP-002,mapped,54
+Paper IV,subsection,The open threshold problem,% RAKB: RA-OPEN-008;RA-COMP-002,RA-OPEN-008;RA-COMP-002,mapped,98

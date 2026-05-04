@@ -1,0 +1,98 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-ONT-001,RA-ONT-002,proof_dependency,claim,claim,Finite causal graph ontology,Irreversible actualization
+RA-ONT-001,RA-ONT-003,proof_dependency,claim,claim,Finite causal graph ontology,Structured potentia / adjacent possible
+RA-ONT-001,RA-ONT-004,proof_dependency,claim,claim,Finite causal graph ontology,Finitary Actuality
+RA-ONT-002,RA-LLC-001,proof_dependency,claim,claim,Irreversible actualization,Local Ledger Condition
+RA-ONT-003,RA-KERNEL-001,proof_dependency,claim,claim,Structured potentia / adjacent possible,Four-dimensional BDG acceptance kernel
+RA-KERNEL-001,RA-KERNEL-002,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Kernel locality
+RA-ONT-001,RA-KERNEL-002,proof_dependency,claim,claim,Finite causal graph ontology,Kernel locality
+RA-ONT-004,RA-KERNEL-003,proof_dependency,claim,claim,Finitary Actuality,Finite potentia
+RA-ONT-003,RA-KERNEL-003,proof_dependency,claim,claim,Structured potentia / adjacent possible,Finite potentia
+RA-KERNEL-001,RA-KERNEL-003,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Finite potentia
+RA-ONT-003,RA-KERNEL-004,proof_dependency,claim,issue,Structured potentia / adjacent possible,Stochastic actualization kernel requirement
+RA-KERNEL-003,RA-KERNEL-004,proof_dependency,claim,issue,Finite potentia,Stochastic actualization kernel requirement
+RA-KERNEL-004,RA-KERNEL-005,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Discrete covariance target
+RA-KERNEL-002,RA-KERNEL-005,proof_dependency,claim,issue,Kernel locality,Discrete covariance target
+RA-KERNEL-001,RA-ARITH-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,BDG coefficient arithmetic spine
+RA-ARITH-001,RA-ARITH-002,proof_dependency,claim,claim,BDG coefficient arithmetic spine,Second-order cancellation pattern
+RA-KERNEL-001,RA-D4-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,D4U02 selectivity ceiling
+RA-ARITH-001,RA-D4-001,proof_dependency,claim,claim,BDG coefficient arithmetic spine,D4U02 selectivity ceiling
+RA-D4-001,RA-D4-002,proof_dependency,claim,claim,D4U02 selectivity ceiling,D4U02 modular barrier
+RA-ARITH-002,RA-D4-002,proof_dependency,claim,claim,Second-order cancellation pattern,D4U02 modular barrier
+RA-ARITH-001,RA-ARITH-003,proof_dependency,claim,claim,BDG coefficient arithmetic spine,Koide ratio identity
+RA-ARITH-001,RA-ARITH-004,proof_dependency,claim,claim,BDG coefficient arithmetic spine,Dimensionless strong-interaction scale
+RA-D4-001,RA-ARITH-005,proof_dependency,claim,claim,D4U02 selectivity ceiling,Internal density scale from selectivity
+RA-GRAV-001,RA-ARITH-005,proof_dependency,claim,claim,Kernel–Poisson divergence identity,Internal density scale from selectivity
+RA-ARITH-001,RA-ARITH-006,proof_dependency,claim,claim,BDG coefficient arithmetic spine,BDG path-weight ratio
+RA-MOTIF-002,RA-ARITH-006,proof_dependency,claim,claim,Stable motif census,BDG path-weight ratio
+RA-KERNEL-001,RA-MOTIF-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Native motif sector definition
+RA-LLC-001,RA-MOTIF-001,proof_dependency,claim,claim,Local Ledger Condition,Native motif sector definition
+RA-MOTIF-001,RA-MOTIF-002,proof_dependency,claim,claim,Native motif sector definition,Stable motif census
+RA-D4-001,RA-MOTIF-002,proof_dependency,claim,claim,D4U02 selectivity ceiling,Stable motif census
+RA-MOTIF-002,RA-MOTIF-003,proof_dependency,claim,claim,Stable motif census,Minimal closure windows
+RA-MOTIF-003,RA-MOTIF-004,proof_dependency,claim,claim,Minimal closure windows,Extension census
+RA-LLC-001,RA-MOTIF-005,proof_dependency,claim,claim,Local Ledger Condition,Depth-2 ledger/orientation structure
+RA-MOTIF-002,RA-MOTIF-005,proof_dependency,claim,claim,Stable motif census,Depth-2 ledger/orientation structure
+RA-MOTIF-005,RA-MOTIF-006,proof_dependency,claim,claim,Depth-2 ledger/orientation structure,Signed three-direction charge spectrum
+RA-MOTIF-003,RA-MOTIF-007,proof_dependency,claim,claim,Minimal closure windows,Confinement as finite renewal
+RA-MOTIF-004,RA-MOTIF-007,proof_dependency,claim,claim,Extension census,Confinement as finite renewal
+RA-MOTIF-002,RA-OPEN-001,proof_dependency,claim,issue,Stable motif census,Full motif-to-spectrum cartography
+RA-MOTIF-003,RA-OPEN-001,proof_dependency,claim,issue,Minimal closure windows,Full motif-to-spectrum cartography
+RA-MOTIF-005,RA-OPEN-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Full motif-to-spectrum cartography
+RA-MOTIF-007,RA-OPEN-002,proof_dependency,claim,issue,Confinement as finite renewal,Scattering and decay predictions
+RA-KERNEL-004,RA-OPEN-002,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Scattering and decay predictions
+RA-KERNEL-001,RA-GRAV-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Kernel–Poisson divergence identity
+RA-GRAV-001,RA-GRAV-002,proof_dependency,claim,claim,Kernel–Poisson divergence identity,Asymptotic kernel saturation
+RA-D4-001,RA-GRAV-002,proof_dependency,claim,claim,D4U02 selectivity ceiling,Asymptotic kernel saturation
+RA-GRAV-002,RA-GRAV-003,proof_dependency,claim,claim,Asymptotic kernel saturation,Causal severance
+RA-ONT-004,RA-GRAV-003,proof_dependency,claim,claim,Finitary Actuality,Causal severance
+RA-GRAV-003,RA-GRAV-004,proof_dependency,claim,claim,Causal severance,Severed-link entropy observable
+RA-ONT-004,RA-GRAV-004,proof_dependency,claim,claim,Finitary Actuality,Severed-link entropy observable
+RA-GRAV-004,RA-GRAV-005,proof_dependency,claim,claim,Severed-link entropy observable,Discrete boundary law
+RA-LLC-001,RA-GRAV-006,proof_dependency,claim,claim,Local Ledger Condition,Joint BDG/LLC macro-kernel dimension
+RA-KERNEL-001,RA-GRAV-006,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Joint BDG/LLC macro-kernel dimension
+RA-KERNEL-001,RA-GRAV-007,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Antichain drift local statistic
+RA-GRAV-001,RA-GRAV-007,proof_dependency,claim,claim,Kernel–Poisson divergence identity,Antichain drift local statistic
+RA-GRAV-006,RA-OPEN-003,proof_dependency,claim,issue,Joint BDG/LLC macro-kernel dimension,Coefficient-level orbital/lensing source law
+RA-GRAV-007,RA-OPEN-003,proof_dependency,claim,issue,Antichain drift local statistic,Coefficient-level orbital/lensing source law
+RA-GRAV-007,RA-OPEN-004,proof_dependency,claim,issue,Antichain drift local statistic,Environment-sensitive expansion law
+RA-GRAV-003,RA-OPEN-005,proof_dependency,claim,issue,Causal severance,Low-l CMB / Axis-of-Evil severance inheritance
+RA-ONT-001,RA-COMP-001,proof_dependency,claim,claim,Finite causal graph ontology,Tier hierarchy
+RA-LLC-001,RA-COMP-001,proof_dependency,claim,claim,Local Ledger Condition,Tier hierarchy
+RA-COMP-001,RA-COMP-002,proof_dependency,claim,claim,Tier hierarchy,Recursive closure
+RA-KERNEL-002,RA-COMP-002,proof_dependency,claim,claim,Kernel locality,Recursive closure
+RA-COMP-002,RA-COMP-003,proof_dependency,claim,claim,Recursive closure,Causal Firewall conditions
+RA-COMP-001,RA-COMP-004,proof_dependency,claim,claim,Tier hierarchy,RA assembly depth
+RA-COMP-004,RA-COMP-005,proof_dependency,claim,claim,RA assembly depth,Glycolysis assembly depth estimate
+RA-COMP-004,RA-COMP-006,proof_dependency,claim,claim,RA assembly depth,E. coli assembly depth estimate
+RA-COMP-003,RA-COMP-007,proof_dependency,claim,claim,Causal Firewall conditions,Origin-of-life sandwich bound
+RA-COMP-004,RA-COMP-007,proof_dependency,claim,claim,RA assembly depth,Origin-of-life sandwich bound
+RA-COMP-003,RA-COMP-008,proof_dependency,claim,claim,Causal Firewall conditions,Substrate-independent biosignature criteria
+RA-COMP-003,RA-OPEN-006,proof_dependency,claim,issue,Causal Firewall conditions,Causal shield theorem
+RA-COMP-003,RA-OPEN-007,proof_dependency,claim,issue,Causal Firewall conditions,Persistence-window formula
+RA-COMP-007,RA-OPEN-007,proof_dependency,claim,issue,Origin-of-life sandwich bound,Persistence-window formula
+RA-COMP-002,RA-OPEN-008,proof_dependency,claim,issue,Recursive closure,Consciousness threshold problem
+RA-COMP-003,RA-OPEN-008,proof_dependency,claim,issue,Causal Firewall conditions,Consciousness threshold problem
+RA-COMP-004,RA-OPEN-008,proof_dependency,claim,issue,RA assembly depth,Consciousness threshold problem
+RA-KERNEL-004,RA-OPEN-009,proof_dependency,issue,issue,Stochastic actualization kernel requirement,RA-native frequency law
+RA-KERNEL-005,RA-OPEN-009,proof_dependency,issue,issue,Discrete covariance target,RA-native frequency law
+RA-MOTIF-005,RA-MOTIF-008,proof_dependency,claim,claim,Depth-2 ledger/orientation structure,Orientation/chirality theorem family
+RA-LLC-001,RA-MOTIF-008,proof_dependency,claim,claim,Local Ledger Condition,Orientation/chirality theorem family
+RA-MOTIF-002,RA-MOTIF-009,proof_dependency,claim,issue,Stable motif census,Type IV exact-zero motif target
+RA-MOTIF-005,RA-MOTIF-009,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Type IV exact-zero motif target
+RA-ARITH-001,RA-PRED-001,proof_dependency,claim,target,BDG coefficient arithmetic spine,Fine-structure inverse target
+RA-MOTIF-006,RA-PRED-001,proof_dependency,claim,target,Signed three-direction charge spectrum,Fine-structure inverse target
+RA-MOTIF-003,RA-PRED-002,proof_dependency,claim,target,Minimal closure windows,Proton mass scale target
+RA-ARITH-003,RA-PRED-002,proof_dependency,claim,target,Koide ratio identity,Proton mass scale target
+RA-ARITH-005,RA-PRED-002,proof_dependency,claim,target,Internal density scale from selectivity,Proton mass scale target
+RA-MOTIF-009,RA-PRED-003,proof_dependency,issue,target,Type IV exact-zero motif target,Higgs-scale / scalar benchmark target
+RA-ARITH-001,RA-PRED-003,proof_dependency,claim,target,BDG coefficient arithmetic spine,Higgs-scale / scalar benchmark target
+RA-ARITH-006,RA-PRED-004,proof_dependency,claim,target,BDG path-weight ratio,f0 path-weight comparison target
+RA-ARITH-004,RA-PRED-004,proof_dependency,claim,target,Dimensionless strong-interaction scale,f0 path-weight comparison target
+RA-OPEN-004,RA-PRED-005,proof_dependency,issue,target,Environment-sensitive expansion law,Local Hubble/environment target
+RA-GRAV-007,RA-PRED-005,proof_dependency,claim,target,Antichain drift local statistic,Local Hubble/environment target
+RA-OPEN-003,RA-PRED-006,proof_dependency,issue,target,Coefficient-level orbital/lensing source law,Rotation-curve / lensing source-law target
+RA-GRAV-006,RA-PRED-006,proof_dependency,claim,target,Joint BDG/LLC macro-kernel dimension,Rotation-curve / lensing source-law target
+RA-GRAV-007,RA-PRED-006,proof_dependency,claim,target,Antichain drift local statistic,Rotation-curve / lensing source-law target
+RA-OPEN-005,RA-PRED-007,proof_dependency,issue,target,Low-l CMB / Axis-of-Evil severance inheritance,Axis-of-Evil / low-l alignment target
+RA-GRAV-003,RA-PRED-007,proof_dependency,claim,target,Causal severance,Axis-of-Evil / low-l alignment target

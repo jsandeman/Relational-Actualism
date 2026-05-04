@@ -1,0 +1,137 @@
+--- a/RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026.tex
++++ b/RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026_rakb_ids.tex
+@@ -1,3 +1,5 @@
++% RAKB-ID annotated source generated 2026-04-28 from Stage D comment plan.
++% RAKB-ID mode: non-rendering TeX comments only; mathematical/prose content unchanged.
+ \documentclass[11pt]{article}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{mathptmx}
+@@ -169,6 +171,7 @@
+ The central claim of this paper is therefore not that RA already possesses a finished theory of biology or mind. It does not. The claim is that RA already yields a coherent \emph{structural programme} for these domains, and that this programme is scientifically interesting precisely because it is not a disguised restatement of existing theories. Where RA appears genuinely strong --- recursive closure, finite assembly depth, the causal firewall, substrate-independent biosignature criteria, and sharp exclusions such as simple panpsychism --- the paper says so. Where RA is still open --- shield theorems, persistence-window calculations, biochemical computation, and any sufficient account of phenomenal consciousness --- the paper says that too, together with the most plausible native route forward.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-COMP-001;RA-COMP-002
+ \section{From Causal Set Theory to a Complexity Programme}
+ %% ═══════════════════════════════════════════════════════════
+ 
+@@ -216,6 +219,7 @@
+ \paragraph{Open target.} A theorem-level criterion for which coarse-grainings remain faithful across all relevant biological scales is still missing. The present paper supplies the architecture, not the final classification theorem.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-COMP-002;RA-COMP-003;RA-COMP-008
+ \section{Recursive Closure and the Causal Firewall}
+ \label{sec:firewall}
+ %% ═══════════════════════════════════════════════════════════
+@@ -240,6 +244,7 @@
+ 
+ The Causal Firewall is therefore not a decorative metaphor. It names the onset of persistent recursive organization within the realized graph. It also clarifies the relation between Papers~III and IV. In Paper~III, severance marks the loss of causal contact through finite partition. In the present paper, the relevant regime is the opposite one: not total partition, but a maintained semi-open boundary whose overwrite burden remains bounded. Life-like organization lives near that edge.
+ 
++% RAKB: RA-OPEN-006;RA-COMP-003
+ \subsection{Causal shields and boundary turnover}
+ \label{sec:shields}
+ 
+@@ -256,6 +261,7 @@
+ \paragraph{Open target.} The decisive missing step is a strong shield theorem linking graph-cut structure, coarse-graining, and explicit turnover bounds. That is the main route from architecture to predictive control.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-OPEN-007;RA-COMP-003
+ \section{Persistence Windows and Environmental Overwrite}
+ \label{sec:persistence}
+ %% ═══════════════════════════════════════════════════════════
+@@ -273,6 +279,7 @@
+ \paragraph{Open target.} A closed native formula for the persistence window is one of the highest-value unfinished problems in the entire RA life programme. Solving it would connect the present architecture to real biochemical viability calculations.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-COMP-004
+ \section{Finite Assembly Depth and Reaction-Network Coarse-Graining}
+ \label{sec:assembly}
+ %% ═══════════════════════════════════════════════════════════
+@@ -283,6 +290,7 @@
+ 
+ This is one of the clearest places where RA deliberately follows a similar empirical path by a different mathematical route. Existing approaches such as Assembly Theory ask for a shortest construction history; RA asks for the minimum number of closure-bearing causal layers. The overlap is real, but the objects being counted are not the same.
+ 
++% RAKB: RA-COMP-005
+ \subsection{A minimal closure-bearing example: glycolysis}
+ 
+ The glycolysis pathway consists of ten canonical enzymatic steps. Under a causal-irreducibility coarse-graining --- grouping reaction segments whose products are used only by the next local stage --- the pathway collapses to a small number of closure-bearing layers. A conservative partition gives
+@@ -291,6 +299,7 @@
+ \]
+ placing glycolysis just above the minimal feedback-bearing regime expected for persistent recursive organization. This does not make glycolysis a living system by itself. It makes it a natural lower-scale example of a closure-supporting subnetwork.
+ 
++% RAKB: RA-COMP-006
+ \subsection{The \emph{E.~coli} worked example}
+ \label{sec:ecoli}
+ 
+@@ -302,6 +311,7 @@
+ 
+ This estimate should be read correctly. It is not a mystical number; it is a statement about the depth of closure-bearing organization after aggressive causal coarse-graining. It helps explain why modern cells sit comfortably above plausible origin-of-life minima without requiring that every molecular event be tracked individually.
+ 
++% RAKB: RA-COMP-DFT-F1-001;RA-OPEN-007
+ \subsection{Prebiotic chemistries as an open computational target}
+ 
+ Earlier versions of this paper treated small-molecule DFT work and legacy supplemental computations as if they already supplied active support for firewall conditions. Under the present doctrine that is no longer acceptable. The right claim is simpler and stronger in its honesty: direct native computation of assembly depth and boundary re-inscription for prebiotic chemistries is an \emph{open computational target}.
+@@ -313,12 +323,14 @@
+ \paragraph{Open target.} The decisive next step is direct computation of $\tilde{A}_{\mathrm{RA}}$ and persistence-window surrogates for plausible prebiotic networks. Until that exists, the prebiotic programme remains architectural rather than fully predictive.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-COMP-007;RA-COMP-008
+ \section{Origin-of-Life Constraints and Biosignature Criteria}
+ \label{sec:origin}
+ %% ═══════════════════════════════════════════════════════════
+ 
+ RA does not at present choose among RNA-world, metabolism-first, lipid-world, mineral-template, or hybrid origin-of-life scenarios. What it offers instead is a substrate-agnostic structural filter through which any such scenario must pass.
+ 
++% RAKB: RA-COMP-007
+ \subsection{The origin-of-life sandwich bound}
+ \label{sec:sandwich}
+ 
+@@ -332,6 +344,7 @@
+ 
+ \paragraph{Compare and contrast.} Standard origin-of-life models typically focus on substrate, catalyst, compartment, or energy source. RA does not replace those questions; it constrains them. Any successful scenario must still build a network that lies inside the sandwich bound. That makes the RA condition complementary to chemical hypotheses rather than a rival chemistry.
+ 
++% RAKB: RA-COMP-008
+ \subsection{Biosignature criteria and SETI predictions}
+ \label{sec:seti}
+ 
+@@ -349,12 +362,14 @@
+ \paragraph{Falsifiable prediction.} Search strategies weighted by boundary maintenance and persistence windows should outperform strategies weighted only by classical habitable-zone geometry when the target is durable organized complexity rather than liquid water alone.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-OPEN-008;RA-COMP-002
+ \section{Perception, Agency, and Consciousness: Structural Constraints}
+ \label{sec:consciousness}
+ %% ═══════════════════════════════════════════════════════════
+ 
+ \textbf{Epistemic flag.} This is the most exploratory section of the most exploratory paper in the suite. RA does not here claim a theorem-level solution to consciousness. What follows is a structural framework: necessary conditions, exclusions, permissions, and explicit open problems.
+ 
++% RAKB: RA-OPEN-008;RA-COMP-002
+ \subsection{Perception as actualization anchoring}
+ 
+ A perceiving system does not merely encode information abstractly; it writes sensory interaction into a local actualization history. On this picture, a percept is not a mysterious extra ingredient added after physics is finished. It is the structured actualization pattern produced when a Tier-4 organization anchors environmental interaction into its own causal graph.
+@@ -363,22 +378,26 @@
+ 
+ \paragraph{Open target.} Derive stable frequency laws for repeated perception-like interactions directly from the acceptance kernel and realized history structure.
+ 
++% RAKB: RA-OPEN-008;RA-COMP-002
+ \subsection{Agency as recursive causal closure}
+ 
+ An agent, in the present structural sense, is a Tier-4 organization whose future admissible states depend substantially on its own internally regenerated boundary conditions. Agency is therefore a matter of recursive closure and controlled re-inscription, not a primitive metaphysical add-on.
+ 
+ \paragraph{Compare and contrast.} Control theory, cybernetics, and optimization-based accounts of agency often treat agency as policy selection or regulation under constraints. RA does not reject those descriptions as higher-level summaries. It asks what physical organization must already be present for such summaries to apply at all. On the RA view, agency presupposes recursive closure; it is not reducible to mere responsiveness.
+ 
++% RAKB: RA-OPEN-008;RA-COMP-002
+ \subsection{What RA excludes: simple panpsychism}
+ 
+ RA's architecture excludes the idea that every simple physical system already possesses consciousness merely by existing. A single event or a tiny non-recursive cluster does not satisfy the firewall conditions and does not maintain its own boundary conditions across multiple causal layers.
+ 
+ \paragraph{Compare and contrast.} This exclusion puts RA at odds with constitutive panpsychism and with views that attribute phenomenally relevant structure to minimal physical units. It also differs from some readings of IIT \cite{Tononi2016}, because RA does not treat minimal integrated structure as sufficient. Recursive closure at multiple layers is the stricter condition.
+ 
++% RAKB: RA-OPEN-008;RA-COMP-002
+ \subsection{What RA permits: artificial consciousness}
+ 
+ Because firewall conditions are organizational rather than substrate-specific, RA permits the possibility that an artificial system could satisfy the relevant structural requirements. The theory does \emph{not} say that present artificial systems do. It says only that biology is not sacred at the level of principle if the required closure architecture can be realized elsewhere.
+ 
++% RAKB: RA-OPEN-008;RA-COMP-002
+ \subsection{The open threshold problem}
+ 
+ \begin{conjecture}[Depth threshold as a necessary condition]

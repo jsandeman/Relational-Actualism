@@ -1,0 +1,3 @@
+artifact_id,path,type,role,status,notes
+ART-SEL-LEAN-RA_GraphOrientationClosure_v1,src/RA_AQFT/RA_GraphOrientationClosure_v1.lean,lean,formal_source,lean_env_compile_confirmed_no_sorry_no_admit_no_axiom,Compile confirmed locally by user; compatible D1 evidence surface used to avoid D1 namespace conflict.
+ART-SEL-REPORT-GraphOrientationClosureCompileConfirmed,docs/RA_KB/reports/RA_GraphOrientationClosure_CompileConfirmed_Report_Apr29_2026.md,markdown,audit_report,report_generated,Compile-confirmation report.

@@ -1,0 +1,92 @@
+--- /mnt/data/RAGrowSim_Run2_Methodology_Apr28_2026/scripts/run_analysis_v3_conditional_poisson.jl	2026-04-28 23:48:12.129040799 +0000
++++ /mnt/data/RAGrowSim_Run2_Patched_Apr28_2026/scripts/run_analysis_v3_conditional_poisson_no_specfun.jl	2026-04-28 23:48:58.461670721 +0000
+@@ -1,8 +1,10 @@
+ #!/usr/bin/env julia
+ # Multi-seed BDG growth analysis with accepted-conditional Poisson baselines.
+ #
++# Dependency-free version: does not require SpecialFunctions/loggamma.
++#
+ # Usage from RAGrowSim root:
+-#   julia --project=. scripts/run_analysis_v3_conditional_poisson.jl [target_extra_n] [n_seeds] [outdir]
++#   julia --project=. scripts/run_analysis_v3_conditional_poisson_no_specfun.jl [target_extra_n] [n_seeds] [outdir]
+ #
+ # This version fixes the most important comparison issue:
+ # realized simulator vertices have passed S>0, so the corresponding
+@@ -31,11 +33,20 @@
+ fact(k::Int) = k <= 1 ? 1.0 : prod(1.0:k)
+ poisson_means(mu::Float64) = (mu, mu^2/2, mu^3/6, mu^4/24)
+ 
+-function poisson_pmf(n::Int, lambda::Float64)
+-    if lambda == 0
+-        return n == 0 ? 1.0 : 0.0
++function poisson_pmf_vector(lambda::Float64, maxn::Int)
++    # Returns p[n+1] = P(Pois(lambda)=n), n=0:maxn.
++    # Recurrence avoids SpecialFunctions/loggamma and is stable for the
++    # diagnostic μ ranges used here.
++    p = zeros(Float64, maxn + 1)
++    if lambda == 0.0
++        p[1] = 1.0
++        return p
++    end
++    p[1] = exp(-lambda)
++    for n in 1:maxn
++        p[n+1] = p[n] * lambda / n
+     end
+-    return exp(-lambda + n * log(lambda) - loggamma(n + 1))
++    return p
+ end
+ 
+ function trunc_max(lambda::Float64)
+@@ -46,18 +57,21 @@
+ function conditional_poisson_stats(mu::Float64)
+     lambdas = poisson_means(mu)
+     maxs = ntuple(i -> trunc_max(lambdas[i]), 4)
++    pmfs = ntuple(i -> poisson_pmf_vector(lambdas[i], maxs[i]), 4)
++
+     total_mass = 0.0
+     acc_mass = 0.0
+     sN = [0.0, 0.0, 0.0, 0.0]
+     sS = 0.0
++
+     for n1 in 0:maxs[1]
+-        p1 = poisson_pmf(n1, lambdas[1])
++        p1 = pmfs[1][n1+1]
+         for n2 in 0:maxs[2]
+-            p12 = p1 * poisson_pmf(n2, lambdas[2])
++            p12 = p1 * pmfs[2][n2+1]
+             for n3 in 0:maxs[3]
+-                p123 = p12 * poisson_pmf(n3, lambdas[3])
++                p123 = p12 * pmfs[3][n3+1]
+                 for n4 in 0:maxs[4]
+-                    p = p123 * poisson_pmf(n4, lambdas[4])
++                    p = p123 * pmfs[4][n4+1]
+                     total_mass += p
+                     N = (n1,n2,n3,n4)
+                     S = bdgscore(N)
+@@ -70,7 +84,7 @@
+             end
+         end
+     end
+-    if acc_mass == 0
++    if acc_mass == 0.0
+         return (p_acc=0.0, included_mass=total_mass, mean_N=(NaN,NaN,NaN,NaN), mean_S=NaN)
+     end
+     return (
+@@ -109,6 +123,8 @@
+ records = NamedTuple[]
+ println("BDG growth simulator — accepted-conditional Poisson comparison")
+ println("=" ^ 78)
++println("target_extra_n = $target_extra_n, n_seeds = $n_seeds")
++println("ledger rule: Neutral; Poisson baseline is conditioned on S>0")
+ 
+ for (seed_name, make_seed) in seeds
+     for run_seed in 1:n_seeds
+@@ -153,7 +169,7 @@
+             simN = (mean([r.N1 for r in bin]), mean([r.N2 for r in bin]), mean([r.N3 for r in bin]), mean([r.N4 for r in bin]))
+             simS = mean([r.S for r in bin])
+             rawN = poisson_means(mean_mu)
+-            rawS = bdgscore((0,0,0,0)) - rawN[1] + 9*rawN[2] - 16*rawN[3] + 8*rawN[4]
++            rawS = 1 - rawN[1] + 9*rawN[2] - 16*rawN[3] + 8*rawN[4]
+             cond = conditional_poisson_stats(mean_mu)
+             cN = cond.mean_N
+             @printf(io, "%s,%.10f,%.10f,%d,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f,%.10f\n",

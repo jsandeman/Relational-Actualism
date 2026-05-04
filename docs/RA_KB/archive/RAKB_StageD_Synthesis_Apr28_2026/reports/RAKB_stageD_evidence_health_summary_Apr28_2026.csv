@@ -1,0 +1,11 @@
+metric,value,status,interpretation,recommended_action
+validated_core_nodes,39 claims; 12 issues; 7 targets; 3 framing; 2 archived,pass,Core typed registry remains structurally valid after Stage A/B/C integration.,Tag as v0.5.1 once Stage D reports are committed.
+claim_dependency_graph,58 claim edges; 97 all dependency edges,pass,Proof/target dependency graph preserved from v0.5 migration.,Regenerate graph image/metrics after release if desired.
+artifact_layer,187 artifacts,pass,Lean and Python evidence layers are integrated.,Keep artifacts generated from repo-relative paths and checksums in next pass.
+claim_artifact_edges,180 edges,pass_with_caveats,"Substantial source support is now explicit, but relation types range from formal proof to candidate support.",Do not flatten relation types into generic support.
+source_text_references_expected_post_stageC,245,pass,Stage C source-text crosswalk expands paper projection layer; validator does not count this table.,Commit source_text_references.csv after confirming upsert application.
+restoration_candidates_expected_post_stageC,25,pass,Candidate backlog now captures over-pruned and correctly demoted April results.,Review candidate lanes before promotion.
+lean_build,Build completed successfully: 8284 jobs; no sorry/admit; one interface axiom; one unused-variable warning,pass_with_minor_warning,Formal layer is strong enough for v0.5.1 release with caveats.,Promote D2 status and silence hN2 warning.
+python_audit,58 Python sources; 57/58 parse; partial smoke tests,pass_with_reproducibility_debt,"Python layer is source-audited, not fully reproduced end-to-end.",Work through hardening queue before promoting candidate computations.
+paper_crosswalk,113 sections scanned; 83 mapped; 0 explicit RA-* IDs in TeX,pass_with_determinism_gap,"Paper audit succeeded, but future repeatability requires machine-readable RAKB IDs in TeX comments.",Add `% RAKB:` comments using generated insertion plan.
+release_blockers,0 structural blockers,release_ready_with_caveats,No blocker prevents a v0.5.1 KB release.,Commit reports/upserts and label caveats explicitly.

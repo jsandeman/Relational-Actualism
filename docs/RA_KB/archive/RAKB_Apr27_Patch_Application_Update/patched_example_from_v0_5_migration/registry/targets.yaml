@@ -1,0 +1,216 @@
+registry_version: 0.5.0-migration-draft
+migration_source: RA_results_master_v0_4_5.yaml
+generated_from_zip: RAKB.zip
+generated_on: '2026-04-27'
+note: Typed split of the v0.4.5 monolithic registry. Scientific content is not independently
+  reverified here because source corpus files were not bundled in the ZIP.
+schema_note: Empirical-facing prediction and benchmark targets. These are not treated
+  as ordinary proof nodes.
+targets:
+- id: RA-PRED-001
+  name: Fine-structure inverse target
+  domain: prediction
+  papers:
+  - II
+  statement: Derive an RA-native dimensionless electromagnetic interaction observable
+    numerically matching alpha_EM^{-1}≈137.036.
+  nature_targets:
+  - measured electromagnetic interaction strength
+  ra_observable: RA electromagnetic interaction-strength observable from discrete
+    arithmetic/motif structure
+  sources:
+  - IC30/Dyson script not yet audited in v0.4
+  proof_dependencies:
+  - RA-ARITH-001
+  - RA-MOTIF-006
+  framing_links:
+  - RA-NONTARGET-002
+  restoration_preconditions: []
+  caveats: Do not treat alpha_EM as a QED running-coupling construct; target is the
+    measured dimensionless interaction strength.
+  next_tasks:
+  - Locate and audit IC30/fine-structure script; identify native inputs.
+  legacy_proof_status: ONT
+  legacy_support_status: PI
+  target_type: quantitative_prediction_target
+  target_status: open
+  auxiliary_support_status: provisional_interpretation
+- id: RA-PRED-002
+  name: Proton mass scale target
+  domain: prediction
+  papers:
+  - II
+  statement: Derive the proton-scale rest mass from RA closure and arithmetic structure,
+    including the 2^28 cascade if retained.
+  nature_targets:
+  - measured proton rest mass
+  ra_observable: RA bound-motif mass-scale observable
+  sources:
+  - proton cascade script/MD TBD
+  proof_dependencies:
+  - RA-MOTIF-003
+  - RA-ARITH-003
+  - RA-ARITH-005
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Current formulations may import alpha_obs; needs fully native chain.
+  next_tasks:
+  - Audit proton cascade scripts and separate native inputs from measured calibration.
+  legacy_proof_status: ONT
+  legacy_support_status: PI
+  target_type: quantitative_prediction_target
+  target_status: open
+  auxiliary_support_status: provisional_interpretation
+- id: RA-PRED-003
+  name: Higgs-scale / scalar benchmark target
+  domain: prediction
+  papers:
+  - II
+  statement: Derive a scalar-stabilization mass scale corresponding to the measured
+    125 GeV-scale bosonic resonance if RA contains the relevant motif observable.
+  nature_targets:
+  - measured scalar-like resonance mass near 125 GeV
+  ra_observable: RA scalar stabilization motif scale
+  sources:
+  - source TBD
+  proof_dependencies:
+  - RA-MOTIF-009
+  - RA-ARITH-001
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Do not frame as deriving the Standard Model Higgs field; target is the
+    measured resonance/scale.
+  next_tasks:
+  - Locate supporting derivation or demote/archive.
+  legacy_proof_status: ONT
+  legacy_support_status: PI
+  target_type: quantitative_prediction_target
+  target_status: open
+  auxiliary_support_status: provisional_interpretation
+- id: RA-PRED-004
+  name: f0 path-weight comparison target
+  domain: prediction
+  papers:
+  - II
+  - III
+  statement: Compare the RA path-weight ratio 17.32 combined with external interaction-strength
+    summaries to f0≈5.42; native part is the 17.32 ratio.
+  nature_targets:
+  - cosmological matter-ratio / baryon-fraction-like regularity
+  ra_observable: BDG path-weight ratio
+  sources:
+  - f0_enumeration.py
+  - qcd_running_proof.py
+  proof_dependencies:
+  - RA-ARITH-006
+  - RA-ARITH-004
+  framing_links:
+  - RA-NONTARGET-002
+  restoration_preconditions: []
+  caveats: The qcd_running step is comparative cartography, not native proof.
+  next_tasks:
+  - Derive f0-like observable directly from RA path weights and measured Nature quantities
+    without QCD-running ontology.
+  source_status:
+    f0_enumeration.py: uploaded_verified
+    qcd_running_proof.py: uploaded_unverified_exploratory
+  legacy_proof_status: DR
+  legacy_support_status: CC
+  target_type: comparative_benchmark
+  target_status: derived_component_with_open_empirical_mapping
+  auxiliary_support_status: comparative_cartography
+- id: RA-PRED-005
+  name: Local Hubble/environment target
+  domain: prediction
+  papers:
+  - III
+  statement: Derive environment-sensitive Hubble / void observables such as H_local
+    and H_Eridanus from finite graph source history.
+  nature_targets:
+  - local expansion measurements
+  - void/environment Hubble variation
+  ra_observable: environment-sensitive realized-graph expansion estimator
+  sources:
+  - ra_dark_energy.py
+  - ra_desi_verify.py
+  - ra_calibration.py
+  proof_dependencies:
+  - RA-OPEN-004
+  - RA-GRAV-007
+  framing_links:
+  - RA-NONTARGET-003
+  restoration_preconditions: []
+  caveats: Current scripts are exploratory phenomenology and need native source-law
+    closure.
+  next_tasks:
+  - Audit cosmology scripts and define RA-native expansion estimator.
+  source_status:
+    ra_dark_energy.py: uploaded_unverified_exploratory
+    ra_desi_verify.py: uploaded_unverified_exploratory
+    ra_calibration.py: uploaded_unverified_exploratory
+  legacy_proof_status: ONT
+  legacy_support_status: PI
+  target_type: phenomenological_target
+  target_status: open
+  auxiliary_support_status: provisional_interpretation
+- id: RA-PRED-006
+  name: Rotation-curve / lensing source-law target
+  domain: prediction
+  papers:
+  - III
+  statement: Derive galaxy rotation and lensing observables from sparse-regime topology
+    and inherited source history.
+  nature_targets:
+  - galaxy rotation curves
+  - cluster lensing maps
+  ra_observable: sparse-regime graph response/source-history estimator
+  sources:
+  - ra_flat_rotation_curve.py
+  - bullet_cluster.py
+  proof_dependencies:
+  - RA-OPEN-003
+  - RA-GRAV-006
+  - RA-GRAV-007
+  framing_links:
+  - RA-NONTARGET-003
+  restoration_preconditions: []
+  caveats: Needs coefficient-level native source law.
+  next_tasks:
+  - Separate toy fits from native source-law derivation.
+  source_status:
+    ra_flat_rotation_curve.py: uploaded_unverified_exploratory
+    bullet_cluster.py: uploaded_unverified_exploratory
+  legacy_proof_status: ONT
+  legacy_support_status: PI
+  target_type: phenomenological_target
+  target_status: open
+  auxiliary_support_status: provisional_interpretation
+- id: RA-PRED-007
+  name: Axis-of-Evil / low-l alignment target
+  domain: prediction
+  papers:
+  - III
+  statement: Explain low-l CMB alignment patterns from inherited finite severance-boundary
+    data.
+  nature_targets:
+  - CMB low-l anomalies
+  - Axis of Evil
+  ra_observable: daughter-graph inherited boundary-orientation observable
+  sources:
+  - daughter_universe.py
+  proof_dependencies:
+  - RA-OPEN-005
+  - RA-GRAV-003
+  framing_links:
+  - RA-NONTARGET-003
+  restoration_preconditions: []
+  caveats: Exploratory; requires native multipole map.
+  next_tasks:
+  - Define RA boundary-orientation observable and map to low-l sky statistics.
+  source_status:
+    daughter_universe.py: uploaded_unverified_exploratory
+  legacy_proof_status: ONT
+  legacy_support_status: PI
+  target_type: phenomenological_target
+  target_status: open
+  auxiliary_support_status: provisional_interpretation

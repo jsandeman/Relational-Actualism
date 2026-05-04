@@ -1,0 +1,2 @@
+claim_id,artifact_id,relation,source_span,verification_status,notes
+RA-PRED-XXX,ART-PY-EXAMPLE,candidate_support,file-level static match,static_audited,Replace candidate_support only after matching output to exact claim statement.

@@ -1,0 +1,649 @@
+.
+├── ~$lational Actualism Claude Logs.docx
+├── ~$screte Math in RA.docx
+├── Discrete Math in RA.docx
+├── RA_Canonical_Papers
+│   ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026.pdf
+│   ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026.tex
+│   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.pdf
+│   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex
+│   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.pdf
+│   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.tex
+│   ├── RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026.pdf
+│   ├── RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026.tex
+│   └── RAKB_TeX_RAKB_IDs_Apr28_2026
+│       ├── diffs
+│       │   ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026_rakb_ids.diff
+│       │   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026_rakb_ids.diff
+│       │   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026_rakb_ids.diff
+│       │   └── RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026_rakb_ids.diff
+│       ├── docs
+│       │   ├── RA_Canonical_Papers_RAKB_IDs
+│       │   │   ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026_rakb_ids.tex
+│       │   │   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026_rakb_ids.tex
+│       │   │   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026_rakb_ids.tex
+│       │   │   ├── RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026_rakb_ids.tex
+│       │   │   └── ra_preamble.sty
+│       │   └── RA_Canonical_Papers_RAKB_IDs_drop_in_replacements
+│       │       ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026.tex
+│       │       ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex
+│       │       ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.tex
+│       │       ├── RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026.tex
+│       │       └── ra_preamble.sty
+│       ├── RAKB_TeX_RAKB_ID_Annotation_Report_Apr28_2026.md
+│       ├── README.md
+│       ├── reports
+│       │   ├── RAKB_stageD_tex_rakb_comment_plan_Apr28_2026.csv
+│       │   ├── RAKB_tex_compile_check_Apr28_2026.csv
+│       │   ├── RAKB_tex_id_file_summary_Apr28_2026.csv
+│       │   ├── RAKB_tex_id_insertion_log_Apr28_2026.csv
+│       │   └── RAKB_tex_id_unmatched_plan_rows_Apr28_2026.csv
+│       └── scripts
+│           ├── generate_rakb_tagged_tex.py
+│           └── insert_rakb_tex_ids.py
+├── ra_docs_tree.txt
+├── RA_History
+│   ├── A Letter About How the Universe Makes Itself.docx
+│   ├── AQFT_CANONICALITY_v1.md
+│   ├── bh_entropy_status.md
+│   ├── D4U02_analytic_proof.md
+│   ├── d4u02_proof_v2.docx
+│   ├── d4u02_proof.docx
+│   ├── DESI_T1_Analysis_Plan_v2.md
+│   ├── DESI_T1_Analysis_Plan.md
+│   ├── Epsilon_Env_Forecast_Memo_v3.md
+│   ├── Epsilon_Env_Forecast_Memo.md
+│   ├── lakefile_aqft_governance_v1.diff
+│   ├── N_eff_Analysis.md
+│   ├── Nature_Does_Not_Calculate.md
+│   ├── paper1_aqft_patch_v1.diff
+│   ├── paper1_aqft_patch_v2.diff
+│   ├── RA_Actualization_Criterion.md
+│   ├── RA_AI_Context
+│   │   ├── Batch1_Audit_Apr8.md
+│   │   ├── RA Post Recovery Report.docx
+│   │   ├── RA_Batch1_Audit_Plan.md
+│   │   ├── RA_Memory_Backup_Apr9.md
+│   │   ├── RA_Recovery_Plan.md
+│   │   ├── RA_Session_Log_Apr8_Addendum2.md
+│   │   ├── RA_Session_Log_Apr8_Evening.md
+│   │   ├── RA_Session_Log_Apr9.md
+│   │   ├── RAKB_Reconciliation.txt
+│   │   └── Relational Actualism Claude Logs.docx
+│   ├── RA_AQFT_bridge_audit_v1.md
+│   ├── RA_AQFT_Casimir_output_v1.txt
+│   ├── RA_AQFT_cluster_inventory_v1.csv
+│   ├── RA_AQFT_file_roles_v1.csv
+│   ├── RA_AQFT_governance_cleanup_v2.md
+│   ├── RA_AQFT_governance_packet_v2.zip
+│   ├── RA_AQFT_patch_validation_v1.md
+│   ├── RA_AQFT_Proofs_v10_cfc_integration_v1.diff
+│   ├── RA_AQFT_Proofs_v10.lean
+│   ├── RA_AQFT_Rindler_output_v1.txt
+│   ├── RA_Area_Law_Proposition.md
+│   ├── RA_Axiom7_AreaLaw.md
+│   ├── RA_Bandwidth_Partition.md
+│   ├── RA_benchmark_docket_v1.md
+│   ├── RA_benchmark_support_matrix_v1.md
+│   ├── RA_benchmark_support_matrix_v3.md
+│   ├── RA_benchmark_support_matrix_v4.md
+│   ├── RA_benchmark_support_matrix_v5.md
+│   ├── RA_Berry_Phase_Native.md
+│   ├── RA_Berry_Phase_Status.md
+│   ├── RA_BH_Entropy_Complete.md
+│   ├── RA_Bimodal_Ontology.md
+│   ├── RA_BMV_Note.pdf
+│   ├── RA_BMV_Note.tex
+│   ├── RA_bridge_support_supplement_v1.csv
+│   ├── RA_bridge_support_supplement_v1.md
+│   ├── RA_Casimir_benchmark_note_v1.md
+│   ├── RA_Casimir_Unruh_bridge_note_v1.md
+│   ├── RA_CFC_Port_Retrospective.md
+│   ├── RA_CFC_Port_v1.diff
+│   ├── RA_CFC_Port.lean
+│   ├── RA_claim_ledger_v1.csv
+│   ├── RA_claim_ledger_v1.md
+│   ├── RA_claim_to_proof_crosswalk_v2.csv
+│   ├── RA_claim_to_proof_crosswalk_v2.md
+│   ├── RA_cluster_audit_memo_v1.md
+│   ├── RA_Complete_Inventory.md
+│   ├── RA_Core_MD_Files.zip
+│   ├── RA_Core_Papers.zip
+│   ├── RA_Cosmological_Nucleation.md
+│   ├── RA_d4_Closure.md
+│   ├── RA_d4_Uniqueness_OverDetermined_v2.md
+│   ├── RA_d4_Uniqueness_OverDetermined.md
+│   ├── RA_dense_regime_precision_closure_v1.md
+│   ├── RA_DESI_Dark_Energy_Note_v3.md
+│   ├── RA_DESI_Dark_Energy_Note.md
+│   ├── RA_domain_recovery_and_benchmark_program_v1.md
+│   ├── RA_File_Inventory.md
+│   ├── RA_final_preprint_suite_Apr23_2026
+│   │   ├── RA_Framing_Discipline_v2_Apr23_2026.md
+│   │   ├── RA_Paper_I_Kernel_Actualization_Engine_v8_Apr2026.tex
+│   │   ├── RA_Paper_II_Matter_Forces_Motifs_v6_Apr23_2026.tex
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Severance_v7_Apr23_2026.tex
+│   │   └── RA_Paper_IV_Complexity_Life_Causal_Firewall_v6_Apr23_2026.tex
+│   ├── RA_final_preprint_suite_Zenodo_titles_abstracts_Apr23_2026
+│   │   ├── RA_Framing_Discipline_v2_Apr23_2026.md
+│   │   ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_1_Apr2026.pdf
+│   │   ├── RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_1_Apr2026.tex
+│   │   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v7_Apr23_2026.pdf
+│   │   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v7_Apr23_2026.tex
+│   │   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v8_Apr23_2026.pdf
+│   │   └── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v8_Apr23_2026.tex
+│   ├── RA_Force_Differentiation.md
+│   ├── RA_Formal_Definitions.md
+│   ├── RA_Four_Artifacts.md
+│   ├── RA_Framing_Discipline_v2_Apr23_2026.md
+│   ├── RA_Framing_Discipline.md
+│   ├── RA_Geometry_of_Potentia.md
+│   ├── RA_GR_Bridge_Audit.md
+│   ├── RA_GS02_Audit.md
+│   ├── RA_IC30_Audit.md
+│   ├── RA_issue_register_v1.csv
+│   ├── RA_issue_register_v1.md
+│   ├── RA_issue_register_v2.csv
+│   ├── RA_issue_register_v2.md
+│   ├── RA_issue_register_v3.csv
+│   ├── RA_issue_register_v3.md
+│   ├── RA_issue_register_v5.md
+│   ├── RA_issue_register_v6.md
+│   ├── RA_lensing_benchmark_output_v1.txt
+│   ├── ra_lensing_benchmarks.py
+│   ├── RA_lensing_bridge_note_v1.md
+│   ├── RA_Master_Dependency_Map.md
+│   ├── RA_Microphysics_Audit_Apr21.md
+│   ├── RA_MutualImplication.md
+│   ├── RA_native_bedrock_packet_v2
+│   │   ├── lakefile_native_draft.lean
+│   │   ├── RA_D1_Aliases_draft.lean
+│   │   ├── RA_D1_Bridge_draft.lean
+│   │   ├── RA_D1_Core_draft.lean
+│   │   ├── RA_D1_Translations_draft.lean
+│   │   ├── RA_native_bedrock_audit_v1.md
+│   │   ├── RA_native_bedrock_declaration_registry_v1.csv
+│   │   ├── RA_native_bedrock_frontier_registry_v1.csv
+│   │   ├── RA_native_rename_docket_v1.md
+│   │   ├── RA_native_root_proposal_v1.md
+│   │   ├── RA_native_split_docket_v1.md
+│   │   ├── RA_native_split_packet_v1.md
+│   │   ├── RA_O14_Translations_draft.lean
+│   │   └── RA_O14_Uniqueness_Core_draft.lean
+│   ├── RA_native_first_packet_v1
+│   │   ├── RA_native_bedrock_internal_split_docket_v2.md
+│   │   ├── RA_native_claim_ledger_v2.csv
+│   │   ├── RA_native_claim_ledger_v2.md
+│   │   ├── RA_native_development_protocol_v2.md
+│   │   ├── RA_native_frontier_stack_v1.md
+│   │   ├── RA_native_leakage_docket_v1.md
+│   │   ├── RA_native_leakage_scan_summary_v2.csv
+│   │   ├── RA_native_lean_file_metrics_v2.csv
+│   │   ├── RA_native_paper_rewrite_docket_v1.csv
+│   │   ├── RA_native_paper_rewrite_docket_v1.md
+│   │   ├── RA_native_theorem_inventory_v2.csv
+│   │   └── RA_native_theorem_inventory_v2.md
+│   ├── RA_native_replacement_packet_v1
+│   │   ├── lakefile_native_strict_v2.lean
+│   │   ├── RA_AmpLocality_Native.lean
+│   │   ├── RA_BaryonChirality_native_audit_v1.md
+│   │   ├── RA_BDG_Coefficient_Arithmetic.lean
+│   │   ├── RA_CausalOrientation_Core_draft.lean
+│   │   ├── RA_CausalOrientation_Core.lean
+│   │   ├── RA_MotifDynamics_Core.lean
+│   │   ├── RA_native_replacement_memo_v1.md
+│   │   ├── RA_native_replacement_registry_v1.csv
+│   │   ├── RA_native_replacement_summary_v1.md
+│   │   ├── RA_native_replacement_work_program_v1.md
+│   │   ├── RA_native_retirement_manifest_v1.csv
+│   │   ├── RA_native_root_strict_v2.md
+│   │   ├── RA_Paper_I_native_rewrite_patch_v1.md
+│   │   └── RA_Paper_II_native_rewrite_patch_v1.md
+│   ├── RA_native_replacement_packet_v2
+│   │   ├── RA_native_active_root_v3.md
+│   │   ├── RA_native_replacement_summary_v2.md
+│   │   ├── RA_native_research_replacement_docket_v1.md
+│   │   ├── RA_native_section_replacement_registry_v1.csv
+│   │   ├── RA_Paper_III_native_rewrite_patch_v1.md
+│   │   └── RA_Paper_IV_native_rewrite_patch_v1.md
+│   ├── RA_native_strict_scaffold_packet_v1
+│   │   ├── lakefile.lean
+│   │   ├── RA_AmpLocality_Native.lean
+│   │   ├── RA_BDG_Coefficient_Arithmetic.lean
+│   │   ├── RA_CausalOrientation_Core.lean
+│   │   ├── RA_D1_Core_draft.lean
+│   │   ├── RA_MotifDynamics_Core.lean
+│   │   ├── RA_O14_Uniqueness_Core_draft.lean
+│   │   └── README.md
+│   ├── RA_Paper_I_AQFT_patch_summary_v1.md
+│   ├── RA_Paper_I_Kernel_and_Engine_native_v3.pdf
+│   ├── RA_Paper_I_Kernel_and_Engine_native_v4.pdf
+│   ├── RA_Paper_I_Kernel_and_Engine_native_v4.tex
+│   ├── RA_Paper_I_Kernel_and_Engine_patched_AQFT_v1.tex
+│   ├── RA_Paper_I_Kernel_and_Engine_patched_AQFT_v2.tex
+│   ├── RA_Paper_I_Kernel_and_Engine.pdf
+│   ├── RA_Paper_I_Kernel_and_Engine.tex
+│   ├── RA_Paper_I_native_v4.diff
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v2.pdf
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v4.pdf
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v4.tex
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs.pdf
+│   ├── RA_Paper_II_Matter_Forces_and_Motifs.tex
+│   ├── RA_Paper_II_native_v4.diff
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity_native_v3.pdf
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity_native_v4.pdf
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity_native_v4.tex
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity.pdf
+│   ├── RA_Paper_III_Gravity_Cosmology_Complexity.tex
+│   ├── RA_Paper_III_native_v4.diff
+│   ├── RA_Paper_III_source_law_patch_v4
+│   │   ├── paper3_dense_benchmarks_subsection_v4.tex
+│   │   ├── paper3_source_law_dictionary_v4.tex
+│   │   ├── paper3_source_law_patch_v4.diff
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Complexity_patched_v4.tex
+│   │   ├── RA_suite_primary_weak_field_source_law_note_v2.md
+│   │   └── README_source_law_patch_v4.md
+│   ├── RA_Paper_III_source_law_patch_v4.zip
+│   ├── RA_Paper_IV_audit_v1.md
+│   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v2.pdf
+│   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall.pdf
+│   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall.tex
+│   ├── RA_Papers_II_IV_Audit_Corrected_Framing_Apr23_2026.md
+│   ├── RA_Particle_Topology_Audit.md
+│   ├── RA_Pion_Kaon_Synthesis.md
+│   ├── ra_preamble.sty
+│   ├── RA_PreRegistration_Predictions.pdf
+│   ├── RA_Programme_State_Apr16.md
+│   ├── RA_restored_tiered_Apr2026
+│   ├── RA_script_rethreading_memo_v1.md
+│   ├── RA_Self_Writing_Universe.md
+│   ├── RA_Session_Log_Apr10-11.md
+│   ├── RA_Session_Log_Apr10.md
+│   ├── RA_Session_Log_Apr11.md
+│   ├── RA_Session_Log_Apr12.md
+│   ├── RA_Session_Log_Apr14_Complete.md
+│   ├── RA_Session_Log_Apr14.md
+│   ├── RA_Session_Log_Apr16.md
+│   ├── RA_Session_Log_Apr17.md
+│   ├── RA_Session_Log_Apr21_Part2.md
+│   ├── RA_Session_Log_Apr9.md
+│   ├── RA_Severance_Entropy_Observable.md
+│   ├── RA_source_law_closure_packet_v1.md
+│   ├── RA_source_law_dictionary_v1.csv
+│   ├── RA_source_law_reference_output_v1.txt
+│   ├── ra_source_law_reference.py
+│   ├── RA_stage10_paper_II_full_rewrite_memo_v1.md
+│   ├── RA_stage11_paper_III_full_rewrite_memo_v1.md
+│   ├── RA_stage12_paper_IV_full_rewrite_packet_v1.zip
+│   ├── RA_stage6_paper_II_IV_native_revision_packet_v1
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v2.tex
+│   │   ├── RA_Paper_II_native_v2.diff
+│   │   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v2.tex
+│   │   ├── RA_Paper_IV_native_v2.diff
+│   │   ├── RA_stage6_active_support_surface_v3.csv
+│   │   └── RA_stage6_paper_II_IV_native_revision_memo_v1.md
+│   ├── RA_stage7_paper_III_native_revision_packet_v1
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Complexity_native_v3.tex
+│   │   ├── RA_Paper_III_native_v3.diff
+│   │   ├── RA_stage7_active_support_surface_v4.csv
+│   │   └── RA_stage7_paper_III_native_revision_memo_v1.md
+│   ├── RA_stage8_paper_I_native_revision_packet_v1
+│   │   ├── RA_Paper_I_Kernel_and_Engine_native_v3.tex
+│   │   ├── RA_Paper_I_native_v3.diff
+│   │   ├── RA_stage8_active_support_surface_v5.csv
+│   │   └── RA_stage8_paper_I_native_revision_memo_v1.md
+│   ├── RA_stage9_paper_I_full_rewrite_memo_v1.md
+│   ├── RA_suite_consistency_packet_v1
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v3.tex
+│   │   ├── RA_Paper_II_native_v3.diff
+│   │   ├── RA_suite_active_support_surface_master_v1.csv
+│   │   ├── RA_suite_consistency_pass_v1.md
+│   │   ├── RA_suite_residual_bridge_scan_v1.csv
+│   │   └── RA_suite_vocabulary_alignment_v1.md
+│   ├── RA_Suite_Editorial_Catalog.md
+│   ├── RA_suite_editorial_doctrine_v2.md
+│   ├── RA_Suite_Overview.pdf
+│   ├── RA_Suite_Overview.tex
+│   ├── RA_suite_patch_packet_v1.md
+│   ├── RA_suite_primary_weak_field_source_law_note_v2.md
+│   ├── RA_suite_publication_packet_v2
+│   │   ├── RA_Paper_I_Kernel_and_Engine_native_v5.pdf
+│   │   ├── RA_Paper_I_Kernel_and_Engine_native_v5.tex
+│   │   ├── RA_Paper_I_native_v5.diff
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v5.pdf
+│   │   ├── RA_Paper_II_Matter_Forces_and_Motifs_native_v5.tex
+│   │   ├── RA_Paper_II_native_v5.diff
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Complexity_native_v5.pdf
+│   │   ├── RA_Paper_III_Gravity_Cosmology_Complexity_native_v5.tex
+│   │   ├── RA_Paper_III_native_v5.diff
+│   │   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v5.pdf
+│   │   ├── RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v5.tex
+│   │   ├── RA_Paper_IV_native_v5.diff
+│   │   ├── RA_suite_active_support_surface_master_v2.csv
+│   │   ├── RA_suite_publication_checklist_v1.csv
+│   │   └── RA_suite_publication_pass_v2.md
+│   ├── RA_theorem_inventory_v1.csv
+│   ├── RA_theorem_inventory_v1.md
+│   ├── RA_weak_field_and_lensing_audit_memo_v2.md
+│   ├── RA_weak_field_benchmark_packet_v1.zip
+│   ├── RA_weak_field_source_law_docket_v1.md
+│   ├── RA_Website_Content_Map_v2.md
+│   ├── RA_Website_Content_Map.md
+│   ├── RA_Zenodo_Metadata_By_Paper_Apr2026.md
+│   ├── RAKB_Patch_IC46.md
+│   ├── RAKB_Update_Apr16.md
+│   ├── Stage_A_Full_Report.md
+│   ├── Stage_A_RA_Complexity_Proofs_Entry.md
+│   ├── Stage_B_Inventory.md
+│   ├── The Moment Time Was Born.docx
+│   └── The_Map_and_the_Territory.md
+├── RA_KB
+│   ├── analysis
+│   │   ├── claim_graph_v0_5.dot
+│   │   └── claim_metrics_v0_5.csv
+│   ├── archive
+│   │   ├── audit_logs
+│   │   │   └── RA_Audit_Consolidation_Apr20_Apr24.md
+│   │   ├── derived_outputs
+│   │   │   ├── v0_3
+│   │   │   │   ├── RA_dependency_graph_analysis_v0_3.md
+│   │   │   │   ├── RA_dependency_graph_v0_3.dot
+│   │   │   │   ├── RA_dependency_graph_v0_3.png
+│   │   │   │   └── RA_dependency_metrics_v0_3.csv
+│   │   │   └── v0_4_5
+│   │   │       ├── RA_artifact_inventory_v0_4_5.csv
+│   │   │       ├── RA_dependency_graph_v0_4_5_proof_only.dot
+│   │   │       ├── RA_dependency_graph_v0_4_5_proof_only.png
+│   │   │       ├── RA_dependency_metrics_v0_4_5_proof_only.csv
+│   │   │       ├── RA_prose_only_DR_audit_v0_4_5.csv
+│   │   │       ├── RAKB_v0_4_5_dependency_analysis.md
+│   │   │       └── RAKB_v0_4_5_validation_audit.md
+│   │   ├── legacy_readmes
+│   │   │   ├── README_RAKB_v0_4.md
+│   │   │   └── README_RAKB.md
+│   │   ├── legacy_registries
+│   │   │   ├── archived_claims_from_v0_4_5.yaml
+│   │   │   ├── RA_results_master_v0_1.yaml
+│   │   │   ├── RA_results_master_v0_2.yaml
+│   │   │   ├── RA_results_master_v0_3_expanded.yaml
+│   │   │   ├── RA_results_master_v0_3_summary.md
+│   │   │   └── RA_results_master_v0_4_5.yaml
+│   │   ├── legacy_scripts
+│   │   │   ├── rakb_pipeline_v0_4_scaffold.py
+│   │   │   └── rakb_pipeline.py
+│   │   ├── prediction_linkage_audits
+│   │   │   └── 2026-04-20_to_2026-04-24
+│   │   │       ├── RA_prediction_source_candidates_ranked.csv
+│   │   │       ├── RA_prediction_source_linkage_candidate_report.md
+│   │   │       ├── RA_targeted_prediction_search_matches_Apr20_Apr24.csv
+│   │   │       └── RA_targeted_prediction_search_report.md
+│   │   ├── prompt_protocols_v0_4
+│   │   │   ├── RA_Dependency_Analysis_Prompt.txt
+│   │   │   ├── RA_Integrity_Check_Prompt.txt
+│   │   │   ├── RA_Paper_Sync_Prompt.txt
+│   │   │   ├── RA_Target_Prompt.txt
+│   │   │   └── RAKB_Update_Prompt.txt
+│   │   ├── RAKB_Apr27_Patch_Application_Update
+│   │   │   ├── docs
+│   │   │   │   └── expected_status_after_v5.md
+│   │   │   ├── patched_example_from_v0_5_migration
+│   │   │   │   ├── analysis
+│   │   │   │   │   ├── claim_graph_v0_5.dot
+│   │   │   │   │   └── claim_metrics_v0_5.csv
+│   │   │   │   ├── archive
+│   │   │   │   │   ├── audit_logs
+│   │   │   │   │   │   └── RA_Audit_Consolidation_Apr20_Apr24.md
+│   │   │   │   │   ├── derived_outputs
+│   │   │   │   │   │   ├── v0_3
+│   │   │   │   │   │   │   ├── RA_dependency_graph_analysis_v0_3.md
+│   │   │   │   │   │   │   ├── RA_dependency_graph_v0_3.dot
+│   │   │   │   │   │   │   ├── RA_dependency_graph_v0_3.png
+│   │   │   │   │   │   │   └── RA_dependency_metrics_v0_3.csv
+│   │   │   │   │   │   └── v0_4_5
+│   │   │   │   │   │       ├── RA_artifact_inventory_v0_4_5.csv
+│   │   │   │   │   │       ├── RA_dependency_graph_v0_4_5_proof_only.dot
+│   │   │   │   │   │       ├── RA_dependency_graph_v0_4_5_proof_only.png
+│   │   │   │   │   │       ├── RA_dependency_metrics_v0_4_5_proof_only.csv
+│   │   │   │   │   │       ├── RA_prose_only_DR_audit_v0_4_5.csv
+│   │   │   │   │   │       ├── RAKB_v0_4_5_dependency_analysis.md
+│   │   │   │   │   │       └── RAKB_v0_4_5_validation_audit.md
+│   │   │   │   │   ├── legacy_readmes
+│   │   │   │   │   │   └── README_RAKB_v0_4.md
+│   │   │   │   │   ├── legacy_registries
+│   │   │   │   │   │   ├── archived_claims_from_v0_4_5.yaml
+│   │   │   │   │   │   ├── RA_results_master_v0_1.yaml
+│   │   │   │   │   │   ├── RA_results_master_v0_2.yaml
+│   │   │   │   │   │   ├── RA_results_master_v0_3_expanded.yaml
+│   │   │   │   │   │   ├── RA_results_master_v0_3_summary.md
+│   │   │   │   │   │   └── RA_results_master_v0_4_5.yaml
+│   │   │   │   │   ├── legacy_scripts
+│   │   │   │   │   │   └── rakb_pipeline_v0_4_scaffold.py
+│   │   │   │   │   ├── prediction_linkage_audits
+│   │   │   │   │   │   └── 2026-04-20_to_2026-04-24
+│   │   │   │   │   │       ├── RA_prediction_source_candidates_ranked.csv
+│   │   │   │   │   │       ├── RA_prediction_source_linkage_candidate_report.md
+│   │   │   │   │   │       ├── RA_targeted_prediction_search_matches_Apr20_Apr24.csv
+│   │   │   │   │   │       └── RA_targeted_prediction_search_report.md
+│   │   │   │   │   └── prompt_protocols_v0_4
+│   │   │   │   │       ├── RA_Dependency_Analysis_Prompt.txt
+│   │   │   │   │       ├── RA_Integrity_Check_Prompt.txt
+│   │   │   │   │       ├── RA_Paper_Sync_Prompt.txt
+│   │   │   │   │       ├── RA_Target_Prompt.txt
+│   │   │   │   │       └── RAKB_Update_Prompt.txt
+│   │   │   │   ├── README_RAKB_v0_5.md
+│   │   │   │   ├── registry
+│   │   │   │   │   ├── all_dependency_edges.csv
+│   │   │   │   │   ├── artifacts.csv
+│   │   │   │   │   ├── claim_artifact_edges.csv
+│   │   │   │   │   ├── claim_edges.csv
+│   │   │   │   │   ├── claims.yaml
+│   │   │   │   │   ├── framing.yaml
+│   │   │   │   │   ├── issue_edges.csv
+│   │   │   │   │   ├── issues.yaml
+│   │   │   │   │   ├── restoration_candidates.csv
+│   │   │   │   │   ├── source_text_references.csv
+│   │   │   │   │   ├── target_edges.csv
+│   │   │   │   │   └── targets.yaml
+│   │   │   │   ├── reports
+│   │   │   │   │   ├── archive_move_plan_v0_5.csv
+│   │   │   │   │   ├── delete_plan_v0_5.csv
+│   │   │   │   │   ├── migration_report_v0_5.md
+│   │   │   │   │   ├── prose_only_or_textual_only_nodes_v0_5.csv
+│   │   │   │   │   ├── RAKB_support_status_upgrades_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   │   └── unlinked_artifacts_v0_5.csv
+│   │   │   │   └── scripts
+│   │   │   │       └── validate_rakb_v0_5.py
+│   │   │   ├── README_RAKB_patch_application_Apr27_v5.md
+│   │   │   ├── registry_patch_v5
+│   │   │   │   ├── RAKB_artifacts_upsert_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   ├── RAKB_claim_artifact_edges_upsert_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   ├── RAKB_restoration_candidates_upsert_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   └── RAKB_support_status_upgrades_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   └── scripts
+│   │   │       └── apply_rakb_upserts.py
+│   │   ├── RAKB_Apr28_Python_Audit
+│   │   │   ├── patches
+│   │   │   │   ├── patch_mu_int_derive_syntax.diff
+│   │   │   │   └── patch_ra_flat_rotation_curve_docstring.diff
+│   │   │   ├── RAKB_Python_Computation_Audit_Report_Apr28_2026.md
+│   │   │   ├── README_Python_Audit_Apr28_2026.md
+│   │   │   ├── registry_patch_v1
+│   │   │   │   ├── RAKB_python_artifacts_upsert_v1_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_claim_artifact_edges_upsert_v1_Apr28_2026.csv
+│   │   │   │   └── RAKB_python_restoration_candidates_upsert_v1_Apr28_2026.csv
+│   │   │   ├── reports
+│   │   │   │   ├── RAKB_python_hardening_queue_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_reproduction_smoke_tests_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_source_classification_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_top_level_execution_audit_Apr28_2026.csv
+│   │   │   │   └── raw_static_audit_outputs
+│   │   │   │       ├── python_audit_graph.jsonl
+│   │   │   │       ├── python_audit_report.md
+│   │   │   │       ├── python_bridge_terms.csv
+│   │   │   │       ├── python_call_edges.csv
+│   │   │   │       ├── python_claim_refs.csv
+│   │   │   │       ├── python_constants.csv
+│   │   │   │       ├── python_declarations.csv
+│   │   │   │       ├── python_file_inventory.csv
+│   │   │   │       ├── python_import_edges.csv
+│   │   │   │       ├── python_io_calls.csv
+│   │   │   │       ├── python_numeric_literals.csv
+│   │   │   │       ├── python_plot_calls.csv
+│   │   │   │       └── python_randomness.csv
+│   │   │   └── scripts
+│   │   │       ├── apply_rakb_python_upserts.py
+│   │   │       └── apply_rakb_upserts.py
+│   │   ├── RAKB_Python_Audit_Apr28_2026
+│   │   │   ├── docs
+│   │   │   │   ├── Python_Audit_Taxonomy.md
+│   │   │   │   └── RAKB_Python_Audit_Launch_Report_Apr28_2026.md
+│   │   │   ├── README_RAKB_Python_Audit_Apr28_2026.md
+│   │   │   ├── reports
+│   │   │   │   └── RAKB_python_audit_scope_from_tree_Apr28_2026.csv
+│   │   │   ├── scripts
+│   │   │   │   ├── ra_python_static_audit.py
+│   │   │   │   └── run_python_static_audit.sh
+│   │   │   └── templates
+│   │   │       ├── artifacts_from_python_audit_template.csv
+│   │   │       ├── claim_artifact_edges_from_python_audit_template.csv
+│   │   │       └── python_execution_reproduction_log_template.csv
+│   │   └── RAKB_StageC_Paper_Audit_Apr28_2026
+│   │       ├── docs
+│   │       ├── RAKB_StageC_Paper_Prune_Restoration_Audit_Report_Apr28_2026.md
+│   │       ├── README_StageC_Paper_Audit_Apr28_2026.md
+│   │       ├── registry_upserts_v1
+│   │       │   ├── RAKB_stageC_restoration_candidates_upsert_v1_Apr28_2026.csv
+│   │       │   └── RAKB_stageC_source_text_references_upsert_v1_Apr28_2026.csv
+│   │       ├── reports
+│   │       │   ├── RAKB_stageC_historical_restoration_assessment_Apr28_2026.csv
+│   │       │   ├── RAKB_stageC_overpruned_results_backlog_Apr28_2026.csv
+│   │       │   ├── RAKB_stageC_paper_action_queue_Apr28_2026.csv
+│   │       │   └── RAKB_stageC_paper_claim_crosswalk_Apr28_2026.csv
+│   │       └── scripts
+│   │           └── apply_rakb_stageC_upserts.py
+│   ├── RAKB_prediction_linkage_candidates
+│   ├── RAKB_StageD_Synthesis_Apr28_2026
+│   │   ├── docs
+│   │   │   └── RAKB_stageD_next_actions_Apr28_2026.md
+│   │   ├── patches
+│   │   │   └── patch_RA_D3_CosmologicalExpansion_unused_hN2.diff
+│   │   ├── RAKB_stageD_release_manifest_Apr28_2026.json
+│   │   ├── RAKB_StageD_Synthesis_Report_Apr28_2026.md
+│   │   ├── RAKB_v0_5_1_release_notes_Apr28_2026.md
+│   │   ├── README_StageD_Synthesis_Apr28_2026.md
+│   │   ├── registry_upserts_v0_5_1
+│   │   │   ├── RAKB_stageD_artifacts_upsert_v0_5_1_Apr28_2026.csv
+│   │   │   └── RAKB_stageD_claim_artifact_edges_upsert_v0_5_1_Apr28_2026.csv
+│   │   ├── reports
+│   │   │   ├── RAKB_stageD_attention_index_Apr28_2026.csv
+│   │   │   ├── RAKB_stageD_evidence_health_summary_Apr28_2026.csv
+│   │   │   ├── RAKB_stageD_gap_register_Apr28_2026.csv
+│   │   │   ├── RAKB_stageD_node_coverage_matrix_Apr28_2026.csv
+│   │   │   ├── RAKB_stageD_promotion_and_restoration_queue_Apr28_2026.csv
+│   │   │   └── RAKB_stageD_tex_rakb_comment_plan_Apr28_2026.csv
+│   │   └── scripts
+│   │       └── apply_rakb_stageD_v0_5_1_upserts.py
+│   ├── README_RAKB_v0_5.md
+│   ├── registry
+│   │   ├── all_dependency_edges.csv
+│   │   ├── artifacts.csv
+│   │   ├── artifacts.csv.bak_20260428_091749
+│   │   ├── claim_artifact_edges.csv
+│   │   ├── claim_artifact_edges.csv.bak_20260428_091749
+│   │   ├── claim_edges.csv
+│   │   ├── claims.yaml
+│   │   ├── framing.yaml
+│   │   ├── issue_edges.csv
+│   │   ├── issues.yaml
+│   │   ├── restoration_candidates.csv
+│   │   ├── restoration_candidates.csv.bak_20260428_085704
+│   │   ├── source_text_references.csv
+│   │   ├── source_text_references.csv.bak_20260428_085704
+│   │   ├── target_edges.csv
+│   │   └── targets.yaml
+│   ├── reports
+│   │   ├── archive_move_plan_v0_5.csv
+│   │   ├── backups
+│   │   │   └── Apr28_upserts
+│   │   │       ├── artifacts.csv.bak_20260428_045412
+│   │   │       ├── artifacts.csv.bak_20260428_082106
+│   │   │       ├── claim_artifact_edges.csv.bak_20260428_045412
+│   │   │       ├── claim_artifact_edges.csv.bak_20260428_082106
+│   │   │       └── restoration_candidates.csv.bak_20260428_082106
+│   │   ├── delete_plan_v0_5.csv
+│   │   ├── lake_build_Apr27_2026.log
+│   │   ├── lake_build_Apr27_D2root_2026.log
+│   │   ├── lake_env_Apr27_2026.txt
+│   │   ├── lake_env_Apr27_D2root_2026.txt
+│   │   ├── migration_report_v0_5.md
+│   │   ├── patches
+│   │   │   ├── Apr27_v5
+│   │   │   │   ├── RAKB_artifacts_upsert_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   ├── RAKB_claim_artifact_edges_upsert_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   ├── RAKB_restoration_candidates_upsert_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   │   └── RAKB_support_status_upgrades_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   │   ├── Apr28_python_v1
+│   │   │   │   ├── RAKB_python_artifacts_upsert_v1_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_claim_artifact_edges_upsert_v1_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_hardening_queue_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_reproduction_smoke_tests_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_restoration_candidates_upsert_v1_Apr28_2026.csv
+│   │   │   │   ├── RAKB_python_source_classification_Apr28_2026.csv
+│   │   │   │   └── RAKB_python_top_level_execution_audit_Apr28_2026.csv
+│   │   │   ├── Apr28_stageC_v1
+│   │   │   │   ├── RAKB_stageC_historical_restoration_assessment_Apr28_2026.csv
+│   │   │   │   ├── RAKB_stageC_overpruned_results_backlog_Apr28_2026.csv
+│   │   │   │   ├── RAKB_stageC_paper_action_queue_Apr28_2026.csv
+│   │   │   │   ├── RAKB_stageC_paper_claim_crosswalk_Apr28_2026.csv
+│   │   │   │   ├── RAKB_stageC_restoration_candidates_upsert_v1_Apr28_2026.csv
+│   │   │   │   └── RAKB_stageC_source_text_references_upsert_v1_Apr28_2026.csv
+│   │   │   └── Apr28_stageD_v0_5_1
+│   │   │       ├── RAKB_stageD_artifacts_upsert_v0_5_1_Apr28_2026.csv
+│   │   │       └── RAKB_stageD_claim_artifact_edges_upsert_v0_5_1_Apr28_2026.csv
+│   │   ├── prose_only_or_textual_only_nodes_v0_5.csv
+│   │   ├── python_audit_Apr28_2026
+│   │   │   ├── python_audit_graph.jsonl
+│   │   │   ├── python_audit_report.md
+│   │   │   ├── python_bridge_terms.csv
+│   │   │   ├── python_call_edges.csv
+│   │   │   ├── python_claim_refs.csv
+│   │   │   ├── python_constants.csv
+│   │   │   ├── python_declarations.csv
+│   │   │   ├── python_file_inventory.csv
+│   │   │   ├── python_import_edges.csv
+│   │   │   ├── python_io_calls.csv
+│   │   │   ├── python_numeric_literals.csv
+│   │   │   ├── python_plot_calls.csv
+│   │   │   └── python_randomness.csv
+│   │   ├── RAKB_python_hardening_queue_Apr28_2026.csv
+│   │   ├── RAKB_python_reproduction_smoke_tests_Apr28_2026.csv
+│   │   ├── RAKB_python_source_classification_Apr28_2026.csv
+│   │   ├── RAKB_python_top_level_execution_audit_Apr28_2026.csv
+│   │   ├── RAKB_stageC_historical_restoration_assessment_Apr28_2026.csv
+│   │   ├── RAKB_stageC_overpruned_results_backlog_Apr28_2026.csv
+│   │   ├── RAKB_stageC_paper_action_queue_Apr28_2026.csv
+│   │   ├── RAKB_stageC_paper_claim_crosswalk_Apr28_2026.csv
+│   │   ├── RAKB_support_status_upgrades_v5_D2_build_confirmed_Apr27_2026.csv
+│   │   └── unlinked_artifacts_v0_5.csv
+│   └── scripts
+│       ├── apply_rakb_python_upserts.py
+│       ├── apply_rakb_stageC_upserts.py
+│       ├── apply_rakb_stageD_v0_5_1_upserts.py
+│       ├── apply_rakb_upserts.py
+│       ├── ra_python_static_audit.py
+│       └── validate_rakb_v0_5.py
+├── RA_Logs
+│   ├── RA_Framing_Discipline_v3_Nature_RA_Native_Apr24_2026.md
+│   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.aux
+│   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.log
+│   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.out
+│   ├── RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex.compile.log
+│   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.aux
+│   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.log
+│   ├── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.out
+│   └── RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.tex.compile.log
+└── RA_Submitted_Paper_Versions
+    ├── RACF_IJA_v1.pdf
+    └── RACF_IJA_v1.tex
+
+94 directories, 553 files

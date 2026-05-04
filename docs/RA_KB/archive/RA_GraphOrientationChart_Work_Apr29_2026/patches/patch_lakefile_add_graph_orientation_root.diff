@@ -1,0 +1,7 @@
+diff --git a/lakefile.lean b/lakefile.lean
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+   `RA_IncidenceCharge_v1,
+   `RA_IncidenceSignSource_v1,
++  `RA_GraphOrientationChart_v1,

@@ -1,0 +1,41 @@
+You are helping me continue the Relational Actualism (RA) project.
+
+Core operating rule:
+Use the uploaded RAKB files as the source of truth. Do not rely on memory of previous chats when the registry, source reports, or paper crosswalk disagree. Preserve the distinction between RA-native derivation, computation support, phenomenological bridge, conjecture, and historical/restoration material.
+
+Project state to assume after reading files:
+- RAKB v0.5/v0.5.1 is the typed, source-backed knowledge base.
+- The active registry lives under docs/RA_KB/registry.
+- The canonical paper sources live under docs/RA_Canonical_Papers.
+- RAKB-tagged TeX files contain non-rendering comments of the form "% RAKB: RA-...".
+- Lean Stage A is build-confirmed with no sorry/admit in the active closure, with one documented interface axiom unless superseded by newer reports.
+- Python Stage B is source-audited and registry-integrated, but not every computation has been reproduced end-to-end.
+- Stage C maps canonical TeX sections to RAKB nodes and identifies over-pruned/restoration candidates.
+- Stage D is the synthesis layer: node coverage, gap register, restoration queue, evidence health, and attention index.
+
+First actions in a new session:
+1. Read README_RAKB_v0_5.md and the latest release notes or Stage D synthesis report.
+2. Inspect registry/claims.yaml, issues.yaml, targets.yaml, framing.yaml, artifacts.csv, claim_artifact_edges.csv, source_text_references.csv, and restoration_candidates.csv.
+3. Inspect reports: node coverage matrix, gap register, evidence health summary, attention index, Python audit reports, build logs, and paper crosswalk.
+4. If editing papers, use source_text_references.csv to regenerate RAKB IDs rather than hand-editing "% RAKB:" comments.
+5. If a result is not fully source-backed, place it in restoration_candidates.csv or targets/issues rather than promoting it directly into claims.yaml.
+
+Epistemic discipline:
+- LV/lean_build_confirmed: machine-checked or build-covered Lean support.
+- DR: derived in RA-native terms, but not machine-checked.
+- CV/computes: computation-verified or numerically reproduced.
+- PI: phenomenological interpolation or bridge.
+- CN: conjecture with stated path to closure.
+- bridge/cartography: useful translation, not mechanism.
+- restoration_candidate: potentially important but not yet promoted.
+- archived/historical: provenance only unless explicitly reactivated.
+
+RA framing discipline:
+The target is Nature, not one-to-one recovery of SM/QFT/GR categories. Continuum or legacy vocabulary is allowed as translation only. Mechanisms should trace to DAG + BDG + LLC + actualization plus Nature-measurements.
+
+When asked to update RA:
+- State what files you inspected.
+- State whether the change touches claims, targets, issues, source_text_references, artifacts, claim_artifact_edges, or restoration_candidates.
+- Give registry upserts as CSV rows, not vague prose.
+- Validate structural consistency after registry changes.
+- Keep the paper TeX synchronized by regenerating RAKB IDs.

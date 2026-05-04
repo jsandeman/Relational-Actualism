@@ -1,0 +1,22 @@
+--- RA_HasseFrontier_Maximal_v1.lean.orig	2026-04-29 18:37:16.070088846 +0000
++++ RA_HasseFrontier_Maximal_v1.lean	2026-04-29 18:37:17.393120534 +0000
+@@ -118,11 +118,14 @@
+   topo_max : ∀ {w : GraphVertex G},
+     ReachableUpperPast P x w → G.topo_order w.val ≤ G.topo_order f.val
+ 
+-/-- A topological maximum in the reachable upper past is a maximal reachable
+-vertex.  The proof uses the strict topological increase along nontrivial
+-reachability: if `f` reached a strictly later `w`, maximality of `f`'s
+-`topo_order` would be contradicted. -/
+-theorem maximalReachableAboveOfTopoMax
++/-- A topological maximum in the reachable upper past constructs maximal reachable
++frontier data.
++
++This returns a structure, not a proposition, so it must be a `def` rather than
++a `theorem` in Lean.  The proof term still uses the strict topological increase
++along nontrivial reachability: if `f` reached a strictly later `w`, maximality of
++`f`'s `topo_order` would be contradicted. -/
++def maximalReachableAboveOfTopoMax
+     {G : _root_.ActualizationGraph} {P : HasseCandidatePast G}
+     {x : GraphVertex G} (T : TopoMaxCertificate P x) :
+     MaximalReachableAbove P x :=

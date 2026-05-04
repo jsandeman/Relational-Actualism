@@ -1,9 +1,15 @@
-# Lean 4
-/build/
-/lake-packages/
-/.lake/
+# Lean 4 build artifacts (apply anywhere in the tree, not just root)
+.lake/
+build/
+lake-packages/
 
 # Python / Data
 __pycache__/
 *.pyc
 .DS_Store
+
+# Microsoft Office lockfiles
+~$*
+
+# relational-actualism-web is its own git repo (GitHub Pages); not tracked here
+relational-actualism-web/

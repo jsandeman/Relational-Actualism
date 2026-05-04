@@ -1,0 +1,51 @@
+# HOLD — do not apply until after candidate-measure and local-μ diagnostics.
+issues:
+  - id: RA-OPEN-LOCAL-MU-001
+    kind: formalization_target
+    domain: simulation
+    name: RA-native finite-graph local density estimator
+    statement: >
+      Define the finite DAG observable corresponding to the Poisson-CSG density
+      parameter μ used in closed-form BDG approximation calculations, and
+      distinguish independent density measurements from profile-fitted μ
+      estimators.
+    status: open
+    priority: high
+    needed_for:
+      - RA-OPEN-POISSON-DYNAMICS-001
+      - simulator-vs-Poisson validation
+      - audit of Poisson-based numerical predictions
+    notes:
+      - The current local_mu=|ancestors|/longest_chain is a useful branch-density heuristic, not a formal Poisson μ.
+      - V4-inverted and MLE μ estimators are useful for profile-composition residuals but are not independent density measurements.
+
+  - id: RA-OPEN-CANDIDATE-MEASURE-001
+    kind: formalization_target
+    domain: simulation
+    name: Sequential-growth candidate measure
+    statement: >
+      Determine whether RA stochastic actualization samples uniformly over edgeful
+      parent subsets, causal closures/downsets, BDG profiles, or an action-weighted
+      candidate class after BDG filtering.
+    status: open
+    priority: high
+    needed_for:
+      - interpretation of RAGrowSim outputs
+      - Poisson-CSG comparison
+      - finite-growth prediction layer
+    notes:
+      - Uniform sampling over capped parent subsets is a modeling choice and may bias toward large parent sets near the cap.
+      - Parent subsets can duplicate the same transitive closure and BDG profile.
+
+  - id: RA-OPEN-POISSON-DYNAMICS-001
+    kind: formalization_target
+    domain: simulation
+    name: Finite RA growth versus Poisson-CSG statistics
+    statement: >
+      Determine whether, and in which regime, finite RA sequential growth produces
+      shell-profile statistics approximated by Poisson-CSG expectations E[N_k]=μ^k/k!.
+    status: open
+    priority: high
+    depends_on:
+      - RA-OPEN-LOCAL-MU-001
+      - RA-OPEN-CANDIDATE-MEASURE-001

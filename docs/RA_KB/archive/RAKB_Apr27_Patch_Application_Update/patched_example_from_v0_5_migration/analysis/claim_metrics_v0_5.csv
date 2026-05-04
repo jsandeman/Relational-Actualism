@@ -1,0 +1,40 @@
+id,name,domain,direct_children,downstream_reach,legacy_proof_status,legacy_support_status
+RA-ONT-001,Finite causal graph ontology,kernel,5,38,STATED,none
+RA-ONT-003,Structured potentia / adjacent possible,kernel,2,30,STATED,none
+RA-KERNEL-001,Four-dimensional BDG acceptance kernel,kernel,8,29,ANC,none
+RA-ONT-002,Irreversible actualization,kernel,1,19,STATED,none
+RA-ARITH-001,BDG coefficient arithmetic spine,arithmetic,5,18,ANC,none
+RA-LLC-001,Local Ledger Condition,kernel,5,18,STATED,none
+RA-D4-001,D4U02 selectivity ceiling,arithmetic,4,14,DR,CV
+RA-MOTIF-001,Native motif sector definition,matter,1,8,STATED,none
+RA-MOTIF-002,Stable motif census,matter,3,7,ANC,none
+RA-COMP-001,Tier hierarchy,complexity,2,7,DR,none
+RA-GRAV-001,Kernel–Poisson divergence identity,gravity,3,6,DR,CV
+RA-ONT-004,Finitary Actuality,kernel,3,4,STATED,none
+RA-KERNEL-002,Kernel locality,kernel,1,4,ANC,none
+RA-COMP-004,RA assembly depth,complexity,3,3,DR,none
+RA-COMP-002,Recursive closure,complexity,1,3,DR,none
+RA-GRAV-002,Asymptotic kernel saturation,gravity,1,3,DR,CV
+RA-COMP-003,Causal Firewall conditions,complexity,2,2,DR,none
+RA-MOTIF-003,Minimal closure windows,matter,2,2,ANC,none
+RA-MOTIF-005,Depth-2 ledger/orientation structure,matter,2,2,ANC,none
+RA-GRAV-003,Causal severance,gravity,1,2,DR,PI
+RA-ARITH-002,Second-order cancellation pattern,arithmetic,1,1,ANC,none
+RA-GRAV-004,Severed-link entropy observable,gravity,1,1,DR,none
+RA-MOTIF-004,Extension census,matter,1,1,ANC,none
+RA-ARITH-003,Koide ratio identity,arithmetic,0,0,ANC,none
+RA-ARITH-004,Dimensionless strong-interaction scale,arithmetic,0,0,DR,CV
+RA-ARITH-005,Internal density scale from selectivity,arithmetic,0,0,DR,CV
+RA-ARITH-006,BDG path-weight ratio,arithmetic,0,0,DR,CV
+RA-COMP-005,Glycolysis assembly depth estimate,complexity,0,0,DR,PI
+RA-COMP-006,E. coli assembly depth estimate,complexity,0,0,DR,PI
+RA-COMP-007,Origin-of-life sandwich bound,complexity,0,0,DR,PI
+RA-COMP-008,Substrate-independent biosignature criteria,complexity,0,0,DR,PI
+RA-D4-002,D4U02 modular barrier,arithmetic,0,0,DR,none
+RA-GRAV-005,Discrete boundary law,gravity,0,0,DR,none
+RA-GRAV-006,Joint BDG/LLC macro-kernel dimension,gravity,0,0,ANC,none
+RA-GRAV-007,Antichain drift local statistic,cosmology,0,0,DR,CV
+RA-KERNEL-003,Finite potentia,kernel,0,0,DR,none
+RA-MOTIF-006,Signed three-direction charge spectrum,matter,0,0,DR,none
+RA-MOTIF-007,Confinement as finite renewal,matter,0,0,DR,none
+RA-MOTIF-008,Orientation/chirality theorem family,matter,0,0,ANC,none

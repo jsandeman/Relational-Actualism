@@ -1,0 +1,5 @@
+finding_id,finding,interpretation,rakb_implication
+SIM-MEASURE-001,"Parent-subset, closure, and profile measures produce distinct finite motif ecologies.",The simulations expose sensitivity to candidate-space definition.,Supports RA-OPEN-GROWTH-MEASURE-001 and RA-OPEN-ACTUALIZATION-SELECTOR-001.
+SIM-MEASURE-002,No tested uniform measure matches accepted-conditional independent Poisson channel-by-channel.,Poisson layer is not vindicated as the literal finite-growth ensemble under current test measures.,Supports RA-OPEN-POISSON-DYNAMICS-001.
+SIM-MEASURE-003,Parent-subset enumeration creates large duplicate-representation multiplicities.,Requires distinguishing representational redundancy from distinct actual histories.,Supports RA-OPEN-NO-HISTORY-QUOTIENT-001 and RA-OPEN-FRONTIER-NORMAL-FORM-001.
+FRAME-SELECTOR-001,Primitive stochasticity is not RA-forced; it is provisional Axiom-5 language.,Reframe target as graph-native selector / relational completion rule.,Supports RA-OPEN-ACTUALIZATION-SELECTOR-001 and RA-OPEN-SELECTOR-CLOSURE-001.

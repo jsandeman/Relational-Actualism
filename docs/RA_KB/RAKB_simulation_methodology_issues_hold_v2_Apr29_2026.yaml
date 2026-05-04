@@ -1,0 +1,58 @@
+# Optional RAKB hold/update — simulation methodology issues
+# Date: 2026-04-29
+# Status: hold/review before applying. These are methodological issues, not claim demotions.
+
+issues:
+  - id: RA-OPEN-MU-ESTIMATOR-001
+    kind: methodological_formalization_target
+    domain: growth_dynamics
+    name: RA-native local density parameter for finite DAG growth
+    statement: >
+      Define the finite-DAG observable corresponding to the Poisson-CSG density
+      parameter μ, and distinguish it from heuristic estimators such as
+      ancestor-count divided by longest-chain depth or μ inferred from V4.
+    status: open
+    priority: high
+    evidence:
+      - RAGrowSim Run 3 shows different conclusions under mu_depth and mu_v4.
+    needed_for:
+      - Poisson-CSG approximation governance
+      - finite-growth validation of closed-form RA predictions
+
+  - id: RA-OPEN-GROWTH-MEASURE-001
+    kind: methodological_formalization_target
+    domain: growth_dynamics
+    name: Candidate measure for BDG sequential growth
+    statement: >
+      Determine whether RA sequential growth samples uniformly over explicit
+      parent subsets, unique causal closures/downsets, BDG profiles, local
+      frontiers, or an action-weighted candidate space.
+    status: open
+    priority: high
+    evidence:
+      - RAGrowSim candidate-measure diagnostics show late-step parent subsets
+        collapse to far fewer unique closures, with admitted subset/closure
+        ratios around 28x.
+    needed_for:
+      - RAGrowSim physical interpretation
+      - finite-growth vs Poisson-CSG comparison
+      - charge/ledger simulator design
+
+  - id: RA-OPEN-POISSON-DYNAMICS-001
+    kind: methodological_validation_target
+    domain: growth_dynamics
+    name: Finite RA growth versus accepted-conditional Poisson-CSG
+    statement: >
+      Test whether finite RA BDG sequential growth reproduces independent
+      Poisson-CSG profile statistics after conditioning on BDG acceptance
+      S(N)>0, and identify the regime/candidate measure in which the
+      approximation is valid.
+    status: open
+    priority: high
+    evidence:
+      - RAGrowSim Run 3 shows that the parent-subset simulator still differs
+        from accepted-conditional Poisson under mu_v4 binning, especially in
+        N2, N3, N4, and mean S.
+    needed_for:
+      - validation of Poisson-based closed-form RA predictions
+      - f0/path-weight and interaction-scale audits

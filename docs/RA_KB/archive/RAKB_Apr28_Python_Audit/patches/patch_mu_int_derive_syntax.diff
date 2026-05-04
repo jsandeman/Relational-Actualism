@@ -1,0 +1,9 @@
+--- a/src/RA_AQFT/mu_int_derive.py
++++ b/src/RA_AQFT/mu_int_derive.py
+@@ -129,7 +129,7 @@
+     if best_mu is None:
+         lr = "NO EXIT"
+         print(f"{pname:<16} {Nstr:<14} {L:>3} {mass:>8} {tau_obs:>12.2e} "
+-              f"{—:>8} {—:>12} {lr:>8}")
++              f"{'—':>8} {'—':>12} {lr:>8}")
+         continue

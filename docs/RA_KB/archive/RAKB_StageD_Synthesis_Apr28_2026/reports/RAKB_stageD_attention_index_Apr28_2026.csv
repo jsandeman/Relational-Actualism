@@ -1,0 +1,40 @@
+node_id,name,domain,direct_children,downstream_reach,legacy_proof_status,legacy_support_status,artifact_edge_count,source_text_ref_count,support_tier,gap_class,stageD_attention_score
+RA-ONT-001,Finite causal graph ontology,kernel,5,38,STATED,none,0,4,textual_foundation,paper_projected_foundation_no_artifact_needed,41
+RA-ONT-003,Structured potentia / adjacent possible,kernel,2,30,STATED,none,0,6,textual_foundation,paper_projected_foundation_no_artifact_needed,33
+RA-KERNEL-001,Four-dimensional BDG acceptance kernel,kernel,8,29,ANC,none,2,7,formal_or_lean_support,crosslinked,29
+RA-ONT-002,Irreversible actualization,kernel,1,19,STATED,none,0,7,textual_foundation,paper_projected_foundation_no_artifact_needed,22
+RA-ARITH-001,BDG coefficient arithmetic spine,arithmetic,5,18,ANC,none,6,6,formal_or_lean_support,crosslinked,18
+RA-LLC-001,Local Ledger Condition,kernel,5,18,STATED,none,2,4,formal_or_lean_support,crosslinked,18
+RA-D4-001,D4U02 selectivity ceiling,arithmetic,4,14,DR,CV,6,5,candidate_or_phenomenology_support,crosslinked,14
+RA-MOTIF-001,Native motif sector definition,matter,1,8,STATED,none,0,5,textual_foundation,paper_projected_foundation_no_artifact_needed,11
+RA-COMP-001,Tier hierarchy,complexity,2,7,DR,none,0,2,textual_only_needs_artifact_or_caveat,paper_projected_textual_only_claim,10
+RA-MOTIF-002,Stable motif census,matter,3,7,ANC,none,5,6,formal_or_lean_support,crosslinked,7
+RA-ONT-004,Finitary Actuality,kernel,3,4,STATED,none,0,2,textual_foundation,paper_projected_foundation_no_artifact_needed,7
+RA-GRAV-001,Kernel–Poisson divergence identity,gravity,3,6,DR,CV,1,4,artifact_linked_but_weakly_typed,crosslinked,6
+RA-COMP-002,Recursive closure,complexity,1,3,DR,none,0,9,textual_only_needs_artifact_or_caveat,paper_projected_textual_only_claim,6
+RA-KERNEL-002,Kernel locality,kernel,1,4,ANC,none,3,1,formal_support_bridge_reviewed,crosslinked,4
+RA-MOTIF-005,Depth-2 ledger/orientation structure,matter,2,2,ANC,none,3,0,formal_or_lean_support,source_backed_no_canonical_text_projection,4
+RA-COMP-004,RA assembly depth,complexity,3,3,DR,none,3,2,candidate_or_phenomenology_support,crosslinked,3
+RA-GRAV-002,Asymptotic kernel saturation,gravity,1,3,DR,CV,2,5,candidate_or_phenomenology_support,crosslinked,3
+RA-COMP-006,E. coli assembly depth estimate,complexity,0,0,DR,PI,0,2,textual_only_needs_artifact_or_caveat,paper_projected_textual_only_claim,3
+RA-COMP-008,Substrate-independent biosignature criteria,complexity,0,0,DR,PI,0,4,textual_only_needs_artifact_or_caveat,paper_projected_textual_only_claim,3
+RA-KERNEL-003,Finite potentia,kernel,0,0,DR,none,0,6,textual_only_needs_artifact_or_caveat,paper_projected_textual_only_claim,3
+RA-COMP-003,Causal Firewall conditions,complexity,2,2,DR,none,2,4,formal_or_lean_support,crosslinked,2
+RA-MOTIF-003,Minimal closure windows,matter,2,2,ANC,none,7,4,formal_or_lean_support,crosslinked,2
+RA-GRAV-003,Causal severance,gravity,1,2,DR,PI,6,6,formal_or_lean_support,crosslinked,2
+RA-ARITH-002,Second-order cancellation pattern,arithmetic,1,1,ANC,none,4,3,formal_or_lean_support,crosslinked,1
+RA-GRAV-004,Severed-link entropy observable,gravity,1,1,DR,none,2,5,formal_or_lean_support,crosslinked,1
+RA-MOTIF-004,Extension census,matter,1,1,ANC,none,4,4,formal_or_lean_support,crosslinked,1
+RA-ARITH-003,Koide ratio identity,arithmetic,0,0,ANC,none,2,4,formal_or_lean_support,crosslinked,0
+RA-ARITH-004,Dimensionless strong-interaction scale,arithmetic,0,0,DR,CV,9,2,candidate_or_phenomenology_support,crosslinked,0
+RA-ARITH-005,Internal density scale from selectivity,arithmetic,0,0,DR,CV,6,5,candidate_or_phenomenology_support,crosslinked,0
+RA-ARITH-006,BDG path-weight ratio,arithmetic,0,0,DR,CV,2,2,candidate_or_phenomenology_support,crosslinked,0
+RA-COMP-005,Glycolysis assembly depth estimate,complexity,0,0,DR,PI,3,2,candidate_or_phenomenology_support,crosslinked,0
+RA-COMP-007,Origin-of-life sandwich bound,complexity,0,0,DR,PI,1,3,formal_or_lean_support,crosslinked,0
+RA-D4-002,D4U02 modular barrier,arithmetic,0,0,DR,none,3,2,candidate_or_phenomenology_support,crosslinked,0
+RA-GRAV-005,Discrete boundary law,gravity,0,0,DR,none,1,4,candidate_or_phenomenology_support,crosslinked,0
+RA-GRAV-006,Joint BDG/LLC macro-kernel dimension,gravity,0,0,ANC,none,2,1,formal_or_lean_support,crosslinked,0
+RA-GRAV-007,Antichain drift local statistic,cosmology,0,0,DR,CV,3,5,candidate_or_phenomenology_support,crosslinked,0
+RA-MOTIF-006,Signed three-direction charge spectrum,matter,0,0,DR,none,2,3,formal_or_lean_support,crosslinked,0
+RA-MOTIF-007,Confinement as finite renewal,matter,0,0,DR,none,7,9,formal_or_lean_support,crosslinked,0
+RA-MOTIF-008,Orientation/chirality theorem family,matter,0,0,ANC,none,4,2,formal_or_lean_support,crosslinked,0

@@ -1,0 +1,3 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-D4-001,RA-MOTIF-006,proof_dependency,claim,claim,D4U02 selectivity ceiling,Signed three-direction charge spectrum
+RA-LLC-001,RA-MOTIF-006,proof_dependency,claim,claim,Local Ledger Condition,Signed three-direction charge spectrum

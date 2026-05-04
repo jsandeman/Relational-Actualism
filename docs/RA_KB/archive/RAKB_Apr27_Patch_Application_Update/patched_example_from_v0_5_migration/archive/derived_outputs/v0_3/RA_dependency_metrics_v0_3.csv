@@ -1,0 +1,55 @@
+id,name,status,domain,out_degree,in_degree,downstream_reach,papers
+RA-ONT-001,Finite causal graph ontology,STATED,kernel,6,0,53,I
+RA-ONT-003,Structured potentia / adjacent possible,STATED,kernel,3,1,45,I
+RA-KERNEL-001,Four-dimensional BDG acceptance kernel,ANC,kernel,8,1,44,I
+RA-ONT-002,Irreversible actualization,STATED,kernel,1,1,26,I
+RA-LLC-001,Local Ledger Condition,STATED,kernel,4,1,25,"I,II,III,IV"
+RA-ARITH-001,BDG coefficient arithmetic spine,ANC,arithmetic,5,1,22,I
+RA-D4-001,D4U02 selectivity ceiling,CV,arithmetic,4,2,17,"I,III"
+RA-ONT-004,Finitary Actuality,STATED,kernel,3,1,12,I
+RA-COMP-001,Tier hierarchy,DR,complexity,2,2,10,IV
+RA-MOTIF-001,Native motif sector definition,STATED,matter,1,2,10,II
+RA-MOTIF-002,Stable motif census,ANC,matter,4,2,9,II
+RA-GRAV-001,Kernel–Poisson divergence identity,DR_CV,gravity,3,1,9,"I,III"
+RA-KERNEL-002,Kernel locality,ANC,kernel,2,2,9,I
+RA-KERNEL-003,Finite potentia,DR,kernel,1,3,7,I
+RA-KERNEL-004,Stochastic actualization kernel requirement,ONT,kernel,5,2,6,I
+RA-COMP-002,Recursive closure,DR,complexity,2,2,6,IV
+RA-COMP-003,Causal Firewall conditions,DR,complexity,5,1,5,IV
+RA-COMP-004,RA assembly depth,DR,complexity,4,1,5,IV
+RA-MOTIF-003,Minimal closure windows,ANC,matter,3,1,5,II
+RA-GRAV-002,Asymptotic kernel saturation,DR_CV,gravity,1,2,4,"I,III"
+RA-GRAV-003,Causal severance,DR_PI,gravity,2,2,3,III
+RA-MOTIF-004,Extension census,ANC,matter,1,1,3,II
+RA-MOTIF-005,Depth-2 ledger/orientation structure,ANC,matter,2,2,2,II
+RA-GRAV-006,Joint BDG/LLC macro-kernel dimension,ANC,gravity,2,2,2,III
+RA-GRAV-007,Antichain drift local statistic,CV,cosmology,2,2,2,"I,III"
+RA-MOTIF-007,Confinement as finite renewal,DR,matter,1,2,2,II
+RA-KERNEL-005,Discrete covariance target,ONT,kernel,1,2,1,I
+RA-ARITH-002,Second-order cancellation pattern,ANC,arithmetic,1,1,1,I
+RA-ARITH-004,Dimensionless strong-interaction scale,DR_CV,arithmetic,1,1,1,II
+RA-OPEN-002,Scattering and decay predictions,ONT,matter,1,2,1,II
+RA-GRAV-004,Severed-link entropy observable,DR,gravity,1,2,1,III
+RA-COMP-007,Origin-of-life sandwich bound,DR_PI,complexity,1,2,1,IV
+RA-D4-002,D4U02 modular barrier,DR,arithmetic,0,2,0,I
+RA-ARITH-003,Koide ratio identity,ANC,arithmetic,0,1,0,II
+RA-ARITH-005,Internal density scale from selectivity,DR_CV,arithmetic,0,2,0,"II,III"
+RA-ARITH-006,BDG path-weight ratio,CV,arithmetic,0,2,0,II
+RA-MOTIF-006,Signed three-direction charge spectrum,DR,matter,0,1,0,II
+RA-OPEN-001,Full motif-to-spectrum cartography,ONT,matter,0,3,0,II
+RA-ARCH-001,Sigma-filter PDG classification,ARCH_CC,matter,0,1,0,II
+RA-GRAV-005,Discrete boundary law,DR,gravity,0,1,0,III
+RA-OPEN-003,Coefficient-level orbital/lensing source law,ONT,gravity,0,2,0,III
+RA-OPEN-004,Environment-sensitive expansion law,ONT,cosmology,0,1,0,III
+RA-OPEN-005,Low-l CMB / Axis-of-Evil severance inheritance,ONT_PI,cosmology,0,1,0,III
+RA-ARCH-002,BMV null prediction,ARCH_CC,gravity,0,1,0,III
+RA-COMP-005,Glycolysis assembly depth estimate,PI,complexity,0,1,0,IV
+RA-COMP-006,E. coli assembly depth estimate,PI,complexity,0,1,0,IV
+RA-COMP-008,Substrate-independent biosignature criteria,DR_PI,complexity,0,1,0,IV
+RA-OPEN-006,Causal shield theorem,ONT,complexity,0,1,0,IV
+RA-OPEN-007,Persistence-window formula,ONT,complexity,0,2,0,IV
+RA-OPEN-008,Consciousness threshold problem,ONT_PI,complexity,0,3,0,IV
+RA-NONTARGET-001,Born rule as non-target,CC,framing,0,1,0,"I,IV"
+RA-OPEN-009,RA-native frequency law,ONT,kernel,0,2,0,I
+RA-NONTARGET-002,QCD running as non-mechanism,CC,framing,0,1,0,II
+RA-NONTARGET-003,Metric field as non-primitive,CC,framing,0,2,0,"I,III"

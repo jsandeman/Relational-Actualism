@@ -1,0 +1,12 @@
+diff --git a/src/RA_AQFT/lakefile.lean b/src/RA_AQFT/lakefile.lean
+--- a/src/RA_AQFT/lakefile.lean
++++ b/src/RA_AQFT/lakefile.lean
+@@
+     `RA_D2_MatterCartography,
+-    `RA_D2_HadronMassTriad
++    `RA_D2_HadronMassTriad,
++
++    -- Selector-closure theorem programme — exploratory but compile-checked
++    `RA_ActualizationSelector_v1,
++    `RA_FrontierIncidence_v1
+   ]

@@ -1,0 +1,6 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+   `RA_IncidenceSignSource_v1,
+   `RA_GraphOrientationChart_v1,
++  `RA_GraphOrientationClosure_v1,

@@ -1,0 +1,10 @@
+node_id,node_name,node_type,source_label,relation,migration_note
+RA-MOTIF-006,Signed three-direction charge spectrum,claim,RA Paper II §9.2 Charge quantization in units of e/3,canonical_text_projection,Refines existing RA-MOTIF-006; paper source states seven-value signed N1/electric translation.
+RA-MOTIF-006,Signed three-direction charge spectrum,claim,RA_Suite_Editorial_Catalog.md B2.9 charge-quantization correction,epistemic_status_correction,Editorial source clarifies RA content is seven-value signature and SM mapping is translation.
+RA-MOTIF-006,Signed three-direction charge spectrum,claim,RA_D1_NativeLedgerOrientation_v1.lean,formal_source_reference,Depth-2 ledger preservation/orientation-asymmetry source.
+RA-MOTIF-006,Signed three-direction charge spectrum,claim,RA_CausalOrientation_Core.lean,candidate_formal_source_reference,Candidate source for graph-native orientation/sign mechanism.
+RA-OPEN-CHARGE-SIGN-001,Edge-level sign-source for signed N1 charge,issue,RA Paper II §9.2 Charge quantization in units of e/3,problem_source,Paper source leaves edge-level sign-source implicit.
+RA-OPEN-CHARGE-SIGN-001,Edge-level sign-source for signed N1 charge,issue,RA_D1_NativeLedgerOrientation_v1.lean,candidate_formal_source_reference,Depth-2 ledger/orientation source for formalization target.
+RA-OPEN-CHARGE-SIGN-001,Edge-level sign-source for signed N1 charge,issue,RA_CausalOrientation_Core.lean,candidate_formal_source_reference,Candidate graph-orientation source for edge signs.
+RA-OPEN-CHARGE-SIGN-001,Edge-level sign-source for signed N1 charge,issue,RA_GraphCore.lean,constraint_source_reference,LLC/cut-conservation constraints on any ledger rule.
+RA-OPEN-CHARGE-SIGN-001,Edge-level sign-source for signed N1 charge,issue,RAKB_Ledger_Rule_Analysis_Apr28_2026.md,governance_report,Generated analysis report defining the open issue and topological route.

@@ -1,0 +1,6 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+   `RA_ActualizationSelector_v1,
+   `RA_FrontierIncidence_v1,
++  `RA_FrontierGraphBridge_v1,

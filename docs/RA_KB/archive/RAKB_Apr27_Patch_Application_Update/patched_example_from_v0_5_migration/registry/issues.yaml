@@ -1,0 +1,325 @@
+registry_version: 0.5.0-migration-draft
+migration_source: RA_results_master_v0_4_5.yaml
+generated_from_zip: RAKB.zip
+generated_on: '2026-04-27'
+note: Typed split of the v0.4.5 monolithic registry. Scientific content is not independently
+  reverified here because source corpus files were not bundled in the ZIP.
+schema_note: Open Native Targets / open theoretical tasks split out of the proof-result
+  registry.
+issues:
+- id: RA-KERNEL-004
+  name: Stochastic actualization kernel requirement
+  domain: kernel
+  papers:
+  - I
+  statement: RA requires a normalized local selection weight on admissible one-vertex
+    extensions.
+  nature_targets:
+  - event frequencies
+  - repeated experiment statistics
+  ra_observable: null
+  sources:
+  - RA Paper I, Axiom 5
+  proof_dependencies:
+  - RA-ONT-003
+  - RA-KERNEL-003
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Full local measure family not yet closed.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-KERNEL-005
+  name: Discrete covariance target
+  domain: kernel
+  papers:
+  - I
+  statement: The induced measure on completed histories should factor through unlabeled
+    causal-set isomorphism classes.
+  nature_targets:
+  - label-independent physics
+  ra_observable: null
+  sources:
+  - RA Paper I, CST/CSG covariance remark
+  proof_dependencies:
+  - RA-KERNEL-004
+  - RA-KERNEL-002
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Not yet theorem-level.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-001
+  name: Full motif-to-spectrum cartography
+  domain: matter
+  papers:
+  - II
+  statement: Derive the complete observed particle/motif spectrum from RA-native motif
+    taxonomy and closure dynamics.
+  nature_targets:
+  - particle multiplicity
+  - masses
+  - lifetimes
+  ra_observable: null
+  sources:
+  - RA Paper II
+  proof_dependencies:
+  - RA-MOTIF-002
+  - RA-MOTIF-003
+  - RA-MOTIF-005
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Major open programme.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-002
+  name: Scattering and decay predictions
+  domain: matter
+  papers:
+  - II
+  statement: Derive observable scattering cross-sections and decay/lifetime patterns
+    from motif renewal and ledger dynamics.
+  nature_targets:
+  - cross-sections
+  - decay rates
+  - lifetimes
+  ra_observable: null
+  sources:
+  - RA Paper II
+  proof_dependencies:
+  - RA-MOTIF-007
+  - RA-KERNEL-004
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Requires native statistical dynamics.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-003
+  name: Coefficient-level orbital/lensing source law
+  domain: gravity
+  papers:
+  - III
+  statement: Derive exact source coefficients for orbital response and gravitational
+    lensing from finite graph quantities.
+  nature_targets:
+  - rotation curves
+  - lensing maps
+  ra_observable: null
+  sources:
+  - RA Paper III
+  proof_dependencies:
+  - RA-GRAV-006
+  - RA-GRAV-007
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Major open target.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-004
+  name: Environment-sensitive expansion law
+  domain: cosmology
+  papers:
+  - III
+  statement: Derive H(z), BAO shifts, and supernova residual correlations from finite
+    inhomogeneous graph structure.
+  nature_targets:
+  - redshift-distance relations
+  - BAO
+  - supernova residuals
+  ra_observable: null
+  sources:
+  - ra_dark_energy.py
+  - ra_desi_verify.py
+  - RA Paper III
+  proof_dependencies:
+  - RA-GRAV-007
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Current scripts are exploratory phenomenology.
+  next_tasks: []
+  source_status:
+    ra_dark_energy.py: uploaded_unverified_exploratory
+    ra_desi_verify.py: uploaded_unverified_exploratory
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-005
+  name: Low-l CMB / Axis-of-Evil severance inheritance
+  domain: cosmology
+  papers:
+  - III
+  statement: Explain large-angle CMB alignments from finite inherited boundary data
+    of a daughter graph.
+  nature_targets:
+  - Axis of Evil
+  - low-l CMB anomalies
+  ra_observable: null
+  sources:
+  - daughter_universe.py
+  - RA Paper III
+  proof_dependencies:
+  - RA-GRAV-003
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Exploratory.
+  next_tasks: []
+  source_status:
+    daughter_universe.py: uploaded_unverified_exploratory
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: PI
+  auxiliary_support_status: provisional_interpretation
+- id: RA-OPEN-006
+  name: Causal shield theorem
+  domain: complexity
+  papers:
+  - IV
+  statement: Prove stable recursive organization requires mediated boundary interfaces
+    across faithful coarse-graining levels.
+  nature_targets:
+  - persistent biological organization
+  ra_observable: null
+  sources:
+  - RA Paper IV
+  - RA_GraphCore_Native.lean
+  proof_dependencies:
+  - RA-COMP-003
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Major open theorem. RA_GraphCore_Native.lean supplies active native causal-shield
+    vocabulary.
+  next_tasks: []
+  source_status:
+    RA_GraphCore_Native.lean: uploaded_compiles_user_verified
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-007
+  name: Persistence-window formula
+  domain: complexity
+  papers:
+  - IV
+  statement: Derive a closed native formula for boundary overwrite/re-inscription
+    viability windows.
+  nature_targets:
+  - life-like persistence under environmental forcing
+  ra_observable: null
+  sources:
+  - RA Paper IV
+  proof_dependencies:
+  - RA-COMP-003
+  - RA-COMP-007
+  framing_links: []
+  restoration_preconditions: []
+  caveats: High-priority computational/theoretical target.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-OPEN-008
+  name: Consciousness threshold problem
+  domain: complexity
+  papers:
+  - IV
+  statement: Determine necessary and possibly sufficient RA conditions for phenomenal
+    consciousness beyond recursive closure.
+  nature_targets:
+  - cognition
+  - agency
+  - consciousness
+  ra_observable: null
+  sources:
+  - RA Paper IV
+  proof_dependencies:
+  - RA-COMP-002
+  - RA-COMP-003
+  - RA-COMP-004
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Exploratory; no sufficient theory claimed.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: PI
+  auxiliary_support_status: provisional_interpretation
+- id: RA-OPEN-009
+  name: RA-native frequency law
+  domain: kernel
+  papers:
+  - I
+  statement: Derive repeated-actualization frequency regularities from the stochastic
+    actualization kernel without importing Hilbert-space Born-rule ontology.
+  nature_targets:
+  - experimental outcome frequencies
+  ra_observable: null
+  sources:
+  - RA Paper I
+  - RA_Framing_Discipline_v3
+  proof_dependencies:
+  - RA-KERNEL-004
+  - RA-KERNEL-005
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Major foundational open target.
+  next_tasks: []
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+- id: RA-MOTIF-009
+  name: Type IV exact-zero motif target
+  domain: matter
+  papers:
+  - II
+  statement: Clarify and formalize the claimed exact-zero theorem for Type IV motif
+    behavior, if still valid in the current native corpus.
+  nature_targets:
+  - scalar-like stabilization
+  - zero coupling or exact selection exclusions
+  ra_observable: Type IV motif admissibility invariant
+  sources:
+  - programme-state notes; source file TBD
+  proof_dependencies:
+  - RA-MOTIF-002
+  - RA-MOTIF-005
+  framing_links: []
+  restoration_preconditions: []
+  caveats: Source support remains unidentified. RA_MotifDynamics_Core.lean has been
+    classified as a superseded wrapper and does not supply Type IV exact-zero support.
+  next_tasks:
+  - Locate Lean/Python/MD source for Type IV exact-zero theorem or archive the claim.
+  - If Type IV support is intended to arise from another current D1-native theorem,
+    specify the exact theorem name.
+  legacy_proof_status: ONT
+  issue_status: open
+  issue_kind: open_native_target
+  legacy_support_status: PI
+  auxiliary_support_status: provisional_interpretation

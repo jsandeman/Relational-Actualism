@@ -1,0 +1,17 @@
+Synchronize Papers I–IV with the RAKB:
+
+Inputs:
+- RA_results_master.yaml
+- current paper drafts
+
+Tasks:
+1. Ensure every claim maps to a registry ID
+2. Ensure every registry result is either:
+   - included
+   - intentionally omitted (with reason)
+3. Insert:
+   - status labels
+   - source references
+4. Remove:
+   - unsupported claims
+5. Output updated LaTeX files

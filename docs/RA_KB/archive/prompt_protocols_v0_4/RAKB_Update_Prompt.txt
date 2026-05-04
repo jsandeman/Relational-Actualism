@@ -1,0 +1,18 @@
+Scan the following files and update the RAKB:
+
+[attach files]
+
+Tasks:
+1. Identify all distinct results (theorems, derived formulas, numerical outputs).
+2. Classify each result:
+   - ANC / DR / CV / PI / CC / ONT
+3. Map each result to:
+   - Nature-facing target
+   - Dependencies
+4. Determine:
+   - restore / update / new / archive
+5. Update the registry (vX.X → vX.X+1)
+6. Produce:
+   - updated YAML
+   - diff summary
+   - any conflicts or ambiguities

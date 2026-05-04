@@ -1,0 +1,67 @@
+tree_line,path_guess,filename,stage_b_scope,reason
+5,data/DFT_Survey/actualization_thermo.py,actualization_thermo.py,include,active computation source candidate
+6,data/DFT_Survey/thermo_batch_b3lyp.py,thermo_batch_b3lyp.py,include,active computation source candidate
+128,docs/RA_History/ra_lensing_benchmarks.py,ra_lensing_benchmarks.py,defer_or_include_if_claim_linked,history script with possible gravity/source-law relevance; include only if paper/claim cites it
+249,docs/RA_History/ra_source_law_reference.py,ra_source_law_reference.py,defer_or_include_if_claim_linked,history script with possible gravity/source-law relevance; include only if paper/claim cites it
+347,rakb_pipeline_v0_4_scaffold.py,rakb_pipeline_v0_4_scaffold.py,exclude_from_scientific_audit,history or KB tooling; audit separately as infrastructure/provenance
+348,rakb_pipeline.py,rakb_pipeline.py,exclude_from_scientific_audit,history or KB tooling; audit separately as infrastructure/provenance
+382,validate_rakb_v0_5.py,validate_rakb_v0_5.py,exclude_from_scientific_audit,history or KB tooling; audit separately as infrastructure/provenance
+408,src/RA_AQFT/antichain_drift.py,antichain_drift.py,include,active computation source candidate
+410,src/RA_AQFT/bdg_multicoupling.py,bdg_multicoupling.py,include,active computation source candidate
+411,src/RA_AQFT/berry_bridge.py,berry_bridge.py,include,active computation source candidate
+412,src/RA_AQFT/berry_computation.py,berry_computation.py,include,active computation source candidate
+413,src/RA_AQFT/berry_decomposition.py,berry_decomposition.py,include,active computation source candidate
+414,src/RA_AQFT/berry_derive_f.py,berry_derive_f.py,include,active computation source candidate
+415,src/RA_AQFT/berry_final.py,berry_final.py,include,active computation source candidate
+416,src/RA_AQFT/berry_gauge.py,berry_gauge.py,include,active computation source candidate
+417,src/RA_AQFT/berry_theorems.py,berry_theorems.py,include,active computation source candidate
+418,src/RA_AQFT/berry_thinning.py,berry_thinning.py,include,active computation source candidate
+419,src/RA_AQFT/berry_transfer.py,berry_transfer.py,include,active computation source candidate
+420,src/RA_AQFT/born_rule_derivation.py,born_rule_derivation.py,include,active computation source candidate
+421,src/RA_AQFT/branching_volume.py,branching_volume.py,include,active computation source candidate
+422,src/RA_AQFT/bullet_cluster.py,bullet_cluster.py,include,active computation source candidate
+423,src/RA_AQFT/casimir_benchmark.py,casimir_benchmark.py,include,active computation source candidate
+424,src/RA_AQFT/cross_dimensional_exclusion.py,cross_dimensional_exclusion.py,include,active computation source candidate
+425,src/RA_AQFT/D1_BDG_MCMC_simulation.py,D1_BDG_MCMC_simulation.py,include,active computation source candidate
+426,src/RA_AQFT/d1_BDG_string_tension.py,d1_BDG_string_tension.py,include,active computation source candidate
+427,src/RA_AQFT/d2_two_phases.py,d2_two_phases.py,include,active computation source candidate
+428,src/RA_AQFT/d3_alpha_s_BDG.py,d3_alpha_s_BDG.py,include,active computation source candidate
+429,src/RA_AQFT/d3_alpha_s_proof.py,d3_alpha_s_proof.py,include,active computation source candidate
+430,src/RA_AQFT/d3i_complete.py,d3i_complete.py,include,active computation source candidate
+432,src/RA_AQFT/d4u02_enumeration.py,d4u02_enumeration.py,include,active computation source candidate
+433,src/RA_AQFT/daughter_universe.py,daughter_universe.py,include,active computation source candidate
+437,src/RA_AQFT/f0_enumeration.py,f0_enumeration.py,include,active computation source candidate
+438,src/RA_AQFT/hard_wall_4_summary.py,hard_wall_4_summary.py,include,active computation source candidate
+439,src/RA_AQFT/kernel_saturation.py,kernel_saturation.py,include,active computation source candidate
+444,src/RA_AQFT/mu_derivation.py,mu_derivation.py,include,active computation source candidate
+445,src/RA_AQFT/mu_int_derive.py,mu_int_derive.py,include,active computation source candidate
+446,src/RA_AQFT/n_eff_alternative.py,n_eff_alternative.py,include,active computation source candidate
+447,src/RA_AQFT/n_eff_factorization.py,n_eff_factorization.py,include,active computation source candidate
+448,src/RA_AQFT/n_eff_mc_test.py,n_eff_mc_test.py,include,active computation source candidate
+449,src/RA_AQFT/o14_incidence_algebra.py,o14_incidence_algebra.py,include,active computation source candidate
+450,src/RA_AQFT/o14_proof.py,o14_proof.py,include,active computation source candidate
+451,src/RA_AQFT/pathwise_exit.py,pathwise_exit.py,include,active computation source candidate
+452,src/RA_AQFT/qcd_running_proof.py,qcd_running_proof.py,include,active computation source candidate
+463,src/RA_AQFT/RA_BDG_Simulation.py,RA_BDG_Simulation.py,include,active computation source candidate
+465,src/RA_AQFT/ra_calibration.py,ra_calibration.py,include,active computation source candidate
+475,src/RA_AQFT/RA_D1_Proof.py,RA_D1_Proof.py,include,active computation source candidate
+482,src/RA_AQFT/ra_dark_energy.py,ra_dark_energy.py,include,active computation source candidate
+483,src/RA_AQFT/ra_desi_verify.py,ra_desi_verify.py,include,active computation source candidate
+484,src/RA_AQFT/ra_early_bh.py,ra_early_bh.py,include,active computation source candidate
+485,src/RA_AQFT/ra_flat_rotation_curve.py,ra_flat_rotation_curve.py,include,active computation source candidate
+520,src/RA_AQFT/RA_RASM_Verification.py,RA_RASM_Verification.py,include,active computation source candidate
+529,src/RA_AQFT/ra_structure_formation.py,ra_structure_formation.py,include,active computation source candidate
+530,src/RA_AQFT/ra_verify_heraclitus.py,ra_verify_heraclitus.py,include,active computation source candidate
+531,src/RA_AQFT/rho_native.py,rho_native.py,include,active computation source candidate
+532,src/RA_AQFT/rindler_relative_entropy.py,rindler_relative_entropy.py,include,active computation source candidate
+535,src/RA_AQFT/severed_outdegree.py,severed_outdegree.py,include,active computation source candidate
+536,src/RA_AQFT/sigma_analysis.py,sigma_analysis.py,include,active computation source candidate
+537,src/RA_AQFT/sigma_table.py,sigma_table.py,include,active computation source candidate
+538,src/RA_AQFT/t1_forecast_deliverables_v2.py,t1_forecast_deliverables_v2.py,include,active computation source candidate
+539,src/RA_AQFT/t1_forecast_deliverables.py,t1_forecast_deliverables.py,include,active computation source candidate
+541,src/RA_AQFT/vwyler_proof.py,vwyler_proof.py,include,active computation source candidate
+542,src/ra_audit.py,ra_audit.py,include,active computation source candidate
+544,src/RA_Complexity/assembly_mapper.py,assembly_mapper.py,include,active computation source candidate
+546,src/RA_KB/migrate_to_sqlite.py,migrate_to_sqlite.py,exclude_from_scientific_audit,history or KB tooling; audit separately as infrastructure/provenance
+552,src/RA_KB/rakb_tools.py,rakb_tools.py,exclude_from_scientific_audit,history or KB tooling; audit separately as infrastructure/provenance
+555,src/RA_KB/validate_rakb.py,validate_rakb.py,exclude_from_scientific_audit,history or KB tooling; audit separately as infrastructure/provenance

@@ -1,0 +1,50 @@
+category,filename,match_count,score,terms
+RA-PRED-003 scalar/Higgs,RA_Berry_Phase_Derived.md,7,19,scalar:7
+RA-PRED-003 scalar/Higgs,mu_int_derive.py,1,14,scalar:1
+RA-PRED-003 scalar/Higgs,rindler_relative_entropy.py,5,10,scalar:5
+RA-PRED-003 scalar/Higgs,bdg_multicoupling.py,4,9,Higgs:4
+RA-PRED-003 scalar/Higgs,ra_verify_heraclitus.py,3,8,scalar:3
+RA-PRED-003 scalar/Higgs,ra_desi_verify.py,3,8,scalar:3
+RA-PRED-003 scalar/Higgs,ra_structure_formation.py,2,7,scalar:2
+RA-PRED-003 scalar/Higgs,sigma_table.py,2,7,Higgs:1;scalar:1
+RA-PRED-003 scalar/Higgs,casimir_benchmark.py,2,7,scalar:2
+RA-PRED-003 scalar/Higgs,cross_dimensional_exclusion.py,1,6,Higgs:1
+RA-PRED-003 scalar/Higgs,o14_incidence_algebra.py,1,6,scalar:1
+RA-PRED-003 scalar/Higgs,D1_BDG_MCMC_simulation.py,1,6,Higgs:1
+RA-PRED-003 scalar/Higgs,RA_BDG_Simulation.py,1,6,Higgs:1
+RA-PRED-003 scalar/Higgs,RA_Framing_Discipline.md,1,5,Higgs:1
+RA-PRED-003 scalar/Higgs,RA_Paper_II_Matter_Forces_and_Motifs_native_v5(1).tex,3,3,scalar:3
+RA-PRED-003 scalar/Higgs,RA_Paper_II_Matter_Forces_and_Motifs_native_v5.tex,3,3,scalar:3
+RA-PRED-003 scalar/Higgs,RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex,3,3,scalar:3
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Rewrite_Apr2026.tex,2,2,scalar:2
+RA-PRED-003 scalar/Higgs,RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v5(2).tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_1_Apr2026.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_III_Gravity_Cosmology_Complexity_native_v5(1).tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v5(1).tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_III_Gravity_Cosmology_Complexity_native_v5.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Kernel_and_Engine_native_v5.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_IV_Complexity_Life_Causal_Firewall_native_v5.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Kernel_and_Engine_native_v5(1).tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Merged_v8_Apr2026.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Merged_v7_Apr2026.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_I_Merged_v6_Apr2026.tex,1,1,scalar:1
+RA-PRED-003 scalar/Higgs,RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.tex,1,1,scalar:1
+RA-PRED-002 proton mass,n_eff_mc_test.py,2,15,proton:2
+RA-PRED-002 proton mass,n_eff_alternative.py,1,14,proton:1
+RA-PRED-002 proton mass,RA_Paper_II_Matter_Forces_and_Motifs_native_v5(1).tex,10,10,proton:9;Higgs:1
+RA-PRED-002 proton mass,RA_Paper_II_Matter_Forces_and_Motifs_native_v5.tex,10,10,proton:9;Higgs:1
+RA-PRED-002 proton mass,RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex,10,10,proton:9;Higgs:1
+RA-PRED-002 proton mass,ra_calibration.py,1,6,proton:1
+RA-PRED-002 proton mass,bdg_multicoupling.py,1,6,proton:1
+RA-PRED-002 proton mass,RA_Suite_Final_Preprint_Readiness_Audit_Apr23_2026.md,1,5,proton:1
+RA-PRED-002 proton mass,RA_suite_active_support_surface_master_v2.csv,1,2,proton:1
+RA-PRED-001 fine-structure,d3_alpha_s_BDG.py,5,18,alpha_EM:2;alpha_em:2;137.036:1
+RA-PRED-001 fine-structure,bdg_multicoupling.py,11,16,alpha_EM:5;alpha_em:5;137.036:1
+RA-PRED-001 fine-structure,D1_BDG_MCMC_simulation.py,7,12,alpha_EM:3;alpha_em:3;137.036:1
+RA-PRED-001 fine-structure,RA_Framing_Discipline.md,3,7,137.036:3
+RA-PRED-001 fine-structure,ra_calibration.py,2,7,alpha_EM:1;alpha_em:1
+RA-PRED-001 fine-structure,RA_RASM_Verification.py,2,7,alpha_EM:1;alpha_em:1
+RA-PRED-001 fine-structure,RA_Paper_II_Matter_Forces_and_Motifs_native_v5(1).tex,4,4,137.036:2;941:1;proton:1
+RA-PRED-001 fine-structure,RA_Paper_II_Matter_Forces_and_Motifs_native_v5.tex,4,4,137.036:2;941:1;proton:1
+RA-PRED-001 fine-structure,RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex,4,4,137.036:2;941:1;proton:1

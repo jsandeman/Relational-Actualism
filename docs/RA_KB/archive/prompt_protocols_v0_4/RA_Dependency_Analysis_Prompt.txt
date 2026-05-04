@@ -1,0 +1,15 @@
+Recompute the RA dependency graph:
+
+Inputs:
+- RA_results_master.yaml
+
+Tasks:
+1. Identify:
+   - bottleneck nodes
+   - high-leverage open targets
+   - weakly supported claims
+2. Rank next research targets
+3. Update:
+   - graph
+   - metrics
+   - recommendations

@@ -1,0 +1,167 @@
+--- /mnt/data/RA_SelectorClosure_Work_Apr29_2026/lean/RA_ActualizationSelector_v1.lean	2026-04-29 13:43:35.552036891 +0000
++++ /mnt/data/RA_SelectorClosure_Fix_Apr29_2026/lean/RA_ActualizationSelector_v1.lean	2026-04-29 13:45:03.465774309 +0000
+@@ -47,20 +47,20 @@
+ attribute [instance] Potentia.candidateFinite
+ 
+ /-- The subtype of admissible candidates. -/
+-abbrev Admissible {U : UniverseState} (Π : Potentia U) : Type :=
+-  {c : Π.Candidate // Π.admissible c}
++abbrev Admissible {U : UniverseState} (Pot : Potentia U) : Type :=
++  {c : Pot.Candidate // Pot.admissible c}
+ 
+ /-- A selector is not a probability measure. It chooses one admissible candidate. -/
+-structure ActualizationSelector (U : UniverseState) (Π : Potentia U) where
+-  choose : Admissible Π
++structure ActualizationSelector (U : UniverseState) (Pot : Potentia U) where
++  choose : Admissible Pot
+ 
+ /-- Weak closure lemma: once an actualization selector is given, the selected
+ candidate is unique. This is intentionally easy; the hard theorem is to derive
+ the selector from RA constraints. -/
+ theorem selected_candidate_unique
+-    {U : UniverseState} {Π : Potentia U}
+-    (Sel : ActualizationSelector U Π) :
+-    ∃! c : Admissible Π, c = Sel.choose := by
++    {U : UniverseState} {Pot : Potentia U}
++    (Sel : ActualizationSelector U Pot) :
++    ∃! c : Admissible Pot, c = Sel.choose := by
+   refine ⟨Sel.choose, rfl, ?_⟩
+   intro y hy
+   exact hy
+@@ -68,13 +68,13 @@
+ /-- A completion outcome is either a connected actualization or severance.
+ The severance branch is the formal placeholder for saturation / loss of a
+ unique connected continuation. -/
+-inductive CompletionOutcome {U : UniverseState} (Π : Potentia U) where
+-  | actualize : Admissible Π → CompletionOutcome Π
+-  | severance : CompletionOutcome Π
++inductive CompletionOutcome {U : UniverseState} (Pot : Potentia U) where
++  | actualize : Admissible Pot → CompletionOutcome Pot
++  | severance : CompletionOutcome Pot
+ 
+ /-- Convert a selector into the corresponding connected completion outcome. -/
+-def outcomeOfSelector {U : UniverseState} {Π : Potentia U}
+-    (Sel : ActualizationSelector U Π) : CompletionOutcome Π :=
++def outcomeOfSelector {U : UniverseState} {Pot : Potentia U}
++    (Sel : ActualizationSelector U Pot) : CompletionOutcome Pot :=
+   CompletionOutcome.actualize Sel.choose
+ 
+ /-- Abstract RA-native constraints on candidates.
+@@ -90,18 +90,18 @@
+ 
+ The field `valid_implies_admissible` says that a candidate satisfying the full
+ constraint package is also admitted by the kernel. -/
+-structure CandidateConstraints {U : UniverseState} (Π : Potentia U) where
+-  valid : Π.Candidate → Prop
+-  valid_implies_admissible : ∀ c : Π.Candidate, valid c → Π.admissible c
++structure CandidateConstraints {U : UniverseState} (Pot : Potentia U) where
++  valid : Pot.Candidate → Prop
++  valid_implies_admissible : ∀ c : Pot.Candidate, valid c → Pot.admissible c
+ 
+ /-- Valid candidates as a subtype. -/
+-abbrev ValidCandidate {U : UniverseState} {Π : Potentia U}
+-    (Ω : CandidateConstraints Π) : Type :=
+-  {c : Π.Candidate // Ω.valid c}
++abbrev ValidCandidate {U : UniverseState} {Pot : Potentia U}
++    (Ω : CandidateConstraints Pot) : Type :=
++  {c : Pot.Candidate // Ω.valid c}
+ 
+ /-- A valid candidate canonically gives an admissible candidate. -/
+-def validToAdmissible {U : UniverseState} {Π : Potentia U}
+-    (Ω : CandidateConstraints Π) (c : ValidCandidate Ω) : Admissible Π :=
++def validToAdmissible {U : UniverseState} {Pot : Potentia U}
++    (Ω : CandidateConstraints Pot) (c : ValidCandidate Ω) : Admissible Pot :=
+   ⟨c.val, Ω.valid_implies_admissible c.val c.property⟩
+ 
+ /-- Constraint-closure data for the weak Selector Closure theorem.
+@@ -109,21 +109,21 @@
+ This packages the hard part as a hypothesis: the RA-native constraints pick out
+ a unique valid candidate below saturation. The future hard theorem is to derive
+ this package from the concrete graph/BDG/LLC/incidence structures. -/
+-structure SelectorClosureData {U : UniverseState} (Π : Potentia U) where
+-  constraints : CandidateConstraints Π
+-  below_saturation : ¬ Π.saturated
+-  unique_valid : ∃! c : Π.Candidate, constraints.valid c
++structure SelectorClosureData {U : UniverseState} (Pot : Potentia U) where
++  constraints : CandidateConstraints Pot
++  below_saturation : ¬ Pot.saturated
++  unique_valid : ∃! c : Pot.Candidate, constraints.valid c
+ 
+ noncomputable section
+ 
+ /-- If the full RA constraints determine a unique valid candidate, they induce
+ an actualization selector. This is the first safe formal bridge from
+ constraint closure to selector closure. -/
+-def selectorFromClosureData {U : UniverseState} {Π : Potentia U}
+-    (H : SelectorClosureData Π) : ActualizationSelector U Π := by
++def selectorFromClosureData {U : UniverseState} {Pot : Potentia U}
++    (H : SelectorClosureData Pot) : ActualizationSelector U Pot := by
+   classical
+   refine { choose := ?_ }
+-  let c : Π.Candidate := Classical.choose H.unique_valid
++  let c : Pot.Candidate := Classical.choose H.unique_valid
+   have hc : H.constraints.valid c := (Classical.choose_spec H.unique_valid).1
+   exact ⟨c, H.constraints.valid_implies_admissible c hc⟩
+ 
+@@ -131,9 +131,9 @@
+ valid candidate below saturation, then the induced selector has a unique
+ selected admissible candidate. -/
+ theorem weak_selector_closure
+-    {U : UniverseState} {Π : Potentia U}
+-    (H : SelectorClosureData Π) :
+-    ∃! c : Admissible Π, c = (selectorFromClosureData H).choose := by
++    {U : UniverseState} {Pot : Potentia U}
++    (H : SelectorClosureData Pot) :
++    ∃! c : Admissible Pot, c = (selectorFromClosureData H).choose := by
+   exact selected_candidate_unique (selectorFromClosureData H)
+ 
+ end
+@@ -178,19 +178,19 @@
+ This does not assert that normal forms are ontological quotients. It only names
+ what would be needed to distinguish representational redundancy from genuine
+ history distinction. -/
+-structure CandidateNormalForm {U : UniverseState} (Π : Potentia U) where
++structure CandidateNormalForm {U : UniverseState} (Pot : Potentia U) where
+   Normal : Type
+-  normalize : Π.Candidate → Normal
+-  physically_equiv : Π.Candidate → Π.Candidate → Prop
+-  equiv_iff_same_normal : ∀ c d : Π.Candidate,
++  normalize : Pot.Candidate → Normal
++  physically_equiv : Pot.Candidate → Pot.Candidate → Prop
++  equiv_iff_same_normal : ∀ c d : Pot.Candidate,
+     physically_equiv c d ↔ normalize c = normalize d
+ 
+ /-- If two candidate descriptions are physically equivalent under a normal-form
+ package, then they have the same normal form. -/
+ theorem same_normal_of_physically_equiv
+-    {U : UniverseState} {Π : Potentia U}
+-    (NF : CandidateNormalForm Π)
+-    {c d : Π.Candidate}
++    {U : UniverseState} {Pot : Potentia U}
++    (NF : CandidateNormalForm Pot)
++    {c d : Pot.Candidate}
+     (h : NF.physically_equiv c d) :
+     NF.normalize c = NF.normalize d :=
+   (NF.equiv_iff_same_normal c d).1 h
+@@ -198,9 +198,9 @@
+ /-- If two candidate descriptions have the same normal form, then they are
+ physically equivalent under the given normal-form package. -/
+ theorem physically_equiv_of_same_normal
+-    {U : UniverseState} {Π : Potentia U}
+-    (NF : CandidateNormalForm Π)
+-    {c d : Π.Candidate}
++    {U : UniverseState} {Pot : Potentia U}
++    (NF : CandidateNormalForm Pot)
++    {c d : Pot.Candidate}
+     (h : NF.normalize c = NF.normalize d) :
+     NF.physically_equiv c d :=
+   (NF.equiv_iff_same_normal c d).2 h
+@@ -209,7 +209,7 @@
+ ## Hard theorem target, deliberately not asserted here
+ 
+ Selector Closure Theorem.
+-For any finite non-saturated RA universe-state `U = (G, Π(G))`, the concrete
++For any finite non-saturated RA universe-state `U = (G, Pot(G))`, the concrete
+ RA constraints — causal graph ontology, structured potentia, BDG admissibility,
+ LLC/frontier incidence, finitary actuality, covariance/no-label dependence,
+ no primitive randomness, and no actual-history quotient — determine a unique

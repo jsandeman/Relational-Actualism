@@ -1,0 +1,8 @@
+# latexmkrc for the RA canonical paper suite.
+# Keep common style/bib files discoverable from generated_tex/ and paper roots.
+$pdflatex = 'pdflatex -interaction=nonstopmode -halt-on-error %O %S';
+$bibtex = 'bibtex %O %B';
+$pdf_mode = 1;
+$clean_ext = 'aux bbl blg fls fdb_latexmk log out toc lof lot';
+$ENV{'TEXINPUTS'} = './:../:../../:common//:../common//:../../common//:' . ($ENV{'TEXINPUTS'} || '');
+$ENV{'BIBINPUTS'} = './:../:../../:common//:../common//:../../common//:' . ($ENV{'BIBINPUTS'} || '');

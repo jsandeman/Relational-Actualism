@@ -1,0 +1,83 @@
+registry_version: 0.5.0-migration-draft
+migration_source: RA_results_master_v0_4_5.yaml
+generated_from_zip: RAKB.zip
+generated_on: '2026-04-27'
+note: Typed split of the v0.4.5 monolithic registry. Scientific content is not independently
+  reverified here because source corpus files were not bundled in the ZIP.
+schema_note: Negative-scope, translation, and non-target discipline policies.
+framing_policies:
+- id: RA-NONTARGET-001
+  name: Born rule as non-target
+  domain: framing
+  papers:
+  - I
+  - IV
+  statement: The Born rule is not Nature itself; observed frequency regularities are
+    the Nature-facing target.
+  nature_targets:
+  - repeated experimental frequencies
+  ra_observable: null
+  sources:
+  - RA_Framing_Discipline_v3
+  proof_dependencies: []
+  framing_links:
+  - RA-KERNEL-004
+  restoration_preconditions: []
+  caveats: Need RA-native frequency law.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: CC
+  framing_kind: negative_scope_or_translation_policy
+  auxiliary_support_status: comparative_cartography
+- id: RA-NONTARGET-002
+  name: QCD running as non-mechanism
+  domain: framing
+  papers:
+  - II
+  statement: QCD running couplings are comparative cartography; RA targets measured
+    interaction-strength patterns through RA-native observables.
+  nature_targets:
+  - interaction strength measurements
+  ra_observable: null
+  sources:
+  - RA_Framing_Discipline_v3
+  - qcd_running_proof.py
+  proof_dependencies: []
+  framing_links:
+  - RA-ARITH-004
+  restoration_preconditions: []
+  caveats: Do not use as active native proof.
+  next_tasks: []
+  source_status:
+    qcd_running_proof.py: uploaded_unverified_exploratory
+  legacy_proof_status: DR
+  legacy_support_status: CC
+  framing_kind: negative_scope_or_translation_policy
+  auxiliary_support_status: comparative_cartography
+- id: RA-NONTARGET-003
+  name: Metric field as non-primitive
+  domain: framing
+  papers:
+  - I
+  - III
+  statement: Metric geometry is not RA's primitive substrate; RA targets observed
+    gravitational phenomena via finite graph structure.
+  nature_targets:
+  - orbital response
+  - lensing
+  - horizon phenomena
+  ra_observable: null
+  sources:
+  - RA_Framing_Discipline_v3
+  - RA Paper III
+  proof_dependencies: []
+  framing_links:
+  - RA-ONT-001
+  - RA-GRAV-006
+  restoration_preconditions: []
+  caveats: Effective metric translations may be downstream.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: CC
+  framing_kind: negative_scope_or_translation_policy
+  auxiliary_support_status: comparative_cartography

@@ -1,0 +1,5 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-D4-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,D4U02 selectivity ceiling,Edge-level sign-source for signed N1 charge
+RA-LLC-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Local Ledger Condition,Edge-level sign-source for signed N1 charge
+RA-MOTIF-005,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Edge-level sign-source for signed N1 charge
+RA-MOTIF-006,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Signed three-direction charge spectrum,Edge-level sign-source for signed N1 charge

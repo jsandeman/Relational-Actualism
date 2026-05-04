@@ -1,0 +1,36 @@
+# docs/RA_Canonical_Papers/paper_manifest.yaml
+# Purpose:
+#   Make the RAKB paper-generation workflow independent of date/version-specific filenames.
+#   Scripts should use this manifest as the canonical list of current paper sources.
+
+suite_version: "v0.5.1"
+canonical_root: "docs/RA_Canonical_Papers"
+rakb_registry_root: "docs/RA_KB/registry"
+style_file: "common/ra_suite.sty"
+bib_file: "common/ra_references.bib"
+generated_root: "docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs/current"
+
+papers:
+  - paper_id: "Paper_I"
+    title: "Relational Actualism I: Discrete Spacetime, Actualization, and the BDG Growth Kernel"
+    canonical_tex: "RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026.tex"
+    output_stem: "RA_Paper_I"
+    status: "canonical"
+
+  - paper_id: "Paper_II"
+    title: "Relational Actualism II: Emergent Matter and Interaction from Discrete Motif Structure"
+    canonical_tex: "RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026.tex"
+    output_stem: "RA_Paper_II"
+    status: "canonical"
+
+  - paper_id: "Paper_III"
+    title: "Relational Actualism III: Discrete Gravity, Cosmology, and Causal Severance"
+    canonical_tex: "RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.tex"
+    output_stem: "RA_Paper_III"
+    status: "canonical"
+
+  - paper_id: "Paper_IV"
+    title: "Relational Actualism IV: Complexity, Life, and Recursive Closure in Discrete Causal Networks"
+    canonical_tex: "RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026.tex"
+    output_stem: "RA_Paper_IV"
+    status: "canonical"

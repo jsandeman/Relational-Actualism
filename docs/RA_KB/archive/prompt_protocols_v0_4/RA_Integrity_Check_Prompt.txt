@@ -1,0 +1,17 @@
+Perform a consistency audit of the RAKB:
+
+Inputs:
+- current RA_results_master.yaml
+- current Lean + Python corpus
+
+Tasks:
+1. Identify orphan results (no source)
+2. Identify orphan sources (not in registry)
+3. Check dependency consistency
+4. Check status correctness (ANC vs DR vs CV)
+5. Identify:
+   - overclaimed results
+   - underutilized results
+6. Output:
+   - corrected registry
+   - issues list

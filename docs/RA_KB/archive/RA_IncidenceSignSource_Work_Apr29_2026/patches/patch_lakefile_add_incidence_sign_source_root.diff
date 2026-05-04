@@ -1,0 +1,7 @@
+diff --git a/src/RA_AQFT/lakefile.lean b/src/RA_AQFT/lakefile.lean
+--- a/src/RA_AQFT/lakefile.lean
++++ b/src/RA_AQFT/lakefile.lean
+@@
+ `RA_HasseFrontier_FiniteMaxExist_v1,
+ `RA_IncidenceCharge_v1,
++`RA_IncidenceSignSource_v1,

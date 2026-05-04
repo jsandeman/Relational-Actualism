@@ -1,0 +1,9 @@
+--- a/scripts/run_analysis_v3_conditional_poisson.jl
++++ b/scripts/run_analysis_v3_conditional_poisson.jl
+@@
+ using Printf
+ using Statistics
++using SpecialFunctions: loggamma
+ 
+ include(joinpath(@__DIR__, "..", "src", "RAGrowSim.jl"))
+ using .RAGrowSim

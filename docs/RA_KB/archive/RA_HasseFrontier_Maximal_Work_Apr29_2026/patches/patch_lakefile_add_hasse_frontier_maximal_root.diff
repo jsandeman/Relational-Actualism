@@ -1,0 +1,5 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+ `RA_HasseFrontier_v1,
++`RA_HasseFrontier_Maximal_v1,

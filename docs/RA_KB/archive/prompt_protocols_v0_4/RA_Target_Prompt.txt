@@ -1,0 +1,11 @@
+Focus on the following target:
+
+[insert target, e.g. RA-OPEN-009: frequency law]
+
+Tasks:
+1. Map full dependency chain
+2. Identify missing steps
+3. Suggest:
+   - Lean theorem plan
+   - Python computation plan
+4. Propose minimal viable breakthrough

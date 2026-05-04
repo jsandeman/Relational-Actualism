@@ -1,0 +1,6 @@
+diff --git a/src/RA_AQFT/RA_D3_CosmologicalExpansion.lean b/src/RA_AQFT/RA_D3_CosmologicalExpansion.lean
+--- a/src/RA_AQFT/RA_D3_CosmologicalExpansion.lean
++++ b/src/RA_AQFT/RA_D3_CosmologicalExpansion.lean
+@@
+-(hN2 : N2 > 0)
++(_hN2 : N2 > 0)
