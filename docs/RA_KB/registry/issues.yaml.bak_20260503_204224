@@ -814,7 +814,6 @@ issues:
   - bdg_decoherence_channels_matrix.csv
   - bmv_mu_dictionary.py
   - bdg_actualization.py
-  - lit_review_response_decoherence_budgets_May3_2026.md
   proof_dependencies:
   - RA-OPEN-BMV-MU-DICTIONARY-001
   - RA-OPEN-MU-ESTIMATOR-001
@@ -834,49 +833,32 @@ issues:
 
     '
   next_tasks:
-  - 'Lit-review pass DONE (2026-05-03). Channel weights and measurement
-    precisions in bdg_decoherence_channels.py refined against primary
-    sources (Asenbaum 2017, Panda 2023, Hornberger 2003-2004,
-    Hackermüller 2003-2004, Stibor 2004, Eibenberger 2013, Fein 2019,
-    Delić 2020, Magrini 2021, Tebbenjohanns 2021, Romero-Isart 2011,
-    Bose 2017, Frangeskou 2018, Jin 2024). See
-    docs/RA_KB/reports/lit_review_response_decoherence_budgets_May3_2026.md.'
-  - 'Post-lit-review verdict on Dict-D variants — D_uniform remains
-    FALSIFIED across measured mature data. D_multi_vertex_only and
-    D_gas_only now CONSISTENT with all measured mature data (reversal
-    of the pre-lit-review verdict; due to the nominal-vs-engineered
-    operating-conditions correction in C60 weights). Both still weakly
-    constrained by the theoretical-extrapolation oligoporphyrin
-    weights (heavy-molecule channel-resolved budget is a genuine
-    literature gap). D_BMV_specific in tension with opto-silica
-    (trap-photon dominant there per Delić 2020 / Magrini 2021).'
-  - 'Schema gaps flagged by lit review — (a) "photon_recoil" mis-bins
-    atom-IF noise (should split into spontaneous_emission + laser
-    phase noise; coherent Bragg/Raman pulses do not decohere in the
-    ideal limit). (b) precision factors blur three different epistemic
-    regimes (contrast precision, Γ-from-fit precision,
-    theoretical-model uncertainty). (c) operating_conditions field
-    added to schema; could be more granular.'
   - Replace the simplified gas-collision cross-section with proper
     de-Broglie-corrected cross-sections for sub-um dX scenarios
-    (Joos-Zeh full formula). Still relevant for sub-um dX cases.
-  - Pin or remove the carney_small_mass_proposal scenario (lit review
-    flagged as underspecified — does not correspond to a single primary
-    source; class-typical values not traceable).
-  - 'Determine which decoherence channels the BDG filter actually
-    applies to from RA principles (RA-OPEN-MU-ESTIMATOR-001 closure
-    dependent). Post-lit-review empirical envelope on any RA-derived
-    filter is — touching gas+BB channels by more than the
-    oligoporphyrin extrapolation weight (~75%) is constrained;
-    touching trap_photon broadly is constrained by opto-silica;
-    touching gas alone (or gas+BB) is currently CONSISTENT with all
-    measured mature data, leaving an open prediction window.'
+    (Joos-Zeh full formula).
+  - 'Pull primary-literature decoherence measurements for the cataloged
+    systems to refine the measurement_precision_factor and channel-budget
+    breakdowns. Channel weights in bdg_decoherence_channels.py are
+    training-data synthesis, not primary citations from Arndt / Kasevich /
+    Aspelmeyer groups; a real lit-review pass would tighten the verdict
+    significantly.'
+  - 'Channel-resolved analysis (bdg_decoherence_channels.py) tested four
+    Dict-D variants with restricted filter masks (uniform, multi-vertex
+    only, gas only, BMV-specific). Result: even the most restricted
+    variant (D_gas_only, filter applies only to gas collisions) is
+    constrained by Arndt-style molecular interferometry, where gas weight
+    in the channel budget is ~50-55% and measurement precision is ~10-20%.
+    The escape routes are narrower than initially suggested by Tier 3b.'
+  - 'Determine which decoherence channels the BDG filter actually applies
+    to from RA principles (RA-OPEN-MU-ESTIMATOR-001 closure dependent).
+    The empirical constraint is now sharp — any future RA-derived filter
+    that affects gas + blackbody channels by more than ~10-20% is in
+    tension with mature molecular interferometry.'
   source_status:
     bdg_decoherence_predictions.py: uploaded_smoke_tested_ok
     bdg_decoherence_predictions.csv: generated_source_audit
     bdg_decoherence_channels.py: uploaded_smoke_tested_ok
     bdg_decoherence_channels_matrix.csv: generated_source_audit
-    lit_review_response_decoherence_budgets_May3_2026.md: uploaded_verified
   legacy_proof_status: ONT
   issue_status: open
   issue_kind: empirical_constraint

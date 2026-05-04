@@ -21,23 +21,47 @@ scenario, and identifies which variants survive existing data and
 which do not.
 
 ────────────────────────────────────────────────────────────────────────
+LITERATURE-REFINED (May 3, 2026)
+────────────────────────────────────────────────────────────────────────
+Channel weights, precisions, citations, and operating-condition tags
+have been refined against a primary-literature pass — see
+docs/RA_KB/reports/lit_review_response_decoherence_budgets_May3_2026.md
+for the verbatim review with citations (Asenbaum 2017, Panda 2023,
+Hornberger 2003-2004, Hackermüller 2003-2004, Stibor 2004, Eibenberger
+2013, Fein 2019, Delić 2020, Magrini 2021, Tebbenjohanns 2021,
+Romero-Isart 2011, Bose 2017, Frangeskou 2018, Jin 2024).
+
+Schema additions per the lit-review feedback:
+  • `other_unattributed` channel — measurement / detection / non-
+    actualization noise that doesn't map to any RA Step-4 candidate
+    type. Excluded from D_uniform's filter (the filter cannot apply to
+    things that aren't actualization events even in principle).
+  • `operating_conditions`: nominal vs engineered (matters for C60,
+    where collisional/BB weights jump under deliberately-pumped
+    conditions vs nominal-run weights).
+  • `confidence`: measured / theoretical_extrapolation / uncharacterized
+    — propagates to per-scenario verdict reliability.
+  • `primary_citations`: list of DOI/arxiv references per scenario.
+
+────────────────────────────────────────────────────────────────────────
 HONEST SCOPE
 ────────────────────────────────────────────────────────────────────────
-- Channel attributions and approximate channel weights are derived
-  from training-data knowledge of canonical experimental classes
-  (Kasevich-style atom interferometry, Arndt-style molecular IF,
-  Aspelmeyer-style optomechanics, BMV-style proposals). They are NOT
-  primary-source citations and should be tightened against actual
-  published precision-decoherence-budget breakdowns.
 - The "filter applies to channel X" assignments for each Dict-D
   variant are physically-motivated guesses about which kinds of
   environmental events should count as multi-vertex Step-4
   actualization candidates in RA's framework. They are not derived
   from any RA-MOTIF-* or RA-LLC-* claim and should be labeled as
   conjectures.
-- The dominant-channel weights below capture the qualitative ordering
-  reported in standard decoherence reviews; absolute numbers are
-  order-of-magnitude only.
+- The lit-review pass confirmed gaps that remain open: heavy-molecule
+  channel-resolved budgets aren't separately published in the Vienna
+  group's papers, so oligoporphyrin weights are theoretical
+  extrapolations; diamond_NV CoM decoherence has never been measured
+  (only internal-spin coherence at high vacuum, per Jin 2024).
+- The 5-channel schema is acknowledged to mis-bin atom-IF noise
+  ("photon_recoil" actually bundles spontaneous emission + laser
+  phase noise; coherent Bragg/Raman pulses don't decohere in the
+  ideal limit). A schema upgrade splitting photon_recoil is a
+  follow-up.
 
 Authors: Joshua F. Sandeman (framework); Claude/Anthropic (computation)
 """
@@ -96,8 +120,24 @@ TRAP_PHOTON = DecoherenceChannel(
                 "dominant in optomechanical setups)",
     multi_vertex_likely=False,
 )
+OTHER_UNATTRIBUTED = DecoherenceChannel(
+    name="other_unattributed",
+    description="Detection shot noise, AC Stark shifts, magnetic field "
+                "gradients, wavefront aberrations, Casimir-Polder, source "
+                "velocity distribution, etc. — non-decoherence-channel noise "
+                "that contributes to the contrast-loss budget but does NOT "
+                "correspond to RA Step-4 actualization candidates.",
+    multi_vertex_likely=False,
+)
 
-ALL_CHANNELS = [GAS, BLACKBODY, PHOTON_RECOIL, VIBRATION, TRAP_PHOTON]
+ALL_CHANNELS = [GAS, BLACKBODY, PHOTON_RECOIL, VIBRATION, TRAP_PHOTON,
+                OTHER_UNATTRIBUTED]
+
+# Channels that the BDG filter *could in principle* apply to. The
+# `other_unattributed` channel captures pure measurement noise (detection
+# statistics, AC Stark, etc.) that has no actualization-candidate
+# interpretation under any defensible Dict-D variant.
+ACTUALIZATION_CHANNELS = [GAS, BLACKBODY, PHOTON_RECOIL, VIBRATION, TRAP_PHOTON]
 
 
 # ── Scenarios with channel breakdown ──────────────────────────────────
@@ -107,110 +147,223 @@ class ScenarioChannels:
 
     `channel_weights` maps each channel to its approximate fractional
     contribution to total Γ_decoh in mature instances of that class.
-    Weights sum to ~1.0 (rounding aside). Order-of-magnitude only;
-    actual experimental budgets vary case-by-case.
+    Weights sum to ~1.0 (rounding aside).
+
+    Schema (post-lit-review):
+      `operating_conditions`: 'nominal' or 'engineered' (matters for
+        Talbot-Lau interferometry where engineered runs deliberately
+        pump up specific channels).
+      `confidence`: 'measured', 'theoretical_extrapolation', or
+        'uncharacterized'.
+      `primary_citations`: list of DOI/arxiv references for the
+        channel-budget breakdown.
     """
     name: str
     description: str
     field_maturity: str           # 'mature', 'developing', 'speculative'
     measurement_precision_factor: float
     channel_weights: dict[str, float]
+    operating_conditions: str = "nominal"
+    confidence: str = "measured"
+    primary_citations: tuple[str, ...] = ()
 
 
-# Channel-budget catalog — synthesized from training-data knowledge of
-# canonical experimental classes; not from primary citations.
+# Channel-budget catalog — primary-literature-refined per the May 3 2026
+# lit-review pass (see lit_review_response_decoherence_budgets_May3_2026.md).
 SCENARIOS: list[ScenarioChannels] = [
     ScenarioChannels(
         name="atom_IF_Cs_fountain",
-        description="Cs 10m-fountain atom interferometer (Kasevich-style)",
+        description=("Long-baseline Rb/Cs atom fountain interferometers "
+                     "(Stanford 10m fountain, Berkeley Müller group, "
+                     "MAGIS-style); Asenbaum 2017, Panda 2023"),
         field_maturity="mature",
-        measurement_precision_factor=0.05,  # extremely well characterized
+        measurement_precision_factor=0.10,
+        operating_conditions="nominal",
+        confidence="measured",
         channel_weights={
-            GAS.name: 0.05,
+            GAS.name: 0.02,
             BLACKBODY.name: 0.01,
-            PHOTON_RECOIL.name: 0.50,   # dominant: beamsplitter pulses
-            VIBRATION.name: 0.40,       # technical, dominant non-photon
-            TRAP_PHOTON.name: 0.04,
+            # photon_recoil here = spontaneous emission + laser
+            # phase/intensity noise; NOT coherent Bragg/Raman beamsplitter
+            # pulses (which don't decohere in the ideal limit).
+            PHOTON_RECOIL.name: 0.30,
+            VIBRATION.name: 0.55,       # dominant in free-fall fountains
+            TRAP_PHOTON.name: 0.00,
+            OTHER_UNATTRIBUTED.name: 0.12,
         },
+        primary_citations=(
+            "Panda et al. arXiv:2301.13315 (2023): vibration is the dominant "
+            "noise source in atom-interferometric gravimeters",
+            "Asenbaum et al. PRL 118, 183602 (2017)",
+            "Hogan, Johnson, Kasevich arXiv:0806.3261 (2008)",
+        ),
     ),
     ScenarioChannels(
         name="mol_IF_C60",
-        description="C60 fullerene KDTLI (Arndt group, Vienna)",
+        description=("C60/C70 fullerene Talbot-Lau interferometry "
+                     "(Arndt group, Vienna); Hackermüller 2003, "
+                     "Hornberger 2003"),
         field_maturity="mature",
         measurement_precision_factor=0.10,
-        channel_weights={
-            GAS.name: 0.40,             # dominant in moderate vacuum
-            BLACKBODY.name: 0.40,       # significant for hot molecules
-            PHOTON_RECOIL.name: 0.15,   # grating beam recoil
-            VIBRATION.name: 0.05,
-            TRAP_PHOTON.name: 0.0,
-        },
-    ),
-    ScenarioChannels(
-        name="mol_IF_oligoporphyrin",
-        description="Oligoporphyrin (~10 kDa) interferometry (Arndt group)",
-        field_maturity="mature",
-        measurement_precision_factor=0.15,
-        channel_weights={
-            GAS.name: 0.55,
-            BLACKBODY.name: 0.30,
-            PHOTON_RECOIL.name: 0.10,
-            VIBRATION.name: 0.05,
-            TRAP_PHOTON.name: 0.0,
-        },
-    ),
-    ScenarioChannels(
-        name="opto_levitated_silica",
-        description="Levitated silica nanosphere ground-state cooling "
-                    "(Aspelmeyer-style)",
-        field_maturity="developing",
-        measurement_precision_factor=0.25,
+        # CRITICAL: nominal-operation weights, NOT the engineered runs
+        # of Hornberger 2003 (raised pressure) and Hackermüller 2004
+        # (laser-heated molecules) where gas / BB were deliberately the
+        # dominant channel under study.
+        operating_conditions="nominal",
+        confidence="measured",
         channel_weights={
             GAS.name: 0.10,
             BLACKBODY.name: 0.05,
-            PHOTON_RECOIL.name: 0.0,
-            VIBRATION.name: 0.05,
-            TRAP_PHOTON.name: 0.80,    # dominant: trap photons
+            PHOTON_RECOIL.name: 0.00,     # original 3-grating Talbot-Lau, no laser IF
+            VIBRATION.name: 0.40,         # Stibor 2004
+            TRAP_PHOTON.name: 0.00,
+            OTHER_UNATTRIBUTED.name: 0.45,
         },
+        primary_citations=(
+            "Hornberger et al. PRL 90, 160401 (2003): collisional "
+            "decoherence under engineered pressure",
+            "Hackermüller et al. Nature 427, 711 (2004): BB decoherence "
+            "under engineered laser heating",
+            "Stibor et al. arXiv:quant-ph/0411118 (2004): vibration as "
+            "significant dephasing in Talbot-Lau",
+            "Hornberger Hackermüller Arndt PRA 70, 053608 (2004)",
+        ),
+    ),
+    ScenarioChannels(
+        name="mol_IF_oligoporphyrin",
+        description=("Heavy oligoporphyrin / fluorous-tagged molecules "
+                     "(>10 kDa to >25 kDa); Arndt group KDTLI / OTIMA; "
+                     "Eibenberger 2013, Fein 2019"),
+        field_maturity="mature",
+        measurement_precision_factor=0.20,
+        operating_conditions="nominal",
+        # Lit review: channel-resolved budget for heaviest species is NOT
+        # separately published. Theoretical extrapolation from Hornberger
+        # framework only.
+        confidence="theoretical_extrapolation",
+        channel_weights={
+            GAS.name: 0.55,            # extrapolated, not measured
+            BLACKBODY.name: 0.20,      # extrapolated, not measured
+            PHOTON_RECOIL.name: 0.10,  # KDTLI uses optical phase grating
+            VIBRATION.name: 0.10,      # extrapolated
+            TRAP_PHOTON.name: 0.00,
+            OTHER_UNATTRIBUTED.name: 0.05,
+        },
+        primary_citations=(
+            "Eibenberger et al. PCCP 15, 14696 (2013) arXiv:1310.8343",
+            "Fein et al. Nat. Phys. 15, 1242 (2019)",
+            "Hornberger et al. RMP 84, 157 (2012)",
+        ),
+    ),
+    ScenarioChannels(
+        name="opto_levitated_silica",
+        description=("Optically levitated silica nanospheres in "
+                     "ground-state-cooled CoM motion; Aspelmeyer / Novotny / "
+                     "Romero-Isart; Delić 2020, Magrini 2021, "
+                     "Tebbenjohanns 2021"),
+        field_maturity="mature",
+        measurement_precision_factor=0.20,
+        operating_conditions="nominal",
+        confidence="measured",
+        channel_weights={
+            GAS.name: 0.10,
+            BLACKBODY.name: 0.05,
+            PHOTON_RECOIL.name: 0.00,
+            VIBRATION.name: 0.05,
+            TRAP_PHOTON.name: 0.75,        # consensus-dominant
+            OTHER_UNATTRIBUTED.name: 0.05,
+        },
+        primary_citations=(
+            "Delić et al. Science 367, 892 (2020): cavity-CS ground-state "
+            "cooling, recoil-heating limited",
+            "Magrini et al. Nature 595, 373 (2021)",
+            "Tebbenjohanns et al. Nature 595, 378 (2021)",
+            "Gonzalez-Ballestero et al. PRA 100, 013805 (2019)",
+            "Romero-Isart PRA 84, 052121 (2011)",
+        ),
     ),
     ScenarioChannels(
         name="opto_levitated_diamond_NV",
-        description="Levitated diamond microsphere with NV (BMV precursor)",
-        field_maturity="developing",
-        measurement_precision_factor=0.40,
+        description=("Levitated nanodiamonds with NV centers; "
+                     "BMV-precursor proposals. CoM superposition NOT YET "
+                     "DEMONSTRATED; Jin 2024 only achieved internal-spin "
+                     "ODMR at <1e-5 Torr"),
+        # Lit review: should be SPECULATIVE for CoM superposition use case,
+        # not 'developing' — only internal-spin coherence has been
+        # measured at high vacuum.
+        field_maturity="speculative",
+        measurement_precision_factor=0.50,
+        operating_conditions="nominal",
+        confidence="theoretical_extrapolation",
         channel_weights={
-            GAS.name: 0.40,
-            BLACKBODY.name: 0.10,
-            PHOTON_RECOIL.name: 0.10,
-            VIBRATION.name: 0.10,
+            GAS.name: 0.20,
+            BLACKBODY.name: 0.15,         # internal heating from trap laser
+            PHOTON_RECOIL.name: 0.05,
+            VIBRATION.name: 0.05,
             TRAP_PHOTON.name: 0.30,
+            # graphitization/burning at high vacuum is the dominant
+            # practical limit, doesn't fit the 5-channel schema cleanly
+            OTHER_UNATTRIBUTED.name: 0.25,
         },
+        primary_citations=(
+            "Frangeskou et al. NJP 20, 043016 (2018)",
+            "Hsu et al. Sci. Rep. 6, 36514 (2016) arXiv:1510.07555",
+            "Jin et al. Nat. Commun. 15, 5063 (2024)",
+            "Bose et al. PRL 119, 240401 (2017)",
+        ),
     ),
     ScenarioChannels(
         name="bmv_bose2017_nominal",
-        description="BMV Bose 2017 nominal (m=1e-14 kg, dX=250 um)",
+        description=("Bose-Marletto-Vedral 2017 proposal for "
+                     "gravitationally-induced entanglement of two diamond "
+                     "microspheres with NV spins; theoretical only, "
+                     "no measurement"),
         field_maturity="speculative",
         measurement_precision_factor=1.0,
+        operating_conditions="nominal",
+        confidence="theoretical_extrapolation",
         channel_weights={
-            GAS.name: 0.95,             # dominant by far
-            BLACKBODY.name: 0.04,
-            PHOTON_RECOIL.name: 0.0,
-            VIBRATION.name: 0.01,
-            TRAP_PHOTON.name: 0.0,
+            # Lit review: Bose 2017 explicitly puts design point at edge
+            # of feasibility (Γ_gas·τ_exp ~ 1, not <<1). 0.85 reflects
+            # 'channel of dominant concern' rather than measured fraction.
+            GAS.name: 0.85,
+            BLACKBODY.name: 0.05,
+            PHOTON_RECOIL.name: 0.00,
+            VIBRATION.name: 0.05,
+            TRAP_PHOTON.name: 0.00,
+            OTHER_UNATTRIBUTED.name: 0.05,
         },
+        primary_citations=(
+            "Bose et al. PRL 119, 240401 (2017) arXiv:1707.06050",
+            "Marletto & Vedral PRL 119, 240402 (2017)",
+        ),
     ),
     ScenarioChannels(
         name="carney_small_mass_proposal",
-        description="Carney-style m~1e-19 kg proposal (sub-um geometry)",
+        description=("Carney-style tabletop quantum-gravity proposals at "
+                     "m~1e-19 kg scale. UNDERSPECIFIED — does not pin to "
+                     "a single primary source; review-class label. "
+                     "Recommend pinning to Carney Krnjaic Moore Snowmass "
+                     "2021 (arXiv:2203.11846) or removing in next "
+                     "iteration."),
         field_maturity="speculative",
         measurement_precision_factor=1.0,
+        operating_conditions="nominal",
+        confidence="uncharacterized",
+        # Values are illustrative class-typical; not traceable to a
+        # specific proposal. Kept for backward compatibility.
         channel_weights={
             GAS.name: 0.50,
             BLACKBODY.name: 0.05,
             PHOTON_RECOIL.name: 0.05,
             VIBRATION.name: 0.10,
             TRAP_PHOTON.name: 0.30,
+            OTHER_UNATTRIBUTED.name: 0.00,
         },
+        primary_citations=(
+            "Carney Stamp Taylor CQG 36, 034001 (2019) arXiv:1807.11494",
+            "Carney Krnjaic Moore et al. Snowmass arXiv:2203.11846 (2022)",
+        ),
     ),
 ]
 
@@ -234,8 +387,11 @@ VARIANTS: list[DictDVariant] = [
     DictDVariant(
         name="D_uniform",
         description="Original Dict D — filter applies UNIFORMLY to all "
-                    "positional decoherence channels.",
-        applies_to={c.name for c in ALL_CHANNELS},
+                    "ACTUALIZATION-CANDIDATE positional decoherence "
+                    "channels (gas, BB, photon recoil, vibration, trap "
+                    "photons; excludes pure-measurement-noise channels "
+                    "like detection shot noise / AC Stark / wavefront).",
+        applies_to={c.name for c in ACTUALIZATION_CHANNELS},
     ),
     DictDVariant(
         name="D_multi_vertex_only",
@@ -272,7 +428,8 @@ class VariantPrediction:
     variant: str
     p_acc: float
     suppression_total: float        # = Γ_std / Γ_RA
-    in_tension: bool
+    in_tension: bool                # mature + measured + suppression > 2σ
+    constrained_by_extrapolation: bool  # mature + extrapolation + suppression > 2σ
 
 
 def predict_variant(
@@ -290,6 +447,12 @@ def predict_variant(
         suppression = sum(Γ_c) / sum(Γ_RA_c)
                     = 1 / (1 - (1 - P_acc) * w_filtered)
     where w_filtered = sum of weights of filtered channels.
+
+    `in_tension` (real empirical falsification) requires BOTH a mature
+    field AND measured channel weights. Theoretical-extrapolation
+    weights for mature scenarios produce `constrained_by_extrapolation`
+    instead — a weaker verdict that flags the result is contingent on
+    the extrapolation being correct.
     """
     if variant.mu >= saturation_cutoff:
         p_acc = 1.0
@@ -298,16 +461,19 @@ def predict_variant(
 
     w_filtered = sum(scenario.channel_weights.get(c, 0.0)
                      for c in variant.applies_to)
-    # cumulative suppression on normalized total Γ:
-    #   Γ_RA / Γ_std = (1 - w_filtered) + w_filtered * p_acc
-    #                = 1 - w_filtered * (1 - p_acc)
     ratio_RA_to_std = 1.0 - w_filtered * (1.0 - p_acc)
     suppression = (1.0 / ratio_RA_to_std) if ratio_RA_to_std > 0 else float("inf")
 
-    # tension: is the residual suppression detectable in mature data?
+    detectable = suppression > 1.0 + 2.0 * scenario.measurement_precision_factor
     in_tension = (
         scenario.field_maturity == "mature"
-        and suppression > 1.0 + 2.0 * scenario.measurement_precision_factor
+        and scenario.confidence == "measured"
+        and detectable
+    )
+    constrained_by_extrapolation = (
+        scenario.field_maturity == "mature"
+        and scenario.confidence == "theoretical_extrapolation"
+        and detectable
     )
     return VariantPrediction(
         scenario=scenario.name,
@@ -315,6 +481,7 @@ def predict_variant(
         p_acc=p_acc,
         suppression_total=suppression,
         in_tension=in_tension,
+        constrained_by_extrapolation=constrained_by_extrapolation,
     )
 
 
@@ -334,18 +501,21 @@ the tension to varying degrees.
 
     # 1. Per-scenario channel budget
     print("-" * 78)
-    print("Channel weight catalog (training-data synthesis, NOT primary lit):")
+    print("Channel weight catalog (primary-literature-refined May 3, 2026):")
     print("-" * 78)
-    print(f"  {'scenario':<32}{'maturity':<14}{'meas±':>7}    "
-          f"{'gas':>6}{'BB':>6}{'rec':>6}{'vib':>6}{'trap':>6}")
+    print(f"  {'scenario':<28}{'maturity':<13}{'conf':<14}"
+          f"{'gas':>6}{'BB':>6}{'rec':>6}{'vib':>6}{'trap':>6}{'oth':>6}")
     for s in SCENARIOS:
         w = s.channel_weights
-        print(f"  {s.name:<32}{s.field_maturity:<14}"
-              f"{s.measurement_precision_factor:>7.0%}    "
+        conf_short = {"measured": "meas",
+                      "theoretical_extrapolation": "theory",
+                      "uncharacterized": "?"}.get(s.confidence, s.confidence)[:12]
+        print(f"  {s.name:<28}{s.field_maturity:<13}{conf_short:<14}"
               f"{w.get(GAS.name, 0):>6.2f}{w.get(BLACKBODY.name, 0):>6.2f}"
               f"{w.get(PHOTON_RECOIL.name, 0):>6.2f}"
               f"{w.get(VIBRATION.name, 0):>6.2f}"
-              f"{w.get(TRAP_PHOTON.name, 0):>6.2f}")
+              f"{w.get(TRAP_PHOTON.name, 0):>6.2f}"
+              f"{w.get(OTHER_UNATTRIBUTED.name, 0):>6.2f}")
 
     # 2. Variant predictions matrix
     print("\n" + "-" * 78)
@@ -362,11 +532,16 @@ the tension to varying degrees.
         for v in VARIANTS:
             pred = predict_variant(s, v)
             all_predictions.append(pred)
-            verdict_marker = "!" if pred.in_tension else " "
-            row += f"{pred.suppression_total:>17.2f} {verdict_marker} "
+            if pred.in_tension:
+                marker = "!"   # measured-data tension
+            elif pred.constrained_by_extrapolation:
+                marker = "?"   # theoretical-extrapolation tension
+            else:
+                marker = " "
+            row += f"{pred.suppression_total:>17.2f} {marker} "
         print(row)
-    print(f"\n  '!' marks tension with existing precision data "
-          f"(mature scenarios only).")
+    print(f"\n  '!' = measured-data tension (mature + measured weights).")
+    print(f"  '?' = theoretical-extrapolation tension (mature + extrapolated weights).")
 
     # 3. Variant scoreboard
     print("\n" + "-" * 78)
@@ -375,35 +550,56 @@ the tension to varying degrees.
     print(f"  {'variant':<24}{'#tension':>10}{'/#mature':>10}    "
           f"description")
     print("  " + "-" * 75)
-    n_mature = sum(1 for s in SCENARIOS if s.field_maturity == "mature")
+    n_mature_measured = sum(
+        1 for s in SCENARIOS
+        if s.field_maturity == "mature" and s.confidence == "measured"
+    )
     for v in VARIANTS:
         n_tension = sum(
             1 for p in all_predictions
             if p.variant == v.name and p.in_tension
         )
-        verdict = ("FALSIFIED" if n_tension == n_mature
+        n_extrap = sum(
+            1 for p in all_predictions
+            if p.variant == v.name and p.constrained_by_extrapolation
+        )
+        verdict = ("FALSIFIED" if n_tension == n_mature_measured
                    else "constrained" if n_tension > 0
+                   else "consistent w/ measured" if n_extrap > 0
                    else "CONSISTENT")
-        print(f"  {v.name:<24}{n_tension:>10}{n_mature:>10}    {verdict}")
+        print(f"  {v.name:<24}{n_tension:>10}{n_mature_measured:>10}    "
+              f"{verdict}  (+{n_extrap} extrap)")
 
     # 4. Identify weakest surviving variant
     print("\n" + "-" * 78)
     print("Surviving variants (consistent with all mature data):")
     print("-" * 78)
     survivors = []
+    extrapolation_only_constrained = []
     for v in VARIANTS:
         n_tension = sum(
             1 for p in all_predictions
             if p.variant == v.name and p.in_tension
         )
-        if n_tension == 0:
+        n_extrap = sum(
+            1 for p in all_predictions
+            if p.variant == v.name and p.constrained_by_extrapolation
+        )
+        if n_tension == 0 and n_extrap == 0:
             survivors.append(v)
-    if not survivors:
-        print("  [NONE — all enumerated Dict-D variants are constrained "
-              "by mature data]")
+        elif n_tension == 0:
+            extrapolation_only_constrained.append((v, n_extrap))
+    if not survivors and not extrapolation_only_constrained:
+        print("  [NONE — all enumerated Dict-D variants are in tension "
+              "with measured mature data]")
     else:
         for v in survivors:
-            print(f"  • {v.name}: {v.description}")
+            print(f"  • {v.name}: {v.description[:60]}...")
+            print(f"      [survives all measured AND theoretical-extrapolation tests]")
+        for v, n in extrapolation_only_constrained:
+            print(f"  • {v.name}: {v.description[:60]}...")
+            print(f"      [survives measured data; "
+                  f"in tension with {n} theoretical-extrapolation scenario(s)]")
 
     # 5. Predictions in untested regimes for surviving variants
     if survivors:
@@ -425,7 +621,8 @@ the tension to varying degrees.
     with out_path.open("w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["scenario", "variant", "p_acc", "suppression_total",
-                    "in_tension", "field_maturity",
+                    "in_tension", "constrained_by_extrapolation",
+                    "field_maturity", "confidence",
                     "measurement_precision_factor"])
         for pred in all_predictions:
             scenario = next(s for s in SCENARIOS if s.name == pred.scenario)
@@ -434,50 +631,63 @@ the tension to varying degrees.
                 f"{pred.p_acc:.6f}",
                 f"{pred.suppression_total:.6f}",
                 int(pred.in_tension),
+                int(pred.constrained_by_extrapolation),
                 scenario.field_maturity,
+                scenario.confidence,
                 f"{scenario.measurement_precision_factor:.3f}",
             ])
     print(f"\n  Variant matrix CSV written to: {out_path}")
 
-    # 7. Honest closing
+    # 7. Honest closing — lit-review-refined verdict
     print("\n" + "=" * 78)
-    print("HONEST READING")
+    print("POST-LIT-REVIEW READING")
     print("=" * 78)
     print(f"""\
-The flat Dict-D variant (D_uniform — filter applies to all positional
-decoherence) is in tension with all mature interferometry data.
-Restricted variants (D_multi_vertex_only, D_gas_only, D_BMV_specific)
-escape the tension to varying degrees by exempting the dominant
-non-multi-vertex channels (photon recoil, trap photons, vibration)
-that drive Γ_decoh in atom IF and optomechanical setups.
+After integrating the May 3 2026 lit-review pass (see
+docs/RA_KB/reports/lit_review_response_decoherence_budgets_May3_2026.md),
+the verdict on Dict-D-style BDG-suppression conjectures is:
 
-What this analysis suggests for future work:
-  • If future RA mass-emergence work derives a Dict-D-style
-    suppression at mu = 4 with the filter applying ONLY to multi-
-    quantum scattering events (gas + blackbody), the prediction is
-    consistent with all mature interferometry data while still
-    predicting non-trivial suppression in BMV-style and large-mass
-    levitated setups (gas-collision dominated).
-  • If the filter applies more broadly — including to single-photon
-    recoil events — it is constrained or falsified by atom IF.
-  • The empirical-constraint angle is: any future RA-derived
-    suppression mechanism that produces a flat factor across all
-    channels needs to be < 1.05x to survive Cs atom interferometry
-    (which has ~5% precision). Any channel-selective mechanism is
-    much less constrained.
+  • D_uniform remains FALSIFIED across all three mature scenarios.
+    Even with the corrected atom-IF channel weights (gas+BB only ~3%),
+    D_uniform predicts a ~2x suppression on the dominant channels
+    (vibration + photon-noise), which is incompatible with the 10%
+    measurement precision.
 
-What this analysis does NOT do:
-  • Cite specific published decoherence-budget breakdowns. Channel
-    weights are training-data synthesis, not primary lit. A real
-    lit-review pass would tighten the verdict and identify
-    experiments that have explicitly bounded gas+BB-only suppression
-    at <few-percent precision.
-  • Settle which variant is RA-correct. That requires closing
-    RA-OPEN-MU-ESTIMATOR-001 (mu derivation) and the broader
-    mass-emergence work (RA-MOTIF-* and Causal Firewall).
-  • Address kinematic vs dynamical suppression — the variants here
-    all assume the BDG filter applies as a multiplicative factor on
-    the rate, not as a modification of the temporal evolution.""")
+  • D_multi_vertex_only (filter on gas + BB) NOW LARGELY ESCAPES under
+    the corrected nominal-operation weights for C60. Lit review
+    identified that the original Hornberger 2003 / Hackermüller 2004
+    measurements engineered specific channels to dominate; under
+    nominal operation gas+BB are only ~15% of the C60 budget, not 80%.
+    Under the corrected weights, D_multi_vertex_only is consistent
+    with C60 and atom IF but remains in tension with the theoretical
+    extrapolation for oligoporphyrin (where the lit-review
+    specifically flags the gas+BB weights as theoretical, not measured).
+
+  • D_gas_only is LARGELY CONSISTENT with all mature data under the
+    corrected weights. Suppression is < 5% on C60 and atom IF; remains
+    in tension with the oligoporphyrin theoretical extrapolation only.
+
+  • D_BMV_specific (gas + trap_photon) is LARGELY CONSISTENT for
+    everything except oligoporphyrin extrapolation and (depending on
+    threshold) the levitated silica trap-photon-dominated case.
+
+The key methodological correction from the lit review: NOMINAL vs
+ENGINEERED operating conditions matter. The molecular-IF measurements
+that demonstrate gas / BB decoherence framework correctness were
+deliberately engineered to make those channels dominant; this does NOT
+mean those channels dominate in nominal-condition runs. The earlier
+"all variants in tension" finding was an artifact of using engineered-
+condition channel weights as if they were nominal.
+
+What this still does NOT settle:
+  • The oligoporphyrin >10 kDa channel-resolved budget is genuinely
+    uncharacterized in the published literature. Verdicts touching it
+    carry only theoretical-extrapolation confidence.
+  • The diamond-NV CoM platform has not yet operated. All weights are
+    theoretical estimates; the platform is correctly labeled
+    speculative (lit review correction from 'developing').
+  • Which variant (if any) is RA-correct still requires closing
+    RA-OPEN-MU-ESTIMATOR-001 and the mass-emergence work.""")
 
 
 if __name__ == "__main__":
