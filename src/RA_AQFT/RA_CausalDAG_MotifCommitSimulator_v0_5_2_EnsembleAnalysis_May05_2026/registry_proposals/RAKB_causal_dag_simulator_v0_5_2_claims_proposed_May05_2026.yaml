@@ -1,0 +1,166 @@
+registry_version: 0.5-proposal
+claims:
+- id: RA-SIM-SEVERANCE-SIGNATURE-001
+  name: Ensemble analysis extracts RA-native causal-severance signatures
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.5.2 ensemble-analysis layer classifies causal-severance workbench
+    outputs into RA-native actualization-fragility signatures using support loss,
+    readiness loss, strict-commit loss, selected-commit loss, finality-depth shift,
+    recovery length, and support-width summaries.
+  nature_targets:
+  - RA-native actualization-fragility diagnostics
+  - causal-support disruption signatures
+  ra_observable: null
+  sources:
+  - ra_causal_dag_ensemble_analysis.py
+  - ra_severance_mode_signatures_v0_5_2.csv
+  - ra_severance_signature_summary_v0_5_2.md
+  proof_dependencies:
+  - RA-SIM-MOTIF-SEVERANCE-001
+  - RA-SIM-MOTIF-ENSEMBLE-001
+  restoration_preconditions: []
+  caveats: Analysis tool is validated; candidate scientific claims should be promoted
+    only after rerunning against the committed canonical 100-seed v0.5.1 outputs.
+  next_tasks:
+  - Rerun v0.5.2 analyzer on committed 100-seed outputs and compare signatures with
+    packet-local demo.
+  source_status: &id001
+    analysis/ra_causal_dag_ensemble_analysis.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+    tests/test_v0_5_2_ensemble_analysis.py: python_unittest_validated_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: analysis_tool_validated
+  claim_kind: derived_result
+  formal_anchor: analysis.ra_causal_dag_ensemble_analysis.analyze ; summarize_modes
+    ; pairwise_mode_separability
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_2_EnsembleAnalysis_May05_2026
+- id: RA-SIM-SEVERANCE-SIGNATURE-002
+  name: Threshold-saturating support-loss modes can be identified from ensemble outputs
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.5.2 analyzer identifies severance modes whose support/readiness/commitment
+    losses saturate across nonzero severity tiers, distinguishing threshold-like support-loss
+    regimes from graded-delay regimes.
+  nature_targets:
+  - threshold-like actualization fragility regimes
+  - mode-separable causal-support disruption profiles
+  ra_observable: null
+  sources:
+  - ra_severance_mode_signatures_v0_5_2.csv
+  - ra_fragility_by_mode_and_severity_v0_5_2.csv
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-001
+  - RA-SIM-MOTIF-SEVERANCE-002
+  restoration_preconditions: []
+  caveats: The reported threshold behavior is a simulator-regime signature of the
+    current intervention operators, not yet a Nature-facing empirical prediction.
+  next_tasks:
+  - Confirm threshold-saturation scores on the committed 100-seed run.
+  source_status: *id001
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: analysis_tool_validated
+  claim_kind: derived_result
+  formal_anchor: summarize_modes ; response_class ; saturation_score
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_2_EnsembleAnalysis_May05_2026
+- id: RA-SIM-SEVERANCE-SIGNATURE-003
+  name: Support delay is separable as readiness and finality shift without support
+    loss
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.5.2 analyzer classifies support-delay profiles as readiness/commitment
+    loss without support loss when support remains certified but reaches actualization
+    sites only later, producing finality-depth and recovery-length shifts.
+  nature_targets:
+  - support-delay actualization signatures
+  - finality-depth shift under causal support delay
+  ra_observable: null
+  sources:
+  - ra_finality_shift_by_mode_v0_5_2.csv
+  - ra_recovery_length_by_mode_v0_5_2.csv
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-001
+  - RA-MOTIF-SEVERANCE-003
+  restoration_preconditions: []
+  caveats: Support-delay classification depends on the simulator intervention semantics
+    and should be checked across larger support-width diversity.
+  next_tasks:
+  - Check whether support-delay finality shifts remain monotone in the canonical 100-seed
+    output.
+  source_status: *id001
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: analysis_tool_validated
+  claim_kind: derived_result
+  formal_anchor: primary_failure_channel ; finality_shift_rows ; recovery_rows
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_2_EnsembleAnalysis_May05_2026
+- id: RA-SIM-SEVERANCE-SIGNATURE-004
+  name: Selector stress is separable as a strict-commitment incompatibility channel
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.5.2 analyzer identifies selector-stress profiles in which strict
+    commitment fails while support, readiness, and selected commitment can remain
+    intact, separating incompatibility-channel fragility from support-destruction
+    fragility.
+  nature_targets:
+  - selector-channel actualization fragility
+  - strict-commitment exclusion signatures
+  ra_observable: null
+  sources:
+  - ra_severance_mode_signatures_v0_5_2.csv
+  - ra_mode_separability_scores_v0_5_2.csv
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-001
+  - RA-MOTIF-SELECTOR-003
+  restoration_preconditions: []
+  caveats: Selector-stress mode is an operational stress test of the simulator selector
+    layer, not an imported tie-breaker or consensus mechanism.
+  next_tasks:
+  - Confirm selector-stress separability on the committed 100-seed output.
+  source_status: *id001
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: analysis_tool_validated
+  claim_kind: derived_result
+  formal_anchor: primary_failure_channel ; mode_severity_rows ; pairwise_mode_separability
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_2_EnsembleAnalysis_May05_2026
+- id: RA-SIM-SEVERANCE-SIGNATURE-005
+  name: Support-width fragility requires frontier-width diversity in the ensemble
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.5.2 analyzer reports support-width fragility summaries and explicitly
+    flags whether the analyzed ensemble contains enough support-frontier width diversity
+    to test support-width fragility curves.
+  nature_targets:
+  - support-frontier width effects on actualization survival
+  - redundant support structure diagnostics
+  ra_observable: null
+  sources:
+  - ra_fragility_by_support_width_v0_5_2.csv
+  - ra_severance_signature_summary_v0_5_2.md
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-001
+  - RA-SIM-MOTIF-SEVERANCE-005
+  restoration_preconditions: []
+  caveats: If only support_width=1 appears, the ensemble cannot test width-modulated
+    fragility; this is a diagnostic limitation, not a negative result about RA.
+  next_tasks:
+  - Develop or run ensembles with broader support-frontier widths.
+  source_status: *id001
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: analysis_tool_validated
+  claim_kind: derived_result
+  formal_anchor: support_width_summary
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_2_EnsembleAnalysis_May05_2026

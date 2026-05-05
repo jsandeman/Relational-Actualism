@@ -1,0 +1,31 @@
+mode,severity,samples,support_loss_rate,readiness_loss_rate,strict_commit_loss_rate,selected_commit_loss_rate,mean_finality_depth_shift,mean_recovery_length,dominant_channel
+edge_dropout,0.000000,4000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,control/no-loss
+edge_dropout,0.250000,4000,0.955250,0.955250,0.955250,0.955250,-3.331546,0.637329,support/readiness/commit loss
+edge_dropout,0.500000,4000,0.971000,0.971000,0.971000,0.971000,-3.624235,0.727132,support/readiness/commit loss
+edge_dropout,0.750000,4000,0.971000,0.971000,0.971000,0.971000,-3.617726,0.520914,support/readiness/commit loss
+edge_dropout,1.000000,4000,0.971000,0.971000,0.971000,0.971000,1.112360,0.000000,support/readiness/commit loss
+frontier_dropout,0.000000,4000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,control/no-loss
+frontier_dropout,0.250000,4000,0.971000,0.971000,0.971000,0.971000,,,support/readiness/commit loss
+frontier_dropout,0.500000,4000,0.971000,0.971000,0.971000,0.971000,,,support/readiness/commit loss
+frontier_dropout,0.750000,4000,0.971000,0.971000,0.971000,0.971000,,,support/readiness/commit loss
+frontier_dropout,1.000000,4000,0.971000,0.971000,0.971000,0.971000,,,support/readiness/commit loss
+ledger_failure,0.000000,4000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,control/no-loss
+ledger_failure,0.250000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+ledger_failure,0.500000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+ledger_failure,0.750000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+ledger_failure,1.000000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+orientation_degradation,0.000000,4000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,control/no-loss
+orientation_degradation,0.250000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+orientation_degradation,0.500000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+orientation_degradation,0.750000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+orientation_degradation,1.000000,4000,0.971000,0.971000,0.971000,0.971000,0.000000,0.000000,support/readiness/commit loss
+selector_stress,0.000000,4000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,control/no-loss
+selector_stress,0.250000,4000,0.000000,0.000000,0.971000,0.000000,0.000000,0.000000,strict-only incompatibility loss
+selector_stress,0.500000,4000,0.000000,0.000000,0.971000,0.000000,0.000000,0.000000,strict-only incompatibility loss
+selector_stress,0.750000,4000,0.000000,0.000000,0.971000,0.000000,0.000000,0.000000,strict-only incompatibility loss
+selector_stress,1.000000,4000,0.000000,0.000000,0.971000,0.000000,0.000000,0.000000,strict-only incompatibility loss
+support_delay,0.000000,4000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,control/no-loss
+support_delay,0.250000,4000,0.000000,0.971000,0.971000,0.971000,1.000000,1.000000,readiness/commit loss without support loss
+support_delay,0.500000,4000,0.000000,0.971000,0.971000,0.971000,2.000000,2.000000,readiness/commit loss without support loss
+support_delay,0.750000,4000,0.000000,0.971000,0.971000,0.971000,4.000000,4.000000,readiness/commit loss without support loss
+support_delay,1.000000,4000,0.000000,0.971000,0.971000,0.971000,5.000000,5.000000,readiness/commit loss without support loss

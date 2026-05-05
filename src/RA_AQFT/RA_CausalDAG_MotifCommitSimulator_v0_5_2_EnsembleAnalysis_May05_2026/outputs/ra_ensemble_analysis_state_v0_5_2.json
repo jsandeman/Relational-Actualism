@@ -1,0 +1,19 @@
+{
+  "aggregate_rows": 30,
+  "fragility_rows": 30,
+  "input_dir": "../RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/outputs",
+  "mode_count": 6,
+  "output_dir": "outputs",
+  "outputs": [
+    "ra_fragility_by_mode_and_severity_v0_5_2.csv",
+    "ra_severance_mode_signatures_v0_5_2.csv",
+    "ra_fragility_by_support_width_v0_5_2.csv",
+    "ra_mode_separability_scores_v0_5_2.csv",
+    "ra_finality_shift_by_mode_v0_5_2.csv",
+    "ra_recovery_length_by_mode_v0_5_2.csv",
+    "ra_severance_signature_summary_v0_5_2.md"
+  ],
+  "separability_pairs": 15,
+  "support_width_count": 1,
+  "version": "0.5.2"
+}

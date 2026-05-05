@@ -1,0 +1,7 @@
+mode,mean_recovery_length_all,range_recovery_length_all,nonzero_recovery_values,classification
+edge_dropout,0.377075,0.727132,0.0;0.637329;0.727132;0.520914;0.0,bounded_recovery_delay
+frontier_dropout,0.000000,0.000000,0.0,no_recovery_delay
+ledger_failure,0.000000,0.000000,0.0;0.0;0.0;0.0;0.0,no_recovery_delay
+orientation_degradation,0.000000,0.000000,0.0;0.0;0.0;0.0;0.0,no_recovery_delay
+selector_stress,0.000000,0.000000,0.0;0.0;0.0;0.0;0.0,no_recovery_delay
+support_delay,2.400000,5.000000,0.0;1.0;2.0;4.0;5.0,graded_recovery_delay

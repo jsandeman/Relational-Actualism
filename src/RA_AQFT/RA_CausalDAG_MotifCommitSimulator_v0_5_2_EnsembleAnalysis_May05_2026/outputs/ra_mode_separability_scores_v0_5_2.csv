@@ -1,0 +1,16 @@
+mode_a,mode_b,euclidean_signature_distance,cosine_similarity,separability_note
+edge_dropout,frontier_dropout,6.306094,0.522880,strongly_separated_signature
+edge_dropout,ledger_failure,6.306094,0.522880,strongly_separated_signature
+edge_dropout,orientation_degradation,6.306094,0.522880,strongly_separated_signature
+edge_dropout,selector_stress,7.140669,0.261440,strongly_separated_signature
+edge_dropout,support_delay,12.889350,-0.053802,strongly_separated_signature
+frontier_dropout,ledger_failure,0.000000,1.000000,nearly_degenerate_signature
+frontier_dropout,orientation_degradation,0.000000,1.000000,nearly_degenerate_signature
+frontier_dropout,selector_stress,3.363643,0.500000,strongly_separated_signature
+frontier_dropout,support_delay,9.786284,0.286590,strongly_separated_signature
+ledger_failure,orientation_degradation,0.000000,1.000000,nearly_degenerate_signature
+ledger_failure,selector_stress,3.363643,0.500000,strongly_separated_signature
+ledger_failure,support_delay,9.786284,0.286590,strongly_separated_signature
+orientation_degradation,selector_stress,3.363643,0.500000,strongly_separated_signature
+orientation_degradation,support_delay,9.786284,0.286590,strongly_separated_signature
+selector_stress,support_delay,9.977110,0.191060,strongly_separated_signature

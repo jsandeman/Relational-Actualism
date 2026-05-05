@@ -248,3 +248,16 @@ RA-SIM-MOTIF-ENSEMBLE-001,RA-SIM-MOTIF-SEVERANCE-003,proof_dependency,claim,clai
 RA-SIM-MOTIF-ENSEMBLE-001,RA-SIM-MOTIF-SEVERANCE-004,proof_dependency,claim,claim,Large-ensemble causal-severance runs preserve v0.5 semantic predicates while using fast final-state generation,RA-SIM-MOTIF-SEVERANCE-004
 RA-SIM-MOTIF-ENSEMBLE-001,RA-SIM-MOTIF-SEVERANCE-005,proof_dependency,claim,claim,Large-ensemble causal-severance runs preserve v0.5 semantic predicates while using fast final-state generation,RA-SIM-MOTIF-SEVERANCE-005
 RA-SIM-MOTIF-ENSEMBLE-002,RA-SIM-MOTIF-ENSEMBLE-001,proof_dependency,claim,claim,Streaming aggregation supports larger causal-severance ensembles without retaining all evaluation rows,Large-ensemble causal-severance runs preserve v0.5 semantic predicates while using fast final-state generation
+RA-SIM-SEVERANCE-SIGNATURE-001,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Ensemble analysis extracts RA-native causal-severance signatures,RA-SIM-MOTIF-SEVERANCE-001
+RA-SIM-SEVERANCE-SIGNATURE-001,RA-SIM-MOTIF-ENSEMBLE-001,proof_dependency,claim,claim,Ensemble analysis extracts RA-native causal-severance signatures,RA-SIM-MOTIF-ENSEMBLE-001
+RA-SIM-SEVERANCE-SIGNATURE-002,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Threshold-saturating support-loss modes can be identified from ensemble outputs,RA-SIM-SEVERANCE-SIGNATURE-001
+RA-SIM-SEVERANCE-SIGNATURE-002,RA-SIM-MOTIF-SEVERANCE-002,proof_dependency,claim,claim,Threshold-saturating support-loss modes can be identified from ensemble outputs,RA-SIM-MOTIF-SEVERANCE-002
+RA-SIM-SEVERANCE-SIGNATURE-003,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Support delay is separable as readiness and finality shift without support loss,RA-SIM-SEVERANCE-SIGNATURE-001
+RA-SIM-SEVERANCE-SIGNATURE-003,RA-MOTIF-SEVERANCE-003,proof_dependency,claim,claim,Support delay is separable as readiness and finality shift without support loss,RA-MOTIF-SEVERANCE-003
+RA-SIM-SEVERANCE-SIGNATURE-004,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Selector stress is separable as a strict-commitment incompatibility channel,RA-SIM-SEVERANCE-SIGNATURE-001
+RA-SIM-SEVERANCE-SIGNATURE-004,RA-MOTIF-SELECTOR-003,proof_dependency,claim,claim,Selector stress is separable as a strict-commitment incompatibility channel,RA-MOTIF-SELECTOR-003
+RA-SIM-SEVERANCE-SIGNATURE-005,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Support-width fragility requires frontier-width diversity in the ensemble,RA-SIM-SEVERANCE-SIGNATURE-001
+RA-SIM-SEVERANCE-SIGNATURE-005,RA-SIM-MOTIF-SEVERANCE-005,proof_dependency,claim,claim,Support-width fragility requires frontier-width diversity in the ensemble,RA-SIM-MOTIF-SEVERANCE-005
+RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Severance-signature analysis remains RA-native and simulator-regime bounded,RA-METHOD-001
+RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Severance-signature analysis remains RA-native and simulator-regime bounded,RA-METHOD-002
+RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,RA-SIM-MOTIF-SEVERANCE-METHOD-001,interpretive_dependency,framing,framing,Severance-signature analysis remains RA-native and simulator-regime bounded,RA-SIM-MOTIF-SEVERANCE-METHOD-001

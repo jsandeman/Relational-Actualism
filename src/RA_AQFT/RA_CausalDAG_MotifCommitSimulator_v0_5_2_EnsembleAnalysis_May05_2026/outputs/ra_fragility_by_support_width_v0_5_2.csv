@@ -1,0 +1,2 @@
+support_width,rows,samples_total,nonzero_samples_total,lost_support_rate_mean_nonzero,lost_readiness_rate_mean_nonzero,lost_strict_commit_rate_mean_nonzero,lost_selected_commit_rate_mean_nonzero,mean_recovery_length_nonzero,mean_finality_depth_shift_nonzero
+1,30,120000,96000,0.646677,0.808510,0.970344,0.808510,0.694269,0.126943
