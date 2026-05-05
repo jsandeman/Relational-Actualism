@@ -1,0 +1,34 @@
+{
+  "actual_evaluations": 9600,
+  "certification_rescues": 138,
+  "comparison_valid_rate": 1.0,
+  "elapsed_seconds": 9.697903,
+  "evaluations_per_second": 989.90475,
+  "family_certification_resilience_events": 2309,
+  "max_induced_certificate_correlation": 1.0,
+  "mean_induced_certificate_correlation": 0.865621,
+  "mean_valid_apples_to_apples_loss_delta": -0.014375,
+  "metric_artifact_risk_rate": 0.0,
+  "min_induced_certificate_correlation": 0.215038,
+  "native_certification_rescue_rate": 0.044922,
+  "native_family_certification_resilience_rate": 0.426107,
+  "native_overlap_bin_count": 3,
+  "native_overlap_bins": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "overlap_signature_monotone_count": 4,
+  "overlap_signature_rows": 4,
+  "run_count": 4,
+  "selector_guardrail_passed": true,
+  "steps": 16,
+  "support_width_classes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "support_width_count": 4,
+  "version": "0.9"
+}

@@ -1,0 +1,5 @@
+mode,family_semantics,low_overlap_rescue_rate,medium_overlap_rescue_rate,high_overlap_rescue_rate,low_minus_high_rescue,monotone_nonincreasing_by_overlap_bin,bin_count
+ledger_failure,at_least_k,,0.157222,0.000691,,True,2
+ledger_failure,augmented_exact_k,0.218192,0.13766,0.000691,0.217501,True,3
+orientation_degradation,at_least_k,,0.159731,0.000691,,True,2
+orientation_degradation,augmented_exact_k,0.214565,0.138116,0.000691,0.213874,True,3

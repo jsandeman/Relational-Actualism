@@ -206,3 +206,8 @@ RA-SIM-CERT-CORRELATION-002,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,clai
 RA-SIM-CERT-CORRELATION-003,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Rescue AUC and sensitivity quantify certification-witness redundancy,RA-SIM-CERT-CORRELATION-001
 RA-SIM-CERT-CORRELATION-004,RA-SIM-CERT-FAMILY-003,proof_dependency,claim,claim,Selector stress remains outside certification-family rescue,RA-SIM-CERT-FAMILY-003
 RA-SIM-CERT-CORRELATION-004,RA-SIM-SUPPORT-FAMILY-METRIC-004,proof_dependency,claim,claim,Selector stress remains outside certification-family rescue,RA-SIM-SUPPORT-FAMILY-METRIC-004
+RA-MOTIF-NATIVE-CERT-OVERLAP-001,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,claim,Native certificate-overlap contexts refine certified support families,Certified support-family contexts separate family membership from member certificate support
+RA-MOTIF-NATIVE-CERT-OVERLAP-001,RA-MOTIF-CERT-FAMILY-002,proof_dependency,claim,claim,Native certificate-overlap contexts refine certified support families,Independent certified-family readiness conservatively refines certified family readiness
+RA-SIM-NATIVE-CERT-OVERLAP-001,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Native overlap can induce effective certificate correlation,Certification correlation signature
+RA-SIM-NATIVE-CERT-OVERLAP-002,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Certification rescue decreases with native witness overlap,Native overlap can induce effective certificate correlation
+RA-SIM-NATIVE-CERT-OVERLAP-002,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Certification rescue decreases with native witness overlap,Certification correlation signature

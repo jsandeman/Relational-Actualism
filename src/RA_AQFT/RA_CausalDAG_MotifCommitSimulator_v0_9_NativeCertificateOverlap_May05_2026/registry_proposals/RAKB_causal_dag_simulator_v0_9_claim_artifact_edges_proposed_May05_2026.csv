@@ -1,0 +1,4 @@
+claim_id,claim_name,claim_node_type,artifact_id,filename,artifact_type,relation,source_span,verification_status,notes,node_type,type
+RA-MOTIF-NATIVE-CERT-OVERLAP-001,Native certificate-overlap contexts refine certified support families,claim,ART-MOTIF-NATIVE-CERT-OVERLAP-LEAN,RA_MotifNativeCertificateOverlapBridge.lean,lean,formal_anchor,,pending_compile,Source-level bridge,claim,formal_anchor
+RA-SIM-NATIVE-CERT-OVERLAP-001,Native overlap can induce effective certificate correlation,claim,ART-SIM-NATIVE-CERT-OVERLAP-V09-MODULE,ra_causal_dag_native_cert_overlap.py,python,simulation_source,,packet_local_tests_passed,Simulation module,claim,simulation_source
+RA-SIM-NATIVE-CERT-OVERLAP-002,Certification rescue should decrease with native witness overlap,claim,ART-SIM-NATIVE-CERT-OVERLAP-V09-MODULE,ra_causal_dag_native_cert_overlap.py,python,simulation_source,,packet_local_tests_passed,Simulation module,claim,simulation_source

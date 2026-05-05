@@ -1,0 +1,3 @@
+artifact_id,filename,type,status,artifact_role,supports_results,repo_relative_path,sha256,git_sha,path_observed,notes,migration_note,path,role
+ART-SIM-NATIVE-CERT-OVERLAP-V09-MODULE,ra_causal_dag_native_cert_overlap.py,python,pending_canonical,simulation_module,RA-SIM-NATIVE-CERT-OVERLAP-001;RA-SIM-NATIVE-CERT-OVERLAP-002,simulator/ra_causal_dag_native_cert_overlap.py,,,,packet-local module,,simulator/ra_causal_dag_native_cert_overlap.py,simulation_module
+ART-MOTIF-NATIVE-CERT-OVERLAP-LEAN,RA_MotifNativeCertificateOverlapBridge.lean,lean,pending_compile,formal_bridge,RA-MOTIF-NATIVE-CERT-OVERLAP-001,lean/RA_MotifNativeCertificateOverlapBridge.lean,,,,source-level bridge pending local compile,,lean/RA_MotifNativeCertificateOverlapBridge.lean,formal_bridge

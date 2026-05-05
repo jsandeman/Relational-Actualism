@@ -1,0 +1,4 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-NATIVE-CERT-OVERLAP-001,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,claim,Native certificate-overlap contexts refine certified support families,Certified support family bridge
+RA-SIM-NATIVE-CERT-OVERLAP-001,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Native overlap can induce effective certificate correlation,Certification correlation signature
+RA-SIM-NATIVE-CERT-OVERLAP-002,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Certification rescue should decrease with native witness overlap,Native overlap can induce effective certificate correlation

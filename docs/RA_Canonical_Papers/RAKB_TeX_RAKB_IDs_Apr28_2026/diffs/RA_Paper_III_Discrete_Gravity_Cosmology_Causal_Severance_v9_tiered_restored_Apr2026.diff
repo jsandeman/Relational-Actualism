@@ -1,0 +1,150 @@
+--- /Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026.tex
++++ /Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026_rakb_ids.tex
+@@ -161,6 +161,7 @@
+ This paper therefore does four jobs. First, it states the native macroscopic mechanism itself. Second, it compares that mechanism with the corresponding GR and $\Lambda$CDM explanations of the same empirical domain. Third, it identifies where RA appears to offer something genuinely new --- above all, causal severance and a discrete boundary law. Fourth, it says plainly what remains open. The paper does \emph{not} claim a closed native coefficient-level source law for all orbital and lensing phenomena, a complete late-time expansion derivation, or a theorem-level cosmological nucleation mechanism. Those are open targets, and the paper names concrete native routes forward rather than hiding them behind bridge language.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-GRAV-003;RA-GRAV-004;RA-GRAV-005;RA-OPEN-003;RA-OPEN-004
+ \section{From Causal Set Theory to a Macroscopic Programme}
+ %% ═══════════════════════════════════════════════════════════
+ 
+@@ -185,6 +186,7 @@
+ \paragraph{Open target.} A complete native map from finite graph quantities to every coefficient entering those observables does not yet exist. The present paper establishes the strongest finite structure now available and identifies where the next native closures must occur.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-GRAV-002;RA-GRAV-003
+ \section{Causal Severance: A Finite Alternative to Singular Continuation}
+ \label{sec:severance}
+ %% ═══════════════════════════════════════════════════════════
+@@ -195,6 +197,7 @@
+ 
+ Severance is the central macroscopic claim of RA. In GR, black-hole interiors and the Big Bang are governed by singular limits where curvature and energy density formally diverge. In CST, one can study horizons and boundaries in a discrete setting, but a local physical criterion for terminating causal contact is not usually part of the primitive dynamics. RA proposes such a criterion: kernel saturation. In the idealized high-density limit, the BDG filter ceases to discriminate among candidates. The severance programme then treats partition of the realized graph as the native finite alternative to singular continuation. The relevant physical event is not a divergence but finite topological shutdown, though the detailed local onset profile remains an open target.
+ 
++% RAKB: RA-GRAV-002;RA-GRAV-003
+ \subsection{Kernel saturation}
+ 
+ \begin{theorem}[Kernel--Poisson divergence identity]
+@@ -258,10 +261,12 @@
+ \paragraph{Open target.} The present kernel-saturation analysis supports the onset of severance structurally. What remains open is a full local dynamical description of the daughter-graph boundary conditions and the detailed onset profile in realistic collapse scenarios.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-GRAV-005
+ \section{Discrete Boundary Law and Black-Hole Entropy}
+ \label{sec:entropy}
+ %% ═══════════════════════════════════════════════════════════
+ 
++% RAKB: RA-GRAV-004
+ \subsection{The entropy observable}
+ 
+ \begin{definition}[Cross-severance link set]
+@@ -281,6 +286,7 @@
+ 
+ This is the paper's second core claim. In GR, black-hole entropy is ordinarily written as an area formula whose microscopic origin remains interpretive. CST already moved the discussion toward horizon links and horizon molecules \cite{Dou2003,Barton2019,Homsak2024}. RA keeps that discrete spirit but changes the ontology: the relevant count is not a generic horizon proxy, but the number of irreducible causal channels blocked by an actual severance.
+ 
++% RAKB: RA-GRAV-004
+ \subsection{Finiteness and interface invariance}
+ 
+ \begin{theorem}[Finiteness]
+@@ -297,6 +303,7 @@
+ $\SRa=|L_\Sigma|$. If $L_\Sigma$ is preserved, its cardinality is preserved.
+ \end{proof}
+ 
++% RAKB: RA-GRAV-005
+ \subsection{Boundary decomposition}
+ 
+ \begin{definition}[Severance out-degree]
+@@ -340,6 +347,7 @@
+ \paragraph{Open target.} The coefficient $1/4$ in the metric translation remains open in the same broad sense in which it remains nontrivial in CST horizon-counting work. What RA currently secures is the native count and the boundary-law structure, not the final metric prefactor theorem.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-GRAV-006
+ \section{Joint BDG/LLC Macro-Kernel}
+ \label{sec:macro_kernel}
+ 
+@@ -350,12 +358,14 @@
+ 
+ \paragraph{Status.} Active native compiled support: \texttt{RA\_BDG\_LLC\_Kernel.lean}. This should be read as a finite linear constraint theorem inside RA. Any comparison to continuum gravitational polarizations or field degrees of freedom is cartography, not active proof support.
+ 
++% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003
+ \section{Sparse-Regime Response: Orbital Profiles and Lensing}
+ \label{sec:sparse}
+ %% ═══════════════════════════════════════════════════════════
+ 
+ The observational target of this section is the same one usually organized by dark-matter phenomenology and modified-gravity proposals: flat outer rotation profiles, lensing maps offset from the instantaneous gas distribution, and high-precision equivalence-principle tracking. RA's proposed mechanism is different. It does not begin by postulating a hidden weakly coupled particulate sector. It asks whether sparse realized ancestry and inherited source history can alter macroscopic response directly.
+ 
++% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003
+ \subsection{Antichain drift as a sparse-growth statistic}
+ 
+ The BDG-filtered growth process has a native width statistic. If \(W\) denotes local antichain width and \(\Delta W\) its change under an accepted vertex, then for accepted candidates
+@@ -372,6 +382,7 @@
+ 
+ \paragraph{Status.} Computation-backed proposition: \texttt{antichain\_drift.py}. The deterministic inequality is native; the sign and representative value are numerical witnesses within the Poisson-CSG approximation.
+ 
++% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003
+ \subsection{Sparse-regime topology transition}
+ 
+ In dense regions of the realized graph --- stellar interiors, galactic disks, compact objects --- the ancestry profile is deep and the ledger operates on a well-populated depth budget. In sparse regions --- halos, outskirts, void interfaces --- higher-depth ancestry thins. The native hypothesis is therefore a \emph{sparse-regime topology transition}: the graph is not in the same effective regime at large radius as it is in dense interiors.
+@@ -382,6 +393,7 @@
+ 
+ External discrete-geometry work suggests that very sparse Lorentzian growth can look effectively lower-dimensional at large scales \cite{Durhuus2010}. In the present paper that result is heuristic context, not active support. The active claim is weaker and cleaner: sparse regions belong to a different graph-topology regime than dense interiors, so the large-radius response need not remain a simple dense-interior continuation.
+ 
++% RAKB: RA-GRAV-007;RA-PRED-006;RA-OPEN-003
+ \subsection{Large-radius orbital response}
+ 
+ \begin{proposition}[Flat outer response as a native programme target]
+@@ -390,6 +402,7 @@
+ 
+ \paragraph{Compare and contrast.} In $\Lambda$CDM the same observational target is handled by adding a dark matter component; in modified-gravity programmes it is handled by changing the macroscopic force law. RA's present route is different from both: it attributes the change to sparse-regime graph structure and the way realized source history is inherited into low-density regions.
+ 
++% RAKB: RA-PRED-006;RA-OPEN-003
+ \subsection{Historical source depth and lensing offset}
+ 
+ \begin{proposition}[Historical source depth hypothesis]
+@@ -398,6 +411,7 @@
+ 
+ The observational problem posed by systems such as the Bullet Cluster is that the lensing map is offset from the presently dominant gas distribution. In RA's native reading, the relevant source variable need not be instantaneous gas location. It can depend instead on the inherited realized history whose future includes the observation region. This does not yet produce a final coefficient-level lensing map, but it does offer a concrete alternative to both particulate-dark-matter and purely metric interpretations.
+ 
++% RAKB: RA-PRED-006;RA-OPEN-003
+ \subsection{Weak-equivalence tracking}
+ 
+ \begin{proposition}[Weak-equivalence tracking law]
+@@ -413,6 +427,7 @@
+ \paragraph{Open target.} The present tracking law is structural. A full native equilibration derivation at current experimental precision remains open.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-PRED-005;RA-OPEN-004
+ \section{Expansion, Inhomogeneity, and the Cosmological-Constant Question}
+ \label{sec:expansion}
+ %% ═══════════════════════════════════════════════════════════
+@@ -421,6 +436,7 @@
+ 
+ The active native claim of this section is deliberately modest. RA does \emph{not} yet prove a full late-time expansion law from its support surface. What it does provide is a strong reason not to treat a cosmological constant as an automatic primitive of the ontology: unrealized or off-threshold processes are not counted as realized source history, and the universe to which observers fit homogeneous templates is in RA a finite, inhomogeneous realized graph.
+ 
++% RAKB: RA-PRED-005;RA-OPEN-004
+ \subsection{Environment-sensitive expansion as a native target}
+ 
+ \begin{proposition}[Environment-sensitive fit-kernel programme]
+@@ -431,6 +447,7 @@
+ 
+ \paragraph{Open target.} The decisive missing step is a native environment-sensitive expansion model sharp enough to predict $H(z)$, BAO shifts, and supernova residual correlations without leaning on homogeneous template language.
+ 
++% RAKB: RA-PRED-005;RA-OPEN-004
+ \subsection{Immediate observational targets}
+ 
+ The most direct tests of the present programme are not ``recover GR'' tests. They are observational correlations:
+@@ -443,6 +460,7 @@
+ These are concrete Nature-facing targets. They do not require RA to borrow a vacuum-energy ontology from $\Lambda$CDM in order to be judged.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-PRED-007;RA-OPEN-005
+ \section{Nucleation, Rotating Boundaries, and Low-\texorpdfstring{$\ell$}{l} Anomalies}
+ \label{sec:nucleation}
+ %% ═══════════════════════════════════════════════════════════
+@@ -455,6 +473,7 @@
+ 
+ The present paper does not claim theorem-level closure of this proposal. What it offers is a coherent native route: a finite boundary event replaces the usual appeal to an initial singular surface or to inflationary randomness alone. This is another place where RA has no close GR analogue: severance inheritance is not a standard continuum cosmological mechanism.
+ 
++% RAKB: RA-PRED-007;RA-OPEN-005
+ \subsection{Rotating-boundary fit kernels}
+ 
+ The present exploratory model uses rotating-boundary templates to organize low-$\ell$ anomaly fits. In that respect it plays a role somewhat analogous to Kerr-like intuition in continuum language, but the physical claim is different. The physical proposal is not ``the universe is a Kerr metric.'' It is that a daughter graph may inherit oriented finite-boundary data from a severance event, and that a rotating-boundary fit kernel is a useful first way to interrogate that possibility.

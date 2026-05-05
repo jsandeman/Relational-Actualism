@@ -3977,3 +3977,136 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
   - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
   - RA-SIM-CERT-FAMILY-METHOD-001
+- id: RA-MOTIF-NATIVE-CERT-OVERLAP-001
+  name: Native certificate-overlap contexts refine certified support families
+  domain: matter
+  papers:
+  - II
+  statement: 'Native certificate-witness data can refine independent certified support-family readiness while preserving readiness and certified-family implications.
+
+    '
+  nature_targets:
+  - RA-native actualization certification
+  ra_observable: null
+  sources:
+  - RA_MotifNativeCertificateOverlapBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-CERT-FAMILY-001
+  - RA-MOTIF-CERT-FAMILY-002
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build` succeeded, 8275 jobs, ~76s; no sorry/admit/axiom). The module imports only RA_MotifCertifiedSupportFamilyBridge and adds Type-valued witness data, an overlaps relation, the NativelyWitnessed predicate, and NativeOverlapCertifiedFamilyReadyAt with .of_member and witness-refinement theorems.
+  next_tasks:
+  - Tighten witness-overlap formalization beyond Type-valued opaque witnesses.
+  source_status:
+    RA_MotifNativeCertificateOverlapBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGNativeCertificateOverlapContext ; GraphNativeCertificateOverlapContext ; DAGNativeOverlapCertifiedFamilyReadyAt ; GraphNativeOverlapCertifiedFamilyReadyAt
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+- id: RA-SIM-NATIVE-CERT-OVERLAP-001
+  name: Native overlap can induce effective certificate correlation
+  domain: complexity
+  papers:
+  - II
+  statement: 'The v0.9 workbench computes effective certificate correlation from native witness-overlap components rather than assigning it as an external parameter.
+
+    '
+  nature_targets:
+  - simulation diagnostics for certification resilience
+  ra_observable: native_certificate_witness_overlap
+  sources:
+  - ra_causal_dag_native_cert_overlap.py
+  proof_dependencies:
+  - RA-SIM-CERT-CORRELATION-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical 100-seed v0.9 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics at_least_k,augmented_exact_k --modes ledger_failure,orientation_degradation,selector_stress). 480,000 evaluations in 70.86s, 6,774 eval/s. mean_induced_certificate_correlation=0.824 (min 0.179, max 1.0); native_overlap_bins={high, low, medium}; support_width_classes={1,2,3,4}; comparison_valid_rate=1.0; metric_artifact_risk_rate=0.0. The v0.9 layer replaces the external certificate_correlation parameter with an overlap-derived effective correlation computed from member-witness components (support, frontier, orientation, ledger, causal-past, plus BDG-LLC and firewall-exposure proxies). Operational simulator proxy, not a derived BDG-LLC law.'
+  next_tasks:
+  - Anchor the witness-overlap components in formal RA-native definitions; tighten to a derived bridge.
+  source_status:
+    ra_causal_dag_native_cert_overlap.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: native_overlap_profile_for_family ; evaluate_native_overlap_certified_family
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+- id: RA-SIM-NATIVE-CERT-OVERLAP-002
+  name: Certification rescue decreases with native witness overlap
+  domain: complexity
+  papers:
+  - II
+  statement: 'In the v0.9 workbench, certification rescue is higher in low-overlap families than in high-overlap families across populated overlap bins, holding mode and family semantics fixed.
+
+    '
+  nature_targets:
+  - actualization resilience signatures
+  ra_observable: certification_rescue_by_native_overlap
+  sources:
+  - ra_cert_rescue_by_native_overlap_v0_9.csv
+  - ra_overlap_induced_correlation_curve_v0_9.csv
+  - ra_overlap_vs_external_correlation_comparison_v0_9.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-OVERLAP-001
+  - RA-SIM-CERT-CORRELATION-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.9 run (parameters as in RA-SIM-NATIVE-CERT-OVERLAP-001). All 4 overlap-signature rows are monotone non-increasing across populated bins. Overlap-induced rescue curves: ledger_failure / augmented_exact_k 0.218 (low) -> 0.138 (medium) -> 0.001 (high), low_minus_high 0.218; orientation_degradation / augmented_exact_k 0.215 (low) -> 0.138 (medium) -> 0.001 (high), low_minus_high 0.214; the at_least_k semantics produces only medium/high bins (low-overlap families absent at this run scale) and remains monotone (medium 0.157/0.160 -> high 0.001). Parent-shared baseline shows 0 certification rescue across the entire comparison table (criterion 3 holds). selector_stress remains outside support/certification-family rescue with selector_guardrail_passed=true (criterion 4). native_certification_rescue_rate=0.052 across all bins; high-overlap-dominated aggregate. Overlap signature is operationally driven by member-witness components (support, frontier, orientation, ledger, causal-past + proxies); not yet a derived RA-native law.'
+  next_tasks:
+  - Decompose witness-overlap components to identify which channels (support / frontier / orientation / ledger / causal-past) dominate the rescue signature.
+  source_status:
+    ra_causal_dag_native_cert_overlap.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: overlap_signature_rows ; rescue_by_native_overlap_rows ; overlap_induced_correlation_curve_rows
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001

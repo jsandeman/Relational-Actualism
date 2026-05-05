@@ -1,0 +1,206 @@
+--- /Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026.tex
++++ /Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026_rakb_ids.tex
+@@ -186,6 +186,7 @@
+ \item a vertexwise conservation principle, the Local Ledger Condition, built into event formation itself.
+ \end{enumerate}
+ 
++% RAKB: RA-ONT-001;RA-LLC-001
+ \subsection{From causal order to universe-state}
+ 
+ In bare CST the primitive object is the causal set itself. In RA the realized state at stage $n$ is the pair
+@@ -194,6 +195,7 @@
+ \]
+ where $G_n=(V_n,\prec_n)$ is the actualized causal graph and $\Pi(G_n)$ is the structured adjacent possible of admissible one-vertex extensions. This is the first structural extension beyond bare CST kinematics. The open future is not represented as a merely formal collection of completions; it is represented as a finite, law-governed relational state tied to the realized graph.
+ 
++% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004
+ \subsection{Relation to classical sequential growth}
+ 
+ Classical Sequential Growth (CSG) models assign transition probabilities to allowed births of new elements, subject to covariance and causality conditions. RA belongs to the same broad family of sequential growth frameworks, but constrains the local transition structure more strongly.
+@@ -242,6 +244,7 @@
+ 
+ %% ═══════════════════════════════════════════════════════════
+ 
++% RAKB: RA-ONT-001;RA-ONT-002;RA-ONT-003;RA-ONT-004;RA-LLC-001;RA-KERNEL-003
+ \section{The Seven Axioms}
+ 
+ \label{sec:axioms}
+@@ -336,6 +339,7 @@
+ The quantity $c=l_P/t_P$ is the native bandwidth ratio of the graph: one Planck length per Planck time. In the intended macroscopic translation, this plays the role of the maximal propagation speed for causal influence. In GR this role is played by null cones of the metric; in RA the same operational ceiling is expected to appear from finite event propagation on the graph. Whether the full relativistic kinematic structure can be derived natively from this finite bandwidth picture remains an open target, but the primitive object is clear: the graph comes first, the geometric readout later.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-KERNEL-001;RA-ARITH-001;RA-ARITH-002
+ \section{The BDG Action and Its Integers}
+ \label{sec:bdg}
+ %% ═══════════════════════════════════════════════════════════
+@@ -356,6 +360,7 @@
+ 
+ These five integers are not fitted parameters. The active compiled support in the present paper is the arithmetic binomial-inversion layer in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}, which isolates the unique $d=4$ coefficient tuple from finite integer structure. This is one of the key places where RA differs from standard continuum practice: the kernel begins with an integer census on finite causal neighborhoods rather than with differential operators on smooth fields. At the same time, the CST lineage remains visible, because the very same integers also participate in the broader causal-set geometric story. What is still open is the fully native closure of that geometric identification; the arithmetic side is compiled, the full geometric side is not.
+ 
++% RAKB: RA-KERNEL-001;RA-ARITH-001;RA-ARITH-002
+ \subsection{The second-order cancellation pattern}
+ 
+ A fundamental arithmetic property of the $d=4$ BDG coefficients is the second-order cancellation pattern. Two distinct sums must be kept separate:
+@@ -368,6 +373,7 @@
+ The first sum includes the birth coefficient $c_0=1$ and does not vanish. The second sum excludes the birth term and vanishes. Together with the algebraic constraints $c_0+c_1=0$ and $c_0+2c_1+c_2=c_4$, this gives the characteristic second-order cancellation pattern of the $d=4$ kernel. In the present paper that pattern is used natively as one strand of the multi-criterion argument for $d=4$ uniqueness (see \S\ref{sec:d4}); any continuum operator-language reading is downstream cartography.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004
+ \section{The Sequential Growth Rule}
+ \label{sec:engine}
+ %% ═══════════════════════════════════════════════════════════
+@@ -393,6 +399,7 @@
+ 
+ This is the \emph{Engine of Becoming}: the five-step process (propose, score, filter, select, actualize) by which the graph grows. In relation to CST, the closest comparison is classical sequential growth: births occur one vertex at a time and respect causal order. RA's additional claim is that this growth is not merely a kinematic bookkeeping device but the primitive physical process itself, with BDG filtering and the LLC built into the event-formation rule. Later statistical, numerical, or comparative descriptions are downstream of this process rather than constitutive of it.
+ 
++% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004
+ \subsection{A worked toy growth step}
+ 
+ A tiny example makes the kernel concrete. Let the realized graph $G_n$ be the four-vertex chain
+@@ -429,6 +436,7 @@
+ 
+ Two points matter. First, the kernel is operational: one really can enumerate local candidates, compute the depth census, and decide admissibility in finitely many steps. Second, $P_1$ and $P_2$ demonstrate the locality principle used later in the paper: once the realized downward closure is fixed, admissibility depends on that realized past rather than on redundant presentation of the same ancestor information.
+ 
++% RAKB: RA-ONT-002;RA-ONT-003;RA-KERNEL-003;RA-KERNEL-004
+ \subsection{The bimodal ontology}
+ 
+ The universe-state $U_n=(G_n,\Pot(G_n))$ makes RA's ontology explicit: reality has two components. The actualized graph $G_n$ is the settled, irreversible past. The structured potentia $\Pot(G_n)$ is the unsettled but constrained space of possibilities for the next step. Both are real---$G_n$ is actual, $\Pot(G_n)$ is potential---and both are finite.
+@@ -436,6 +444,7 @@
+ This is neither a block universe (which denies the open future) nor a presentist ontology (which denies structure to the future). It is a \emph{bimodal} ontology in which becoming is a genuine physical process, not an illusion of subjective perspective. The arrow of time is not explained by the framework; it is \emph{encoded} in its most primitive commitment, since actualization is by definition irreversible. That point also marks a deep contrast with unitary formulations of QM: RA does not treat irreversibility as emergent from coarse-graining alone, but as basic at the level of event-writing.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002
+ \section{The BDG Filter and Acceptance Kernel}
+ \label{sec:filter}
+ %% ═══════════════════════════════════════════════════════════
+@@ -449,6 +458,7 @@
+ K(\mathbf{N}|\mu)=\frac{\mathrm{Poisson}(\mathbf{N};\boldsymbol{\lambda}(\mu))\cdot\mathbf{1}[S(\mathbf{N})>0]}{\Pacc(\mu)}.
+ \end{equation}
+ 
++% RAKB: RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002
+ \subsection{The actualization threshold}
+ 
+ The quantity $\Delta S^*(\mu)=-\log\Pacc(\mu)$ measures the selectivity of the BDG filter at density $\mu$. At $\mu=1$ (the Planck density):
+@@ -457,6 +467,7 @@
+ \end{equation}
+ This is not a free parameter. It is computed from the BDG integers alone.
+ 
++% RAKB: RA-KERNEL-001;RA-GRAV-001;RA-GRAV-002
+ \subsection{Kernel saturation theorem}
+ 
+ \begin{theorem}[Kernel--Poisson divergence identity]
+@@ -485,6 +496,7 @@
+ 
+ The physical significance: at high density (approaching gravitational collapse), the filter saturates. Every candidate extension is admissible. The distinction between potentia and actuality---as mediated by the BDG filter---dissolves. This is the onset of \emph{causal severance}, developed in Paper~III.
+ 
++% RAKB: RA-D4-001;RA-ARITH-005
+ \subsection{The selectivity profile}
+ 
+ Numerical evaluation (Monte Carlo, $2\times 10^5$ samples) gives:
+@@ -508,6 +520,7 @@
+ The BDG filter is most selective at $\mu\approx 4$, where it rejects $\sim 60\%$ of candidates and carries $\Dkl\approx 0.9$ nats of information. Above $\mu\approx 10$, the filter is completely inert.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-KERNEL-001;RA-KERNEL-004;RA-D4-001
+ \section{The Actualization Criterion: Kernel First, Comparative Readouts Second}
+ \label{sec:criterion}
+ %% ═══════════════════════════════════════════════════════════
+@@ -561,6 +574,7 @@
+ Likewise, on-shell and Rindler/AQFT statements remain useful comparative language for readers accustomed to standard formalisms, but they are not counted as native support in this paper. Their scientific role here is comparative, not foundational.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-ONT-002;RA-OPEN-009
+ \section{The Measurement Problem Dissolved in Native Terms}
+ \label{sec:measurement}
+ %% ═══════════════════════════════════════════════════════════
+@@ -578,12 +592,14 @@
+ That does not eliminate the need for comparison. On the contrary, one of the major open tests of the kernel is whether the sparse-regime stochastic law can reproduce the quantitative interference and frequency patterns that make QM successful. The paper therefore treats wave-equation language as comparative cartography and the derivation of corresponding frequency laws as an open native target.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-KIN-BANDWIDTH-001
+ \section{Finite Propagation, Event Counts, and Saturation}
+ \label{sec:relativistic}
+ %% ═══════════════════════════════════════════════════════════
+ 
+ This section states the native kinematic content of the kernel and uses relativity only as a comparison point. In SR and GR, causal structure is encoded by the metric and its cones. In RA, the primitive statements are finite propagation bandwidth, event-count time, and saturation / severance. The comparison matters because RA is targeting many of the same observables---travel-time relations, redshifts, orbital response, horizon structure---but by a different mathematical route.
+ 
++% RAKB: RA-KIN-BANDWIDTH-001
+ \subsection{The propagation ceiling as graph bandwidth ratio}
+ 
+ The fundamental length and time scales of RA are the Planck length $\ell_P$ and the Planck time $t_P$. The growth rule proceeds in finite causal steps, so the maximum speed at which a causal influence can propagate is
+@@ -593,6 +609,7 @@
+ \end{equation}
+ This is the native finite-propagation statement: the graph has a bandwidth ceiling. The natural comparison is with relativistic light-cone structure, but the logical order is reversed: RA first has a finite stepwise propagation law and only later asks what effective cone structure a coarse-grained observer would infer from it.
+ 
++% RAKB: RA-KIN-PROPER-TIME-001
+ \subsection{Proper time as event count}
+ 
+ \begin{proposition}[Proper time as event count]
+@@ -605,6 +622,7 @@
+ 
+ Time dilation in continuum comparison language is the downstream description of a native discrete fact: different realized trajectories accumulate different event counts between common boundary conditions. This is one of the places where RA may ultimately agree with relativity on observable outcomes while differing sharply in mechanism: proper time is not a metric arc-length at the kernel level, but a count of realized events.
+ 
++% RAKB: RA-GRAV-003;RA-GRAV-SINGULARITY-001
+ \subsection{Bandwidth saturation and severance onset}
+ 
+ \begin{conjecture}[Saturation and partition]
+@@ -620,6 +638,7 @@
+ 
+ The open question is therefore not whether one can write relativistic words next to the kernel, but whether the native finite-growth picture can recover the observed precision structure of relativistic kinematics and gravitation. The path forward is clear in broad outline---derive effective macroscopic propagation laws from large-$N$ graph statistics and severance geometry---but that closure is not claimed in the present paper.
+ 
++% RAKB: RA-D4-001;RA-D4-002
+ \subsection{The D4U02 analytic gap}
+ \label{sec:d4u02_gap}
+ 
+@@ -628,6 +647,7 @@
+ The analytic closure---proving the selectivity-maximization pattern from BDG integer structure alone, without numeric evaluation---remains an open target. The natural strategy uses a contour-integral or generating-function representation together with the second-order cancellation identities discussed in \S\ref{sec:bdg}. Closing this analytically remains a tractable problem in native arithmetic combinatorics and would materially strengthen the $d=4$ case.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-D4-001;RA-D4-002;RA-ARITH-001;RA-ARITH-005;RA-MOTIF-002
+ \section{The Present Case for $d=4$}
+ \label{sec:d4}
+ %% ═══════════════════════════════════════════════════════════
+@@ -652,10 +672,12 @@
+ 
+ Within the current criteria, only $d=4$ places the first selectivity ceiling close to the kernel scale $\mu=1$ while also supplying the finite motif richness used in the Paper~II census. In that sense $d=4$ is the leading output candidate of the discrete theory, albeit one whose strongest current support is mixed: arithmetic compilation plus native structural argument plus one still-open analytic step.
+ 
++% RAKB: RA-D4-CASCADE-001
+ \subsection{The cascade exponent}
+ 
+ The BDG cascade exponent $2N_c-1$ equals the cycle length $d+1$ only in $d=4$. In the present programme this is taken as a native renewal criterion for finite cyclic motif persistence under the sequential growth rule.
+ 
++% RAKB: RA-ARITH-003
+ \subsection{The geometric identity}
+ 
+ The identity
+@@ -669,6 +691,7 @@
+ The active compiled support in Lean is the arithmetic coefficient-inversion layer in \texttt{RA\_O14\_ArithmeticCore\_v1.lean}. Geometric identification of these integers with a particular continuum causal-diamond moment problem remains downstream cartography or external support, not active native compilation. This is a good example of the paper's wider method: compare with the CST and continuum literature where it is illuminating, but distinguish compiled native support from comparative or external closure.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-ARITH-001;RA-ARITH-002;RA-PRED-001;RA-ARITH-003
+ \section{Arithmetic Core, Measured Numbers, and Non-kernel Overlays}
+ \label{sec:couplings}
+ %% ═══════════════════════════════════════════════════════════
+@@ -680,6 +703,7 @@
+ Accordingly, this paper no longer treats $\alpha_s$, $\alpha_{\mathrm{EM}}$, or Koide-style formulas as kernel support. The fine-structure constant and analogous measured numbers remain scientifically relevant as Nature-facing targets, and later papers may compare RA's numerical proposals with the values organized by the Standard Model. What is rejected here is only the inversion of logical order in which such overlays become evidence for the kernel itself. They are downstream comparison material until a native derivation is complete.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-GRAV-007
+ \section{Antichain Drift as a Local Graph Statistic}
+ \label{sec:drift}
+ %% ═══════════════════════════════════════════════════════════
+@@ -705,6 +729,7 @@
+ In native terms, the theorem says that low-to-moderate-density accepted growth tends to widen local antichain structure. That is a real graph statistic of the kernel. Compared with standard cosmology, the interest of the result is obvious: it offers a discrete route to expansion-like behaviour without beginning from Friedmann equations. But the present paper does \emph{not} claim that this theorem alone closes a cosmological expansion programme. Direct cosmological use of antichain drift is deferred to later work, where it must be integrated with severance, boundary structure, and observation-level fits.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-LLC-001;RA-KERNEL-002;RA-ARITH-001
+ \section{Formal Verification in Lean 4}
+ \label{sec:lean}
+ %% ═══════════════════════════════════════════════════════════
+@@ -726,6 +751,7 @@
+ \noindent\textbf{Status note.} The restored baseline also contains baseline files such as \texttt{RA\_AmpLocality.lean}, \texttt{RA\_AQFT\_Proofs\_v10.lean}, \texttt{RA\_O14\_Uniqueness.lean}, and \texttt{RA\_D1\_Proofs.lean}. They remain valuable provenance, but they are not counted as active native support in this paper until their theorem families are rewritten and revalidated in RA-native terms. The compiled D1-native chain is instead used positively in Paper~II and in later papers only where explicitly inherited.
+ 
+ %% ═══════════════════════════════════════════════════════════
++% RAKB: RA-PRED-001;RA-PRED-002;RA-PRED-003;RA-PRED-004;RA-PRED-005;RA-PRED-006;RA-PRED-007
+ \section{Suite-Level Downstream Targets}
+ \label{sec:predictions}
+ %% ═══════════════════════════════════════════════════════════

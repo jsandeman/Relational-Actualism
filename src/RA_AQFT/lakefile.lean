@@ -129,6 +129,11 @@ lean_lib «RelationalActualism» where
                                 -- contexts; IndependentCertifiedFamilyReadyAt
                                 -- + .of_member + .to_certified_family_ready
                                 -- + .mono_certificates + .future_mono.
+    `RA_MotifNativeCertificateOverlapBridge, -- (May 5 2026) native-overlap
+                                -- bridge: Type-valued witness data,
+                                -- overlaps relation, NativelyWitnessed
+                                -- predicate, NativeOverlapCertifiedFamily
+                                -- ReadyAt + .of_member + refinements.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

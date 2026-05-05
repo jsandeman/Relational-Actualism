@@ -1,0 +1,10 @@
+test_jaccard_bounds_and_identity (test_v0_9_native_certificate_overlap.NativeCertificateOverlapV09Tests.test_jaccard_bounds_and_identity) ... ok
+test_overlap_bins (test_v0_9_native_certificate_overlap.NativeCertificateOverlapV09Tests.test_overlap_bins) ... ok
+test_overlap_signature_monotonicity_function (test_v0_9_native_certificate_overlap.NativeCertificateOverlapV09Tests.test_overlap_signature_monotonicity_function) ... ok
+test_packet_demo_generates_nontrivial_overlap (test_v0_9_native_certificate_overlap.NativeCertificateOverlapV09Tests.test_packet_demo_generates_nontrivial_overlap) ... ok
+test_weight_profiles_normalize (test_v0_9_native_certificate_overlap.NativeCertificateOverlapV09Tests.test_weight_profiles_normalize) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.197s
+
+OK

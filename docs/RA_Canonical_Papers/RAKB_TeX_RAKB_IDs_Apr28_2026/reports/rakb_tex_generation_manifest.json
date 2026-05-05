@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-05-05T11:05:19",
+  "repo": "/Users/jsandeman/projects/Relational-Actualism",
+  "kb_dir": "/Users/jsandeman/projects/Relational-Actualism/docs/RA_KB",
+  "papers_dir": "/Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers",
+  "output_root": "/Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026",
+  "mapping_source": "registry/source_text_references.csv",
+  "mapping_keys": 83,
+  "inserted_comments": 83,
+  "unmatched_mapping_rows": 0,
+  "unmapped_sections": 95,
+  "id_warnings": 0,
+  "generated_files": [
+    "/Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/RA_Paper_I_Discrete_Spacetime_Actualization_BDG_Growth_Kernel_v9_2_final_Apr2026_rakb_ids.tex",
+    "/Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/RA_Paper_II_Emergent_Matter_Interaction_Discrete_Motif_Structure_v8_tiered_restored_Apr2026_rakb_ids.tex",
+    "/Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/RA_Paper_III_Discrete_Gravity_Cosmology_Causal_Severance_v9_tiered_restored_Apr2026_rakb_ids.tex",
+    "/Users/jsandeman/projects/Relational-Actualism/docs/RA_Canonical_Papers/RAKB_TeX_RAKB_IDs_Apr28_2026/generated_tex/RA_Paper_IV_Complexity_Life_Recursive_Closure_Discrete_Causal_Networks_v7_Apr23_2026_rakb_ids.tex"
+  ]
+}

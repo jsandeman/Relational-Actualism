@@ -1,0 +1,3 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Native certificate overlap is an operational bridge,Nature is target
+RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Native certificate overlap is an operational bridge,Correspondence recovery discipline
