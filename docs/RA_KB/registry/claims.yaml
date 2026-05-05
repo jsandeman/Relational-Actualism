@@ -3138,3 +3138,217 @@ claims:
   claim_kind: derived_result
   formal_anchor: rescue_rate definition ; strict_lost_readiness ; family_loss(threshold) curve
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (post-canonical audit)
+- id: RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  name: Support-family inclusion is an RA-native augmentation relation
+  domain: matter
+  papers:
+  - II
+  statement: 'A support-cut family can be ordered by inclusion: every support cut accepted by a smaller family is also accepted by an augmented family. This relation captures the formal condition under
+    which adding alternative support cuts is monotone rather than replacement-like.'
+  nature_targets:
+  - RA-native actualization support structure
+  - formal distinction between support-family replacement and augmentation
+  ra_observable: null
+  sources:
+  - RA_MotifSupportFamilyMonotonicity.lean
+  - RA_MotifSupportFamilyBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-001
+  - RA-MOTIF-SUPPORT-FAMILY-002
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifSupportFamilyMonotonicity` succeeded, 8273 jobs, 48s; no sorry/admit/axiom). The module imports only RA_MotifSupportFamilyBridge and adds
+    family-inclusion + monotonicity theorems without modifying the upstream support-family abstraction.
+  next_tasks:
+  - Compile RA_MotifSupportFamilyMonotonicity.lean locally and promote source_status if lake build closes.
+  source_status:
+    RA_MotifSupportFamilyMonotonicity.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGFamilyIncluded ; DAGFamilyAugments ; GraphFamilyIncluded ; GraphFamilyAugments
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+- id: RA-MOTIF-SUPPORT-FAMILY-MONO-002
+  name: Any-cut support-family readiness is monotone under family inclusion
+  domain: matter
+  papers:
+  - II
+  statement: If a support-cut family is included in an augmented family, then any-cut readiness, certified family readiness, and family commitment through the smaller family propagate to the augmented family.
+  nature_targets:
+  - RA-native readiness monotonicity
+  - support-family augmentation discipline
+  ra_observable: null
+  sources:
+  - RA_MotifSupportFamilyMonotonicity.lean
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  - RA-MOTIF-SUPPORT-FAMILY-002
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifSupportFamilyMonotonicity` succeeded, 8273 jobs, 48s; no sorry/admit/axiom). The module imports only RA_MotifSupportFamilyBridge and adds
+    family-inclusion + monotonicity theorems without modifying the upstream support-family abstraction.
+  next_tasks:
+  - Compile and then use as the formal anchor for monotone support-family simulator semantics.
+  source_status:
+    RA_MotifSupportFamilyMonotonicity.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGFamilyReadyAt.mono_family ; DAGCertifiedFamilyReadyAt.mono_family ; DAGFamilyCommitsAt.mono_family ; GraphFamilyReadyAt.mono_family ; GraphCertifiedFamilyReadyAt.mono_family ; GraphFamilyCommitsAt.mono_family
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+- id: RA-SIM-SUPPORT-FAMILY-MONO-001
+  name: Exact-k support families are replacement semantics and can violate no-worse behavior
+  domain: complexity
+  papers:
+  - II
+  statement: In the v0.7.1 packet-local simulator audit, exact-k support families can exclude the original strict support cut and exhibit no-worse violations under cut-level certification failure. This
+    confirms that exact-k threshold semantics should not be identified with monotone redundancy.
+  nature_targets:
+  - RA-native support-family diagnostics
+  - separation of replacement from augmentation semantics
+  ra_observable: support_family_no_worse_violation_rate
+  sources:
+  - ra_causal_dag_support_family_monotonicity.py
+  - ra_support_family_no_worse_audit_v0_7_1.csv
+  - ra_support_family_monotonicity_predictions_v0_7_1.md
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  - RA-SIM-SUPPORT-FAMILY-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.7.1 monotonicity audit (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25
+    --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared): 1,728,000 evaluations in 104.4s, 16554 eval/s. monotone_semantics_no_worse_violations=0; total_no_worse_violations=9888
+    (all from exact_k under cut_level certification). Per-(semantics, cert_regime) violation counts: at_least_k 0/0; augmented_exact_k 0/0; exact_k cut_level 9887, parent_shared 0. The 9887 exact_k/cut_level
+    violations come entirely from ledger_failure (4943) and orientation_degradation (4944), at violation_rate 0.103 each — i.e. ~10% of those cohorts have family_loss > strict_loss when exact_k replaces
+    the parent cut and cut-level certification fails some family members. All 5 README success criteria reproduce on canonical scale.'
+  next_tasks:
+  - Run canonical v0.7.1 audit and promote if the exact-k / cut-level pattern persists.
+  source_status:
+    ra_causal_dag_support_family_monotonicity.py: simulation_validated_packet_local_6_tests_pass
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: packet_local_simulation_audit
+  claim_kind: derived_result
+  formal_anchor: support_family_by_semantics(exact_k) ; no_worse_violation_rate
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+- id: RA-SIM-SUPPORT-FAMILY-MONO-002
+  name: At-least-k and augmented-exact support families implement no-worse readiness augmentation in the packet-local audit
+  domain: complexity
+  papers:
+  - II
+  statement: In the v0.7.1 packet-local audit, at-least-k and augmented-exact-k support families include the original strict support cut and show zero no-worse violations across the demo run, matching the
+    formal monotonicity criterion for family inclusion.
+  nature_targets:
+  - RA-native support-family augmentation diagnostics
+  - monotone readiness rescue criteria
+  ra_observable: monotone_semantics_no_worse_violations
+  sources:
+  - ra_causal_dag_support_family_monotonicity.py
+  - ra_support_family_monotonicity_summary_v0_7_1.csv
+  - ra_support_family_no_worse_audit_v0_7_1.csv
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-002
+  - RA-SIM-SUPPORT-FAMILY-MONO-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.7.1 monotonicity audit (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25
+    --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared): 1,728,000 evaluations in 104.4s, 16554 eval/s. monotone_semantics_no_worse_violations=0; total_no_worse_violations=9888
+    (all from exact_k under cut_level certification). Per-(semantics, cert_regime) violation counts: at_least_k 0/0; augmented_exact_k 0/0; exact_k cut_level 9887, parent_shared 0. The 9887 exact_k/cut_level
+    violations come entirely from ledger_failure (4943) and orientation_degradation (4944), at violation_rate 0.103 each — i.e. ~10% of those cohorts have family_loss > strict_loss when exact_k replaces
+    the parent cut and cut-level certification fails some family members. All 5 README success criteria reproduce on canonical scale.'
+  next_tasks:
+  - Run canonical v0.7.1 audit and check monotone_semantics_no_worse_violations remains zero.
+  source_status:
+    ra_causal_dag_support_family_monotonicity.py: simulation_validated_packet_local_6_tests_pass
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: packet_local_simulation_audit
+  claim_kind: derived_result
+  formal_anchor: support_family_by_semantics(at_least_k) ; support_family_by_semantics(augmented_exact_k) ; family_includes_strict_cut
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+- id: RA-SIM-SUPPORT-FAMILY-MONO-003
+  name: Parent-shared and cut-level certification regimes separate support-route redundancy from certification redundancy
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.7.1 audit distinguishes cut-level certification, where individual family members can fail, from parent-shared certification, where one support certificate gates the whole family. This
+    separates support-route redundancy from certification-level redundancy.
+  nature_targets:
+  - RA-native certification diagnostics
+  - support-route versus certificate-level actualization fragility
+  ra_observable: certification_regime_loss_profile
+  sources:
+  - ra_causal_dag_support_family_monotonicity.py
+  - ra_support_family_certification_regimes_v0_7_1.csv
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  - RA-SIM-SUPPORT-FAMILY-003
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.7.1 monotonicity audit (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25
+    --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared): 1,728,000 evaluations in 104.4s, 16554 eval/s. monotone_semantics_no_worse_violations=0; total_no_worse_violations=9888
+    (all from exact_k under cut_level certification). Per-(semantics, cert_regime) violation counts: at_least_k 0/0; augmented_exact_k 0/0; exact_k cut_level 9887, parent_shared 0. The 9887 exact_k/cut_level
+    violations come entirely from ledger_failure (4943) and orientation_degradation (4944), at violation_rate 0.103 each — i.e. ~10% of those cohorts have family_loss > strict_loss when exact_k replaces
+    the parent cut and cut-level certification fails some family members. All 5 README success criteria reproduce on canonical scale.'
+  next_tasks:
+  - Extend to independent witness support families once orientation/ledger witness construction is formalized.
+  source_status:
+    ra_causal_dag_support_family_monotonicity.py: simulation_validated_packet_local_6_tests_pass
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: packet_local_simulation_audit
+  claim_kind: derived_result
+  formal_anchor: certification_regime=cut_level ; certification_regime=parent_shared
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004

@@ -1,0 +1,5 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+ lean_lib RA_MotifSupportFamilyBridge
++lean_lib RA_MotifSupportFamilyMonotonicity

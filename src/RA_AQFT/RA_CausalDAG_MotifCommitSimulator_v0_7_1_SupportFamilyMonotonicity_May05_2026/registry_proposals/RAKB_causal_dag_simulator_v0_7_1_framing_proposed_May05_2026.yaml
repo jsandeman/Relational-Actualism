@@ -1,0 +1,35 @@
+registry_version: '0.5'
+framing_policies:
+- id: RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  name: Support-family monotonicity is an inclusion discipline, not a claim that every
+    threshold family is redundant
+  domain: framing
+  papers:
+  - II
+  statement: When analyzing support-family redundancy, exact-k threshold replacement
+    must be distinguished from monotone family augmentation. Only family constructions
+    that preserve existing ready cuts justify no-worse redundancy language.
+  nature_targets:
+  - RA-native modeling discipline for support-family redundancy
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_Report_May05_2026.md
+  - RA_MotifSupportFamilyMonotonicity.lean
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  restoration_preconditions: []
+  caveats: This is a modeling guardrail. It does not assert a Nature-level redundancy
+    law.
+  next_tasks:
+  - Use monotone augmentation language only for at-least-k, augmented-exact-k, or
+    formally included support-family constructions.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: DAGFamilyIncluded ; GraphFamilyIncluded ; monotone support-family
+    simulator audit
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_1_SupportFamilyMonotonicity_May05_2026

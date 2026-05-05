@@ -1,0 +1,35 @@
+{
+  "actual_evaluations": 46080,
+  "certification_regimes": [
+    "cut_level",
+    "parent_shared"
+  ],
+  "elapsed_seconds": 2.783717,
+  "evaluations_per_second": 16553.408441,
+  "family_semantics": [
+    "at_least_k",
+    "augmented_exact_k",
+    "exact_k"
+  ],
+  "monotone_semantics_no_worse_violations": 0,
+  "run_count": 4,
+  "steps": 16,
+  "support_width_classes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "support_width_count": 4,
+  "threshold_fractions": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "total_family_losses": 25618,
+  "total_family_rescues": 1439,
+  "total_no_worse_violations": 140,
+  "total_strict_losses": 26917,
+  "version": "0.7.1"
+}

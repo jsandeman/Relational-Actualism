@@ -122,6 +122,9 @@ lean_lib «RelationalActualism» where
                                 -- (alternative-cut redundancy) layer over
                                 -- motif-commit; AnyCutReadyAt /
                                 -- AllCutReadyAt / FamilyCommitsAt.
+    `RA_MotifSupportFamilyMonotonicity, -- (May 5 2026) family inclusion +
+                                -- monotonicity theorems for FamilyReadyAt /
+                                -- CertifiedFamilyReadyAt / FamilyCommitsAt.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

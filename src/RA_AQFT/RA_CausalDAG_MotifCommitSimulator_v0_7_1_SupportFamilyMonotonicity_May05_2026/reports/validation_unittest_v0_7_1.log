@@ -1,0 +1,11 @@
+test_at_least_k_no_worse_when_strict_survives (test_v0_7_1_support_family_monotonicity.SupportFamilyMonotonicityV071Tests.test_at_least_k_no_worse_when_strict_survives) ... ok
+test_augmented_exact_k_can_rescue_frontier_dropout (test_v0_7_1_support_family_monotonicity.SupportFamilyMonotonicityV071Tests.test_augmented_exact_k_can_rescue_frontier_dropout) ... ok
+test_end_to_end_outputs (test_v0_7_1_support_family_monotonicity.SupportFamilyMonotonicityV071Tests.test_end_to_end_outputs) ... ok
+test_exact_k_can_have_no_worse_violations_under_cut_level_certification (test_v0_7_1_support_family_monotonicity.SupportFamilyMonotonicityV071Tests.test_exact_k_can_have_no_worse_violations_under_cut_level_certification) ... ok
+test_parent_shared_certification_preserves_monotone_no_worse (test_v0_7_1_support_family_monotonicity.SupportFamilyMonotonicityV071Tests.test_parent_shared_certification_preserves_monotone_no_worse) ... ok
+test_semantics_include_strict_cut_exactly_when_expected (test_v0_7_1_support_family_monotonicity.SupportFamilyMonotonicityV071Tests.test_semantics_include_strict_cut_exactly_when_expected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.554s
+
+OK

@@ -1,0 +1,2 @@
+version,run_count,steps,actual_evaluations,elapsed_seconds,evaluations_per_second,support_width_classes,support_width_count,family_semantics,certification_regimes,threshold_fractions,total_strict_losses,total_family_losses,total_family_rescues,total_no_worse_violations,monotone_semantics_no_worse_violations
+0.7.1,100,32,1728000,104.386139,16553.921933,"[1, 2, 3, 4]",4,"[""at_least_k"", ""augmented_exact_k"", ""exact_k""]","[""cut_level"", ""parent_shared""]","[0.25, 0.5, 0.75, 1.0]",996078,923234,82732,9888,0
