@@ -4152,7 +4152,12 @@ claims:
     ledger_failure / at_least_k cell collapses to a 0 baseline low-high gap and
     0 across all ablations - the rescue signal lives in augmented_exact_k
     semantics for both modes, consistent with the family-semantics asymmetry
-    seen in prior v0.7.x audits. Operational diagnostic; component weights are
+    seen in prior v0.7.x audits. The semantics asymmetry is a semantics-resolved
+    finding rather than a defect: support-family semantics remain physically
+    meaningful (not implementation detail), so the disciplined formulation is
+    "native overlap controls certification rescue in the tested workbench, with
+    the clearest signal under augmented_exact_k semantics" rather than a uniform
+    cross-semantics statement. Operational diagnostic; component weights are
     proxy-level operational choices pending native/BDG-LLC formal anchoring.'
   next_tasks:
   - Tighten witness-overlap formalization beyond Type-valued opaque witnesses in the v0.9 Lean bridge.
@@ -4204,8 +4209,17 @@ claims:
     AUC proxies (range 0.079-0.105) sit slightly above v0.8.1 external AUCs
     (range 0.044-0.049); native rescue decays (0.157-0.218) exceed external
     decays (0.089-0.100). Qualitative direction matches; native curves are
-    steeper than the external-correlation baseline. Weight profiles are
-    diagnostic; no profile is claimed as the derived RA-native overlap law.'
+    steeper than the external-correlation baseline. The native-overlap bins
+    (low/medium/high) are structural bins, not numerical equivalents of
+    external correlation values; absolute calibration to the v0.8.1 external
+    correlation scale is not yet established (qualitative alignment confirmed,
+    absolute calibration pending). Endpoint-vs-parent_shared distinction (per
+    RA-SIM-NATIVE-CERT-ROBUST-001 endpoint deltas): high native overlap
+    suppresses rescue strongly but is not identical to parent_shared
+    certification unless witness overlap is total - parent_shared remains
+    zero-rescue across the comparison while native high-overlap retains
+    residual rescue capacity from non-shared witness structure. Weight profiles
+    are diagnostic; no profile is claimed as the derived RA-native overlap law.'
   next_tasks:
   - Decompose witness-overlap components beyond proxy-level definitions; close the BDG-LLC kernel-overlap proxy with native bridge.
   source_status:
