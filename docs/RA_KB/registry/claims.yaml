@@ -3049,3 +3049,92 @@ claims:
   claim_kind: derived_result
   formal_anchor: family_loss_rate ; threshold_fraction ; certification_channel_signature
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (refined post-canonical)
+- id: RA-SIM-SUPPORT-FAMILY-006
+  name: 'Audit corrigendum: cert-channel "amplification" reading of SF-005 is a metric-definition artifact; family_loss(threshold) is non-increasing in cert modes too'
+  domain: complexity
+  papers:
+  - II
+  statement: 'A width-stratified audit of the canonical 100-seed v0.7 run shows that the apparent "amplification" claimed in RA-SIM-SUPPORT-FAMILY-005 (family_loss=0.817 > strict_loss=0.439 at ledger_failure
+    / sev 0.75 / threshold 0.25) is dominated by a metric-definition artifact: at threshold < 1.0 and width >= 2, the parent cut is structurally NOT a member of family.cuts, so cert-mode sampling (which
+    draws uncertified cuts from family.cuts) cannot affect the parent. strict_lost_readiness is therefore identically false in those cohorts. The aggregate strict baseline of 0.439 comes entirely from the
+    width=1 cohort (where family={parent}). When the comparison is apples-to-apples — family_loss(threshold) within a fixed width slice — family_loss is monotonically non-increasing as threshold drops,
+    including in cert modes. A genuine exact-k structural effect remains: cert-channel resilience requires sufficient family_size that severity-sampling does not exhaust the family (e.g. width=4 / threshold
+    0.5 / sev 0.75: family_loss=0.673 vs threshold 1.0: family_loss=1.0).'
+  nature_targets:
+  - methodologically clean comparison of family redundancy across thresholds
+  - separation of metric-definition artifacts from genuine structural findings
+  ra_observable: family_loss_curve_by_width_and_threshold
+  sources:
+  - audit_v0_7_amplification_metric_artifact_May05_2026.md
+  - ra_support_family_resilience_by_width_v0_7.csv
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-001
+  - RA-SIM-SUPPORT-FAMILY-005
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  restoration_preconditions: []
+  caveats: Supersedes the interpretation of RA-SIM-SUPPORT-FAMILY-005. SF-005 remains in the registry as provenance for the rates as measured, but its interpretation as "exact-threshold amplifies cert fragility"
+    is retracted. The audit report (audit_v0_7_amplification_metric_artifact_May05_2026.md) records the full width-stratified decomposition.
+  next_tasks:
+  - When v0.8 reports cross-channel resilience comparisons, use family_loss(threshold) within fixed width slices, NOT strict_loss vs family_loss aggregates.
+  source_status:
+    audit_v0_7_amplification_metric_artifact_May05_2026.md: audit_complete
+    ra_support_family_resilience_by_width_v0_7.csv: canonical_run_validated
+  legacy_proof_status: DR
+  proof_status: audit_corrigendum_supersedes_RA-SIM-SUPPORT-FAMILY-005_interpretation
+  legacy_support_status: none
+  auxiliary_support_status: audit_complete
+  claim_kind: derived_result
+  formal_anchor: family_loss(threshold) at fixed (mode, severity, width) ; width-stratified canonical-run breakdown
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (post-canonical audit)
+- id: RA-SIM-SUPPORT-FAMILY-007
+  name: rescue_rate metric is structurally blind to cert-channel resilience at width >= 2
+  domain: complexity
+  papers:
+  - II
+  statement: 'The simulator metric `family_rescue_rate` is defined as the fraction of evaluations where strict_lost_readiness AND family_after_ready. At threshold < 1.0 and width >= 2 in cert modes (ledger_failure,
+    orientation_degradation), strict_lost_readiness is structurally false (parent not in family.cuts → cert sampling cannot affect parent → reachability unchanged → strict_after_ready = strict_before_ready).
+    Therefore rescue_rate = 0 in those cohorts even when the family genuinely survives a sampling that exhausts most of family.cuts. The rescue metric reports zero NOT because cert-channel resilience is
+    absent, but because rescue is defined relative to the parent cut failing first. The "0% cert-channel rescue" reading of RA-SIM-SUPPORT-FAMILY-004 is therefore amended: cert-channel resilience does exist
+    (visible in family_loss(threshold) curves), but is invisible to the rescue metric as currently defined.'
+  nature_targets:
+  - metric-design discipline for cross-channel comparison of resilience
+  - visibility of cert-channel resilience in width-stratified family-loss curves
+  ra_observable: family_loss_curve_below_strict_loss_at_threshold_1
+  sources:
+  - audit_v0_7_amplification_metric_artifact_May05_2026.md
+  - ra_support_family_resilience_by_width_v0_7.csv
+  - ra_causal_dag_support_family_workbench.py
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-004
+  - RA-SIM-SUPPORT-FAMILY-006
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  restoration_preconditions: []
+  caveats: 'Amends but does not retract RA-SIM-SUPPORT-FAMILY-004: the channel-conditional rescue _rate_ result is correct as a statement about how the rescue metric responds to the six modes; what it does
+    NOT imply is that cert-channel resilience is absent.'
+  next_tasks:
+  - 'Define a metric-blindness diagnostic flag for v0.8: fires when rescue_rate = 0 while family_loss(threshold < 1.0) < family_loss(threshold = 1.0) within the same (mode, severity, width) slice.'
+  - When reporting "channels rescued", report family_loss-curve evidence separately from rescue_rate.
+  source_status:
+    audit_v0_7_amplification_metric_artifact_May05_2026.md: audit_complete
+    ra_causal_dag_support_family_workbench.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: audit_corrigendum_amends_RA-SIM-SUPPORT-FAMILY-004_interpretation
+  legacy_support_status: none
+  auxiliary_support_status: audit_complete
+  claim_kind: derived_result
+  formal_anchor: rescue_rate definition ; strict_lost_readiness ; family_loss(threshold) curve
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (post-canonical audit)

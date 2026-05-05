@@ -503,3 +503,40 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: GraphSupportCutFamily ; threshold-subfamily generator vs augmented-monotone family generator
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (refined post-canonical)
+- id: RA-SIM-SUPPORT-FAMILY-METHOD-004
+  name: Cross-threshold resilience comparisons require apples-to-apples metrics within width-stratified slices
+  domain: framing
+  papers:
+  - II
+  statement: When comparing single-cut versus support-family resilience across channels, do not compare strict_readiness_loss_rate (parent-cut fate) directly to family_readiness_loss_rate (family-survival
+    fate); these metrics have structurally different denominator events when the family-construction operator excludes the parent cut (which it does for exact-threshold subfamilies at threshold < 1.0 and
+    width >= 2). The proper diagnostic is family_readiness_loss_rate evaluated at multiple thresholds within a fixed (mode, severity, support_width) slice; this isolates the genuine family-construction
+    effect from metric-definition artifacts. Similarly, family_rescue_rate as defined (strict_lost ∧ family_survives) is structurally blind to resilience in cohorts where strict_lost cannot be true; report
+    family_loss curves separately when comparing cross-channel resilience.
+  nature_targets:
+  - metric design for cross-threshold and cross-channel resilience comparison
+  - pre-condition for non-misleading reporting of support-family results
+  ra_observable: null
+  sources:
+  - audit_v0_7_amplification_metric_artifact_May05_2026.md
+  - ra_support_family_resilience_by_width_v0_7.csv
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  restoration_preconditions: []
+  caveats: 'When v0.8 introduces alternative family-construction operators (augmented monotone families, repairable families, etc.), the same discipline applies: compare loss within a fixed slice; do not
+    mix family-construction operators in a single rate.'
+  next_tasks:
+  - Augment the v0.7 simulator (or its v0.8 successor) with a metric-blindness diagnostic that flags cohorts where rescue_rate = 0 yet family_loss(threshold < 1.0) < family_loss(threshold = 1.0) at the
+    same (mode, severity, width) slice.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: negative_scope_or_translation_policy
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: family_loss(threshold | mode, severity, width) ; metric-blindness diagnostic
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (post-canonical audit)
