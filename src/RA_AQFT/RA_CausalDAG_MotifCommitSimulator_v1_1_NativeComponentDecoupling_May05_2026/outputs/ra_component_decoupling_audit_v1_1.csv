@@ -1,0 +1,7 @@
+component_a,component_b,rows,max_abs_diff,mean_abs_diff,weighted_mean_abs_diff,corr,numerically_identical,decoupling_status
+support_overlap,frontier_overlap,480,0.0,0.0,0.0,1.0,True,confounded
+support_overlap,orientation_overlap,480,0.0,0.0,0.0,1.0,True,confounded
+frontier_overlap,orientation_overlap,480,0.0,0.0,0.0,1.0,True,confounded
+ledger_overlap,orientation_overlap,480,0.382514,0.12139390625000002,0.09037762395833333,0.9986984697258822,False,resolved_or_partially_resolved
+ledger_overlap,support_overlap,480,0.382514,0.12139390625000002,0.09037762395833333,0.9986984697258822,False,resolved_or_partially_resolved
+support_frontier_orientation_triplet,joint_triplet_status,480,0.0,0.0,0.0,1.0,True,orientation_confounded_with_support_frontier

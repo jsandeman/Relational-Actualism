@@ -1,0 +1,10 @@
+test_confounded_triplet_detected (test_v1_1_native_component_decoupling.NativeComponentDecouplingTests.test_confounded_triplet_detected) ... ok
+test_decoupled_orientation_detected (test_v1_1_native_component_decoupling.NativeComponentDecouplingTests.test_decoupled_orientation_detected) ... ok
+test_end_to_end_outputs (test_v1_1_native_component_decoupling.NativeComponentDecouplingTests.test_end_to_end_outputs) ... ok
+test_partial_correlation_has_no_orientation_variation_when_confounded (test_v1_1_native_component_decoupling.NativeComponentDecouplingTests.test_partial_correlation_has_no_orientation_variation_when_confounded) ... ok
+test_specificity_flags_orientation_confounding (test_v1_1_native_component_decoupling.NativeComponentDecouplingTests.test_specificity_flags_orientation_confounding) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.133s
+
+OK

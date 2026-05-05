@@ -1,0 +1,3 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-NATIVE-COMPONENT-DECOUPLE-001,RA-SIM-NATIVE-CERT-ANCHOR-001,proof_dependency,claim,claim,Native component decoupling audit detects orientation/support/frontier confounding,Native certificate anchoring
+RA-SIM-NATIVE-COMPONENT-DECOUPLE-002,RA-SIM-NATIVE-COMPONENT-DECOUPLE-001,proof_dependency,claim,claim,Ledger attribution is separated while orientation attribution remains joint-proxy in v1.1,Native component decoupling audit detects orientation/support/frontier confounding

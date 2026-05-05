@@ -1,0 +1,25 @@
+{
+  "input_dir": "../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs",
+  "rows": 480,
+  "outputs": [
+    "ra_component_decoupling_audit_v1_1.csv",
+    "ra_orientation_specificity_by_mode_v1_1.csv",
+    "ra_component_partial_correlation_v1_1.csv",
+    "ra_matched_overlap_strata_v1_1.csv",
+    "ra_orientation_ablation_after_support_control_v1_1.csv",
+    "ra_ledger_orientation_specificity_comparison_v1_1.csv",
+    "ra_native_component_decoupling_summary_v1_1.csv",
+    "ra_native_component_decoupling_summary_v1_1.md"
+  ],
+  "summary": {
+    "analysis_status": "decoupling_audit_reveals_orientation_support_frontier_confounding",
+    "triplet_decoupling_status": "orientation_confounded_with_support_frontier",
+    "ledger_component_resolved": false,
+    "orientation_component_resolved": false,
+    "matched_orientation_variation_available": false,
+    "matched_ledger_variation_available": false,
+    "selector_guardrail_status": "not_applicable_analysis_only",
+    "recommended_next_step": "derive_or_generate_distinct_orientation_link_surface_before_stronger_orientation_specific_claims",
+    "v1_1_posture": "ledger_attribution_clean_orientation_attribution_still_confounded"
+  }
+}

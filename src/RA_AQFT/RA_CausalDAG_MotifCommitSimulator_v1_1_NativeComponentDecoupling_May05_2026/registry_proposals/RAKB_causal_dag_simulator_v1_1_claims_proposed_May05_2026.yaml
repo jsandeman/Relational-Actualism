@@ -1,0 +1,62 @@
+registry_version: v0.5
+claims:
+- id: RA-SIM-NATIVE-COMPONENT-DECOUPLE-001
+  name: Native component decoupling audit detects orientation/support/frontier confounding
+  domain: complexity
+  papers: [II]
+  statement: >
+    The v1.1 native component decoupling audit distinguishes clean component attribution from
+    confounded attribution and detects when orientation-overlap remains numerically tied to
+    support/frontier overlap.
+  nature_targets:
+  - RA-native certificate witness component attribution
+  ra_observable: native_certificate_component_overlap
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-ANCHOR-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-002
+  restoration_preconditions: []
+  caveats: >
+    Analysis-only packet. It does not generate a new orientation surface; it audits whether the
+    existing surface is independently resolved.
+  next_tasks:
+  - Generate or derive a distinct orientation-link overlap surface.
+  source_status:
+    RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026: simulation_analysis_packet_local_validated_pending_canonical
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: analysis_guardrail_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_component_decoupling.py
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026
+- id: RA-SIM-NATIVE-COMPONENT-DECOUPLE-002
+  name: Ledger attribution is separated while orientation attribution remains joint-proxy in v1.1
+  domain: complexity
+  papers: [II]
+  statement: >
+    In the v1.1 audit, ledger overlap is separately resolved from the support/frontier proxy, while
+    orientation overlap should be treated as a joint support/frontier/orientation proxy unless a
+    distinct orientation-link surface is generated.
+  nature_targets:
+  - component attribution for certified support families
+  ra_observable: native_certificate_component_specificity
+  sources:
+  - ra_ledger_orientation_specificity_comparison_v1_1.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-001
+  restoration_preconditions: []
+  caveats: >
+    This claim should be promoted only after canonical v1.1 analysis confirms the same attribution status.
+  next_tasks:
+  - Build distinct orientation-link overlap surface for v1.2 or v2.0 native anchoring.
+  source_status:
+    RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026: simulation_analysis_packet_local_validated_pending_canonical
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: analysis_guardrail_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_ledger_orientation_specificity_comparison_v1_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026

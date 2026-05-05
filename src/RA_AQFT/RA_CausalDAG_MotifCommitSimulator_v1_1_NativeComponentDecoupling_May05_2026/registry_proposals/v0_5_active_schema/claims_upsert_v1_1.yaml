@@ -1,0 +1,145 @@
+# v0.5 active-schema upsert for v1.1 native component decoupling packet.
+# Append the entries below to docs/RA_KB/registry/claims.yaml under the
+# top-level `claims:` list (do NOT include the `registry_version` line).
+#
+# Status convention mirrors v0.9.1/v0.9.2/v1.0 simulator claims after canonical run.
+
+claims:
+- id: RA-SIM-NATIVE-COMPONENT-DECOUPLE-001
+  name: Native component decoupling audit detects orientation/support/frontier confounding
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.1 native component decoupling audit distinguishes cleanly resolved
+    component overlap surfaces from joint proxy surfaces via five independent
+    diagnostics (component-pair decoupling audit, per-mode orientation
+    specificity, OLS partial correlation after support/frontier control,
+    matched-strata bin variation, and orientation-vs-ledger residual ablation
+    after support control), and detects when orientation-overlap remains
+    numerically tied to support/frontier overlap.
+  nature_targets:
+  - RA-native certificate witness component attribution
+  - confounding detection for proxy-level component surfaces
+  ra_observable: native_certificate_component_overlap
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026
+  - ra_native_component_decoupling.py
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-ANCHOR-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.1 run (assistant-side; --input-dir
+    ../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs)
+    over 480 v1.0 component rows. Triplet decoupling status:
+    orientation_confounded_with_support_frontier (max_abs_diff=0.0 across all
+    three pairwise comparisons - support/frontier, support/orientation,
+    frontier/orientation). Ledger overlap is decoupled from the support/frontier
+    proxy: ledger_orientation max_abs_diff=0.383, mean_abs_diff=0.121, corr=0.999;
+    ablation residual after support control mean_abs=0.085-0.095 across all
+    cells. Orientation overlap is confounded: ablation residual=0.0 across all
+    six (mode, semantics) cells; partial correlation after support+frontier
+    control reports no_independent_component_variation_after_support_frontier_control
+    for orientation in all six cells (residual_std~3e-17, floating-point noise).
+    Implementation note: the packet original ra_native_component_decoupling.py
+    used a strict == 0.0 check on residual_std which numpy.linalg.lstsq does
+    not satisfy when columns are linearly dependent (returns ~1e-17 instead of
+    exact zero); installed source uses a 1e-12 tolerance so confounded components
+    are correctly classified. The packet test
+    test_partial_correlation_has_no_orientation_variation_when_confounded
+    explicitly required this behavior. selector_stress correctly classifies
+    as not_certification_channel. All 5 unit tests pass post-fix. The v1.1
+    audit confirms that orientation overlap is not independently resolved
+    from support/frontier overlap in the v0.9/v1.0 component construction;
+    the audit succeeded as a negative/diagnostic result by refusing to
+    manufacture a component-specific signal where the component surface
+    does not exist. Operational diagnostic; not a derived RA-native law.'
+  next_tasks:
+  - Build v1.2 Distinct Orientation-Link Surface packet that generates or derives orientation_overlap from orientation-link / sign-source data rather than from support/frontier membership proxy; then test under matched support/frontier strata whether orientation_degradation rescue becomes orientation-specific. Defer BDG-LLC formal anchoring until orientation decoupling succeeds.
+  source_status:
+    ra_native_component_decoupling.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_component_decoupling.py ; ra_component_decoupling_audit_v1_1.csv ; ra_component_partial_correlation_v1_1.csv ; ra_orientation_ablation_after_support_control_v1_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026
+
+- id: RA-SIM-NATIVE-COMPONENT-DECOUPLE-002
+  name: Ledger attribution is separated while orientation attribution remains joint-proxy in v1.1
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    In the canonical v1.1 audit, ledger overlap is separately resolved from
+    the support/frontier proxy and dominates as the highest-mean component in
+    ledger_failure mode (with weak-or-tied specificity margin), while orientation
+    overlap is confounded with support/frontier overlap and should be treated
+    as a joint support/frontier/orientation proxy until a distinct
+    orientation-link surface is generated. The v1.1 posture is
+    ledger_attribution_clean_orientation_attribution_still_confounded.
+  nature_targets:
+  - component attribution for certified support families
+  - orientation-channel resolution prerequisite for native formalization
+  ra_observable: native_certificate_component_specificity
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026
+  - ra_orientation_specificity_by_mode_v1_1.csv
+  - ra_ledger_orientation_specificity_comparison_v1_1.csv
+  - ra_native_component_decoupling_summary_v1_1.md
+  proof_dependencies:
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.1 run (parameters as in
+    RA-SIM-NATIVE-COMPONENT-DECOUPLE-001). Per-mode/semantics specificity:
+    ledger_failure / at_least_k -> weak_or_tied_specificity (ledger margin
+    0.0458; ledger 0.893 vs next-highest 0.847); ledger_failure /
+    augmented_exact_k -> weak_or_tied_specificity (ledger margin 0.0473;
+    ledger 0.879 vs next-highest 0.832); orientation_degradation /
+    at_least_k -> orientation_confounded_with_support_frontier (margin
+    -0.0853, support/frontier/orientation all 0.808; ledger 0.893);
+    orientation_degradation / augmented_exact_k ->
+    orientation_confounded_with_support_frontier (margin -0.0954,
+    support/frontier/orientation all 0.784; ledger 0.879). selector_stress
+    correctly classifies as not_certification_channel for both semantics.
+    Important framing - ledger is decoupled from support/frontier overlap
+    (max_abs_diff=0.383, ablation residual 0.085-0.095) but remains tightly
+    coupled to the broader certification-exposure bundle: causal_past 0.83-0.85,
+    bdg_kernel 0.82-0.84, firewall 0.83-0.85 vs ledger 0.88-0.89. Ledger
+    attribution is resolved but not strongly dominant - the v1.0 component
+    layer is not yet a clean causal-factor decomposition; ledger sits within
+    a broader certification-exposure bundle rather than as a singular
+    dominant component. The disciplined v1.1 statement is: orientation
+    rescue must be described as carried by a joint support/frontier/orientation
+    proxy until a distinct orientation-link surface is generated; ledger
+    rescue is component-resolved with weak specificity margin within a
+    larger certification-exposure bundle.'
+  next_tasks:
+  - Build v1.2 Distinct Orientation-Link Surface packet, sourcing orientation_overlap from orientation-link / sign-source data rather than from support-cut membership; align with existing native vocabulary (RA_CausalOrientation_Core, RA_D1_NativeLedgerOrientation, RA_D1_NativeClosure) where possible.
+  - Consider whether the certification-exposure bundle (ledger / causal_past / bdg_kernel / firewall) should be treated as a single composite surface in v1.2 rather than four pseudo-independent components, since v1.1 reveals tight coupling.
+  source_status:
+    ra_native_component_decoupling.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_orientation_specificity_by_mode_v1_1.csv ; ra_ledger_orientation_specificity_comparison_v1_1.csv ; ra_native_component_decoupling_summary_v1_1.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026

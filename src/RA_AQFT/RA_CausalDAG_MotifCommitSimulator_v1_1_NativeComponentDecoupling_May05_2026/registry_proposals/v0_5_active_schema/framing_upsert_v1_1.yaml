@@ -1,0 +1,51 @@
+# v0.5 active-schema upsert for v1.1 framing.
+# Append the entry below to docs/RA_KB/registry/framing.yaml under the
+# top-level `framing_policies:` list (do NOT include `registry_version`).
+#
+# Naming follows the <TOPIC>-METHOD-NNN pattern (RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001)
+# to avoid the METHOD-001 collision. Mirrors v1.0 anchoring guardrail style.
+
+framing_policies:
+- id: RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  name: Do not overclaim component-specific attribution when overlap surfaces are confounded
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Native certificate-overlap component attribution must distinguish cleanly
+    resolved component surfaces from joint proxy surfaces. A claim that a
+    specific component (orientation, ledger, etc.) carries the rescue signal
+    for a specific mode (orientation_degradation, ledger_failure, etc.) is
+    valid only when (a) that component shows independent variation from the
+    other components on the data, AND (b) the component-specific specificity
+    margin exceeds the threshold used in the v1.1 audit. Where (a) fails,
+    the proper formulation is "rescue is carried by a joint
+    {component-bundle} proxy"; where (b) fails, the proper qualifier is
+    "weak or tied specificity". Sequencing discipline - generate or derive
+    a distinct orientation-link surface from native orientation witnesses
+    BEFORE BDG-LLC formal anchoring; otherwise the formal layer would
+    anchor a confounded proxy.
+  nature_targets:
+  - RA-native component attribution discipline
+  - sequencing discipline for native formalization
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026
+  - ra_native_component_decoupling_summary_v1_1.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Component attribution is proxy-level until native surfaces are formally derived or independently generated. Treat the v1.1 verdict (ledger resolved with weak specificity within a certification-exposure bundle, orientation confounded with support/frontier) as a faithful diagnostic, not a defect - it is the audit functioning as designed. Do not state orientation-specific native-overlap claims in any v1.x or BDG-LLC layer until the simulator or formal layer derives a distinct orientation-link surface from orientation-link / sign-source data, not from support/frontier membership proxy. Consider whether the certification-exposure bundle (ledger / causal_past / bdg_kernel-proxy / firewall-exposure) should be treated as a single composite surface rather than as four pseudo-independent components, since v1.1 shows them tightly coupled in the canonical run.'
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: ra_component_decoupling_audit_v1_1.csv ; ra_native_component_decoupling_summary_v1_1.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_1_NativeComponentDecoupling_May05_2026

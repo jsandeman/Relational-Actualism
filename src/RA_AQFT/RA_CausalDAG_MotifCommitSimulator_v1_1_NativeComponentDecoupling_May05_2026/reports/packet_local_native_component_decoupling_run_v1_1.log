@@ -1,0 +1,11 @@
+{
+  "analysis_status": "decoupling_audit_reveals_orientation_support_frontier_confounding",
+  "triplet_decoupling_status": "orientation_confounded_with_support_frontier",
+  "ledger_component_resolved": false,
+  "orientation_component_resolved": false,
+  "matched_orientation_variation_available": false,
+  "matched_ledger_variation_available": false,
+  "selector_guardrail_status": "not_applicable_analysis_only",
+  "recommended_next_step": "derive_or_generate_distinct_orientation_link_surface_before_stronger_orientation_specific_claims",
+  "v1_1_posture": "ledger_attribution_clean_orientation_attribution_still_confounded"
+}
