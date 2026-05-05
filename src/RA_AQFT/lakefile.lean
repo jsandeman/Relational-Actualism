@@ -134,6 +134,11 @@ lean_lib «RelationalActualism» where
                                 -- overlaps relation, NativelyWitnessed
                                 -- predicate, NativeOverlapCertifiedFamily
                                 -- ReadyAt + .of_member + refinements.
+    `RA_MotifNativeCertificateComponents, -- (May 5 2026) v1.0 component
+                                -- anchoring: 7-component Type-valued
+                                -- witness contexts, packaging into native
+                                -- overlap, refinement to independent
+                                -- certified-family readiness, future_mono.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

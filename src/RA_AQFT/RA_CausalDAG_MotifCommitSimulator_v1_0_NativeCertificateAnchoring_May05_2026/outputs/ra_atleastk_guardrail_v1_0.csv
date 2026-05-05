@@ -1,0 +1,3 @@
+mode,family_semantics,semantics_role,bins,low_rescue_rate,medium_rescue_rate,high_rescue_rate,gap_used,rescue_gap,monotone_nonincreasing,bin_count
+ledger_failure,at_least_k,monotone_guardrail,medium;high,,0.157222,0.000691,medium_minus_high,0.156531,True,2
+orientation_degradation,at_least_k,monotone_guardrail,medium;high,,0.159731,0.000691,medium_minus_high,0.15904,True,2

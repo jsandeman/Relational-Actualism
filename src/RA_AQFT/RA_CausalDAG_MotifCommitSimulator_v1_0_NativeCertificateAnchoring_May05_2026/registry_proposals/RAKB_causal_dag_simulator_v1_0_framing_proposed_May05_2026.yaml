@@ -1,0 +1,32 @@
+registry_version: v0.5
+framing_policies:
+- id: RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  name: Native certificate anchoring is component-level and qualitative until BDG-LLC derivation
+  domain: framing
+  papers: [II]
+  statement: >
+    The v1.0 native-certificate anchoring layer records component-level overlap
+    surfaces and family-semantics posture. It must not be interpreted as a final
+    BDG-LLC-derived probability law or as an exact calibration of native-overlap
+    bins to external certificate-correlation values.
+  nature_targets:
+    - modeling discipline for native certificate overlap
+  ra_observable: null
+  sources:
+    - RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+    - RA-METHOD-001
+    - RA-METHOD-002
+    - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    Use augmented_exact_k as primary signal-carrier semantics and at_least_k as
+    monotone guardrail semantics, but do not treat either as uniquely fundamental.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifNativeCertificateComponents ; ra_native_certificate_anchoring.py
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026

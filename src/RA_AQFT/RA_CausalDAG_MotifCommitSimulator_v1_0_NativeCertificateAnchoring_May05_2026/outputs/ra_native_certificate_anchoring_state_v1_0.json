@@ -1,0 +1,146 @@
+{
+  "calibration": [
+    {
+      "auc_delta_native_minus_external": "0.029477",
+      "decay_delta_native_minus_external": "0.059656",
+      "external_auc_proxy": "0.049479",
+      "external_point_count": "5",
+      "external_start_end_decay": "0.096875",
+      "family_semantics": "at_least_k",
+      "mapping_interpretation": "native bins qualitative-alignment check; absolute calibration remains proxy-level",
+      "mode": "ledger_failure",
+      "native_auc_proxy": "0.078956",
+      "native_low_high_or_start_end_decay": "0.156531",
+      "native_point_count": "2",
+      "qualitative_alignment": "True",
+      "source": "v0_9_2_mapping",
+      "v1_posture": "qualitative_alignment_not_absolute_calibration"
+    },
+    {
+      "auc_delta_native_minus_external": "0.059075",
+      "decay_delta_native_minus_external": "0.1281",
+      "external_auc_proxy": "0.046156",
+      "external_point_count": "5",
+      "external_start_end_decay": "0.089401",
+      "family_semantics": "augmented_exact_k",
+      "mapping_interpretation": "native bins qualitative-alignment check; absolute calibration remains proxy-level",
+      "mode": "ledger_failure",
+      "native_auc_proxy": "0.105231",
+      "native_low_high_or_start_end_decay": "0.217501",
+      "native_point_count": "3",
+      "qualitative_alignment": "True",
+      "source": "v0_9_2_mapping",
+      "v1_posture": "qualitative_alignment_not_absolute_calibration"
+    },
+    {
+      "auc_delta_native_minus_external": "0.031481",
+      "decay_delta_native_minus_external": "0.059092",
+      "external_auc_proxy": "0.04873",
+      "external_point_count": "5",
+      "external_start_end_decay": "0.099948",
+      "family_semantics": "at_least_k",
+      "mapping_interpretation": "native bins qualitative-alignment check; absolute calibration remains proxy-level",
+      "mode": "orientation_degradation",
+      "native_auc_proxy": "0.080211",
+      "native_low_high_or_start_end_decay": "0.15904",
+      "native_point_count": "2",
+      "qualitative_alignment": "True",
+      "source": "v0_9_2_mapping",
+      "v1_posture": "qualitative_alignment_not_absolute_calibration"
+    },
+    {
+      "auc_delta_native_minus_external": "0.06044",
+      "decay_delta_native_minus_external": "0.119681",
+      "external_auc_proxy": "0.044417",
+      "external_point_count": "5",
+      "external_start_end_decay": "0.094193",
+      "family_semantics": "augmented_exact_k",
+      "mapping_interpretation": "native bins qualitative-alignment check; absolute calibration remains proxy-level",
+      "mode": "orientation_degradation",
+      "native_auc_proxy": "0.104857",
+      "native_low_high_or_start_end_decay": "0.213874",
+      "native_point_count": "3",
+      "qualitative_alignment": "True",
+      "source": "v0_9_2_mapping",
+      "v1_posture": "qualitative_alignment_not_absolute_calibration"
+    }
+  ],
+  "guardrail": [
+    {
+      "bin_count": 2,
+      "bins": "medium;high",
+      "family_semantics": "at_least_k",
+      "gap_used": "medium_minus_high",
+      "high_rescue_rate": 0.000691,
+      "low_rescue_rate": "",
+      "medium_rescue_rate": 0.157222,
+      "mode": "ledger_failure",
+      "monotone_nonincreasing": true,
+      "rescue_gap": 0.156531,
+      "semantics_role": "monotone_guardrail"
+    },
+    {
+      "bin_count": 2,
+      "bins": "medium;high",
+      "family_semantics": "at_least_k",
+      "gap_used": "medium_minus_high",
+      "high_rescue_rate": 0.000691,
+      "low_rescue_rate": "",
+      "medium_rescue_rate": 0.159731,
+      "mode": "orientation_degradation",
+      "monotone_nonincreasing": true,
+      "rescue_gap": 0.15904,
+      "semantics_role": "monotone_guardrail"
+    }
+  ],
+  "primary": [
+    {
+      "bin_count": 3,
+      "bins": "low;medium;high",
+      "family_semantics": "augmented_exact_k",
+      "gap_used": "low_minus_high",
+      "high_rescue_rate": 0.000691,
+      "low_rescue_rate": 0.218192,
+      "medium_rescue_rate": 0.13766,
+      "mode": "ledger_failure",
+      "monotone_nonincreasing": true,
+      "rescue_gap": 0.217501,
+      "semantics_role": "primary_signal_carrier"
+    },
+    {
+      "bin_count": 3,
+      "bins": "low;medium;high",
+      "family_semantics": "augmented_exact_k",
+      "gap_used": "low_minus_high",
+      "high_rescue_rate": 0.000691,
+      "low_rescue_rate": 0.214565,
+      "medium_rescue_rate": 0.138116,
+      "mode": "orientation_degradation",
+      "monotone_nonincreasing": true,
+      "rescue_gap": 0.213874,
+      "semantics_role": "primary_signal_carrier"
+    }
+  ],
+  "summary": {
+    "calibration_rows": 4,
+    "component_rows": 480,
+    "guardrail_family_semantics": "at_least_k",
+    "guardrail_mean_rescue_gap": 0.157785,
+    "guardrail_monotone_count": 2,
+    "guardrail_signal_rows": 2,
+    "native_overlap_bin_count": 3,
+    "native_overlap_bins": [
+      "high",
+      "low",
+      "medium"
+    ],
+    "native_overlap_profile_rows": 10,
+    "primary_family_semantics": "augmented_exact_k",
+    "primary_mean_rescue_gap": 0.215688,
+    "primary_signal_monotone_count": 2,
+    "primary_signal_rows": 2,
+    "selector_guardrail_passed": true,
+    "v1_posture": "component_anchored_proxy_ready_for_BDG_LLC_native_formalization",
+    "version": "1.0"
+  }
+}

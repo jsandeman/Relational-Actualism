@@ -1,0 +1,239 @@
+# v0.5 active-schema upsert for v1.0 native-certificate-anchoring packet.
+# Append the entries below to docs/RA_KB/registry/claims.yaml under the
+# top-level `claims:` list (do NOT include the `registry_version` line).
+#
+# Status conventions:
+# - Kernel/Lean claim: lean_build_confirmed_no_sorry_no_admit_no_axiom + claim_kind: formalized_result
+#   (mirrors RA-MOTIF-NATIVE-CERT-OVERLAP-001 / v0.9 Lean bridge entry).
+# - Simulator/analysis claims: simulation_validated_canonical_run_confirmed
+#   (mirrors v0.9.1/v0.9.2 post-canonical promotion).
+
+claims:
+- id: RA-MOTIF-NATIVE-CERT-COMPONENTS-001
+  name: Native certificate-component contexts refine native-overlap certified-family readiness
+  domain: matter
+  papers:
+  - I
+  - II
+  statement: >
+    Native certificate witnesses for support-cut families decompose into seven
+    Type-valued component surfaces (support, frontier, orientation, ledger,
+    causal-past, kernel-local, firewall/severance-exposure), and component
+    witnesses package into the native-overlap witness layer so that
+    component-anchored readiness refines native-overlap certified-family
+    readiness, refines independent certified-family readiness, and is
+    future-monotone under DAG precedence and graph reachability. Both DAG and
+    Graph layers admit the same component-anchoring structure.
+  nature_targets:
+  - component-resolved actualization support certificates
+  - native certificate-witness distinctness
+  ra_observable: null
+  sources:
+  - RA_MotifNativeCertificateComponents.lean
+  proof_dependencies:
+  - RA-MOTIF-NATIVE-CERT-OVERLAP-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed (assistant-side `lake build RA_MotifNativeCertificateComponents` closed with 8276/8276 jobs, ~109s; no sorry/admit/axiom). The module imports only RA_MotifNativeCertificateOverlapBridge and adds component-level Type-valued witness contexts plus refinement and future-monotonicity theorems. The bridge is qualitative: it does not assert a probability law, numerical overlap metric, or empirical rescue claim. Components mirror the v0.9 simulator surfaces but their formal interpretation is left to later BDG-LLC, graph-cut, ledger, orientation, and causal-firewall modules.'
+  next_tasks:
+  - Tighten witness-overlap formalization beyond Type-valued opaque component witnesses; close BDG-LLC kernel-local proxy with a derived structural definition.
+  source_status:
+    RA_MotifNativeCertificateComponents.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGNativeCertificateComponentContext ; DAGNativelyComponentWitnessed ; DAGNativeComponentCertifiedFamilyReadyAt ; DAGNativeComponentCertifiedFamilyReadyAt.to_native_overlap_ready ; DAGNativeComponentCertifiedFamilyReadyAt.to_independent_ready ; DAGNativeComponentCertifiedFamilyReadyAt.future_mono ; GraphNativeCertificateComponentContext ; GraphNativelyComponentWitnessed ; GraphNativeComponentCertifiedFamilyReadyAt ; GraphNativeComponentCertifiedFamilyReadyAt.to_native_overlap_ready ; GraphNativeComponentCertifiedFamilyReadyAt.to_independent_ready ; GraphNativeComponentCertifiedFamilyReadyAt.future_mono
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026
+
+- id: RA-SIM-NATIVE-CERT-ANCHOR-001
+  name: v1.0 packages native certificate-overlap components into an anchoring profile
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.0 analysis layer packages the v0.9 native certificate-overlap
+    component outputs into explicit support, frontier, orientation, ledger,
+    causal-past, kernel-local, and firewall/severance-exposure profiles and
+    cross-tabulates them by mode and family-semantics for component
+    attribution. The result is a component-anchored proxy structure for the
+    v0.9 native-overlap signature - ready for orientation-decoupling
+    refinement in v1.1 and BDG-LLC native formalization thereafter, but
+    explicitly not a fully decomposed native component law at v1.0.
+  nature_targets:
+  - RA-native certification-witness overlap diagnostics
+  - mode-resolved component attribution
+  ra_observable: native_certificate_overlap_profile
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026
+  - ra_native_certificate_components_v1_0.csv
+  - ra_native_overlap_profile_v1_0.csv
+  - ra_component_attribution_by_mode_v1_0.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-OVERLAP-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-002
+  - RA-SIM-NATIVE-CERT-ROBUST-001
+  - RA-MOTIF-NATIVE-CERT-COMPONENTS-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.0 anchoring run (assistant-side; --input-dir
+    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs
+    --calibration-dir
+    ../RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026/outputs).
+    component_rows=480, native_overlap_profile_rows=10, native_overlap_bin_count=3
+    (low/medium/high). Component attribution is currently proxy-level: ledger
+    overlap separates cleanly for ledger_failure (highest-mean component:
+    0.857 at_least_k / 0.839 augmented_exact_k); orientation attribution is
+    NOT yet isolated because orientation, support, and frontier overlap
+    components coincide numerically in the v0.9/v1.0 component construction
+    (mean_orientation_overlap=mean_support_overlap=mean_frontier_overlap at
+    0.742 at_least_k / 0.710 augmented_exact_k). v1.0 records this faithfully
+    (expected_component_mean_overlap reflects the joint support/frontier/
+    orientation triplet, not asserted orientation-channel specificity). The
+    disciplined formulation is: v1.0 fairly claims a component-anchored
+    native-overlap proxy exists; v1.0 does NOT yet claim that
+    orientation_degradation is specifically controlled by an independently
+    measured orientation-overlap surface. Disentangling the orientation
+    channel requires a v1.1 simulator component-layer revision (not a v1.0
+    anchoring change) before stronger orientation-specific claims are made.'
+  next_tasks:
+  - Build v1.1 Native Component Decoupling packet to separate orientation-link overlap from the joint support/frontier/orientation triplet via matched-strata diagnostics; defer BDG-LLC native formalization until decoupling is complete to avoid formalizing a confounded proxy.
+  source_status:
+    ra_native_certificate_anchoring.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_certificate_anchoring.py ; ra_native_certificate_components_v1_0.csv ; ra_native_overlap_profile_v1_0.csv ; ra_component_attribution_by_mode_v1_0.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026
+
+- id: RA-SIM-NATIVE-CERT-ANCHOR-002
+  name: v1.0 records augmented_exact_k as primary signal-carrier and at_least_k as monotone guardrail
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.0 anchoring layer records the resolved v0.9.2 posture: augmented_exact_k
+    is the primary native-overlap signal-carrier semantics (full low/medium/high
+    bin coverage, strong rescue-gap signal) and at_least_k is retained as a
+    monotone broader-inclusion guardrail semantics (medium/high coverage, monotone
+    medium-to-high decay). Both semantics are recorded as informative; neither is
+    asserted as uniquely physically correct.
+  nature_targets:
+  - support-family semantics discipline
+  - native certificate-rescue signal extraction posture
+  ra_observable: family_semantics_signal_posture
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026
+  - ra_augmented_exactk_signal_v1_0.csv
+  - ra_atleastk_guardrail_v1_0.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-CALIB-002
+  - RA-SIM-NATIVE-CERT-CALIB-003
+  - RA-SIM-NATIVE-CERT-ANCHOR-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.0 run (parameters as in
+    RA-SIM-NATIVE-CERT-ANCHOR-001). primary_family_semantics=augmented_exact_k
+    (primary_signal_rows=2, primary_signal_monotone_count=2/2,
+    primary_mean_rescue_gap=0.2157 [low_minus_high]; per-mode gaps:
+    ledger_failure=0.2175, orientation_degradation=0.2139). guardrail_family_semantics=at_least_k
+    (guardrail_signal_rows=2, guardrail_monotone_count=2/2,
+    guardrail_mean_rescue_gap=0.1578 [medium_minus_high]; per-mode gaps:
+    ledger_failure=0.1565, orientation_degradation=0.1590). Both semantics
+    monotone non-increasing across populated bins. v1_posture is a modeling
+    posture inherited from the v0.9.2 calibration audit; it does not claim
+    augmented_exact_k as the unique physically correct support-family semantics.'
+  next_tasks: []
+  source_status:
+    ra_native_certificate_anchoring.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_certificate_anchoring.py ; ra_augmented_exactk_signal_v1_0.csv ; ra_atleastk_guardrail_v1_0.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026
+
+- id: RA-SIM-NATIVE-CERT-ANCHOR-003
+  name: v1.0 native-overlap calibration to external scale remains qualitative, not absolute
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.0 anchoring layer treats native-overlap bins (low/medium/high) as
+    qualitative structural bins of witness overlap, aligned with but not
+    numerically identical to the external certificate-correlation scale used
+    in v0.8.1. All recorded calibration entries carry an explicit
+    qualitative_alignment_not_absolute_calibration posture.
+  nature_targets:
+  - native witness-overlap calibration discipline
+  - epistemic separation of structural bins from external correlation values
+  ra_observable: native_overlap_calibration_status
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026
+  - ra_native_overlap_calibration_status_v1_0.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-CALIB-001
+  - RA-SIM-NATIVE-CERT-CALIB-002
+  - RA-SIM-NATIVE-CERT-ANCHOR-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.0 run (parameters as in
+    RA-SIM-NATIVE-CERT-ANCHOR-001). calibration_rows=4 (one per mode x
+    family_semantics cell), all 4 carry qualitative_alignment=True and
+    v1_posture=qualitative_alignment_not_absolute_calibration. Inherited from
+    v0.9.2 mapping: native AUC proxies (0.079-0.105) exceed external AUCs
+    (0.044-0.049); native rescue decays (0.157-0.218) exceed external decays
+    (0.089-0.100); native curves uniformly steeper. Native-overlap bins
+    must not be equated with external certificate_correlation values without
+    an additional calibration law; bins are structural classes of witness
+    overlap, not numerical equivalents.'
+  next_tasks: []
+  source_status:
+    ra_native_certificate_anchoring.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_certificate_anchoring.py ; ra_native_overlap_calibration_status_v1_0.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026

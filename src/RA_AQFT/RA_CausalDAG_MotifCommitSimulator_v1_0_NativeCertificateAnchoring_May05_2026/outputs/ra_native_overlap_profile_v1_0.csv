@@ -1,0 +1,11 @@
+mode,family_semantics,semantics_role,native_overlap_bin,samples,mean_induced_certificate_correlation,certification_rescue_rate,family_certification_resilience_rate,family_internal_loss_rate
+ledger_failure,at_least_k,monotone_guardrail,high,26048,0.9978,0.000691,0.374962,0.625038
+ledger_failure,at_least_k,monotone_guardrail,medium,12352,0.489153,0.157222,0.53125,0.46875
+ledger_failure,augmented_exact_k,primary_signal_carrier,high,26048,0.9978,0.000691,0.374962,0.625038
+ledger_failure,augmented_exact_k,primary_signal_carrier,low,3584,0.250781,0.218192,0.59933,0.40067
+ledger_failure,augmented_exact_k,primary_signal_carrier,medium,8768,0.498448,0.13766,0.509808,0.490192
+orientation_degradation,at_least_k,monotone_guardrail,high,26048,0.9978,0.000691,0.391124,0.608876
+orientation_degradation,at_least_k,monotone_guardrail,medium,12352,0.489153,0.159731,0.535379,0.464621
+orientation_degradation,augmented_exact_k,primary_signal_carrier,high,26048,0.9978,0.000691,0.391124,0.608876
+orientation_degradation,augmented_exact_k,primary_signal_carrier,low,3584,0.250781,0.214565,0.597098,0.402902
+orientation_degradation,augmented_exact_k,primary_signal_carrier,medium,8768,0.498448,0.138116,0.522126,0.477874

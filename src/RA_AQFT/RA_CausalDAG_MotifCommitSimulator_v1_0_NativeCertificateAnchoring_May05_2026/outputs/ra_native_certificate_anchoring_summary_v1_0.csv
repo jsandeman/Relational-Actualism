@@ -1,0 +1,2 @@
+version,component_rows,native_overlap_profile_rows,native_overlap_bins,native_overlap_bin_count,primary_family_semantics,guardrail_family_semantics,primary_signal_rows,primary_signal_monotone_count,primary_mean_rescue_gap,guardrail_signal_rows,guardrail_monotone_count,guardrail_mean_rescue_gap,calibration_rows,selector_guardrail_passed,v1_posture
+1.0,480,10,"['high', 'low', 'medium']",3,augmented_exact_k,at_least_k,2,2,0.215688,2,2,0.157785,4,True,component_anchored_proxy_ready_for_BDG_LLC_native_formalization

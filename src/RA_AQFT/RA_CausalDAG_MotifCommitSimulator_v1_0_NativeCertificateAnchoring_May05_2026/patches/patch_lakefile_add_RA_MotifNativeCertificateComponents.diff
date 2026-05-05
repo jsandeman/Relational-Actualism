@@ -1,0 +1,6 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+ -- Tier-B / motif-support family / native-overlap bridge modules
+ lean_lib RA_MotifNativeCertificateOverlapBridge
++lean_lib RA_MotifNativeCertificateComponents

@@ -1,0 +1,22 @@
+{
+  "calibration_rows": 4,
+  "component_rows": 480,
+  "guardrail_family_semantics": "at_least_k",
+  "guardrail_mean_rescue_gap": 0.157987,
+  "guardrail_monotone_count": 2,
+  "guardrail_signal_rows": 2,
+  "native_overlap_bin_count": 3,
+  "native_overlap_bins": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "native_overlap_profile_rows": 10,
+  "primary_family_semantics": "augmented_exact_k",
+  "primary_mean_rescue_gap": 0.280382,
+  "primary_signal_monotone_count": 2,
+  "primary_signal_rows": 2,
+  "selector_guardrail_passed": true,
+  "v1_posture": "component_anchored_proxy_ready_for_BDG_LLC_native_formalization",
+  "version": "1.0"
+}

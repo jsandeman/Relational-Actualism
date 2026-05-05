@@ -1,0 +1,8 @@
+test_end_to_end_outputs (test_v1_0_native_certificate_anchoring.NativeCertificateAnchoringV10Tests.test_end_to_end_outputs) ... ok
+test_missing_required_files_raises (test_v1_0_native_certificate_anchoring.NativeCertificateAnchoringV10Tests.test_missing_required_files_raises) ... ok
+test_primary_and_guardrail_roles (test_v1_0_native_certificate_anchoring.NativeCertificateAnchoringV10Tests.test_primary_and_guardrail_roles) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.675s
+
+OK
