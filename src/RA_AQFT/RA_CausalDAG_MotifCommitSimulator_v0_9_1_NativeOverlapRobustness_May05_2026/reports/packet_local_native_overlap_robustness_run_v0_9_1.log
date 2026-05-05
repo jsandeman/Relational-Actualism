@@ -1,0 +1,6 @@
+RA v0.9.1 native-overlap robustness analysis complete
+component_rows=480
+ablation_monotone_pass_rate=1.0
+weight_sensitivity_monotone_pass_rate=1.0
+balanced_low_high_gap_mean=0.07666666666666666
+selector_guardrail_passed=True

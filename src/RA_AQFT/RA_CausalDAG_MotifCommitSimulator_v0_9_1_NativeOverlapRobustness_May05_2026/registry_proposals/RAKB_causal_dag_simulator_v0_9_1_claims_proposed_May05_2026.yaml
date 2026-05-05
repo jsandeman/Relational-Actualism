@@ -1,0 +1,78 @@
+registry_version: v0.5
+claims:
+- id: RA-SIM-NATIVE-CERT-ROBUST-001
+  name: Native certificate-overlap rescue is robust under component-ablation analysis
+  domain: complexity
+  papers: [II, III]
+  statement: >
+    The v0.9.1 analysis evaluates the v0.9 native certificate-overlap rescue signature under one-component ablations of support, frontier, orientation, ledger, causal-past, BDG-kernel-proxy, and firewall-overlap components.
+  nature_targets:
+  - RA-native certification-witness resilience diagnostics
+  ra_observable: native_certificate_overlap_component_ablation
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_1_NativeOverlapRobustness_May05_2026
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-OVERLAP-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-002
+  restoration_preconditions: []
+  caveats: Analysis-only robustness result; component weights remain proxy-level operational choices pending BDG-LLC/native formal anchoring.
+  next_tasks: []
+  source_status:
+    ra_native_overlap_robustness_analysis.py: simulation_analysis_validated_packet_local_pending_canonical
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_overlap_component_ablation_v0_9_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_1_NativeOverlapRobustness_May05_2026
+- id: RA-SIM-NATIVE-CERT-ROBUST-002
+  name: Native overlap signature admits overlap-weight sensitivity analysis
+  domain: complexity
+  papers: [II, III]
+  statement: >
+    The v0.9.1 analysis recomputes native-overlap rescue diagnostics under multiple plausible overlap-weight profiles, testing whether low-overlap to high-overlap rescue separation survives reasonable weighting variation.
+  nature_targets:
+  - overlap-weight robustness for certification-witness resilience
+  ra_observable: native_overlap_weight_sensitivity
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_1_NativeOverlapRobustness_May05_2026
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-ROBUST-001
+  restoration_preconditions: []
+  caveats: Weight profiles are diagnostic; no profile is claimed as the derived RA-native overlap law.
+  next_tasks: []
+  source_status:
+    ra_native_overlap_robustness_analysis.py: simulation_analysis_validated_packet_local_pending_canonical
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_overlap_weight_sensitivity_v0_9_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_1_NativeOverlapRobustness_May05_2026
+- id: RA-SIM-NATIVE-CERT-ROBUST-003
+  name: Native overlap component attribution identifies signal-carrying witness components
+  domain: complexity
+  papers: [II, III]
+  statement: >
+    The v0.9.1 analysis defines a component-importance score by comparing baseline low-high rescue gaps with ablated low-high rescue gaps, providing an operational attribution of which witness-overlap components carry the certification-rescue signal.
+  nature_targets:
+  - native witness-overlap signal attribution
+  ra_observable: native_overlap_component_importance_score
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_1_NativeOverlapRobustness_May05_2026
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-ROBUST-001
+  restoration_preconditions: []
+  caveats: Attribution is diagnostic and depends on the current overlap-component definitions.
+  next_tasks: []
+  source_status:
+    ra_native_overlap_robustness_analysis.py: simulation_analysis_validated_packet_local_pending_canonical
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_overlap_signal_attribution_v0_9_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_1_NativeOverlapRobustness_May05_2026

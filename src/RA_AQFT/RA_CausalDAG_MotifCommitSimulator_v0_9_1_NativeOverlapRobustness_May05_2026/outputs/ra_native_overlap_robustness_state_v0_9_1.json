@@ -1,0 +1,94 @@
+{
+  "summary": {
+    "version": "0.9.1",
+    "input_dir": "../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs",
+    "external_correlation_dir": "../RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026/outputs",
+    "component_rows": 480,
+    "native_overlap_rows": 10,
+    "ablation_rows": 48,
+    "weight_sensitivity_rows": 36,
+    "ablation_monotone_pass_rate": 1.0,
+    "weight_sensitivity_monotone_pass_rate": 1.0,
+    "balanced_low_high_gap_mean": 0.05756916666666667,
+    "balanced_low_high_gap_min": 0.0,
+    "balanced_low_high_gap_max": 0.175109,
+    "endpoint_rescue_max_delta_native_minus_parent": 0.5,
+    "endpoint_resilience_max_delta_native_minus_parent": 0.666667,
+    "selector_guardrail_passed": true,
+    "selector_rows": 2
+  },
+  "top_component_attribution": [
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "support",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "frontier",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "orientation",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "ledger",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "causal_past",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "bdg_kernel",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "at_least_k",
+      "component": "firewall",
+      "baseline_low_high_gap": 0.0,
+      "ablated_low_high_gap": 0.0,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    },
+    {
+      "mode": "ledger_failure",
+      "family_semantics": "augmented_exact_k",
+      "component": "support",
+      "baseline_low_high_gap": 0.175109,
+      "ablated_low_high_gap": 0.175109,
+      "component_importance_score": 0.0,
+      "interpretation": "positive_score_means_component_removal_weakened_low_high_rescue_gap"
+    }
+  ]
+}

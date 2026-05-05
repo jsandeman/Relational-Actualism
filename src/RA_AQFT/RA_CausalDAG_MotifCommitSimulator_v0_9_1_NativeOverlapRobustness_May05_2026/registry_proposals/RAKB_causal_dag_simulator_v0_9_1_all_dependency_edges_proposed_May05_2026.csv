@@ -1,0 +1,6 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-NATIVE-CERT-ROBUST-001,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Native certificate-overlap rescue is robust under component-ablation analysis,RA-SIM-NATIVE-CERT-OVERLAP-001
+RA-SIM-NATIVE-CERT-ROBUST-001,RA-SIM-NATIVE-CERT-OVERLAP-002,proof_dependency,claim,claim,Native certificate-overlap rescue is robust under component-ablation analysis,RA-SIM-NATIVE-CERT-OVERLAP-002
+RA-SIM-NATIVE-CERT-ROBUST-002,RA-SIM-NATIVE-CERT-ROBUST-001,proof_dependency,claim,claim,Native overlap signature admits overlap-weight sensitivity analysis,RA-SIM-NATIVE-CERT-ROBUST-001
+RA-SIM-NATIVE-CERT-ROBUST-003,RA-SIM-NATIVE-CERT-ROBUST-001,proof_dependency,claim,claim,Native overlap component attribution identifies signal-carrying witness components,RA-SIM-NATIVE-CERT-ROBUST-001
+RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Native overlap robustness analyses are diagnostic, not derived overlap laws",RA-METHOD-001

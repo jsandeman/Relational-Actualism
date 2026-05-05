@@ -1,0 +1,9 @@
+test_component_ablation_identifies_component (test_v0_9_1_native_overlap_robustness.NativeOverlapRobustnessTests.test_component_ablation_identifies_component) ... ok
+test_external_alignment_optional (test_v0_9_1_native_overlap_robustness.NativeOverlapRobustnessTests.test_external_alignment_optional) ... ok
+test_run_analysis_outputs_files (test_v0_9_1_native_overlap_robustness.NativeOverlapRobustnessTests.test_run_analysis_outputs_files) ... ok
+test_weighted_overlap_uses_components (test_v0_9_1_native_overlap_robustness.NativeOverlapRobustnessTests.test_weighted_overlap_uses_components) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.193s
+
+OK

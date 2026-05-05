@@ -1,0 +1,5 @@
+mode,family_semantics,native_point_count,native_rescue_auc_proxy,native_rescue_decay_proxy,external_available,external_mean_rescue_auc,external_mean_rescue_decay,external_all_monotone,auc_difference_native_minus_external,decay_difference_native_minus_external
+ledger_failure,at_least_k,2,0.078956,0.156531,True,0.049479,0.096875,True,0.029477,0.059656
+ledger_failure,augmented_exact_k,3,0.105135,0.217501,True,0.046156,0.089401,True,0.058979,0.1281
+orientation_degradation,at_least_k,2,0.080211,0.15904,True,0.04873,0.099948,False,0.031481,0.059092
+orientation_degradation,augmented_exact_k,3,0.104763,0.213874,True,0.044417,0.094193,False,0.060346,0.119681
