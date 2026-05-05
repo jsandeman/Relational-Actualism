@@ -1,0 +1,36 @@
+registry_version: 0.5-proposal
+framing_policies:
+- id: RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  name: Native orientation catalog surfaces are intermediate anchoring surfaces, not
+    final native orientation laws
+  domain: framing
+  papers:
+  - II
+  statement: The v1.3 native orientation-link surface should be interpreted as a theorem/sign-source
+    catalogue anchoring layer between the v1.2 synthetic prototype and a future per-graph
+    native orientation-link witness extraction. It should not be treated as a Nature-facing
+    orientation-overlap law.
+  nature_targets:
+  - methodological discipline for native orientation-link diagnostics
+  ra_observable: null
+  sources:
+  - README_RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026.md
+  - RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Require explicit caveats whenever v1.3 outputs are cited: theorem-catalog-derived
+    is not per-graph-witness-derived.'
+  next_tasks:
+  - Derive per-graph orientation-link witness surface from RA_CausalOrientation_Core
+    / NativeLedgerOrientation structures.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_CausalDAG_MotifCommitSimulator_v1_3 native-orientation catalog
+    caveat
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026

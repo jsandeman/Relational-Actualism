@@ -13,9 +13,17 @@ This file keeps only the RA-native arithmetic and motif-classification spine:
 - minimal branching motif classes
 
 It deliberately avoids SM/QFT labels in theorem names and statements.
+
+Wrapped in `namespace D1Native` to avoid `chainScore`/`bdgScore`/
+`chain_score_via_bdg_*` collision with `RA_D1_Core`, which redundantly
+defines the same kernel arithmetic. Downstream files that need these
+identifiers unqualified should `open D1Native` after importing this file.
+See RA-ISSUE-LEAN-CHAINSCORE-001 for context.
 -/
 
 noncomputable section
+
+namespace D1Native
 
 /-- The d = 4 BDG score on a depth-profile `(N₁,N₂,N₃,N₄)`. -/
 def bdgScore (N1 N2 N3 N4 : ℤ) : ℤ :=
@@ -105,3 +113,5 @@ theorem branching_stability_window :
   obtain ⟨n, rfl⟩ := Nat.exists_eq_add_of_le hk
   rw [show 4 + n = n + 4 from add_comm 4 n, sequential_fixed_point]
   norm_num
+
+end D1Native

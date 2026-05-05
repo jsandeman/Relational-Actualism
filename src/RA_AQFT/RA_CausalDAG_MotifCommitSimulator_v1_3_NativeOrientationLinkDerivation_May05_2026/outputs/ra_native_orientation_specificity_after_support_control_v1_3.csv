@@ -1,0 +1,7 @@
+mode,family_semantics,native_orientation_bins,gap_type,native_orientation_rescue_gap,mean_native_orientation_sensitivity_proxy,mean_native_ledger_sensitivity_proxy,specificity_verdict
+ledger_failure,at_least_k,high;low;medium,low_minus_high,0.0,0.078513010189359,0.1434954375,ledger_control_not_resolved
+ledger_failure,augmented_exact_k,high;low;medium,low_minus_high,-0.09825211,0.07556822165151747,0.161444125,ledger_control_not_resolved
+orientation_degradation,at_least_k,high;low;medium,low_minus_high,0.12421950834201098,0.5152461909542578,0.021524315625,native_orientation_specific_surface_detected
+orientation_degradation,augmented_exact_k,high;low;medium,low_minus_high,0.14698593638771826,0.5065216723759269,0.024216618749999995,native_orientation_specific_surface_detected
+selector_stress,at_least_k,low;medium,insufficient_bins,,0.0,0.0,not_certification_channel
+selector_stress,augmented_exact_k,low;medium,insufficient_bins,,0.0,0.0,not_certification_channel

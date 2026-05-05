@@ -12,6 +12,8 @@ motif language.
 
 noncomputable section
 
+open D1Native
+
 /-- Scores for all 15 single-step extensions of the symmetric branching motif. -/
 def extensionScore_branchS : Fin 15 → ℤ
   | ⟨0,  _⟩ => 0

@@ -6,6 +6,8 @@ import RA_D1_GraphCutCombinatorics -- Imports our new native scaling proof
 
 namespace RA_NativeDimensionality
 
+open D1Native
+
 /-- 
 INTERFACE BOUNDARY:
 We declare the macroscopic graph type as an axiomatic boundary here until 

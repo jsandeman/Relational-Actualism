@@ -1,0 +1,4 @@
+mode,rows,legacy_triplet_max_abs_diff,native_orientation_support_max_abs_diff,native_orientation_support_mean_abs_diff,native_orientation_bins,support_frontier_bins,surface_status
+ledger_failure,160,0.0,0.707684949085332,0.3853054868777951,high;low;medium,high;low;medium,native_orientation_catalog_decoupled
+orientation_degradation,160,0.0,0.9567631956231254,0.4025841402624152,high;low;medium,high;low;medium,native_orientation_catalog_decoupled
+selector_stress,160,0.0,0.7732522262960402,0.3958366262780174,low;medium,high;low;medium,native_orientation_catalog_decoupled

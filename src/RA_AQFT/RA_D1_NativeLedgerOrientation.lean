@@ -12,6 +12,8 @@ content, stated in RA-native vocabulary.
 
 noncomputable section
 
+open D1Native
+
 /-- Baseline depth-2 ledger counts for the stable motif families. -/
 theorem depth2_ledger_values :
     ((0 : ℤ) = 0) ∧

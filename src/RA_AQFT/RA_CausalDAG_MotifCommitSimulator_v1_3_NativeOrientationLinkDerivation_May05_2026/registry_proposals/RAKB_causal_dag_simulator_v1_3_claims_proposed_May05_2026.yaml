@@ -1,0 +1,103 @@
+registry_version: 0.5-proposal
+claims:
+- id: RA-MOTIF-NATIVE-ORIENT-LINK-001
+  name: Native orientation catalog evidence refines orientation-link surface
+  domain: matter
+  papers:
+  - II
+  statement: A native orientation-catalog evidence layer can refine the distinct orientation-link
+    surface and thereby refine the generic orientation component evidence surface
+    used by native certificate overlap analyses.
+  nature_targets:
+  - RA-native orientation-link certification evidence
+  - native motif actualization support certification
+  ra_observable: null
+  sources:
+  - RA_MotifNativeOrientationLinkDerivation.lean
+  proof_dependencies:
+  - RA-MOTIF-ORIENTATION-LINK-SURFACE-001
+  - RA-MOTIF-NATIVE-CERT-COMPONENTS-001
+  restoration_preconditions: []
+  caveats: Source-level pending local compile in packet; promotes only after lake
+    build. This bridge defines refinement evidence, not numerical rescue laws.
+  next_tasks:
+  - Compile RA_MotifNativeOrientationLinkDerivation.lean locally.
+  source_status:
+    RA_MotifNativeOrientationLinkDerivation.lean: source_level_pending_local_compile_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: source_level_formal_bridge_pending_compile
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: interpretive_bridge
+  formal_anchor: DAGNativeOrientationLinkCatalogContext ; DAGHasNativeOrientationLinkCatalog
+    ; DAGHasNativeOrientationLinkCatalog.to_orientation_link_surface ; DAGHasNativeOrientationLinkCatalog.to_orientation_component
+    ; GraphNativeOrientationLinkCatalogContext ; GraphHasNativeOrientationLinkCatalog.to_orientation_component
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026
+- id: RA-SIM-NATIVE-ORIENT-LINK-001
+  name: Native theorem-catalog orientation surface separates from support/frontier
+    overlap
+  domain: matter
+  papers:
+  - II
+  statement: The v1.3 analysis constructs an orientation-link surface from RA native
+    Lean theorem/sign-source catalogues and verifies that this surface is not identical
+    to support/frontier overlap under the v1.0 component data path.
+  nature_targets:
+  - native orientation-link overlap diagnostics
+  - component-resolved certification resilience
+  ra_observable: null
+  sources:
+  - ra_native_orientation_link_surface_v1_3.csv
+  - ra_native_orientation_support_decoupling_audit_v1_3.csv
+  - ra_native_orientation_theorem_manifest_v1_3.csv
+  proof_dependencies:
+  - RA-SIM-ORIENTATION-LINK-SURFACE-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-001
+  restoration_preconditions: []
+  caveats: The surface is derived from a native Lean declaration/theorem-role catalogue,
+    not yet from per-graph orientation-link witness instances.
+  next_tasks:
+  - Replace theorem-catalog surface with per-graph native orientation-link extraction.
+  source_status:
+    ra_native_orientation_link_surface.py: python_tests_pass_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_validated
+  claim_kind: derived_result
+  formal_anchor: ra_native_orientation_link_surface_v1_3.csv ; ra_native_orientation_theorem_manifest_v1_3.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026
+- id: RA-SIM-NATIVE-ORIENT-LINK-002
+  name: Native orientation catalog surface supports orientation-specific diagnostics
+    after support/frontier control
+  domain: matter
+  papers:
+  - II
+  statement: The v1.3 packet-local analysis finds independent native orientation-link
+    variation after support/frontier control and detects orientation-degradation specificity
+    using the native theorem-catalog surface.
+  nature_targets:
+  - orientation-channel certification resilience
+  - component-specific actualization fragility diagnostics
+  ra_observable: null
+  sources:
+  - ra_native_orientation_specificity_after_support_control_v1_3.csv
+  - ra_native_orientation_partial_correlation_v1_3.csv
+  - ra_native_orientation_derivation_summary_v1_3.md
+  proof_dependencies:
+  - RA-SIM-NATIVE-ORIENT-LINK-001
+  restoration_preconditions: []
+  caveats: Diagnostic is packet-local until rerun on active canonical outputs. Orientation
+    surface is catalog-derived, not final native orientation-overlap law.
+  next_tasks:
+  - Run v1.3 canonically after local integration.
+  source_status:
+    ra_native_orientation_link_surface.py: python_tests_pass_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_validated
+  claim_kind: derived_result
+  formal_anchor: ra_native_orientation_specificity_after_support_control_v1_3.csv
+    ; ra_native_orientation_partial_correlation_v1_3.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026

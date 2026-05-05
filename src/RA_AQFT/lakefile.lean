@@ -145,6 +145,17 @@ lean_lib «RelationalActualism» where
                                 -- Graph variant; refinement
                                 -- .to_orientation_component;
                                 -- qualitative-only, no rescue law.
+    `RA_MotifNativeOrientationLinkDerivation, -- (May 5 2026) v1.3 native
+                                -- orientation-link catalog bridge:
+                                -- DAGNativeOrientationLinkCatalogContext
+                                -- + Graph variant; refines v1.2
+                                -- orientation-link surface and the
+                                -- generic orientation component;
+                                -- documentary-only Prop fields for
+                                -- CausalOrientation_Core / Ledger /
+                                -- Closure (imports omitted to avoid
+                                -- chainScore duplicate-def conflict
+                                -- between RA_D1_Core and RA_D1_NativeKernel).
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

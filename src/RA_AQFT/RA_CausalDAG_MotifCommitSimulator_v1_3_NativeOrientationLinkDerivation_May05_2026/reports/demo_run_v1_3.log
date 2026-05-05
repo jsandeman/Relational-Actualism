@@ -1,0 +1,10 @@
+{
+  "native_orientation_catalog_manifest_used": true,
+  "native_orientation_surface_decoupled": true,
+  "matched_orientation_variation_available": true,
+  "orientation_specificity_resolved": true,
+  "selector_guardrail_passed": true,
+  "native_orientation_residual_std": 0.17430806311796504,
+  "legacy_orientation_residual_std": 3.723091534865454e-16,
+  "v1_3_posture": "native_catalog_orientation_surface_ready_for_per_graph_witness_derivation"
+}

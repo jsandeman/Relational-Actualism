@@ -1,0 +1,22 @@
+{
+  "summary": {
+    "native_orientation_catalog_manifest_used": true,
+    "native_orientation_surface_decoupled": true,
+    "matched_orientation_variation_available": true,
+    "orientation_specificity_resolved": true,
+    "selector_guardrail_passed": true,
+    "native_orientation_residual_std": 0.17430806311796504,
+    "legacy_orientation_residual_std": 1.2415067610649363e-15,
+    "v1_3_posture": "native_catalog_orientation_surface_ready_for_per_graph_witness_derivation"
+  },
+  "outputs": {
+    "native_orientation_link_surface": "ra_native_orientation_link_surface_v1_3.csv",
+    "native_orientation_manifest": "ra_native_orientation_theorem_manifest_v1_3.csv",
+    "support_orientation_decoupling": "ra_native_orientation_support_decoupling_audit_v1_3.csv",
+    "matched_strata": "ra_native_orientation_matched_strata_v1_3.csv",
+    "orientation_specificity": "ra_native_orientation_specificity_after_support_control_v1_3.csv",
+    "partial_correlation": "ra_native_orientation_partial_correlation_v1_3.csv",
+    "component_rank": "ra_native_orientation_component_rank_v1_3.csv"
+  },
+  "manifest_rows": 45
+}

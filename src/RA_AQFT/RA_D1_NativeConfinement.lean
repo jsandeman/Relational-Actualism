@@ -12,6 +12,8 @@ finite closure length.
 
 noncomputable section
 
+open D1Native
+
 /-- One extension step past the symmetric branching motif is filtered. -/
 theorem filter_block_event_symmetric :
     bdgScore 1 1 2 0 = -23 := by
