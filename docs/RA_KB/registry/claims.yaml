@@ -3800,11 +3800,13 @@ claims:
   - RA-SIM-CERT-FAMILY-003
   restoration_preconditions: []
   caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
-    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
-    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
-    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
-    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
+    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
+    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
+    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
+    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
+    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
+    thresh 0.25 (0.313 -> 0).'
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -3847,11 +3849,13 @@ claims:
   - RA-MOTIF-CERT-FAMILY-001
   restoration_preconditions: []
   caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
-    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
-    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
-    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
-    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
+    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
+    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
+    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
+    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
+    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
+    thresh 0.25 (0.313 -> 0).'
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -3893,11 +3897,13 @@ claims:
   - RA-SIM-CERT-CORRELATION-001
   restoration_preconditions: []
   caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
-    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
-    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
-    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
-    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
+    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
+    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
+    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
+    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
+    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
+    thresh 0.25 (0.313 -> 0).'
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -3940,11 +3946,13 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-METRIC-004
   restoration_preconditions: []
   caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
-    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
-    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
-    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
-    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
+    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
+    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
+    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
+    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
+    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
+    thresh 0.25 (0.313 -> 0).'
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
