@@ -3781,3 +3781,191 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-METHOD-004
   - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
   - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+- id: RA-SIM-CERT-CORRELATION-001
+  name: Certification rescue decays with certificate correlation
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.8.1 analysis layer measures whether certification rescue for independent certified support families is monotone non-increasing as certificate correlation increases.
+  nature_targets:
+  - RA-native certified-support-family correlation diagnostics
+  - certification-witness resilience under causal support family regimes
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  - ra_cert_correlation_signature_summary_v0_8_1.md
+  proof_dependencies:
+  - RA-SIM-CERT-FAMILY-001
+  - RA-SIM-CERT-FAMILY-002
+  - RA-SIM-CERT-FAMILY-003
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
+    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
+    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
+    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
+    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
+    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+  next_tasks:
+  - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
+  source_status:
+    ra_cert_correlation_analysis.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_cert_correlation_sensitivity_v0_8_1.csv ; ra_cert_rescue_decay_curve_v0_8_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+- id: RA-SIM-CERT-CORRELATION-002
+  name: Full certificate correlation recovers parent-shared certification shape
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.8.1 analysis layer compares independent-member certification at certificate_correlation=1.0 against the parent-shared certification regime to test endpoint equivalence.
+  nature_targets:
+  - RA-native certified-support-family correlation diagnostics
+  - certification-witness resilience under causal support family regimes
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  - ra_cert_correlation_signature_summary_v0_8_1.md
+  proof_dependencies:
+  - RA-SIM-CERT-FAMILY-002
+  - RA-MOTIF-CERT-FAMILY-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
+    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
+    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
+    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
+    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
+    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+  next_tasks:
+  - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
+  source_status:
+    ra_cert_correlation_analysis.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_cert_endpoint_equivalence_v0_8_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+- id: RA-SIM-CERT-CORRELATION-003
+  name: Rescue AUC and sensitivity quantify certification-witness redundancy
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.8.1 analysis layer summarizes certification-witness redundancy through rescue decay, normalized rescue AUC, half-decay correlation, and mode-conditioned sensitivity metrics.
+  nature_targets:
+  - RA-native certified-support-family correlation diagnostics
+  - certification-witness resilience under causal support family regimes
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  - ra_cert_correlation_signature_summary_v0_8_1.md
+  proof_dependencies:
+  - RA-SIM-CERT-CORRELATION-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
+    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
+    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
+    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
+    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
+    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+  next_tasks:
+  - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
+  source_status:
+    ra_cert_correlation_analysis.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_cert_resilience_auc_by_mode_v0_8_1.csv ; ra_cert_correlation_sensitivity_v0_8_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001
+- id: RA-SIM-CERT-CORRELATION-004
+  name: Selector stress remains outside certification-family rescue
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.8.1 analysis layer preserves the support/certification-family guardrail by checking that selector-stress rows do not count as certification rescue.
+  nature_targets:
+  - RA-native certified-support-family correlation diagnostics
+  - certification-witness resilience under causal support family regimes
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  - ra_cert_correlation_signature_summary_v0_8_1.md
+  proof_dependencies:
+  - RA-SIM-CERT-FAMILY-003
+  - RA-SIM-SUPPORT-FAMILY-METRIC-004
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
+    curves analyzed; 61/64 monotone non-increasing (the 3 non-monotone curves are all in orientation_degradation, with maximum step-increase of 0.0146 — small sampling fluctuation at intermediate correlations,
+    all curves still hit zero rescue at correlation=1.0). Endpoint equivalence (correlation=1.0 vs parent_shared) within 1e-9 tolerance on 32/80 rows; max endpoint delta=0.116 (the deltas come from cohorts
+    where independent-member at corr=1.0 is structurally identical to parent_shared, plus a small set of higher-severity rows where parent_shared family-loss diverges slightly). Selector-stress guardrail
+    passed across all rows (zero certification rescue, zero family certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25:
+    0.319 -> 0; ledger_failure / at_least_k / sev 0.75 / thresh 0.25: 0.313 -> 0. Rescue AUC means: ledger ~0.049, orientation ~0.046-0.049 (similar magnitude across cert modes and family semantics).'
+  next_tasks:
+  - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
+  source_status:
+    ra_cert_correlation_analysis.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_cert_selector_guardrail_v0_8_1.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  - RA-SIM-CERT-FAMILY-METHOD-001

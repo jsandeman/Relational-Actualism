@@ -1,0 +1,5 @@
+mode,family_semantics,curve_count,all_monotone_nonincreasing,mean_rescue_auc,mean_resilience_auc,mean_rescue_decay,max_rescue_decay,mean_start_rescue_rate,mean_end_rescue_rate,mean_half_decay_correlation
+ledger_failure,at_least_k,16,true,0.049479148437499995,0.4193066015625,0.0968750625,0.312917,0.0968750625,0.0,0.6388888888888888
+ledger_failure,augmented_exact_k,16,true,0.04615558593750001,0.41661455468749997,0.0894010625,0.247917,0.0894010625,0.0,0.6388888888888888
+orientation_degradation,at_least_k,16,false,0.0487304765625,0.416464859375,0.0999479375,0.319167,0.0999479375,0.0,0.6388888888888888
+orientation_degradation,augmented_exact_k,16,false,0.044417296875,0.41246096093749995,0.09419274999999999,0.289167,0.09419274999999999,0.0,0.6111111111111112

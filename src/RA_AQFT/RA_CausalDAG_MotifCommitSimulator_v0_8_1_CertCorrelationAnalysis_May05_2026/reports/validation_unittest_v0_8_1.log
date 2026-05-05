@@ -1,0 +1,9 @@
+test_end_to_end_writes_expected_files (test_v0_8_1_cert_correlation_analysis.CertCorrelationAnalysisTests.test_end_to_end_writes_expected_files) ... ok
+test_endpoint_equivalence_matches_parent_shared (test_v0_8_1_cert_correlation_analysis.CertCorrelationAnalysisTests.test_endpoint_equivalence_matches_parent_shared) ... ok
+test_nonmonotone_curve_is_flagged (test_v0_8_1_cert_correlation_analysis.CertCorrelationAnalysisTests.test_nonmonotone_curve_is_flagged) ... ok
+test_sensitivity_detects_monotone_decay (test_v0_8_1_cert_correlation_analysis.CertCorrelationAnalysisTests.test_sensitivity_detects_monotone_decay) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.310s
+
+OK

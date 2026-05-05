@@ -627,3 +627,29 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: v0.8 independent certified support-family workbench interpretation discipline
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026
+- id: RA-SIM-CERT-CORRELATION-METHOD-001
+  name: Certification-correlation analysis is a diagnostic layer, not a new simulator law
+  domain: framing
+  papers:
+  - II
+  statement: The v0.8.1 certification-correlation analysis consumes v0.8 outputs and produces RA-native diagnostics over certification rescue, endpoint equivalence, AUC, sensitivity, and selector guardrails.
+    It does not alter simulator semantics, introduce a new Lean theory, or directly claim Nature-level predictions.
+  nature_targets:
+  - modeling discipline for certified support-family correlation signatures
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-CERT-FAMILY-METHOD-001
+  restoration_preconditions: []
+  caveats: Packet-local analysis is a demonstration; canonical v0.8 outputs should be used for promotion.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: 'v0.8.1 analysis-only guardrail: correlation signatures are diagnostics over v0.8 outputs'
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026

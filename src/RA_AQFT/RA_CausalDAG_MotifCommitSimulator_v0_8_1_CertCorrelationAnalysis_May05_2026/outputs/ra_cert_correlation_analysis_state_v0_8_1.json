@@ -1,0 +1,15 @@
+{
+  "auc_rows": 4,
+  "correlation_decay_rows": 320,
+  "endpoint_equivalence_rows": 80,
+  "input_dir": "../RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026/outputs",
+  "max_endpoint_delta": 0.11583379999999999,
+  "monotone_curves": 61,
+  "output_dir": "outputs",
+  "packet": "RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026",
+  "selector_guardrail_passed": true,
+  "selector_guardrail_rows": 2,
+  "sensitivity_rows": 64,
+  "total_curves": 64,
+  "width_threshold_rows": 320
+}

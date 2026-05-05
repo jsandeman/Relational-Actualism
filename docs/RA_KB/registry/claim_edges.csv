@@ -198,3 +198,11 @@ RA-SIM-CERT-FAMILY-001,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,c
 RA-SIM-CERT-FAMILY-001,RA-MOTIF-CERT-FAMILY-001,interpretive_dependency,claim,claim,Independent member certification enables certification-channel support-family rescue in the v0.8 workbench.,Member-local certification contexts separate support-family membership from certification.
 RA-SIM-CERT-FAMILY-002,RA-SIM-CERT-FAMILY-001,proof_dependency,claim,claim,Certificate-correlation sweeps distinguish independent and shared certificate fate.,Independent member certification enables certification-channel support-family rescue in the v0.8 workbench.
 RA-SIM-CERT-FAMILY-003,RA-SIM-CERT-FAMILY-001,proof_dependency,claim,claim,Selector stress remains outside support-family certification rescue.,Independent member certification enables certification-channel support-family rescue in the v0.8 workbench.
+RA-SIM-CERT-CORRELATION-001,RA-SIM-CERT-FAMILY-001,proof_dependency,claim,claim,Certification rescue decays with certificate correlation,RA-SIM-CERT-FAMILY-001
+RA-SIM-CERT-CORRELATION-001,RA-SIM-CERT-FAMILY-002,proof_dependency,claim,claim,Certification rescue decays with certificate correlation,RA-SIM-CERT-FAMILY-002
+RA-SIM-CERT-CORRELATION-001,RA-SIM-CERT-FAMILY-003,proof_dependency,claim,claim,Certification rescue decays with certificate correlation,RA-SIM-CERT-FAMILY-003
+RA-SIM-CERT-CORRELATION-002,RA-SIM-CERT-FAMILY-002,proof_dependency,claim,claim,Full certificate correlation recovers parent-shared certification shape,RA-SIM-CERT-FAMILY-002
+RA-SIM-CERT-CORRELATION-002,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,claim,Full certificate correlation recovers parent-shared certification shape,RA-MOTIF-CERT-FAMILY-001
+RA-SIM-CERT-CORRELATION-003,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Rescue AUC and sensitivity quantify certification-witness redundancy,RA-SIM-CERT-CORRELATION-001
+RA-SIM-CERT-CORRELATION-004,RA-SIM-CERT-FAMILY-003,proof_dependency,claim,claim,Selector stress remains outside certification-family rescue,RA-SIM-CERT-FAMILY-003
+RA-SIM-CERT-CORRELATION-004,RA-SIM-SUPPORT-FAMILY-METRIC-004,proof_dependency,claim,claim,Selector stress remains outside certification-family rescue,RA-SIM-SUPPORT-FAMILY-METRIC-004

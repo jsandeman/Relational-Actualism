@@ -1,0 +1,9 @@
+RA v0.8.1 correlation analysis complete
+decay_curve: outputs/ra_cert_rescue_decay_curve_v0_8_1.csv
+sensitivity: outputs/ra_cert_correlation_sensitivity_v0_8_1.csv
+endpoint_equivalence: outputs/ra_cert_endpoint_equivalence_v0_8_1.csv
+auc_by_mode: outputs/ra_cert_resilience_auc_by_mode_v0_8_1.csv
+by_width_threshold: outputs/ra_cert_rescue_by_width_and_threshold_v0_8_1.csv
+guardrail: outputs/ra_cert_selector_guardrail_v0_8_1.csv
+summary_md: outputs/ra_cert_correlation_signature_summary_v0_8_1.md
+state_json: outputs/ra_cert_correlation_analysis_state_v0_8_1.json
