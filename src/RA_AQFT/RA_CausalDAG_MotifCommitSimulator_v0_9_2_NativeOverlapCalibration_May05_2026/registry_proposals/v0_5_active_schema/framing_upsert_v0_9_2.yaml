@@ -1,0 +1,43 @@
+# v0.5 active-schema upsert for v0.9.2 framing.
+# Append the entry below to docs/RA_KB/registry/framing.yaml under the
+# top-level `framing_policies:` list (do NOT include `registry_version`).
+#
+# Naming follows the <TOPIC>-METHOD-NNN pattern (RA-SIM-NATIVE-CERT-CALIB-METHOD-001)
+# to avoid the METHOD-001 collision; mirrors v0.9 NATIVE-CERT-OVERLAP-METHOD-001
+# and v0.9.1 NATIVE-CERT-ROBUST-METHOD-001.
+
+framing_policies:
+- id: RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  name: Native-overlap calibration is diagnostic, not a final overlap law
+  domain: framing
+  papers:
+  - II
+  statement: >
+    v0.9.2 calibration outputs compare native-overlap bins, family semantics,
+    and external-correlation baselines as diagnostics. Calibration residuals,
+    semantics signal-carrier rankings, and the v1.0 candidate-semantics summary
+    should be treated as operational guidance for the next anchoring step,
+    not as derived BDG-LLC / native-certificate overlap laws or Nature-level
+    predictions.
+  nature_targets:
+  - epistemic discipline for native-overlap calibration analysis
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026
+  - ra_native_overlap_v1_candidate_summary_v0_9_2.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  restoration_preconditions: []
+  caveats: Use RA-native language; native-overlap bins are structural and family-semantics recommendations are operational, not derived. v1.0 anchoring requires formal BDG-LLC closure beyond Type-valued opaque witnesses.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: ra_native_overlap_v1_candidate_summary_v0_9_2.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026

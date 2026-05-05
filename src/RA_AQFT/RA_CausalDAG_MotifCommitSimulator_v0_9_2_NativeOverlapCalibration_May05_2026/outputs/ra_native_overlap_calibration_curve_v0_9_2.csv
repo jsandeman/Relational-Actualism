@@ -1,0 +1,11 @@
+mode,family_semantics,native_overlap_bin,samples,native_mean_induced_correlation,native_certification_rescue_rate,external_equivalent_correlation_nearest,external_calibration_residual_abs,external_curve_available,calibration_status
+ledger_failure,at_least_k,high,26048,0.9978,0.000691,1.0,0.000691,True,close_rate_match
+ledger_failure,at_least_k,medium,12352,0.489153,0.157222,0.0,0.060347,True,qualitative_rate_match
+ledger_failure,augmented_exact_k,high,26048,0.9978,0.000691,1.0,0.000691,True,close_rate_match
+ledger_failure,augmented_exact_k,low,3584,0.250781,0.218192,0.0,0.128791,True,steeper_or_uncalibrated_native_curve
+ledger_failure,augmented_exact_k,medium,8768,0.498448,0.13766,0.0,0.048259,True,qualitative_rate_match
+orientation_degradation,at_least_k,high,26048,0.9978,0.000691,1.0,0.000691,True,close_rate_match
+orientation_degradation,at_least_k,medium,12352,0.489153,0.159731,0.0,0.059783,True,qualitative_rate_match
+orientation_degradation,augmented_exact_k,high,26048,0.9978,0.000691,1.0,0.000691,True,close_rate_match
+orientation_degradation,augmented_exact_k,low,3584,0.250781,0.214565,0.0,0.120372,True,steeper_or_uncalibrated_native_curve
+orientation_degradation,augmented_exact_k,medium,8768,0.498448,0.138116,0.0,0.043923,True,qualitative_rate_match

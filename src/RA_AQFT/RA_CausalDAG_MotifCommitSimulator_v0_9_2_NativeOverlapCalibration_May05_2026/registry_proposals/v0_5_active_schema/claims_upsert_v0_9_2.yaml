@@ -1,0 +1,186 @@
+# v0.5 active-schema upsert for v0.9.2 native-overlap calibration packet.
+# Append the entries below to docs/RA_KB/registry/claims.yaml under the
+# top-level `claims:` list (do NOT include the `registry_version` line).
+#
+# Status convention mirrors v0.9.1: pure-analysis packet promoted to
+# `simulation_validated_canonical_run_confirmed` after the canonical run
+# against v0.9 + v0.8.1 outputs.
+
+claims:
+- id: RA-SIM-NATIVE-CERT-CALIB-001
+  name: Native-overlap family-semantics signal carriers can be audited independently of new simulator semantics
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v0.9.2 analysis separates native certificate-overlap rescue signal
+    strength by support-family semantics, allowing augmented_exact_k and
+    at_least_k to be compared without changing the v0.9 simulator semantics.
+    The audit classifies each (mode, family_semantics) cell by
+    bins-present, low-high gap, monotonicity, and a signal_status label, and
+    produces a v1.0 candidate semantics recommendation per cell.
+  nature_targets:
+  - RA-native certification-family resilience diagnostics
+  - support-family semantics signal-carrier identification
+  ra_observable: native_certificate_overlap_semantics_signal
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026
+  - ra_native_overlap_semantics_audit_v0_9_2.csv
+  - ra_family_semantics_signal_carriers_v0_9_2.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-OVERLAP-001
+  - RA-SIM-NATIVE-CERT-ROBUST-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v0.9.2 analysis (assistant-side; --input-dir
+    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs
+    --external-correlation-dir
+    ../RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026/outputs)
+    against the canonical 100-seed v0.9 run plus v0.8.1 external curves.
+    native_rows=10, aggregate_rows=375, component_rows=480, semantics_rows=4
+    (2 modes x 2 semantics). Per-cell results: ledger_failure /
+    augmented_exact_k low_high_gap=0.2175, signal_status=strong_low_overlap_rescue_signal,
+    recommendation=primary_candidate_for_native_cert_overlap_v1;
+    orientation_degradation / augmented_exact_k low_high_gap=0.2139, same
+    classification; both at_least_k cells signal_status=insufficient_bins
+    (only medium and high bins populated, no low bin). Important refinement
+    over v0.9.1: at_least_k is NOT zero-baseline collapsed - its medium->high
+    rescue rates (0.157->0.0007 ledger; 0.160->0.0007 orientation) remain
+    monotone non-increasing. The lack of a "low" bin is structural: at_least_k
+    families are larger (mean_family_size=2.91 vs augmented_exact_k 2.12),
+    inclusive enough that members share more witness structure and the family
+    overlap distribution does not populate the low bin at this run scale.
+    The disciplined formulation is "at_least_k is the broader-inclusion guardrail
+    semantics; augmented_exact_k carries the strong native-overlap rescue
+    signal." selector_guardrail_passed=true. Operational diagnostic; semantics
+    recommendations are candidate modeling guidance, not a derived RA-native law.'
+  next_tasks:
+  - Use the per-cell signal classification to seed v1.0 native-certificate anchoring; treat at_least_k as guardrail rather than primary signal carrier.
+  source_status:
+    ra_native_overlap_calibration_audit.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_overlap_calibration_audit.py ; ra_native_overlap_semantics_audit_v0_9_2.csv ; ra_family_semantics_signal_carriers_v0_9_2.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026
+
+- id: RA-SIM-NATIVE-CERT-CALIB-002
+  name: Native-overlap bins can be calibrated against external certificate-correlation baselines
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v0.9.2 analysis constructs a calibration table mapping native-overlap
+    bins (low/medium/high) to nearest external certificate-correlation rescue
+    rates from v0.8.1, distinguishing close-rate-match, qualitative-rate-match,
+    and steeper-or-uncalibrated-native-curve regimes. The companion mapping
+    table reports per-cell native vs external rescue-AUC and rescue-decay
+    proxies. The calibration is qualitative across the full curve and
+    quantitatively close at the high-overlap endpoint, but native curves are
+    uniformly steeper at the low-overlap end.
+  nature_targets:
+  - RA-native certification-overlap calibration to external-correlation curves
+  - quantitative-vs-qualitative calibration regime classification
+  ra_observable: native_overlap_external_correlation_mapping
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026
+  - ra_native_overlap_calibration_curve_v0_9_2.csv
+  - ra_native_vs_external_correlation_mapping_v0_9_2.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-CALIB-001
+  - RA-SIM-CERT-CORRELATION-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-CERT-CORRELATION-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v0.9.2 run (parameters as in
+    RA-SIM-NATIVE-CERT-CALIB-001). calibration_rows=10, mapping_rows=4.
+    Calibration regime breakdown: 4 cells close_rate_match (all high-overlap
+    bins, native rescue ~0.0007 vs external corr=1.0 endpoint),
+    4 cells qualitative_rate_match (all medium bins, residual 0.043-0.060),
+    2 cells steeper_or_uncalibrated_native_curve (both augmented_exact_k low
+    bins, residuals 0.1204 / 0.1288). Mean external_calibration_residual_abs=0.0464,
+    max=0.1288. Mapping table: all 4 (mode, family_semantics) cells show
+    qualitative_alignment=true; native AUC proxies (0.079-0.105) exceed external
+    AUCs (0.044-0.049); native rescue decays (0.157-0.218) exceed external
+    decays (0.089-0.100). All AUC and decay deltas are positive, confirming
+    that native curves are uniformly steeper than the external-correlation
+    baseline. Native bins remain structural rather than numerical equivalents
+    of external correlation parameters; absolute calibration of the
+    low-overlap end is not yet established.'
+  next_tasks:
+  - Use the steeper-curve residuals at the low-overlap end to constrain v1.0 BDG-LLC overlap-map design.
+  source_status:
+    ra_native_overlap_calibration_audit.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_native_overlap_calibration_audit.py ; ra_native_overlap_calibration_curve_v0_9_2.csv ; ra_native_vs_external_correlation_mapping_v0_9_2.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026
+
+- id: RA-SIM-NATIVE-CERT-CALIB-003
+  name: v0.9.2 identifies candidate support-family semantics for v1.0 native-certificate anchoring
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v0.9.2 analysis ranks support-family semantics by aggregate
+    low-high rescue-gap score and reports a candidate v1.0 anchoring posture:
+    augmented_exact_k as primary native-overlap signal carrier, with
+    at_least_k retained as a monotone broader-inclusion guardrail semantics.
+  nature_targets:
+  - RA-native support-family semantics selection for v1.0 anchoring
+  - operational v1.0 candidate posture
+  ra_observable: v1_native_certificate_semantics_candidate
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026
+  - ra_native_overlap_v1_candidate_summary_v0_9_2.csv
+  - ra_native_overlap_v1_candidate_summary_v0_9_2.md
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-CALIB-001
+  - RA-SIM-NATIVE-CERT-CALIB-002
+  - RA-SIM-NATIVE-CERT-ROBUST-003
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v0.9.2 run (parameters as in
+    RA-SIM-NATIVE-CERT-CALIB-001). candidate_primary_family_semantics=augmented_exact_k;
+    semantics_score_augmented_exact_k=0.4314, semantics_score_at_least_k=0.0;
+    zero_baseline_count_augmented_exact_k=0, zero_baseline_count_at_least_k=0
+    (correction to v0.9.1: at_least_k cells classify as insufficient_bins
+    rather than zero_baseline_or_no_gap, since the medium->high decay is
+    monotone). v1_recommendation: "use augmented_exact_k as primary
+    signal-carrier; retain at_least_k as monotone guardrail semantics."
+    The recommendation is candidate modeling guidance for v1.0 BDG-LLC /
+    native-certificate overlap anchoring, not a derived RA-native law;
+    final semantics selection awaits formal anchoring beyond the current
+    Type-valued opaque-witness Lean bridge.'
+  next_tasks:
+  - Use augmented_exact_k as the primary semantics for v1.0 native-certificate overlap anchoring; preserve at_least_k as a monotone broader-inclusion guardrail in the v1.0 simulator.
+  source_status:
+    ra_native_overlap_calibration_audit.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: interpretive_bridge
+  formal_anchor: ra_native_overlap_calibration_audit.py ; ra_native_overlap_v1_candidate_summary_v0_9_2.csv ; ra_native_overlap_v1_candidate_summary_v0_9_2.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026

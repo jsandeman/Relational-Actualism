@@ -1,0 +1,5 @@
+mode,family_semantics,native_point_count,external_point_count,native_auc_proxy,external_auc_proxy,auc_delta_native_minus_external,native_low_high_or_start_end_decay,external_start_end_decay,decay_delta_native_minus_external,qualitative_alignment,mapping_interpretation
+ledger_failure,at_least_k,2,5,0.078956,0.049479,0.029477,0.156531,0.096875,0.059656,True,native bins qualitative-alignment check; absolute calibration remains proxy-level
+ledger_failure,augmented_exact_k,3,5,0.105231,0.046156,0.059075,0.217501,0.089401,0.1281,True,native bins qualitative-alignment check; absolute calibration remains proxy-level
+orientation_degradation,at_least_k,2,5,0.080211,0.04873,0.031481,0.15904,0.099948,0.059092,True,native bins qualitative-alignment check; absolute calibration remains proxy-level
+orientation_degradation,augmented_exact_k,3,5,0.104857,0.044417,0.06044,0.213874,0.094193,0.119681,True,native bins qualitative-alignment check; absolute calibration remains proxy-level

@@ -1,0 +1,5 @@
+mode,family_semantics,native_overlap_bins_present,samples,low_rescue_rate,medium_rescue_rate,high_rescue_rate,low_high_gap,rescue_auc_proxy,monotone_low_to_high,signal_status,mean_support_width,mean_family_size,support_width_count_values,v1_semantics_recommendation
+ledger_failure,at_least_k,medium;high,38400,,0.157222,0.000691,,0.078956,True,insufficient_bins,2.125833,2.90875,1;3;4,compare_against_augmented_exact_k_before_v1_selection
+ledger_failure,augmented_exact_k,low;medium;high,38400,0.218192,0.13766,0.000691,0.217501,0.105231,True,strong_low_overlap_rescue_signal,2.125833,2.118333,1;2;3;4,primary_candidate_for_native_cert_overlap_v1
+orientation_degradation,at_least_k,medium;high,38400,,0.159731,0.000691,,0.080211,True,insufficient_bins,2.125833,2.90875,1;3;4,compare_against_augmented_exact_k_before_v1_selection
+orientation_degradation,augmented_exact_k,low;medium;high,38400,0.214565,0.138116,0.000691,0.213874,0.104857,True,strong_low_overlap_rescue_signal,2.125833,2.118333,1;2;3;4,primary_candidate_for_native_cert_overlap_v1

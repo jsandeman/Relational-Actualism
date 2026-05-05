@@ -1,0 +1,6 @@
+RA v0.9.2 native-overlap calibration audit complete
+selector_guardrail_passed=True
+candidate_primary_family_semantics=augmented_exact_k
+semantics_score_augmented_exact_k=0.560764
+semantics_score_at_least_k=0.0
+mean_external_calibration_residual_abs=0.099826

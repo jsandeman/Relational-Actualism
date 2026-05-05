@@ -1,0 +1,21 @@
+registry_version: v0.5
+framing_policies:
+- id: RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  name: Native-overlap calibration is diagnostic, not a final overlap law
+  domain: framing
+  papers: [II]
+  statement: v0.9.2 calibration outputs compare native-overlap bins, family semantics, and external-correlation baselines as diagnostics. They should not be treated as final BDG-LLC/native-certificate overlap laws.
+  nature_targets: [RA-native modeling discipline]
+  ra_observable: null
+  sources: [RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026]
+  proof_dependencies: []
+  framing_links: [RA-METHOD-001, RA-METHOD-002]
+  restoration_preconditions: []
+  caveats: Use canonical v0.9.2 outputs before promoting simulation-analysis claims.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: v0.9.2 native-overlap calibration / family-semantics audit discipline
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026

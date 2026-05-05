@@ -1,0 +1,9 @@
+test_end_to_end_outputs (test_v0_9_2_native_overlap_calibration.NativeOverlapCalibrationV092Tests.test_end_to_end_outputs) ... ok
+test_inverse_external_correlation_nearest (test_v0_9_2_native_overlap_calibration.NativeOverlapCalibrationV092Tests.test_inverse_external_correlation_nearest) ... ok
+test_ledger_atleastk_zero_baseline_detected (test_v0_9_2_native_overlap_calibration.NativeOverlapCalibrationV092Tests.test_ledger_atleastk_zero_baseline_detected) ... ok
+test_signal_carrier_detects_augmented_gap (test_v0_9_2_native_overlap_calibration.NativeOverlapCalibrationV092Tests.test_signal_carrier_detects_augmented_gap) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.016s
+
+OK
