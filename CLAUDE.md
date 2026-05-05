@@ -124,18 +124,19 @@ Packets that arrive under `src/RA_AQFT/<Name>_FormalBridge_<Date>/` or `docs/RA_
 2. **Dry-run.** Every apply script has `--dry-run`. Use it.
 3. **Lean install:** copy the module + patch the lakefile via the script. Then *manually inspect* the lakefile around the insertion point — apply scripts consistently insert mid-comment-block (between `` `Foo, `` and its dangling `--` continuation lines) and need rejoining.
 4. **Lake build before promoting status.** Lean toolchain is at `/Users/jsandeman/.elan/bin/lake`; you can compile. Run `lake build <ModuleName>` from `src/RA_AQFT/` to get full Tier-B closure. Do **not** rely on the prior session's "user_local_compile_confirmed" — refresh stale `.olean`s by rebuilding the upstream first if needed.
-5. **Translate proposals into the active schema** rather than running the proposals-apply script. Specifically:
+5. **Consult `framing.yaml` before designing claims or metrics.** When designing new claims or metrics in a packet series, scan `framing.yaml` for relevant `*-METHOD-*` entries first — they encode vocabulary discipline, layer-separation invariants, and metric-design rules established by prior audits. Don't reintroduce terms or comparison patterns those entries explicitly proscribe.
+6. **Translate proposals into the active schema** rather than running the proposals-apply script. Specifically:
    - claim entries → `claims.yaml` (NOT `claims.csv`); fill in **all** v0.5 fields (see schema reference below).
    - methodological/modeling guardrails → `framing.yaml` with `framing_kind: methodological_guardrail | modeling_guardrail`, NOT `claims.yaml`.
    - artifacts → `artifacts.csv` with the active 14-column header.
    - edges → `claim_artifact_edges.csv` (12 columns, watch for unquoted commas in `claim_name`).
    - dependencies → both `claim_edges.csv` and `all_dependency_edges.csv`. Strip file-name "deps" (only claim IDs go in edge files).
-6. **Status promotion rule.** If `lake build` closes with no `sorry`/`admit`/`axiom`, promote the packet's `source_level_*_pending_compile` to `proof_status: lean_verified_or_compiled_native` and `source_status: {<file>: lean_build_confirmed_no_sorry_no_admit_no_axiom}`. If only `lake env lean <file>.lean` succeeds (without `lake build`), use `user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom` for the file source_status.
-7. **Backups.** Make `*.bak_YYYYMMDD_HHMMSS` for every registry file you modify. Never edit the existing `*.bak_*` files.
-8. **Validate.** `python scripts/validate_rakb_v0_5.py` from `docs/RA_KB/`. The validator FAILS on missing `artifact_id` in `claim_artifact_edges`; it WARNS on missing claim_id, so warnings are real bugs. Common cause of false fails: an unquoted comma in `claim_name` shifts CSV columns — quote names containing commas.
-9. **Regen paper IDs.** `cd docs/RA_Canonical_Papers && make -f Makefile.rakb ids`. Expect 0 `id_warnings`. `unmapped_sections: 95` is pre-existing, ignore.
-10. **Don't track `.DS_Store`.** Packet zips often carry one at the root. The repo has zero tracked `.DS_Store`. Stage subdirectories explicitly when adding a packet.
-11. **Don't push to `main`.** Direct push is policy-denied. Either open a PR (`gh pr create`) or hand the push back to the user; do not chase workarounds.
+7. **Status promotion rule.** If `lake build` closes with no `sorry`/`admit`/`axiom`, promote the packet's `source_level_*_pending_compile` to `proof_status: lean_verified_or_compiled_native` and `source_status: {<file>: lean_build_confirmed_no_sorry_no_admit_no_axiom}`. If only `lake env lean <file>.lean` succeeds (without `lake build`), use `user_local_lean_env_compile_confirmed_no_sorry_no_admit_no_axiom` for the file source_status.
+8. **Backups.** Make `*.bak_YYYYMMDD_HHMMSS` for every registry file you modify. Never edit the existing `*.bak_*` files.
+9. **Validate.** `python scripts/validate_rakb_v0_5.py` from `docs/RA_KB/`. The validator FAILS on missing `artifact_id` in `claim_artifact_edges`; it WARNS on missing claim_id, so warnings are real bugs. Common cause of false fails: an unquoted comma in `claim_name` shifts CSV columns — quote names containing commas.
+10. **Regen paper IDs.** `cd docs/RA_Canonical_Papers && make -f Makefile.rakb ids`. Expect 0 `id_warnings`. `unmapped_sections: 95` is pre-existing, ignore.
+11. **Don't track `.DS_Store`.** Packet zips often carry one at the root. The repo has zero tracked `.DS_Store`. Stage subdirectories explicitly when adding a packet.
+12. **Don't push to `main`.** Direct push is policy-denied. Either open a PR (`gh pr create`) or hand the push back to the user; do not chase workarounds.
 
 ## RAKB v0.5 active-schema reference
 
