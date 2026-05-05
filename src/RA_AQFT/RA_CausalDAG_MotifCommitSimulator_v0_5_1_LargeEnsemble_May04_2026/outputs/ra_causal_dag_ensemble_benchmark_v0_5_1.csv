@@ -1,4 +1,4 @@
 mode,seed,steps,repeats,nodes,edges,motifs,mean_seconds,min_seconds,max_seconds
-fast_growth,17,16,2,17,22,27,0.000541,0.000536,0.000546
-audited_growth,17,16,2,17,22,27,0.02788,0.027836,0.027924
-speedup_fast_vs_audited,17,16,2,17,22,27,51.534196,,
+fast_growth,17,32,3,33,48,55,0.002889,0.002728,0.003049
+audited_growth,17,32,3,33,48,55,0.167651,0.165161,0.169609
+speedup_fast_vs_audited,17,32,3,33,48,55,58.030807,,

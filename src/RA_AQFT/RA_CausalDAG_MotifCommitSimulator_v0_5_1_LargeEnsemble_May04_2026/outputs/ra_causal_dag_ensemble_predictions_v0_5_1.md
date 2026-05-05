@@ -4,21 +4,21 @@ This note is RA-native. It reports support/readiness/commitment/finality diagnos
 
 ## Ensemble scale
 
-- run_count: 20
-- actual_evaluations: 14400
-- sampled_evaluations: 1000
-- evaluations_per_second: 2102.012159
+- run_count: 100
+- actual_evaluations: 120000
+- sampled_evaluations: 5000
+- evaluations_per_second: 1995.704287
 
 ## Highest-loss settings
 
-- mode=edge_dropout, severity=0.5: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=edge_dropout, severity=0.75: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=edge_dropout, severity=1.0: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=frontier_dropout, severity=0.25: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=frontier_dropout, severity=0.5: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=frontier_dropout, severity=0.75: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=frontier_dropout, severity=1.0: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
-- mode=ledger_failure, severity=0.25: support_loss_rate=0.975, readiness_loss_rate=0.975, strict_commit_loss_rate=0.975, selected_commit_loss_rate=0.975.
+- mode=edge_dropout, severity=0.5: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=edge_dropout, severity=0.75: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=edge_dropout, severity=1.0: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=frontier_dropout, severity=0.25: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=frontier_dropout, severity=0.5: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=frontier_dropout, severity=0.75: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=frontier_dropout, severity=1.0: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
+- mode=ledger_failure, severity=0.25: support_loss_rate=0.971, readiness_loss_rate=0.971, strict_commit_loss_rate=0.971, selected_commit_loss_rate=0.971.
 
 ## Ensemble-level diagnostics to track
 
