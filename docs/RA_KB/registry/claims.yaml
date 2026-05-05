@@ -3352,3 +3352,206 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-METHOD-002
   - RA-SIM-SUPPORT-FAMILY-METHOD-003
   - RA-SIM-SUPPORT-FAMILY-METHOD-004
+- id: RA-SIM-SUPPORT-FAMILY-METRIC-001
+  name: Support-family metric repair separates strict-parent loss from family-internal loss
+  domain: complexity
+  papers:
+  - II
+  statement: 'The v0.7.2 metric-repair layer distinguishes strict parent-cut loss, family-internal any-cut loss, strict rescue, and family-internal resilience as separate diagnostics for support-family
+    simulations.
+
+    '
+  nature_targets:
+  - RA-native support-family simulation diagnostics
+  - actualization-fragility metric hygiene
+  ra_observable: null
+  sources:
+  - ra_causal_dag_support_family_metric_repair.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_Report_May05_2026.md
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-MONO-001
+  - RA-SIM-SUPPORT-FAMILY-MONO-002
+  - RA-SIM-SUPPORT-FAMILY-006
+  - RA-SIM-SUPPORT-FAMILY-007
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
+    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
+    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
+    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
+    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
+    by ~2.76x.'
+  next_tasks:
+  - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
+  source_status:
+    ra_causal_dag_support_family_metric_repair.py: simulation_validated_packet_local_no_sorry_no_admit_no_axiom
+    validation_unittest_v0_7_2.log: tests_passed_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_causal_dag_support_family_metric_repair.enrich_metric_repair_row ; strict_parent_loss ; family_internal_loss ; strict_rescue_rate_event ; family_internal_resilience_event
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+- id: RA-SIM-SUPPORT-FAMILY-METRIC-002
+  name: Cut-level certification rows with parent absent from exact-k family are not valid strict-vs-family loss comparisons
+  domain: complexity
+  papers:
+  - II
+  statement: 'For cut-level certification interventions, when an exact-k support family omits the parent support cut, strict-parent loss and family-member loss occupy different targeting domains and must
+    be flagged as invalid for apples-to-apples loss-delta comparison.
+
+    '
+  nature_targets:
+  - RA-native support-family simulation diagnostics
+  - actualization-fragility metric hygiene
+  ra_observable: null
+  sources:
+  - ra_causal_dag_support_family_metric_repair.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_Report_May05_2026.md
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-METRIC-001
+  - RA-SIM-SUPPORT-FAMILY-MONO-003
+  - RA-SIM-SUPPORT-FAMILY-006
+  - RA-SIM-SUPPORT-FAMILY-007
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
+    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
+    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
+    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
+    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
+    by ~2.76x.'
+  next_tasks:
+  - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
+  source_status:
+    ra_causal_dag_support_family_metric_repair.py: simulation_validated_packet_local_no_sorry_no_admit_no_axiom
+    validation_unittest_v0_7_2.log: tests_passed_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: comparison_valid_strict_vs_family ; metric_artifact_risk ; targeting_domain
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+- id: RA-SIM-SUPPORT-FAMILY-METRIC-003
+  name: Certification-channel resilience is a family-internal survival diagnostic unless certificates share a targeting domain
+  domain: complexity
+  papers:
+  - II
+  statement: 'Certification-channel resilience for support-cut families should be measured by family-internal survival/resilience and certificate-targeting domains, not solely by strict-parent rescue, unless
+    the strict parent and family members share the same certificate-targeting domain.
+
+    '
+  nature_targets:
+  - RA-native support-family simulation diagnostics
+  - actualization-fragility metric hygiene
+  ra_observable: null
+  sources:
+  - ra_causal_dag_support_family_metric_repair.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_Report_May05_2026.md
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-METRIC-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-002
+  - RA-SIM-SUPPORT-FAMILY-006
+  - RA-SIM-SUPPORT-FAMILY-007
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
+    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
+    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
+    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
+    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
+    by ~2.76x.'
+  next_tasks:
+  - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
+  source_status:
+    ra_causal_dag_support_family_metric_repair.py: simulation_validated_packet_local_no_sorry_no_admit_no_axiom
+    validation_unittest_v0_7_2.log: tests_passed_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: family_internal_survival ; family_internal_resilience_event ; parent_targeted_by_intervention ; family_targeted_by_intervention
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+- id: RA-SIM-SUPPORT-FAMILY-METRIC-004
+  name: Apples-to-apples support-family deltas require width-stratified parent-in-family-aware metrics
+  domain: complexity
+  papers:
+  - II
+  statement: 'Support-family loss-delta comparisons become interpretable only after stratifying by support width, family semantics, certification regime, and parent-cut membership in the family.
+
+    '
+  nature_targets:
+  - RA-native support-family simulation diagnostics
+  - actualization-fragility metric hygiene
+  ra_observable: null
+  sources:
+  - ra_causal_dag_support_family_metric_repair.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_Report_May05_2026.md
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-METRIC-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-002
+  - RA-SIM-SUPPORT-FAMILY-006
+  - RA-SIM-SUPPORT-FAMILY-007
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
+    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
+    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
+    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
+    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
+    by ~2.76x.'
+  next_tasks:
+  - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
+  source_status:
+    ra_causal_dag_support_family_metric_repair.py: simulation_validated_packet_local_no_sorry_no_admit_no_axiom
+    validation_unittest_v0_7_2.log: tests_passed_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: width_stratified_metric_rows ; aggregate_metric_repair_rows ; apples_to_apples_loss_delta
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001

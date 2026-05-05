@@ -1,0 +1,11 @@
+test_at_least_k_family_includes_parent_cut (test_v0_7_2_metric_repair.SupportFamilyMetricRepairV072Tests.test_at_least_k_family_includes_parent_cut) ... ok
+test_cut_level_certification_parent_absent_is_flagged_incomparable (test_v0_7_2_metric_repair.SupportFamilyMetricRepairV072Tests.test_cut_level_certification_parent_absent_is_flagged_incomparable) ... ok
+test_demo_run_generates_metric_artifact_flags (test_v0_7_2_metric_repair.SupportFamilyMetricRepairV072Tests.test_demo_run_generates_metric_artifact_flags) ... ok
+test_exact_k_family_omits_parent_cut_when_k_less_than_width (test_v0_7_2_metric_repair.SupportFamilyMetricRepairV072Tests.test_exact_k_family_omits_parent_cut_when_k_less_than_width) ... ok
+test_parent_shared_certification_is_comparable (test_v0_7_2_metric_repair.SupportFamilyMetricRepairV072Tests.test_parent_shared_certification_is_comparable) ... ok
+test_support_channel_comparison_remains_valid (test_v0_7_2_metric_repair.SupportFamilyMetricRepairV072Tests.test_support_channel_comparison_remains_valid) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK

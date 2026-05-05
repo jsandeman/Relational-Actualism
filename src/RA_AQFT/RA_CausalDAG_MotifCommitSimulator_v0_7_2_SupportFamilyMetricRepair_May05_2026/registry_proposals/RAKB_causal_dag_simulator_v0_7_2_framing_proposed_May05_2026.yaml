@@ -1,0 +1,28 @@
+registry_version: v0.5
+framing_policies:
+- id: RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  name: Support-family certification metrics require parent-in-family-aware comparison discipline
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Support-family simulation outputs must not compare strict parent-cut loss with family-member loss unless the strict parent and family members share the same intervention-targeting domain. Certification-channel resilience should be reported with family-internal and width-stratified metrics.
+  nature_targets:
+  - RA-native support-family metric discipline
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  restoration_preconditions: []
+  caveats: Methodological guardrail for simulator-output interpretation only.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: ra_causal_dag_support_family_metric_repair.py metric_artifact_risk ; comparison_valid_strict_vs_family
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_2_SupportFamilyMetricRepair_May05_2026
