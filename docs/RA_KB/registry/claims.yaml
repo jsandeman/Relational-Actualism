@@ -2714,3 +2714,48 @@ claims:
   - RA-SIM-MOTIF-SEVERANCE-METHOD-001
   - RA-SIM-SEVERANCE-SIGNATURE-METHOD-001
   - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+- id: RA-SIM-SEVERANCE-CHANNEL-005
+  name: Strict support-cut width is conjunctive exposure, not redundancy
+  domain: complexity
+  papers:
+  - II
+  statement: 'Under the strict conjunctive readiness semantics of RA_MotifCommitProtocol (`GraphReadyAt G Q x := forall y in Q.support, Reachable G y x`), increasing the Hasse-frontier support width of
+    a single support cut increases the number of *required* support vertices rather than introducing alternative support paths. The canonical 100-seed v0.6 run shows this directly: under edge_dropout severity
+    0.5, causal_reachability loss rises monotonically with width (width 1: 0.72; width 2: 0.83; width 3: 0.94; width 4: 0.97). Wider strict cuts are therefore *more fragile*, not more redundant. True RA-native
+    redundancy would require a SupportCutFamily / threshold-readiness abstraction (e.g. `motif M is ready if at least one certified Q in family F is ready`), which is not yet present in the formal layer.'
+  nature_targets:
+  - distinction between conjunctive support breadth and redundant support capacity
+  - monotonic width-fragility behavior under strict conjunctive readiness
+  ra_observable: support_width_fragility_curve
+  sources:
+  - RA_MotifCommitProtocol.lean
+  - ra_causal_dag_channel_workbench.py
+  - ra_support_width_fragility_curve_v0_6.csv
+  - RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_Report_May05_2026.md
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-003
+  - RA-SIM-SEVERANCE-CHANNEL-001
+  - RA-SIM-SEVERANCE-CHANNEL-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  restoration_preconditions: []
+  caveats: This is a conceptual / interpretive correction surfaced by the canonical v0.6 run. Earlier packet language (and the v0.6 packet directory name) used "redundancy" loosely; the canonical data and
+    the strict semantics of GraphReadyAt show the current width axis behaves as conjunctive exposure. Promoting genuine redundancy to a formal claim requires the SupportCutFamily abstraction proposed for
+    v0.7.
+  next_tasks:
+  - Build RA_MotifSupportFamilyBridge.lean introducing SupportCutFamily, AnyCutReadyAt, ThresholdReadyAt, FamilyCommitsAt.
+  - Build v0.7 simulator comparing conjunctive support width vs alternative support family redundancy on the same severance modes.
+  source_status:
+    ra_causal_dag_channel_workbench.py: simulation_validated_canonical_run_confirmed
+    ra_support_width_fragility_curve_v0_6.csv: canonical_run_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: GraphReadyAt (RA_MotifCommitProtocol) ; support_width_fragility_curve (v0.6 channel workbench)
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026 (post-canonical reinterpretation)

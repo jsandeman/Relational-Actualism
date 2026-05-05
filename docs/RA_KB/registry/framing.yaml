@@ -402,3 +402,36 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: ChannelSeparatedRunConfig ; ChannelEvaluation ; run_channel_ensemble
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026
+- id: RA-SIM-SUPPORT-FAMILY-METHOD-001
+  name: Support-cut width is not redundancy unless an explicit support-cut-family layer is present
+  domain: framing
+  papers:
+  - II
+  statement: In RA-native motif-commit semantics, a single SupportCut Q with width n represents a conjunctive requirement that all n support vertices reach the actualization site. This is distinct from
+    "redundancy", which requires an alternative-cut family, threshold-of-n behaviour, or multi-path / repairable support. Until a SupportCutFamily abstraction is added to the formal layer, the simulators
+    support-width axis must be described as "conjunctive support breadth" or "support-frontier width", not as "redundancy". The v0.6 packet directory and report use "Redundancy" loosely (predating the canonical-run
+    finding); future packets and claims should adopt the corrected vocabulary.
+  nature_targets:
+  - terminology discipline distinguishing conjunctive support breadth from redundant support capacity
+  - pre-condition for a future SupportCutFamily formal abstraction
+  ra_observable: null
+  sources:
+  - RA_MotifCommitProtocol.lean
+  - RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  restoration_preconditions: []
+  caveats: When a SupportCutFamily / threshold-readiness abstraction is added (planned for v0.7), this guardrail should be revisited so that redundancy claims become available where the formal apparatus
+    actually supports them.
+  next_tasks:
+  - Use "conjunctive support breadth" / "support-frontier width" in v0.7+ documentation; reserve "redundancy" for genuine alternative-cut / threshold-cut structures.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: negative_scope_or_translation_policy
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: GraphReadyAt (RA_MotifCommitProtocol) ; conjunctive support readiness
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026 (post-canonical reinterpretation)
