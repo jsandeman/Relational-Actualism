@@ -1,0 +1,12 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-SEVERANCE-CHANNEL-001,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Channel-resolved severance workbench separates formerly degenerate failure modes,RA-SIM-SEVERANCE-SIGNATURE-001
+RA-SIM-SEVERANCE-CHANNEL-001,RA-SIM-SEVERANCE-SIGNATURE-004,proof_dependency,claim,claim,Channel-resolved severance workbench separates formerly degenerate failure modes,RA-SIM-SEVERANCE-SIGNATURE-004
+RA-SIM-SEVERANCE-CHANNEL-002,RA-SIM-SEVERANCE-SIGNATURE-005,proof_dependency,claim,claim,Support-diverse growth exposes Hasse-frontier width classes greater than one,RA-SIM-SEVERANCE-SIGNATURE-005
+RA-SIM-SEVERANCE-CHANNEL-003,RA-SIM-MOTIF-SEVERANCE-003,proof_dependency,claim,claim,"Gate-failure decomposition distinguishes certification, reachability, availability, and selector-exclusion channels",RA-SIM-MOTIF-SEVERANCE-003
+RA-SIM-SEVERANCE-CHANNEL-004,RA-SIM-SEVERANCE-CHANNEL-001,proof_dependency,claim,claim,v0.6 packet-local tests validate channel separation and support-width diversity,RA-SIM-SEVERANCE-CHANNEL-001
+RA-SIM-SEVERANCE-CHANNEL-004,RA-SIM-SEVERANCE-CHANNEL-002,proof_dependency,claim,claim,v0.6 packet-local tests validate channel separation and support-width diversity,RA-SIM-SEVERANCE-CHANNEL-002
+RA-SIM-SEVERANCE-CHANNEL-004,RA-SIM-SEVERANCE-CHANNEL-003,proof_dependency,claim,claim,v0.6 packet-local tests validate channel separation and support-width diversity,RA-SIM-SEVERANCE-CHANNEL-003
+RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-METHOD-001
+RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-METHOD-002
+RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-SIM-MOTIF-SEVERANCE-METHOD-001,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-SIM-MOTIF-SEVERANCE-METHOD-001
+RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-SIM-SEVERANCE-SIGNATURE-METHOD-001

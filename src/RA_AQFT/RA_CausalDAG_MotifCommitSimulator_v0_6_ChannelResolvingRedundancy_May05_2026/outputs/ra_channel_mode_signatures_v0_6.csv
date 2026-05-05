@@ -1,0 +1,7 @@
+mode,classification,mean_support_certification_loss_rate,mean_causal_reachability_loss_rate,mean_support_availability_loss_rate,mean_strict_commit_loss_rate,mean_selected_commit_loss_rate,mean_ledger_gate_loss_rate,mean_orientation_gate_loss_rate,mean_selector_stress_loss_rate,mean_finality_shift_scaled,mean_recovery_length_scaled
+edge_dropout,causal_reachability_channel,0.0,0.880417,0.0,0.845521,0.845521,0.0,0.0,0.0,0.246516,0.025885
+frontier_dropout,frontier_availability_channel,0.0,1.0,1.0,0.96,0.96,0.0,0.0,0.0,0.0,0.0
+ledger_failure,ledger_certification_channel,0.564375,0.0,0.0,0.564375,0.564375,0.588333,0.0,0.0,0.0,0.0
+orientation_degradation,orientation_witness_certification_channel,0.564375,0.0,0.0,0.564375,0.564375,0.0,0.588333,0.0,0.0,0.0
+selector_stress,selector_exclusion_channel,0.0,0.0,0.0,0.96,0.0,0.0,0.0,0.96,0.0,0.0
+support_delay,delay_recovery_channel,0.0,1.0,0.0,0.96,0.96,0.0,0.0,0.0,0.6,0.614427

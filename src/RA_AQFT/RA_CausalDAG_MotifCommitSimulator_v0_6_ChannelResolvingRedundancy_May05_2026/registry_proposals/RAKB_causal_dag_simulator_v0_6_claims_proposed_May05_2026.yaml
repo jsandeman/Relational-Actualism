@@ -1,0 +1,147 @@
+registry_version: v0.5
+claims:
+- id: RA-SIM-SEVERANCE-CHANNEL-001
+  name: Channel-resolved severance workbench separates formerly degenerate failure
+    modes
+  domain: complexity
+  papers:
+  - II
+  - III
+  statement: The v0.6 channel-resolved severance workbench separates frontier availability
+    loss, ledger-certification loss, and orientation-witness certification loss into
+    distinct RA-native diagnostic channels rather than compressing them into a single
+    aggregate commitment-loss profile.
+  nature_targets:
+  - actualization fragility under distinct causal-support disruptions
+  - diagnostic separability of non-actualization modes
+  ra_observable: channel_resolved_actualization_fragility
+  sources:
+  - ra_causal_dag_channel_workbench.py
+  - ra_channel_mode_signatures_v0_6.csv
+  - ra_channel_mode_separability_v0_6.csv
+  - RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_Report_May05_2026.md
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-001
+  - RA-SIM-SEVERANCE-SIGNATURE-004
+  - RA-SIM-MOTIF-SEVERANCE-002
+  restoration_preconditions: []
+  caveats: Packet-local run confirms separation; promote only after canonical 100-seed
+    v0.6 run confirms nonzero separability at scale.
+  next_tasks:
+  - "Run canonical v0.6 ensemble at 100 seeds \xD7 32 steps and compare zero-distance\
+    \ pairs."
+  source_status:
+    ra_causal_dag_channel_workbench.py: simulation_validated_6_unit_tests_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ChannelEvaluation ; summarize_mode_signatures ; mode_separability
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026
+- id: RA-SIM-SEVERANCE-CHANNEL-002
+  name: Support-diverse growth exposes Hasse-frontier width classes greater than one
+  domain: complexity
+  papers:
+  - II
+  - III
+  statement: The v0.6 support-diverse growth generator produces motif support cuts
+    with multiple Hasse-frontier width classes, enabling support-width fragility analysis
+    that was blocked in the v0.5.1/v0.5.2 ensembles.
+  nature_targets:
+  - redundant support-frontier structure
+  - fragility modulation by support width
+  ra_observable: support_width_fragility_curve
+  sources:
+  - ra_causal_dag_channel_workbench.py
+  - ra_support_width_fragility_curve_v0_6.csv
+  - RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_Report_May05_2026.md
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-005
+  - RA-MOTIF-SEVERANCE-001
+  restoration_preconditions: []
+  caveats: The packet-local run exposes widths [1,2,3,4]; canonical large-run analysis
+    is needed before turning width-fragility curves into scientific claims.
+  next_tasks:
+  - Run canonical support-width ensemble and estimate loss curves by width and mode.
+  source_status:
+    ra_causal_dag_channel_workbench.py: simulation_validated_6_unit_tests_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated_pending_canonical_run
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_run_recorded
+  claim_kind: derived_result
+  formal_anchor: generate_support_diverse_growth_state ; summarize_width_fragility
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026
+- id: RA-SIM-SEVERANCE-CHANNEL-003
+  name: Gate-failure decomposition distinguishes certification, reachability, availability,
+    and selector-exclusion channels
+  domain: complexity
+  papers:
+  - II
+  - III
+  statement: The v0.6 evaluator records separate gate-failure outcomes for support
+    certification, causal reachability, support availability, ledger gates, orientation
+    gates, and selector stress, allowing actualization failure to be classified by
+    channel rather than by aggregate commit loss alone.
+  nature_targets:
+  - structured non-actualization diagnostics
+  - causal-support and witness-gate failure decomposition
+  ra_observable: gate_failure_decomposition
+  sources:
+  - ra_gate_failure_decomposition_v0_6.csv
+  - ra_causal_dag_channel_workbench.py
+  proof_dependencies:
+  - RA-SIM-MOTIF-SEVERANCE-001
+  - RA-SIM-MOTIF-SEVERANCE-003
+  - RA-SIM-SEVERANCE-SIGNATURE-004
+  restoration_preconditions: []
+  caveats: Diagnostic decomposition is simulator-side and should be aligned with future
+    Lean predicate refinements if these channels become formal claims.
+  next_tasks:
+  - Map channel diagnostics to any future Lean severance refinements.
+  source_status:
+    ra_causal_dag_channel_workbench.py: simulation_validated_6_unit_tests_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ChannelEvaluation ; evaluate_channel_severance
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026
+- id: RA-SIM-SEVERANCE-CHANNEL-004
+  name: v0.6 packet-local tests validate channel separation and support-width diversity
+  domain: complexity
+  papers:
+  - II
+  - III
+  statement: The v0.6 test suite validates that the support-diverse generator produces
+    width greater than one, frontier dropout is availability loss rather than certification
+    loss, ledger failure is certification loss without reachability loss, orientation
+    degradation is graded, and frontier/ledger/orientation modes are no longer degenerate
+    in the channel-resolved signature space.
+  nature_targets:
+  - validated simulator workbench behavior
+  - channel-separation software correctness
+  ra_observable: simulator_validation_status
+  sources:
+  - validation_unittest_v0_6.log
+  - test_v0_6_channel_separation.py
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-CHANNEL-001
+  - RA-SIM-SEVERANCE-CHANNEL-002
+  - RA-SIM-SEVERANCE-CHANNEL-003
+  restoration_preconditions: []
+  caveats: Unit tests validate simulator behavior, not direct empirical claims about
+    Nature.
+  next_tasks:
+  - Run canonical v0.6 ensemble and update claim statuses if signatures remain stable.
+  source_status:
+    test_v0_6_channel_separation.py: simulation_validated_6_unit_tests_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated
+  legacy_support_status: none
+  auxiliary_support_status: unit_test_validation_recorded
+  claim_kind: derived_result
+  formal_anchor: ChannelSeparationV06Tests
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_6_ChannelResolvingRedundancy_May05_2026

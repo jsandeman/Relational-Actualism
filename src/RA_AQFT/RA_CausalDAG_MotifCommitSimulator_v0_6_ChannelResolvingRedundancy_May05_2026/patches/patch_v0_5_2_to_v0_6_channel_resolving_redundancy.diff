@@ -1,0 +1,11 @@
+# Patch note: v0.6 Channel-Resolving Redundancy Workbench
+
+This packet is additive relative to v0.5.1/v0.5.2:
+
+- adds `simulator/ra_causal_dag_channel_workbench.py`
+- adds `tests/test_v0_6_channel_separation.py`
+- adds `scripts/run_channel_separation_v0_6.py`
+- preserves `simulator/ra_causal_dag_simulator.py` as the v0.5.1/v0.5 core dependency
+- adds channel-resolved outputs and active-schema RAKB proposals
+
+No Lean module is changed.

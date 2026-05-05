@@ -1,0 +1,26 @@
+{
+  "actual_evaluations": 1440,
+  "elapsed_seconds": 14.49401,
+  "evaluations_per_second": 99.351385,
+  "run_count": 4,
+  "sampled_evaluations": 500,
+  "steps": 16,
+  "support_width_classes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "support_width_count": 4,
+  "total_lost_causal_reachability": 551,
+  "total_lost_operational_readiness": 726,
+  "total_lost_selected_commit": 726,
+  "total_lost_strict_commit": 910,
+  "total_lost_support_availability": 192,
+  "total_lost_support_certification": 198,
+  "version": "0.6"
+}
+real 21.20
+user 11.25
+sys 0.33
+

@@ -1,0 +1,2 @@
+version,run_count,steps,actual_evaluations,sampled_evaluations,elapsed_seconds,evaluations_per_second,support_width_classes,support_width_count,total_lost_support_certification,total_lost_causal_reachability,total_lost_support_availability,total_lost_operational_readiness,total_lost_strict_commit,total_lost_selected_commit
+0.6,100,32,72000,5000,272.107937,264.600881,"[1, 2, 3, 4]",4,10836,27652,9600,37385,46601,37385

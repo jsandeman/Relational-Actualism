@@ -1,0 +1,11 @@
+test_frontier_dropout_is_availability_not_certification_loss (test_v0_6_channel_separation.ChannelSeparationV06Tests.test_frontier_dropout_is_availability_not_certification_loss) ... ok
+test_ledger_failure_is_certification_not_causal_reachability_loss (test_v0_6_channel_separation.ChannelSeparationV06Tests.test_ledger_failure_is_certification_not_causal_reachability_loss) ... ok
+test_mode_signatures_are_no_longer_degenerate_for_frontier_ledger_orientation (test_v0_6_channel_separation.ChannelSeparationV06Tests.test_mode_signatures_are_no_longer_degenerate_for_frontier_ledger_orientation) ... ok
+test_orientation_degradation_is_graded_across_ensemble (test_v0_6_channel_separation.ChannelSeparationV06Tests.test_orientation_degradation_is_graded_across_ensemble) ... ok
+test_summary_contains_support_width_diversity (test_v0_6_channel_separation.ChannelSeparationV06Tests.test_summary_contains_support_width_diversity) ... ok
+test_support_diverse_generator_produces_width_above_one (test_v0_6_channel_separation.ChannelSeparationV06Tests.test_support_diverse_generator_produces_width_above_one) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 15.017s
+
+OK

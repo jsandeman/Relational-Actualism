@@ -1,0 +1,16 @@
+mode_a,mode_b,euclidean_distance,cosine_similarity
+edge_dropout,frontier_dropout,1.049739,0.848378
+edge_dropout,ledger_failure,1.288144,0.55565
+edge_dropout,orientation_degradation,1.288144,0.55565
+edge_dropout,selector_stress,1.576764,0.397139
+edge_dropout,support_delay,0.715432,0.936426
+frontier_dropout,ledger_failure,1.725599,0.484471
+frontier_dropout,orientation_degradation,1.725599,0.484471
+frontier_dropout,selector_stress,1.960408,0.346266
+frontier_dropout,support_delay,1.31815,0.766436
+ledger_failure,orientation_degradation,0.832029,0.734088
+ledger_failure,selector_stress,1.43572,0.349783
+ledger_failure,support_delay,1.647791,0.501914
+orientation_degradation,selector_stress,1.43572,0.349783
+orientation_degradation,support_delay,1.647791,0.501914
+selector_stress,support_delay,1.892279,0.358733
