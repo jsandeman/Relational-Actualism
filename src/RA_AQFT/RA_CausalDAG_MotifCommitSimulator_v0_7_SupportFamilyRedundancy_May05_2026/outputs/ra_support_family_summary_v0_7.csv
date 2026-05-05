@@ -1,0 +1,2 @@
+version,run_count,steps,actual_evaluations,elapsed_seconds,evaluations_per_second,support_width_classes,support_width_count,threshold_fractions,total_strict_readiness_losses,total_family_readiness_losses,total_family_rescues
+0.7,100,32,288000,19.312669,14912.49067,"[1, 2, 3, 4]",4,"[0.25, 0.5, 0.75, 1.0]",162816,162151,10553

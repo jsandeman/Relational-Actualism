@@ -1,0 +1,9 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-SUPPORT-FAMILY-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Support-cut families separate alternative support from single-cut width,Causal support cuts encode finite readiness evidence
+RA-MOTIF-SUPPORT-FAMILY-001,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Support-cut families separate alternative support from single-cut width,Readiness is containment of support evidence in the causal past
+RA-MOTIF-SUPPORT-FAMILY-002,RA-MOTIF-SUPPORT-FAMILY-001,proof_dependency,claim,claim,Singleton support families recover single-cut readiness,Support-cut families separate alternative support from single-cut width
+RA-SIM-SUPPORT-FAMILY-001,RA-MOTIF-SUPPORT-FAMILY-001,interpretive_dependency,claim,claim,v0.7 threshold support families operationalize genuine redundancy,Support-cut families separate alternative support from single-cut width
+RA-SIM-SUPPORT-FAMILY-002,RA-SIM-SUPPORT-FAMILY-001,interpretive_dependency,claim,claim,Support-family rescue is distinct from selector-stress resolution,v0.7 threshold support families operationalize genuine redundancy
+RA-SIM-SUPPORT-FAMILY-003,RA-SIM-SUPPORT-FAMILY-001,interpretive_dependency,claim,claim,v0.7 distinguishes strict support-width exposure from support-family resilience,v0.7 threshold support families operationalize genuine redundancy
+RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Support-family redundancy is a simulator bridge, not a derived physical law","Nature is the target of RA, not prior theoretical formalisms"
+RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-SIM-MOTIF-SEVERANCE-METHOD-001,interpretive_dependency,framing,framing,"Support-family redundancy is a simulator bridge, not a derived physical law","Motif-commit simulations are RA-native actualization models, not QM or consensus simulations"

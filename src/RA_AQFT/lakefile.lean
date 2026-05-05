@@ -118,6 +118,10 @@ lean_lib «RelationalActualism» where
                                 -- readiness / commitment / depth-finality
                                 -- predicates over the graph motif-commit
                                 -- stack; abstract reachability profile.
+    `RA_MotifSupportFamilyBridge,       -- (May 5 2026) support-cut family
+                                -- (alternative-cut redundancy) layer over
+                                -- motif-commit; AnyCutReadyAt /
+                                -- AllCutReadyAt / FamilyCommitsAt.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

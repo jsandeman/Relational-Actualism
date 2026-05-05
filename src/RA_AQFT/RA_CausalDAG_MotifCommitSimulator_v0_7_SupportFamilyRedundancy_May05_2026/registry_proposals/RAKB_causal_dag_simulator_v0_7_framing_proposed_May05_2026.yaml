@@ -1,0 +1,33 @@
+registry_version: 0.5-proposal
+framing_policies:
+- id: RA-SIM-SUPPORT-FAMILY-METHOD-001
+  name: Support-family redundancy is a simulator bridge, not a derived physical law
+  domain: framing
+  papers:
+  - II
+  statement: v0.7 support-family threshold semantics are an RA-native simulator bridge
+    for distinguishing alternative support from conjunctive support width. They should
+    not be treated as Nature-level claims until derived from or constrained by BDG-LLC/frontier/orientation/ledger
+    structure and canonical runs.
+  nature_targets:
+  - methodological discipline for RA-native support-family modeling
+  ra_observable: null
+  sources:
+  - README_RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026.md
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  restoration_preconditions: []
+  caveats: Concrete support-family semantics remain exploratory until formal and empirical
+    constraints are stronger.
+  next_tasks:
+  - Evaluate canonical v0.7 runs and test alternative support-family generators.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: support-family modeling guardrail for v0.7
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026

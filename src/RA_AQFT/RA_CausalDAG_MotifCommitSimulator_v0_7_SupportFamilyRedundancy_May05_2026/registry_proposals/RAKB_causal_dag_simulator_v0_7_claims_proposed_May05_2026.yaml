@@ -1,0 +1,157 @@
+registry_version: 0.5-proposal
+claims:
+- id: RA-MOTIF-SUPPORT-FAMILY-001
+  name: Support-cut families separate alternative support from single-cut width
+  domain: matter
+  papers:
+  - II
+  statement: A support-cut family represents alternative sufficient support cuts for
+    a motif, separating genuine support redundancy from the width of one conjunctive
+    support cut.
+  nature_targets:
+  - RA-native actualization support structure
+  - distinction between conjunctive support breadth and alternative support families
+  ra_observable: null
+  sources:
+  - RA_MotifSupportFamilyBridge.lean
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_Report_May05_2026.md
+  proof_dependencies:
+  - RA-MOTIF-COMMIT-002
+  - RA-MOTIF-COMMIT-003
+  restoration_preconditions: []
+  caveats: Source-level Lean bridge pending local compile; concrete support-family
+    generation remains downstream of BDG-LLC/frontier/orientation/ledger evidence.
+  next_tasks:
+  - Compile RA_MotifSupportFamilyBridge.lean locally.
+  source_status:
+    RA_MotifSupportFamilyBridge.lean: source_level_formal_bridge_pending_local_compile
+  legacy_proof_status: DR
+  proof_status: source_level_formal_bridge_pending_local_compile
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGSupportCutFamily ; GraphSupportCutFamily ; DAGFamilyReadyAt ;
+    GraphFamilyReadyAt
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026
+- id: RA-MOTIF-SUPPORT-FAMILY-002
+  name: Singleton support families recover single-cut readiness
+  domain: matter
+  papers:
+  - II
+  statement: A singleton support-cut family is ready at a site exactly when its underlying
+    support cut is ready at that site.
+  nature_targets:
+  - RA-native actualization support semantics
+  - compatibility with existing motif-commit readiness
+  ra_observable: null
+  sources:
+  - RA_MotifSupportFamilyBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-001
+  - RA-MOTIF-COMMIT-003
+  restoration_preconditions: []
+  caveats: Pending local Lean compile confirmation.
+  next_tasks:
+  - Compile RA_MotifSupportFamilyBridge.lean locally.
+  source_status:
+    RA_MotifSupportFamilyBridge.lean: source_level_formal_bridge_pending_local_compile
+  legacy_proof_status: DR
+  proof_status: source_level_formal_bridge_pending_local_compile
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGFamilyReadyAt_singleton_iff ; GraphFamilyReadyAt_singleton_iff
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026
+- id: RA-SIM-SUPPORT-FAMILY-001
+  name: v0.7 threshold support families operationalize genuine redundancy
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.7 simulator implements threshold support-cut families, allowing
+    family readiness to survive some losses that destroy strict all-of-one-cut readiness.
+  nature_targets:
+  - RA-native actualization resilience diagnostics
+  - support-family redundancy workbench
+  ra_observable: null
+  sources:
+  - ra_causal_dag_support_family_workbench.py
+  - validation_unittest_v0_7.log
+  - ra_support_family_predictions_v0_7.md
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-001
+  - RA-SIM-SEVERANCE-CHANNEL-003
+  restoration_preconditions: []
+  caveats: Packet-local demo only; canonical-scale run pending. Threshold subfamilies
+    are a simulator instantiation, not yet a derived physical law.
+  next_tasks:
+  - Run canonical v0.7 ensemble and promote only robust findings.
+  source_status:
+    ra_causal_dag_support_family_workbench.py: simulation_validated_packet_local_tests_pass
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local
+  legacy_support_status: none
+  auxiliary_support_status: simulation_validated_packet_local
+  claim_kind: derived_result
+  formal_anchor: threshold_support_family ; family_ready_at ; evaluate_support_family
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026
+- id: RA-SIM-SUPPORT-FAMILY-002
+  name: Support-family rescue is distinct from selector-stress resolution
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.7 simulator records support-family rescue only when family readiness
+    survives a strict readiness loss; selector stress is not counted as support-family
+    rescue.
+  nature_targets:
+  - RA-native separation of support failure from selector-exclusion failure
+  ra_observable: null
+  sources:
+  - ra_causal_dag_support_family_workbench.py
+  - test_v0_7_support_family.py
+  proof_dependencies:
+  - RA-SIM-SEVERANCE-SIGNATURE-004
+  - RA-SIM-SUPPORT-FAMILY-001
+  restoration_preconditions: []
+  caveats: Packet-local test behavior; canonical ensemble may refine rates but not
+    the semantic separation.
+  next_tasks: []
+  source_status:
+    test_v0_7_support_family.py: simulation_tests_pass
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local
+  legacy_support_status: none
+  auxiliary_support_status: simulation_validated_packet_local
+  claim_kind: derived_result
+  formal_anchor: SupportFamilyEvaluation.family_rescues_strict_loss
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026
+- id: RA-SIM-SUPPORT-FAMILY-003
+  name: v0.7 distinguishes strict support-width exposure from support-family resilience
+  domain: complexity
+  papers:
+  - II
+  statement: The v0.7 workbench compares strict single-cut readiness loss with threshold-family
+    readiness loss, making explicit when support breadth acts as exposure and when
+    alternative cuts act as resilience.
+  nature_targets:
+  - RA-native fragility/resilience signatures
+  - support-family actualization diagnostics
+  ra_observable: null
+  sources:
+  - ra_support_family_comparison_v0_7.csv
+  - ra_support_family_threshold_curves_v0_7.csv
+  - ra_support_family_resilience_by_width_v0_7.csv
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-001
+  restoration_preconditions: []
+  caveats: Packet-local demo outputs are not canonical-scale claims.
+  next_tasks:
+  - Run 100-seed canonical v0.7 ensemble.
+  source_status:
+    outputs: packet_local_demo_outputs_generated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local
+  legacy_support_status: none
+  auxiliary_support_status: simulation_validated_packet_local
+  claim_kind: derived_result
+  formal_anchor: ra_support_family_comparison_v0_7.csv ; ra_support_family_threshold_curves_v0_7.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026

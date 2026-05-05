@@ -1,0 +1,12 @@
+test_end_to_end_outputs (test_v0_7_support_family.SupportFamilyV07Tests.test_end_to_end_outputs) ... ok
+test_family_evaluation_records_rescue (test_v0_7_support_family.SupportFamilyV07Tests.test_family_evaluation_records_rescue) ... ok
+test_selector_stress_is_not_counted_as_support_family_rescue (test_v0_7_support_family.SupportFamilyV07Tests.test_selector_stress_is_not_counted_as_support_family_rescue) ... ok
+test_support_diverse_state_has_width_above_one (test_v0_7_support_family.SupportFamilyV07Tests.test_support_diverse_state_has_width_above_one) ... ok
+test_threshold_family_can_rescue_strict_reachability_loss (test_v0_7_support_family.SupportFamilyV07Tests.test_threshold_family_can_rescue_strict_reachability_loss) ... ok
+test_threshold_k_bounds (test_v0_7_support_family.SupportFamilyV07Tests.test_threshold_k_bounds) ... ok
+test_threshold_one_recovers_strict_single_cut (test_v0_7_support_family.SupportFamilyV07Tests.test_threshold_one_recovers_strict_single_cut) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.236s
+
+OK
