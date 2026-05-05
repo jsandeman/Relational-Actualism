@@ -125,6 +125,10 @@ lean_lib «RelationalActualism» where
     `RA_MotifSupportFamilyMonotonicity, -- (May 5 2026) family inclusion +
                                 -- monotonicity theorems for FamilyReadyAt /
                                 -- CertifiedFamilyReadyAt / FamilyCommitsAt.
+    `RA_MotifCertifiedSupportFamilyBridge, -- (May 5 2026) certificate-family
+                                -- contexts; IndependentCertifiedFamilyReadyAt
+                                -- + .of_member + .to_certified_family_ready
+                                -- + .mono_certificates + .future_mono.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

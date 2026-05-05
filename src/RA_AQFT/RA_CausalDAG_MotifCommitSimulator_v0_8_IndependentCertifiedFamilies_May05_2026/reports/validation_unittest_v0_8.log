@@ -1,0 +1,11 @@
+test_correlation_sweep_decreases_rescue_in_demo (test_v0_8_independent_cert_families.IndependentCertifiedFamiliesV08Tests.test_correlation_sweep_decreases_rescue_in_demo) ... ok
+test_end_to_end_outputs_nonempty (test_v0_8_independent_cert_families.IndependentCertifiedFamiliesV08Tests.test_end_to_end_outputs_nonempty) ... ok
+test_full_correlation_matches_shared_failure_shape (test_v0_8_independent_cert_families.IndependentCertifiedFamiliesV08Tests.test_full_correlation_matches_shared_failure_shape) ... ok
+test_independent_member_can_leave_family_cut_when_parent_fails (test_v0_8_independent_cert_families.IndependentCertifiedFamiliesV08Tests.test_independent_member_can_leave_family_cut_when_parent_fails) ... ok
+test_parent_shared_certification_fails_all_or_none (test_v0_8_independent_cert_families.IndependentCertifiedFamiliesV08Tests.test_parent_shared_certification_fails_all_or_none) ... ok
+test_selector_stress_not_counted_as_certification_rescue (test_v0_8_independent_cert_families.IndependentCertifiedFamiliesV08Tests.test_selector_stress_not_counted_as_certification_rescue) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.193s
+
+OK

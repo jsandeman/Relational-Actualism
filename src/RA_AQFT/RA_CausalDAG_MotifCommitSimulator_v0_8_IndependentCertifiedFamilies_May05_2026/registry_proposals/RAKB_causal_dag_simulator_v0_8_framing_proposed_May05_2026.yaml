@@ -1,0 +1,34 @@
+registry_version: v0.5
+framing_policies:
+- id: RA-SIM-CERT-FAMILY-METHOD-001
+  name: Independent certified support-family simulations are certification-resilience diagnostics, not derived laws
+  domain: framing
+  papers:
+  - II
+  statement: >
+    The v0.8 independent certified support-family workbench explores RA-native
+    certification-resilience diagnostics. Certificate-correlation and member-fate
+    sampling are simulator instruments; they are not asserted as Nature-level
+    dynamics or BDG-LLC-derived laws.
+  nature_targets:
+  - disciplined interpretation of support-family certification resilience simulations
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    Use RA-native language. Do not conflate support-route redundancy, certification-witness redundancy,
+    strict-parent rescue, and family-internal resilience.
+  next_tasks:
+  - Run canonical v0.8 ensemble before promoting simulation claims.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: v0.8 independent certified support-family workbench interpretation discipline
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026

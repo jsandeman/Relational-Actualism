@@ -1,0 +1,41 @@
+{
+  "actual_evaluations": 9600,
+  "certificate_correlations": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "certification_regimes": [
+    "cut_level",
+    "independent_member",
+    "parent_shared"
+  ],
+  "certification_rescues": 168,
+  "comparison_valid_rate": 1.0,
+  "elapsed_seconds": 3.192039,
+  "evaluations_per_second": 3007.482254,
+  "family_certification_resilience_events": 1448,
+  "family_internal_losses": 5272,
+  "family_semantics": [
+    "at_least_k",
+    "augmented_exact_k"
+  ],
+  "mean_valid_apples_to_apples_loss_delta": -0.03,
+  "metric_artifact_risk_events": 0,
+  "metric_artifact_risk_rate": 0.0,
+  "run_count": 2,
+  "steps": 12,
+  "strict_parent_losses": 5560,
+  "strict_rescues": 288,
+  "support_width_classes": [
+    1,
+    2,
+    4
+  ],
+  "support_width_count": 3,
+  "threshold_fractions": [
+    0.5,
+    1.0
+  ],
+  "version": "0.8"
+}

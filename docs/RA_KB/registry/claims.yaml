@@ -3555,3 +3555,229 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-METHOD-003
   - RA-SIM-SUPPORT-FAMILY-METHOD-004
   - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+- id: RA-MOTIF-CERT-FAMILY-001
+  name: Certified support-family contexts separate family membership from member certificate support
+  domain: matter
+  papers:
+  - II
+  statement: 'A support-cut family can be equipped with an abstract certificate context that certifies individual member cuts soundly with respect to the ordinary motif-commit support relation.
+
+    '
+  nature_targets:
+  - RA-native support-family certification resilience diagnostics
+  ra_observable: null
+  sources:
+  - RA_MotifCertifiedSupportFamilyBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-001
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifCertifiedSupportFamilyBridge` succeeded, 8274 jobs; no sorry/admit/axiom). The module imports only RA_MotifSupportFamilyMonotonicity and
+    adds abstract certificate-context structures + member-soundness + monotonicity theorems without changing the upstream support-family abstractions.
+  next_tasks:
+  - Run canonical v0.8 ensemble and promote only confirmed claims.
+  source_status:
+    RA_MotifCertifiedSupportFamilyBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGFamilyCertificateContext ; GraphFamilyCertificateContext
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+- id: RA-MOTIF-CERT-FAMILY-002
+  name: Independent certified-family readiness conservatively refines certified family readiness
+  domain: matter
+  papers:
+  - II
+  statement: 'If a member cut is certified by a family certificate context and ready at a site, then the ordinary certified-family readiness and any-cut family readiness predicates hold.
+
+    '
+  nature_targets:
+  - RA-native support-family certification resilience diagnostics
+  ra_observable: null
+  sources:
+  - RA_MotifCertifiedSupportFamilyBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-CERT-FAMILY-001
+  - RA-MOTIF-SUPPORT-FAMILY-002
+  restoration_preconditions: []
+  caveats: Lake-build-confirmed (assistant-side `lake build RA_MotifCertifiedSupportFamilyBridge` succeeded, 8274 jobs; no sorry/admit/axiom). The module imports only RA_MotifSupportFamilyMonotonicity and
+    adds abstract certificate-context structures + member-soundness + monotonicity theorems without changing the upstream support-family abstractions.
+  next_tasks:
+  - Run canonical v0.8 ensemble and promote only confirmed claims.
+  source_status:
+    RA_MotifCertifiedSupportFamilyBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGIndependentCertifiedFamilyReadyAt.to_certified_family_ready ; GraphIndependentCertifiedFamilyReadyAt.to_certified_family_ready ; DAGIndependentCertifiedFamilyReadyAt.to_family_ready
+    ; GraphIndependentCertifiedFamilyReadyAt.to_family_ready
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+- id: RA-SIM-CERT-FAMILY-001
+  name: Independent member certification enables certification-channel support-family rescue in the v0.8 workbench
+  domain: matter
+  papers:
+  - II
+  statement: 'The v0.8 simulator demonstrates, at packet-local scale pending canonical run, that support-family alternatives can rescue ledger/orientation certificate failure when family members have member-distinct
+    certificate fates.
+
+    '
+  nature_targets:
+  - RA-native support-family certification resilience diagnostics
+  ra_observable: null
+  sources:
+  - ra_causal_dag_independent_cert_families.py
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-METRIC-001
+  - RA-MOTIF-CERT-FAMILY-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.8 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics
+    at_least_k,augmented_exact_k --certification-regimes parent_shared,cut_level,independent_member --certificate-correlations 0.0,0.25,0.5,0.75,1.0). 4,032,000 evaluations in 235.6s, 17,114 eval/s. comparison_valid_rate=1.0,
+    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline holds at scale when monotone family semantics are used). certification_rescues=129,249; family_certification_resilience_events=778,581;
+    strict_rescues=192,567 (support-route); strict_parent_losses=2,321,100. All 5 README success criteria reproduce: (1) parent_shared rescue=0 across all rows; (2) independent_member rescue is positive
+    in cert modes; (3) cert rescue declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger / at_least_k / sev 0.5 / thresh 0.25: rescue 0.221 -> 0.176 -> 0.121 -> 0.091 -> 0.000); (4) selector_guardrail_passed=True
+    across all selector_stress rows; (5) support-route resilience and certification-witness resilience remain distinct diagnostics.'
+  next_tasks:
+  - Run canonical v0.8 ensemble and promote only confirmed claims.
+  source_status:
+    RA_MotifCertifiedSupportFamilyBridge.lean: source_level_formal_bridge_pending_local_compile_no_sorry_no_admit_no_axiom
+    ra_causal_dag_independent_cert_families.py: python_unittest_validated_packet_local_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: evaluate_independent_certified_family ; run_independent_certified_families
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+- id: RA-SIM-CERT-FAMILY-002
+  name: Certification-channel resilience depends on certificate-correlation structure
+  domain: matter
+  papers:
+  - II
+  statement: 'The v0.8 workbench sweeps certificate correlation to distinguish independent member certificates from shared-fate certificate failure. Certification rescue is expected to decrease as certificate
+    correlation approaches one.
+
+    '
+  nature_targets:
+  - RA-native support-family certification resilience diagnostics
+  ra_observable: null
+  sources:
+  - ra_certification_correlation_sweep_v0_8.csv
+  proof_dependencies:
+  - RA-SIM-CERT-FAMILY-001
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.8 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics
+    at_least_k,augmented_exact_k --certification-regimes parent_shared,cut_level,independent_member --certificate-correlations 0.0,0.25,0.5,0.75,1.0). 4,032,000 evaluations in 235.6s, 17,114 eval/s. comparison_valid_rate=1.0,
+    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline holds at scale when monotone family semantics are used). certification_rescues=129,249; family_certification_resilience_events=778,581;
+    strict_rescues=192,567 (support-route); strict_parent_losses=2,321,100. All 5 README success criteria reproduce: (1) parent_shared rescue=0 across all rows; (2) independent_member rescue is positive
+    in cert modes; (3) cert rescue declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger / at_least_k / sev 0.5 / thresh 0.25: rescue 0.221 -> 0.176 -> 0.121 -> 0.091 -> 0.000); (4) selector_guardrail_passed=True
+    across all selector_stress rows; (5) support-route resilience and certification-witness resilience remain distinct diagnostics.'
+  next_tasks:
+  - Run canonical v0.8 ensemble and promote only confirmed claims.
+  source_status:
+    RA_MotifCertifiedSupportFamilyBridge.lean: source_level_formal_bridge_pending_local_compile_no_sorry_no_admit_no_axiom
+    ra_causal_dag_independent_cert_families.py: python_unittest_validated_packet_local_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: certificate_correlation ; certification_rescue_rate ; family_certification_resilience_rate
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
+- id: RA-SIM-CERT-FAMILY-003
+  name: Selector stress remains outside support-family certification rescue in v0.8
+  domain: matter
+  papers:
+  - II
+  statement: 'The v0.8 simulator preserves the layer distinction between support-family certification resilience and selector-exclusion stress: selector_stress is not counted as certification rescue.
+
+    '
+  nature_targets:
+  - RA-native support-family certification resilience diagnostics
+  ra_observable: null
+  sources:
+  - ra_independent_cert_selector_guardrail_v0_8.csv
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-METRIC-004
+  restoration_preconditions: []
+  caveats: 'Reconfirmed by canonical 100-seed v0.8 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics
+    at_least_k,augmented_exact_k --certification-regimes parent_shared,cut_level,independent_member --certificate-correlations 0.0,0.25,0.5,0.75,1.0). 4,032,000 evaluations in 235.6s, 17,114 eval/s. comparison_valid_rate=1.0,
+    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline holds at scale when monotone family semantics are used). certification_rescues=129,249; family_certification_resilience_events=778,581;
+    strict_rescues=192,567 (support-route); strict_parent_losses=2,321,100. All 5 README success criteria reproduce: (1) parent_shared rescue=0 across all rows; (2) independent_member rescue is positive
+    in cert modes; (3) cert rescue declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger / at_least_k / sev 0.5 / thresh 0.25: rescue 0.221 -> 0.176 -> 0.121 -> 0.091 -> 0.000); (4) selector_guardrail_passed=True
+    across all selector_stress rows; (5) support-route resilience and certification-witness resilience remain distinct diagnostics.'
+  next_tasks:
+  - Run canonical v0.8 ensemble and promote only confirmed claims.
+  source_status:
+    RA_MotifCertifiedSupportFamilyBridge.lean: source_level_formal_bridge_pending_local_compile_no_sorry_no_admit_no_axiom
+    ra_causal_dag_independent_cert_families.py: python_unittest_validated_packet_local_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: selector_guardrail_passed ; certification_rescue_rate
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_8_IndependentCertifiedFamilies_May05_2026
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  - RA-SIM-SUPPORT-FAMILY-METHOD-004
+  - RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001
