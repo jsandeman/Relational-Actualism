@@ -1,0 +1,4 @@
+mode,mean_orientation_link_overlap,mean_ledger_overlap,mean_support_frontier_overlap,mean_orientation_specific_sensitivity_proxy,mean_ledger_specific_sensitivity_proxy,specificity_summary
+ledger_failure,0.49377668888399084,0.84753021875,0.7261363125000001,0.07593349666740139,0.15246978125,mixed_or_control
+orientation_degradation,0.498465703477062,0.84753021875,0.7261363125000001,0.501534296522938,0.0228704671875,orientation_specificity_resolved
+selector_stress,0.5096205749736316,0.84753021875,0.7261363125000001,0.0,0.0,not_certification_channel

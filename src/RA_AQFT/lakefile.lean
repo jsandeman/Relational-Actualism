@@ -139,6 +139,12 @@ lean_lib «RelationalActualism» where
                                 -- witness contexts, packaging into native
                                 -- overlap, refinement to independent
                                 -- certified-family readiness, future_mono.
+    `RA_MotifOrientationLinkSurface, -- (May 5 2026) v1.2 distinct
+                                -- orientation-link surface bridge:
+                                -- DAGOrientationLinkSurfaceContext +
+                                -- Graph variant; refinement
+                                -- .to_orientation_component;
+                                -- qualitative-only, no rescue law.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

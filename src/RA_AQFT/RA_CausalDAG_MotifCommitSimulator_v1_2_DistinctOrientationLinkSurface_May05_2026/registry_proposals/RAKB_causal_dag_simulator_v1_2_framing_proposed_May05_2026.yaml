@@ -1,0 +1,25 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+    name: Orientation-specific rescue claims require a distinct orientation-link surface
+    domain: framing
+    papers: [II]
+    statement: >
+      Orientation-degradation specificity should not be claimed from a component
+      layer where orientation overlap is numerically identical to support and
+      frontier overlap. A distinct orientation-link/sign-source surface is
+      required before stronger orientation-specific claims are promoted.
+    nature_targets: [RA-native orientation witness diagnostics]
+    ra_observable: null
+    sources: [RA_CausalDAG_MotifCommitSimulator_v1_2_DistinctOrientationLinkSurface_Report_May05_2026.md]
+    proof_dependencies: []
+    framing_links: [RA-SIM-NATIVE-COMPONENT-DECOUPLE-001]
+    restoration_preconditions: []
+    caveats: v1.2 orientation-link surface remains a prototype pending native orientation derivation.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: orientation-link surface guardrail for component attribution
+    packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_2_DistinctOrientationLinkSurface_May05_2026

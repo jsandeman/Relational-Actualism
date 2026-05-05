@@ -1,0 +1,51 @@
+registry_version: v0.5
+claims:
+  - id: RA-MOTIF-ORIENTATION-LINK-SURFACE-001
+    name: Distinct orientation-link surfaces refine generic orientation component evidence
+    domain: matter
+    papers: [II]
+    statement: >
+      A distinct orientation-link certificate surface can be represented as
+      evidence that refines the generic orientation component of native
+      certificate witnesses.
+    nature_targets: [RA-native orientation witness structure]
+    ra_observable: null
+    sources: [RA_MotifOrientationLinkSurface.lean]
+    proof_dependencies: [RA-MOTIF-NATIVE-CERT-COMPONENTS-001]
+    restoration_preconditions: []
+    caveats: Source-level bridge pending local Lean build; no numerical rescue law is asserted.
+    next_tasks: []
+    source_status:
+      RA_MotifOrientationLinkSurface.lean: source_level_formal_bridge_pending_local_compile_no_sorry_no_admit_no_axiom
+    legacy_proof_status: DR
+    proof_status: source_level_formal_bridge_pending_compile
+    legacy_support_status: none
+    auxiliary_support_status: formal_bridge_proposed
+    claim_kind: interpretive_bridge
+    formal_anchor: DAGOrientationLinkSurfaceContext ; GraphOrientationLinkSurfaceContext ; DAGHasOrientationLinkSurface ; GraphHasOrientationLinkSurface
+    packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_2_DistinctOrientationLinkSurface_May05_2026
+  - id: RA-SIM-ORIENTATION-LINK-SURFACE-001
+    name: v1.2 introduces a decoupled orientation-link overlap surface
+    domain: matter
+    papers: [II]
+    statement: >
+      The v1.2 workbench introduces an orientation-link overlap surface that is
+      operationally distinct from support and frontier overlap and audits whether
+      orientation-degradation rescue varies with this surface under matched
+      support/frontier controls.
+    nature_targets: [RA-native certification-family diagnostics]
+    ra_observable: null
+    sources: [ra_orientation_link_surface.py, ra_orientation_support_decoupling_audit_v1_2.csv]
+    proof_dependencies: [RA-SIM-NATIVE-COMPONENT-DECOUPLE-001, RA-MOTIF-ORIENTATION-LINK-SURFACE-001]
+    restoration_preconditions: []
+    caveats: Simulation/proxy result pending canonical run; orientation-link surface is not yet derived from native orientation Lean modules.
+    next_tasks: []
+    source_status:
+      ra_orientation_link_surface.py: simulation_analysis_validated_packet_local
+    legacy_proof_status: DR
+    proof_status: simulation_packet_local_validated_pending_canonical
+    legacy_support_status: none
+    auxiliary_support_status: simulation_analysis_pending_canonical
+    claim_kind: derived_result
+    formal_anchor: orientation_link_overlap ; matched support/frontier strata ; orientation_surface_adjusted_rescue_rate
+    packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_2_DistinctOrientationLinkSurface_May05_2026

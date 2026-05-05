@@ -1,0 +1,8 @@
+{
+  "matched_orientation_variation_available": true,
+  "new_orientation_link_surface_decoupled": true,
+  "old_support_frontier_orientation_triplet_confounded": true,
+  "orientation_specificity_resolved": true,
+  "selector_guardrail_passed": true,
+  "v1_2_posture": "distinct_orientation_link_surface_ready_for_native_formal_tightening"
+}

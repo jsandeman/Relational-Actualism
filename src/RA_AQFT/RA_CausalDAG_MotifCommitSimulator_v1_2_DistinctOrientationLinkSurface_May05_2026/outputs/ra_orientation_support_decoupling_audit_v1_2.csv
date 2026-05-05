@@ -1,0 +1,4 @@
+mode,rows,old_triplet_max_abs_diff,new_orientation_support_max_abs_diff,new_orientation_support_mean_abs_diff,orientation_link_bins,support_frontier_bins,decoupling_status
+ledger_failure,160,0.0,0.8153923847713833,0.36953722021542856,high;low;medium,high;low;medium,orientation_surface_decoupled
+orientation_degradation,160,0.0,0.9198669052226156,0.40067440042860414,high;low;medium,high;low;medium,orientation_surface_decoupled
+selector_stress,160,0.0,0.8490833176806867,0.367255749957374,high;low;medium,high;low;medium,orientation_surface_decoupled

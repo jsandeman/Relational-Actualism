@@ -1,0 +1,55 @@
+# v0.5 active-schema upsert for v1.2 framing.
+# Append the entry below to docs/RA_KB/registry/framing.yaml under the
+# top-level `framing_policies:` list.
+#
+# Naming follows the <TOPIC>-METHOD-NNN pattern (RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001)
+# to avoid the METHOD-001 collision; mirrors v1.0 / v1.1 sibling methods.
+
+framing_policies:
+- id: RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  name: Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Orientation-degradation specificity must NOT be claimed from a component
+    layer where orientation overlap is numerically identical to support and
+    frontier overlap (the v0.9/v1.0 confounded triplet). A distinct
+    orientation-link / sign-source surface is required first. Furthermore -
+    the v1.2 surface, which IS distinct from support/frontier overlap and DOES
+    restore orientation specificity in the v1.1 audit, is synthesized from
+    row metadata (mode/severity/threshold/support_width hash) and is
+    therefore demonstrative, not derivative. v1.2 confirms the v1.1 audit
+    machinery is sound; it does NOT establish that Nature's
+    orientation_degradation rescue is controlled by orientation-link overlap.
+    Sequencing discipline - a v1.3 (or later) packet must derive
+    orientation_link_overlap from genuine native orientation/sign-source
+    witness data (sourced from RA_CausalOrientation_Core,
+    RA_D1_NativeLedgerOrientation, RA_D1_NativeClosure) before any
+    orientation-specific Nature-facing claim is promoted; BDG-LLC formal
+    anchoring should wait for the real-surface result.
+  nature_targets:
+  - RA-native orientation witness diagnostics
+  - sequencing discipline for synthetic-vs-derived orientation surfaces
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_2_DistinctOrientationLinkSurface_May05_2026
+  - ra_native_orientation_surface_summary_v1_2.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'v1.2 orientation-link surface remains a synthesized prototype pending native orientation derivation. Treat the v1.2 verdict (orientation_specificity_resolved=true) strictly as audit-machinery soundness evidence - it confirms the v1.1 audit infrastructure is sufficient to detect orientation specificity when the surface is real, but it is not itself a derivation of orientation specificity from native witness data. Do not state any orientation-specific Nature-facing claim until v1.3 (or later) supplies a real orientation-link surface.'
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifOrientationLinkSurface ; ra_orientation_link_surface.py ; ra_native_orientation_surface_summary_v1_2.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_2_DistinctOrientationLinkSurface_May05_2026

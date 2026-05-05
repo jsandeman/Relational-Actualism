@@ -9,10 +9,6 @@ RA-ONT-001,RA-KERNEL-002,proof_dependency,claim,claim,Finite causal graph ontolo
 RA-ONT-004,RA-KERNEL-003,proof_dependency,claim,claim,Finitary Actuality,Finite potentia
 RA-ONT-003,RA-KERNEL-003,proof_dependency,claim,claim,Structured potentia / adjacent possible,Finite potentia
 RA-KERNEL-001,RA-KERNEL-003,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Finite potentia
-RA-ONT-003,RA-KERNEL-004,proof_dependency,claim,issue,Structured potentia / adjacent possible,Actualization selector / local frequency-kernel requirement
-RA-KERNEL-003,RA-KERNEL-004,proof_dependency,claim,issue,Finite potentia,Actualization selector / local frequency-kernel requirement
-RA-KERNEL-004,RA-KERNEL-005,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Discrete covariance target
-RA-KERNEL-002,RA-KERNEL-005,proof_dependency,claim,issue,Kernel locality,Discrete covariance target
 RA-KERNEL-001,RA-ARITH-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,BDG coefficient arithmetic spine
 RA-ARITH-001,RA-ARITH-002,proof_dependency,claim,claim,BDG coefficient arithmetic spine,Second-order cancellation pattern
 RA-KERNEL-001,RA-D4-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,D4U02 selectivity ceiling
@@ -36,11 +32,6 @@ RA-MOTIF-002,RA-MOTIF-005,proof_dependency,claim,claim,Stable motif census,Depth
 RA-MOTIF-005,RA-MOTIF-006,proof_dependency,claim,claim,Depth-2 ledger/orientation structure,Signed three-direction charge spectrum
 RA-MOTIF-003,RA-MOTIF-007,proof_dependency,claim,claim,Minimal closure windows,Confinement as finite renewal
 RA-MOTIF-004,RA-MOTIF-007,proof_dependency,claim,claim,Extension census,Confinement as finite renewal
-RA-MOTIF-002,RA-OPEN-001,proof_dependency,claim,issue,Stable motif census,Full motif-to-spectrum cartography
-RA-MOTIF-003,RA-OPEN-001,proof_dependency,claim,issue,Minimal closure windows,Full motif-to-spectrum cartography
-RA-MOTIF-005,RA-OPEN-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Full motif-to-spectrum cartography
-RA-MOTIF-007,RA-OPEN-002,proof_dependency,claim,issue,Confinement as finite renewal,Scattering and decay predictions
-RA-KERNEL-004,RA-OPEN-002,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Scattering and decay predictions
 RA-KERNEL-001,RA-GRAV-001,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Kernel–Poisson divergence identity
 RA-GRAV-001,RA-GRAV-002,proof_dependency,claim,claim,Kernel–Poisson divergence identity,Asymptotic kernel saturation
 RA-D4-001,RA-GRAV-002,proof_dependency,claim,claim,D4U02 selectivity ceiling,Asymptotic kernel saturation
@@ -53,10 +44,6 @@ RA-LLC-001,RA-GRAV-006,proof_dependency,claim,claim,Local Ledger Condition,Joint
 RA-KERNEL-001,RA-GRAV-006,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Joint BDG/LLC macro-kernel dimension
 RA-KERNEL-001,RA-GRAV-007,proof_dependency,claim,claim,Four-dimensional BDG acceptance kernel,Antichain drift local statistic
 RA-GRAV-001,RA-GRAV-007,proof_dependency,claim,claim,Kernel–Poisson divergence identity,Antichain drift local statistic
-RA-GRAV-006,RA-OPEN-003,proof_dependency,claim,issue,Joint BDG/LLC macro-kernel dimension,Coefficient-level orbital/lensing source law
-RA-GRAV-007,RA-OPEN-003,proof_dependency,claim,issue,Antichain drift local statistic,Coefficient-level orbital/lensing source law
-RA-GRAV-007,RA-OPEN-004,proof_dependency,claim,issue,Antichain drift local statistic,Environment-sensitive expansion law
-RA-GRAV-003,RA-OPEN-005,proof_dependency,claim,issue,Causal severance,Low-l CMB / Axis-of-Evil severance inheritance
 RA-ONT-001,RA-COMP-001,proof_dependency,claim,claim,Finite causal graph ontology,Tier hierarchy
 RA-LLC-001,RA-COMP-001,proof_dependency,claim,claim,Local Ledger Condition,Tier hierarchy
 RA-COMP-001,RA-COMP-002,proof_dependency,claim,claim,Tier hierarchy,Recursive closure
@@ -68,110 +55,10 @@ RA-COMP-004,RA-COMP-006,proof_dependency,claim,claim,RA assembly depth,E. coli a
 RA-COMP-003,RA-COMP-007,proof_dependency,claim,claim,Causal Firewall conditions,Origin-of-life sandwich bound
 RA-COMP-004,RA-COMP-007,proof_dependency,claim,claim,RA assembly depth,Origin-of-life sandwich bound
 RA-COMP-003,RA-COMP-008,proof_dependency,claim,claim,Causal Firewall conditions,Substrate-independent biosignature criteria
-RA-COMP-003,RA-OPEN-006,proof_dependency,claim,issue,Causal Firewall conditions,Causal shield theorem
-RA-COMP-003,RA-OPEN-007,proof_dependency,claim,issue,Causal Firewall conditions,Persistence-window formula
-RA-COMP-007,RA-OPEN-007,proof_dependency,claim,issue,Origin-of-life sandwich bound,Persistence-window formula
-RA-COMP-002,RA-OPEN-008,proof_dependency,claim,issue,Recursive closure,Consciousness threshold problem
-RA-COMP-003,RA-OPEN-008,proof_dependency,claim,issue,Causal Firewall conditions,Consciousness threshold problem
-RA-COMP-004,RA-OPEN-008,proof_dependency,claim,issue,RA assembly depth,Consciousness threshold problem
-RA-KERNEL-004,RA-OPEN-009,proof_dependency,issue,issue,Stochastic actualization kernel requirement,RA-native frequency law
-RA-KERNEL-005,RA-OPEN-009,proof_dependency,issue,issue,Discrete covariance target,RA-native frequency law
 RA-MOTIF-005,RA-MOTIF-008,proof_dependency,claim,claim,Depth-2 ledger/orientation structure,Orientation/chirality theorem family
 RA-LLC-001,RA-MOTIF-008,proof_dependency,claim,claim,Local Ledger Condition,Orientation/chirality theorem family
-RA-MOTIF-002,RA-MOTIF-009,proof_dependency,claim,issue,Stable motif census,Type IV exact-zero motif target
-RA-MOTIF-005,RA-MOTIF-009,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Type IV exact-zero motif target
-RA-ARITH-001,RA-PRED-001,proof_dependency,claim,target,BDG coefficient arithmetic spine,Fine-structure inverse target
-RA-MOTIF-006,RA-PRED-001,proof_dependency,claim,target,Signed three-direction charge spectrum,Fine-structure inverse target
-RA-MOTIF-003,RA-PRED-002,proof_dependency,claim,target,Minimal closure windows,Proton mass scale target
-RA-ARITH-003,RA-PRED-002,proof_dependency,claim,target,Koide ratio identity,Proton mass scale target
-RA-ARITH-005,RA-PRED-002,proof_dependency,claim,target,Internal density scale from selectivity,Proton mass scale target
-RA-MOTIF-009,RA-PRED-003,proof_dependency,issue,target,Type IV exact-zero motif target,Higgs-scale / scalar benchmark target
-RA-ARITH-001,RA-PRED-003,proof_dependency,claim,target,BDG coefficient arithmetic spine,Higgs-scale / scalar benchmark target
-RA-ARITH-006,RA-PRED-004,proof_dependency,claim,target,BDG path-weight ratio,f0 path-weight comparison target
-RA-ARITH-004,RA-PRED-004,proof_dependency,claim,target,Dimensionless strong-interaction scale,f0 path-weight comparison target
-RA-OPEN-004,RA-PRED-005,proof_dependency,issue,target,Environment-sensitive expansion law,Local Hubble/environment target
-RA-GRAV-007,RA-PRED-005,proof_dependency,claim,target,Antichain drift local statistic,Local Hubble/environment target
-RA-OPEN-003,RA-PRED-006,proof_dependency,issue,target,Coefficient-level orbital/lensing source law,Rotation-curve / lensing source-law target
-RA-GRAV-006,RA-PRED-006,proof_dependency,claim,target,Joint BDG/LLC macro-kernel dimension,Rotation-curve / lensing source-law target
-RA-GRAV-007,RA-PRED-006,proof_dependency,claim,target,Antichain drift local statistic,Rotation-curve / lensing source-law target
-RA-OPEN-005,RA-PRED-007,proof_dependency,issue,target,Low-l CMB / Axis-of-Evil severance inheritance,Axis-of-Evil / low-l alignment target
-RA-GRAV-003,RA-PRED-007,proof_dependency,claim,target,Causal severance,Axis-of-Evil / low-l alignment target
 RA-D4-001,RA-MOTIF-006,proof_dependency,claim,claim,D4U02 selectivity ceiling,Signed three-direction charge spectrum
 RA-LLC-001,RA-MOTIF-006,proof_dependency,claim,claim,Local Ledger Condition,Signed three-direction charge spectrum
-RA-D4-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,D4U02 selectivity ceiling,Edge-level sign-source for signed N1 charge
-RA-LLC-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Local Ledger Condition,Edge-level sign-source for signed N1 charge
-RA-MOTIF-005,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Edge-level sign-source for signed N1 charge
-RA-MOTIF-006,RA-OPEN-CHARGE-SIGN-001,proof_dependency,claim,issue,Signed three-direction charge spectrum,Edge-level sign-source for signed N1 charge
-RA-ONT-001,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Finite causal graph ontology,RA-native candidate measure for sequential BDG growth
-RA-ONT-003,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Structured potentia / adjacent possible,Derived growth measure as selector shadow
-RA-KERNEL-002,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Kernel locality,Derived growth measure as selector shadow
-RA-KERNEL-004,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,issue,issue,Actualization selector / local frequency-kernel requirement,Derived growth measure as selector shadow
-RA-KERNEL-005,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,issue,issue,Discrete covariance target,RA-native candidate measure for sequential BDG growth
-RA-ONT-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,claim,issue,Finite causal graph ontology,Frontier/incidence normal form for actualization candidates
-RA-KERNEL-002,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,claim,issue,Kernel locality,Frontier/incidence normal form for actualization candidates
-RA-KERNEL-004,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Hasse/frontier normal form for one-vertex actualization
-RA-KERNEL-005,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,Discrete covariance target,Hasse/frontier normal form for one-vertex actualization
-RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,RA-native candidate measure for sequential BDG growth,Hasse/frontier normal form for one-vertex actualization
-RA-KERNEL-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,Poisson-CSG as effective selector-shadow regime
-RA-KERNEL-002,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,claim,issue,Kernel locality,Finite RA growth versus accepted-conditional Poisson-CSG
-RA-KERNEL-004,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Finite RA growth versus accepted-conditional Poisson-CSG
-RA-ARITH-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,claim,issue,BDG coefficient arithmetic spine,Poisson-CSG as effective selector-shadow regime
-RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,Poisson-CSG as effective selector-shadow regime
-RA-KERNEL-004,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,RA-native finite-graph local density estimator
-RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,RA-native finite-graph local density estimator
-RA-OPEN-POISSON-DYNAMICS-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,Finite RA growth versus accepted-conditional Poisson-CSG,RA-native finite-graph local density estimator
-RA-KERNEL-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,Action/future-volume weighting as derived selector shadow
-RA-KERNEL-004,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,Stochastic actualization kernel requirement,Uniform versus action-weighted actualization among admitted candidates
-RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,Action/future-volume weighting as derived selector shadow
-RA-OPEN-POISSON-DYNAMICS-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,Finite RA growth versus accepted-conditional Poisson-CSG,Uniform versus action-weighted actualization among admitted candidates
-RA-OPEN-FRONTIER-NORMAL-FORM-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,issue,issue,Frontier/incidence normal form for actualization candidates,Edge-level sign-source for signed N1 charge
-RA-LLC-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,claim,issue,Local Ledger Condition,Topological/incidence derivation of the RA ledger rule
-RA-MOTIF-006,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,claim,issue,Signed three-direction charge spectrum,Topological/incidence derivation of the RA ledger rule
-RA-OPEN-CHARGE-SIGN-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,issue,issue,Edge-level sign-source for signed N1 charge,Topological/incidence derivation of the RA ledger rule
-RA-OPEN-FRONTIER-NORMAL-FORM-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,issue,issue,Frontier/incidence normal form for actualization candidates,Topological/incidence derivation of the RA ledger rule
-RA-ONT-001,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Finite causal graph ontology,RA-native actualization selector
-RA-ONT-002,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Irreversible actualization,RA-native actualization selector
-RA-ONT-003,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Structured potentia / adjacent possible,RA-native actualization selector
-RA-KERNEL-001,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,RA-native actualization selector
-RA-KERNEL-002,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Kernel locality,RA-native actualization selector
-RA-KERNEL-003,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Finite potentia,RA-native actualization selector
-RA-KERNEL-004,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,issue,issue,Actualization selector / local frequency-kernel requirement,RA-native actualization selector
-RA-LLC-001,RA-OPEN-ACTUALIZATION-SELECTOR-001,proof_dependency,claim,issue,Local Ledger Condition,RA-native actualization selector
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,RA-native actualization selector,Selector Closure Theorem
-RA-OPEN-FRONTIER-NORMAL-FORM-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,Frontier/incidence normal form for actualization candidates,Selector Closure Theorem
-RA-OPEN-NO-HISTORY-QUOTIENT-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,No actual-history quotient principle,Selector Closure Theorem
-RA-OPEN-RELATIONAL-DETERMINACY-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,issue,issue,Relational determinacy and no primitive randomness,Selector Closure Theorem
-RA-KERNEL-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,Selector Closure Theorem
-RA-KERNEL-002,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Kernel locality,Selector Closure Theorem
-RA-KERNEL-003,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Finite potentia,Selector Closure Theorem
-RA-LLC-001,RA-OPEN-SELECTOR-CLOSURE-001,proof_dependency,claim,issue,Local Ledger Condition,Selector Closure Theorem
-RA-ONT-001,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,claim,issue,Finite causal graph ontology,No actual-history quotient principle
-RA-ONT-002,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,claim,issue,Irreversible actualization,No actual-history quotient principle
-RA-ONT-004,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,claim,issue,Finitary Actuality,No actual-history quotient principle
-RA-KERNEL-005,RA-OPEN-NO-HISTORY-QUOTIENT-001,proof_dependency,issue,issue,Discrete covariance target,No actual-history quotient principle
-RA-ONT-002,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,claim,issue,Irreversible actualization,Relational determinacy and no primitive randomness
-RA-ONT-003,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,claim,issue,Structured potentia / adjacent possible,Relational determinacy and no primitive randomness
-RA-KERNEL-004,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,issue,issue,Actualization selector / local frequency-kernel requirement,Relational determinacy and no primitive randomness
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-RELATIONAL-DETERMINACY-001,proof_dependency,issue,issue,RA-native actualization selector,Relational determinacy and no primitive randomness
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,issue,issue,RA-native actualization selector,Derived growth measure as selector shadow
-RA-KERNEL-003,RA-OPEN-GROWTH-MEASURE-001,proof_dependency,claim,issue,Finite potentia,Derived growth measure as selector shadow
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,RA-native actualization selector,Frontier/incidence normal form for actualization candidates
-RA-OPEN-NO-HISTORY-QUOTIENT-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,issue,issue,No actual-history quotient principle,Frontier/incidence normal form for actualization candidates
-RA-LLC-001,RA-OPEN-FRONTIER-NORMAL-FORM-001,proof_dependency,claim,issue,Local Ledger Condition,Frontier/incidence normal form for actualization candidates
-RA-MOTIF-005,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,claim,issue,Depth-2 ledger/orientation structure,Topological/incidence derivation of the RA ledger rule
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-TOPOLOGICAL-LEDGER-001,proof_dependency,issue,issue,RA-native actualization selector,Topological/incidence derivation of the RA ledger rule
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-POISSON-DYNAMICS-001,proof_dependency,issue,issue,RA-native actualization selector,Poisson-CSG as effective selector-shadow regime
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,issue,issue,RA-native actualization selector,RA-native finite-graph local density estimator
-RA-KERNEL-001,RA-OPEN-MU-ESTIMATOR-001,proof_dependency,claim,issue,Four-dimensional BDG acceptance kernel,RA-native finite-graph local density estimator
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-GROWTH-KERNEL-WEIGHT-001,proof_dependency,issue,issue,RA-native actualization selector,Action/future-volume weighting as derived selector shadow
-RA-OPEN-TOPOLOGICAL-LEDGER-001,RA-OPEN-CHARGE-SIGN-001,proof_dependency,issue,issue,Topological/incidence derivation of the RA ledger rule,Edge-level sign-source for signed N1 charge
-RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,BMV apparatus mu-dictionary identification
-RA-OPEN-ACTUALIZATION-SELECTOR-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,RA-native actualization selector,BMV apparatus mu-dictionary identification
-RA-OPEN-GROWTH-MEASURE-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,issue,issue,Derived growth measure as selector shadow,BMV apparatus mu-dictionary identification
-RA-MOTIF-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Native motif sector definition,BMV apparatus mu-dictionary identification
-RA-KERNEL-001,RA-OPEN-BMV-MU-DICTIONARY-001,proof_dependency,claim,issue,Kernel locality,BMV apparatus mu-dictionary identification
-RA-OPEN-BMV-MU-DICTIONARY-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,BMV apparatus mu-dictionary identification,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
-RA-OPEN-MU-ESTIMATOR-001,RA-OPEN-BDG-DECOHERENCE-CONSTRAINTS-001,proof_dependency,issue,issue,RA-native finite-graph local density estimator,Empirical constraints on BDG-suppression dictionaries from decoherence experiments
 RA-MOTIF-001,RA-MOTIF-COMMIT-001,proof_dependency,claim,claim,Native motif sector definition,Motif candidates as finite carrier sets
 RA-MOTIF-COMMIT-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Motif candidates as finite carrier sets,Causal support cuts encode finite readiness evidence
 RA-MOTIF-COMMIT-002,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Causal support cuts encode finite readiness evidence,Readiness is support containment in the causal past
@@ -225,22 +112,12 @@ RA-SIM-MOTIF-ORIENT-004,RA-MOTIF-SELECTOR-002,proof_dependency,claim,claim,Selec
 RA-SIM-MOTIF-ORIENT-004,RA-MOTIF-SELECTOR-004,proof_dependency,claim,claim,Selector closure runs downstream of orientation-certified readiness,RA-MOTIF-SELECTOR-004
 RA-SIM-MOTIF-ORIENT-005,RA-MOTIF-ORIENT-SUPPORT-005,proof_dependency,claim,claim,Simulator incompatibility can be witnessed by orientation conflict domains,RA-MOTIF-ORIENT-SUPPORT-005
 RA-SIM-MOTIF-ORIENT-005,RA-SIM-MOTIF-ORIENT-001,proof_dependency,claim,claim,Simulator incompatibility can be witnessed by orientation conflict domains,RA-SIM-MOTIF-ORIENT-001
-RA-SIM-MOTIF-ORIENT-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Orientation-gated simulator semantics remain RA-native modeling, not inherited-theory simulation",RA-METHOD-001
-RA-SIM-MOTIF-ORIENT-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,"Orientation-gated simulator semantics remain RA-native modeling, not inherited-theory simulation",RA-METHOD-002
-RA-SIM-MOTIF-ORIENT-METHOD-001,RA-MOTIF-COMMIT-METHOD-001,interpretive_dependency,framing,framing,"Orientation-gated simulator semantics remain RA-native modeling, not inherited-theory simulation",RA-MOTIF-COMMIT-METHOD-001
-RA-SIM-MOTIF-ORIENT-METHOD-001,RA-MOTIF-ORIENT-METHOD-001,interpretive_dependency,framing,framing,"Orientation-gated simulator semantics remain RA-native modeling, not inherited-theory simulation",RA-MOTIF-ORIENT-METHOD-001
 RA-MOTIF-SEVERANCE-002,RA-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Destroyed support cuts are not ready after severance,Post-severance reachability profiles formalize causal-support disruption
 RA-MOTIF-SEVERANCE-003,RA-MOTIF-SEVERANCE-002,proof_dependency,claim,claim,Destroyed support blocks post-severance commitment,Destroyed support cuts are not ready after severance
 RA-SIM-MOTIF-SEVERANCE-002,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Support loss and readiness loss are separately measured,Causal-severance interventions operationalize support disruption
 RA-SIM-MOTIF-SEVERANCE-003,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Finality-depth shift is measured under support disruption,Causal-severance interventions operationalize support disruption
 RA-SIM-MOTIF-SEVERANCE-004,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Recovery length measures post-severance readiness restoration,Causal-severance interventions operationalize support disruption
 RA-SIM-MOTIF-SEVERANCE-005,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,"Selector stress is separated from support, ledger, and orientation degradation",Causal-severance interventions operationalize support disruption
-RA-SIM-MOTIF-SEVERANCE-001,RA-MOTIF-ORIENT-SUPPORT-001,interpretive_dependency,claim,claim,Causal-severance interventions operationalize support disruption,Orientation-gated support certification bridge
-RA-SIM-MOTIF-SEVERANCE-002,RA-MOTIF-ORIENT-SUPPORT-001,interpretive_dependency,claim,claim,Support loss and readiness loss are separately measured,Orientation-gated support certification bridge
-RA-SIM-MOTIF-SEVERANCE-003,RA-MOTIF-ORIENT-SUPPORT-001,interpretive_dependency,claim,claim,Finality-depth shift is measured under support disruption,Orientation-gated support certification bridge
-RA-SIM-MOTIF-SEVERANCE-004,RA-MOTIF-ORIENT-SUPPORT-001,interpretive_dependency,claim,claim,Recovery length measures post-severance readiness restoration,Orientation-gated support certification bridge
-RA-SIM-MOTIF-SEVERANCE-005,RA-MOTIF-ORIENT-SUPPORT-001,interpretive_dependency,claim,claim,"Selector stress is separated from support, ledger, and orientation degradation",Orientation-gated support certification bridge
-RA-SIM-MOTIF-SEVERANCE-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Causal-severance simulations are RA-native actualization-fragility diagnostics,Nature is the target of RA
 RA-MOTIF-ORIENT-SUPPORT-001,RA-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Graph-oriented motif support witnesses certify finite frontier support,Post-severance reachability profiles formalize causal-support disruption
 RA-SIM-MOTIF-ENSEMBLE-001,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Large-ensemble causal-severance runs preserve v0.5 semantic predicates while using fast final-state generation,RA-SIM-MOTIF-SEVERANCE-001
 RA-SIM-MOTIF-ENSEMBLE-001,RA-SIM-MOTIF-SEVERANCE-002,proof_dependency,claim,claim,Large-ensemble causal-severance runs preserve v0.5 semantic predicates while using fast final-state generation,RA-SIM-MOTIF-SEVERANCE-002
@@ -258,9 +135,6 @@ RA-SIM-SEVERANCE-SIGNATURE-004,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,c
 RA-SIM-SEVERANCE-SIGNATURE-004,RA-MOTIF-SELECTOR-003,proof_dependency,claim,claim,Selector stress is separable as a strict-commitment incompatibility channel,RA-MOTIF-SELECTOR-003
 RA-SIM-SEVERANCE-SIGNATURE-005,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Support-width fragility requires frontier-width diversity in the ensemble,RA-SIM-SEVERANCE-SIGNATURE-001
 RA-SIM-SEVERANCE-SIGNATURE-005,RA-SIM-MOTIF-SEVERANCE-005,proof_dependency,claim,claim,Support-width fragility requires frontier-width diversity in the ensemble,RA-SIM-MOTIF-SEVERANCE-005
-RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Severance-signature analysis remains RA-native and simulator-regime bounded,RA-METHOD-001
-RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Severance-signature analysis remains RA-native and simulator-regime bounded,RA-METHOD-002
-RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,RA-SIM-MOTIF-SEVERANCE-METHOD-001,interpretive_dependency,framing,framing,Severance-signature analysis remains RA-native and simulator-regime bounded,RA-SIM-MOTIF-SEVERANCE-METHOD-001
 RA-SIM-SEVERANCE-CHANNEL-001,RA-SIM-SEVERANCE-SIGNATURE-001,proof_dependency,claim,claim,Channel-resolved severance workbench separates formerly degenerate failure modes,RA-SIM-SEVERANCE-SIGNATURE-001
 RA-SIM-SEVERANCE-CHANNEL-001,RA-SIM-SEVERANCE-SIGNATURE-004,proof_dependency,claim,claim,Channel-resolved severance workbench separates formerly degenerate failure modes,RA-SIM-SEVERANCE-SIGNATURE-004
 RA-SIM-SEVERANCE-CHANNEL-002,RA-SIM-SEVERANCE-SIGNATURE-005,proof_dependency,claim,claim,Support-diverse growth exposes Hasse-frontier width classes greater than one,RA-SIM-SEVERANCE-SIGNATURE-005
@@ -268,10 +142,6 @@ RA-SIM-SEVERANCE-CHANNEL-003,RA-SIM-MOTIF-SEVERANCE-003,proof_dependency,claim,c
 RA-SIM-SEVERANCE-CHANNEL-004,RA-SIM-SEVERANCE-CHANNEL-001,proof_dependency,claim,claim,v0.6 packet-local tests validate channel separation and support-width diversity,RA-SIM-SEVERANCE-CHANNEL-001
 RA-SIM-SEVERANCE-CHANNEL-004,RA-SIM-SEVERANCE-CHANNEL-002,proof_dependency,claim,claim,v0.6 packet-local tests validate channel separation and support-width diversity,RA-SIM-SEVERANCE-CHANNEL-002
 RA-SIM-SEVERANCE-CHANNEL-004,RA-SIM-SEVERANCE-CHANNEL-003,proof_dependency,claim,claim,v0.6 packet-local tests validate channel separation and support-width diversity,RA-SIM-SEVERANCE-CHANNEL-003
-RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-METHOD-001
-RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-METHOD-002
-RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-SIM-MOTIF-SEVERANCE-METHOD-001,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-SIM-MOTIF-SEVERANCE-METHOD-001
-RA-SIM-SEVERANCE-CHANNEL-METHOD-001,RA-SIM-SEVERANCE-SIGNATURE-METHOD-001,interpretive_dependency,framing,framing,Channel-resolved severance diagnostics remain RA-native modeling tools,RA-SIM-SEVERANCE-SIGNATURE-METHOD-001
 RA-SIM-SEVERANCE-CHANNEL-001,RA-SIM-MOTIF-SEVERANCE-002,proof_dependency,claim,claim,Channel-resolved severance workbench separates formerly degenerate failure modes,RA-SIM-MOTIF-SEVERANCE-002
 RA-SIM-SEVERANCE-CHANNEL-002,RA-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,Support-diverse growth exposes Hasse-frontier width classes greater than one,RA-MOTIF-SEVERANCE-001
 RA-SIM-SEVERANCE-CHANNEL-003,RA-SIM-MOTIF-SEVERANCE-001,proof_dependency,claim,claim,"Gate-failure decomposition distinguishes certification, reachability, availability, and selector-exclusion channels",RA-SIM-MOTIF-SEVERANCE-001
@@ -279,18 +149,12 @@ RA-SIM-SEVERANCE-CHANNEL-003,RA-SIM-SEVERANCE-SIGNATURE-004,proof_dependency,cla
 RA-MOTIF-COMMIT-003,RA-SIM-SEVERANCE-CHANNEL-005,proof_dependency,claim,claim,Readiness is support containment in the causal past,"Strict support-cut width is conjunctive exposure, not redundancy"
 RA-SIM-SEVERANCE-CHANNEL-001,RA-SIM-SEVERANCE-CHANNEL-005,proof_dependency,claim,claim,Channel-resolved severance workbench separates formerly degenerate failure modes,"Strict support-cut width is conjunctive exposure, not redundancy"
 RA-SIM-SEVERANCE-CHANNEL-002,RA-SIM-SEVERANCE-CHANNEL-005,proof_dependency,claim,claim,Support-diverse growth exposes Hasse-frontier width classes greater than one,"Strict support-cut width is conjunctive exposure, not redundancy"
-RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Support-cut width is not redundancy unless an explicit support-cut-family layer is present,"Nature is the target of RA, not prior theoretical formalisms"
-RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Support-cut width is not redundancy unless an explicit support-cut-family layer is present,"Correspondence recovery concerns empirical content, not inherited ontology"
-RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-MOTIF-COMMIT-METHOD-001,interpretive_dependency,framing,framing,Support-cut width is not redundancy unless an explicit support-cut-family layer is present,"Motif-commit simulations are RA-native actualization models, not QM or consensus simulations"
-RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-SIM-SEVERANCE-CHANNEL-METHOD-001,interpretive_dependency,framing,framing,Support-cut width is not redundancy unless an explicit support-cut-family layer is present,Channel-resolved severance diagnostics remain RA-native modeling tools
 RA-MOTIF-SUPPORT-FAMILY-001,RA-MOTIF-COMMIT-002,proof_dependency,claim,claim,Support-cut families separate alternative support from single-cut width,Causal support cuts encode finite readiness evidence
 RA-MOTIF-SUPPORT-FAMILY-001,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Support-cut families separate alternative support from single-cut width,Readiness is containment of support evidence in the causal past
 RA-MOTIF-SUPPORT-FAMILY-002,RA-MOTIF-SUPPORT-FAMILY-001,proof_dependency,claim,claim,Singleton support families recover single-cut readiness,Support-cut families separate alternative support from single-cut width
 RA-SIM-SUPPORT-FAMILY-001,RA-MOTIF-SUPPORT-FAMILY-001,interpretive_dependency,claim,claim,v0.7 threshold support families operationalize genuine redundancy,Support-cut families separate alternative support from single-cut width
 RA-SIM-SUPPORT-FAMILY-002,RA-SIM-SUPPORT-FAMILY-001,interpretive_dependency,claim,claim,Support-family rescue is distinct from selector-stress resolution,v0.7 threshold support families operationalize genuine redundancy
 RA-SIM-SUPPORT-FAMILY-003,RA-SIM-SUPPORT-FAMILY-001,interpretive_dependency,claim,claim,v0.7 distinguishes strict support-width exposure from support-family resilience,v0.7 threshold support families operationalize genuine redundancy
-RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Support-family redundancy is a simulator bridge, not a derived physical law","Nature is the target of RA, not prior theoretical formalisms"
-RA-SIM-SUPPORT-FAMILY-METHOD-001,RA-SIM-MOTIF-SEVERANCE-METHOD-001,interpretive_dependency,framing,framing,"Support-family redundancy is a simulator bridge, not a derived physical law","Motif-commit simulations are RA-native actualization models, not QM or consensus simulations"
 RA-MOTIF-SUPPORT-FAMILY-002,RA-MOTIF-COMMIT-003,proof_dependency,claim,claim,Singleton support families recover single-cut readiness,Readiness is support containment in the causal past
 RA-SIM-SUPPORT-FAMILY-001,RA-SIM-SEVERANCE-CHANNEL-003,proof_dependency,claim,claim,v0.7 threshold support families operationalize genuine redundancy,"Gate-failure decomposition distinguishes certification, reachability, availability, and selector-exclusion channels"
 RA-SIM-SUPPORT-FAMILY-002,RA-SIM-SEVERANCE-SIGNATURE-004,proof_dependency,claim,claim,Support-family rescue is distinct from selector-stress resolution,Selector stress is separable as a strict-commitment incompatibility channel
@@ -302,17 +166,10 @@ RA-SIM-SEVERANCE-SIGNATURE-004,RA-SIM-SUPPORT-FAMILY-004,proof_dependency,claim,
 RA-SIM-SUPPORT-FAMILY-001,RA-SIM-SUPPORT-FAMILY-005,proof_dependency,claim,claim,v0.7 threshold support families operationalize genuine redundancy,Exact-threshold subfamilies can amplify certification-channel fragility when family members share vulnerable certification surfaces
 RA-SIM-SUPPORT-FAMILY-004,RA-SIM-SUPPORT-FAMILY-005,proof_dependency,claim,claim,Support-family alternatives rescue reachability/availability-channel losses while leaving selector and certification failures separate,Exact-threshold subfamilies can amplify certification-channel fragility when family members share vulnerable certification surfaces
 RA-SIM-SEVERANCE-CHANNEL-005,RA-SIM-SUPPORT-FAMILY-005,proof_dependency,claim,claim,"Strict support-cut width is conjunctive exposure, not redundancy",Exact-threshold subfamilies can amplify certification-channel fragility when family members share vulnerable certification surfaces
-RA-SIM-SUPPORT-FAMILY-METHOD-003,RA-METHOD-001,interpretive_dependency,framing,framing,Exact-threshold subfamilies are not monotone augmented redundancy families,"Nature is the target of RA, not prior theoretical formalisms"
-RA-SIM-SUPPORT-FAMILY-METHOD-003,RA-SIM-SUPPORT-FAMILY-METHOD-001,interpretive_dependency,framing,framing,Exact-threshold subfamilies are not monotone augmented redundancy families,Support-cut width is not redundancy unless an explicit support-cut-family layer is present
-RA-SIM-SUPPORT-FAMILY-METHOD-003,RA-SIM-SUPPORT-FAMILY-METHOD-002,interpretive_dependency,framing,framing,Exact-threshold subfamilies are not monotone augmented redundancy families,"Support-family redundancy is a simulator bridge, not a derived physical law"
 RA-SIM-SUPPORT-FAMILY-005,RA-SIM-SUPPORT-FAMILY-006,proof_dependency,claim,claim,Exact-threshold subfamilies can amplify certification-channel fragility when family members share vulnerable certification surfaces,Audit corrigendum: cert-channel "amplification" reading of SF-005 is a metric-definition artifact; family_loss(threshold) is non-increasing in cert modes too
 RA-SIM-SUPPORT-FAMILY-001,RA-SIM-SUPPORT-FAMILY-006,proof_dependency,claim,claim,v0.7 threshold support families operationalize genuine redundancy,Audit corrigendum: cert-channel "amplification" reading of SF-005 is a metric-definition artifact; family_loss(threshold) is non-increasing in cert modes too
 RA-SIM-SUPPORT-FAMILY-004,RA-SIM-SUPPORT-FAMILY-007,proof_dependency,claim,claim,Support-family alternatives rescue reachability/availability-channel losses while leaving selector and certification failures separate,rescue_rate metric is structurally blind to cert-channel resilience at width >= 2
 RA-SIM-SUPPORT-FAMILY-006,RA-SIM-SUPPORT-FAMILY-007,proof_dependency,claim,claim,Audit corrigendum: cert-channel "amplification" reading of SF-005 is a metric-definition artifact; family_loss(threshold) is non-increasing in cert modes too,rescue_rate metric is structurally blind to cert-channel resilience at width >= 2
-RA-SIM-SUPPORT-FAMILY-METHOD-004,RA-METHOD-001,interpretive_dependency,framing,framing,Cross-threshold resilience comparisons require apples-to-apples metrics within width-stratified slices,"Nature is the target of RA, not prior theoretical formalisms"
-RA-SIM-SUPPORT-FAMILY-METHOD-004,RA-SIM-SUPPORT-FAMILY-METHOD-001,interpretive_dependency,framing,framing,Cross-threshold resilience comparisons require apples-to-apples metrics within width-stratified slices,Support-cut width is not redundancy unless an explicit support-cut-family layer is present
-RA-SIM-SUPPORT-FAMILY-METHOD-004,RA-SIM-SUPPORT-FAMILY-METHOD-002,interpretive_dependency,framing,framing,Cross-threshold resilience comparisons require apples-to-apples metrics within width-stratified slices,"Support-family redundancy is a simulator bridge, not a derived physical law"
-RA-SIM-SUPPORT-FAMILY-METHOD-004,RA-SIM-SUPPORT-FAMILY-METHOD-003,interpretive_dependency,framing,framing,Cross-threshold resilience comparisons require apples-to-apples metrics within width-stratified slices,Exact-threshold subfamilies are not monotone augmented redundancy families
 RA-MOTIF-SUPPORT-FAMILY-MONO-001,RA-MOTIF-SUPPORT-FAMILY-001,proof_dependency,claim,claim,Support-family inclusion is an RA-native augmentation relation,RA-MOTIF-SUPPORT-FAMILY-001
 RA-MOTIF-SUPPORT-FAMILY-MONO-001,RA-MOTIF-SUPPORT-FAMILY-002,proof_dependency,claim,claim,Support-family inclusion is an RA-native augmentation relation,RA-MOTIF-SUPPORT-FAMILY-002
 RA-MOTIF-SUPPORT-FAMILY-MONO-002,RA-MOTIF-SUPPORT-FAMILY-MONO-001,proof_dependency,claim,claim,Any-cut support-family readiness is monotone under family inclusion,Support-family inclusion is an RA-native augmentation relation
@@ -323,9 +180,6 @@ RA-SIM-SUPPORT-FAMILY-MONO-002,RA-MOTIF-SUPPORT-FAMILY-MONO-002,proof_dependency
 RA-SIM-SUPPORT-FAMILY-MONO-002,RA-SIM-SUPPORT-FAMILY-MONO-001,proof_dependency,claim,claim,At-least-k and augmented-exact support families implement no-worse readiness augmentation in the packet-local audit,Exact-k support families are replacement semantics and can violate no-worse behavior
 RA-SIM-SUPPORT-FAMILY-MONO-003,RA-MOTIF-SUPPORT-FAMILY-MONO-001,proof_dependency,claim,claim,Parent-shared and cut-level certification regimes separate support-route redundancy from certification redundancy,Support-family inclusion is an RA-native augmentation relation
 RA-SIM-SUPPORT-FAMILY-MONO-003,RA-SIM-SUPPORT-FAMILY-003,proof_dependency,claim,claim,Parent-shared and cut-level certification regimes separate support-route redundancy from certification redundancy,RA-SIM-SUPPORT-FAMILY-003
-RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,claim,"Support-family monotonicity is an inclusion discipline, not a claim that every threshold family is redundant",RA-METHOD-001
-RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,claim,"Support-family monotonicity is an inclusion discipline, not a claim that every threshold family is redundant",RA-METHOD-002
-RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001,RA-SIM-SUPPORT-FAMILY-METHOD-002,interpretive_dependency,framing,claim,"Support-family monotonicity is an inclusion discipline, not a claim that every threshold family is redundant",RA-SIM-SUPPORT-FAMILY-METHOD-002
 RA-SIM-SUPPORT-FAMILY-METRIC-001,RA-SIM-SUPPORT-FAMILY-MONO-001,proof_dependency,claim,claim,Support-family metric repair separates strict-parent loss from family-internal loss,RA-SIM-SUPPORT-FAMILY-MONO-001
 RA-SIM-SUPPORT-FAMILY-METRIC-001,RA-SIM-SUPPORT-FAMILY-MONO-002,proof_dependency,claim,claim,Support-family metric repair separates strict-parent loss from family-internal loss,RA-SIM-SUPPORT-FAMILY-MONO-002
 RA-SIM-SUPPORT-FAMILY-METRIC-002,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,claim,Cut-level certification rows with parent absent from exact-k family are not valid strict-vs-family loss comparisons,RA-SIM-SUPPORT-FAMILY-METRIC-001
@@ -334,9 +188,6 @@ RA-SIM-SUPPORT-FAMILY-METRIC-003,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependen
 RA-SIM-SUPPORT-FAMILY-METRIC-003,RA-SIM-SUPPORT-FAMILY-METRIC-002,proof_dependency,claim,claim,Certification-channel resilience is a family-internal survival diagnostic unless certificates share a targeting domain,RA-SIM-SUPPORT-FAMILY-METRIC-002
 RA-SIM-SUPPORT-FAMILY-METRIC-004,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,claim,Apples-to-apples support-family deltas require width-stratified parent-in-family-aware metrics,RA-SIM-SUPPORT-FAMILY-METRIC-001
 RA-SIM-SUPPORT-FAMILY-METRIC-004,RA-SIM-SUPPORT-FAMILY-METRIC-002,proof_dependency,claim,claim,Apples-to-apples support-family deltas require width-stratified parent-in-family-aware metrics,RA-SIM-SUPPORT-FAMILY-METRIC-002
-RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Support-family certification metrics require parent-in-family-aware comparison discipline,RA-METHOD-001
-RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Support-family certification metrics require parent-in-family-aware comparison discipline,RA-METHOD-002
-RA-SIM-SUPPORT-FAMILY-METRIC-METHOD-001,RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001,interpretive_dependency,framing,framing,Support-family certification metrics require parent-in-family-aware comparison discipline,RA-SIM-SUPPORT-FAMILY-MONO-METHOD-001
 RA-SIM-SUPPORT-FAMILY-METRIC-001,RA-SIM-SUPPORT-FAMILY-006,proof_dependency,claim,claim,Support-family metric repair separates strict-parent loss from family-internal loss,Audit corrigendum: cert-channel "amplification" reading of SF-005 is a metric-definition artifact; family_loss(threshold) is non-increasing in cert modes too
 RA-SIM-SUPPORT-FAMILY-METRIC-001,RA-SIM-SUPPORT-FAMILY-007,proof_dependency,claim,claim,Support-family metric repair separates strict-parent loss from family-internal loss,rescue_rate metric is structurally blind to cert-channel resilience at width >= 2
 RA-SIM-SUPPORT-FAMILY-METRIC-002,RA-SIM-SUPPORT-FAMILY-006,proof_dependency,claim,claim,Cut-level certification rows with parent absent from exact-k family are not valid strict-vs-family loss comparisons,Audit corrigendum: cert-channel "amplification" reading of SF-005 is a metric-definition artifact; family_loss(threshold) is non-increasing in cert modes too
@@ -355,24 +206,15 @@ RA-SIM-CERT-CORRELATION-002,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,clai
 RA-SIM-CERT-CORRELATION-003,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Rescue AUC and sensitivity quantify certification-witness redundancy,RA-SIM-CERT-CORRELATION-001
 RA-SIM-CERT-CORRELATION-004,RA-SIM-CERT-FAMILY-003,proof_dependency,claim,claim,Selector stress remains outside certification-family rescue,RA-SIM-CERT-FAMILY-003
 RA-SIM-CERT-CORRELATION-004,RA-SIM-SUPPORT-FAMILY-METRIC-004,proof_dependency,claim,claim,Selector stress remains outside certification-family rescue,RA-SIM-SUPPORT-FAMILY-METRIC-004
-RA-SIM-CERT-CORRELATION-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Certification-correlation analysis is a diagnostic layer, not a new simulator law",RA-METHOD-001
-RA-SIM-CERT-CORRELATION-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,"Certification-correlation analysis is a diagnostic layer, not a new simulator law",RA-METHOD-002
-RA-SIM-CERT-CORRELATION-METHOD-001,RA-SIM-CERT-FAMILY-METHOD-001,interpretive_dependency,framing,framing,"Certification-correlation analysis is a diagnostic layer, not a new simulator law",RA-SIM-CERT-FAMILY-METHOD-001
 RA-MOTIF-NATIVE-CERT-OVERLAP-001,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,claim,Native certificate-overlap contexts refine certified support families,Certified support-family contexts separate family membership from member certificate support
 RA-MOTIF-NATIVE-CERT-OVERLAP-001,RA-MOTIF-CERT-FAMILY-002,proof_dependency,claim,claim,Native certificate-overlap contexts refine certified support families,Independent certified-family readiness conservatively refines certified family readiness
 RA-SIM-NATIVE-CERT-OVERLAP-001,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Native overlap can induce effective certificate correlation,Certification correlation signature
 RA-SIM-NATIVE-CERT-OVERLAP-002,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Certification rescue decreases with native witness overlap,Native overlap can induce effective certificate correlation
 RA-SIM-NATIVE-CERT-OVERLAP-002,RA-SIM-CERT-CORRELATION-001,proof_dependency,claim,claim,Certification rescue decreases with native witness overlap,Certification correlation signature
-RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Native certificate overlap is an operational bridge,Nature is target
-RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Native certificate overlap is an operational bridge,Correspondence recovery discipline
-RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,RA-SIM-CERT-CORRELATION-METHOD-001,interpretive_dependency,framing,framing,Native certificate overlap is an operational bridge,Certification-correlation analysis is a diagnostic layer
 RA-SIM-NATIVE-CERT-ROBUST-001,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Native certificate-overlap rescue is robust under component-ablation analysis,Native overlap can induce effective certificate correlation
 RA-SIM-NATIVE-CERT-ROBUST-001,RA-SIM-NATIVE-CERT-OVERLAP-002,proof_dependency,claim,claim,Native certificate-overlap rescue is robust under component-ablation analysis,Certification rescue decreases with native witness overlap
 RA-SIM-NATIVE-CERT-ROBUST-002,RA-SIM-NATIVE-CERT-ROBUST-001,proof_dependency,claim,claim,Native overlap signature admits overlap-weight sensitivity analysis,Native certificate-overlap rescue is robust under component-ablation analysis
-RA-SIM-NATIVE-CERT-ROBUST-002,RA-SIM-CERT-CORRELATION-001,interpretive_dependency,claim,claim,Native overlap signature admits overlap-weight sensitivity analysis,Certification rescue decays with certificate correlation
 RA-SIM-NATIVE-CERT-ROBUST-003,RA-SIM-NATIVE-CERT-ROBUST-001,proof_dependency,claim,claim,Native overlap component attribution identifies signal-carrying witness components,Native certificate-overlap rescue is robust under component-ablation analysis
-RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Native overlap robustness analyses are diagnostic, not derived overlap laws",RA framing discipline
-RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,interpretive_dependency,framing,framing,"Native overlap robustness analyses are diagnostic, not derived overlap laws","Native certificate overlap is an operational bridge, not a final law"
 RA-SIM-NATIVE-CERT-CALIB-001,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Native-overlap family-semantics signal carriers can be audited independently of new simulator semantics,Native overlap can induce effective certificate correlation
 RA-SIM-NATIVE-CERT-CALIB-001,RA-SIM-NATIVE-CERT-ROBUST-001,proof_dependency,claim,claim,Native-overlap family-semantics signal carriers can be audited independently of new simulator semantics,Native certificate-overlap rescue is robust under component-ablation analysis
 RA-SIM-NATIVE-CERT-CALIB-002,RA-SIM-NATIVE-CERT-CALIB-001,proof_dependency,claim,claim,Native-overlap bins can be calibrated against external certificate-correlation baselines,Native-overlap family-semantics signal carriers can be audited independently of new simulator semantics
@@ -381,11 +223,6 @@ RA-SIM-NATIVE-CERT-CALIB-002,RA-SIM-NATIVE-CERT-OVERLAP-002,proof_dependency,cla
 RA-SIM-NATIVE-CERT-CALIB-003,RA-SIM-NATIVE-CERT-CALIB-001,proof_dependency,claim,claim,v0.9.2 identifies candidate support-family semantics for v1.0 native-certificate anchoring,Native-overlap family-semantics signal carriers can be audited independently of new simulator semantics
 RA-SIM-NATIVE-CERT-CALIB-003,RA-SIM-NATIVE-CERT-CALIB-002,proof_dependency,claim,claim,v0.9.2 identifies candidate support-family semantics for v1.0 native-certificate anchoring,Native-overlap bins can be calibrated against external certificate-correlation baselines
 RA-SIM-NATIVE-CERT-CALIB-003,RA-SIM-NATIVE-CERT-ROBUST-003,proof_dependency,claim,claim,v0.9.2 identifies candidate support-family semantics for v1.0 native-certificate anchoring,Native overlap component attribution identifies signal-carrying witness components
-RA-SIM-NATIVE-CERT-CALIB-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Native-overlap calibration is diagnostic, not a final overlap law",RA framing discipline
-RA-SIM-NATIVE-CERT-CALIB-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,"Native-overlap calibration is diagnostic, not a final overlap law",RA Nature-target discipline
-RA-SIM-NATIVE-CERT-CALIB-METHOD-001,RA-SIM-CERT-CORRELATION-METHOD-001,interpretive_dependency,framing,framing,"Native-overlap calibration is diagnostic, not a final overlap law",Certificate-correlation analyses are operational diagnostics
-RA-SIM-NATIVE-CERT-CALIB-METHOD-001,RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,interpretive_dependency,framing,framing,"Native-overlap calibration is diagnostic, not a final overlap law","Native certificate overlap is an operational bridge, not a final law"
-RA-SIM-NATIVE-CERT-CALIB-METHOD-001,RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,interpretive_dependency,framing,framing,"Native-overlap calibration is diagnostic, not a final overlap law","Native overlap robustness analyses are diagnostic, not derived overlap laws"
 RA-MOTIF-NATIVE-CERT-COMPONENTS-001,RA-MOTIF-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Native certificate-component contexts refine native-overlap certified-family readiness,Native certificate-overlap contexts refine certified support families
 RA-SIM-NATIVE-CERT-ANCHOR-001,RA-SIM-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,v1.0 packages native certificate-overlap components into an anchoring profile,Native overlap can induce effective certificate correlation
 RA-SIM-NATIVE-CERT-ANCHOR-001,RA-SIM-NATIVE-CERT-OVERLAP-002,proof_dependency,claim,claim,v1.0 packages native certificate-overlap components into an anchoring profile,Certification rescue decreases with native witness overlap
@@ -397,31 +234,7 @@ RA-SIM-NATIVE-CERT-ANCHOR-002,RA-SIM-NATIVE-CERT-ANCHOR-001,proof_dependency,cla
 RA-SIM-NATIVE-CERT-ANCHOR-003,RA-SIM-NATIVE-CERT-CALIB-001,proof_dependency,claim,claim,"v1.0 native-overlap calibration to external scale remains qualitative, not absolute",Native-overlap family-semantics signal carriers can be audited independently of new simulator semantics
 RA-SIM-NATIVE-CERT-ANCHOR-003,RA-SIM-NATIVE-CERT-CALIB-002,proof_dependency,claim,claim,"v1.0 native-overlap calibration to external scale remains qualitative, not absolute",Native-overlap bins can be calibrated against external certificate-correlation baselines
 RA-SIM-NATIVE-CERT-ANCHOR-003,RA-SIM-NATIVE-CERT-ANCHOR-001,proof_dependency,claim,claim,"v1.0 native-overlap calibration to external scale remains qualitative, not absolute",v1.0 packages native certificate-overlap components into an anchoring profile
-RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation,RA framing discipline
-RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation,RA Nature-target discipline
-RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,RA-SIM-CERT-CORRELATION-METHOD-001,interpretive_dependency,framing,framing,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation,Certificate-correlation analyses are operational diagnostics
-RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,interpretive_dependency,framing,framing,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation,"Native certificate overlap is an operational bridge, not a final law"
-RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,interpretive_dependency,framing,framing,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation,"Native overlap robustness analyses are diagnostic, not derived overlap laws"
-RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,RA-SIM-NATIVE-CERT-CALIB-METHOD-001,interpretive_dependency,framing,framing,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation,"Native-overlap calibration is diagnostic, not a final overlap law"
 RA-SIM-NATIVE-COMPONENT-DECOUPLE-001,RA-SIM-NATIVE-CERT-ANCHOR-001,proof_dependency,claim,claim,Native component decoupling audit detects orientation/support/frontier confounding,v1.0 packages native certificate-overlap components into an anchoring profile
 RA-SIM-NATIVE-COMPONENT-DECOUPLE-001,RA-SIM-NATIVE-CERT-ANCHOR-002,proof_dependency,claim,claim,Native component decoupling audit detects orientation/support/frontier confounding,v1.0 records augmented_exact_k as primary signal-carrier and at_least_k as monotone guardrail
 RA-SIM-NATIVE-COMPONENT-DECOUPLE-002,RA-SIM-NATIVE-COMPONENT-DECOUPLE-001,proof_dependency,claim,claim,Ledger attribution is separated while orientation attribution remains joint-proxy in v1.1,Native component decoupling audit detects orientation/support/frontier confounding
 RA-SIM-NATIVE-COMPONENT-DECOUPLE-002,RA-SIM-NATIVE-CERT-ANCHOR-001,proof_dependency,claim,claim,Ledger attribution is separated while orientation attribution remains joint-proxy in v1.1,v1.0 packages native certificate-overlap components into an anchoring profile
-RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,Do not overclaim component-specific attribution when overlap surfaces are confounded,RA framing discipline
-RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Do not overclaim component-specific attribution when overlap surfaces are confounded,RA Nature-target discipline
-RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,interpretive_dependency,framing,framing,Do not overclaim component-specific attribution when overlap surfaces are confounded,"Native certificate overlap is an operational bridge, not a final law"
-RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,interpretive_dependency,framing,framing,Do not overclaim component-specific attribution when overlap surfaces are confounded,"Native overlap robustness analyses are diagnostic, not derived overlap laws"
-RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,RA-SIM-NATIVE-CERT-CALIB-METHOD-001,interpretive_dependency,framing,framing,Do not overclaim component-specific attribution when overlap surfaces are confounded,"Native-overlap calibration is diagnostic, not a final overlap law"
-RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,interpretive_dependency,framing,framing,Do not overclaim component-specific attribution when overlap surfaces are confounded,Native certificate anchoring is component-level and qualitative until BDG-LLC derivation
-RA-MOTIF-ORIENTATION-LINK-SURFACE-001,RA-MOTIF-NATIVE-CERT-COMPONENTS-001,proof_dependency,claim,claim,Distinct orientation-link surfaces refine generic orientation component evidence,Native certificate-component contexts refine native-overlap certified-family readiness
-RA-SIM-ORIENTATION-LINK-SURFACE-001,RA-SIM-NATIVE-CERT-ANCHOR-001,proof_dependency,claim,claim,v1.2 demonstrates that a decoupled orientation-link surface restores orientation specificity in the v1.1 audit,v1.0 packages native certificate-overlap components into an anchoring profile
-RA-SIM-ORIENTATION-LINK-SURFACE-001,RA-SIM-NATIVE-COMPONENT-DECOUPLE-001,proof_dependency,claim,claim,v1.2 demonstrates that a decoupled orientation-link surface restores orientation specificity in the v1.1 audit,Native component decoupling audit detects orientation/support/frontier confounding
-RA-SIM-ORIENTATION-LINK-SURFACE-001,RA-SIM-NATIVE-COMPONENT-DECOUPLE-002,proof_dependency,claim,claim,v1.2 demonstrates that a decoupled orientation-link surface restores orientation specificity in the v1.1 audit,Ledger attribution is separated while orientation attribution remains joint-proxy in v1.1
-RA-SIM-ORIENTATION-LINK-SURFACE-001,RA-MOTIF-ORIENTATION-LINK-SURFACE-001,proof_dependency,claim,claim,v1.2 demonstrates that a decoupled orientation-link surface restores orientation specificity in the v1.1 audit,Distinct orientation-link surfaces refine generic orientation component evidence
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one",RA framing discipline
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one",RA Nature-target discipline
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one","Native certificate overlap is an operational bridge, not a final law"
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-SIM-NATIVE-CERT-ROBUST-METHOD-001,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one","Native overlap robustness analyses are diagnostic, not derived overlap laws"
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-SIM-NATIVE-CERT-CALIB-METHOD-001,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one","Native-overlap calibration is diagnostic, not a final overlap law"
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one",Native certificate anchoring is component-level and qualitative until BDG-LLC derivation
-RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001,RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001,interpretive_dependency,framing,framing,"Orientation-specific rescue claims require a real orientation-link surface, not a synthesized one",Do not overclaim component-specific attribution when overlap surfaces are confounded

@@ -1,0 +1,10 @@
+test_end_to_end (test_v1_2_orientation_link_surface.TestOrientationLinkSurfaceV12.test_end_to_end) ... ok
+test_orientation_degradation_sensitive_to_orientation_surface (test_v1_2_orientation_link_surface.TestOrientationLinkSurfaceV12.test_orientation_degradation_sensitive_to_orientation_surface) ... ok
+test_orientation_surface_decouples_from_support (test_v1_2_orientation_link_surface.TestOrientationLinkSurfaceV12.test_orientation_surface_decouples_from_support) ... ok
+test_partial_correlation_detects_new_variation (test_v1_2_orientation_link_surface.TestOrientationLinkSurfaceV12.test_partial_correlation_detects_new_variation) ... ok
+test_selector_stress_guardrail (test_v1_2_orientation_link_surface.TestOrientationLinkSurfaceV12.test_selector_stress_guardrail) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.305s
+
+OK
