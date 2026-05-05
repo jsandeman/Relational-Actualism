@@ -2958,3 +2958,94 @@ claims:
   - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
   - RA-SIM-SUPPORT-FAMILY-METHOD-001
   - RA-SIM-SUPPORT-FAMILY-METHOD-002
+- id: RA-SIM-SUPPORT-FAMILY-004
+  name: Support-family alternatives rescue reachability/availability-channel losses while leaving selector and certification failures separate
+  domain: complexity
+  papers:
+  - II
+  statement: In the canonical 100-seed v0.7 ensemble, threshold support-cut subfamilies rescue strict-readiness loss only on the reachability/availability channels (edge_dropout 30-44%, frontier_dropout
+    18-56% rescue rates at threshold ≤ 0.5). Selector-stress and certification-channel modes (ledger_failure, orientation_degradation) show 0% rescue regardless of threshold, because (a) selector_stress
+    does not destroy readiness in the first place and is correctly excluded from rescue counting, and (b) certification failures propagate to all family members that share a parent certification surface.
+    Support-family resilience is therefore channel-conditional, not channel-uniform.
+  nature_targets:
+  - channel-conditional structure of support-family resilience
+  - separation of reachability/availability rescue from certification/selector failure
+  ra_observable: family_rescue_rate_by_channel
+  sources:
+  - ra_causal_dag_support_family_workbench.py
+  - ra_support_family_comparison_v0_7.csv
+  - ra_support_family_predictions_v0_7.md
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-001
+  - RA-SIM-SUPPORT-FAMILY-002
+  - RA-SIM-SEVERANCE-CHANNEL-001
+  - RA-SIM-SEVERANCE-CHANNEL-003
+  - RA-SIM-SEVERANCE-SIGNATURE-004
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  restoration_preconditions: []
+  caveats: 'This claim is structural in the present simulator semantics: it depends on threshold subfamilies sharing the parent cut''s certification surface. Augmented redundancy families with independent
+    certification per member could change the certification-channel result. See RA-SIM-SUPPORT-FAMILY-005 for the amplification effect on certification channels.'
+  next_tasks:
+  - Test families with member-level (not parent-shared) certification surfaces.
+  - Map channel-conditional resilience to physical correspondence regimes where reachability and certification failures occur via distinct mechanisms.
+  source_status:
+    ra_causal_dag_support_family_workbench.py: simulation_validated_canonical_run_confirmed
+    ra_support_family_comparison_v0_7.csv: canonical_run_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: family_rescue_rate ; channel_classification (v0.7 support-family workbench)
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (refined post-canonical)
+- id: RA-SIM-SUPPORT-FAMILY-005
+  name: Exact-threshold subfamilies can amplify certification-channel fragility when family members share vulnerable certification surfaces
+  domain: complexity
+  papers:
+  - II
+  statement: 'Under exact-threshold subfamily construction (the v0.7 instantiation, where a family at threshold k is exactly the k-subsets of a parent support cut), lowering the threshold from 1.0 toward
+    0.25 can INCREASE family readiness loss on certification channels rather than decrease it. Concretely, on the canonical 100-seed run at ledger_failure severity 0.75: strict_loss = 0.439 while threshold-0.25
+    family_loss = 0.817. The mechanism is that family members inherit the same parent certification surface; expanding the cut set enlarges the failure surface that "at-least-k-of-n" must now traverse without
+    adding new certified evidence. This effect distinguishes exact-threshold subfamilies from monotone augmented redundancy families with member-level independent certification.'
+  nature_targets:
+  - amplification of certification fragility under shared-certification family construction
+  - distinction between exact-threshold and augmented-monotone redundancy semantics
+  ra_observable: family_loss_rate_above_strict_loss_rate_by_channel_threshold
+  sources:
+  - ra_support_family_comparison_v0_7.csv
+  - ra_support_family_predictions_v0_7.md
+  proof_dependencies:
+  - RA-SIM-SUPPORT-FAMILY-001
+  - RA-SIM-SUPPORT-FAMILY-004
+  - RA-SIM-SEVERANCE-CHANNEL-005
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  - RA-SIM-SUPPORT-FAMILY-METHOD-003
+  restoration_preconditions: []
+  caveats: Specific to exact-threshold subfamily construction. Under augmented monotone redundancy (e.g. a family that includes the parent cut PLUS independent alternative cuts with their own certification),
+    this amplification may not occur. The amplification is a property of the family-construction operator, not of the SupportCutFamily abstraction itself.
+  next_tasks:
+  - Compare exact-threshold subfamilies vs augmented monotone families on identical severance ensembles.
+  - Build augmented-family generators in v0.8 if monotone redundancy is the target operational semantics.
+  source_status:
+    ra_support_family_comparison_v0_7.csv: canonical_run_validated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: family_loss_rate ; threshold_fraction ; certification_channel_signature
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (refined post-canonical)

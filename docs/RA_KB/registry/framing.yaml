@@ -464,3 +464,42 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: support-family modeling guardrail for v0.7
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026
+- id: RA-SIM-SUPPORT-FAMILY-METHOD-003
+  name: Exact-threshold subfamilies are not monotone augmented redundancy families
+  domain: framing
+  papers:
+  - II
+  statement: 'The v0.7 simulator instantiation uses exact-threshold subfamilies: at threshold k of n, the family is the set of all k-subsets of a parent support cut. Each member shares the parent''s certification
+    surface and has cardinality exactly k. This is structurally distinct from a monotone augmented redundancy family, which would (a) include cuts of varying sizes (monotone), (b) include alternative parent
+    cuts with member-level independent certification (augmented), or (c) admit repair / replacement over time. v0.7 results — including the channel-conditional rescue (RA-SIM-SUPPORT-FAMILY-004) and the
+    certification-channel amplification (RA-SIM-SUPPORT-FAMILY-005) — should not be transferred to monotone augmented redundancy without an explicit second canonical run on a family generator with those
+    properties. RA claims about "support-family redundancy" should specify the family-construction operator.'
+  nature_targets:
+  - methodological discipline distinguishing family-construction operators
+  - pre-condition for transferring v0.7 findings to alternative family types
+  ra_observable: null
+  sources:
+  - RA_MotifSupportFamilyBridge.lean
+  - ra_causal_dag_support_family_workbench.py
+  - RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+  - RA-SIM-SEVERANCE-CHANNEL-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-001
+  - RA-SIM-SUPPORT-FAMILY-METHOD-002
+  restoration_preconditions: []
+  caveats: When v0.8+ adds an augmented-monotone family generator, this guardrail should be revisited so that "augmented redundancy" claims become available where the family-construction operator actually
+    supports them. Until then, "support-family redundancy" in v0.7 results means "exact-threshold subfamily over a single parent cut".
+  next_tasks:
+  - Use the precise term "exact-threshold subfamily" (not "redundancy") in v0.7 result descriptions.
+  - Define an augmented-monotone family generator for v0.8 if the next research target is true RA-native redundancy.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: negative_scope_or_translation_policy
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: GraphSupportCutFamily ; threshold-subfamily generator vs augmented-monotone family generator
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_7_SupportFamilyRedundancy_May05_2026 (refined post-canonical)
