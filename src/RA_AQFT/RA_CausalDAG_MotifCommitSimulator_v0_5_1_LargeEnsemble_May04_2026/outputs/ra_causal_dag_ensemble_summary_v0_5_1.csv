@@ -1,0 +1,2 @@
+version,run_count,steps,workers,use_fast_growth,expected_evaluations_upper_bound,actual_evaluations,sampled_evaluations,elapsed_seconds,evaluations_per_second,total_lost_support,total_lost_readiness,total_lost_strict_commit,total_lost_selected_commit
+0.5.1,20,16,1,True,14400,14400,1000,6.850579,2102.012159,7477,9349,11221,9349

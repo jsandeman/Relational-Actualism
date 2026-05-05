@@ -1,0 +1,28 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-SIM-MOTIF-ENSEMBLE-METHOD-001
+    name: Large-ensemble optimization is RA-native simulator instrumentation, not a new correspondence target
+    domain: framing
+    papers: [II]
+    statement: >
+      The v0.5.1 large-ensemble optimizer is an engineering layer for RA-native actualization-fragility diagnostics. It does not introduce inherited-theory targets or alter the formal motif-commit, selector-closure, orientation-support, or causal-severance semantics.
+    nature_targets:
+      - scalable RA-native simulation workbench discipline
+    ra_observable: null
+    sources:
+      - RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_Report_May04_2026.md
+    proof_dependencies: []
+    framing_links:
+      - RA-METHOD-001
+      - RA-METHOD-002
+      - RA-SIM-MOTIF-SEVERANCE-METHOD-001
+    restoration_preconditions: []
+    caveats: >
+      Large-ensemble simulator diagnostics are not empirical claims until linked to physical correspondence tests.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: EnsembleRunConfig ; StreamingBuckets ; run_large_ensemble
+    packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026

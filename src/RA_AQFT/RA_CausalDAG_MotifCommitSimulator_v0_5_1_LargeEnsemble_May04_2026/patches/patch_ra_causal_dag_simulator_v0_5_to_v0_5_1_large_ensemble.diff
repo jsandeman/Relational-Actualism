@@ -1,0 +1,902 @@
+diff -ruN /mnt/data/tmp_v05/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/__init__.py /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/simulator/__init__.py
+--- /mnt/data/tmp_v05/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/__init__.py	2026-05-04 22:50:52.000000000 +0000
++++ /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/simulator/__init__.py	2026-05-05 00:00:05.476618113 +0000
+@@ -4,8 +4,21 @@
+     SeveranceEvaluation, run_severance_workbench, evaluate_severance, summarize_fragility,
+ )
+ 
++_ENSEMBLE_EXPORTS = {
++    "EnsembleRunConfig", "StreamingBuckets", "generate_growth_state_fast", "run_large_ensemble",
++    "benchmark_fast_vs_audited",
++}
++
+ __all__ = [
+     "CausalDAG", "MotifCandidate", "MotifCommitProtocol", "GraphOrientationSupportCertifier",
+     "OrientationActualizationContext", "SelectorPolicy", "CausalSeveranceIntervention",
+     "SeveranceEvaluation", "run_severance_workbench", "evaluate_severance", "summarize_fragility",
++    *_ENSEMBLE_EXPORTS,
+ ]
++
++
++def __getattr__(name):
++    if name in _ENSEMBLE_EXPORTS:
++        from . import ra_causal_dag_ensemble as ensemble
++        return getattr(ensemble, name)
++    raise AttributeError(name)
+Binary files /mnt/data/tmp_v05/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/__pycache__/__init__.cpython-313.pyc and /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/simulator/__pycache__/__init__.cpython-313.pyc differ
+Binary files /mnt/data/tmp_v05/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/__pycache__/ra_causal_dag_ensemble.cpython-313.pyc and /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/simulator/__pycache__/ra_causal_dag_ensemble.cpython-313.pyc differ
+diff -ruN /mnt/data/tmp_v05/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/ra_causal_dag_ensemble.py /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/simulator/ra_causal_dag_ensemble.py
+--- /mnt/data/tmp_v05/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/ra_causal_dag_ensemble.py	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026/simulator/ra_causal_dag_ensemble.py	2026-05-04 23:59:03.661330828 +0000
+@@ -0,0 +1,871 @@
++#!/usr/bin/env python3
++"""
++RA causal-DAG motif-commit simulator v0.5.1 large-ensemble optimizer.
++
++This module keeps the v0.5 severance semantics intact while improving throughput
++for larger runs. The operational vocabulary remains RA-native: candidate motif,
++causal support cut, oriented support witness, certified readiness, selector
++closure, selected commitment, finality, and causal-severance fragility.
++
++Optimizations:
++  1. Fast growth-state generation: builds only the final DAG and motif set,
++     avoiding per-site audit tables when severance diagnostics do not use them.
++  2. Deterministic streaming aggregation: accumulates ensemble summaries without
++     retaining every severance row in memory.
++  3. Optional bounded row sampling: keeps a reproducible sample of per-evaluation
++     rows for audit while allowing much larger seed ensembles.
++  4. Optional process-level sharding: independent seed shards can be evaluated
++     in parallel when the caller requests workers > 1.
++"""
++from __future__ import annotations
++
++import argparse
++import csv
++import json
++import math
++import os
++import random
++import statistics
++import time
++from concurrent.futures import ProcessPoolExecutor, as_completed
++from dataclasses import dataclass, field
++from pathlib import Path
++from typing import Any, Dict, Iterable, Iterator, List, Mapping, Optional, Sequence, Tuple
++
++try:  # package import
++    from .ra_causal_dag_simulator import (
++        CausalDAG,
++        CausalSeveranceIntervention,
++        MotifCandidate,
++        SeveranceEvaluation,
++        causal_edges_inside_site_past,
++        choose_prefix_fraction,
++        clone_motif,
++        degraded_ledger_metadata,
++        degraded_orientation_metadata,
++        evaluate_severance,
++        generate_growth_demo,
++        min_finality_depth,
++        motif_site,
++        protocol_for,
++        readiness_recovery_length,
++        remove_edges,
++        replace_motif,
++        rows_to_csv,
++        selected_commit_bool,
++        summarize_fragility,
++        summarize_severance_sweep,
++        target_motifs_for_severance,
++        with_conflict_domain,
++        write_severance_predictions,
++        _metadata_with_gates,
++    )
++except ImportError:  # script import from simulator/ directory
++    from ra_causal_dag_simulator import (  # type: ignore
++        CausalDAG,
++        CausalSeveranceIntervention,
++        MotifCandidate,
++        SeveranceEvaluation,
++        causal_edges_inside_site_past,
++        choose_prefix_fraction,
++        clone_motif,
++        degraded_ledger_metadata,
++        degraded_orientation_metadata,
++        evaluate_severance,
++        generate_growth_demo,
++        min_finality_depth,
++        motif_site,
++        protocol_for,
++        readiness_recovery_length,
++        remove_edges,
++        replace_motif,
++        rows_to_csv,
++        selected_commit_bool,
++        summarize_fragility,
++        summarize_severance_sweep,
++        target_motifs_for_severance,
++        with_conflict_domain,
++        write_severance_predictions,
++        _metadata_with_gates,
++    )
++
++
++@dataclass(frozen=True)
++class EnsembleRunConfig:
++    """Parameters for a large-ensemble causal-severance run."""
++
++    seeds: Tuple[int, ...] = tuple(range(17, 37))
++    steps: int = 16
++    max_parents: int = 3
++    conflict_rate: float = 0.30
++    defect_rate: float = 0.05
++    orientation_defect_rate: float = 0.05
++    conflict_witness_defect_rate: float = 0.10
++    severance_seeds: Tuple[int, ...] = (101, 103)
++    severities: Tuple[float, ...] = (0.0, 0.25, 0.50, 0.75, 1.0)
++    modes: Tuple[str, ...] = (
++        "edge_dropout",
++        "frontier_dropout",
++        "support_delay",
++        "orientation_degradation",
++        "ledger_failure",
++        "selector_stress",
++    )
++    selector_mode: str = "greedy"
++    selector_tie_policy: str = "lexicographic"
++    include_alternatives: bool = False
++    max_targets: Optional[int] = 12
++    sample_limit: int = 2000
++    workers: int = 1
++    use_fast_growth: bool = True
++
++    @classmethod
++    def from_args(cls, args: argparse.Namespace) -> "EnsembleRunConfig":
++        seeds = tuple(range(args.seed_start, args.seed_stop)) if args.seed_list is None else tuple(int(x) for x in args.seed_list.split(",") if x.strip())
++        severance_seeds = tuple(int(x) for x in args.severance_seeds.split(",") if x.strip())
++        severities = tuple(float(x) for x in args.severities.split(",") if x.strip())
++        modes = tuple(x.strip() for x in args.modes.split(",") if x.strip())
++        max_targets = None if args.max_targets < 0 else args.max_targets
++        return cls(
++            seeds=seeds,
++            steps=args.steps,
++            max_parents=args.max_parents,
++            conflict_rate=args.conflict_rate,
++            defect_rate=args.defect_rate,
++            orientation_defect_rate=args.orientation_defect_rate,
++            conflict_witness_defect_rate=args.conflict_witness_defect_rate,
++            severance_seeds=severance_seeds,
++            severities=severities,
++            modes=modes,
++            selector_mode=args.selector_mode,
++            selector_tie_policy=args.selector_tie_policy,
++            include_alternatives=args.include_alternatives,
++            max_targets=max_targets,
++            sample_limit=args.sample_limit,
++            workers=args.workers,
++            use_fast_growth=not args.audited_growth,
++        )
++
++    def expected_evaluations_upper_bound(self) -> int:
++        target_factor = self.max_targets if self.max_targets is not None else self.steps
++        alt_factor = 3 if self.include_alternatives else 1
++        return len(self.seeds) * len(self.severance_seeds) * len(self.modes) * len(self.severities) * target_factor * alt_factor
++
++
++def generate_growth_state_fast(
++    *,
++    steps: int = 16,
++    seed: int = 17,
++    max_parents: int = 3,
++    conflict_rate: float = 0.30,
++    defect_rate: float = 0.05,
++    orientation_defect_rate: float = 0.05,
++    conflict_witness_defect_rate: float = 0.10,
++) -> Tuple[CausalDAG, List[MotifCandidate]]:
++    """Build only the final DAG and motif set.
++
++    This mirrors the motif-generation path of v0.5 ``generate_growth_demo`` but
++    does not compute per-site support, selector, orientation, or conflict audit
++    rows. It is therefore the preferred entry point for large severance
++    ensembles, whose diagnostics use only the final graph/motif state plus the
++    severance predicates.
++    """
++
++    rng = random.Random(seed)
++    dag = CausalDAG()
++    genesis = dag.add_node()
++    motifs: List[MotifCandidate] = [
++        MotifCandidate(
++            name="genesis_seed",
++            carrier=frozenset({genesis}),
++            support_cut=frozenset(),
++            kind="seed",
++            priority=3,
++            metadata={
++                "candidate_past": [],
++                "parents": [],
++                "past_size": 0,
++                "bdg_local_ok": True,
++                "ledger_local_ok": True,
++                "orientation_support_witness": {
++                    "candidate_past": [],
++                    "support_cut": [],
++                    "frontier_sufficient_for_motif": True,
++                    "local_ledger_compatible": True,
++                    "carrier_represented_by_frontier": True,
++                    "closure": {
++                        "selector_compatible": True,
++                        "no_extra_random_labels": True,
++                        "no_particle_label_primitives": True,
++                        "qN1_signature": 7,
++                        "local_conserved": True,
++                        "sign_links": [],
++                    },
++                },
++                "defect_tags": [],
++            },
++        )
++    ]
++
++    for _ in range(steps):
++        existing = list(dag.nodes)
++        frontier = list(dag.maximal_nodes()) or existing
++        parent_pool = frontier if frontier else existing
++        parents = set(rng.sample(parent_pool, k=rng.randint(1, min(max_parents, len(parent_pool)))))
++        if len(existing) > 2 and rng.random() < 0.35:
++            parents.add(rng.choice(existing))
++        site = dag.add_node(parents)
++        past = dag.candidate_past_from_support(parents)
++        support_cut = dag.support_cut_of_finite_hasse_frontier(past)
++
++        stable_meta = _metadata_with_gates(
++            rng=rng,
++            candidate_past=past,
++            parents=parents,
++            support_cut=support_cut,
++            site=site,
++            defect_rate=defect_rate * 0.35,
++            orientation_defect_rate=orientation_defect_rate * 0.35,
++        )
++        motifs.append(
++            MotifCandidate(
++                f"renewal_{site}",
++                frozenset({site}),
++                support_cut,
++                "renewal",
++                priority=2,
++                metadata={**stable_meta, "support_width": len(support_cut)},
++            )
++        )
++
++        if rng.random() < conflict_rate:
++            domain = f"orientation_choice_at_{site}"
++            for label in ("A", "B"):
++                meta = _metadata_with_gates(
++                    rng=rng,
++                    candidate_past=past,
++                    parents=parents,
++                    support_cut=support_cut,
++                    site=site,
++                    defect_rate=defect_rate,
++                    orientation_defect_rate=orientation_defect_rate,
++                )
++                meta["orientation_conflict_domain"] = domain
++                meta["orientation_conflict_ok"] = not (
++                    conflict_witness_defect_rate > 0 and rng.random() < conflict_witness_defect_rate
++                )
++                motifs.append(
++                    MotifCandidate(
++                        f"choice_{label}_{site}",
++                        frozenset({site}),
++                        support_cut,
++                        "alternative",
++                        exclusion_domain=domain,
++                        priority=1,
++                        metadata={**meta, "support_width": len(support_cut)},
++                    )
++                )
++    return dag, motifs
++
++
++def generate_growth_state(
++    *,
++    use_fast_growth: bool,
++    steps: int,
++    seed: int,
++    max_parents: int,
++    conflict_rate: float,
++    defect_rate: float,
++    orientation_defect_rate: float,
++    conflict_witness_defect_rate: float,
++) -> Tuple[CausalDAG, List[MotifCandidate]]:
++    if use_fast_growth:
++        return generate_growth_state_fast(
++            steps=steps,
++            seed=seed,
++            max_parents=max_parents,
++            conflict_rate=conflict_rate,
++            defect_rate=defect_rate,
++            orientation_defect_rate=orientation_defect_rate,
++            conflict_witness_defect_rate=conflict_witness_defect_rate,
++        )
++    dag, motifs, *_ = generate_growth_demo(
++        steps=steps,
++        seed=seed,
++        max_parents=max_parents,
++        conflict_rate=conflict_rate,
++        defect_rate=defect_rate,
++        orientation_defect_rate=orientation_defect_rate,
++        conflict_witness_defect_rate=conflict_witness_defect_rate,
++        selector_mode="greedy",
++        selector_tie_policy="lexicographic",
++    )
++    return dag, motifs
++
++
++
++@dataclass
++class CachedSeedState:
++    """Per-seed state shared across severance interventions."""
++
++    dag: CausalDAG
++    motifs: List[MotifCandidate]
++    base_protocol: Any
++    selector: Any
++    support_cache: Dict[str, Any]
++    selected_cache: Dict[Tuple[str, int], bool]
++    finality_cache: Dict[str, Optional[int]]
++
++
++def build_cached_seed_state(config: EnsembleRunConfig, seed: int) -> CachedSeedState:
++    dag, motifs = generate_growth_state(
++        use_fast_growth=config.use_fast_growth,
++        steps=config.steps,
++        seed=seed,
++        max_parents=config.max_parents,
++        conflict_rate=config.conflict_rate,
++        defect_rate=config.defect_rate,
++        orientation_defect_rate=config.orientation_defect_rate,
++        conflict_witness_defect_rate=config.conflict_witness_defect_rate,
++    )
++    base_protocol, selector = protocol_for(
++        dag,
++        motifs,
++        selector_mode=config.selector_mode,
++        selector_tie_policy=config.selector_tie_policy,
++        use_orientation_conflicts=True,
++    )
++    # Fill support cache once; later strict/selected checks reuse it.
++    support_cache = {m.name: base_protocol.support_evaluation(m) for m in motifs}
++    finality_cache = {m.name: min_finality_depth(dag, m.support_cut) for m in motifs}
++    return CachedSeedState(
++        dag=dag,
++        motifs=list(motifs),
++        base_protocol=base_protocol,
++        selector=selector,
++        support_cache=support_cache,
++        selected_cache={},
++        finality_cache=finality_cache,
++    )
++
++
++def _preload_support_cache(protocol: Any, cache: Mapping[str, Any], *, skip: Iterable[str] = ()) -> None:
++    skip_set = set(skip)
++    if hasattr(protocol, "_support_eval_cache"):
++        protocol._support_eval_cache.update({k: v for k, v in cache.items() if k not in skip_set})
++
++
++def _cached_selected_before(state: CachedSeedState, motif: MotifCandidate, site: int) -> bool:
++    key = (motif.name, site)
++    if key not in state.selected_cache:
++        state.selected_cache[key] = selected_commit_bool(state.base_protocol, motif, site, state.selector)
++    return state.selected_cache[key]
++
++
++def evaluate_severance_cached(
++    state: CachedSeedState,
++    motif: MotifCandidate,
++    site: int,
++    intervention: CausalSeveranceIntervention,
++    *,
++    selector_mode: str,
++    selector_tie_policy: str,
++) -> SeveranceEvaluation:
++    """v0.5-equivalent severance evaluation with shared per-seed caches.
++
++    The function preserves the v0.5 row semantics but avoids recomputing the
++    unchanged baseline support table and, for support-delay/frontier-dropout,
++    avoids constructing an unchanged post-intervention protocol.
++    """
++
++    dag = state.dag
++    motifs = state.motifs
++    before_decision = state.base_protocol.decision(motif, site)
++    before_selected = _cached_selected_before(state, motif, site)
++    finality_before = state.finality_cache.get(motif.name)
++
++    rng = random.Random(intervention.seed + 7919 * site + sum(ord(c) for c in motif.name) + int(intervention.severity * 1000))
++    after_dag = dag
++    after_motifs = motifs
++    after_motif = motif
++    unavailable_support = frozenset()
++    delay_depth = 0
++    detail = "no_change"
++    skip_support_cache: Tuple[str, ...] = ()
++
++    if intervention.mode == "edge_dropout":
++        chosen = choose_prefix_fraction(causal_edges_inside_site_past(dag, site), intervention.severity, rng)
++        chosen_edges = tuple((int(a), int(b)) for a, b in chosen)  # type: ignore[misc]
++        after_dag = remove_edges(dag, chosen_edges)
++        detail = f"removed_edges={list(chosen_edges)}"
++    elif intervention.mode == "frontier_dropout":
++        dropped = choose_prefix_fraction(tuple(sorted(motif.support_cut)), intervention.severity, rng)
++        unavailable_support = frozenset(int(x) for x in dropped)  # type: ignore[arg-type]
++        detail = f"dropped_support_vertices={sorted(unavailable_support)}"
++    elif intervention.mode == "support_delay":
++        delay_depth = int(round(intervention.severity * 5))
++        detail = f"delay_depth={delay_depth}"
++    elif intervention.mode == "orientation_degradation":
++        after_motif = clone_motif(motif, metadata=degraded_orientation_metadata(motif.metadata, intervention.severity))
++        after_motifs = replace_motif(motifs, motif, after_motif)
++        skip_support_cache = (motif.name,)
++        detail = f"orientation_degradation_severity={intervention.severity}"
++    elif intervention.mode == "ledger_failure":
++        after_motif = clone_motif(motif, metadata=degraded_ledger_metadata(motif.metadata, intervention.severity))
++        after_motifs = replace_motif(motifs, motif, after_motif)
++        skip_support_cache = (motif.name,)
++        detail = f"ledger_failure_severity={intervention.severity}"
++    elif intervention.mode == "selector_stress":
++        domain = f"severance_selector_stress:{motif.name}:{site}"
++        after_motif = clone_motif(motif, metadata=with_conflict_domain(motif.metadata, domain), exclusion_domain=domain)
++        after_motifs = replace_motif(motifs, motif, after_motif)
++        competitor_count = int(round(intervention.severity * 3))
++        for idx in range(competitor_count):
++            comp = clone_motif(motif, name=f"stress_{idx}_{motif.name}", metadata=with_conflict_domain(motif.metadata, domain), priority=motif.priority, exclusion_domain=domain)
++            after_motifs.append(comp)
++        skip_support_cache = (motif.name,)
++        detail = f"added_incompatible_competitors={competitor_count} domain={domain}"
++
++    if intervention.mode in {"frontier_dropout", "support_delay"}:
++        after_supported = before_decision.supported
++        after_ready = before_decision.ready
++        after_strict = before_decision.commits
++        after_selected = before_selected
++    else:
++        after_protocol, after_selector = protocol_for(
++            after_dag,
++            after_motifs,
++            selector_mode=selector_mode,
++            selector_tie_policy=selector_tie_policy,
++            use_orientation_conflicts=True,
++        )
++        if after_dag is dag:
++            _preload_support_cache(after_protocol, state.support_cache, skip=skip_support_cache)
++        after_decision = after_protocol.decision(after_motif, site)
++        after_selected = selected_commit_bool(after_protocol, after_motif, site, after_selector)
++        after_supported = after_decision.supported
++        after_ready = after_decision.ready
++        after_strict = after_decision.commits
++
++    if unavailable_support.intersection(motif.support_cut):
++        after_supported = False
++        after_ready = False
++        after_strict = False
++        after_selected = False
++    if delay_depth > 0:
++        after_ready = False
++        after_strict = False
++        after_selected = False
++
++    finality_after = min_finality_depth(after_dag, motif.support_cut)
++    if intervention.mode == "support_delay" and finality_after is not None:
++        finality_after = finality_after + delay_depth
++    if unavailable_support.intersection(motif.support_cut):
++        finality_after = None
++    shift = None if finality_before is None or finality_after is None else finality_after - finality_before
++    recovery = readiness_recovery_length(after_dag, motif.support_cut, site, unavailable_support=unavailable_support, delay_depth=delay_depth)
++
++    return SeveranceEvaluation(
++        motif=motif.name,
++        site=site,
++        mode=intervention.mode,
++        severity=intervention.severity,
++        seed=intervention.seed,
++        support_width=len(motif.support_cut),
++        before_supported=before_decision.supported,
++        before_ready=before_decision.ready,
++        before_strict_commits=before_decision.commits,
++        before_selected_commits=before_selected,
++        after_supported=after_supported,
++        after_ready=after_ready,
++        after_strict_commits=after_strict,
++        after_selected_commits=after_selected,
++        lost_support=before_decision.supported and not after_supported,
++        lost_readiness=before_decision.ready and not after_ready,
++        lost_strict_commit=before_decision.commits and not after_strict,
++        lost_selected_commit=before_selected and not after_selected,
++        finality_depth_before=finality_before,
++        finality_depth_after=finality_after,
++        finality_depth_shift=shift,
++        recovery_length=recovery,
++        intervention_detail=detail,
++    )
++
++
++def iter_severance_rows_for_seed(config: EnsembleRunConfig, seed: int) -> Iterator[Dict[str, object]]:
++    state = build_cached_seed_state(config, seed)
++    targets = target_motifs_for_severance(
++        state.motifs,
++        include_alternatives=config.include_alternatives,
++        max_targets=config.max_targets,
++    )
++    for severance_seed in config.severance_seeds:
++        for mode in config.modes:
++            for severity in config.severities:
++                intervention = CausalSeveranceIntervention(mode=mode, severity=float(severity), seed=int(severance_seed))
++                for motif in targets:
++                    site = motif_site(motif)
++                    if site < 0:
++                        continue
++                    ev = evaluate_severance_cached(
++                        state,
++                        motif,
++                        site,
++                        intervention,
++                        selector_mode=config.selector_mode,
++                        selector_tie_policy=config.selector_tie_policy,
++                    )
++                    row = ev.to_row()
++                    row["run_seed"] = seed
++                    row["nodes"] = len(state.dag.nodes)
++                    row["edges"] = len(state.dag.edges)
++                    row["motifs"] = len(state.motifs)
++                    row["target_count"] = len(targets)
++                    yield row
++
++
++def _rows_for_seed_worker(payload: Tuple[EnsembleRunConfig, int]) -> List[Dict[str, object]]:
++    config, seed = payload
++    return list(iter_severance_rows_for_seed(config, seed))
++
++
++@dataclass
++class StreamingBuckets:
++    """Online aggregate state for ensemble severance rows."""
++
++    count: int = 0
++    totals: Dict[str, int] = field(default_factory=dict)
++    mode_severity: Dict[Tuple[str, float], Dict[str, object]] = field(default_factory=dict)
++    mode_severity_width: Dict[Tuple[str, float, int], Dict[str, object]] = field(default_factory=dict)
++    run_seed: Dict[int, Dict[str, object]] = field(default_factory=dict)
++    samples: List[Dict[str, object]] = field(default_factory=list)
++    sample_limit: int = 2000
++
++    def observe(self, row: Mapping[str, object]) -> None:
++        self.count += 1
++        bool_keys = ("lost_support", "lost_readiness", "lost_strict_commit", "lost_selected_commit")
++        for key in bool_keys:
++            self.totals[key] = self.totals.get(key, 0) + int(bool(row.get(key)))
++        self._observe_bucket(self.mode_severity, (str(row["mode"]), float(row["severity"])), row)
++        self._observe_bucket(self.mode_severity_width, (str(row["mode"]), float(row["severity"]), int(row["support_width"])), row)
++        seed = int(row["run_seed"])
++        rb = self.run_seed.setdefault(seed, self._empty_bucket())
++        self._update_bucket(rb, row)
++        self._reservoir_sample(row)
++
++    @staticmethod
++    def _empty_bucket() -> Dict[str, object]:
++        return {
++            "samples": 0,
++            "support_width_sum": 0,
++            "lost_support": 0,
++            "lost_readiness": 0,
++            "lost_strict_commit": 0,
++            "lost_selected_commit": 0,
++            "finality_shifts": [],
++            "recovery_lengths": [],
++            "nodes": None,
++            "edges": None,
++            "motifs": None,
++            "target_count": None,
++        }
++
++    def _observe_bucket(self, mapping: Dict[Tuple[object, ...], Dict[str, object]], key: Tuple[object, ...], row: Mapping[str, object]) -> None:
++        bucket = mapping.setdefault(key, self._empty_bucket())
++        self._update_bucket(bucket, row)
++
++    @staticmethod
++    def _update_bucket(bucket: Dict[str, object], row: Mapping[str, object]) -> None:
++        bucket["samples"] = int(bucket["samples"]) + 1
++        bucket["support_width_sum"] = int(bucket["support_width_sum"]) + int(row.get("support_width", 0))
++        for key in ("lost_support", "lost_readiness", "lost_strict_commit", "lost_selected_commit"):
++            bucket[key] = int(bucket[key]) + int(bool(row.get(key)))
++        if row.get("finality_depth_shift") is not None:
++            bucket["finality_shifts"].append(int(row["finality_depth_shift"]))  # type: ignore[index,union-attr]
++        if row.get("recovery_length") is not None:
++            bucket["recovery_lengths"].append(int(row["recovery_length"]))  # type: ignore[index,union-attr]
++        for key in ("nodes", "edges", "motifs", "target_count"):
++            if row.get(key) is not None:
++                bucket[key] = row[key]
++
++    def _reservoir_sample(self, row: Mapping[str, object]) -> None:
++        if self.sample_limit <= 0:
++            return
++        row_copy = dict(row)
++        if len(self.samples) < self.sample_limit:
++            self.samples.append(row_copy)
++            return
++        # Deterministic reservoir position using the running count; no hidden
++        # global randomness is introduced.
++        slot = (self.count * 1103515245 + 12345) % self.count
++        if slot < self.sample_limit:
++            self.samples[int(slot)] = row_copy
++
++    @staticmethod
++    def _rate(bucket: Mapping[str, object], key: str) -> float:
++        n = int(bucket["samples"])
++        return round(int(bucket[key]) / n, 6) if n else 0.0
++
++    @staticmethod
++    def _mean(values: Sequence[int]) -> Optional[float]:
++        return round(sum(values) / len(values), 6) if values else None
++
++    def aggregate_rows(self) -> List[Dict[str, object]]:
++        rows: List[Dict[str, object]] = []
++        for (mode, severity), bucket in sorted(self.mode_severity.items()):
++            n = int(bucket["samples"])
++            rows.append({
++                "mode": mode,
++                "severity": severity,
++                "samples": n,
++                "mean_support_width": round(int(bucket["support_width_sum"]) / n, 6) if n else 0.0,
++                "support_loss_rate": self._rate(bucket, "lost_support"),
++                "readiness_loss_rate": self._rate(bucket, "lost_readiness"),
++                "strict_commit_loss_rate": self._rate(bucket, "lost_strict_commit"),
++                "selected_commit_loss_rate": self._rate(bucket, "lost_selected_commit"),
++                "mean_finality_depth_shift": self._mean(bucket["finality_shifts"]),
++                "mean_recovery_length": self._mean(bucket["recovery_lengths"]),
++            })
++        return rows
++
++    def fragility_rows(self) -> List[Dict[str, object]]:
++        rows: List[Dict[str, object]] = []
++        for (mode, severity, width), bucket in sorted(self.mode_severity_width.items()):
++            n = int(bucket["samples"])
++            rows.append({
++                "mode": mode,
++                "severity": severity,
++                "support_width": width,
++                "samples": n,
++                "lost_support_rate": self._rate(bucket, "lost_support"),
++                "lost_readiness_rate": self._rate(bucket, "lost_readiness"),
++                "lost_strict_commit_rate": self._rate(bucket, "lost_strict_commit"),
++                "lost_selected_commit_rate": self._rate(bucket, "lost_selected_commit"),
++                "mean_recovery_length": self._mean(bucket["recovery_lengths"]),
++                "mean_finality_depth_shift": self._mean(bucket["finality_shifts"]),
++            })
++        return rows
++
++    def run_rows(self) -> List[Dict[str, object]]:
++        rows: List[Dict[str, object]] = []
++        for seed, bucket in sorted(self.run_seed.items()):
++            n = int(bucket["samples"])
++            rows.append({
++                "run_seed": seed,
++                "samples": n,
++                "nodes": bucket.get("nodes"),
++                "edges": bucket.get("edges"),
++                "motifs": bucket.get("motifs"),
++                "target_count": bucket.get("target_count"),
++                "support_loss_rate": self._rate(bucket, "lost_support"),
++                "readiness_loss_rate": self._rate(bucket, "lost_readiness"),
++                "strict_commit_loss_rate": self._rate(bucket, "lost_strict_commit"),
++                "selected_commit_loss_rate": self._rate(bucket, "lost_selected_commit"),
++                "mean_finality_depth_shift": self._mean(bucket["finality_shifts"]),
++                "mean_recovery_length": self._mean(bucket["recovery_lengths"]),
++            })
++        return rows
++
++    def summary_row(self, *, config: EnsembleRunConfig, elapsed_seconds: float) -> Dict[str, object]:
++        return {
++            "version": "0.5.1",
++            "run_count": len(config.seeds),
++            "steps": config.steps,
++            "workers": config.workers,
++            "use_fast_growth": config.use_fast_growth,
++            "expected_evaluations_upper_bound": config.expected_evaluations_upper_bound(),
++            "actual_evaluations": self.count,
++            "sampled_evaluations": len(self.samples),
++            "elapsed_seconds": round(elapsed_seconds, 6),
++            "evaluations_per_second": round(self.count / elapsed_seconds, 6) if elapsed_seconds > 0 else None,
++            "total_lost_support": self.totals.get("lost_support", 0),
++            "total_lost_readiness": self.totals.get("lost_readiness", 0),
++            "total_lost_strict_commit": self.totals.get("lost_strict_commit", 0),
++            "total_lost_selected_commit": self.totals.get("lost_selected_commit", 0),
++        }
++
++
++def run_large_ensemble(config: EnsembleRunConfig) -> Tuple[Dict[str, object], List[Dict[str, object]], List[Dict[str, object]], List[Dict[str, object]], List[Dict[str, object]]]:
++    started = time.perf_counter()
++    buckets = StreamingBuckets(sample_limit=config.sample_limit)
++    if config.workers <= 1:
++        for seed in config.seeds:
++            for row in iter_severance_rows_for_seed(config, seed):
++                buckets.observe(row)
++    else:
++        max_workers = max(1, min(config.workers, len(config.seeds), os.cpu_count() or 1))
++        with ProcessPoolExecutor(max_workers=max_workers) as pool:
++            futures = [pool.submit(_rows_for_seed_worker, (config, seed)) for seed in config.seeds]
++            for future in as_completed(futures):
++                for row in future.result():
++                    buckets.observe(row)
++    elapsed = time.perf_counter() - started
++    summary = buckets.summary_row(config=config, elapsed_seconds=elapsed)
++    return summary, buckets.run_rows(), buckets.aggregate_rows(), buckets.fragility_rows(), buckets.samples
++
++
++def benchmark_fast_vs_audited(*, seed: int = 17, steps: int = 16, repeats: int = 3) -> List[Dict[str, object]]:
++    rows: List[Dict[str, object]] = []
++    for label, fast in (("fast_growth", True), ("audited_growth", False)):
++        times: List[float] = []
++        nodes = edges = motifs = 0
++        for _ in range(repeats):
++            t0 = time.perf_counter()
++            dag, ms = generate_growth_state(
++                use_fast_growth=fast,
++                steps=steps,
++                seed=seed,
++                max_parents=3,
++                conflict_rate=0.30,
++                defect_rate=0.05,
++                orientation_defect_rate=0.05,
++                conflict_witness_defect_rate=0.10,
++            )
++            times.append(time.perf_counter() - t0)
++            nodes, edges, motifs = len(dag.nodes), len(dag.edges), len(ms)
++        rows.append({
++            "mode": label,
++            "seed": seed,
++            "steps": steps,
++            "repeats": repeats,
++            "nodes": nodes,
++            "edges": edges,
++            "motifs": motifs,
++            "mean_seconds": round(statistics.mean(times), 6),
++            "min_seconds": round(min(times), 6),
++            "max_seconds": round(max(times), 6),
++        })
++    if len(rows) == 2 and rows[0]["mean_seconds"] and rows[1]["mean_seconds"]:
++        fast_mean = float(rows[0]["mean_seconds"])
++        audited_mean = float(rows[1]["mean_seconds"])
++        speedup = round(audited_mean / fast_mean, 6) if fast_mean > 0 else None
++        rows.append({
++            "mode": "speedup_fast_vs_audited",
++            "seed": seed,
++            "steps": steps,
++            "repeats": repeats,
++            "nodes": nodes,
++            "edges": edges,
++            "motifs": motifs,
++            "mean_seconds": speedup,
++            "min_seconds": None,
++            "max_seconds": None,
++        })
++    return rows
++
++
++def write_ensemble_predictions(aggregate_rows: Sequence[Mapping[str, object]], summary: Mapping[str, object], path: Path) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    strongest = sorted(
++        aggregate_rows,
++        key=lambda r: (float(r.get("strict_commit_loss_rate", 0.0)), float(r.get("readiness_loss_rate", 0.0))),
++        reverse=True,
++    )[:8]
++    text = [
++        "# RA Large-Ensemble Causal-Severance Note — v0.5.1",
++        "",
++        "This note is RA-native. It reports support/readiness/commitment/finality diagnostics over a seed ensemble.",
++        "",
++        "## Ensemble scale",
++        "",
++        f"- run_count: {summary.get('run_count')}",
++        f"- actual_evaluations: {summary.get('actual_evaluations')}",
++        f"- sampled_evaluations: {summary.get('sampled_evaluations')}",
++        f"- evaluations_per_second: {summary.get('evaluations_per_second')}",
++        "",
++        "## Highest-loss settings",
++        "",
++    ]
++    for row in strongest:
++        text.append(
++            f"- mode={row['mode']}, severity={row['severity']}: "
++            f"support_loss_rate={row['support_loss_rate']}, "
++            f"readiness_loss_rate={row['readiness_loss_rate']}, "
++            f"strict_commit_loss_rate={row['strict_commit_loss_rate']}, "
++            f"selected_commit_loss_rate={row['selected_commit_loss_rate']}."
++        )
++    text += [
++        "",
++        "## Ensemble-level diagnostics to track",
++        "",
++        "1. Certification/readiness separation: orientation and ledger interventions should primarily move support certification, while edge/frontier interventions should primarily move reachability/readiness.",
++        "2. Support-width fragility: frontier-dropout rates should stratify by support width when redundant support is present.",
++        "3. Delay/recovery relation: support delay should move finality/recovery diagnostics without necessarily destroying support certification.",
++        "4. Selector-stress response: selector stress should alter selected commitment while leaving support/readiness diagnostics largely intact.",
++        "",
++        "These are simulator diagnostics for RA actualization dynamics; physical correspondence tests remain separate tasks.",
++    ]
++    path.write_text("\n".join(text) + "\n", encoding="utf-8")
++
++
++def write_json_state(summary: Mapping[str, object], run_rows: Sequence[Mapping[str, object]], aggregate_rows: Sequence[Mapping[str, object]], fragility_rows: Sequence[Mapping[str, object]], sample_rows: Sequence[Mapping[str, object]], path: Path) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    payload = {
++        "version": "0.5.1",
++        "summary": dict(summary),
++        "runs": list(run_rows),
++        "aggregate": list(aggregate_rows),
++        "fragility": list(fragility_rows),
++        "sample_evaluations": list(sample_rows),
++    }
++    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
++
++
++def build_arg_parser() -> argparse.ArgumentParser:
++    parser = argparse.ArgumentParser(description="Run RA causal-DAG motif-commit simulator v0.5.1 large-ensemble severance diagnostics.")
++    parser.add_argument("--seed-start", type=int, default=17)
++    parser.add_argument("--seed-stop", type=int, default=37)
++    parser.add_argument("--seed-list", type=str, default=None, help="Comma-separated explicit run seeds; overrides --seed-start/--seed-stop.")
++    parser.add_argument("--steps", type=int, default=16)
++    parser.add_argument("--max-parents", type=int, default=3)
++    parser.add_argument("--conflict-rate", type=float, default=0.30)
++    parser.add_argument("--defect-rate", type=float, default=0.05)
++    parser.add_argument("--orientation-defect-rate", type=float, default=0.05)
++    parser.add_argument("--conflict-witness-defect-rate", type=float, default=0.10)
++    parser.add_argument("--severance-seeds", type=str, default="101,103")
++    parser.add_argument("--severities", type=str, default="0.0,0.25,0.5,0.75,1.0")
++    parser.add_argument("--modes", type=str, default="edge_dropout,frontier_dropout,support_delay,orientation_degradation,ledger_failure,selector_stress")
++    parser.add_argument("--selector-mode", choices=["none", "greedy"], default="greedy")
++    parser.add_argument("--selector-tie-policy", choices=["lexicographic", "stalemate"], default="lexicographic")
++    parser.add_argument("--include-alternatives", action="store_true")
++    parser.add_argument("--max-targets", type=int, default=12, help="Negative means no cap.")
++    parser.add_argument("--sample-limit", type=int, default=2000)
++    parser.add_argument("--workers", type=int, default=1)
++    parser.add_argument("--audited-growth", action="store_true", help="Use v0.5 audited growth generator instead of fast state generator.")
++    parser.add_argument("--summary-csv", type=Path, default=Path("outputs/ra_causal_dag_ensemble_summary_v0_5_1.csv"))
++    parser.add_argument("--runs-csv", type=Path, default=Path("outputs/ra_causal_dag_ensemble_runs_v0_5_1.csv"))
++    parser.add_argument("--aggregate-csv", type=Path, default=Path("outputs/ra_causal_dag_ensemble_aggregate_v0_5_1.csv"))
++    parser.add_argument("--fragility-csv", type=Path, default=Path("outputs/ra_causal_dag_ensemble_fragility_v0_5_1.csv"))
++    parser.add_argument("--sample-csv", type=Path, default=Path("outputs/ra_causal_dag_ensemble_evaluations_sample_v0_5_1.csv"))
++    parser.add_argument("--prediction-md", type=Path, default=Path("outputs/ra_causal_dag_ensemble_predictions_v0_5_1.md"))
++    parser.add_argument("--json", type=Path, default=Path("outputs/ra_causal_dag_ensemble_state_v0_5_1.json"))
++    parser.add_argument("--benchmark-csv", type=Path, default=Path("outputs/ra_causal_dag_ensemble_benchmark_v0_5_1.csv"))
++    parser.add_argument("--benchmark-repeats", type=int, default=3)
++    return parser
++
++
++def main() -> None:
++    parser = build_arg_parser()
++    args = parser.parse_args()
++    config = EnsembleRunConfig.from_args(args)
++    summary, run_rows, aggregate_rows, fragility_rows, sample_rows = run_large_ensemble(config)
++    benchmark_rows = benchmark_fast_vs_audited(seed=config.seeds[0] if config.seeds else 17, steps=config.steps, repeats=args.benchmark_repeats)
++
++    rows_to_csv([summary], args.summary_csv)
++    rows_to_csv(run_rows, args.runs_csv)
++    rows_to_csv(aggregate_rows, args.aggregate_csv)
++    rows_to_csv(fragility_rows, args.fragility_csv)
++    rows_to_csv(sample_rows, args.sample_csv)
++    rows_to_csv(benchmark_rows, args.benchmark_csv)
++    write_ensemble_predictions(aggregate_rows, summary, args.prediction_md)
++    write_json_state(summary, run_rows, aggregate_rows, fragility_rows, sample_rows, args.json)
++
++    print(f"summary={summary}")
++    print(f"runs={len(run_rows)} aggregate_rows={len(aggregate_rows)} fragility_rows={len(fragility_rows)} sample_rows={len(sample_rows)}")
++    print(f"summary_csv={args.summary_csv}")
++    print(f"aggregate_csv={args.aggregate_csv}")
++    print(f"prediction_md={args.prediction_md}")
++
++
++if __name__ == "__main__":
++    main()

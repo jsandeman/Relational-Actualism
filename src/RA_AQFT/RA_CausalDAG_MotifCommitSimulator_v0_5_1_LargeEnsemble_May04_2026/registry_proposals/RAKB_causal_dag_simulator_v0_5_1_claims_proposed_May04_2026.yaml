@@ -1,0 +1,69 @@
+registry_version: v0.5
+claims:
+  - id: RA-SIM-MOTIF-ENSEMBLE-001
+    name: Large-ensemble causal-severance runs preserve v0.5 semantic predicates while using fast final-state generation
+    domain: complexity
+    papers: [II]
+    statement: >
+      The v0.5.1 large-ensemble simulator evaluates the same RA-native causal-severance predicates as v0.5 while replacing the audited growth path with a fast final-state generator for ensemble runs.
+    nature_targets:
+      - RA-native actualization-fragility ensembles on finite causal graphs
+      - support/readiness/commitment/finality survival diagnostics across seed families
+    ra_observable: null
+    sources:
+      - ra_causal_dag_ensemble.py
+      - test_v0_5_1_large_ensemble.py
+      - RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_Report_May04_2026.md
+    proof_dependencies:
+      - RA-SIM-MOTIF-SEVERANCE-001
+      - RA-SIM-MOTIF-SEVERANCE-002
+      - RA-SIM-MOTIF-SEVERANCE-003
+      - RA-SIM-MOTIF-SEVERANCE-004
+      - RA-SIM-MOTIF-SEVERANCE-005
+    restoration_preconditions: []
+    caveats: >
+      This is simulator engineering, not a new physical correspondence claim. Fast final-state generation is regression-tested against the v0.5 audited final state for fixed seeds.
+    next_tasks:
+      - Apply ensemble runs to wider support-width regimes and compare fragility strata.
+    source_status:
+      ra_causal_dag_ensemble.py: simulation_validated_no_forbidden_ra_method_terms
+      test_v0_5_1_large_ensemble.py: python_unittest_validated
+    legacy_proof_status: DR
+    proof_status: simulation_validated
+    legacy_support_status: none
+    auxiliary_support_status: simulator_optimization_validated
+    claim_kind: derived_result
+    formal_anchor: EnsembleRunConfig ; generate_growth_state_fast ; evaluate_severance_cached ; run_large_ensemble
+    packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026
+
+  - id: RA-SIM-MOTIF-ENSEMBLE-002
+    name: Streaming aggregation supports larger causal-severance ensembles without retaining all evaluation rows
+    domain: complexity
+    papers: [II]
+    statement: >
+      The v0.5.1 large-ensemble simulator aggregates support loss, readiness loss, strict commitment loss, selected commitment loss, finality shift, and recovery length online, while retaining only a bounded deterministic sample of per-evaluation rows.
+    nature_targets:
+      - scalable RA-native severance diagnostics
+      - ensemble-level actualization-fragility profiles
+    ra_observable: null
+    sources:
+      - ra_causal_dag_ensemble.py
+      - ra_causal_dag_ensemble_aggregate_v0_5_1.csv
+      - ra_causal_dag_ensemble_summary_v0_5_1.csv
+    proof_dependencies:
+      - RA-SIM-MOTIF-ENSEMBLE-001
+    restoration_preconditions: []
+    caveats: >
+      Streaming aggregation preserves aggregate diagnostics, not a complete per-evaluation archive. Use sample_limit or full v0.5 output when full row retention is required.
+    next_tasks:
+      - Add wider ensemble presets and optional stratified target selection.
+    source_status:
+      ra_causal_dag_ensemble.py: simulation_validated_no_forbidden_ra_method_terms
+      test_v0_5_1_large_ensemble.py: python_unittest_validated
+    legacy_proof_status: DR
+    proof_status: simulation_validated
+    legacy_support_status: none
+    auxiliary_support_status: ensemble_aggregation_validated
+    claim_kind: derived_result
+    formal_anchor: StreamingBuckets ; run_large_ensemble ; write_ensemble_predictions
+    packet_origin: RA_CausalDAG_MotifCommitSimulator_v0_5_1_LargeEnsemble_May04_2026

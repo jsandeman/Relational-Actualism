@@ -1,0 +1,634 @@
+--- /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_4_May04_2026/simulator/ra_causal_dag_simulator.py	2026-05-04 22:39:25.622705787 +0000
++++ /mnt/data/RA_CausalDAG_MotifCommitSimulator_v0_5_May04_2026/simulator/ra_causal_dag_simulator.py	2026-05-04 22:58:47.249980139 +0000
+@@ -1,15 +1,16 @@
+ #!/usr/bin/env python3
+ """
+-RA causal-DAG motif-commit simulator v0.4
++RA causal-DAG motif-commit simulator v0.5
+ 
+-RA-native simulator for motif support, causal readiness, selector closure, and
+-orientation-gated support certification.
++RA-native simulator for motif support, causal readiness, selector closure,
++orientation-gated support certification, and causal-severance fragility
++diagnostics.
+ 
+-This is not a simulator of QM, GR, blockchain consensus, voting, or message
+-rounds.  The target vocabulary is RA-native:
++This is an RA-native actualization workbench. The operational vocabulary is:
+ 
+   candidate motif -> causal support cut -> oriented support witness ->
+-  certified readiness -> selector closure -> selected commitment -> finality.
++  certified readiness -> selector closure -> selected commitment -> finality ->
++  causal-severance intervention -> fragility / recovery diagnostics.
+ 
+ Lean-to-Python correspondence:
+ 
+@@ -24,6 +25,7 @@
+ from __future__ import annotations
+ 
+ import argparse
++import copy
+ import csv
+ import json
+ import random
+@@ -1009,55 +1011,562 @@
+     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+ 
+ 
++
++
++# ---------------------------------------------------------------------------
++# v0.5 causal-severance / actualization-fragility workbench
++# ---------------------------------------------------------------------------
++
++@dataclass(frozen=True)
++class CausalSeveranceIntervention:
++    """Controlled RA-native perturbation of causal support availability."""
++
++    mode: str
++    severity: float
++    seed: int = 0
++    label: str = ""
++
++    def __post_init__(self) -> None:
++        allowed = {
++            "edge_dropout",
++            "frontier_dropout",
++            "support_delay",
++            "orientation_degradation",
++            "ledger_failure",
++            "selector_stress",
++        }
++        if self.mode not in allowed:
++            raise ValueError(f"unknown severance mode: {self.mode}")
++        if not (0.0 <= self.severity <= 1.0):
++            raise ValueError("severity must lie in [0, 1]")
++
++
++@dataclass(frozen=True)
++class SeveranceEvaluation:
++    """Before/after actualization diagnostics for one motif at one site."""
++
++    motif: str
++    site: NodeId
++    mode: str
++    severity: float
++    seed: int
++    support_width: int
++    before_supported: bool
++    before_ready: bool
++    before_strict_commits: bool
++    before_selected_commits: bool
++    after_supported: bool
++    after_ready: bool
++    after_strict_commits: bool
++    after_selected_commits: bool
++    lost_support: bool
++    lost_readiness: bool
++    lost_strict_commit: bool
++    lost_selected_commit: bool
++    finality_depth_before: Optional[int]
++    finality_depth_after: Optional[int]
++    finality_depth_shift: Optional[int]
++    recovery_length: Optional[int]
++    intervention_detail: str
++
++    def to_row(self) -> Dict[str, object]:
++        return {
++            "motif": self.motif,
++            "site": self.site,
++            "mode": self.mode,
++            "severity": self.severity,
++            "seed": self.seed,
++            "support_width": self.support_width,
++            "before_supported": self.before_supported,
++            "before_ready": self.before_ready,
++            "before_strict_commits": self.before_strict_commits,
++            "before_selected_commits": self.before_selected_commits,
++            "after_supported": self.after_supported,
++            "after_ready": self.after_ready,
++            "after_strict_commits": self.after_strict_commits,
++            "after_selected_commits": self.after_selected_commits,
++            "lost_support": self.lost_support,
++            "lost_readiness": self.lost_readiness,
++            "lost_strict_commit": self.lost_strict_commit,
++            "lost_selected_commit": self.lost_selected_commit,
++            "finality_depth_before": self.finality_depth_before,
++            "finality_depth_after": self.finality_depth_after,
++            "finality_depth_shift": self.finality_depth_shift,
++            "recovery_length": self.recovery_length,
++            "intervention_detail": self.intervention_detail,
++        }
++
++
++def clone_dag(dag: CausalDAG) -> CausalDAG:
++    out = CausalDAG()
++    out.parents = {n: set(ps) for n, ps in dag.parents.items()}
++    out.children = {n: set(cs) for n, cs in dag.children.items()}
++    out.depth = dict(dag.depth)
++    out._next_id = dag._next_id
++    out._ancestors_cache.clear()
++    return out
++
++
++def recompute_depths(dag: CausalDAG) -> None:
++    dag.depth = {}
++    for n in sorted(dag.parents):
++        ps = dag.parents[n]
++        dag.depth[n] = 0 if not ps else 1 + max(dag.depth[p] for p in ps)
++    dag._ancestors_cache.clear()
++
++
++def remove_edges(dag: CausalDAG, edges: Iterable[Tuple[NodeId, NodeId]]) -> CausalDAG:
++    out = clone_dag(dag)
++    for p, c in edges:
++        if c in out.parents and p in out.parents[c]:
++            out.parents[c].remove(p)
++        if p in out.children and c in out.children[p]:
++            out.children[p].remove(c)
++    recompute_depths(out)
++    return out
++
++
++def causal_edges_inside_site_past(dag: CausalDAG, site: NodeId) -> Tuple[Tuple[NodeId, NodeId], ...]:
++    past = dag.ancestors(site, include_self=True)
++    return tuple(sorted((p, c) for c in past for p in dag.parents[c] if p in past))
++
++
++def choose_prefix_fraction(items: Sequence[object], severity: float, rng: random.Random) -> Tuple[object, ...]:
++    if severity <= 0 or not items:
++        return ()
++    shuffled = list(items)
++    rng.shuffle(shuffled)
++    k = max(1, min(len(shuffled), int(round(severity * len(shuffled)))))
++    return tuple(shuffled[:k])
++
++
++def min_finality_depth(dag: CausalDAG, support_cut: SupportCut) -> Optional[int]:
++    if not dag.depth:
++        return None
++    for d in sorted(set(dag.depth.values())):
++        later = [x for x, depth in dag.depth.items() if depth >= d]
++        if later and all(dag.ready_at(support_cut, x) for x in later):
++            return d
++    return None
++
++
++def readiness_recovery_length(
++    dag: CausalDAG,
++    support_cut: SupportCut,
++    site: NodeId,
++    *,
++    unavailable_support: FrozenSet[NodeId] = frozenset(),
++    delay_depth: int = 0,
++) -> Optional[int]:
++    if unavailable_support.intersection(support_cut):
++        return None
++    target_depth = dag.depth[site] + max(0, delay_depth)
++    for x in sorted(dag.nodes, key=lambda n: (dag.depth[n], n)):
++        if dag.depth[x] < dag.depth[site] or dag.depth[x] < target_depth:
++            continue
++        if dag.ready_at(support_cut, x):
++            return max(0, dag.depth[x] - dag.depth[site])
++    return None
++
++
++def metadata_deepcopy(metadata: Mapping[str, object]) -> Dict[str, object]:
++    return json.loads(json.dumps(dict(metadata), sort_keys=True))
++
++
++def clone_motif(motif: MotifCandidate, *, metadata: Optional[Mapping[str, object]] = None, name: Optional[str] = None, priority: Optional[int] = None, exclusion_domain: Optional[str] = None) -> MotifCandidate:
++    return MotifCandidate(
++        name=name or motif.name,
++        carrier=motif.carrier,
++        support_cut=motif.support_cut,
++        kind=motif.kind,
++        exclusion_domain=motif.exclusion_domain if exclusion_domain is None else exclusion_domain,
++        certified=motif.certified,
++        priority=motif.priority if priority is None else priority,
++        metadata=metadata_deepcopy(metadata if metadata is not None else motif.metadata),
++    )
++
++
++def degraded_orientation_metadata(metadata: Mapping[str, object], severity: float) -> Dict[str, object]:
++    out = metadata_deepcopy(metadata)
++    witness = out.get("orientation_support_witness")
++    if not isinstance(witness, dict) or severity <= 0:
++        return out
++    closure = witness.get("closure")
++    if not isinstance(closure, dict):
++        closure = {}
++        witness["closure"] = closure
++    steps = max(1, int(round(severity * 5)))
++    if steps >= 1:
++        closure["qN1_signature"] = 5
++    if steps >= 2:
++        closure["local_conserved"] = False
++    if steps >= 3:
++        closure["sign_links"] = []
++    if steps >= 4:
++        witness["frontier_sufficient_for_motif"] = False
++    if steps >= 5:
++        closure["selector_compatible"] = False
++    out["severance_tags"] = list(out.get("severance_tags", [])) + [f"orientation_degradation:{severity}"]
++    return out
++
++
++def degraded_ledger_metadata(metadata: Mapping[str, object], severity: float) -> Dict[str, object]:
++    out = metadata_deepcopy(metadata)
++    if severity <= 0:
++        return out
++    out["ledger_local_ok"] = False
++    witness = out.get("orientation_support_witness")
++    if isinstance(witness, dict):
++        witness["local_ledger_compatible"] = False
++    out["severance_tags"] = list(out.get("severance_tags", [])) + [f"ledger_failure:{severity}"]
++    return out
++
++
++def with_conflict_domain(metadata: Mapping[str, object], domain: str) -> Dict[str, object]:
++    out = metadata_deepcopy(metadata)
++    out["orientation_conflict_domain"] = domain
++    out["orientation_conflict_ok"] = True
++    return out
++
++
++def replace_motif(motifs: Sequence[MotifCandidate], target: MotifCandidate, replacement: MotifCandidate) -> List[MotifCandidate]:
++    return [replacement if m.name == target.name else m for m in motifs]
++
++
++def protocol_for(dag: CausalDAG, motifs: Sequence[MotifCandidate], *, selector_mode: str = "greedy", selector_tie_policy: str = "lexicographic", use_orientation_conflicts: bool = True) -> Tuple[MotifCommitProtocol, SelectorPolicy]:
++    context = make_context(dag, use_orientation_conflicts=use_orientation_conflicts)
++    return MotifCommitProtocol(dag, motifs, context), SelectorPolicy(selector_mode, selector_tie_policy)
++
++
++def motif_site(motif: MotifCandidate) -> NodeId:
++    return max(motif.carrier) if motif.carrier else -1
++
++
++def selected_commit_bool(protocol: MotifCommitProtocol, motif: MotifCandidate, site: NodeId, selector: SelectorPolicy) -> bool:
++    closure = protocol.selector_closure_at(site, selector)
++    return protocol.selected_decision(motif, site, selector, closure).commits
++
++
++def evaluate_severance(
++    dag: CausalDAG,
++    motifs: Sequence[MotifCandidate],
++    motif: MotifCandidate,
++    site: NodeId,
++    intervention: CausalSeveranceIntervention,
++    *,
++    selector_mode: str = "greedy",
++    selector_tie_policy: str = "lexicographic",
++    use_orientation_conflicts: bool = True,
++) -> SeveranceEvaluation:
++    base_protocol, selector = protocol_for(dag, motifs, selector_mode=selector_mode, selector_tie_policy=selector_tie_policy, use_orientation_conflicts=use_orientation_conflicts)
++    before_decision = base_protocol.decision(motif, site)
++    before_selected = selected_commit_bool(base_protocol, motif, site, selector)
++    finality_before = min_finality_depth(dag, motif.support_cut)
++
++    rng = random.Random(intervention.seed + 7919 * site + sum(ord(c) for c in motif.name) + int(intervention.severity * 1000))
++    after_dag = dag
++    after_motifs = list(motifs)
++    after_motif = motif
++    unavailable_support: FrozenSet[NodeId] = frozenset()
++    delay_depth = 0
++    detail = "no_change"
++
++    if intervention.mode == "edge_dropout":
++        chosen = choose_prefix_fraction(causal_edges_inside_site_past(dag, site), intervention.severity, rng)
++        chosen_edges = tuple((int(a), int(b)) for a, b in chosen)  # type: ignore[misc]
++        after_dag = remove_edges(dag, chosen_edges)
++        detail = f"removed_edges={list(chosen_edges)}"
++    elif intervention.mode == "frontier_dropout":
++        dropped = choose_prefix_fraction(tuple(sorted(motif.support_cut)), intervention.severity, rng)
++        unavailable_support = frozenset(int(x) for x in dropped)  # type: ignore[arg-type]
++        detail = f"dropped_support_vertices={sorted(unavailable_support)}"
++    elif intervention.mode == "support_delay":
++        delay_depth = int(round(intervention.severity * 5))
++        detail = f"delay_depth={delay_depth}"
++    elif intervention.mode == "orientation_degradation":
++        after_motif = clone_motif(motif, metadata=degraded_orientation_metadata(motif.metadata, intervention.severity))
++        after_motifs = replace_motif(motifs, motif, after_motif)
++        detail = f"orientation_degradation_severity={intervention.severity}"
++    elif intervention.mode == "ledger_failure":
++        after_motif = clone_motif(motif, metadata=degraded_ledger_metadata(motif.metadata, intervention.severity))
++        after_motifs = replace_motif(motifs, motif, after_motif)
++        detail = f"ledger_failure_severity={intervention.severity}"
++    elif intervention.mode == "selector_stress":
++        domain = f"severance_selector_stress:{motif.name}:{site}"
++        after_motif = clone_motif(motif, metadata=with_conflict_domain(motif.metadata, domain), exclusion_domain=domain)
++        after_motifs = replace_motif(motifs, motif, after_motif)
++        competitor_count = int(round(intervention.severity * 3))
++        for idx in range(competitor_count):
++            comp = clone_motif(motif, name=f"stress_{idx}_{motif.name}", metadata=with_conflict_domain(motif.metadata, domain), priority=motif.priority, exclusion_domain=domain)
++            after_motifs.append(comp)
++        detail = f"added_incompatible_competitors={competitor_count} domain={domain}"
++
++    after_protocol, after_selector = protocol_for(after_dag, after_motifs, selector_mode=selector_mode, selector_tie_policy=selector_tie_policy, use_orientation_conflicts=use_orientation_conflicts)
++    after_decision = after_protocol.decision(after_motif, site)
++    after_selected = selected_commit_bool(after_protocol, after_motif, site, after_selector)
++
++    after_supported = after_decision.supported
++    after_ready = after_decision.ready
++    after_strict = after_decision.commits
++    if unavailable_support.intersection(motif.support_cut):
++        after_supported = False
++        after_ready = False
++        after_strict = False
++        after_selected = False
++    if delay_depth > 0:
++        after_ready = False
++        after_strict = False
++        after_selected = False
++
++    finality_after = min_finality_depth(after_dag, motif.support_cut)
++    if intervention.mode == "support_delay" and finality_after is not None:
++        finality_after = finality_after + delay_depth
++    if unavailable_support.intersection(motif.support_cut):
++        finality_after = None
++    shift = None if finality_before is None or finality_after is None else finality_after - finality_before
++    recovery = readiness_recovery_length(after_dag, motif.support_cut, site, unavailable_support=unavailable_support, delay_depth=delay_depth)
++
++    return SeveranceEvaluation(
++        motif=motif.name,
++        site=site,
++        mode=intervention.mode,
++        severity=intervention.severity,
++        seed=intervention.seed,
++        support_width=len(motif.support_cut),
++        before_supported=before_decision.supported,
++        before_ready=before_decision.ready,
++        before_strict_commits=before_decision.commits,
++        before_selected_commits=before_selected,
++        after_supported=after_supported,
++        after_ready=after_ready,
++        after_strict_commits=after_strict,
++        after_selected_commits=after_selected,
++        lost_support=before_decision.supported and not after_supported,
++        lost_readiness=before_decision.ready and not after_ready,
++        lost_strict_commit=before_decision.commits and not after_strict,
++        lost_selected_commit=before_selected and not after_selected,
++        finality_depth_before=finality_before,
++        finality_depth_after=finality_after,
++        finality_depth_shift=shift,
++        recovery_length=recovery,
++        intervention_detail=detail,
++    )
++
++
++def target_motifs_for_severance(motifs: Sequence[MotifCandidate], *, include_alternatives: bool = False, max_targets: Optional[int] = 12) -> Tuple[MotifCandidate, ...]:
++    kinds = {"renewal", "alternative"} if include_alternatives else {"renewal"}
++    out = tuple(m for m in motifs if m.kind in kinds and m.carrier and m.support_cut)
++    return out if max_targets is None else out[:max_targets]
++
++
++def run_severance_workbench(
++    *,
++    steps: int = 8,
++    seed: int = 17,
++    max_parents: int = 3,
++    conflict_rate: float = 0.30,
++    defect_rate: float = 0.05,
++    orientation_defect_rate: float = 0.05,
++    conflict_witness_defect_rate: float = 0.10,
++    severance_seeds: Sequence[int] = (101,),
++    severities: Sequence[float] = (0.0, 0.50, 1.0),
++    modes: Sequence[str] = ("edge_dropout", "frontier_dropout", "support_delay", "orientation_degradation", "ledger_failure", "selector_stress"),
++    selector_mode: str = "greedy",
++    selector_tie_policy: str = "lexicographic",
++    include_alternatives: bool = False,
++    max_targets: Optional[int] = 4,
++) -> Tuple[CausalDAG, List[MotifCandidate], List[Dict[str, object]], List[Dict[str, object]], List[Dict[str, object]], List[Dict[str, object]]]:
++    dag, motifs, base_rows, *_ = generate_growth_demo(
++        steps=steps,
++        seed=seed,
++        max_parents=max_parents,
++        conflict_rate=conflict_rate,
++        defect_rate=defect_rate,
++        orientation_defect_rate=orientation_defect_rate,
++        conflict_witness_defect_rate=conflict_witness_defect_rate,
++        selector_mode=selector_mode,
++        selector_tie_policy=selector_tie_policy,
++    )
++    targets = target_motifs_for_severance(motifs, include_alternatives=include_alternatives, max_targets=max_targets)
++    eval_rows: List[Dict[str, object]] = []
++    for sev_seed in severance_seeds:
++        for mode in modes:
++            for severity in severities:
++                intervention = CausalSeveranceIntervention(mode=mode, severity=float(severity), seed=int(sev_seed))
++                for motif in targets:
++                    site = motif_site(motif)
++                    if site >= 0:
++                        ev = evaluate_severance(dag, motifs, motif, site, intervention, selector_mode=selector_mode, selector_tie_policy=selector_tie_policy)
++                        eval_rows.append(ev.to_row())
++    fragility_rows = summarize_fragility(eval_rows)
++    finality_rows = [r for r in eval_rows if r.get("finality_depth_before") is not None or r.get("finality_depth_after") is not None]
++    recovery_rows = [r for r in eval_rows if r.get("recovery_length") is not None or r.get("lost_readiness")]
++    return dag, motifs, eval_rows, fragility_rows, finality_rows, recovery_rows
++
++
++def summarize_fragility(rows: Sequence[Mapping[str, object]]) -> List[Dict[str, object]]:
++    buckets: Dict[Tuple[str, float, int], List[Mapping[str, object]]] = {}
++    for r in rows:
++        buckets.setdefault((str(r["mode"]), float(r["severity"]), int(r["support_width"])), []).append(r)
++    out: List[Dict[str, object]] = []
++    for (mode, severity, width), items in sorted(buckets.items()):
++        n = len(items)
++        shifts = [int(r["finality_depth_shift"]) for r in items if r.get("finality_depth_shift") is not None]
++        recoveries = [int(r["recovery_length"]) for r in items if r.get("recovery_length") is not None]
++        out.append({
++            "mode": mode,
++            "severity": severity,
++            "support_width": width,
++            "samples": n,
++            "lost_support_rate": round(sum(1 for r in items if bool(r.get("lost_support"))) / n, 6),
++            "lost_readiness_rate": round(sum(1 for r in items if bool(r.get("lost_readiness"))) / n, 6),
++            "lost_strict_commit_rate": round(sum(1 for r in items if bool(r.get("lost_strict_commit"))) / n, 6),
++            "lost_selected_commit_rate": round(sum(1 for r in items if bool(r.get("lost_selected_commit"))) / n, 6),
++            "mean_recovery_length": round(sum(recoveries) / len(recoveries), 6) if recoveries else None,
++            "mean_finality_depth_shift": round(sum(shifts) / len(shifts), 6) if shifts else None,
++        })
++    return out
++
++
++def summarize_severance_sweep(rows: Sequence[Mapping[str, object]]) -> List[Dict[str, object]]:
++    buckets: Dict[Tuple[str, float], List[Mapping[str, object]]] = {}
++    for r in rows:
++        buckets.setdefault((str(r["mode"]), float(r["severity"])), []).append(r)
++    out: List[Dict[str, object]] = []
++    for (mode, severity), items in sorted(buckets.items()):
++        n = len(items)
++        out.append({
++            "mode": mode,
++            "severity": severity,
++            "samples": n,
++            "mean_support_width": round(sum(int(r["support_width"]) for r in items) / n, 6),
++            "support_loss_rate": round(sum(1 for r in items if bool(r.get("lost_support"))) / n, 6),
++            "readiness_loss_rate": round(sum(1 for r in items if bool(r.get("lost_readiness"))) / n, 6),
++            "strict_commit_loss_rate": round(sum(1 for r in items if bool(r.get("lost_strict_commit"))) / n, 6),
++            "selected_commit_loss_rate": round(sum(1 for r in items if bool(r.get("lost_selected_commit"))) / n, 6),
++        })
++    return out
++
++
++def write_severance_predictions(rows: Sequence[Mapping[str, object]], path: Path) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    sweep = summarize_severance_sweep(rows)
++    strongest = sorted(sweep, key=lambda r: (float(r["strict_commit_loss_rate"]), float(r["readiness_loss_rate"])), reverse=True)[:5]
++    widths = sorted(set(int(r["support_width"]) for r in rows)) if rows else []
++    text = [
++        "# RA Causal-Severance Prediction Note — Simulator v0.5",
++        "",
++        "This note states RA-native diagnostics only. It does not treat any inherited theory as the target.",
++        "",
++        "## Workbench predicates",
++        "",
++        "- support loss: orientation/ledger/support certification no longer holds after intervention.",
++        "- readiness loss: the required support cut no longer reaches the tested site, or its availability is delayed beyond the tested site.",
++        "- commitment loss: a motif that committed before the intervention no longer commits after it.",
++        "- recovery length: the first later depth at which the same support cut is again ready, when such a depth exists in the finite run.",
++        "",
++        "## Observed support-width classes",
++        "",
++        f"Observed support widths in this run: {widths}.",
++        "",
++        "## Highest-loss intervention settings",
++        "",
++    ]
++    for r in strongest:
++        text.append(f"- mode={r['mode']}, severity={r['severity']}: strict_commit_loss_rate={r['strict_commit_loss_rate']}, readiness_loss_rate={r['readiness_loss_rate']}, support_loss_rate={r['support_loss_rate']}.")
++    text += [
++        "",
++        "## RA-native prediction families to track",
++        "",
++        "1. Frontier-width fragility: narrower support cuts should show higher loss rates under frontier dropout when support redundancy is absent.",
++        "2. Reachability/certification separation: edge and frontier interventions should primarily alter readiness, while orientation and ledger interventions should primarily alter support certification.",
++        "3. Delay-induced finality shift: support delay should preserve recoverability when the support remains connected, but move readiness/finality deeper into the causal future.",
++        "4. Selector-stress ambiguity: increasing certified incompatible alternatives should alter selected commitment without necessarily damaging support readiness.",
++        "",
++        "These are simulator diagnostics, not empirical claims. Their role is to sharpen RA-native prediction language before physical correspondence tests are proposed.",
++    ]
++    path.write_text("\n".join(text) + "\n", encoding="utf-8")
++
++
++def dump_severance_state_json(dag: CausalDAG, motifs: Sequence[MotifCandidate], severance_rows: Sequence[Mapping[str, object]], fragility_rows: Sequence[Mapping[str, object]], path: Path) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    payload = {
++        "version": "0.5",
++        "nodes": list(dag.nodes),
++        "edges": [list(e) for e in dag.edges],
++        "depth": {str(k): v for k, v in dag.depth.items()},
++        "motifs": [{"name": m.name, "carrier": sorted(m.carrier), "support_cut": sorted(m.support_cut), "kind": m.kind, "exclusion_domain": m.exclusion_domain, "certified": m.certified, "priority": m.priority, "metadata": dict(m.metadata)} for m in motifs],
++        "severance_evaluations": list(severance_rows),
++        "fragility_profiles": list(fragility_rows),
++    }
++    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
++
++
+ def main() -> None:
+-    parser = argparse.ArgumentParser(description="Run RA causal-DAG motif-commit simulator v0.4.")
+-    parser.add_argument("--steps", type=int, default=24)
++    parser = argparse.ArgumentParser(description="Run RA causal-DAG motif-commit simulator v0.5 with causal-severance diagnostics.")
++    parser.add_argument("--steps", type=int, default=8)
+     parser.add_argument("--seed", type=int, default=17)
+     parser.add_argument("--max-parents", type=int, default=3)
+     parser.add_argument("--conflict-rate", type=float, default=0.30)
+-    parser.add_argument("--defect-rate", type=float, default=0.10)
+-    parser.add_argument("--orientation-defect-rate", type=float, default=0.12)
++    parser.add_argument("--defect-rate", type=float, default=0.05)
++    parser.add_argument("--orientation-defect-rate", type=float, default=0.05)
+     parser.add_argument("--conflict-witness-defect-rate", type=float, default=0.10)
+-    parser.add_argument("--max-support-width", type=int, default=None)
+-    parser.add_argument("--max-depth-span", type=int, default=None)
+     parser.add_argument("--selector-mode", choices=["none", "greedy"], default="greedy")
+     parser.add_argument("--selector-tie-policy", choices=["lexicographic", "stalemate"], default="lexicographic")
+-    parser.add_argument("--disable-orientation-conflicts", action="store_true")
+-    parser.add_argument("--csv", type=Path, default=Path("outputs/ra_causal_dag_demo_summary_v0_4.csv"))
+-    parser.add_argument("--support-csv", type=Path, default=Path("outputs/ra_causal_dag_support_evaluations_v0_4.csv"))
+-    parser.add_argument("--selector-csv", type=Path, default=Path("outputs/ra_causal_dag_selector_components_v0_4.csv"))
+-    parser.add_argument("--orientation-csv", type=Path, default=Path("outputs/ra_causal_dag_orientation_witnesses_v0_4.csv"))
+-    parser.add_argument("--conflict-csv", type=Path, default=Path("outputs/ra_causal_dag_orientation_conflicts_v0_4.csv"))
+-    parser.add_argument("--json", type=Path, default=Path("outputs/ra_causal_dag_demo_state_v0_4.json"))
+-    parser.add_argument("--sweep-csv", type=Path, default=Path("outputs/ra_causal_dag_parameter_sweep_v0_4.csv"))
+-    parser.add_argument("--comparison-csv", type=Path, default=Path("outputs/ra_causal_dag_orientation_comparison_v0_4.csv"))
+-    parser.add_argument("--run-sweep", action="store_true")
++    parser.add_argument("--include-alternatives", action="store_true")
++    parser.add_argument("--max-targets", type=int, default=4)
++    parser.add_argument("--summary-csv", type=Path, default=Path("outputs/ra_causal_dag_severance_summary_v0_5.csv"))
++    parser.add_argument("--severance-csv", type=Path, default=Path("outputs/ra_causal_dag_severance_evaluations_v0_5.csv"))
++    parser.add_argument("--sweep-csv", type=Path, default=Path("outputs/ra_causal_dag_severance_sweep_v0_5.csv"))
++    parser.add_argument("--fragility-csv", type=Path, default=Path("outputs/ra_causal_dag_fragility_profiles_v0_5.csv"))
++    parser.add_argument("--finality-csv", type=Path, default=Path("outputs/ra_causal_dag_finality_depth_shift_v0_5.csv"))
++    parser.add_argument("--recovery-csv", type=Path, default=Path("outputs/ra_causal_dag_recovery_lengths_v0_5.csv"))
++    parser.add_argument("--prediction-md", type=Path, default=Path("outputs/ra_causal_dag_severance_predictions_v0_5.md"))
++    parser.add_argument("--json", type=Path, default=Path("outputs/ra_causal_dag_severance_state_v0_5.json"))
+     args = parser.parse_args()
+ 
+-    dag, motifs, rows, support_rows, selector_rows, orientation_rows, conflict_rows = generate_growth_demo(steps=args.steps, seed=args.seed, max_parents=args.max_parents, conflict_rate=args.conflict_rate, defect_rate=args.defect_rate, orientation_defect_rate=args.orientation_defect_rate, conflict_witness_defect_rate=args.conflict_witness_defect_rate, max_support_width=args.max_support_width, max_depth_span=args.max_depth_span, selector_mode=args.selector_mode, selector_tie_policy=args.selector_tie_policy, use_orientation_conflicts=not args.disable_orientation_conflicts)
+-    rows_to_csv(rows, args.csv)
+-    rows_to_csv(support_rows, args.support_csv)
+-    rows_to_csv(selector_rows, args.selector_csv)
+-    rows_to_csv(orientation_rows, args.orientation_csv)
+-    rows_to_csv(conflict_rows, args.conflict_csv)
+-    dump_state_json(dag, motifs, rows, support_rows, selector_rows, orientation_rows, conflict_rows, args.json)
++    dag, motifs, severance_rows, fragility_rows, finality_rows, recovery_rows = run_severance_workbench(
++        steps=args.steps,
++        seed=args.seed,
++        max_parents=args.max_parents,
++        conflict_rate=args.conflict_rate,
++        defect_rate=args.defect_rate,
++        orientation_defect_rate=args.orientation_defect_rate,
++        conflict_witness_defect_rate=args.conflict_witness_defect_rate,
++        selector_mode=args.selector_mode,
++        selector_tie_policy=args.selector_tie_policy,
++        include_alternatives=args.include_alternatives,
++        max_targets=args.max_targets,
++    )
++    sweep_rows = summarize_severance_sweep(severance_rows)
++    summary = {
++        "version": "0.5",
++        "nodes": len(dag.nodes),
++        "edges": len(dag.edges),
++        "motifs": len(motifs),
++        "severance_evaluations": len(severance_rows),
++        "fragility_profiles": len(fragility_rows),
++        "sweep_rows": len(sweep_rows),
++        "total_lost_support": sum(1 for r in severance_rows if r.get("lost_support")),
++        "total_lost_readiness": sum(1 for r in severance_rows if r.get("lost_readiness")),
++        "total_lost_strict_commit": sum(1 for r in severance_rows if r.get("lost_strict_commit")),
++        "total_lost_selected_commit": sum(1 for r in severance_rows if r.get("lost_selected_commit")),
++    }
++    rows_to_csv([summary], args.summary_csv)
++    rows_to_csv(severance_rows, args.severance_csv)
++    rows_to_csv(sweep_rows, args.sweep_csv)
++    rows_to_csv(fragility_rows, args.fragility_csv)
++    rows_to_csv(finality_rows, args.finality_csv)
++    rows_to_csv(recovery_rows, args.recovery_csv)
++    write_severance_predictions(severance_rows, args.prediction_md)
++    dump_severance_state_json(dag, motifs, severance_rows, fragility_rows, args.json)
+     print(f"nodes={len(dag.nodes)} edges={len(dag.edges)} motifs={len(motifs)}")
+-    print(f"summary={summarize_run(rows)}")
+-    print(f"summary_csv={args.csv}")
+-    print(f"support_csv={args.support_csv}")
+-    print(f"selector_csv={args.selector_csv}")
+-    print(f"orientation_csv={args.orientation_csv}")
+-    print(f"conflict_csv={args.conflict_csv}")
++    print(f"summary={summary}")
++    print(f"summary_csv={args.summary_csv}")
++    print(f"severance_csv={args.severance_csv}")
++    print(f"fragility_csv={args.fragility_csv}")
++    print(f"prediction_md={args.prediction_md}")
+     print(f"state_json={args.json}")
+-    if rows:
+-        print("last_site_summary=" + json.dumps(rows[-1], sort_keys=True))
+-    comparison = run_orientation_comparison(seed=args.seed, steps=args.steps, conflict_rate=args.conflict_rate, defect_rate=args.defect_rate, orientation_defect_rate=args.orientation_defect_rate, conflict_witness_defect_rate=args.conflict_witness_defect_rate)
+-    rows_to_csv(comparison, args.comparison_csv)
+-    print(f"comparison_rows={len(comparison)} comparison_csv={args.comparison_csv}")
+-    if args.run_sweep:
+-        sweep = run_parameter_sweep(steps=args.steps, max_parents=args.max_parents, max_support_width=args.max_support_width, max_depth_span=args.max_depth_span)
+-        rows_to_csv(sweep, args.sweep_csv)
+-        print(f"sweep_rows={len(sweep)} sweep_csv={args.sweep_csv}")
+ 
+ 
+ if __name__ == "__main__":

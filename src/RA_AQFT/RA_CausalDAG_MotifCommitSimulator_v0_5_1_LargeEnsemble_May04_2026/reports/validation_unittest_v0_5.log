@@ -1,0 +1,21 @@
+test_finality_and_recovery_helpers_return_optional_depths (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_finality_and_recovery_helpers_return_optional_depths) ... ok
+test_fragility_summary_groups_by_mode_severity_width (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_fragility_summary_groups_by_mode_severity_width) ... ok
+test_frontier_dropout_can_destroy_support_or_readiness (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_frontier_dropout_can_destroy_support_or_readiness) ... ok
+test_orientation_degradation_can_remove_support_certification (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_orientation_degradation_can_remove_support_certification) ... ok
+test_support_delay_records_recovery_length_or_loss (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_support_delay_records_recovery_length_or_loss) ... ok
+test_workbench_outputs_expected_tables (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_workbench_outputs_expected_tables) ... ok
+test_zero_severity_edge_dropout_preserves_target_decision (test_ra_causal_dag_simulator_v0_5.TestCausalSeveranceWorkbenchV05.test_zero_severity_edge_dropout_preserves_target_decision) ... ok
+test_choose_prefix_fraction_zero_is_empty (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_choose_prefix_fraction_zero_is_empty) ... ok
+test_degraded_ledger_metadata_loses_support_certification (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_degraded_ledger_metadata_loses_support_certification) ... ok
+test_degraded_orientation_metadata_loses_support_certification (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_degraded_orientation_metadata_loses_support_certification) ... ok
+test_evaluate_frontier_dropout_records_support_loss (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_evaluate_frontier_dropout_records_support_loss) ... ok
+test_min_finality_depth_available_for_unsevered_cut (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_min_finality_depth_available_for_unsevered_cut) ... ok
+test_readiness_recovery_length_reports_delay (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_readiness_recovery_length_reports_delay) ... ok
+test_remove_edges_breaks_direct_support_readiness (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_remove_edges_breaks_direct_support_readiness) ... ok
+test_support_delay_records_readiness_loss_and_recovery (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_support_delay_records_readiness_loss_and_recovery) ... ok
+test_workbench_generates_fragility_profiles (test_v0_5_causal_severance.CausalSeveranceV05Tests.test_workbench_generates_fragility_profiles) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 3.592s
+
+OK
