@@ -1,0 +1,12 @@
+# Source Audit — RA_MotifCertificateCorrelationBridge
+
+- source file: `lean/RA_MotifCertificateCorrelationBridge.lean`
+- imports: `RA_MotifCertificationResilienceConsolidation`
+- sorry_count: 0
+- admit_count: 0
+- axiom_count: 0
+- numerical_probability_law: not asserted
+- monotone_rescue_curve: not asserted
+- orientation_specific_branch: excluded
+
+Local Lean/Lake compile is required before promotion to `lean_verified_or_compiled_native`.

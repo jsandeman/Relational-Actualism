@@ -1,0 +1,30 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-MOTIF-CERT-CORRELATION-BRIDGE-METHOD-001
+    name: Certificate-correlation bridge is qualitative, not numerical
+    domain: framing
+    papers: [II]
+    statement: >
+      The certificate-correlation bridge may be used to express shared-fate,
+      weakly shared, and member-distinct certification structures. It must not be
+      cited as a Lean proof of numerical certification-rescue decay, probability
+      laws, or Nature-facing predictions.
+    nature_targets:
+      - modeling discipline for RA-native certification resilience
+    ra_observable: null
+    sources:
+      - RA_MotifCertificateCorrelationBridge_May06_2026.md
+    proof_dependencies: []
+    framing_links:
+      - RA-METHOD-001
+      - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+    restoration_preconditions: []
+    caveats: >
+      Numerical monotone decay remains a simulation result from v0.8/v0.8.1.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: certificate-correlation qualitative-bridge discipline
+    packet_origin: RA_MotifCertificateCorrelationBridge_May06_2026

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "bridge/certificate_correlation_to_trackA_bridge.md",
+    "sha256": "b3e3a044435bc407e2d91647bf3e9b281b926b70418957a75d678194f6f14dd2",
+    "bytes": 655
+  },
+  {
+    "path": "docs/RA_MotifCertificateCorrelationBridge_May06_2026.md",
+    "sha256": "75c7322a844d3782838de2bfb55e3e430859471e62370d6e3b8b987dc8d52d2a",
+    "bytes": 2185
+  },
+  {
+    "path": "lean/RA_MotifCertificateCorrelationBridge.lean",
+    "sha256": "d0f98a53fd5eed58d2ce4893e3e148f272184d9ec4f0232af599027e96553fc8",
+    "bytes": 15992
+  },
+  {
+    "path": "patches/patch_lakefile_add_RA_MotifCertificateCorrelationBridge.diff",
+    "sha256": "cf81a4e6c1ae9d339a93eddffb87d894120c39e2f277b64dbb061493cb1a42d9",
+    "bytes": 133
+  },
+  {
+    "path": "registry_proposals/RAKB_motif_certificate_correlation_bridge_all_dependency_edges_proposed_May06_2026.csv",
+    "sha256": "041ba5cd32293d19b2beb3dac8ce29d07f6255d0771257f3ab0134a77f4996e0",
+    "bytes": 752
+  },
+  {
+    "path": "registry_proposals/RAKB_motif_certificate_correlation_bridge_artifacts_proposed_May06_2026.csv",
+    "sha256": "e60c7b0886a507823982e2de794b3cc3c2d62df886474c4159563dbaef7993be",
+    "bytes": 1635
+  },
+  {
+    "path": "registry_proposals/RAKB_motif_certificate_correlation_bridge_claim_artifact_edges_proposed_May06_2026.csv",
+    "sha256": "3d08067293f6bed07aaca3b40c9f24f944c26f70d9dc2beab165806788bdb07b",
+    "bytes": 1671
+  },
+  {
+    "path": "registry_proposals/RAKB_motif_certificate_correlation_bridge_claim_edges_proposed_May06_2026.csv",
+    "sha256": "9c184d7665a05fb641d9d9f40f3c3dff557cef95448c836923c6af22b6e52673",
+    "bytes": 312
+  },
+  {
+    "path": "registry_proposals/RAKB_motif_certificate_correlation_bridge_claims_proposed_May06_2026.yaml",
+    "sha256": "7ba3b7e7decb4962226bdfeece6e5fc20e6232b967460e4d9f775ae61b5e8b5c",
+    "bytes": 1960
+  },
+  {
+    "path": "registry_proposals/RAKB_motif_certificate_correlation_bridge_framing_proposed_May06_2026.yaml",
+    "sha256": "49c8c500b88e8297967fe0fd5c12dc67cf5636930278c720125765245e94f90b",
+    "bytes": 1243
+  },
+  {
+    "path": "reports/packet_manifest_sha256_May06_2026.json",
+    "sha256": "86215c96e67473a72e74bf3574344555e137d9211152f2d71eb7050b38f50d06",
+    "bytes": 2249
+  },
+  {
+    "path": "reports/source_audit_RA_MotifCertificateCorrelationBridge_May06_2026.log",
+    "sha256": "69d8c6e55041c0a875b10ba5a22600e75d4fe3b44639a29d50f5fa4b5699f88b",
+    "bytes": 443
+  }
+]

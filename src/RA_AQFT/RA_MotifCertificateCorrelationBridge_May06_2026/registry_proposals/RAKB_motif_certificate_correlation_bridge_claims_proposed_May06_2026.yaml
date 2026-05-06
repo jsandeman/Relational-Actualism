@@ -1,0 +1,36 @@
+registry_version: v0.5
+claims:
+  - id: RA-MOTIF-CERT-CORRELATION-BRIDGE-001
+    name: Certificate-fate contexts formalize qualitative certificate correlation structure
+    domain: complexity
+    papers: [II]
+    statement: >
+      The certificate-correlation bridge introduces qualitative certificate-fate
+      contexts for certified support-family members, distinguishing shared-fate,
+      weakly shared, and member-distinct certificate structures without asserting
+      numerical probability or rescue-rate laws.
+    nature_targets:
+      - RA-native actualization resilience under certified support-family structure
+    ra_observable: null
+    sources:
+      - RA_MotifCertificateCorrelationBridge.lean
+      - RA_MotifCertificateCorrelationBridge_May06_2026.md
+    proof_dependencies:
+      - RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+    restoration_preconditions: []
+    caveats: >
+      This is a qualitative formal bridge only. The v0.8/v0.8.1 monotone decay
+      of certification rescue with certificate correlation remains simulation-supported,
+      not Lean-derived. No probability law or Nature-facing prediction is asserted.
+    next_tasks:
+      - Compile RA_MotifCertificateCorrelationBridge locally and promote if clean.
+      - Build RA_MotifNativeOverlapCorrelationBridge as the next Track A bridge.
+    source_status:
+      RA_MotifCertificateCorrelationBridge.lean: source_level_pending_local_compile_no_sorry_no_admit_no_axiom
+    legacy_proof_status: DR
+    proof_status: interpretive_formal_bridge
+    legacy_support_status: none
+    auxiliary_support_status: none_recorded
+    claim_kind: interpretive_bridge
+    formal_anchor: DAGCertificateFateContext ; DAGSharedFateFamily ; DAGMemberDistinctFates ; DAGMemberDistinctCertificateResilienceAt ; GraphCertificateFateContext ; GraphSharedFateFamily ; GraphMemberDistinctFates ; GraphMemberDistinctCertificateResilienceAt
+    packet_origin: RA_MotifCertificateCorrelationBridge_May06_2026

@@ -1,0 +1,5 @@
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
+   RA_MotifCertificationResilienceConsolidation,
++  RA_MotifCertificateCorrelationBridge,

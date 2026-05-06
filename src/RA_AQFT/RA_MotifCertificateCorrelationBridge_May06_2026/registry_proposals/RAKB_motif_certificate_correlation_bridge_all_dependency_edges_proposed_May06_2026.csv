@@ -1,0 +1,4 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-CERT-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Certificate-fate contexts formalize qualitative certificate correlation structure,Strict-parent rescue and family-internal resilience are formalized
+RA-MOTIF-CERT-CORRELATION-BRIDGE-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing,"Certificate-correlation bridge is qualitative, not numerical",Nature is target of RA
+RA-MOTIF-CERT-CORRELATION-BRIDGE-METHOD-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,interpretive_dependency,framing,framing,"Certificate-correlation bridge is qualitative, not numerical",Orientation-specific branch excluded from Track A consolidation

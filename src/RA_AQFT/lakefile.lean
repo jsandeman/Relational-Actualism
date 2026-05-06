@@ -134,6 +134,13 @@ lean_lib «RelationalActualism» where
                                 -- FamilyInternalResilienceAt for DAG and
                                 -- Graph layers; refinement theorems back to
                                 -- certified-family readiness; future_mono.
+    `RA_MotifCertificateCorrelationBridge, -- (May 6 2026) Track A
+                                -- qualitative bridge: CertificateFateContext
+                                -- (coupled / shared-fate / member-distinct)
+                                -- + DAGSharedFateFamily.cert_equiv +
+                                -- DAGMemberDistinctCertificateResilienceAt
+                                -- and Graph variants. No numerical
+                                -- correlation law.
     `RA_MotifNativeCertificateOverlapBridge, -- (May 5 2026) native-overlap
                                 -- bridge: Type-valued witness data,
                                 -- overlaps relation, NativelyWitnessed

@@ -530,3 +530,4 @@ RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-METHOD-001,interpretive_dependency
 RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing,Track A consolidation excludes unsupported orientation-specific rescue,RA Nature-target discipline
 RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001,interpretive_dependency,framing,framing,Track A consolidation excludes unsupported orientation-specific rescue,v1.9 simulator synthesis
 RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-SIM-CONFOUND-METHOD-001,interpretive_dependency,framing,framing,Track A consolidation excludes unsupported orientation-specific rescue,joint stratification confound discipline
+RA-MOTIF-CERT-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A certificate-correlation bridge,Track A Lean consolidation

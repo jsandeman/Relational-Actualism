@@ -6291,3 +6291,63 @@ claims:
   claim_kind: formalized_result
   formal_anchor: DAGStrictParentRescueAt ; DAGFamilyInternalResilienceAt ; GraphStrictParentRescueAt ; GraphFamilyInternalResilienceAt ; DAGStrictParentRescueAt.to_family_internal_resilience ; DAGStrictParentRescueAt.parent_not_ready ; DAGStrictParentRescueAt.to_certified_family_ready ; DAGStrictParentRescueAt.to_family_ready ; DAGFamilyInternalResilienceAt.to_certified_family_ready ; DAGFamilyInternalResilienceAt.future_mono
   packet_origin: RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026
+
+- id: RA-MOTIF-CERT-CORRELATION-BRIDGE-001
+  name: Track A certificate-correlation bridge - qualitative certificate-fate contexts (shared-fate / member-distinct / weakly shared) for both DAG and Graph layers
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The certificate-correlation bridge introduces qualitative
+    certificate-fate contexts for certified support-family members.
+    DAGCertificateFateContext (and its Graph counterpart) carry a
+    `coupled` relation on family members with reflexivity / symmetry /
+    cert_equiv_of_coupled fields, marking when two members share a
+    certificate fate. DAGSharedFateFamily / GraphSharedFateFamily
+    abstract the fully-shared endpoint; DAGMemberDistinctFates /
+    GraphMemberDistinctFates abstract the member-distinct endpoint;
+    DAGWeaklySharedFates / GraphWeaklySharedFates are intentionally
+    qualitative markers between the two. DAGCertificateSharingPreorder
+    / Graph counterpart are placeholders for any future qualitative
+    sharing ordering. Refinement theorems include
+    DAGSharedFateFamily.cert_equiv (any two family members have
+    equivalent certification status under shared fate),
+    DAGSharedFateFamily.certifies_iff_parent (shared-fate collapses to
+    parent), DAGMemberDistinctFates.member_distinct_marker (exposes
+    the underlying Ξ.member_distinct), DAGMemberDistinctCertificate-
+    ResilienceAt and DAGSharedFateResilienceAt with refinements to
+    family-internal resilience and certified-family readiness, plus
+    .future_mono. The module deliberately does NOT assert a numerical
+    monotone law, probability law, rescue-rate curve, or Nature-facing
+    prediction; the v0.8 / v0.8.1 simulator decay (RA-SIM-CERT-FAMILY-*,
+    RA-SIM-CERT-CORRELATION-*) remains simulation-supported, not Lean-
+    derived.
+  nature_targets:
+  - RA-native actualization-resilience formal surface for certificate-correlation vocabulary
+  - structural separation of shared-fate vs member-distinct family certificate structure
+  ra_observable: null
+  sources:
+  - RA_MotifCertificateCorrelationBridge_May06_2026
+  - RA_MotifCertificateCorrelationBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed: lake build RA_MotifCertificateCorrelationBridge closed 8276/8276 jobs (~87s) on 2026-05-06; lexical check finds no sorry, admit, or axiom. Module imports only RA_MotifCertificationResilienceConsolidation. Qualitative formal bridge: it formalizes the vocabulary (member-distinct vs shared-fate vs weakly shared) without committing to a numerical law. The v0.8/v0.8.1 monotone decay of certification rescue with certificate correlation (RA-SIM-CERT-FAMILY-001, RA-SIM-CERT-CORRELATION-001) remains simulation-supported. The next planned Track A bridge is RA_MotifNativeOverlapCorrelationBridge (qualitative bridge from v1.0 native-overlap component context to certificate-correlation surface). Full audit history: audit_events.csv EV-2026-05-06-011.'
+  next_tasks:
+  - 'Track A: build RA_MotifNativeOverlapCorrelationBridge as a qualitative bridge from v1.0 native-overlap component context (RA_MotifNativeCertificateComponents / RA_MotifNativeCertificateOverlapBridge) to the certificate-correlation surface introduced here.'
+  - 'Track A: extend with explicit Type-valued statement of monotone certificate-correlation decay if/when a derivable formal anchor for the simulator-side decay (correlation 0 -> 1 induces rescue 0.221 -> 0.000) is identified.'
+  source_status:
+    RA_MotifCertificateCorrelationBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: formal_consolidation_scaffold
+  claim_kind: interpretive_bridge
+  formal_anchor: DAGCertificateFateContext ; DAGSharedFateFamily ; DAGMemberDistinctFates ; DAGWeaklySharedFates ; DAGCertificateSharingPreorder ; DAGMemberDistinctCertificateResilienceAt ; DAGSharedFateResilienceAt ; DAGSharedFateFamily.cert_equiv ; DAGSharedFateFamily.certifies_iff_parent ; DAGMemberDistinctFates.member_distinct_marker ; DAGMemberDistinctCertificateResilienceAt.to_family_internal_resilience ; DAGMemberDistinctCertificateResilienceAt.to_certified_family_ready ; DAGSharedFateResilienceAt.to_certified_family_ready ; DAGMemberDistinctCertificateResilienceAt.future_mono ; GraphCertificateFateContext ; GraphSharedFateFamily ; GraphMemberDistinctFates ; GraphSharedFateFamily.cert_equiv ; GraphSharedFateFamily.certifies_iff_parent ; GraphMemberDistinctCertificateResilienceAt.future_mono
+  packet_origin: RA_MotifCertificateCorrelationBridge_May06_2026
