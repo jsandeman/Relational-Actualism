@@ -19,3 +19,7 @@ src/RA_AQFT/RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May
 
 # Track B.4 large reproducible run output (125MB; reproducible from canonical run; SHA recorded in artifacts.csv)
 src/RA_AQFT/RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026/outputs/ra_trackB4_locked_envelope_trials.csv
+
+# Track B large reproducible run outputs (>100MB; reproducible from canonical runs; SHAs recorded in artifacts.csv with status=gitignored_reproducible)
+src/RA_AQFT/RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026/outputs/ra_trackB3_normalized_witness_coverage_rows.csv
+src/RA_AQFT/RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026/outputs/ra_trackB3b_sampler_sweep.csv
