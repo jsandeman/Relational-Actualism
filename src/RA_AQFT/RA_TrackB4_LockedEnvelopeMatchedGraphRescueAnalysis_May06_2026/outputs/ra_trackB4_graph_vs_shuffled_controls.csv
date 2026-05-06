@@ -1,1 +1,10 @@
-
+mode,family_semantics,threshold_fraction,severity,graph_gap,control_gap,graph_minus_control_gap,graph_estimable_joint_strata,control_estimable_joint_strata,verdict
+ledger_failure,augmented_exact_k,0.25,0.25,,0.015468439332359914,,,3,graph_not_estimable
+ledger_failure,augmented_exact_k,0.25,0.5,,-0.011676003425523858,,,3,graph_not_estimable
+ledger_failure,augmented_exact_k,0.25,0.75,,0.01403482059392826,,,3,graph_not_estimable
+orientation_degradation,augmented_exact_k,0.25,0.25,,0.010350725597166465,,,3,graph_not_estimable
+orientation_degradation,augmented_exact_k,0.25,0.5,,0.05620798199285728,,,3,graph_not_estimable
+orientation_degradation,augmented_exact_k,0.25,0.75,,0.016345854876645808,,,3,graph_not_estimable
+selector_stress,augmented_exact_k,0.25,0.25,,0.0,,,3,graph_not_estimable
+selector_stress,augmented_exact_k,0.25,0.5,,0.0,,,3,graph_not_estimable
+selector_stress,augmented_exact_k,0.25,0.75,,0.0,,,3,graph_not_estimable

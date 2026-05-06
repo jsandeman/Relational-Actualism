@@ -36,10 +36,15 @@ RESCUE_COLUMNS = [
     "family_internal_survival",
 ]
 OVERLAP_CANDIDATES = [
-    "orientation_overlap",
+    # IMPORTANT: keying-specific overlap columns must come first so that for
+    # sources (e.g. v1.7) that ship BOTH a native simulator overlap and a
+    # keying-specific overlap, we bin on the keying-specific column. Picking
+    # the native `orientation_overlap` first silently makes graph and control
+    # byte-identical because the native column does not depend on keying.
     "v1_7_orientation_overlap_all_pairs",
     "v1_6_graph_coupled_orientation_overlap",
     "graph_cut_orientation_overlap",
+    "orientation_overlap",
 ]
 KEYING_CANDIDATES = ["keying", "v1_7_keying", "orientation_keying"]
 

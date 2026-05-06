@@ -1,1 +1,10 @@
-
+keying,mode,family_semantics,threshold_fraction,severity,estimable_joint_strata,matched_rows,weighted_joint_low_minus_high_gap,matched_widths,matched_family_sizes
+shuffled_overlap_control,ledger_failure,augmented_exact_k,0.25,0.25,3,2019,0.015468439332359914,2;3;4,3;4;5
+shuffled_overlap_control,ledger_failure,augmented_exact_k,0.25,0.5,3,2019,-0.011676003425523858,2;3;4,3;4;5
+shuffled_overlap_control,ledger_failure,augmented_exact_k,0.25,0.75,3,2019,0.01403482059392826,2;3;4,3;4;5
+shuffled_overlap_control,orientation_degradation,augmented_exact_k,0.25,0.25,3,2019,0.010350725597166465,2;3;4,3;4;5
+shuffled_overlap_control,orientation_degradation,augmented_exact_k,0.25,0.5,3,2019,0.05620798199285728,2;3;4,3;4;5
+shuffled_overlap_control,orientation_degradation,augmented_exact_k,0.25,0.75,3,2019,0.016345854876645808,2;3;4,3;4;5
+shuffled_overlap_control,selector_stress,augmented_exact_k,0.25,0.25,3,2019,0.0,2;3;4,3;4;5
+shuffled_overlap_control,selector_stress,augmented_exact_k,0.25,0.5,3,2019,0.0,2;3;4,3;4;5
+shuffled_overlap_control,selector_stress,augmented_exact_k,0.25,0.75,3,2019,0.0,2;3;4,3;4;5
