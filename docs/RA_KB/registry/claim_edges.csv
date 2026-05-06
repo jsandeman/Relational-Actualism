@@ -297,3 +297,6 @@ RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-NATIVE-CERT-COMPONENTS-0
 RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A.2 Lean support-family inclusion taxonomy and augmentation rescue refinement,Track A Lean consolidation
 RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,RA-MOTIF-SUPPORT-FAMILY-MONO-001,proof_dependency,claim,claim,Track A.2 Lean support-family inclusion taxonomy and augmentation rescue refinement,Motif-level support-family monotonicity
 RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,RA-SIM-SUPPORT-FAMILY-MONO-001,proof_dependency,claim,claim,Track A.2 Lean support-family inclusion taxonomy and augmentation rescue refinement,Support-family monotonicity audit (v0.7.1)
+RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,Track A Lean consolidation
+RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,Track A.2 support-family rescue taxonomy
+RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,v0.7.2 metric-repair audit

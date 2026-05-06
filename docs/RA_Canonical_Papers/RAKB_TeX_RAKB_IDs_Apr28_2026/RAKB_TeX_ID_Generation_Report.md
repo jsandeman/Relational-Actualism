@@ -1,6 +1,6 @@
 # RAKB TeX ID generation report
 
-Generated at: `2026-05-06T10:34:30`
+Generated at: `2026-05-06T10:57:21`
 
 Mapping source: `registry/source_text_references.csv`
 

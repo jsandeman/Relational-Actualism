@@ -1,0 +1,39 @@
+registry_version: v0.5
+claims:
+  - id: RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001
+    name: Support-family rescue comparisons require valid comparison domains
+    domain: kernel
+    papers: [II]
+    statement: >
+      Support-family rescue comparisons are formally disciplined by targeting
+      alignment, exposure alignment, family comparability, and certificate-domain
+      agreement or preservation. Additive augmentation comparisons carry a
+      stronger certified-family augmentation predicate, while replacement-style
+      incomparable families do not support no-worse rescue conclusions by
+      inclusion alone.
+    nature_targets:
+      - RA-native actualization-resilience formalism
+      - support-family rescue comparison discipline
+    ra_observable: null
+    sources:
+      - RA_MotifComparisonDomainValidity.lean
+      - RA_MotifComparisonDomainValidity_TrackA3_May06_2026.md
+    proof_dependencies:
+      - RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001
+      - RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+    restoration_preconditions: []
+    caveats: >
+      This is a qualitative formal guardrail. It asserts no numerical rescue-rate
+      law, probability law, orientation-specific rescue claim, or Nature-facing
+      prediction.
+    next_tasks:
+      - Compile RA_MotifComparisonDomainValidity.lean locally and promote proof status if successful.
+    source_status:
+      RA_MotifComparisonDomainValidity.lean: source_level_pending_local_compile_no_sorry_no_admit_no_axiom
+    legacy_proof_status: DR
+    proof_status: source_level_formal_bridge_pending_compile
+    legacy_support_status: none
+    auxiliary_support_status: formal_guardrail_proposed
+    claim_kind: formalized_result
+    formal_anchor: DAGValidFamilyComparison ; DAGValidAugmentationComparison ; DAGReplacementComparisonDomain ; GraphValidFamilyComparison ; GraphValidAugmentationComparison ; GraphReplacementComparisonDomain
+    packet_origin: RA_MotifComparisonDomainValidity_TrackA3_May06_2026

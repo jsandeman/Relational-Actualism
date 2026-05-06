@@ -1,0 +1,30 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-METHOD-001
+    name: Apples-to-apples rescue comparisons require domain validity
+    domain: framing
+    papers: [II]
+    statement: >
+      Support-family rescue comparisons should not be interpreted as no-worse or
+      augmentation claims unless targeting/exposure domains are aligned and the
+      support-family/certificate domains satisfy a valid comparison predicate.
+      Incomparable replacement families require separate treatment.
+    nature_targets:
+      - modeling discipline for RA actualization-resilience simulations
+    ra_observable: null
+    sources:
+      - RA_MotifComparisonDomainValidity_TrackA3_May06_2026.md
+    proof_dependencies: []
+    framing_links:
+      - RA-METHOD-001
+      - RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001
+    restoration_preconditions: []
+    caveats: >
+      This is a modeling/formalization guardrail, not a physical prediction.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: RA_MotifComparisonDomainValidity
+    packet_origin: RA_MotifComparisonDomainValidity_TrackA3_May06_2026

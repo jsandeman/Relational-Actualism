@@ -6469,3 +6469,69 @@ claims:
   claim_kind: formalized_result
   formal_anchor: DAGFamilyEquivalent ; DAGFamilyStrictlyAugments ; DAGFamilyComparable ; DAGFamilyIncomparable ; DAGFamilyEquivalent.refl ; DAGFamilyEquivalent.symm ; DAGFamilyStrictlyAugments.included ; DAGFamilyStrictlyAugments.not_reverse_included ; DAGCertifiedFamilyAugments ; DAGFamilyInternalResilienceAt.mono_certified_augmentation ; DAGFamilyAugmentationRescueAt ; DAGFamilyAugmentationRescueAt.to_strict_parent_rescue ; DAGFamilyAugmentationRescueAt.to_family_internal_resilience ; DAGFamilyAugmentationRescueAt.to_certified_family_ready ; GraphFamilyEquivalent ; GraphFamilyStrictlyAugments ; GraphCertifiedFamilyAugments ; GraphFamilyInternalResilienceAt.mono_certified_augmentation ; GraphFamilyAugmentationRescueAt ; GraphFamilyAugmentationRescueAt.to_strict_parent_rescue
   packet_origin: RA_MotifSupportFamilyRescueTaxonomy_TrackA2_May06_2026
+
+- id: RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001
+  name: Track A.3 Lean comparison-domain validity for support-family rescue analysis (DAG and Graph layers)
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Track A.3 isolates the v0.7..v0.7.2 metric-repair lesson that
+    rescue comparisons across different support-family domains are
+    only valid under explicit alignment conditions. Adds DAG/Graph
+    parallel pair of CertificateAgreementOnOverlap (Ξ₁ and Ξ₂ agree
+    on which cuts they certify, on the overlap of F₁ and F₂),
+    ValidFamilyComparison (targetingAligned + exposureAligned +
+    FamilyComparable + CertificateAgreementOnOverlap), and
+    ValidAugmentationComparison (the stronger predicate for additive
+    augmentation comparisons: targetingAligned + exposureAligned +
+    CertifiedFamilyAugments). targetingAligned / exposureAligned are
+    abstract Prop guardrails supplied by the downstream analysis
+    layer, intentionally not derived inside the Lean module.
+    ReplacementComparisonDomain captures the FamilyIncomparable case
+    explicitly so it can be cited as the regime where no inclusion-
+    based rescue theorem is available. Refinement theorems include
+    .targeting_aligned / .exposure_aligned / .family_comparable /
+    .certificate_agreement (accessors on ValidFamilyComparison),
+    .certified_augmentation (accessor on ValidAugmentationComparison
+    yielding CertifiedFamilyAugments), and
+    .to_family_internal_resilience / .to_augmentation_rescue
+    (refinements from ValidAugmentationComparison + base data into
+    Layer 1 / Layer 4 rescue predicates). ReplacementComparisonDomain
+    .incomparable accessor exposes the underlying FamilyIncomparable
+    witness. The module formalizes the apples-to-apples acceptance
+    criterion structurally; it does not derive any numerical
+    comparison_valid_rate.
+  nature_targets:
+  - RA-native formal surface for apples-to-apples support-family rescue comparison
+  - structural separation of valid (comparable + agreed) vs replacement (incomparable) comparison domains
+  ra_observable: null
+  sources:
+  - RA_MotifComparisonDomainValidity_TrackA3_May06_2026
+  - RA_MotifComparisonDomainValidity.lean
+  proof_dependencies:
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+  - RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  - RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001
+  - RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed: lake build RA_MotifComparisonDomainValidity closed 8277/8277 jobs (~78s) on 2026-05-06; lexical check finds no sorry, admit, or axiom. Module imports only RA_MotifSupportFamilyRescueTaxonomy. The targetingAligned and exposureAligned guardrails are abstract Prop arguments, not derived in this module - they are slots into which a downstream analysis layer supplies its own justification (e.g. simulator-side comparison_valid_rate=0.982 from RA-SIM-SUPPORT-FAMILY-METRIC-001 plays the empirical role of a targeting/exposure-aligned witness). The 5% mean apples-to-apples loss delta and the v0.7 SF-006/SF-007 cohort-specific rejection pattern remain simulator-only. Discipline preserved per RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001: structural surface only; no probability law, no numerical comparison_valid_rate, no orientation-specific rescue claim. Full audit history: audit_events.csv EV-2026-05-06-016.'
+  next_tasks:
+  - 'Recommended: write the technical paper section now that Track A.3 closes the comparison-domain question. The four-module Track A spine plus this comparison-domain validity surface gives every robust positive simulator finding a Lean-typed structural counterpart.'
+  - 'Update RA_TrackA_FormalResilienceChain_CompileConfirmed_May06_2026 synthesis to add Layer 5 / Track A.3 to the LeanModuleMap.csv and SimulatorLessonMap.csv when convenient; not required for soundness of the synthesis as it stands.'
+  source_status:
+    RA_MotifComparisonDomainValidity.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: formal_consolidation_scaffold
+  claim_kind: formalized_result
+  formal_anchor: DAGCertificateAgreementOnOverlap ; DAGValidFamilyComparison ; DAGValidAugmentationComparison ; DAGReplacementComparisonDomain ; DAGValidFamilyComparison.targeting_aligned ; DAGValidFamilyComparison.exposure_aligned ; DAGValidFamilyComparison.family_comparable ; DAGValidFamilyComparison.certificate_agreement ; DAGValidAugmentationComparison.certified_augmentation ; DAGValidAugmentationComparison.to_family_internal_resilience ; DAGValidAugmentationComparison.to_augmentation_rescue ; DAGReplacementComparisonDomain.incomparable ; GraphCertificateAgreementOnOverlap ; GraphValidFamilyComparison ; GraphValidAugmentationComparison ; GraphReplacementComparisonDomain ; GraphValidAugmentationComparison.to_family_internal_resilience ; GraphValidAugmentationComparison.to_augmentation_rescue
+  packet_origin: RA_MotifComparisonDomainValidity_TrackA3_May06_2026
