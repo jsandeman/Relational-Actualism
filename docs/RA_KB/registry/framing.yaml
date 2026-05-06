@@ -1461,3 +1461,56 @@ framing_policies:
   auxiliary_support_status: methodological_guardrail_recorded
   formal_anchor: ra_confirmed_resilience_signatures_v1_9.md ; ra_retracted_orientation_specificity_chain_v1_9.md ; ra_open_native_witness_requirements_v1_9.md ; ra_v1_series_epistemic_status_matrix.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_9_CertificationResilienceSynthesis_May06_2026
+
+- id: RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  name: RA Motif Actualization Resilience technical synthesis is the canonical RA-internal entry point for the motif/support-family/certification-family/native-overlap/orientation-overlap arc
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Nine-section technical note (Nature-target guardrail; BDG-LLC
+    foundation; motif actualization ladder; support-cut vs support-
+    family semantics; certification-family resilience; native-overlap
+    correlation signature; orientation-specificity retraction and
+    confound discipline; current open problems; next formal targets)
+    that consolidates the v0.x / v1.x simulator chain plus its RA-
+    native context into one document. Complements RA-SIM-V1-SERIES-
+    SYNTHESIS-METHOD-001 (which is simulator-chain-specific) by adding
+    the BDG-LLC bedrock, motif-actualization hierarchy, formal-target
+    recommendations (Track A consolidation vs Track B native witness
+    extraction). Synthesis-only; does not promote any new positive or
+    negative claim. Designed as a "read-this-first" reference for
+    collaborator handoffs, paper drafts, and RAKB session bootstraps.
+  nature_targets:
+  - registry-discipline standard for collaborator/paper-section RA program synthesis
+  - explicit Track A vs Track B formal-target recommendation for the post-v1.8.1 state
+  ra_observable: null
+  sources:
+  - RA_MotifActualizationResilience_TechnicalSynthesis_May06_2026
+  - RA_MotifActualizationResilience_TechnicalNote_May06_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Synthesis-only: not a Nature-facing paper, not a new audit, not a new Lean module. The orientation-specific rescue interpretation remains retracted; future renewed orientation-specific claims must satisfy the six requirements in ra_open_native_witness_requirements_v1_9.md. Full audit history: audit_events.csv EV-2026-05-06-009.'
+  next_tasks:
+  - 'Track A first: lift the v0.7..v0.9.x positive line into Lean Type-valued statements (support-family monotonicity for at_least_k / augmented_exact_k; certification-family rescue with correlation decay; native-overlap qualitative bridge to certificate-correlation surface).'
+  - Track B (native per-graph witness extraction) only after a candidate native extractor is ready on the Lean side; designing extractor and audit jointly risks the v1.5 -> v1.8.1 pattern.
+  - Refresh RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001 + the technical note on substantive new audits or formal-target progress; do not rewrite from scratch.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: RA_MotifActualizationResilience_TechnicalNote_May06_2026.md
+  packet_origin: RA_MotifActualizationResilience_TechnicalSynthesis_May06_2026
