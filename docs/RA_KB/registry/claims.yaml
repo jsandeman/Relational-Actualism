@@ -6864,3 +6864,83 @@ claims:
   claim_kind: derived_result
   formal_anchor: tokens_for_keying ; extract_config_rows ; build_configs ; fixed_bin_coverage ; joint_strata ; coverage_by_config ; recommendations ; LEGITIMATE_KEYINGS ; TAINTED_OR_NULL_KEYINGS
   packet_origin: RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026
+- id: RA-SIM-TRACKB4-LOCKED-ENVELOPE-001
+  name: Track B.4 locked-envelope analysis - locked envelope is not estimable under joint support_width x family_size strata; graph keying byte-identical to shuffled control at fixed-bin level
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Track B.4 runs the locked-envelope matched-graph orientation
+    diagnostic over the narrow B.3b working envelope (`keying =
+    incidence_role_signed`, `family_semantics = augmented_exact_k`,
+    `threshold_fraction = 0.25`), comparing the graph-derived locked
+    keying against `shuffled_overlap_control` under fixed-bin joint
+    support_width × family_size discipline. The packet's
+    `orientation_rescue_claim_made` flag is False by construction.
+    Inputs: the v1.7 OrientationKeyingAblation keyed-trial rows
+    (1,166,400 rows) and the Track B.3b sampler-sweep rows (9,576,000
+    rows). After the locked-envelope filter: 304,200 envelope rows
+    (271,800 graph + 32,400 shuffled control); rescue column used
+    `certification_rescue_event`; overlap column used
+    `orientation_overlap` (with v1.7's
+    `v1_7_orientation_overlap_all_pairs` coalesced as fallback after
+    the keying/overlap column-collision packet bug fix); selector
+    guardrail passes (no rescue events under selector_stress mode).
+    The substantive finding: 0 of the joint (mode, severity,
+    support_width, family_size) strata reach the v1.8.1 estimability
+    bar of ≥25 rows in BOTH the low and high orientation-overlap
+    bins, for either the graph keying or the shuffled control. Posture:
+    `locked_envelope_not_estimable_under_joint_strata`. Auxiliary
+    finding (collapsed across width/family at the fixed-bin level):
+    incidence_role_signed and shuffled_overlap_control produce
+    BYTE-IDENTICAL low/medium/high bin populations and rescue rates at
+    every (mode, severity) tuple - 1374 low rows / 1581 high rows /
+    ~600 medium per (mode, severity, keying), with low_rescue_rates
+    matching exactly across keyings (e.g. ledger_failure × 0.50:
+    0.341 in both; orientation_degradation × 0.75: 0.369 in both;
+    selector_stress: 0.0 in both). The graph keying does not move the
+    rescue analysis relative to the shuffled control in this envelope.
+    No orientation-rescue claim is made or restored.
+  nature_targets:
+  - RA-native actualization-resilience workbench
+  - locked-envelope rescue diagnostics under v1.8.1 joint-strata discipline
+  ra_observable: null
+  sources:
+  - RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026
+  - ra_trackB4_locked_envelope_rescue.py
+  - ra_trackB4_summary.csv
+  - ra_trackB4_locked_envelope_summary.md
+  - ra_trackB4_joint_stratum_gaps.csv
+  - ra_trackB4_fixed_bin_gaps.csv
+  - canonical_run_trackB4.log
+  proof_dependencies:
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-METHOD-001
+  - RA-SIM-TRACKB4-LOCKED-ENVELOPE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Canonical-run-confirmed: python scripts/run_trackB4_locked_envelope_rescue.py --input-dirs ../RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026/outputs,../RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026/outputs --output-dir outputs --min-rows-per-bin 25 completed on 2026-05-06; 10,742,400 input rows; 304,200 locked-envelope rows; estimable_joint_strata_graph=0; estimable_joint_strata_control=0; posture=`locked_envelope_not_estimable_under_joint_strata`; orientation_rescue_claim_made=False. PACKET BUGS FIXED ON INSTALL (2 issues, both new recurring v1.x packet bug patterns): (1) Multi-source CSV column-collision: when the v1.7 trial-rows CSV (`v1_7_keying`, `v1_7_orientation_overlap_all_pairs`) is concatenated with the B.3b sampler-sweep CSV (`keying`, `orientation_overlap`), pandas concat produces a union of columns where each row only has values in its source-native column. The original normalizer used `_find_col` to pick the FIRST candidate, which gave priority to the B.3b `keying`/`orientation_overlap` columns and left v1.7 rows with NaN there - silently excluding all 32,400 v1.7 graph rows and 32,400 v1.7 control rows (the only data with rescue columns) from the locked envelope. Fix: coalesce all candidate columns per-row using `.fillna(out[c])` so that each row picks up the value from whichever candidate column is non-null. (2) Empty-DataFrame KeyError: when no joint stratum is estimable, `weighted_joint_gap` returns an empty DataFrame; `weighted["keying"] == LOCKED_KEYING` then raises KeyError because the empty DataFrame has no columns. Fix: explicitly handle the empty case before keying-based filters. Both fixes preserve the four packet-local pytests (still pass). AUXILIARY FINDING (recorded for paper writers, not as a rescue claim): in the locked envelope, incidence_role_signed and shuffled_overlap_control produce byte-identical fixed-bin gap structures across all (mode, severity) tuples; this is consistent with the no-effect interpretation - the locked envelope keying does not move the rescue analysis relative to the shuffled null control. The right next step is NOT a rescue claim but Track B.3c (deepening sweep within the working envelope to add knobs not exercised in B.3b: max_parents, target_frontier_min, conflict_rate, defect_rate, orientation_defect_rate, family-construction breadth) or Track B.4a (orientation-diverse graph/family generator redesign). Per project_track_b_work_order.md: do NOT promote this to an orientation-rescue claim. Per controlling-standard discipline (EV-2026-05-06-020) and exclude-tainted-and-null rule (EV-2026-05-06-022): the locked envelope respects v1.8.1 confound discipline; tainted/null keyings are excluded by construction. The v1.9 native-witness six-requirement gate remains binding. Full audit history: audit_events.csv EV-2026-05-06-024.'
+  next_tasks:
+  - 'AUTHORIZED NEXT STEP (locked EV-2026-05-06-024): run Track B.3c deepening sweep within the working envelope (incidence_role_signed x augmented_exact_k x threshold=0.25), adding the unswept knobs (max_parents, target_frontier_min, conflict_rate, defect_rate, orientation_defect_rate, family-construction breadth) to try to populate joint width-family strata at min_rows_per_bin=25. Still infrastructure only; no rescue claim.'
+  - 'If Track B.3c also fails to populate estimable joint strata, escalate to Track B.4a orientation-diverse graph/family generator redesign. Do NOT attempt to make a rescue claim from the existing locked-envelope data; the byte-identical graph-vs-control fixed-bin gap is consistent with no effect.'
+  - 'Do NOT promote the auxiliary fixed-bin gap finding (low_minus_high_gap of 0.18-0.37 in incidence_role_signed at non-zero severities) into a rescue claim - it matches the shuffled control byte-for-byte, so the gap reflects a width/family/severity-level confound rather than a graph-keying signal.'
+  source_status:
+    ra_trackB4_locked_envelope_rescue.py: simulation_validated_canonical_run_confirmed
+    ra_trackB4_summary.csv: canonical_run_recorded
+    ra_trackB4_joint_stratum_gaps.csv: canonical_run_recorded
+    ra_trackB4_fixed_bin_gaps.csv: canonical_run_recorded
+    canonical_run_trackB4.log: provenance_recorded
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed_no_rescue_claim
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run
+  claim_kind: derived_result
+  formal_anchor: load_rows ; normalize_rows ; locked_envelope ; assign_fixed_bins ; joint_stratum_gaps ; weighted_joint_gap ; graph_vs_control ; LOCKED_KEYING ; CONTROL_KEYING ; LOCKED_FAMILY_SEMANTICS ; LOCKED_THRESHOLD
+  packet_origin: RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026

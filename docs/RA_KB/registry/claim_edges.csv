@@ -308,3 +308,5 @@ RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,inte
 RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001,RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,interpretive_dependency,claim,claim,Track B.3 v1.8.1 coverage audit,Track B.2 active simulator graph/cut witness extraction
 RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001,RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001,interpretive_dependency,claim,claim,Track B.3b sampler/topology rebalance,Track B.3 v1.8.1 coverage audit
 RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001,RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,interpretive_dependency,claim,claim,Track B.3b sampler/topology rebalance,Track B.2 active simulator graph/cut witness extraction
+RA-SIM-TRACKB4-LOCKED-ENVELOPE-001,RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001,interpretive_dependency,claim,claim,Track B.4 locked-envelope analysis,Track B.3b sampler/topology rebalance
+RA-SIM-TRACKB4-LOCKED-ENVELOPE-001,RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001,interpretive_dependency,claim,claim,Track B.4 locked-envelope analysis,Track B.3 v1.8.1 coverage audit

@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /opt/pyvenv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.5', 'Platform': 'Linux-4.4.0-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.2', 'pluggy': '1.6.0'}, 'Plugins': {'Faker': '40.1.2', 'json-report': '1.5.0', 'metadata': '3.1.1', 'ddtrace': '4.4.0'}, 'PLATFORM': 'linux/amd64', 'CI': 'true'}
+rootdir: /mnt/data/RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026
+plugins: Faker-40.1.2, json-report-1.5.0, metadata-3.1.1, ddtrace-4.4.0
+collecting ... collected 4 items
+
+tests/test_trackB4_locked_envelope_rescue.py::test_demo_rows_include_locked_and_control PASSED [ 25%]
+tests/test_trackB4_locked_envelope_rescue.py::test_locked_envelope_filter_excludes_other_semantics PASSED [ 50%]
+tests/test_trackB4_locked_envelope_rescue.py::test_joint_strata_estimable_on_demo PASSED [ 75%]
+tests/test_trackB4_locked_envelope_rescue.py::test_end_to_end_outputs PASSED [100%]
+
+============================== 4 passed in 1.01s ===============================

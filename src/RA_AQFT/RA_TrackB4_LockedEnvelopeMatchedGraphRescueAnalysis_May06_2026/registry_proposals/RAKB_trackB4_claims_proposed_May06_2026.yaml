@@ -1,0 +1,32 @@
+registry_version: v0.5-proposal
+claims:
+  - id: RA-SIM-TRACKB4-LOCKED-ENVELOPE-001
+    name: Locked-envelope matched-graph rescue analysis is restricted to the B.3b sufficient envelope
+    domain: complexity
+    papers: [II]
+    statement: >
+      Track B.4 analyzes orientation-rescue diagnostics only inside the narrow B.3b coverage envelope:
+      incidence_role_signed keying, augmented_exact_k family semantics, and threshold_fraction=0.25.
+      It compares graph-derived overlap to shuffled controls under fixed-bin joint support_width x family_size discipline.
+    nature_targets: [RA-native actualization-resilience diagnostics]
+    ra_observable: null
+    sources:
+      - RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026
+    proof_dependencies:
+      - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001
+      - RA-SIM-ORIENT-CONFOUND-JOINT-001
+    restoration_preconditions: []
+    caveats: >
+      Pending canonical run. The packet makes no orientation-rescue claim by construction; orientation_rescue_claim_made=false.
+      Any future claim must remain locked to the B.3b envelope unless a broader coverage audit is passed.
+    next_tasks:
+      - Run on canonical v1.7 and B.3b outputs.
+    source_status:
+      ra_trackB4_locked_envelope_rescue.py: simulation_packet_local_validated_pending_canonical
+    legacy_proof_status: DR
+    proof_status: simulation_packet_local_validated_pending_canonical
+    legacy_support_status: none
+    auxiliary_support_status: none_recorded
+    claim_kind: derived_result
+    formal_anchor: analysis/ra_trackB4_locked_envelope_rescue.py
+    packet_origin: RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026

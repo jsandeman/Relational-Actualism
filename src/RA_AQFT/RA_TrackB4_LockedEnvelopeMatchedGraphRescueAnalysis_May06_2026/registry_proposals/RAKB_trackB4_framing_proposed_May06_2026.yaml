@@ -1,0 +1,27 @@
+registry_version: v0.5-proposal
+framing_policies:
+  - id: RA-SIM-TRACKB4-LOCKED-ENVELOPE-METHOD-001
+    name: Locked-envelope orientation analysis must not generalize beyond B.3b coverage
+    domain: framing
+    papers: [II]
+    statement: >
+      Track B.4-style orientation-rescue analyses are valid only inside coverage-sufficient native-witness envelopes.
+      Tainted member-index keyings and shuffled controls cannot establish legitimate coverage sufficiency. B.4 must report non-estimability when rescue columns, fixed bins, or joint support_width x family_size strata are absent.
+    nature_targets: [RA-native modeling discipline]
+    ra_observable: null
+    sources:
+      - RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026
+    proof_dependencies: []
+    framing_links:
+      - RA-SIM-CONFOUND-METHOD-001
+      - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+    restoration_preconditions: []
+    caveats: >
+      This is a modeling guardrail, not a physical result. It prevents B.4 from reviving orientation-specific rescue outside the narrow B.3b envelope.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: B.3b locked-envelope discipline plus v1.8.1 fixed-bin joint-strata standard
+    packet_origin: RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026

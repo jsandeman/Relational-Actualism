@@ -16,3 +16,6 @@ relational-actualism-web/
 
 # Large regenerable simulator outputs (re-run the relevant script to recreate)
 src/RA_AQFT/RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026/outputs/ra_v1_7_keyed_trial_rows.csv
+
+# Track B.4 large reproducible run output (125MB; reproducible from canonical run; SHA recorded in artifacts.csv)
+src/RA_AQFT/RA_TrackB4_LockedEnvelopeMatchedGraphRescueAnalysis_May06_2026/outputs/ra_trackB4_locked_envelope_trials.csv
