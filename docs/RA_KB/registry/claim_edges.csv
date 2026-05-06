@@ -291,3 +291,6 @@ RA-MOTIF-CERT-RESILIENCE-CONSOL-001,RA-MOTIF-SUPPORT-FAMILY-MONO-001,proof_depen
 RA-MOTIF-CERT-RESILIENCE-CONSOL-001,RA-MOTIF-CERT-FAMILY-001,proof_dependency,claim,claim,Track A Lean consolidation,Motif-level certified-family bridge
 RA-MOTIF-CERT-RESILIENCE-CONSOL-001,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,claim,Track A Lean consolidation,Support-family metric repair
 RA-MOTIF-CERT-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A certificate-correlation bridge,Track A Lean consolidation
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-CORRELATION-BRIDGE-001,proof_dependency,claim,claim,Track A native-overlap-to-certificate-fate qualitative bridge,Track A certificate-correlation bridge
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Track A native-overlap-to-certificate-fate qualitative bridge,Native certificate-overlap bridge
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-NATIVE-CERT-COMPONENTS-001,proof_dependency,claim,claim,Track A native-overlap-to-certificate-fate qualitative bridge,Native certificate components

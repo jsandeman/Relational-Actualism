@@ -1,0 +1,4 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-CORRELATION-BRIDGE-001,proof_dependency,claim,claim,Native-overlap evidence can be bridged to qualitative certificate-fate coupling,Certificate-correlation bridge
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Native-overlap evidence can be bridged to qualitative certificate-fate coupling,Certification-resilience consolidation
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-NATIVE-CERT-COMPONENTS-001,proof_dependency,claim,claim,Native-overlap evidence can be bridged to qualitative certificate-fate coupling,Native certificate components

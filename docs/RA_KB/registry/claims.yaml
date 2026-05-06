@@ -6351,3 +6351,59 @@ claims:
   claim_kind: interpretive_bridge
   formal_anchor: DAGCertificateFateContext ; DAGSharedFateFamily ; DAGMemberDistinctFates ; DAGWeaklySharedFates ; DAGCertificateSharingPreorder ; DAGMemberDistinctCertificateResilienceAt ; DAGSharedFateResilienceAt ; DAGSharedFateFamily.cert_equiv ; DAGSharedFateFamily.certifies_iff_parent ; DAGMemberDistinctFates.member_distinct_marker ; DAGMemberDistinctCertificateResilienceAt.to_family_internal_resilience ; DAGMemberDistinctCertificateResilienceAt.to_certified_family_ready ; DAGSharedFateResilienceAt.to_certified_family_ready ; DAGMemberDistinctCertificateResilienceAt.future_mono ; GraphCertificateFateContext ; GraphSharedFateFamily ; GraphMemberDistinctFates ; GraphSharedFateFamily.cert_equiv ; GraphSharedFateFamily.certifies_iff_parent ; GraphMemberDistinctCertificateResilienceAt.future_mono
   packet_origin: RA_MotifCertificateCorrelationBridge_May06_2026
+
+- id: RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001
+  name: Track A native-overlap-to-certificate-fate qualitative bridge - low/high overlap endpoints + sharedFate_of_highEndpoint for both DAG and Graph layers
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The native-overlap correlation bridge introduces qualitative
+    DAG/Graph NativeOverlapFateBridge structures with two structural
+    morphisms: coupled_of_nativeOverlap (when a native-overlap
+    context asserts overlap between two family members, that overlap
+    can be read as evidence of certificate-fate coupling) and
+    memberDistinct_of_lowOverlap (a low-overlap witness may be
+    interpreted as member-distinct certificate fates). Adds endpoint
+    markers DAGHighNativeOverlapEndpoint / GraphHighNativeOverlapEndpoint
+    (every pair of family members overlaps) and resilience variants
+    DAGLowNativeOverlapCertificateResilienceAt /
+    DAGHighNativeOverlapSharedFateResilienceAt with refinement
+    theorems: low overlap refines DAGMemberDistinctCertificateResilienceAt,
+    family-internal resilience, certified-family readiness, and is
+    future-monotone; high overlap (via sharedFate_of_highEndpoint)
+    refines DAGSharedFateResilienceAt and certified-family readiness.
+    Graph variants of all. The module deliberately does NOT encode the
+    v0.9 simulator-side numerical signature (member-certification
+    rescue decreases as native overlap increases); that remains a
+    simulation-supported observation, not a Lean-derived theorem.
+  nature_targets:
+  - RA-native qualitative bridge between native-overlap evidence and certificate-correlation vocabulary
+  - structural separation of low/high overlap endpoints in formal terms
+  ra_observable: null
+  sources:
+  - RA_MotifNativeOverlapCorrelationBridge_May06_2026
+  - RA_MotifNativeOverlapCorrelationBridge.lean
+  proof_dependencies:
+  - RA-MOTIF-CERT-CORRELATION-BRIDGE-001
+  - RA-MOTIF-NATIVE-CERT-OVERLAP-001
+  - RA-MOTIF-NATIVE-CERT-COMPONENTS-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed: lake build RA_MotifNativeOverlapCorrelationBridge closed 8279/8279 jobs (~83s) on 2026-05-06; lexical check finds no sorry, admit, or axiom. Module imports RA_MotifCertificateCorrelationBridge and RA_MotifNativeCertificateComponents (transitively pulls in RA_MotifNativeCertificateOverlapBridge for DAGNativeCertificateOverlapContext). Qualitative bridge: it formalizes the vocabulary (low-overlap witness = member-distinct evidence; high-overlap endpoint = shared-fate evidence) without committing to a numerical monotone law. Track A discipline preserved per RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001. Full audit history: audit_events.csv EV-2026-05-06-012.'
+  next_tasks:
+  - 'Track A: continue with the next planned consolidation bridge (likely RA_MotifWidthFamilyMonotonicityBridge to formalize the v1.8.1 fixed-bin discipline at the type-valued level, OR a deeper formal anchor for support-family monotonicity tying RA-SIM-SUPPORT-FAMILY-MONO-001 to the at_least_k / augmented_exact_k Type-valued no-violation statement).'
+  source_status:
+    RA_MotifNativeOverlapCorrelationBridge.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: formal_consolidation_scaffold
+  claim_kind: interpretive_bridge
+  formal_anchor: DAGNativeOverlapFateBridge ; DAGLowNativeOverlapCertificateResilienceAt ; DAGHighNativeOverlapEndpoint ; DAGHighNativeOverlapSharedFateResilienceAt ; DAGNativeOverlapFateBridge.sharedFate_of_highEndpoint ; DAGLowNativeOverlapCertificateResilienceAt.to_memberDistinct_resilience ; DAGLowNativeOverlapCertificateResilienceAt.to_family_internal_resilience ; DAGLowNativeOverlapCertificateResilienceAt.to_certified_family_ready ; DAGLowNativeOverlapCertificateResilienceAt.future_mono ; DAGHighNativeOverlapSharedFateResilienceAt.to_sharedFate_resilience ; DAGHighNativeOverlapSharedFateResilienceAt.to_certified_family_ready ; GraphNativeOverlapFateBridge ; GraphLowNativeOverlapCertificateResilienceAt ; GraphHighNativeOverlapEndpoint ; GraphHighNativeOverlapSharedFateResilienceAt ; GraphNativeOverlapFateBridge.sharedFate_of_highEndpoint
+  packet_origin: RA_MotifNativeOverlapCorrelationBridge_May06_2026

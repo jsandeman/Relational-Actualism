@@ -141,6 +141,16 @@ lean_lib «RelationalActualism» where
                                 -- DAGMemberDistinctCertificateResilienceAt
                                 -- and Graph variants. No numerical
                                 -- correlation law.
+    `RA_MotifNativeOverlapCorrelationBridge, -- (May 6 2026) Track A
+                                -- qualitative bridge from native overlap
+                                -- evidence to certificate-fate vocabulary;
+                                -- DAGNativeOverlapFateBridge with
+                                -- coupled_of_nativeOverlap +
+                                -- memberDistinct_of_lowOverlap;
+                                -- High/LowNativeOverlap resilience
+                                -- variants; sharedFate_of_highEndpoint;
+                                -- Graph variants. No numerical
+                                -- monotone law.
     `RA_MotifNativeCertificateOverlapBridge, -- (May 5 2026) native-overlap
                                 -- bridge: Type-valued witness data,
                                 -- overlaps relation, NativelyWitnessed

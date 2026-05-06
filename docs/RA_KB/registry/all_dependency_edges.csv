@@ -531,3 +531,6 @@ RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-METHOD-002,interpretive_dependency
 RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001,interpretive_dependency,framing,framing,Track A consolidation excludes unsupported orientation-specific rescue,v1.9 simulator synthesis
 RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001,RA-SIM-CONFOUND-METHOD-001,interpretive_dependency,framing,framing,Track A consolidation excludes unsupported orientation-specific rescue,joint stratification confound discipline
 RA-MOTIF-CERT-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A certificate-correlation bridge,Track A Lean consolidation
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-CERT-CORRELATION-BRIDGE-001,proof_dependency,claim,claim,Track A native-overlap-to-certificate-fate qualitative bridge,Track A certificate-correlation bridge
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-NATIVE-CERT-OVERLAP-001,proof_dependency,claim,claim,Track A native-overlap-to-certificate-fate qualitative bridge,Native certificate-overlap bridge
+RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001,RA-MOTIF-NATIVE-CERT-COMPONENTS-001,proof_dependency,claim,claim,Track A native-overlap-to-certificate-fate qualitative bridge,Native certificate components

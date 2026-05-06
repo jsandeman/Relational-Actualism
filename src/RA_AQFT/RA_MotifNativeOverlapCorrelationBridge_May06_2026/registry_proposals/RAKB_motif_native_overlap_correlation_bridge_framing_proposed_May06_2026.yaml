@@ -1,0 +1,30 @@
+registry_version: v0.5
+framing_policies:
+- id: RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-METHOD-001
+  name: Native-overlap correlation bridge is qualitative, not numerical or orientation-specific
+  domain: framing
+  papers:
+  - II
+  statement: The native-overlap/certificate-correlation bridge is a qualitative formal
+    bridge. It must not be cited as a proof of simulator rescue-rate curves, a probability
+    law, absolute correlation calibration, or an orientation-specific rescue effect.
+  nature_targets:
+  - methodological discipline for RA-native certification resilience
+  ra_observable: null
+  sources:
+  - RA_MotifNativeOverlapCorrelationBridge_May06_2026.md
+  - native_overlap_to_certificate_correlation_bridge.md
+  proof_dependencies: []
+  framing_links:
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-CORRELATION-BRIDGE-METHOD-001
+  restoration_preconditions: []
+  caveats: Numerical decay remains simulation-supported. Orientation-specific rescue
+    branch remains governed by the v1.9 synthesis and confound discipline.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifNativeOverlapCorrelationBridge qualitative scope discipline
+  packet_origin: RA_MotifNativeOverlapCorrelationBridge_May06_2026

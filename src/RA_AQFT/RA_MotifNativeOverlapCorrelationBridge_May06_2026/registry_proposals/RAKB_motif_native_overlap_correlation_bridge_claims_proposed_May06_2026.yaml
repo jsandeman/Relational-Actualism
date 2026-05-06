@@ -1,0 +1,43 @@
+registry_version: v0.5
+claims:
+- id: RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001
+  name: Native-overlap evidence can be bridged to qualitative certificate-fate coupling
+  domain: kernel
+  papers:
+  - II
+  statement: 'A native certificate-overlap context can be related to the certificate-fate
+    vocabulary by a qualitative bridge: low-overlap witnesses can supply member-distinct
+    fate structure, while high-overlap endpoints can supply shared-fate structure.
+    The bridge refines both cases back to family-internal resilience and certified-family
+    readiness without asserting a numerical rescue law.'
+  nature_targets:
+  - RA-native certification-family resilience structure
+  - qualitative certificate-fate coupling for support families
+  ra_observable: null
+  sources:
+  - RA_MotifNativeOverlapCorrelationBridge.lean
+  - RA_MotifNativeOverlapCorrelationBridge_May06_2026.md
+  proof_dependencies:
+  - RA-MOTIF-CERT-CORRELATION-BRIDGE-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+  - RA-MOTIF-NATIVE-CERT-COMPONENTS-001
+  restoration_preconditions: []
+  caveats: Qualitative formal bridge only. Does not derive a probability law, monotone
+    rescue curve, absolute native/external correlation calibration, or orientation-specific
+    rescue claim.
+  next_tasks:
+  - Compile locally and promote source_status if build closes.
+  - Build any later numerical or empirical relation only as simulation-supported,
+    not as Lean-derived.
+  source_status:
+    RA_MotifNativeOverlapCorrelationBridge.lean: source_level_pending_local_compile_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: source_level_formal_bridge_pending_compile
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: interpretive_bridge
+  formal_anchor: DAGNativeOverlapFateBridge ; DAGLowNativeOverlapCertificateResilienceAt
+    ; DAGHighNativeOverlapEndpoint ; DAGHighNativeOverlapSharedFateResilienceAt ;
+    GraphNativeOverlapFateBridge ; GraphLowNativeOverlapCertificateResilienceAt ;
+    GraphHighNativeOverlapEndpoint ; GraphHighNativeOverlapSharedFateResilienceAt
+  packet_origin: RA_MotifNativeOverlapCorrelationBridge_May06_2026
