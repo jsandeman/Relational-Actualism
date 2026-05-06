@@ -1182,31 +1182,40 @@ framing_policies:
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
 
 - id: RA-SIM-V1-5-CORRIGENDUM-METHOD-001
-  name: v1.5 concrete-graph orientation specificity is superseded by v1.6 audit; do not cite as proof dependency
+  name: v1.5 and v1.6 orientation-link extractors share a member_idx keying flaw; do not cite either packet's specificity numbers until v1.7 keying-ablation closes
   domain: framing
   papers:
   - II
   statement: >
     The v1.5 concrete-graph orientation-link specificity result
     (RA-SIM-CONCRETE-GRAPH-ORIENT-002, +0.028 / -0.002 specificity gap;
-    -0.147 / -0.070 partial correlations) is RETRACTED as of 2026-05-05.
-    Two independent flaws were identified by the v1.6 packet: (i) a
-    witness-keying bug shared with v1.5 source ((depth(v) + depth(p) +
-    member_idx) % 2 sign formula plus per-member tag) forced
-    intra-family Jaccard = 0 on regular topologies, so the v1.5
-    specificity reflected across-cell graph-corpus variation rather than
-    intra-family witness differences; (ii) the v1.5 audit used a
-    deterministic-hash mapping from cell metadata to a parallel synthetic
-    graph corpus, with no causal connection to the actual v0.9 DAG
-    instances that produced the rescue rates. With the keying bug fixed
-    and the disconnection closed (v1.6: rescue and orientation extracted
-    from the same v0.9 CausalDAG per trial on a v1.0-shape matched
-    subset, n=80 per (mode, semantics) cell), the +0.028 specificity
-    does NOT replicate. The v0.9.2 family-semantics asymmetry remains a
-    v0.9-internal finding; it has NOT been independently confirmed by
-    v1.x. Treat the link from v1.6 (RA-SIM-GRAPH-COUPLED-ORIENT-002) to
-    v1.5 (RA-SIM-CONCRETE-GRAPH-ORIENT-002) as a corrigendum/supersession
-    relationship, NOT a normal proof_dependency.
+    -0.147 / -0.070 partial correlations) and the v1.6 reversed-sign
+    matched-graph result (RA-SIM-GRAPH-COUPLED-ORIENT-002, gaps
+    -0.146 / -0.229 with high-variance n=4 partials) are BOTH
+    KEYING-TAINTED (status updated 2026-05-06). The v1.5
+    ra_concrete_graph_orientation_extraction.py and the v1.6
+    ra_graph_coupled_orientation_extraction.py share the same witness
+    formula `(depth(v) + depth(p) + member_idx) % 2` for the sign and a
+    `:m{member_idx % 3}` tag, where member_idx is the index of the
+    family-member cut in sorted-cuts order, NOT a native orientation
+    invariant. The same physical edge can fail to match across siblings
+    purely because it appears in different member slots. This taints
+    both directions of evidence: v1.5 cannot be cited as confirming
+    orientation specificity, and v1.6 cannot be cited as refuting
+    orientation specificity. Earlier framing here treated the
+    v1.6 -> v1.5 link as a corrigendum/supersession; that is a stronger
+    claim than the evidence supports while both packets share the same
+    keying flaw. The honest current state is "keying-tainted, pending
+    v1.7 keying-ablation canonical sweep." A separate methodological
+    point still stands: v1.6 closed the v1.5 rescue/topology
+    disconnection (rescue and orientation now from the same v0.9 DAG
+    per trial); that is independent of the keying issue and remains a
+    real methodological advance. The v0.9.2 family-semantics asymmetry
+    remains a v0.9-internal finding; it has NOT been independently
+    confirmed by v1.x. Treat the link from v1.6 (RA-SIM-GRAPH-COUPLED-
+    ORIENT-002) to v1.5 (RA-SIM-CONCRETE-GRAPH-ORIENT-002) as a
+    keying-shared corrigendum/supersession relationship, NOT a normal
+    proof_dependency and NOT a clean retraction.
   nature_targets:
   - corrigendum discipline for retracted simulator-layer specificity claims
   ra_observable: null
@@ -1222,10 +1231,11 @@ framing_policies:
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Do not promote retracted v1.5 specificity numbers to active claims. When citing v1.5, cite either (a) the methodological achievement (v1.1 audit machinery runs end-to-end on concrete topology surfaces and returns the expected structural-control verdicts) or (b) the supersession itself. Any future v1.5 re-audit with the corrected keying must be filed as a NEW claim ID, not a re-promotion of the retracted RA-SIM-CONCRETE-GRAPH-ORIENT-002 numbers.'
+  caveats: 'Do not promote either v1.5 (+0.028) or v1.6 (-0.146/-0.229) orientation-specificity numbers to active claims while the member_idx keying-taint persists. When citing v1.5 or v1.6, cite the methodological achievements (v1.1 audit machinery runs end-to-end on concrete topology surfaces; v1.6 closes the rescue/topology disconnection) rather than the empirical specificity numbers. Any future v1.5 or v1.6 re-audit with a different keying must be filed as a new claim ID, not a re-promotion of either RA-SIM-CONCRETE-GRAPH-ORIENT-002 or RA-SIM-GRAPH-COUPLED-ORIENT-002.'
   next_tasks:
-  - Re-audit v1.5 with the corrected edge-pair-sign keying as a new claim ID, leaving RA-SIM-CONCRETE-GRAPH-ORIENT-002 in superseded state.
-  - When a v1.7+ packet replicates or sharpens the orientation-rescue audit on matched graphs at n>200 per cell, link it via a new corrigendum framing entry rather than re-citing v1.5.
+  - Build v1.7 keying-ablation canonical sweep that compares at minimum six keying variants on the same matched-graph trials: member_indexed_edge_pair (current v1.6 behaviour, kept as control); edge_pair_signed_no_member (sign and tag without member_idx); edge_direction_only (incidence links without parity/member signs); incidence_role_signed (parent-side vs child-side roles, no member index); catalog_augmented_edge_pair (edge-pair tokens enriched by v1.3 native theorem/catalog tokens); shuffled_overlap_control (permutation null).
+  - Required v1.7 outputs: ra_v1_7_keying_comparison.csv, ra_v1_7_specificity_by_keying.csv, ra_v1_7_partial_correlation_by_keying.csv, ra_v1_7_overlap_distribution_by_keying.csv, ra_v1_7_permutation_control.csv, ra_v1_7_orientation_keying_audit_summary.md.
+  - v1.7 success criteria: case 1 (all graph-coupled keyings fail) -> v1.5 specificity does not survive matched-graph extraction under any reasonable keying (clean corrigendum); case 2 (only member-indexed keying fails or reverses) -> v1.6 reversal is a keying artifact; case 3 (catalog-augmented or native-like keying recovers signal) -> orientation specificity exists but only when graph-local edges are enriched by native orientation roles.
   legacy_proof_status: DR
   legacy_support_status: none
   framing_kind: methodological_guardrail
