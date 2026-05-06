@@ -1,0 +1,66 @@
+registry_version: 0.5-proposal
+claims:
+- id: RA-SIM-ORIENT-KEYING-001
+  name: Member-indexed orientation tokens are a confound candidate in matched-graph
+    extraction
+  domain: matter
+  papers:
+  - II
+  statement: The v1.7 keying-ablation packet identifies member-indexed orientation-link
+    tokenization as a provenance control rather than a preferred native orientation
+    surface; member-indexed tokens can make graph-identical links fail to match across
+    support-family member slots.
+  nature_targets:
+  - RA-native orientation-link witness extraction discipline
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+  proof_dependencies:
+  - RA-SIM-NATIVE-ORIENT-LINK-001
+  restoration_preconditions: []
+  caveats: Diagnostic keying-ablation claim only; not a Nature-facing claim and not
+    a canonical orientation-specificity result.
+  next_tasks:
+  - Run canonical matched-graph keying sweep with multiple severities and severance
+    seeds.
+  source_status:
+    ra_orientation_keying_ablation.py: simulation_validated_packet_local_diagnostic
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: keying_ablation_recorded
+  claim_kind: derived_result
+  formal_anchor: orientation_link_witness ; family_orientation_overlap ; specificity_by_keying
+    ; partial_correlation_by_keying
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+- id: RA-SIM-ORIENT-KEYING-002
+  name: Orientation-specific rescue must survive non-member graph-native keying
+  domain: matter
+  papers:
+  - II
+  statement: Orientation-specific certification-rescue claims should not be promoted
+    unless they survive matched-graph extraction under non-member graph/native orientation-link
+    keyings at canonical scale.
+  nature_targets:
+  - RA-native orientation-specific certification resilience
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  restoration_preconditions: []
+  caveats: This is a modeling discipline and simulator-validity criterion, not a positive
+    result about orientation-specific rescue.
+  next_tasks:
+  - Compare member_indexed_edge_pair against no-member graph-derived keyings at canonical
+    scale.
+  source_status:
+    ra_orientation_keying_ablation.py: simulation_validated_packet_local_diagnostic
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: modeling_discipline_recorded
+  claim_kind: interpretive_bridge
+  formal_anchor: KEYING_VARIANTS ; member_indexed_edge_pair ; edge_pair_signed_no_member
+    ; catalog_augmented_edge_pair
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026

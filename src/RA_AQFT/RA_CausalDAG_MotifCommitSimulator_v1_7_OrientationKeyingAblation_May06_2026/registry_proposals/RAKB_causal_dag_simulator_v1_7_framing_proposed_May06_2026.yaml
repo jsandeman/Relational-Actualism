@@ -1,0 +1,30 @@
+registry_version: 0.5-proposal
+framing_policies:
+- id: RA-SIM-ORIENT-KEYING-METHOD-001
+  name: Orientation keying ablations are diagnostic until canonical matched-graph
+    validation
+  domain: framing
+  papers:
+  - II
+  statement: v1.7 orientation-keying ablations compare orientation-link tokenization
+    schemes on matched graph trials. They should be used to decide which extractor
+    is admissible for canonical study, not to make Nature-facing orientation-specific
+    rescue claims.
+  nature_targets:
+  - modeling discipline for orientation-link witness extraction
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+  proof_dependencies: []
+  framing_links:
+  - RA-SIM-ORIENT-KEYING-001
+  - RA-SIM-ORIENT-KEYING-002
+  restoration_preconditions: []
+  caveats: Member-indexed tokenization is retained only as a v1.6 provenance control.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: README_RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026

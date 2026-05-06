@@ -951,3 +951,63 @@ issues:
   legacy_support_status: none
   auxiliary_support_status: lean_import_hazard_resolved_via_namespacing
   priority: medium
+- id: RA-ISSUE-V1-8-WIDTH-CONFOUND-AUDIT-001
+  name: Build v1.8 support-width / family-structure / cell-binning confound audit (next packet after v1.7 retraction)
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    v1.7 (RA-SIM-ORIENT-KEYING-001 / RA-SIM-ORIENT-KEYING-002) showed that
+    the shuffled_overlap_control reproduces the same negative_or_reversed
+    specificity gap as graph-derived keyings on matched v0.9 trials. This
+    indicates the gap is not orientation-specific but is induced by the
+    interaction of support_width, family_size, threshold semantics, low-
+    rescue-bin structure, and orientation-overlap binning. The next
+    diagnostic packet (v1.8) should answer: (1) Does low/medium/high
+    orientation-overlap binning correlate with support_width? (2) Does it
+    correlate with family_size? (3) Are low-overlap bins dominated by
+    width-1 or low-rescue-impossible cases? (4) If support_width and
+    family_size are held fixed, do orientation gaps vanish? (5) Does the
+    shuffled control remain identical to graph-derived keyings WITHIN
+    fixed-width strata? (6) Can matched bins be constructed with equal
+    width/family-size distributions? Required outputs:
+    ra_v1_8_width_by_orientation_bin.csv,
+    ra_v1_8_family_size_by_orientation_bin.csv,
+    ra_v1_8_rescue_by_width_matched_bins.csv,
+    ra_v1_8_orientation_gap_after_width_matching.csv,
+    ra_v1_8_shuffled_vs_graph_within_width.csv,
+    ra_v1_8_confound_summary.md. Decision rule: if graph-derived and
+    shuffled gaps match within width/family-size strata, the gap is a
+    binning artifact and orientation-specific rescue is not currently
+    supported; the program shifts focus away from orientation-overlap
+    cross-validation. If the gaps separate within strata, a residual
+    orientation signal may exist after correcting for width/family
+    structure and warrants further investigation.
+  nature_targets:
+  - direct characterization of binning/family-structure confound in matched-graph orientation-rescue audits
+  ra_observable: orientation_gap_after_width_matching
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+  - ra_v1_7_specificity_by_keying.csv
+  - ra_v1_7_permutation_control.csv
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  - RA-SIM-ORIENT-KEYING-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Open issue: v1.8 packet not yet built. v1.7 establishes the empirical case for this audit; the actual confound characterization will be a v1.8 packet with its own claims. No further orientation-keying variants should be developed until v1.8 closes the support_width/family-structure confound question.'
+  next_tasks:
+  - Build v1.8 packet implementing the six audit questions above.
+  - Define matched-bin construction algorithm (likely IPW or stratified bootstrap on (support_width, family_size) given the v1.7 keyed_per_cell.csv).
+  - Run on the same v0.9 trial stream as v1.7 to keep matched-graph provenance.
+  - Produce ra_v1_8_confound_summary.md with case A/B verdict (binning artifact / residual orientation signal) and update RA-SIM-ORIENT-KEYING-002 caveat with the v1.8 result.
+  source_status: {}
+  legacy_proof_status: STATED
+  legacy_support_status: none
+  auxiliary_support_status: open_issue_recorded
+  priority: high

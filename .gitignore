@@ -13,3 +13,6 @@ __pycache__/
 
 # relational-actualism-web is its own git repo (GitHub Pages); not tracked here
 relational-actualism-web/
+
+# Large regenerable simulator outputs (re-run the relevant script to recreate)
+src/RA_AQFT/RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026/outputs/ra_v1_7_keyed_trial_rows.csv

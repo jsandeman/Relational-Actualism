@@ -1,0 +1,3 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-ORIENT-KEYING-001,RA-SIM-NATIVE-ORIENT-LINK-001,interpretive_dependency,claim,claim,Member-indexed orientation tokens are a confound candidate,Native orientation-link surface
+RA-SIM-ORIENT-KEYING-002,RA-SIM-ORIENT-KEYING-001,interpretive_dependency,claim,claim,Orientation-specific rescue must survive non-member keying,Member-indexed orientation tokens are a confound candidate

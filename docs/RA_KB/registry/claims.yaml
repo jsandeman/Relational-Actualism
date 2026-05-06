@@ -5493,25 +5493,24 @@ claims:
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
   caveats: >
-    KEYING-TAINTED, pending v1.7 keying-ablation. v1.5 specificity
+    RETRACTED by v1.7 canonical keying ablation
+    (RA-SIM-ORIENT-KEYING-001, EV-2026-05-06-004). v1.5 specificity
     (+0.028 augmented_exact_k; -0.002 at_least_k; partial correlations
-    -0.147 / -0.070) is not a topology-causal conclusion AND is not
-    cleanly retracted by v1.6 — both packets share the same member_idx
-    witness keying. v1.5 separately suffers a rescue/topology
-    disconnection (hash-keyed mapping from cell metadata to a parallel
-    synthetic corpus) that v1.6 closed methodologically. The v1.5
-    methodological contribution (audit machinery runs end-to-end;
-    decoupling 12/12; selector_stress and ledger_failure controls
-    behave correctly) stands. Full audit history:
-    audit_events.csv EV-2026-05-05-001, EV-2026-05-05-002,
-    EV-2026-05-05-005, EV-2026-05-06-001, EV-2026-05-06-002.
+    -0.147 / -0.070) does NOT survive matched-graph extraction under
+    any of the six tested orientation keyings at canonical scale (n=36
+    cells per (keying, mode, family_semantics); 194,400 base trials).
+    The v1.5 methodological contribution (audit machinery runs
+    end-to-end; decoupling 12/12; selector_stress and ledger_failure
+    controls behave correctly) stands as provenance. Full audit
+    history: audit_events.csv EV-2026-05-05-001, EV-2026-05-05-002,
+    EV-2026-05-05-005, EV-2026-05-06-001, EV-2026-05-06-002,
+    EV-2026-05-06-003, EV-2026-05-06-004.
   next_tasks:
-  - Build v1.6 packet that integrates the concrete extractor with the actual ActualizationDAG instances from the v0.9 simulator (graph instances must match the ones that produced the rescue rates being correlated against), eliminating the rescue/topology disconnection that limits v1.5 to audit-machinery validation only.
-  - Cross-check the specificity-vs-partial-correlation divergence by re-running both audits with the same graph instances supplying both rescue and orientation overlap to confirm whether the augmented_exact_k > at_least_k specificity ordering or the at_least_k > augmented_exact_k partial-correlation ordering reflects the underlying physics.
+  - Do not promote v1.5 numbers; cite RA-SIM-ORIENT-KEYING-001 as the controlling result.
   source_status:
-    ra_concrete_graph_orientation_extraction.py: simulation_keying_tainted_pending_v1_7_ablation
+    ra_concrete_graph_orientation_extraction.py: simulation_retracted_by_v1_7_canonical_ablation
   legacy_proof_status: DR
-  proof_status: simulation_keying_tainted_pending_v1_7_ablation
+  proof_status: simulation_retracted_by_v1_7_canonical_ablation
   legacy_support_status: none
   auxiliary_support_status: simulation_canonical_run_recorded
   claim_kind: derived_result
@@ -5569,32 +5568,30 @@ claims:
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
   caveats: >
-    SUBSET matched-graph diagnostic run (NOT canonical): 4 seeds × 1
-    severance × 3 modes × 1 severity × 1 threshold × 2 semantics × 8
-    targets = 192 trials, 24 per-cell rows. decoupled_count=12/12;
+    SUBSET matched-graph diagnostic run (NOT canonical): 192 trials,
+    24 per-cell rows. The matched-graph extraction methodology
+    (rescue and orientation_overlap from the same v0.9 CausalDAG
+    instance per trial) is the real methodological achievement here
+    and is confirmed at canonical scale by v1.7
+    (RA-SIM-ORIENT-KEYING-001). decoupled_count=12/12;
     graph_coupled_orientation_surface_decoupled=true;
     selector_guardrail_passed=true; v1_6_disconnection_closed=true.
     Primary statistic v1_6_overlap_statistic = "all_pairs_mean_jaccard";
-    parent-anchored recorded separately. The matched-graph extraction
-    methodology (rescue and orientation_overlap from the same v0.9
-    CausalDAG instance per trial) is the real methodological
-    achievement here and is independent of the keying issue. KEYING-
-    TAINT: the witness function (lines 76–80 of
-    ra_graph_coupled_orientation_extraction.py) still keys orientation
-    tokens on `(depth(v) + depth(p) + member_idx) % 2` plus a
-    `:m{member_idx % 3}` tag (commit b742034 fix reverted by 3b40be2);
-    empirical specificity / partial-correlation numbers derived from
-    this extractor are keying-tainted. v1.7 keying-ablation canonical
-    sweep required. Full audit history: audit_events.csv
-    EV-2026-05-05-002, EV-2026-05-05-003, EV-2026-05-05-004,
-    EV-2026-05-06-001, EV-2026-05-06-002.
+    parent-anchored recorded separately. Note the v1.6 witness function
+    (lines 76–80) still includes member_idx; v1.7 has shown this is
+    methodologically poor (it ties orientation_overlap to support
+    structure) but is NOT the cause of the reversed-sign verdict. The
+    reversed-sign verdict (see RA-SIM-GRAPH-COUPLED-ORIENT-002) is a
+    binning/family-structure artifact, not a topology-causal effect.
+    Full audit history: audit_events.csv EV-2026-05-05-002,
+    EV-2026-05-05-003, EV-2026-05-05-004, EV-2026-05-06-001,
+    EV-2026-05-06-002, EV-2026-05-06-003, EV-2026-05-06-004.
   next_tasks:
-  - Build v1.7 keying-ablation canonical sweep that compares (a) the current member-indexed edge-pair-sign keying with (b) edge-pair-sign without member_idx, (c) edge-direction-only, (d) incidence-role-signed, (e) catalog-augmented edge-pair, and (f) shuffled-overlap permutation control on the same matched-graph trials.
-  - Decide whether to also restore the b742034 member_idx removal as a separate variant of v1.6 (kept in addition to current v1.6 for ablation reference).
+  - Treat v1.6 as the first matched-graph extraction packet; cite RA-SIM-ORIENT-KEYING-001 / RA-SIM-ORIENT-KEYING-002 for the canonical orientation-specificity reading.
   source_status:
-    ra_graph_coupled_orientation_extraction.py: simulation_methodology_confirmed_keying_tainted
+    ra_graph_coupled_orientation_extraction.py: simulation_methodology_confirmed_canonical_via_v1_7
   legacy_proof_status: DR
-  proof_status: simulation_methodology_confirmed_keying_tainted_pending_v1_7_ablation
+  proof_status: simulation_methodology_confirmed_canonical_via_v1_7
   legacy_support_status: none
   auxiliary_support_status: simulation_matched_subset_run_recorded
   claim_kind: derived_result
@@ -5663,35 +5660,163 @@ claims:
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
   caveats: >
-    KEYING-TAINTED RESULT, NOT A REFUTATION. v1.6 SUBSET diagnostic run
-    (NOT canonical): 192 trials, 24 per-cell rows, 4 rows per (mode,
-    semantics) cell. Specificity gaps: ledger_failure -0.375 / -0.292
-    (ledger_control_not_resolved); orientation_degradation -0.146 /
-    -0.229 (reversed_or_negative); selector_stress 0.000
-    (not_certification_channel). Partial correlation (n=4 per cell):
-    ledger_failure +0.927 / -0.654; orientation_degradation -0.523 /
-    -0.023; selector_stress undefined (rescue_residual_std=0). The
-    witness function in ra_graph_coupled_orientation_extraction.py
-    still keys orientation tokens on
-    `(depth(v) + depth(p) + member_idx) % 2` plus `:m{member_idx % 3}`
-    (commit b742034 fix reverted by 3b40be2). Empirical numbers are
-    keying-tainted; do NOT cite as topology-causal anti-specificity and
-    do NOT cite as a clean retraction of v1.5 (v1.5 source carries the
-    same flaw). v1.7 keying-ablation canonical sweep required to
-    discriminate keying-artifact effects from topology-causal effects.
+    BINNING ARTIFACT, NOT TOPOLOGY-CAUSAL ANTI-SPECIFICITY (resolved by
+    RA-SIM-ORIENT-KEYING-002, EV-2026-05-06-004). v1.6 reported
+    reversed-sign rescue gaps in a 192-trial subset; v1.7 canonical
+    keying ablation showed the shuffled_overlap_control (deterministic
+    null tokens, no graph content) reproduces the same negative gaps as
+    every graph-derived keying. The reversed verdict is therefore not
+    measuring orientation specificity at all - it is measuring whatever
+    sorting-by-overlap does to the rescue distribution given the
+    underlying support_width / family-structure / cell-binning
+    relationship. Do NOT cite the v1.6 reversed gap as topology-causal
+    anti-specificity. v1.5 specificity is separately retracted by v1.7
+    (see RA-SIM-CONCRETE-GRAPH-ORIENT-002 and RA-SIM-ORIENT-KEYING-001).
     Full audit history: audit_events.csv EV-2026-05-05-002,
     EV-2026-05-05-003, EV-2026-05-05-004, EV-2026-05-06-001,
-    EV-2026-05-06-002.
+    EV-2026-05-06-002, EV-2026-05-06-003, EV-2026-05-06-004.
   next_tasks:
-  - Build v1.7 keying-ablation canonical sweep comparing at least six keying variants (member-indexed edge-pair, edge-pair without member_idx, edge-direction-only, incidence-role-signed, catalog-augmented edge-pair, shuffled-overlap permutation control) on the same matched-graph trials.
-  - Capture per-keying outputs ra_v1_7_keying_comparison.csv, ra_v1_7_specificity_by_keying.csv, ra_v1_7_partial_correlation_by_keying.csv, ra_v1_7_overlap_distribution_by_keying.csv, ra_v1_7_permutation_control.csv, ra_v1_7_orientation_keying_audit_summary.md.
-  - Until v1.7 closes, do not promote either reverse orientation specificity (v1.6 reading) or positive orientation specificity (v1.5 reading) as an active claim.
+  - Cite RA-SIM-ORIENT-KEYING-002 for the canonical reading (binning artifact); v1.8 will characterize the support_width/family-structure confound directly.
   source_status:
-    ra_graph_coupled_orientation_extraction.py: simulation_keying_tainted_pending_v1_7_ablation
+    ra_graph_coupled_orientation_extraction.py: simulation_canonical_artifact_corrigendum_resolved
   legacy_proof_status: DR
-  proof_status: simulation_keying_tainted_pending_v1_7_ablation
+  proof_status: simulation_canonical_artifact_corrigendum_resolved
   legacy_support_status: none
   auxiliary_support_status: simulation_matched_subset_keying_tainted_recorded
   claim_kind: derived_result
   formal_anchor: ra_v1_6_specificity.csv ; ra_v1_6_partial_correlation.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
+
+- id: RA-SIM-ORIENT-KEYING-001
+  name: Canonical matched-graph orientation-keying ablation fails to recover the v1.5 orientation-specific certification-rescue signal under any tested keying
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.7 canonical sweep (4 seeds × ... refactored) replays 194,400 matched
+    v0.9 trials and computes orientation-link overlap under six keying schemes
+    (member_indexed_edge_pair, edge_pair_signed_no_member, edge_direction_only,
+    incidence_role_signed, catalog_augmented_edge_pair with v1.3 native catalog
+    tokens, shuffled_overlap_control). For orientation_degradation, all six
+    keyings give negative_or_reversed_specificity verdicts (low_minus_high gap
+    ranging from -0.10 to -0.21 across keyings × semantics) and after support+
+    frontier OLS control the partial correlation with rescue is near zero for
+    the four non-member graph-derived keyings (-0.024 to +0.068). The
+    member-indexed keying gives a uniquely high partial correlation (+0.50 /
+    +0.27) but on a near-zero residual standard deviation (0.007-0.016),
+    indicating that member_idx ties orientation_overlap to support+frontier
+    structure rather than capturing an independent orientation signal. The
+    v1.5 +0.028 positive specificity result therefore does NOT replicate under
+    any tested matched-graph keying.
+  nature_targets:
+  - canonical retraction of v1.5 orientation-specific certification-rescue interpretation
+  ra_observable: orientation_keying_ablation_specificity_by_keying
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+  - ra_orientation_keying_ablation.py
+  - ra_v1_7_specificity_by_keying.csv
+  - ra_v1_7_partial_correlation_by_keying.csv
+  - ra_v1_7_overlap_distribution_by_keying.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-CERT-OVERLAP-001
+  - RA-SIM-GRAPH-COUPLED-ORIENT-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    Confirmed by canonical v1.7 run (assistant-side; --seed-start 17
+    --seed-stop 117 = 100 seeds; --severance-seeds 101,103,107; --max-targets
+    12; --severities 0.25,0.5,0.75; --threshold-fractions 0.25,0.5,0.75;
+    --family-semantics at_least_k,augmented_exact_k; --keyings = all six)
+    producing 194,400 base matched trials × 6 keyings = 1,166,400 keyed rows,
+    1,296 per-cell rows, 36 cells per (keying, mode, family_semantics).
+    selector_guardrail_passed=true; any_positive_non_member_orientation_specificity
+    =false; v1_7_posture=keying_ablation_diagnostic_not_canonical_physical_claim.
+    This claim retracts the v1.5 positive orientation-specificity
+    interpretation (RA-SIM-CONCRETE-GRAPH-ORIENT-002, +0.028 augmented_exact_k
+    gap) as non-robust under canonical matched-graph keying ablation. It does
+    NOT establish robust negative orientation specificity (see
+    RA-SIM-ORIENT-KEYING-002 for the binning/family-structure confound
+    finding). Full audit history: audit_events.csv EV-2026-05-06-003,
+    EV-2026-05-06-004.
+  next_tasks:
+  - Build v1.8 support-width / family-structure / binning confound audit (see issues.yaml RA-ISSUE-V1-8-WIDTH-CONFOUND-AUDIT-001).
+  source_status:
+    ra_orientation_keying_ablation.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_orientation_keying_ablation.py ; ra_v1_7_specificity_by_keying.csv ; ra_v1_7_partial_correlation_by_keying.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+
+- id: RA-SIM-ORIENT-KEYING-002
+  name: The v1.6/v1.7 reversed orientation-rescue gaps are consistent with sorting/binning or support-width/family-structure confounding rather than orientation-link specificity
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Within the v1.7 canonical sweep, the shuffled_overlap_control keying
+    (deterministic null tokens with no graph content) produces specificity
+    gaps for orientation_degradation of -0.213 (at_least_k) and -0.188
+    (augmented_exact_k) - virtually identical to the four non-member
+    graph-derived keyings (-0.211 / -0.191 each). If random tokens produce
+    the same negative gap as graph-derived ones, the gap is not measuring
+    orientation specificity; it is measuring whatever sorting-by-overlap
+    does to the rescue distribution given the underlying cell structure.
+    The most likely confound is the support_width / family-structure /
+    cell-binning relationship: low-overlap bins are systematically populated
+    by narrow-cut family configurations that cannot rescue regardless of
+    orientation channel (low_rescue=0 in every cell across every keying).
+    Therefore the v1.6/v1.7 reversed-sign verdicts must NOT be cited as
+    topology-causal anti-specificity; they are likely binning artifacts.
+  nature_targets:
+  - identification of binning / family-structure confound in matched-graph orientation-rescue audits
+  - methodological discipline against citing reversed orientation gaps without shuffled controls
+  ra_observable: orientation_keying_shuffled_control_gap_match
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+  - ra_v1_7_specificity_by_keying.csv
+  - ra_v1_7_permutation_control.csv
+  - ra_v1_7_overlap_distribution_by_keying.csv
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    Canonical-scale finding (n=36 per (keying, mode, family_semantics) cell;
+    1,296 total per-cell rows; 1.17M keyed rows). The shuffled control
+    matching graph-derived keyings is the decisive evidence that the
+    reversed-sign verdict is not topology-causal. Likely confound: support_width,
+    family_size, threshold semantics, or low-rescue-bin structure. v1.8 audit
+    is required to characterize this confound directly. Full audit history:
+    audit_events.csv EV-2026-05-06-003, EV-2026-05-06-004.
+  next_tasks:
+  - Build v1.8 support-width / family-structure / binning confound audit to characterize the binning interaction directly (see issues.yaml RA-ISSUE-V1-8-WIDTH-CONFOUND-AUDIT-001).
+  source_status:
+    ra_orientation_keying_ablation.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_v1_7_specificity_by_keying.csv ; ra_v1_7_permutation_control.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
