@@ -1746,3 +1746,46 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: Track B.2 active-state witness-extraction guardrail
   packet_origin: RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026
+- id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-METHOD-001
+  name: Track B orientation-rescue analyses require v1.8.1-compliant witness coverage in legitimate keyings before inference
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Future Track B orientation-rescue analyses must first demonstrate
+    that graph/cut witness extraction populates fixed low/high
+    orientation-overlap bins inside support_width × family_size joint
+    strata for at least one of the legitimate native-witness keyings
+    (`edge_pair_signed_no_member`, `edge_direction_only`,
+    `incidence_role_signed`, `catalog_augmented_edge_pair`,
+    `graph_cut_member_index_free`). Coverage-sufficiency under the
+    member-indexed (retracted) keying or the shuffled control does
+    NOT discharge the v1.8.1 audit gate - those keyings exist
+    precisely to be flagged by the audit. If no legitimate keying
+    reaches coverage sufficiency, the orientation-rescue question is
+    non-estimable under the current sampler/configuration and any
+    rescue claim is premature.
+  nature_targets:
+  - RA-native modeling discipline
+  - v1.8.1-compliant matched-graph rescue inference gate
+  ra_observable: null
+  sources:
+  - RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026
+  - RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Modeling guardrail. The Track B.3 canonical run (1,176,000 rows; 464 joint strata; 111 estimable; 36 coverage-sufficient cell-tuples) shows the headline summary string `v1_8_1_valid_comparison_domains_available` can be technically correct while the keying-resolved breakdown shows zero legitimate keyings sufficient. Always read the recommendation table by keying class before citing the posture. Reading the posture in isolation reproduces exactly the v1.5..v1.8.1 framing trap. Full audit history: audit_events.csv EV-2026-05-06-021.'
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: v1.8.1 fixed-bin joint-strata coverage by legitimate keying
+  packet_origin: RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026

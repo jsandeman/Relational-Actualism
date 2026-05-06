@@ -1,0 +1,22 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-METHOD-001
+    name: Track B orientation-rescue analyses require v1.8.1-compliant witness coverage before inference
+    domain: framing
+    papers: [II]
+    statement: >
+      Future Track B orientation-rescue analyses must first show that graph/cut witness extraction populates fixed low/high orientation-overlap bins inside support_width × family_size strata. If not, the orientation-rescue question is non-estimable under current sampling.
+    nature_targets: [RA-native modeling discipline]
+    ra_observable: null
+    sources: [RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026]
+    proof_dependencies: []
+    framing_links: [RA-SIM-CONFOUND-METHOD-001]
+    restoration_preconditions: []
+    caveats: This is a modeling guardrail, not a physical claim.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: v1.8.1 fixed-bin joint-strata discipline
+    packet_origin: RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026

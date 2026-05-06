@@ -1,0 +1,2 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001,RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,proof_dependency,claim,claim,Track B3 witness coverage,Track B2 active witness extraction

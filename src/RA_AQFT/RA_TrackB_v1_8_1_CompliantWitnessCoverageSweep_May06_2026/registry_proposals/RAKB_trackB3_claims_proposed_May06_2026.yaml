@@ -1,0 +1,24 @@
+registry_version: v0.5
+claims:
+  - id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001
+    name: Track B.3 audits active graph/cut witness coverage under v1.8.1 fixed-bin joint-strata discipline
+    domain: complexity
+    papers: [II]
+    statement: >
+      Track B.3 provides an analysis-only coverage audit for member-index-free graph/cut orientation-witness outputs under the v1.8.1 fixed-bin support_width × family_size comparison-domain discipline. It reports whether low/high orientation-overlap contrasts are estimable inside joint strata and makes no orientation-rescue claim.
+    nature_targets: [RA-native actualization-resilience workbench]
+    ra_observable: null
+    sources: [RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026]
+    proof_dependencies: [RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001]
+    restoration_preconditions: []
+    caveats: Coverage sufficiency is not a rescue result; non-estimable strata block valid matched-graph orientation-rescue inference.
+    next_tasks: []
+    source_status:
+      ra_v181_compliant_witness_coverage.py: simulation_analysis_validated_packet_local
+    legacy_proof_status: DR
+    proof_status: simulation_validated_packet_local_pending_canonical
+    legacy_support_status: none
+    auxiliary_support_status: simulator_analysis_packet
+    claim_kind: derived_result
+    formal_anchor: ra_v181_compliant_witness_coverage.py
+    packet_origin: RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026

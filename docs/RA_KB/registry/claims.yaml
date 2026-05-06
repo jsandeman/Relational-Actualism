@@ -6712,3 +6712,73 @@ claims:
   claim_kind: derived_result
   formal_anchor: active_graph_cut_orientation_tokens ; extract_active_graph_rows ; member_index_audit ; fixed_bin_coverage ; width_family_estimability
   packet_origin: RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026
+- id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001
+  name: Track B.3 v1.8.1-compliant witness coverage audit; legitimate native-witness keyings produce zero coverage-sufficient cells
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Track B.3 audits whether Track B graph/cut orientation-witness
+    extraction outputs (Track B.2 active-graph keying =
+    `graph_cut_member_index_free`) and the v1.7
+    OrientationKeyingAblation matched-graph keyed trial stream populate
+    fixed orientation-overlap bins inside support_width × family_size
+    joint strata under v1.8.1 fixed-bin discipline, and which
+    (config × keying × mode × family_semantics × threshold_fraction)
+    cell-tuples reach coverage sufficient for a future v1.8.1-compliant
+    matched-graph orientation-rescue analysis. Canonical-run inputs:
+    Track B.2 active-graph (9,600 overlap rows, 1 keying class) +
+    v1.7 keyed trial rows (1,166,400 rows, 6 keying classes); total
+    1,176,000 normalized rows. Canonical posture:
+    `v1_8_1_valid_comparison_domains_available` (111 of 464 joint strata
+    estimable, 23.9%; 108 cell-tuples reach all three orientation
+    bins). The substantive keying-resolved finding: the 36
+    coverage-sufficient cell-tuples come ENTIRELY from the
+    `member_indexed_edge_pair` keying (18 cells, RETRACTED v1.5..v1.8.1
+    tainted keying) and the `shuffled_overlap_control` keying (18
+    cells, designed null control). The four legitimate native-witness
+    keying classes (`edge_pair_signed_no_member`, `edge_direction_only`,
+    `incidence_role_signed`, `catalog_augmented_edge_pair`) each
+    produce 18 cell-tuples — all 72 of which receive the
+    `rebalance_width_family_bins_or_sampler` recommendation. The Track
+    B.2 active-graph keying (`graph_cut_member_index_free`, 8 tuples)
+    receives `increase_high_overlap_coverage` (replicating
+    EV-2026-05-06-019 finding). No orientation-rescue claim is made.
+  nature_targets:
+  - RA-native simulator workbench v1.8.1 confound-discipline coverage audit
+  - keying-resolved estimability of matched-graph orientation comparison domains
+  ra_observable: null
+  sources:
+  - RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026
+  - ra_v181_compliant_witness_coverage.py
+  - ra_trackB3_witness_coverage_summary.csv
+  - ra_trackB3_sampler_recommendations.csv
+  - ra_trackB3_v181_estimability_by_config.csv
+  proof_dependencies:
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Canonical-run-confirmed: python scripts/run_trackB3_v181_witness_coverage.py --input-dirs ../RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026/outputs,../RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026/outputs --output-dir outputs completed on 2026-05-06; 1,176,000 normalized rows (9,600 from Track B.2 + 1,166,400 from v1.7); 464 joint (config x keying x mode x semantics x threshold x support_width x family_size) strata; 111 estimable (23.9%). HEADLINE READING-DISCIPLINE WARNING: the summary posture v1_8_1_valid_comparison_domains_available is technically true but materially misleading without the keying breakdown. The 36 coverage-sufficient cell-tuples are entirely under member_indexed_edge_pair (18, the RETRACTED tainted keying from the v1.5..v1.8.1 retraction chain) and shuffled_overlap_control (18, the designed null check) - exactly the keyings v1.8.1 confound discipline was built to flag, not to validate. The four legitimate native-witness keyings (edge_pair_signed_no_member, edge_direction_only, incidence_role_signed, catalog_augmented_edge_pair) each produce 18 cell-tuples and 0 coverage-sufficient cells; all 72 receive rebalance_width_family_bins_or_sampler. Track B.2 active-graph (graph_cut_member_index_free) gives 8 cell-tuples needing increase_high_overlap_coverage (consistent with EV-2026-05-06-019). PACKET BUG FIXED on install: the original analysis module created the normalized DataFrame with `pd.DataFrame()` then assigned scalars (config_id, source) to that empty DataFrame before the first length-N Series assignment, which left those columns as NaN after index extension. Fix: pass `index=range(len(df))` to the DataFrame constructor in both _normalize_active_b2 and _normalize_v17. Fix preserves all v1.8.1-compliance tests and changes only metadata labels - the headline 111/464 estimability and 36 coverage-sufficient finding are stable across the fix. Installed SHA 6b21b973...; packet original SHA differs by the index= fix. No orientation-rescue claim is made or restored; v1.9 native-witness six-requirement gate (RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) remains binding. Per controlling-standard discipline (EV-2026-05-06-020): Track B.2 / v0.9 supplies graph-state substrate; v1.8.1 supplies the audit standard. Full audit history: audit_events.csv EV-2026-05-06-021.'
+  next_tasks:
+  - 'Run a Track B.4 sampler-redesign sweep that targets the four legitimate native-witness keyings: vary v1.7 keying-ablation parameters and/or v0.9 graph-generation parameters to produce non-empty estimable joint strata under those keyings before any orientation-rescue analysis is attempted.'
+  - 'Do NOT cite the headline "v1_8_1_valid_comparison_domains_available" posture without the keying breakdown - the only sufficient cells are tainted (member-indexed) or null-control (shuffled). Reading the posture in isolation reproduces exactly the v1.5..v1.8.1 framing trap.'
+  - Investigate why the four legitimate keyings reach low+medium+high bins but none of their support_width x family_size joint strata are estimable: this is a sampler-design question about how keying interacts with width-family coupling.
+  source_status:
+    ra_v181_compliant_witness_coverage.py: simulation_validated_canonical_run_confirmed
+    ra_trackB3_witness_coverage_summary.csv: canonical_run_recorded
+    ra_trackB3_sampler_recommendations.csv: canonical_run_recorded
+    ra_trackB3_v181_estimability_by_config.csv: canonical_run_recorded
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run
+  claim_kind: derived_result
+  formal_anchor: load_normalized_inputs ; compute_bin_coverage ; compute_joint_strata ; compute_estimability_by_config ; compute_sampler_recommendation
+  packet_origin: RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026
