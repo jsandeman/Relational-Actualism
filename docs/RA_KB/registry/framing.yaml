@@ -1738,7 +1738,7 @@ framing_policies:
   - RA-SIM-CONFOUND-METHOD-001
   - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
   restoration_preconditions: []
-  caveats: Modeling guardrail. Do not cite Track B.2 outputs (including the canonical 100-seed run) as orientation-specific rescue evidence - the canonical-run finding of zero estimable width-family strata makes it especially important that no rescue narrative is built on this surface alone. Full audit history. audit_events.csv EV-2026-05-06-019.
+  caveats: 'Modeling guardrail. Controlling-standard clarification (corrigendum EV-2026-05-06-020): v0.9 NativeCertificateOverlap is the graph-state SUBSTRATE only; the controlling audit standard for any orientation-rescue inference is v1.8.1 (joint stratification + cell-level fixed-bin discipline + shuffled controls + estimability gate). The Track B.2 canonical run is therefore a smoke test against a v0.9 default configuration, not a v1.8.1-compliant audit; its zero-estimable-strata finding does NOT constitute a verdict against orientation rescue. Track B.3 must be built explicitly against v1.8.1 acceptance (v1.7 canonical matched-trial structure + v1.8.1 fixed-bin / joint width x family_size rules, with v0.9 entering only as graph-state generator). Do not cite Track B.2 outputs as orientation-specific rescue evidence under any reading. Full audit history: audit_events.csv EV-2026-05-06-019, EV-2026-05-06-020.'
   next_tasks: []
   legacy_proof_status: DR
   legacy_support_status: none
