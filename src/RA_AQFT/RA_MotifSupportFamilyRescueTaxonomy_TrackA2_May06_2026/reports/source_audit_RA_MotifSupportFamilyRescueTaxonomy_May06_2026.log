@@ -1,0 +1,7 @@
+source_file: RA_MotifSupportFamilyRescueTaxonomy.lean
+sorry_count: 0
+admit_count: 0
+axiom_count: 0
+probability_count: 0
+orientation_specific_count: 1
+notes: source-level audit only; local Lean/Lake compile required.

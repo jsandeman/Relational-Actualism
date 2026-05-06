@@ -151,6 +151,15 @@ lean_lib «RelationalActualism» where
                                 -- variants; sharedFate_of_highEndpoint;
                                 -- Graph variants. No numerical
                                 -- monotone law.
+    `RA_MotifSupportFamilyRescueTaxonomy, -- (May 6 2026) Track A.2
+                                -- support-family inclusion taxonomy:
+                                -- FamilyEquivalent / StrictlyAugments
+                                -- / Comparable / Incomparable;
+                                -- CertifiedFamilyAugments;
+                                -- mono_certified_augmentation;
+                                -- FamilyAugmentationRescueAt with
+                                -- to_strict_parent_rescue refinement.
+                                -- Graph variants. No numerical law.
     `RA_MotifNativeCertificateOverlapBridge, -- (May 5 2026) native-overlap
                                 -- bridge: Type-valued witness data,
                                 -- overlaps relation, NativelyWitnessed

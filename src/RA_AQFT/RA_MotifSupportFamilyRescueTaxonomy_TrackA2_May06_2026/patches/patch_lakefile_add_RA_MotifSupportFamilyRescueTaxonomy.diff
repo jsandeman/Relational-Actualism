@@ -1,0 +1,5 @@
+diff --git a/lakefile.lean b/lakefile.lean
+--- a/lakefile.lean
++++ b/lakefile.lean
+@@
++  RA_MotifSupportFamilyRescueTaxonomy,

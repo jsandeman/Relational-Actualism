@@ -1,0 +1,31 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-METHOD-001
+    name: Support-family rescue comparisons require inclusion discipline
+    domain: framing
+    papers: [II]
+    statement: >
+      Support-family rescue claims should distinguish genuine augmentation from
+      replacement or incomparable support-family constructions. No-worse or rescue
+      comparisons should not be inferred unless the family inclusion and certificate
+      preservation conditions are explicit.
+    nature_targets:
+      - RA-native modeling discipline for actualization resilience
+    ra_observable: null
+    sources:
+      - RA_MotifSupportFamilyRescueTaxonomy_TrackA2_May06_2026.md
+    proof_dependencies: []
+    framing_links:
+      - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+      - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+    restoration_preconditions: []
+    caveats: >
+      Methodological guardrail only. Does not introduce new simulator semantics or
+      physical predictions.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: RA_MotifSupportFamilyRescueTaxonomy.lean
+    packet_origin: RA_MotifSupportFamilyRescueTaxonomy_TrackA2_May06_2026

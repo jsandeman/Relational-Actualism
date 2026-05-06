@@ -1,0 +1,2 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Support-family rescue taxonomy separates augmentation from replacement,Certification resilience consolidation

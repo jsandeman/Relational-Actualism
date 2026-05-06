@@ -6407,3 +6407,65 @@ claims:
   claim_kind: interpretive_bridge
   formal_anchor: DAGNativeOverlapFateBridge ; DAGLowNativeOverlapCertificateResilienceAt ; DAGHighNativeOverlapEndpoint ; DAGHighNativeOverlapSharedFateResilienceAt ; DAGNativeOverlapFateBridge.sharedFate_of_highEndpoint ; DAGLowNativeOverlapCertificateResilienceAt.to_memberDistinct_resilience ; DAGLowNativeOverlapCertificateResilienceAt.to_family_internal_resilience ; DAGLowNativeOverlapCertificateResilienceAt.to_certified_family_ready ; DAGLowNativeOverlapCertificateResilienceAt.future_mono ; DAGHighNativeOverlapSharedFateResilienceAt.to_sharedFate_resilience ; DAGHighNativeOverlapSharedFateResilienceAt.to_certified_family_ready ; GraphNativeOverlapFateBridge ; GraphLowNativeOverlapCertificateResilienceAt ; GraphHighNativeOverlapEndpoint ; GraphHighNativeOverlapSharedFateResilienceAt ; GraphNativeOverlapFateBridge.sharedFate_of_highEndpoint
   packet_origin: RA_MotifNativeOverlapCorrelationBridge_May06_2026
+
+- id: RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001
+  name: Track A.2 Lean support-family inclusion taxonomy and augmentation rescue refinement for both DAG and Graph layers
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Track A.2 isolates the support-family inclusion taxonomy used by
+    the robust positive resilience line. Adds DAG/Graph parallel pair
+    of FamilyEquivalent (mutual inclusion, with .refl and .symm),
+    FamilyStrictlyAugments (one-directional inclusion, with .included
+    and .not_reverse_included accessors), FamilyComparable (one
+    includes the other), and FamilyIncomparable (neither includes the
+    other -- the replacement-style regime where no augmentation
+    no-worse theorem is available from inclusion alone).
+    CertifiedFamilyAugments adds the certificate-preservation
+    morphism: a base certificate context Ξ and an augmented
+    certificate context Ξaug satisfy CertifiedFamilyAugments iff the
+    base family is included in the augmented family AND every base
+    certificate is preserved in Ξaug. The structural payoff
+    theorems are: FamilyInternalResilienceAt.mono_certified_augmentation
+    (family-internal resilience is preserved by certified-family
+    augmentation), and FamilyAugmentationRescueAt
+    (Fbase ⊆ Faug, base parent cut not ready, augmented family
+    independent-certified-ready) refining via .to_strict_parent_rescue
+    into the augmented family's strict-parent rescue and via
+    .to_family_internal_resilience / .to_certified_family_ready into
+    the augmented family's resilience and readiness. Graph variants
+    of all. The module formalizes the augmentation vs replacement
+    distinction without committing to any numerical rescue rate.
+  nature_targets:
+  - RA-native formal surface for additive support-family rescue
+  - structural separation of augmentation (no-worse certified rescue) vs replacement (no theorem from inclusion alone)
+  ra_observable: null
+  sources:
+  - RA_MotifSupportFamilyRescueTaxonomy_TrackA2_May06_2026
+  - RA_MotifSupportFamilyRescueTaxonomy.lean
+  proof_dependencies:
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  - RA-SIM-SUPPORT-FAMILY-MONO-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  - RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed: lake build RA_MotifSupportFamilyRescueTaxonomy closed 8276/8276 jobs (~82s) on 2026-05-06; lexical check finds no sorry, admit, or axiom. Module imports only RA_MotifCertificationResilienceConsolidation (transitively pulls in RA_MotifSupportFamilyMonotonicity for DAGFamilyIncluded.refl and the upstream FamilyIncluded.* infrastructure). Track A.2 formalizes the categorical distinction between augmentation and replacement; it does not derive the v0.7.1 cohort-specific monotonicity-violation rate (9,887 violations of family_loss > strict_loss in the exact_k x cut_level x ledger/orientation cohort) -- that violation count remains a simulator-side observation. The augmentation-rescue refinement closes the v0.7 metric-repair circle: family-internal resilience now has a Lean-typed counterpart for the additive support-family rescue scenario. Full audit history: audit_events.csv EV-2026-05-06-014.'
+  next_tasks:
+  - 'Optional Track A.3: lift the cohort-specific exact_k x cut_level x ledger/orientation no-worse violation pattern into a Type-valued statement. This would require encoding the certification regime distinction (cut_level vs parent_shared) on the Lean side as a separate field.'
+  - 'Recommended path forward (per RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001 next_tasks): write the technical paper section on the v0.7..v0.9.x positive line, citing the Track A spine plus this taxonomy refinement.'
+  source_status:
+    RA_MotifSupportFamilyRescueTaxonomy.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: formal_consolidation_scaffold
+  claim_kind: formalized_result
+  formal_anchor: DAGFamilyEquivalent ; DAGFamilyStrictlyAugments ; DAGFamilyComparable ; DAGFamilyIncomparable ; DAGFamilyEquivalent.refl ; DAGFamilyEquivalent.symm ; DAGFamilyStrictlyAugments.included ; DAGFamilyStrictlyAugments.not_reverse_included ; DAGCertifiedFamilyAugments ; DAGFamilyInternalResilienceAt.mono_certified_augmentation ; DAGFamilyAugmentationRescueAt ; DAGFamilyAugmentationRescueAt.to_strict_parent_rescue ; DAGFamilyAugmentationRescueAt.to_family_internal_resilience ; DAGFamilyAugmentationRescueAt.to_certified_family_ready ; GraphFamilyEquivalent ; GraphFamilyStrictlyAugments ; GraphCertifiedFamilyAugments ; GraphFamilyInternalResilienceAt.mono_certified_augmentation ; GraphFamilyAugmentationRescueAt ; GraphFamilyAugmentationRescueAt.to_strict_parent_rescue
+  packet_origin: RA_MotifSupportFamilyRescueTaxonomy_TrackA2_May06_2026
