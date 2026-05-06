@@ -1000,14 +1000,11 @@ issues:
   - RA-SIM-ORIENT-KEYING-METHOD-001
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
-  caveats: 'Open issue: v1.8 packet not yet built. v1.7 establishes the empirical case for this audit; the actual confound characterization will be a v1.8 packet with its own claims. No further orientation-keying variants should be developed until v1.8 closes the support_width/family-structure confound question.'
+  caveats: 'RESOLVED 2026-05-06 by RA-SIM-CONFOUND-V18-001 (v1.8 width-only preliminary, superseded by v1.8.1) and RA-SIM-CONFOUND-V18-1-001 / RA-SIM-CONFOUND-V18-1-002 (v1.8.1 joint width × family-size matching, controlling). Verdict: Case A (binning artifact). Joint-matched orientation gap collapses to |0.003|; graph keyings match shuffled control within 0.005 in joint strata. Pure-graph keyings without extra noise are non-estimable under joint matching, indicating their orientation_overlap is a structural function of the stratification variables. v1.7 reading (gap is binning artifact) is directly confirmed. See audit_events.csv EV-2026-05-06-005, EV-2026-05-06-006.'
   next_tasks:
-  - Build v1.8 packet implementing the six audit questions above.
-  - Define matched-bin construction algorithm (likely IPW or stratified bootstrap on (support_width, family_size) given the v1.7 keyed_per_cell.csv).
-  - Run on the same v0.9 trial stream as v1.7 to keep matched-graph provenance.
-  - Produce ra_v1_8_confound_summary.md with case A/B verdict (binning artifact / residual orientation signal) and update RA-SIM-ORIENT-KEYING-002 caveat with the v1.8 result.
+  - Done.
   source_status: {}
   legacy_proof_status: STATED
   legacy_support_status: none
-  auxiliary_support_status: open_issue_recorded
-  priority: high
+  auxiliary_support_status: closed_resolved_by_v1_8_1_canonical_audit
+  priority: resolved

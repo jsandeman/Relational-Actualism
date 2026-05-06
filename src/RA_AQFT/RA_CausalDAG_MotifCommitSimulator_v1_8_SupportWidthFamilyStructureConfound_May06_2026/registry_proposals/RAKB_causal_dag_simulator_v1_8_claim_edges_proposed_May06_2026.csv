@@ -1,0 +1,4 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-ORIENT-CONFOUND-001,RA-SIM-ORIENT-KEYING-001,proof_dependency,claim,claim,v1.8 audits whether orientation-overlap bins are confounded by support width and family structure,Canonical matched-graph orientation-keying ablation fails to recover v1.5 orientation specificity
+RA-SIM-ORIENT-CONFOUND-001,RA-SIM-ORIENT-KEYING-002,proof_dependency,claim,claim,v1.8 audits whether orientation-overlap bins are confounded by support width and family structure,Reversed orientation gaps are consistent with sorting/binning confounds
+RA-SIM-ORIENT-CONFOUND-002,RA-SIM-ORIENT-CONFOUND-001,proof_dependency,claim,claim,Orientation-overlap gaps require width and family-size matching before specificity claims,v1.8 audits whether orientation-overlap bins are confounded by support width and family structure

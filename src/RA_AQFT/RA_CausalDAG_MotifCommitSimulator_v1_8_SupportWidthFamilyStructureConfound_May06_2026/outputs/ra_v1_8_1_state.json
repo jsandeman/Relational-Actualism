@@ -1,0 +1,20 @@
+{
+  "summary": {
+    "version": "v1.8.1",
+    "input_rows": 1166400,
+    "keying_count": 6,
+    "n_stratum_combinations": 216,
+    "n_strata_with_data": 1296,
+    "n_strata_estimable_any_keying": 126,
+    "selector_guardrail_passed": true,
+    "mean_abs_raw_gap_graph_keyings": 0.12914351851851852,
+    "mean_abs_width_matched_gap_graph_keyings": 0.11992490447912953,
+    "mean_abs_joint_matched_gap_graph_keyings": 0.003236121791916203,
+    "mean_abs_joint_matched_gap_shuffled": 0.0029269142470236867,
+    "mean_abs_graph_minus_shuffled_joint": 0.005013189208029935,
+    "fraction_explained_by_width_graph": 0.07030541528772771,
+    "fraction_explained_by_joint_graph": 1.0088682371390565,
+    "estimable_strata_fraction_graph": 0.14583333333333334,
+    "v1_8_1_posture": "joint_width_family_matched_confound_audit_complete"
+  }
+}

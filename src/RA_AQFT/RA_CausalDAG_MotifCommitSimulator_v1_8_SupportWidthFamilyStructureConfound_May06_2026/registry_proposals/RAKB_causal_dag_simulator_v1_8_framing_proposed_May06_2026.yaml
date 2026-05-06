@@ -1,0 +1,29 @@
+registry_version: v0.5-proposal
+framing_policies:
+- id: RA-SIM-ORIENT-CONFOUND-METHOD-001
+  name: Orientation-rescue gaps must be controlled for support-width and family-structure
+    binning
+  domain: framing
+  papers:
+  - II
+  statement: Do not interpret orientation-overlap low/high rescue gaps as orientation-specific
+    certification rescue unless they survive matched support-width/family-size controls
+    and shuffled-overlap controls.
+  nature_targets:
+  - RA-native simulation methodology
+  - orientation specificity guardrail
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_Report_May06_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  restoration_preconditions: []
+  caveats: This is a modeling guardrail, not a physical claim.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: v1.8 support-width/family-structure confound audit
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026

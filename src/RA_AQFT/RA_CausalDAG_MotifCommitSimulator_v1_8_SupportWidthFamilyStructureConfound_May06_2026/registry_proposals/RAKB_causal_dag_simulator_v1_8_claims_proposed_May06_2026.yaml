@@ -1,0 +1,68 @@
+registry_version: v0.5-proposal
+claims:
+- id: RA-SIM-ORIENT-CONFOUND-001
+  name: v1.8 audits whether orientation-overlap bins are confounded by support width
+    and family structure
+  domain: complexity
+  papers:
+  - II
+  statement: The v1.8 analysis layer tests whether v1.7 orientation-overlap rescue
+    gaps are explained by support-width, family-size, and binning structure rather
+    than orientation-link specificity.
+  nature_targets:
+  - RA-native actualization-fragility diagnostics
+  - support-family certification-rescue analysis
+  ra_observable: null
+  sources:
+  - ra_support_width_family_confound.py
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_Report_May06_2026.md
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  - RA-SIM-ORIENT-KEYING-002
+  restoration_preconditions: []
+  caveats: Packet-local outputs are subset diagnostics. Promote only after running
+    against canonical v1.7 outputs.
+  next_tasks:
+  - Run v1.8 against canonical v1.7 outputs.
+  source_status:
+    ra_support_width_family_confound.py: python_unittest_validated_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_packet_local_validated_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_support_width_family_confound.run_analysis
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+- id: RA-SIM-ORIENT-CONFOUND-002
+  name: Orientation-overlap gaps require width and family-size matching before specificity
+    claims
+  domain: complexity
+  papers:
+  - II
+  statement: The v1.8 audit separates raw low/high orientation-overlap gaps from support-width-matched
+    and graph-versus-shuffled comparisons, preventing orientation-specificity claims
+    from being inferred from binning artifacts.
+  nature_targets:
+  - RA-native support-family diagnostics
+  - orientation specificity audit discipline
+  ra_observable: null
+  sources:
+  - ra_v1_8_orientation_gap_after_width_matching.csv
+  - ra_v1_8_shuffled_vs_graph_within_width.csv
+  proof_dependencies:
+  - RA-SIM-ORIENT-CONFOUND-001
+  restoration_preconditions: []
+  caveats: Width-matched gaps may be unavailable if orientation bins and support-width
+    strata are perfectly entangled; that absence itself is diagnostic.
+  next_tasks:
+  - Use canonical v1.7 outputs to decide whether graph-derived orientation gaps remain
+    distinct from shuffled controls after width/family-size matching.
+  source_status:
+    ra_support_width_family_confound.py: python_unittest_validated_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_analysis_packet_local_validated_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_recorded
+  claim_kind: derived_result
+  formal_anchor: orientation_gap_after_width_matching ; shuffled_vs_graph_within_width
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026

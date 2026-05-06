@@ -5803,14 +5803,23 @@ claims:
   restoration_preconditions: []
   caveats: >
     Canonical-scale finding (n=36 per (keying, mode, family_semantics) cell;
-    1,296 total per-cell rows; 1.17M keyed rows). The shuffled control
-    matching graph-derived keyings is the decisive evidence that the
-    reversed-sign verdict is not topology-causal. Likely confound: support_width,
-    family_size, threshold semantics, or low-rescue-bin structure. v1.8 audit
-    is required to characterize this confound directly. Full audit history:
-    audit_events.csv EV-2026-05-06-003, EV-2026-05-06-004.
+    1,296 total per-cell rows; 1.17M keyed rows). Shuffled-control matching
+    graph-derived keyings at the v1.7 aggregation level is suggestive of a
+    binning artifact; v1.8.1 joint (support_width × family_size × threshold
+    × severity) stratification CONFIRMS this directly: the orientation gap
+    collapses to |0.003| under joint matching, with graph keyings (where
+    estimable) matching the shuffled control to within 0.012. Three of the
+    five non-member graph keyings are non-estimable under joint matching
+    because their orientation_overlap is structurally constant within a
+    fixed (mode, semantics, threshold, severity, support_width, family_size)
+    stratum - which itself confirms that "orientation overlap" was a
+    function of structural variables for those keyings. v1.8 width-only
+    matching produced a misleading "Case B residual" reading; v1.8.1 is
+    the controlling result. Full audit history: audit_events.csv
+    EV-2026-05-06-003, EV-2026-05-06-004, EV-2026-05-06-005,
+    EV-2026-05-06-006.
   next_tasks:
-  - Build v1.8 support-width / family-structure / binning confound audit to characterize the binning interaction directly (see issues.yaml RA-ISSUE-V1-8-WIDTH-CONFOUND-AUDIT-001).
+  - Confound audit complete via v1.8.1 (see RA-SIM-CONFOUND-V18-1-001 / -002 and RA-SIM-CONFOUND-METHOD-001). No further orientation-overlap audits warranted at this scale.
   source_status:
     ra_orientation_keying_ablation.py: simulation_validated_canonical_run_confirmed
   legacy_proof_status: DR
@@ -5820,3 +5829,199 @@ claims:
   claim_kind: derived_result
   formal_anchor: ra_v1_7_specificity_by_keying.csv ; ra_v1_7_permutation_control.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+
+- id: RA-SIM-CONFOUND-V18-001
+  name: v1.8 preliminary width-matched confound diagnostic shows shuffled-control gap collapses while graph-derived gap survives within-width matching (superseded by v1.8.1 joint result)
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.8 audit re-bins the v1.7 keyed trial rows on tertiles of
+    orientation_overlap_all_pairs per (keying, mode, family_semantics) and
+    computes the low_minus_high rescue gap within fixed support_width
+    strata. Headline numbers across non-member graph keyings: raw gap
+    -0.198 to -0.209; width-matched gap -0.177 to -0.180 (only ~10%
+    explained by support_width alone). Shuffled control: raw -0.193,
+    width-matched +0.171 (sign FLIPS) for orientation_degradation/
+    at_least_k. This intermediate result transiently suggests Case B
+    (residual orientation signal). However, v1.8.1 joint width × family-
+    size stratification (RA-SIM-CONFOUND-V18-1-001) shows the residual
+    is fully explained once family_size is also conditioned on; v1.8 is
+    therefore PRELIMINARY and superseded by v1.8.1 as the controlling
+    result.
+  nature_targets:
+  - preliminary support_width-only confound audit on v1.7 outputs
+  - methodological warning that single-axis stratification is not enough when multiple structural variables correlate with the binning
+  ra_observable: orientation_gap_after_width_matching
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+  - ra_support_width_family_confound.py
+  - ra_v1_8_orientation_gap_after_width_matching.csv
+  - ra_v1_8_shuffled_vs_graph_within_width.csv
+  - ra_v1_8_orientation_bin_association.csv
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  - RA-SIM-ORIENT-KEYING-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    PRELIMINARY width-matched diagnostic; superseded by RA-SIM-CONFOUND-V18-1-001
+    (joint width × family-size matching) as the controlling result.
+    The transient "Case B residual" reading from v1.8 is an artifact of
+    width-only stratification (orientation_bin × family_size correlation
+    is 0.59-0.73 across non-member graph keyings, comparable to width × bin
+    correlation of 0.58-0.72). Width-only matching cannot disentangle
+    orientation from family_size and produced a misleading -0.18 width-
+    matched gap that v1.8.1 joint stratification reduced to |0.003|.
+    Full audit history: audit_events.csv EV-2026-05-06-005,
+    EV-2026-05-06-006.
+  next_tasks:
+  - Cite RA-SIM-CONFOUND-V18-1-001 / -002 for the joint result. Do not cite v1.8 numbers as evidence for residual orientation specificity.
+  source_status:
+    ra_support_width_family_confound.py: simulation_validated_preliminary_width_matched_diagnostic_superseded_by_v1_8_1
+  legacy_proof_status: DR
+  proof_status: simulation_validated_preliminary_width_matched_diagnostic_superseded_by_v1_8_1
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_v1_8_orientation_gap_after_width_matching.csv ; ra_v1_8_shuffled_vs_graph_within_width.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+
+- id: RA-SIM-CONFOUND-V18-1-001
+  name: v1.8.1 joint (support_width × family_size × threshold × severity) matched audit collapses the orientation rescue gap to ~zero - Case A confirmed
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Under joint stratification on (mode, family_semantics, threshold_fraction,
+    severity, support_width, family_size) and tertile-binning of
+    orientation_overlap within each (keying × stratum), the low_minus_high
+    rescue gap collapses to a near-zero residual. For catalog_augmented_edge_pair
+    (the graph-derived keying with sufficient orientation variation to be
+    joint-estimable; 0.583 estimable strata fraction; 21 strata × ~671
+    trials each) the orientation_degradation joint-matched gap is +0.010
+    (at_least_k) and +0.003 (augmented_exact_k); the ledger_failure cells
+    are -0.004 and -0.002. The shuffled_overlap_control gives joint-matched
+    gaps of -0.001 / +0.007 (orientation_degradation) and +0.008 / +0.002
+    (ledger_failure). Mean absolute joint-matched gap over graph keyings
+    is 0.003; over the shuffled control 0.003; mean absolute graph-minus-
+    shuffled delta in joint strata is 0.005. The joint stratification
+    explains 100.9% of the raw gap on average for graph keyings - i.e.
+    the gap fully collapses within structurally matched strata. This
+    confirms the v1.7 reading that the v1.6/v1.7 reversed-sign verdict is
+    a binning / family-structure artifact, not topology-causal anti-
+    specificity.
+  nature_targets:
+  - joint-stratified retraction of any orientation-specific rescue interpretation in v1.5/v1.6/v1.7
+  - methodological standard for matched-graph orientation-overlap audits (joint width × family_size required)
+  ra_observable: joint_width_family_matched_low_minus_high_gap
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+  - ra_support_width_family_confound.py
+  - ra_v1_8_1_joint_width_family_matched_gap.csv
+  - ra_v1_8_1_graph_vs_shuffled_joint_matched.csv
+  - ra_v1_8_1_orientation_gap_decomposition.csv
+  - ra_v1_8_1_joint_confound_summary.md
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  - RA-SIM-ORIENT-KEYING-002
+  - RA-SIM-CONFOUND-V18-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    Confirmed by canonical v1.8.1 run on the v1.7 1.17M-row keyed trial
+    rows. CONTROLLING RESULT for the v1.5/v1.6/v1.7 orientation-rescue
+    chain. The decision rule (gap |0.003| < 0.02 collapse threshold;
+    graph-minus-shuffled |0.005| < 0.05 collapse threshold) places the
+    finding squarely in Case A. v1.5 +0.028 specificity is canonically
+    retracted; v1.6/v1.7 reversed gaps are confirmed structural artifacts.
+    The v0.9.2 family-semantics asymmetry remains a v0.9-internal finding
+    and is NOT cross-validated by v1.x at any scale we have tested.
+    Caveat: estimable strata fraction over graph keyings is only 0.146
+    because three of five non-member graph keyings produce structurally
+    constant orientation_overlap within a fixed joint stratum (see
+    RA-SIM-CONFOUND-V18-1-002 - the methodological complement). Full
+    audit history: audit_events.csv EV-2026-05-06-005, EV-2026-05-06-006.
+  next_tasks:
+  - The orientation-overlap track is closed at this scale. Future orientation-rescue audits must use joint stratification on at least (support_width, family_size) and a shuffled control before any positive or negative claim is promoted.
+  source_status:
+    ra_support_width_family_confound.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_v1_8_1_joint_width_family_matched_gap.csv ; ra_v1_8_1_orientation_gap_decomposition.csv ; ra_v1_8_1_graph_vs_shuffled_joint_matched.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+
+- id: RA-SIM-CONFOUND-V18-1-002
+  name: Pure-graph orientation keyings (no extra noise) are non-estimable under joint width-family stratification - their orientation_overlap is a deterministic function of structural variables
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Within the v1.8.1 joint audit, three of five non-member graph keyings
+    (edge_pair_signed_no_member, edge_direction_only, incidence_role_signed)
+    are non-estimable in 0/36 (mode × family_semantics) cells: the joint
+    stratum fixes (mode, family_semantics, threshold_fraction, severity,
+    support_width, family_size), and once those are fixed, the underlying
+    DAG topology is largely determined and the keyings deterministic
+    function of (DAG, cut) is structurally constant across trials in the
+    stratum. Their tertile-binning of orientation_overlap therefore
+    produces ties (low and high bins have identical orientation_overlap
+    values), which the v1.8.1 estimability check correctly rejects. By
+    contrast, catalog_augmented_edge_pair (catalog tokens add stochastic
+    per-trial variation), member_indexed_edge_pair (member_idx adds
+    sibling-position variation), and shuffled_overlap_control (random
+    tokens) are joint-estimable in 8.3-58.3 percent of strata. Implication:
+    for the pure-graph keyings, what looked like an "orientation-overlap
+    rescue gap" was, by construction, a function of the structural
+    stratification variables; their orientation surface lacked
+    independent variation to support a residual orientation-specific
+    inference within joint strata.
+  nature_targets:
+  - methodological characterization of pure-graph orientation surfaces as structurally entangled with support/family stratification
+  ra_observable: estimable_strata_fraction_per_keying
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+  - ra_support_width_family_confound.py
+  - ra_v1_8_1_estimability_by_stratum.csv
+  - ra_v1_8_1_orientation_gap_decomposition.csv
+  proof_dependencies:
+  - RA-SIM-CONFOUND-V18-1-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    edge_pair_signed_no_member, edge_direction_only, incidence_role_signed:
+    0/36 estimable strata. catalog_augmented_edge_pair: 21/36 (0.583).
+    member_indexed_edge_pair: 9/36 (at_least_k) or 3/36 (augmented_exact_k).
+    shuffled_overlap_control: 21/36 (0.583). Full audit history:
+    audit_events.csv EV-2026-05-06-005, EV-2026-05-06-006.
+  next_tasks:
+  - Future orientation-keying surfaces that aim to produce within-stratum orientation variation must include explicit non-structural noise (e.g. catalog tokens, deterministic-but-variable per-trial features) or use a different sampling design that varies graph topology within fixed (support_width, family_size).
+  source_status:
+    ra_support_width_family_confound.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_v1_8_1_estimability_by_stratum.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026

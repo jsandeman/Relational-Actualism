@@ -1232,12 +1232,17 @@ framing_policies:
   caveats: >
     Do NOT cite v1.5 (+0.028) as evidence for orientation-specific
     rescue (retracted by v1.7). Do NOT cite v1.6 (-0.146 / -0.229) as
-    evidence for negative orientation specificity (binning artifact
-    per v1.7 shuffled control). The controlling result is
-    RA-SIM-ORIENT-KEYING-001 / -002. Full audit history:
-    audit_events.csv EV-2026-05-05-001, EV-2026-05-05-002,
-    EV-2026-05-05-005, EV-2026-05-06-001, EV-2026-05-06-002,
-    EV-2026-05-06-003, EV-2026-05-06-004.
+    evidence for negative orientation specificity (joint width × family-
+    size matched audit in v1.8.1 collapses the gap to |0.003|; the
+    shuffled control matches graph keyings within 0.012 in joint
+    strata). v1.8 width-only matching gave a transient "Case B residual"
+    reading; v1.8.1 joint matching is the controlling result and brings
+    Case A (binning artifact) back to the canonical reading. The
+    controlling claims are RA-SIM-ORIENT-KEYING-001 / -002 (canonical
+    keying ablation) and RA-SIM-CONFOUND-V18-1-001 / -002 (joint
+    confound audit). Full audit history: audit_events.csv
+    EV-2026-05-05-001, EV-2026-05-05-002, EV-2026-05-05-005,
+    EV-2026-05-06-001 through EV-2026-05-06-006.
   next_tasks:
   - Build v1.7 keying-ablation canonical sweep that compares at minimum six keying variants on the same matched-graph trials: member_indexed_edge_pair (current v1.6 behaviour, kept as control); edge_pair_signed_no_member (sign and tag without member_idx); edge_direction_only (incidence links without parity/member signs); incidence_role_signed (parent-side vs child-side roles, no member index); catalog_augmented_edge_pair (edge-pair tokens enriched by v1.3 native theorem/catalog tokens); shuffled_overlap_control (permutation null).
   - Required v1.7 outputs: ra_v1_7_keying_comparison.csv, ra_v1_7_specificity_by_keying.csv, ra_v1_7_partial_correlation_by_keying.csv, ra_v1_7_overlap_distribution_by_keying.csv, ra_v1_7_permutation_control.csv, ra_v1_7_orientation_keying_audit_summary.md.
@@ -1297,3 +1302,56 @@ framing_policies:
   auxiliary_support_status: methodological_guardrail_recorded
   formal_anchor: ra_orientation_keying_ablation.py ; ra_v1_7_specificity_by_keying.csv ; ra_v1_7_permutation_control.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_7_OrientationKeyingAblation_May06_2026
+
+- id: RA-SIM-CONFOUND-METHOD-001
+  name: Joint stratification on at least (support_width × family_size) is required before any matched-graph orientation-overlap rescue claim
+  domain: framing
+  papers:
+  - II
+  statement: >
+    The v1.8 / v1.8.1 audit chain demonstrates that single-axis stratification
+    on support_width is insufficient to disentangle orientation-overlap from
+    family structure. Width-only matching produced a transient -0.18 residual
+    that joint (support_width × family_size × threshold_fraction × severity)
+    matching reduced to |0.003|. Future audits of orientation-overlap effect
+    on certification rescue MUST: (a) condition on at least (support_width,
+    family_size) jointly before computing any specificity gap; (b) include
+    a shuffled-overlap or permutation control evaluated within the SAME
+    joint strata (raw-aggregate shuffled controls are insufficient; v1.7
+    showed they can match graph keyings at the raw level even when both
+    are structural artifacts); (c) report estimability per keying (the
+    fraction of strata where the keying produces non-tied orientation
+    values within stratum); (d) treat keyings with low estimability under
+    joint stratification as candidates whose orientation surface is
+    structurally entangled with the stratification variables and therefore
+    cannot independently support an orientation-specific inference.
+  nature_targets:
+  - methodological standard for orientation-overlap rescue audits
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+  - ra_v1_8_1_joint_width_family_matched_gap.csv
+  - ra_v1_8_1_estimability_by_stratum.csv
+  - ra_v1_8_1_graph_vs_shuffled_joint_matched.csv
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    This guardrail emerged from the v1.5/v1.6/v1.7/v1.8/v1.8.1 chain.
+    Single-axis matching is a documented failure mode (v1.8 Case B
+    appeared but did not survive joint stratification). Apply this rule
+    to ANY new orientation, orientation-link, or family-overlap audit on
+    matched-graph data.
+  next_tasks:
+  - 'When designing v1.9+ surfaces, encode this rule directly: include estimability_by_stratum and graph_vs_shuffled_joint_matched as standard outputs, and refuse to promote any orientation-specific claim whose joint-matched gap exceeds 0.02 only when paired with a shuffled-control delta exceeding 0.05 in the same strata.'
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: ra_support_width_family_confound.py ; ra_v1_8_1_joint_width_family_matched_gap.csv ; ra_v1_8_1_estimability_by_stratum.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
