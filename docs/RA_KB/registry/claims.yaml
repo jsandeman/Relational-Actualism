@@ -6535,3 +6535,111 @@ claims:
   claim_kind: formalized_result
   formal_anchor: DAGCertificateAgreementOnOverlap ; DAGValidFamilyComparison ; DAGValidAugmentationComparison ; DAGReplacementComparisonDomain ; DAGValidFamilyComparison.targeting_aligned ; DAGValidFamilyComparison.exposure_aligned ; DAGValidFamilyComparison.family_comparable ; DAGValidFamilyComparison.certificate_agreement ; DAGValidAugmentationComparison.certified_augmentation ; DAGValidAugmentationComparison.to_family_internal_resilience ; DAGValidAugmentationComparison.to_augmentation_rescue ; DAGReplacementComparisonDomain.incomparable ; GraphCertificateAgreementOnOverlap ; GraphValidFamilyComparison ; GraphValidAugmentationComparison ; GraphReplacementComparisonDomain ; GraphValidAugmentationComparison.to_family_internal_resilience ; GraphValidAugmentationComparison.to_augmentation_rescue
   packet_origin: RA_MotifComparisonDomainValidity_TrackA3_May06_2026
+- id: RA-MOTIF-GRAPH-CUT-WITNESS-001
+  name: Graph/cut-local orientation witnesses refine graph-orientation closure evidence (Track B.1)
+  domain: matter
+  papers:
+  - II
+  statement: >
+    Track B.1 formalizes a graph/cut-local orientation witness surface
+    `GraphCutOrientationWitness` that bundles, for one support-family
+    member, a `GraphSupportCut`, a `GraphOrientationClosureCertificate`,
+    an `OrientedN1ThreeFrame`, a cut-local oriented frontier-link
+    predicate, and methodological Prop+proof fields
+    (`graph_cut_derived`, `no_member_index_labels`). Refinement theorems
+    show: (i) the witness induces the deterministic sign source of its
+    closure certificate
+    (`signSourceOfGraphCutOrientationWitness_eval`); (ii) the witness
+    inherits the seven-value N1 ledger surface from its closure
+    certificate and three-frame
+    (`graphCutOrientationWitness_qN1_seven`); (iii) methodological
+    accessors return the recorded proofs of the graph/cut-derived and
+    no-member-index-labels guarantees; (iv) an
+    `GraphCutOrientationWitnessOverlapProfile` records qualitative
+    `low_overlap`/`medium_overlap`/`high_overlap`/
+    `same_graph_cut_domain`/`fixed_bin_definition` Prop+proof guardrails
+    with `same_domain_of_high` and `fixed_bins` accessors. The module
+    imports `RA_MotifComparisonDomainValidity` and
+    `RA_GraphOrientationClosure` and asserts no probability law, no
+    rescue-rate theorem, and no orientation-specific certification
+    rescue claim.
+  nature_targets:
+  - RA-native graph/cut-local orientation witness extraction surface
+  - structural decoupling of orientation-witness evidence from family-member ordering
+  ra_observable: null
+  sources:
+  - RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026
+  - RA_MotifNativeGraphCutWitnessExtraction.lean
+  proof_dependencies:
+  - RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  - RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed: lake build RA_MotifNativeGraphCutWitnessExtraction closed 8285/8285 jobs (~78s) on 2026-05-06; lexical check finds no sorry, admit, or axiom. Two packet-source fixes required during install (recorded in audit_events EV-2026-05-06-018): (a) `GraphCutOrientationWitness` had Prop-typed methodological fields `graph_cut_derived` and `no_member_index_labels` whose accessor theorems returned the field directly (a Prop), not a proof of it; the fix added paired `graph_cut_derived_proof` / `no_member_index_labels_proof` proof fields and rewrote the accessors to return them; (b) the same fix applied to `GraphCutOrientationWitnessOverlapProfile`''s `same_graph_cut_domain` and `fixed_bin_definition` fields. The structural pattern parallels v1.x packet bug #2 (Type/Prop confusion under accessor theorems). Track B.1 surface is documentary and structural: the witness is a typed slot for downstream graph-cut data and explicitly carries no probability law, no rescue-rate theorem, and no orientation-specific certification-rescue claim. Track B.1 sits downstream of Track A.3 comparison-domain validity (RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001) and is gated by the v1.9 native-witness six-requirement audit framing (`no_member_index_labels` Prop+proof field is the typed counterpart of the simulator-side member-index-free requirement). Full audit history: audit_events.csv EV-2026-05-06-018.'
+  next_tasks:
+  - Connect `GraphCutOrientationWitness` to concrete RA graph-incidence data so the closure-certificate / three-frame / member-link / locality fields can be supplied by RA-native constructors rather than left as abstract Prop slots.
+  - Prove a downstream theorem demonstrating that two `GraphCutOrientationWitness`es on disjoint support-cut neighborhoods generate independent N1 ledger contributions (would unlock matched-graph analyses).
+  source_status:
+    RA_MotifNativeGraphCutWitnessExtraction.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: formal_consolidation_scaffold
+  claim_kind: formalized_result
+  formal_anchor: GraphCutOrientationWitness ; signSourceOfGraphCutOrientationWitness ; signSourceOfGraphCutOrientationWitness_eval ; graphCutOrientationWitness_qN1_seven ; GraphCutOrientationWitness.graph_cut_derived_cert ; GraphCutOrientationWitness.no_member_index_labels_cert ; GraphCutOrientationWitnessOverlapProfile ; GraphCutOrientationWitnessOverlapProfile.same_domain_of_high ; GraphCutOrientationWitnessOverlapProfile.fixed_bins
+  packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026
+- id: RA-SIM-GRAPH-CUT-WITNESS-001
+  name: Track B graph/cut witness extractor is member-index-free in packet-local tests
+  domain: matter
+  papers:
+  - II
+  statement: >
+    Track B.1's Python extractor
+    (`ra_native_graph_cut_witness_extraction.py`) builds orientation-link
+    witness tokens from graph incidence around each cut vertex
+    (incoming/outgoing edges, parent->cut->child through-links, and
+    depth/local-parity signatures). A bad member-indexed control
+    extractor is included so that packet-local tests can detect any
+    family-member-ordering dependence in the witness surface. Four unit
+    tests (`tests/test_trackB_graph_cut_witness_extraction.py`) pass
+    locally: `test_graph_tokens_do_not_depend_on_member_index`,
+    `test_different_cuts_can_have_different_witnesses`,
+    `test_jaccard_diagnostics_are_defined`, and
+    `test_end_to_end_outputs`. Demo run outputs include witness members,
+    overlap profile, member-index audit, and a state JSON.
+  nature_targets:
+  - RA-native simulator methodology
+  - empirical validation of member-index-free extraction surface
+  ra_observable: null
+  sources:
+  - RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026
+  - ra_native_graph_cut_witness_extraction.py
+  - validation_unittest_trackB.log
+  proof_dependencies:
+  - RA-MOTIF-GRAPH-CUT-WITNESS-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Packet-local tests only. The extractor validates the witness-extraction surface: member-index audit confirms graph tokens are independent of family ordering when the canonical extractor is used, and the bad-control extractor reproduces the member-index dependence pattern that motivated the v1.5..v1.8.1 retraction chain. No orientation-specific certification-rescue claim is made or restored; the v1.9 native-witness gate remains the binding methodological constraint. Future repository-context runs (large-ensemble) are expected to be the bridge to matched-graph analyses, but this packet establishes only the local-test surface. Full audit history: audit_events.csv EV-2026-05-06-018.'
+  next_tasks:
+  - Run the extractor inside the active simulator harness so witness tokens can be produced from the canonical RA growth-DAG ensemble, not just the packet-local toy graphs.
+  - Define a matched-graph orientation overlap analysis built on these witnesses, with prespecified comparison cells per RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001's joint-stratification rule.
+  source_status:
+    ra_native_graph_cut_witness_extraction.py: simulation_packet_local_validated
+    test_trackB_graph_cut_witness_extraction.py: simulation_packet_local_validated
+    validation_unittest_trackB.log: provenance_recorded
+  legacy_proof_status: DR
+  proof_status: simulation_packet_local_validated
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local
+  claim_kind: interpretive_bridge
+  formal_anchor: incident_orientation_tokens ; all_pairs_mean_jaccard ; member_index_audit
+  packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026

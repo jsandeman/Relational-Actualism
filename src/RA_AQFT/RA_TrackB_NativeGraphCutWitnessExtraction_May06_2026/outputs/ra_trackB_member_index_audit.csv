@@ -1,0 +1,17 @@
+seed,support_width_requested,same_cut_graph_tokens_stable,same_cut_member_indexed_tokens_stable,graph_surface_uses_member_index,bad_control_uses_member_index,fixed_bin_discipline_required
+17,1,True,False,False,True,True
+17,2,True,False,False,True,True
+17,3,True,False,False,True,True
+17,4,True,False,False,True,True
+18,1,True,False,False,True,True
+18,2,True,False,False,True,True
+18,3,True,False,False,True,True
+18,4,True,False,False,True,True
+19,1,True,False,False,True,True
+19,2,True,False,False,True,True
+19,3,True,False,False,True,True
+19,4,True,False,False,True,True
+20,1,True,False,False,True,True
+20,2,True,False,False,True,True
+20,3,True,False,False,True,True
+20,4,True,False,False,True,True

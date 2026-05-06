@@ -1,0 +1,25 @@
+registry_version: v0.5
+framing_policies:
+  - id: RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+    name: Graph/cut witness extraction does not restore orientation-specific rescue claims
+    domain: framing
+    papers: [II]
+    statement: >
+      Track B graph/cut witness extraction is a prerequisite surface for future native
+      witness analyses. It must not be cited as evidence for orientation-specific
+      certification rescue unless a future matched-graph analysis passes the v1.9 native
+      witness requirements.
+    nature_targets: [RA-native simulator methodology]
+    ra_observable: null
+    sources: [RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026.md]
+    proof_dependencies: []
+    framing_links: [RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001]
+    restoration_preconditions: []
+    caveats: No Nature-facing claim is made.
+    next_tasks: []
+    legacy_proof_status: DR
+    legacy_support_status: none
+    framing_kind: modeling_guardrail
+    auxiliary_support_status: modeling_discipline_recorded
+    formal_anchor: Track B witness-extraction methodology
+    packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026

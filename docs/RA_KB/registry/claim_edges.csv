@@ -300,3 +300,5 @@ RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,RA-SIM-SUPPORT-FAMILY-MONO-001,proof
 RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,Track A Lean consolidation
 RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,Track A.2 support-family rescue taxonomy
 RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,v0.7.2 metric-repair audit
+RA-MOTIF-GRAPH-CUT-WITNESS-001,RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,proof_dependency,claim,claim,Graph/cut-local orientation witnesses (Track B.1),Comparison-domain validity (Track A.3)
+RA-SIM-GRAPH-CUT-WITNESS-001,RA-MOTIF-GRAPH-CUT-WITNESS-001,interpretive_dependency,claim,claim,Track B graph/cut witness extractor,Graph/cut-local orientation witnesses (Track B.1)

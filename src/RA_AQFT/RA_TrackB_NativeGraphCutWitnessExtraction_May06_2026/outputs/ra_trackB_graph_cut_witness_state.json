@@ -1,0 +1,11 @@
+{
+  "seeds": "17;18;19;20",
+  "steps": 14,
+  "widths": "1;2;3;4",
+  "witness_rows": 59,
+  "overlap_rows": 16,
+  "audit_rows": 16,
+  "orientation_overlap_bins": "low",
+  "graph_surface_member_index_free": true,
+  "bad_control_detects_member_index_instability": true
+}

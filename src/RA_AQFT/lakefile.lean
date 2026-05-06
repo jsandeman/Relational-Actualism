@@ -168,6 +168,19 @@ lean_lib «RelationalActualism» where
                                 -- targeting/exposure alignment as
                                 -- abstract Prop guardrails. Graph
                                 -- variants. No numerical law.
+    `RA_MotifNativeGraphCutWitnessExtraction, -- (May 6 2026) Track B.1
+                                -- graph/cut-local orientation
+                                -- witness extraction surface;
+                                -- GraphCutOrientationWitness binds
+                                -- closure cert + N1 three-frame +
+                                -- cut-local memberLink + graph_cut_
+                                -- derived + no_member_index_labels
+                                -- methodological fields. Sign-source
+                                -- + qN1 seven-charge inheritance;
+                                -- overlap-profile guardrail with
+                                -- fixed-bin discipline. No numerical
+                                -- rescue law; no orientation-specific
+                                -- claim; no v1.5 reopening.
     `RA_MotifNativeCertificateOverlapBridge, -- (May 5 2026) native-overlap
                                 -- bridge: Type-valued witness data,
                                 -- overlaps relation, NativelyWitnessed

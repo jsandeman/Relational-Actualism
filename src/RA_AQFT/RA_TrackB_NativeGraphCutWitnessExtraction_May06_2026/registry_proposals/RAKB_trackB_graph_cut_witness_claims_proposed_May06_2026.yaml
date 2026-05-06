@@ -1,0 +1,56 @@
+registry_version: v0.5
+claims:
+  - id: RA-MOTIF-GRAPH-CUT-WITNESS-001
+    name: Graph/cut-local orientation witnesses refine graph-orientation closure evidence
+    domain: matter
+    papers: [II]
+    statement: >
+      A graph/cut-local orientation witness surface can be stated as a refinement of
+      graph-orientation closure evidence, yielding deterministic sign-source evaluation
+      and the seven-value N1 ledger surface once a closure certificate and three-frame
+      are supplied.
+    nature_targets: [RA-native actualization-resilience formal structure]
+    ra_observable: null
+    sources: [RA_MotifNativeGraphCutWitnessExtraction.lean]
+    proof_dependencies: [RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001]
+    restoration_preconditions: []
+    caveats: >
+      This is a witness-extraction interface, not an orientation-specific rescue claim.
+      It does not prove that concrete RA graphs carry the supplied witness data.
+    next_tasks: [Compile locally and bridge to native orientation/ledger modules after import hygiene is stable.]
+    source_status:
+      RA_MotifNativeGraphCutWitnessExtraction.lean: source_level_pending_local_compile_no_sorry_no_admit_no_axiom
+    legacy_proof_status: DR
+    proof_status: source_level_formal_bridge_pending_compile
+    legacy_support_status: none
+    auxiliary_support_status: none_recorded
+    claim_kind: formalized_result
+    formal_anchor: GraphCutOrientationWitness ; signSourceOfGraphCutOrientationWitness_eval ; graphCutOrientationWitness_qN1_seven
+    packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026
+  - id: RA-SIM-GRAPH-CUT-WITNESS-001
+    name: Track B graph/cut witness extractor is member-index-free in packet-local tests
+    domain: matter
+    papers: [II]
+    statement: >
+      The Track B.1 packet-local extractor builds orientation-link witness tokens from
+      graph incidence, cut vertices, and depth/local orientation relations, and a
+      member-indexed control detects the bad family-order dependence that motivated the
+      Track B witness-extraction guardrail.
+    nature_targets: [RA-native simulator methodology]
+    ra_observable: null
+    sources: [ra_native_graph_cut_witness_extraction.py, validation_unittest_trackB.log]
+    proof_dependencies: [RA-MOTIF-GRAPH-CUT-WITNESS-001]
+    restoration_preconditions: []
+    caveats: >
+      Packet-local tests validate the extractor surface only. No orientation-specific
+      rescue claim is made or restored.
+    next_tasks: [Run in the active repository context and connect witness records to native modules.]
+    source_status:
+      ra_native_graph_cut_witness_extraction.py: simulation_packet_local_validated
+    legacy_proof_status: DR
+    proof_status: simulation_packet_local_validated
+    legacy_support_status: none
+    auxiliary_support_status: none_recorded
+    claim_kind: interpretive_bridge
+    formal_anchor: incident_orientation_tokens ; all_pairs_mean_jaccard ; member-index audit
+    packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026

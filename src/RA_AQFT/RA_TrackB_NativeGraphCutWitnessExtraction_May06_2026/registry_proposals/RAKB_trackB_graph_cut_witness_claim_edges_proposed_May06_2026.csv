@@ -1,0 +1,2 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-GRAPH-CUT-WITNESS-001,RA-MOTIF-GRAPH-CUT-WITNESS-001,interpretive_dependency,claim,claim,Track B graph/cut witness extractor,Graph/cut-local orientation witnesses
