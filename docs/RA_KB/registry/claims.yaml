@@ -5423,44 +5423,19 @@ claims:
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.5 run (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs)
-    over 480 v1.0 component rows producing 480 concrete-component output
-    rows. Reference corpus = 58 graphs (8 chains length 4-12, 6 balanced
-    branches, 4 diamonds, 8 asymmetric branches, plus replicas for sample
-    diversity). Decoupling audit: concrete_orientation_link_v1_5 vs each
-    of {support, frontier, orientation, ledger}_overlap shows max_abs_diff
-    0.90-0.91 across all three modes (12/12 cells decoupled). The concrete
-    surface lives at mean ~0.18 vs legacy support/frontier/orientation
-    triplet ~0.74 and ledger/exposure bundle ~0.76-0.86 - quantitatively
-    distinct from all existing components. Authored from scratch (not a
-    packet install): the analysis module ra_concrete_graph_orientation_extraction.py
-    builds the corpus in pure Python, extracts witnesses via Jaccard on
-    edge-pair-sign / vertex / depth-mod sets, runs the v1.4-style audit
-    machinery (decoupling, partial correlation, specificity, matched
-    strata) directly. 9/9 unit tests pass.
-
-    CRITICAL HONESTY CAVEAT - rescue/topology disconnection. The
-    reference corpus is synthetic-deterministic, NOT extracted from the
-    v0.9 simulator`s actual ActualizationDAG instances. The 480-row
-    component table inherits certification_rescue_rate values from
-    v1.0/v0.9 unchanged, but pairs them with orientation_overlap_v1_5
-    values computed on graphs that have NO causal connection to the
-    v0.9 simulator runs that produced those rescue rates. The mapping
-    from row keys to corpus graphs is a deterministic hash (different
-    cells get different graph samples by construction). The witnesses
-    come from real graph topology (parent/child edges, depth-derived
-    signs, ancestor closures), so the surface itself is genuinely
-    topology-grounded, but the rescue/orientation pairing in this
-    audit is between v0.9-simulator-derived rescue and a hash-keyed
-    sampling of independent topology. v1.5 therefore validates the
-    audit MACHINERY on real topology data; it does not measure the
-    physics of how concrete topology drives orientation_degradation
-    rescue. v1.6+ must close this loop by extracting orientation
-    overlap on the SAME graphs that produced the rescue rates (e.g. by
-    saving v0.9 simulator DAG state and feeding those exact graphs
-    through the v1.5 extractor) before any orientation-channel claim
-    can be promoted as a rescue-causal demonstration.'
+  caveats: >
+    v1.5 reference corpus = 58 deterministic Python graphs (chains, balanced
+    branches, asymmetric branches, diamonds). 480 component rows; 12/12
+    decoupling cells; concrete surface mean ~0.18 vs legacy triplet ~0.74.
+    9/9 unit tests pass. Witness keying: edge-pair-sign with member_idx
+    parity in sign and tag (KEYING-TAINTED — see audit_events.csv
+    EV-2026-05-05-003, EV-2026-05-06-001, EV-2026-05-06-002). The
+    surface is genuinely topology-derived but the rescue/orientation
+    pairing in this audit uses a hash-keyed mapping (rescue from v0.9
+    simulator runs paired with orientation overlap on a parallel
+    synthetic corpus); audit machinery is validated, but the audit
+    does not measure how concrete topology drives orientation_degradation
+    rescue. Full audit history: audit_events.csv EV-2026-05-05-001.
   next_tasks:
   - Build v1.6 packet that integrates the concrete extractor with the v0.9 simulator's actual ActualizationDAG instances (either by saving DAG state during simulation or by reading DAG topology directly from simulator output where available).
   source_status:
@@ -5517,84 +5492,19 @@ claims:
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
-  caveats: '[KEYING-TAINTED, NOT CLEANLY SUPERSEDED. Updated 2026-05-06.]
-    The v1.5 specificity (+0.028 augmented_exact_k gap;
-    -0.147 / -0.070 partial correlation) is NOT a confirmed
-    topology-causal result, but it is also NOT cleanly retracted by the
-    v1.6 packet as previously stated. The honest current status is
-    "keying-tainted, pending v1.7 ablation." Two distinct issues:
-    (i) v1.5`s ra_concrete_graph_orientation_extraction.py and v1.6`s
-    ra_graph_coupled_orientation_extraction.py SHARE the same
-    member-indexed witness keying:
-    `(depth(v) + depth(p) + member_idx) % 2` for the sign and
-    `:m{member_idx % 3}` in the token tag. member_idx is the index of
-    the family-member cut in sorted-cuts order, NOT a native orientation
-    invariant; the same physical edge can fail to match across siblings
-    purely because it appears in different member slots. Both the v1.5
-    +0.028 specificity AND the v1.6 reversed-sign result inherit this
-    flaw. (ii) v1.5 separately suffers a rescue/topology disconnection
-    (rescue from v0.9 simulator runs paired with orientation overlap
-    from a parallel synthetic corpus via a deterministic hash); v1.6
-    closed that disconnection methodologically. So v1.6 closes one
-    issue (disconnection) while inheriting the other (keying). The
-    correct reading: neither the v1.5 +0.028 nor the v1.6 -0.146/-0.229
-    is a topology-causal conclusion at this point; both are pending
-    v1.7 keying-ablation. The v1.5 "+0.028 cross-validates v0.9.2
-    family-semantics asymmetry" claim should not be cited as evidence,
-    but neither should it be cited as refuted-by-v1.6. The honest
-    contribution of v1.5 is methodological: the v1.1 AUDIT MACHINERY
-    runs end-to-end on concrete topology surfaces and returns the
-    expected structural-control verdicts (decoupling 12/12; selector_
-    stress=not_certification_channel; ledger_failure=ledger_control_
-    not_resolved). The original v1.5 release-time caveats follow.
-
-    -- (Original v1.5 release caveats, kept for provenance; both still
-    apply but are subsumed by the supersession above.) --
-
-    Confirmed by canonical v1.5 run (parameters as in
-    RA-SIM-CONCRETE-GRAPH-ORIENT-001).
-    concrete_orientation_surface_decoupled=true (12/12 decoupling
-    comparisons); matched_orientation_variation_available=true;
-    orientation_specificity_resolved=true (specificity-audit verdict);
-    selector_guardrail_passed=true;
-    mean_concrete_orientation_residual_std=0.0389. Specificity gap is
-    +0.028 at orientation_degradation/augmented_exact_k and -0.002 at
-    orientation_degradation/at_least_k.
-
-    DEEP HONESTY CAVEAT - rescue/topology disconnection. The
-    certification_rescue_rate values used in this audit are inherited
-    unchanged from the v1.0 component CSV (which derives them from the
-    v0.9 simulator). The concrete_orientation_link_overlap_v1_5 values
-    are computed on a parallel synthetic-deterministic graph corpus
-    (58 graphs) that has NO causal connection to the actual graphs that
-    produced the v0.9 rescue rates. The mapping from row keys to corpus
-    graphs is a deterministic hash, so different (mode, semantics,
-    severity, threshold, support_width) cells get different graph
-    samples by construction. Any correlation between rescue_rate and
-    orientation_overlap_v1_5 is therefore a correlation between
-    v0.9-simulator-derived rescue values and a hash-keyed sampling of
-    INDEPENDENT topology - not a measurement of how concrete topology
-    drives orientation_degradation rescue on the same graphs. The
-    +0.028 specificity gap could be a sampling artifact of the
-    hash-to-graph mapping rather than a real demonstration that
-    concrete topology drives orientation specificity. There is also an
-    internal inconsistency between the specificity audit (which says
-    augmented_exact_k stronger: gap +0.028 vs at_least_k -0.002) and
-    the partial correlation audit (which after support/frontier OLS
-    control says at_least_k stronger: corr -0.147 vs augmented_exact_k
-    -0.070) - this divergence is consistent with the rescue/topology
-    disconnection: the two tests pick up different aspects of the
-    artifact rather than a coherent topology-driven signal. v1.5
-    therefore confirms that the v1.1 AUDIT MACHINERY operates correctly
-    on concrete topology surfaces (decoupling, partial correlation,
-    matched strata, specificity reductions all run end-to-end and
-    return the expected structural-control verdicts including
-    selector_stress=not_certification_channel and ledger_failure=
-    ledger_control_not_resolved); it does NOT establish that v0.9
-    rescue is causally driven by graph-topological orientation overlap.
-    To do that, v1.6+ must use the SAME graphs that produced the
-    rescue rates (e.g. by saving v0.9 simulator DAG state during runs
-    and feeding those exact graphs through the v1.5 extractor).'
+  caveats: >
+    KEYING-TAINTED, pending v1.7 keying-ablation. v1.5 specificity
+    (+0.028 augmented_exact_k; -0.002 at_least_k; partial correlations
+    -0.147 / -0.070) is not a topology-causal conclusion AND is not
+    cleanly retracted by v1.6 — both packets share the same member_idx
+    witness keying. v1.5 separately suffers a rescue/topology
+    disconnection (hash-keyed mapping from cell metadata to a parallel
+    synthetic corpus) that v1.6 closed methodologically. The v1.5
+    methodological contribution (audit machinery runs end-to-end;
+    decoupling 12/12; selector_stress and ledger_failure controls
+    behave correctly) stands. Full audit history:
+    audit_events.csv EV-2026-05-05-001, EV-2026-05-05-002,
+    EV-2026-05-05-005, EV-2026-05-06-001, EV-2026-05-06-002.
   next_tasks:
   - Build v1.6 packet that integrates the concrete extractor with the actual ActualizationDAG instances from the v0.9 simulator (graph instances must match the ones that produced the rescue rates being correlated against), eliminating the rescue/topology disconnection that limits v1.5 to audit-machinery validation only.
   - Cross-check the specificity-vs-partial-correlation divergence by re-running both audits with the same graph instances supplying both rescue and orientation overlap to confirm whether the augmented_exact_k > at_least_k specificity ordering or the at_least_k > augmented_exact_k partial-correlation ordering reflects the underlying physics.
@@ -5658,45 +5568,26 @@ claims:
   - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by SUBSET MATCHED-GRAPH DIAGNOSTIC RUN (NOT canonical;
-    assistant-side; --v0-9-simulator-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/simulator
-    --seed-start 17 --seed-stop 21 --max-targets 8): 4 seeds x 1 severance
-    (101) x 3 modes x 1 severity (0.5) x 1 threshold (0.5) x 2 semantics x
-    8 targets = 192 trials. n_per_cell_rows=24 (4 rows per (mode x
-    semantics) cell after aggregation by support_width); decoupled_count
-    =12/12; graph_coupled_orientation_surface_decoupled=true;
-    selector_guardrail_passed=true; v1_6_disconnection_closed=true. The
-    primary overlap statistic is v1_6_overlap_statistic = "all_pairs_mean_jaccard";
-    the parent-anchored variant is recorded as
-    v1_6_parent_anchored_orientation_link_overlap. The matched-graph
-    extraction itself (rescue and orientation_overlap from the same v0.9
-    CausalDAG instance per trial) is the methodological achievement of
-    this packet and is independent of the keying issue described next.
-
-    KEYING-TAINT NOTICE (added 2026-05-06): the witness function
-    graph_coupled_orientation_link_witness STILL includes member_idx in
-    BOTH the sign formula `(depth(v) + depth(p) + member_idx) % 2`
-    (line 76) and the witness tag `:m{member_idx % 3}` (line 77; same
-    pattern on lines 79-80 for child edges). An intermediate fix
-    (commit b742034, "v1.6 bug fix: witness-keying member_idx artifact")
-    removed member_idx from the sign and tag, but commit 3b40be2 ("v1.6
-    audit corrections: matched-subset diagnostic + v1.5 corrigendum")
-    silently reverted that fix when it overwrote the file from a
-    re-installed packet copy. The current witness therefore remains
-    keyed on graph-incidence PLUS arbitrary family-member position
-    (member_idx is determined by sorted ordering of support-family cuts,
-    not by native orientation structure). This taints the empirical
-    interpretation of any specificity / partial-correlation numbers
-    derived from this extractor (see RA-SIM-GRAPH-COUPLED-ORIENT-002).
-    The methodological claim in THIS entry (rescue and orientation
-    overlap on the same DAG per trial) is unaffected because it concerns
-    extraction provenance, not the keying choice.
-
-    Same member_idx-keyed witness is present in v1.5`s
-    ra_concrete_graph_orientation_extraction.py. v1.7 keying-ablation
-    sweep is required to discriminate keying-artifact effects from
-    topology-causal effects in either v1.5 or v1.6 numbers.'
+  caveats: >
+    SUBSET matched-graph diagnostic run (NOT canonical): 4 seeds × 1
+    severance × 3 modes × 1 severity × 1 threshold × 2 semantics × 8
+    targets = 192 trials, 24 per-cell rows. decoupled_count=12/12;
+    graph_coupled_orientation_surface_decoupled=true;
+    selector_guardrail_passed=true; v1_6_disconnection_closed=true.
+    Primary statistic v1_6_overlap_statistic = "all_pairs_mean_jaccard";
+    parent-anchored recorded separately. The matched-graph extraction
+    methodology (rescue and orientation_overlap from the same v0.9
+    CausalDAG instance per trial) is the real methodological
+    achievement here and is independent of the keying issue. KEYING-
+    TAINT: the witness function (lines 76–80 of
+    ra_graph_coupled_orientation_extraction.py) still keys orientation
+    tokens on `(depth(v) + depth(p) + member_idx) % 2` plus a
+    `:m{member_idx % 3}` tag (commit b742034 fix reverted by 3b40be2);
+    empirical specificity / partial-correlation numbers derived from
+    this extractor are keying-tainted. v1.7 keying-ablation canonical
+    sweep required. Full audit history: audit_events.csv
+    EV-2026-05-05-002, EV-2026-05-05-003, EV-2026-05-05-004,
+    EV-2026-05-06-001, EV-2026-05-06-002.
   next_tasks:
   - Build v1.7 keying-ablation canonical sweep that compares (a) the current member-indexed edge-pair-sign keying with (b) edge-pair-sign without member_idx, (c) edge-direction-only, (d) incidence-role-signed, (e) catalog-augmented edge-pair, and (f) shuffled-overlap permutation control on the same matched-graph trials.
   - Decide whether to also restore the b742034 member_idx removal as a separate variant of v1.6 (kept in addition to current v1.6 for ablation reference).
@@ -5771,61 +5662,26 @@ claims:
   - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
-  caveats: 'KEYING-TAINTED RESULT, NOT A REFUTATION. The numbers below come
-    from the v1.6 SUBSET MATCHED-GRAPH DIAGNOSTIC RUN (NOT canonical):
-    4 seeds x 1 severance x 3 modes x 1 severity (0.5) x 1 threshold
-    (0.5) x 2 semantics x 8 targets = 192 trials, 24 per-cell rows,
-    4 rows per (mode x semantics) cell. Specificity (low_minus_high gap):
-    ledger_failure/at_least_k -> ledger_control_not_resolved (gap -0.375);
-    ledger_failure/augmented_exact_k -> same (gap -0.292);
-    orientation_degradation/at_least_k -> reversed_or_negative (gap -0.146);
-    orientation_degradation/augmented_exact_k -> reversed_or_negative
-    (gap -0.229); selector_stress/both -> not_certification_channel
-    (gap 0.000). Partial correlation (n=4 per cell):
-    ledger_failure/at_least_k +0.927; ledger_failure/augmented_exact_k
-    -0.654; orientation_degradation/at_least_k -0.523;
-    orientation_degradation/augmented_exact_k -0.023; selector_stress
-    rescue_residual_std=0 (partial_corr undefined).
-
-    KEYING-TAINT NOTICE (added 2026-05-06): the witness function in
-    ra_graph_coupled_orientation_extraction.py STILL keys orientation
-    tokens on `(depth(v) + depth(p) + member_idx) % 2` (line 76) plus a
-    `:m{member_idx % 3}` tag (line 77; child-edge equivalents on lines
-    79-80). member_idx is the index of the family-member cut in
-    sorted-cuts order, NOT a native orientation invariant. Therefore the
-    orientation-link token mixes graph incidence with arbitrary
-    family-member position; tokens that share the same physical edge
-    can fail to match across siblings purely because they appear in
-    different member slots. This can artificially depress overlap, make
-    overlap depend on family size/order, and plausibly flip low/high
-    rescue gaps. An intermediate fix (commit b742034) removed member_idx
-    from the witness; commit 3b40be2 silently reverted that fix when
-    it overwrote the file from a re-installed packet copy. The current
-    repo carries the member_idx-keyed witness.
-
-    CONSEQUENCE: do NOT cite the reversed-sign verdict as topology-
-    causal anti-specificity. Do NOT cite v1.6 as a clean retraction of
-    v1.5 either; the same member_idx keying is also present in v1.5`s
-    ra_concrete_graph_orientation_extraction.py, so both packets share
-    the same potential keying artifact. The two live hypotheses after
-    v1.6 are: (A) v1.5 was spurious because rescue and topology were
-    disconnected, and v1.6 correctly removes the false signal; (B) the
-    v1.6 graph-coupled extractor is partly mis-keyed (member_idx), and
-    the orientation-specific signal may require a different graph-local
-    or native-witness keying. Discriminating (A) from (B) is the v1.7
-    keying-ablation task.
-
-    OPERATIONAL CAVEATS: (a) v1.6 default coverage is a SUBSET
-    diagnostic run, not canonical; specificity bins have 4 rows each
-    and partial-correlation cells have n=4 post-aggregation. (b) The
-    specificity audit at n=4 per cell is unreliable when cell structure
-    correlates with rescue. (c) The edge-pair-sign keying with
-    member_idx is one specific topological keying; alternates (sign-
-    source pairs from RA_CausalOrientation_Core, ledger-orientation
-    chirality from RA_D1_NativeLedgerOrientation, native-catalog
-    augmented tokens, edge-pair-sign without member_idx) need
-    side-by-side comparison on the same matched-graph trials before any
-    orientation-specific rescue claim is promoted.'
+  caveats: >
+    KEYING-TAINTED RESULT, NOT A REFUTATION. v1.6 SUBSET diagnostic run
+    (NOT canonical): 192 trials, 24 per-cell rows, 4 rows per (mode,
+    semantics) cell. Specificity gaps: ledger_failure -0.375 / -0.292
+    (ledger_control_not_resolved); orientation_degradation -0.146 /
+    -0.229 (reversed_or_negative); selector_stress 0.000
+    (not_certification_channel). Partial correlation (n=4 per cell):
+    ledger_failure +0.927 / -0.654; orientation_degradation -0.523 /
+    -0.023; selector_stress undefined (rescue_residual_std=0). The
+    witness function in ra_graph_coupled_orientation_extraction.py
+    still keys orientation tokens on
+    `(depth(v) + depth(p) + member_idx) % 2` plus `:m{member_idx % 3}`
+    (commit b742034 fix reverted by 3b40be2). Empirical numbers are
+    keying-tainted; do NOT cite as topology-causal anti-specificity and
+    do NOT cite as a clean retraction of v1.5 (v1.5 source carries the
+    same flaw). v1.7 keying-ablation canonical sweep required to
+    discriminate keying-artifact effects from topology-causal effects.
+    Full audit history: audit_events.csv EV-2026-05-05-002,
+    EV-2026-05-05-003, EV-2026-05-05-004, EV-2026-05-06-001,
+    EV-2026-05-06-002.
   next_tasks:
   - Build v1.7 keying-ablation canonical sweep comparing at least six keying variants (member-indexed edge-pair, edge-pair without member_idx, edge-direction-only, incidence-role-signed, catalog-augmented edge-pair, shuffled-overlap permutation control) on the same matched-graph trials.
   - Capture per-keying outputs ra_v1_7_keying_comparison.csv, ra_v1_7_specificity_by_keying.csv, ra_v1_7_partial_correlation_by_keying.csv, ra_v1_7_overlap_distribution_by_keying.csv, ra_v1_7_permutation_control.csv, ra_v1_7_orientation_keying_audit_summary.md.

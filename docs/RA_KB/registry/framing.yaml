@@ -1231,7 +1231,16 @@ framing_policies:
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Do not promote either v1.5 (+0.028) or v1.6 (-0.146/-0.229) orientation-specificity numbers to active claims while the member_idx keying-taint persists. When citing v1.5 or v1.6, cite the methodological achievements (v1.1 audit machinery runs end-to-end on concrete topology surfaces; v1.6 closes the rescue/topology disconnection) rather than the empirical specificity numbers. Any future v1.5 or v1.6 re-audit with a different keying must be filed as a new claim ID, not a re-promotion of either RA-SIM-CONCRETE-GRAPH-ORIENT-002 or RA-SIM-GRAPH-COUPLED-ORIENT-002.'
+  caveats: >
+    Do not promote either v1.5 (+0.028) or v1.6 (-0.146 / -0.229)
+    orientation-specificity numbers to active claims while the
+    member_idx keying-taint persists. Cite only the methodological
+    achievements (v1.5: v1.1 audit machinery on concrete topology;
+    v1.6: rescue/topology disconnection closed). Any v1.5 or v1.6
+    re-audit with a different keying must be filed as a new claim ID.
+    Full audit history: audit_events.csv EV-2026-05-05-001,
+    EV-2026-05-05-002, EV-2026-05-05-005, EV-2026-05-06-001,
+    EV-2026-05-06-002.
   next_tasks:
   - Build v1.7 keying-ablation canonical sweep that compares at minimum six keying variants on the same matched-graph trials: member_indexed_edge_pair (current v1.6 behaviour, kept as control); edge_pair_signed_no_member (sign and tag without member_idx); edge_direction_only (incidence links without parity/member signs); incidence_role_signed (parent-side vs child-side roles, no member index); catalog_augmented_edge_pair (edge-pair tokens enriched by v1.3 native theorem/catalog tokens); shuffled_overlap_control (permutation null).
   - Required v1.7 outputs: ra_v1_7_keying_comparison.csv, ra_v1_7_specificity_by_keying.csv, ra_v1_7_partial_correlation_by_keying.csv, ra_v1_7_overlap_distribution_by_keying.csv, ra_v1_7_permutation_control.csv, ra_v1_7_orientation_keying_audit_summary.md.
