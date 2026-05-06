@@ -1,0 +1,7 @@
+mode,family_semantics,rows,concrete_orientation_residual_std,rescue_residual_std,partial_corr_with_rescue,status
+ledger_failure,at_least_k,80,0.037825,0.083314,-0.052452,resolved
+ledger_failure,augmented_exact_k,80,0.040378,0.079724,0.039908,resolved
+orientation_degradation,at_least_k,80,0.03797,0.083084,-0.147483,resolved
+orientation_degradation,augmented_exact_k,80,0.039834,0.078599,-0.069658,resolved
+selector_stress,at_least_k,80,0.039063,0.0,,no_independent_variation_after_support_frontier_control
+selector_stress,augmented_exact_k,80,0.038291,0.0,,no_independent_variation_after_support_frontier_control

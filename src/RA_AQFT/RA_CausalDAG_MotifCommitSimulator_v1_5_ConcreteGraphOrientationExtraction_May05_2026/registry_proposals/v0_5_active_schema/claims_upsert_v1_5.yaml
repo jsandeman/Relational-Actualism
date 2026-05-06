@@ -1,0 +1,205 @@
+# v0.5 active-schema upsert for v1.5 concrete-graph orientation-link witness packet.
+# Append to docs/RA_KB/registry/claims.yaml under top-level `claims:` list.
+
+claims:
+- id: RA-MOTIF-CONCRETE-GRAPH-ORIENT-WITNESS-001
+  name: Concrete edge-pair-sign witness evidence refines per-graph orientation-link evidence
+  domain: matter
+  papers:
+  - II
+  statement: >
+    A concrete edge-pair-sign witness surface (witness data of the form
+    (parent, child, sign, member-index) drawn from actual graph topology)
+    can be packaged as Type-valued evidence that instantiates the v1.4
+    abstract per-graph orientation-link witness type, and therefore refines
+    the v1.3 native catalog evidence, the v1.2 abstract orientation-link
+    surface, and the v1.0 generic orientation component, through a chain of
+    refinement morphisms. Both DAG and Graph layers admit the same concrete
+    instantiation structure.
+  nature_targets:
+  - RA-native concrete edge-pair-sign witness structure for support-family members
+  - topology-derived orientation evidence
+  ra_observable: null
+  sources:
+  - RA_MotifConcreteGraphOrientationWitness.lean
+  proof_dependencies:
+  - RA-MOTIF-PER-GRAPH-ORIENT-WITNESS-001
+  - RA-MOTIF-NATIVE-ORIENT-LINK-001
+  - RA-MOTIF-ORIENTATION-LINK-SURFACE-001
+  - RA-MOTIF-NATIVE-CERT-COMPONENTS-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-MOTIF-COMMIT-METHOD-001
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed (assistant-side `lake build RA_MotifConcreteGraphOrientationWitness` closed with 8287/8287 jobs, ~70s; no sorry/admit/axiom). The module imports only RA_MotifPerGraphOrientationWitness and adds DAGConcreteEdgePairSignContext / GraphConcreteEdgePairSignContext (Type-valued concreteEdgePairSignEvidence + concreteRefinesPerGraph morphism into the v1.4 per-graph evidence), DAGHasConcreteEdgePairSignWitness / GraphHasConcreteEdgePairSignWitness predicates, refinement theorems .to_per_graph (DAG + Graph parallel pair) plus the composed .to_native_catalog and .to_orientation_link_surface theorems for the DAG layer, and qualitative DAGConcreteEdgePairSignOverlapProfile / GraphConcreteEdgePairSignOverlapProfile structures with `topologyDerived` and `refinesPerGraphOverlap` Prop fields. The bridge is qualitative; it does not assert any numerical orientation-rescue law, probability, or BDG-LLC derivation. This is the first author-built (vs packet-installed) module in the orientation-link line; it built clean on the first try after the previous v1.0/v1.2/v1.3/v1.4 patterns were applied correctly (orientationComponent vs orientationEvidence, only-Ω-explicit, no Π identifiers).'
+  next_tasks:
+  - Replace the abstract concreteEdgePairSignEvidence with concrete RA_GraphCore-derived edge-pair-sign data once an RA_GraphCore-side extractor exists; alternatively, integrate with the v0.9 simulator's saved ActualizationDAG instances.
+  source_status:
+    RA_MotifConcreteGraphOrientationWitness.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: ANC
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: formalized_result
+  formal_anchor: DAGConcreteEdgePairSignContext ; DAGHasConcreteEdgePairSignWitness ; DAGHasConcreteEdgePairSignWitness.to_per_graph ; DAGHasConcreteEdgePairSignWitness.to_native_catalog ; DAGHasConcreteEdgePairSignWitness.to_orientation_link_surface ; DAGConcreteEdgePairSignOverlapProfile ; GraphConcreteEdgePairSignContext ; GraphHasConcreteEdgePairSignWitness ; GraphHasConcreteEdgePairSignWitness.to_per_graph ; GraphHasConcreteEdgePairSignWitness.to_native_catalog ; GraphConcreteEdgePairSignOverlapProfile
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
+
+- id: RA-SIM-CONCRETE-GRAPH-ORIENT-001
+  name: Concrete-graph orientation-link extraction yields topology-derived witnesses decoupled from support/frontier overlap
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The v1.5 simulator/analysis layer constructs a small reference corpus of
+    58 deterministic ActualizationDAG-shaped Python objects (chains, balanced
+    branches, asymmetric branches, diamonds) and derives orientation-link
+    witnesses directly from each graph's parent/child edges, tagged with
+    topology-derived signs (depth-mod-2 + member-index parity). Witness keys
+    are edge-pair-based rather than vertex-based, so Jaccard overlap on
+    orientation-link witnesses does not coincide with Jaccard overlap on
+    support/frontier vertex sets even when cuts share many vertices. This
+    is the first level of the orientation-link extraction line where the
+    surface comes from real graph topology rather than from row metadata
+    (v1.2), Lean theorem name strings (v1.3), or simulator-state plus catalog
+    tokens (v1.4).
+  nature_targets:
+  - RA-native concrete-graph orientation-link witness extraction
+  - topology-derived decoupling of orientation from support/frontier overlap
+  ra_observable: concrete_orientation_link_overlap_v1_5
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
+  - ra_concrete_graph_orientation_extraction.py
+  - ra_concrete_graph_corpus_summary_v1_5.csv
+  - ra_concrete_components_v1_5.csv
+  - ra_concrete_orientation_decoupling_audit_v1_5.csv
+  proof_dependencies:
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-001
+  - RA-MOTIF-CONCRETE-GRAPH-ORIENT-WITNESS-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.5 run (assistant-side; --input-dir
+    ../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs)
+    over 480 v1.0 component rows producing 480 concrete-component output
+    rows. Reference corpus = 58 graphs (8 chains length 4-12, 6 balanced
+    branches, 4 diamonds, 8 asymmetric branches, plus replicas for sample
+    diversity). Decoupling audit: concrete_orientation_link_v1_5 vs each
+    of {support, frontier, orientation, ledger}_overlap shows max_abs_diff
+    0.90-0.91 across all three modes (12/12 cells decoupled). The concrete
+    surface lives at mean ~0.18 vs legacy support/frontier/orientation
+    triplet ~0.74 and ledger/exposure bundle ~0.76-0.86 - quantitatively
+    distinct from all existing components. Authored from scratch (not a
+    packet install): the analysis module ra_concrete_graph_orientation_extraction.py
+    builds the corpus in pure Python, extracts witnesses via Jaccard on
+    edge-pair-sign / vertex / depth-mod sets, runs the v1.4-style audit
+    machinery (decoupling, partial correlation, specificity, matched
+    strata) directly. 9/9 unit tests pass. CRITICAL HONESTY CAVEAT - the
+    reference corpus is synthetic-deterministic, not extracted from the
+    v0.9 simulator`s actual ActualizationDAG instances. Witnesses come
+    from real graph topology (parent/child edges, vertex depths, ancestor
+    closures) but the corpus itself is a parallel Python construction.
+    v1.6+ should integrate with v0.9 simulator graphs OR with an
+    RA_GraphCore-side Lean extractor.'
+  next_tasks:
+  - Build v1.6 packet that integrates the concrete extractor with the v0.9 simulator's actual ActualizationDAG instances (either by saving DAG state during simulation or by reading DAG topology directly from simulator output where available).
+  source_status:
+    ra_concrete_graph_orientation_extraction.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_concrete_graph_orientation_extraction.py ; ra_concrete_components_v1_5.csv ; ra_concrete_orientation_decoupling_audit_v1_5.csv ; ra_concrete_graph_corpus_summary_v1_5.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
+
+- id: RA-SIM-CONCRETE-GRAPH-ORIENT-002
+  name: Concrete-graph orientation-link surface preserves orientation specificity verdicts under matched support/frontier control
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    In the canonical v1.5 extraction, the v1.1/v1.4 audit machinery resolves
+    orientation specificity using the topology-derived concrete-graph
+    surface in exactly the family-semantics-asymmetric pattern established
+    by v0.9.2-v1.4: orientation_degradation under augmented_exact_k
+    semantics shows concrete_orientation_specific_surface_detected (low-
+    minus-high rescue gap +0.028); ledger_failure / both semantics show
+    ledger_control_not_resolved_by_concrete_orientation; selector_stress /
+    both show not_certification_channel. After OLS partial correlation
+    against support+frontier, all four non-control cells show non-zero
+    residual variation in the concrete surface (residual_std 0.038-0.040)
+    and resolved partial correlations. Matched-strata variation: 40-47
+    distinct concrete orientation values within fixed support_overlap
+    quantile bins (out of ~53-54 rows per cell), with spread 0.15-0.18.
+  nature_targets:
+  - orientation-channel certification resilience under topology-derived surface
+  - preservation of family-semantics asymmetry across orientation-surface generations
+  ra_observable: concrete_orientation_specificity_v1_5
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
+  - ra_concrete_orientation_specificity_v1_5.csv
+  - ra_concrete_orientation_partial_correlation_v1_5.csv
+  - ra_concrete_orientation_matched_strata_v1_5.csv
+  proof_dependencies:
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Confirmed by canonical v1.5 run (parameters as in
+    RA-SIM-CONCRETE-GRAPH-ORIENT-001).
+    concrete_orientation_surface_decoupled=true (12/12 decoupling
+    comparisons); matched_orientation_variation_available=true;
+    orientation_specificity_resolved=true; selector_guardrail_passed=true;
+    mean_concrete_orientation_residual_std=0.0389. Specificity gap of
+    +0.028 at orientation_degradation/augmented_exact_k is smaller than
+    v1.4`s +0.041 because the topology-derived surface produces tighter
+    sample resolution and the family-semantics asymmetry compresses the
+    signal under low/medium/high quantile binning. The audit machinery is
+    therefore confirmed to resolve orientation specificity even on a fresh
+    data source (concrete graph topology) that is not derived from v0.9
+    simulator state at all - the v1.1 audit infrastructure is
+    surface-agnostic. Diagnostic remains operational; v1.5 does NOT
+    establish that Nature`s orientation_degradation is governed by graph-
+    topological orientation overlap. The corpus is synthetic-deterministic;
+    integration with v0.9 simulator graphs is the v1.6+ task.'
+  next_tasks:
+  - Validate that the concrete-orientation specificity verdict persists when the corpus is replaced with v0.9 simulator-derived ActualizationDAG instances.
+  source_status:
+    ra_concrete_graph_orientation_extraction.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_concrete_orientation_specificity_v1_5.csv ; ra_concrete_orientation_partial_correlation_v1_5.csv ; ra_concrete_orientation_matched_strata_v1_5.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026

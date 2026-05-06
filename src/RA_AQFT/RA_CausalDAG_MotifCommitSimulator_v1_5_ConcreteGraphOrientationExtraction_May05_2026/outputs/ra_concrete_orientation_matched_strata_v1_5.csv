@@ -1,0 +1,10 @@
+mode,support_overlap_bin,rows,distinct_concrete_orientation_values,concrete_orientation_min,concrete_orientation_max,concrete_orientation_spread,matched_strata_status
+ledger_failure,low,53,44,0.095,0.245,0.15,concrete_orientation_varies_within_stratum
+ledger_failure,medium,53,43,0.091,0.256,0.165,concrete_orientation_varies_within_stratum
+ledger_failure,high,54,46,0.101,0.285,0.184,concrete_orientation_varies_within_stratum
+orientation_degradation,low,53,42,0.116,0.27,0.154,concrete_orientation_varies_within_stratum
+orientation_degradation,medium,53,44,0.097,0.276,0.179,concrete_orientation_varies_within_stratum
+orientation_degradation,high,54,42,0.095,0.261,0.166,concrete_orientation_varies_within_stratum
+selector_stress,low,53,43,0.097,0.256,0.159,concrete_orientation_varies_within_stratum
+selector_stress,medium,53,47,0.093,0.265,0.172,concrete_orientation_varies_within_stratum
+selector_stress,high,54,40,0.091,0.264,0.173,concrete_orientation_varies_within_stratum

@@ -1,0 +1,7 @@
+mode,family_semantics,rows,low_rescue,medium_rescue,high_rescue,low_minus_high_gap,verdict
+ledger_failure,at_least_k,80,0.062986,0.021274,0.080223,-0.017238,ledger_control_not_resolved_by_concrete_orientation
+ledger_failure,augmented_exact_k,80,0.041178,0.059041,0.067477,-0.026299,ledger_control_not_resolved_by_concrete_orientation
+orientation_degradation,at_least_k,80,0.065015,0.034489,0.067391,-0.002376,weak_or_tied
+orientation_degradation,augmented_exact_k,80,0.079565,0.037299,0.051224,0.028341,concrete_orientation_specific_surface_detected
+selector_stress,at_least_k,80,0.0,0.0,0.0,0.0,not_certification_channel
+selector_stress,augmented_exact_k,80,0.0,0.0,0.0,0.0,not_certification_channel

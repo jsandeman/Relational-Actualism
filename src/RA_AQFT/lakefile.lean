@@ -164,6 +164,14 @@ lean_lib «RelationalActualism» where
                                 -- graphInstance / memberIndex /
                                 -- perGraphOrientationEvidence; Π->P
                                 -- rename applied (Π reserved by Lean).
+    `RA_MotifConcreteGraphOrientationWitness, -- (May 5 2026) v1.5 concrete
+                                -- edge-pair-sign witness bridge:
+                                -- DAGConcreteEdgePairSignContext +
+                                -- Graph variant; instantiates the
+                                -- abstract v1.4 perGraphOrientationEvidence
+                                -- with edge-pair-sign-keyed evidence;
+                                -- refinement chain to per-graph,
+                                -- catalog, link-surface, component.
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

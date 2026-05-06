@@ -1,0 +1,16 @@
+{
+  "version": "v1.5",
+  "input_dir": "../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs",
+  "corpus_size": 58,
+  "v1_0_input_rows": 480,
+  "concrete_component_rows": 480,
+  "decoupling_rows": 12,
+  "decoupled_count": 12,
+  "decoupled_total": 12,
+  "concrete_orientation_surface_decoupled": true,
+  "matched_orientation_variation_available": true,
+  "orientation_specificity_resolved": true,
+  "selector_guardrail_passed": true,
+  "mean_concrete_orientation_residual_std": 0.038893,
+  "v1_5_posture": "concrete_graph_topology_orientation_witness_extraction_complete_pending_v0_9_simulator_graph_integration"
+}

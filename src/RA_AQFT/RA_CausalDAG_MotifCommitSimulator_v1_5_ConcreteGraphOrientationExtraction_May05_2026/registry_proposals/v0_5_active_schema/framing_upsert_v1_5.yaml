@@ -1,0 +1,59 @@
+# v0.5 active-schema upsert for v1.5 framing.
+
+framing_policies:
+- id: RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  name: Concrete-graph orientation extraction is reference-corpus-derived until tied to v0.9 simulator graphs
+  domain: framing
+  papers:
+  - II
+  statement: >
+    The v1.5 concrete-graph orientation-link extraction uses a small
+    reference corpus of 58 deterministic Python ActualizationDAG-shaped
+    objects (chains, balanced/asymmetric branches, diamonds) to derive
+    orientation-link witnesses from real parent/child edges with
+    topology-derived signs. The honesty progression is now:
+    v1.2 surface = hash(row metadata) - demonstrative only;
+    v1.3 surface = catalog-derived from RA Lean theorem files - real
+    native source involvement, but per-row uniform;
+    v1.4 surface = per-graph/per-member tokens combining catalog
+    declarations with graph-local cut-role indices - per-member
+    variation source identified, but extraction is from simulator state;
+    v1.5 surface = concrete graph topology with edge-pair-sign keys -
+    real graph topology used as orientation source, but reference corpus
+    is parallel-construction, not from v0.9 simulator;
+    v1.6+ surface = extraction from v0.9 simulator's actual
+    ActualizationDAG instances. v1.5 must NOT be treated as a
+    Nature-facing orientation-overlap law. Whenever v1.5 outputs are
+    cited, the explicit qualifier "concrete topology on a synthetic-
+    deterministic reference corpus, not v0.9 simulator graphs" must
+    accompany the claim.
+  nature_targets:
+  - methodological discipline for concrete-graph orientation extraction
+  - sequencing discipline across v1.2 / v1.3 / v1.4 / v1.5 / v1.6+ progression
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
+  - README_RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026.md
+  - RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_Report_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
+  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
+  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Reference-corpus extraction is a real advance over v1.4 (per-member token-based extraction from simulator state) because witnesses now come from genuine graph topology, but the corpus is parallel-Python, not v0.9-derived. Operational extraction and topology-derived identifiability diagnostics are NOT Nature-facing predictions. Do not promote any orientation-specific Nature claim until v1.6 (or later) ties the extractor to v0.9 simulator graphs. The family-semantics asymmetry first identified in v0.9.2 (augmented_exact_k carries the signal; at_least_k weak_or_tied) is preserved in v1.5 - this is consistent across all surface generations and provides cross-validation of that finding.'
+  next_tasks:
+  - Build v1.6 extractor that consumes v0.9 simulator's actual ActualizationDAG instances and verify the v1.5 specificity verdict persists.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: RA_MotifConcreteGraphOrientationWitness ; ra_concrete_graph_orientation_extraction.py ; ra_concrete_orientation_witness_summary_v1_5.md
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
