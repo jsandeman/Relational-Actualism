@@ -1,0 +1,3 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,RA-MOTIF-GRAPH-CUT-WITNESS-001,proof_dependency,claim,claim,Active simulator graph states support member-index-free graph/cut witness extraction,Graph/cut witness surface
+RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,proof_dependency,claim,claim,Active simulator graph states support member-index-free graph/cut witness extraction,Comparison domain validity

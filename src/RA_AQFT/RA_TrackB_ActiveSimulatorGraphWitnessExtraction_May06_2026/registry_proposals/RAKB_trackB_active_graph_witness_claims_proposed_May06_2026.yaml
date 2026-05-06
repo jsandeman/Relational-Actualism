@@ -1,0 +1,39 @@
+registry_version: 0.5-proposal
+claims:
+- id: RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001
+  name: Active simulator graph states support member-index-free graph/cut witness
+    extraction
+  domain: complexity
+  papers:
+  - II
+  statement: The Track B.2 extractor applies graph/cut-local orientation-witness token
+    extraction to active v0.9 simulator DAG states and verifies that the operational
+    witness surface is member-index-free while a bad member-indexed control is detected.
+  nature_targets:
+  - RA-native actualization-resilience workbench integrity
+  - graph/cut-local witness extraction discipline
+  ra_observable: null
+  sources:
+  - ra_active_graph_witness_extraction.py
+  - ra_trackB2_active_graph_witness_summary.csv
+  - validation_unittest_trackB2.log
+  proof_dependencies:
+  - RA-MOTIF-GRAPH-CUT-WITNESS-001
+  - RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001
+  restoration_preconditions: []
+  caveats: Infrastructure claim only. The packet extracts active-state witness rows
+    and reports coverage; it does not compute or promote an orientation-specific rescue
+    claim.
+  next_tasks:
+  - Run canonical active-state extraction on 100-seed v0.9 scale before using these
+    witness rows in any rescue analysis.
+  source_status:
+    ra_active_graph_witness_extraction.py: python_tests_passed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_infrastructure
+  legacy_support_status: none
+  auxiliary_support_status: packet_local_demo_validated
+  claim_kind: derived_result
+  formal_anchor: active_graph_cut_orientation_tokens ; extract_active_graph_rows ;
+    member-index audit ; fixed-bin coverage
+  packet_origin: RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026

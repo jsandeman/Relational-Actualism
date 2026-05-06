@@ -6643,3 +6643,72 @@ claims:
   claim_kind: interpretive_bridge
   formal_anchor: incident_orientation_tokens ; all_pairs_mean_jaccard ; member_index_audit
   packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026
+- id: RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001
+  name: Track B.2 active simulator graph/cut witness extraction is member-index-free, with zero high-bin overlap coverage on canonical 100-seed v0.9 ensemble
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    The Track B.2 extractor (`ra_active_graph_witness_extraction.py`)
+    applies the Track B.1 graph/cut-local orientation-witness token
+    surface to live v0.9 native-certificate-overlap simulator graph
+    states. On the canonical 100-seed × 32-step × max_targets=12 ×
+    threshold_fractions=(1.0, 0.75, 0.5, 0.25) × family_semantics=
+    (at_least_k, augmented_exact_k) configuration, it produces 24,130
+    member-level witness rows and 9,600 family-overlap rows across 18
+    (semantics, support_width, family_size) strata. The
+    member-index-free guarantee holds for every audited row
+    (`graph_surface_member_index_free=true`), and the bad
+    member-indexed control reproduces the family-order-dependent
+    instability pattern (`bad_control_detects_member_index_instability=
+    true`). The substantive coverage finding is that the active-state
+    family-overlap distribution lands entirely in the low and medium
+    bins on this configuration; **zero strata** populate both low and
+    high bins, so no width × family-size stratum is currently
+    estimable for any matched-graph rescue analysis that requires
+    contrast across the full overlap range. Three strata under
+    `augmented_exact_k` reach two bins (low+medium): support_width=3 /
+    family_size=4 (476 rows), (4,5) (440 rows), and (4,7) (220 rows);
+    no `at_least_k` stratum reaches more than one bin, except (3,4)
+    (3,7) (4,5) (4,11) (4,15) which are medium-only. No
+    orientation-specific rescue claim is made: this is an
+    infrastructure / coverage diagnostic.
+  nature_targets:
+  - RA-native actualization-resilience workbench integrity
+  - graph/cut-local witness extraction discipline applied to live simulator graph states
+  - coverage diagnostic for matched-graph rescue analyses
+  ra_observable: null
+  sources:
+  - RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026
+  - ra_active_graph_witness_extraction.py
+  - canonical_run_trackB2_seeds17_117_steps32.log
+  - ra_trackB2_active_graph_witness_summary.csv
+  - ra_trackB2_width_family_estimability.csv
+  proof_dependencies:
+  - RA-MOTIF-GRAPH-CUT-WITNESS-001
+  - RA-SIM-GRAPH-CUT-WITNESS-001
+  - RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Canonical-run-confirmed: python scripts/run_trackB_active_graph_witness_extraction.py --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics at_least_k,augmented_exact_k completed on 2026-05-06; 100 seeds; 24130 witness rows; 9600 overlap rows; member-index audit confirms `graph_surface_member_index_free=true` and the bad control detects member-index instability. The headline empirical finding is the absence of high-bin coverage: `active_orientation_overlap_bins = low;medium`; `estimable_width_family_strata = 0` (zero of 18 strata have both low and high bins). This means the v0.9 native-certificate-overlap simulator at its default configuration cannot, on its own, produce the matched-graph contrast needed to test orientation-specific certification rescue across the full overlap range - any future rescue analysis must either widen the configuration sweep, change the family-construction semantics, or accept restricted-range conclusions. No orientation-specific certification-rescue claim is made or restored; the v1.9 native-witness six-requirement gate (RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) remains binding. The packet-original demo (4 seeds, 16 steps, max_targets=6) reported 456 witness rows / 192 overlap rows / 0 estimable strata; the canonical run scales to 100x without changing the qualitative coverage finding. Full audit history: audit_events.csv EV-2026-05-06-019.'
+  next_tasks:
+  - Run the extractor under broader configuration sweeps (e.g. larger max_parents, different conflict_rate, varying defect rates) to find configurations where high-overlap strata appear, before any orientation-rescue analysis is attempted.
+  - Wire Track B.2 witness rows into a matched-graph rescue diagnostic builder (planned Track B.3) once a configuration with non-empty estimable_width_family_strata is identified.
+  source_status:
+    ra_active_graph_witness_extraction.py: simulation_validated_canonical_run_confirmed
+    ra_trackB2_active_graph_witness_summary.csv: canonical_run_recorded
+    ra_trackB2_width_family_estimability.csv: canonical_run_recorded
+    canonical_run_trackB2_seeds17_117_steps32.log: provenance_recorded
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run
+  claim_kind: derived_result
+  formal_anchor: active_graph_cut_orientation_tokens ; extract_active_graph_rows ; member_index_audit ; fixed_bin_coverage ; width_family_estimability
+  packet_origin: RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026

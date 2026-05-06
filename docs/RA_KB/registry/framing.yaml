@@ -1705,3 +1705,44 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: Track B witness-extraction methodology
   packet_origin: RA_TrackB_NativeGraphCutWitnessExtraction_May06_2026
+- id: RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  name: Active graph-witness extraction is not orientation-specific rescue evidence
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Track B.2 active-state graph/cut witness extraction supplies
+    member-index-free witness rows and coverage diagnostics over the
+    live v0.9 simulator only. Orientation-specific rescue claims still
+    require a separate matched-graph rescue analysis satisfying the
+    v1.9 native-witness six-requirement gate: active-state witness
+    extraction (Track B.2 supplies this), fixed-bin confound discipline
+    (RA-SIM-CONFOUND-METHOD-001), shuffled controls,
+    partial-correlation controls, canonical scale, and no member-index
+    artifact. Zero high-bin coverage on the canonical 100-seed Track
+    B.2 run means no current stratum is estimable for matched-graph
+    rescue analysis on this configuration, so no rescue conclusion is
+    licensed.
+  nature_targets:
+  - methodological discipline for RA simulator witness extraction
+  - blocking discipline against premature orientation-rescue claims
+  ra_observable: null
+  sources:
+  - RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026
+  - RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  restoration_preconditions: []
+  caveats: Modeling guardrail. Do not cite Track B.2 outputs (including the canonical 100-seed run) as orientation-specific rescue evidence - the canonical-run finding of zero estimable width-family strata makes it especially important that no rescue narrative is built on this surface alone. Full audit history. audit_events.csv EV-2026-05-06-019.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: Track B.2 active-state witness-extraction guardrail
+  packet_origin: RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026

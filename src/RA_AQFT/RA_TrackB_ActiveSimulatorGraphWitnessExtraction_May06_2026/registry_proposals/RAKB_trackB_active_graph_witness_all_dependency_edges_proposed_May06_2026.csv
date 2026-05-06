@@ -1,0 +1,4 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,RA-MOTIF-GRAPH-CUT-WITNESS-001,proof_dependency,claim,claim,Active simulator graph states support member-index-free graph/cut witness extraction,Graph/cut witness surface
+RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001,RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001,interpretive_dependency,framing,framing,Active graph-witness extraction is not orientation-specific rescue evidence,V1 synthesis guardrail
+RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001,RA-SIM-CONFOUND-METHOD-001,interpretive_dependency,framing,framing,Active graph-witness extraction is not orientation-specific rescue evidence,Confound discipline

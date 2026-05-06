@@ -1,0 +1,10 @@
+test_all_pairs_and_parent_anchored_jaccard_can_differ (test_trackB_active_graph_witness_extraction.TrackB2ActiveGraphWitnessTests.test_all_pairs_and_parent_anchored_jaccard_can_differ) ... ok
+test_bins (test_trackB_active_graph_witness_extraction.TrackB2ActiveGraphWitnessTests.test_bins) ... ok
+test_end_to_end_against_v09_if_available (test_trackB_active_graph_witness_extraction.TrackB2ActiveGraphWitnessTests.test_end_to_end_against_v09_if_available) ... ok
+test_graph_tokens_are_member_index_free (test_trackB_active_graph_witness_extraction.TrackB2ActiveGraphWitnessTests.test_graph_tokens_are_member_index_free) ... ok
+test_member_indexed_control_is_unstable (test_trackB_active_graph_witness_extraction.TrackB2ActiveGraphWitnessTests.test_member_indexed_control_is_unstable) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.067s
+
+OK

@@ -1,0 +1,31 @@
+registry_version: 0.5-proposal
+framing_policies:
+- id: RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  name: Active graph-witness extraction is not orientation-specific rescue evidence
+  domain: framing
+  papers:
+  - II
+  statement: Track B.2 active-state graph/cut witness extraction supplies member-index-free
+    witness rows and coverage diagnostics only. Orientation-specific rescue claims
+    require separate matched-graph rescue analysis satisfying fixed-bin confound discipline,
+    shuffled controls, partial-correlation controls, canonical scale, and no member-index
+    artifact.
+  nature_targets:
+  - methodological discipline for RA simulator witness extraction
+  ra_observable: null
+  sources:
+  - RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  restoration_preconditions: []
+  caveats: Do not cite Track B.2 outputs as orientation-specific rescue evidence.
+  next_tasks:
+  - Use Track B.2 only as a prerequisite active-state witness substrate.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: Track B.2 active-state witness-extraction guardrail
+  packet_origin: RA_TrackB_ActiveSimulatorGraphWitnessExtraction_May06_2026
