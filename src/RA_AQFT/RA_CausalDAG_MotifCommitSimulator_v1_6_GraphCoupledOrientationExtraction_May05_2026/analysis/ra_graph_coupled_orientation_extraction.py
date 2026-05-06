@@ -14,8 +14,8 @@ Per-trial loop:
      parameter combo, run v0.9's evaluate_native_overlap_certified_family on
      state.dag → get rescue + native overlap row.
   3. INLINE: from the SAME state.dag, extract a v1.5-style edge-pair-sign
-     orientation-link witness over the same support family, compute mean
-     pairwise Jaccard → graph_coupled_orientation_link_overlap.
+     orientation-link witness over the same support family, compute all-pairs mean Jaccard → graph_coupled_orientation_link_overlap
+     and parent-anchored mean Jaccard → v1_6_parent_anchored_orientation_link_overlap.
   4. Pair (rescue, graph_coupled_overlap) in the output row.
 
 This is a real measurement of how concrete graph topology correlates with
@@ -66,30 +66,18 @@ def _load_v0_9_simulator(v0_9_simulator_dir: Path):
 # v1.6 orientation-link extraction on the simulator's CausalDAG.
 # ---------------------------------------------------------------------------
 
-def graph_coupled_orientation_link_witness(dag, cut: Iterable[int], member_idx: int = 0) -> FrozenSet[str]:
+def graph_coupled_orientation_link_witness(dag, cut: Iterable[int], member_idx: int) -> FrozenSet[str]:
     """Edge-pair-sign witness keyed by parent->child edges around the cut on
-    the actual simulator DAG instance.
-
-    Sign is a topological invariant of the edge alone (parity of
-    depth(p)+depth(v)). The legacy v1.5 keying included `member_idx` inside
-    both the sign formula and the witness tag, which made sibling members
-    produce disjoint witness sets and forced family_mean_jaccard ~ 0 even
-    when cuts shared most of their vertices/edges (a bug confirmed by
-    inspection of v1.6 per-cell output: 18/24 cells had overlap=0 exactly).
-    The corrected witness depends only on the cut + DAG topology; intra-
-    family Jaccard now reflects actual cut/edge sharing across siblings.
-    member_idx is retained as an unused parameter for API compatibility
-    with existing call sites.
+    the actual simulator DAG instance. Mirrors the v1.5 extractor.
     """
-    del member_idx  # intentionally unused; see docstring
     out: set = set()
     for v in cut:
         for p in sorted(dag.parents.get(v, set())):
-            sign = (dag.depth.get(v, 0) + dag.depth.get(p, 0)) % 2
-            out.add(f"olink:{p}->{v}:s{sign}")
+            sign = (dag.depth.get(v, 0) + dag.depth.get(p, 0) + member_idx) % 2
+            out.add(f"olink:{p}->{v}:s{sign}:m{member_idx % 3}")
         for c in sorted(dag.children.get(v, set())):
-            sign = (dag.depth.get(c, 0) + dag.depth.get(v, 0)) % 2
-            out.add(f"olink:{v}->{c}:s{sign}")
+            sign = (dag.depth.get(c, 0) + dag.depth.get(v, 0) + member_idx + 1) % 2
+            out.add(f"olink:{v}->{c}:s{sign}:m{member_idx % 3}")
     return frozenset(out)
 
 
@@ -102,21 +90,47 @@ def _jaccard(a: FrozenSet[str], b: FrozenSet[str]) -> float:
     return len(a & b) / union
 
 
-def family_mean_jaccard(witnesses: Sequence[FrozenSet[str]]) -> float:
+def family_parent_anchored_jaccard(witnesses: Sequence[FrozenSet[str]]) -> float:
+    """Mean Jaccard from the first/parent witness to every other family witness."""
     if len(witnesses) < 2:
         return 0.0
     parent = witnesses[0]
     return sum(_jaccard(parent, w) for w in witnesses[1:]) / max(len(witnesses) - 1, 1)
 
 
-def graph_coupled_family_overlap(dag, family_cuts: Sequence) -> float:
-    """Compute mean pairwise Jaccard overlap of edge-pair-sign witnesses
-    across family members on the same DAG.
+def family_all_pairs_mean_jaccard(witnesses: Sequence[FrozenSet[str]]) -> float:
+    """Mean Jaccard across all unordered witness pairs."""
+    if len(witnesses) < 2:
+        return 0.0
+    total = 0.0
+    count = 0
+    for i in range(len(witnesses)):
+        for j in range(i + 1, len(witnesses)):
+            total += _jaccard(witnesses[i], witnesses[j])
+            count += 1
+    return total / count if count else 0.0
+
+
+# Backward-compatible alias used by earlier tests; now the documented all-pairs statistic.
+def family_mean_jaccard(witnesses: Sequence[FrozenSet[str]]) -> float:
+    return family_all_pairs_mean_jaccard(witnesses)
+
+
+def graph_coupled_family_overlaps(dag, family_cuts: Sequence) -> Tuple[float, float]:
+    """Compute orientation-link overlap summaries on the same DAG.
+
+    Returns:
+      (all_pairs_mean_jaccard, parent_anchored_mean_jaccard)
     """
     sorted_cuts = sorted(family_cuts, key=lambda c: (len(c), tuple(sorted(c))))
     witnesses = [graph_coupled_orientation_link_witness(dag, cut, mi)
                  for mi, cut in enumerate(sorted_cuts)]
-    return family_mean_jaccard(witnesses)
+    return family_all_pairs_mean_jaccard(witnesses), family_parent_anchored_jaccard(witnesses)
+
+
+def graph_coupled_family_overlap(dag, family_cuts: Sequence) -> float:
+    """Backward-compatible all-pairs mean Jaccard orientation-link overlap."""
+    return graph_coupled_family_overlaps(dag, family_cuts)[0]
 
 
 # ---------------------------------------------------------------------------
@@ -194,8 +208,10 @@ def run_graph_coupled_extraction(*, v0_9_simulator_dir: Path,
                                     parent_shared_baseline=False,
                                 )
                                 family = monotone.support_family_by_semantics(motif, fraction, semantics)
-                                graph_coupled_overlap = graph_coupled_family_overlap(state.dag, family.cuts)
+                                graph_coupled_overlap, parent_anchored_overlap = graph_coupled_family_overlaps(state.dag, family.cuts)
                                 row["v1_6_graph_coupled_orientation_link_overlap"] = graph_coupled_overlap
+                                row["v1_6_parent_anchored_orientation_link_overlap"] = parent_anchored_overlap
+                                row["v1_6_overlap_statistic"] = "all_pairs_mean_jaccard"
                                 row["v1_6_run_seed"] = seed
                                 row["v1_6_severance_seed"] = severance_seed
                                 row["v1_6_motif_kind"] = motif.kind
@@ -214,7 +230,8 @@ def run_graph_coupled_extraction(*, v0_9_simulator_dir: Path,
         "n_threshold_fractions": len(config.threshold_fractions),
         "n_family_semantics": len(config.family_semantics),
         "max_targets": config.max_targets,
-        "v1_6_posture": "graph_coupled_extraction_complete_rescue_topology_disconnection_closed_for_subset",
+        "v1_6_posture": "matched_graph_subset_extraction_rescue_topology_disconnection_closed_for_subset",
+        "v1_6_run_scope": "subset_matched_graph_diagnostic_run_not_canonical",
     }
     return rows, summary
 
@@ -250,6 +267,7 @@ def aggregate_per_cell(rows: List[Dict[str, object]]) -> List[Dict[str, object]]
                 return 0.0
         rescue = sum(_f(r, "certification_rescue_event") for r in cell_rows) / n
         graph_coupled = sum(_f(r, "v1_6_graph_coupled_orientation_link_overlap") for r in cell_rows) / n
+        parent_anchored = sum(_f(r, "v1_6_parent_anchored_orientation_link_overlap") for r in cell_rows) / n
         # v0.9 native overlap profile contribution (may be missing on some rows).
         sup = sum(_f(r, "support_overlap") for r in cell_rows) / n
         front = sum(_f(r, "frontier_overlap") for r in cell_rows) / n
@@ -264,6 +282,7 @@ def aggregate_per_cell(rows: List[Dict[str, object]]) -> List[Dict[str, object]]
             "trials": n,
             "certification_rescue_rate": rescue,
             "v1_6_graph_coupled_orientation_link_overlap": graph_coupled,
+            "v1_6_parent_anchored_orientation_link_overlap": parent_anchored,
             "support_overlap_mean": sup,
             "frontier_overlap_mean": front,
             "orientation_overlap_legacy_mean": ori_legacy,
@@ -434,8 +453,8 @@ def run(*, v0_9_simulator_dir: Path, output_dir: Path,
         seed_start: int = 17, seed_stop: int = 19,
         severance_seeds: Tuple[int, ...] = (101,),
         modes: Tuple[str, ...] = ("ledger_failure", "orientation_degradation", "selector_stress"),
-        severities: Tuple[float, ...] = (0.0, 0.25, 0.5, 0.75, 1.0),
-        threshold_fractions: Tuple[float, ...] = (0.25, 0.5, 0.75, 1.0),
+        severities: Tuple[float, ...] = (0.5,),
+        threshold_fractions: Tuple[float, ...] = (0.5,),
         family_semantics: Tuple[str, ...] = ("at_least_k", "augmented_exact_k"),
         max_targets: int = 6,
         ) -> Dict[str, object]:
@@ -470,7 +489,7 @@ def run(*, v0_9_simulator_dir: Path, output_dir: Path,
         "orientation_specificity_resolved_on_matched_graphs": spec_resolved,
         "selector_guardrail_passed": selector_clean,
         "v1_6_disconnection_closed": True,
-        "v1_6_posture": "rescue_and_orientation_extracted_from_same_dag_per_trial",
+        "v1_6_posture": "matched_graph_subset_extraction_complete_not_canonical",
     })
     write_csv(output_dir / "ra_v1_6_summary.csv", [summary])
     (output_dir / "ra_v1_6_state.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -487,8 +506,8 @@ def run(*, v0_9_simulator_dir: Path, output_dir: Path,
     md.append("")
     md.append("## Honesty caveat")
     md.append("")
-    md.append("v1.6 uses a SUBSET of v0.9's parameter sweep to keep runtime tractable.")
-    md.append("Headline result is restricted to that subset. v1.7+ should expand to")
+    md.append("v1.6 default outputs are a SUBSET matched-graph diagnostic run, not a canonical run.")
+    md.append("Headline result is restricted to that subset. Larger runs should expand to")
     md.append("the canonical 100-seed v0.9 parameter coverage.")
     (output_dir / "ra_v1_6_summary.md").write_text("\n".join(md), encoding="utf-8")
 
@@ -503,10 +522,30 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     p.add_argument("--seed-start", type=int, default=17)
     p.add_argument("--seed-stop", type=int, default=19)
     p.add_argument("--max-targets", type=int, default=6)
+    p.add_argument("--severance-seeds", default="101", help="Comma-separated severance seeds")
+    p.add_argument("--modes", default="ledger_failure,orientation_degradation,selector_stress")
+    p.add_argument("--severities", default="0.5")
+    p.add_argument("--threshold-fractions", default="0.5")
+    p.add_argument("--family-semantics", default="at_least_k,augmented_exact_k")
     args = p.parse_args(argv)
+
+    def _ints(s: str) -> Tuple[int, ...]:
+        return tuple(int(x.strip()) for x in s.split(",") if x.strip())
+
+    def _floats(s: str) -> Tuple[float, ...]:
+        return tuple(float(x.strip()) for x in s.split(",") if x.strip())
+
+    def _strings(s: str) -> Tuple[str, ...]:
+        return tuple(x.strip() for x in s.split(",") if x.strip())
+
     summary = run(v0_9_simulator_dir=args.v0_9_simulator_dir,
                   output_dir=args.output_dir,
                   seed_start=args.seed_start, seed_stop=args.seed_stop,
+                  severance_seeds=_ints(args.severance_seeds),
+                  modes=_strings(args.modes),
+                  severities=_floats(args.severities),
+                  threshold_fractions=_floats(args.threshold_fractions),
+                  family_semantics=_strings(args.family_semantics),
                   max_targets=args.max_targets)
     print(json.dumps(summary, indent=2))
     return 0

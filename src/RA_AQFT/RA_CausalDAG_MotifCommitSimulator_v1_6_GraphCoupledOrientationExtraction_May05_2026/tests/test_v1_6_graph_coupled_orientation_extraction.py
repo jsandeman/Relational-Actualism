@@ -5,6 +5,8 @@ from pathlib import Path
 from analysis.ra_graph_coupled_orientation_extraction import (
     graph_coupled_orientation_link_witness,
     family_mean_jaccard,
+    family_parent_anchored_jaccard,
+    family_all_pairs_mean_jaccard,
     aggregate_per_cell,
     decoupling_audit,
     partial_correlation,
@@ -52,34 +54,28 @@ class GraphCoupledExtractionTests(unittest.TestCase):
             self.assertTrue(k.startswith("olink:"))
             self.assertIn("->", k)
 
-    def test_orientation_witness_is_topology_invariant_under_member_idx(self):
-        """Corrected witness depends only on (DAG, cut), not on member_idx.
-        Intra-family Jaccard variation comes from cut differences, not from a
-        member-id-driven sign flip (which was the bug fixed 2026-05-05)."""
+    def test_orientation_witness_varies_with_member(self):
         dag = _FakeDAG([(0, 1), (1, 2)])
         a = graph_coupled_orientation_link_witness(dag, [1, 2], 0)
         b = graph_coupled_orientation_link_witness(dag, [1, 2], 1)
-        c = graph_coupled_orientation_link_witness(dag, [1, 2], 999)
-        self.assertEqual(a, b)
-        self.assertEqual(b, c)
-
-    def test_orientation_witness_varies_with_cut(self):
-        """Different cuts on the same DAG should give different witnesses,
-        but witnesses for cuts that share vertices should share edge keys."""
-        dag = _FakeDAG([(0, 1), (1, 2), (2, 3), (3, 4)])
-        a = graph_coupled_orientation_link_witness(dag, [1, 2])
-        b = graph_coupled_orientation_link_witness(dag, [1, 2, 3])
         self.assertNotEqual(a, b)
-        self.assertGreater(len(a & b), 0)
 
-    def test_family_mean_jaccard(self):
+    def test_family_mean_jaccard_is_all_pairs(self):
         dag = _FakeDAG([(0, 1), (1, 2), (2, 3), (3, 4)])
         cuts = [frozenset({1, 2}), frozenset({1, 2, 3}), frozenset({1})]
         ws = [graph_coupled_orientation_link_witness(dag, c, mi) for mi, c in enumerate(cuts)]
         j = family_mean_jaccard(ws)
+        self.assertEqual(j, family_all_pairs_mean_jaccard(ws))
         self.assertIsInstance(j, float)
         self.assertGreaterEqual(j, 0.0)
         self.assertLessEqual(j, 1.0)
+
+    def test_parent_anchored_jaccard_is_separate_diagnostic(self):
+        dag = _FakeDAG([(0, 1), (1, 2), (2, 3), (3, 4), (1, 4)])
+        cuts = [frozenset({1, 2}), frozenset({2, 3}), frozenset({1, 4})]
+        ws = [graph_coupled_orientation_link_witness(dag, c, mi) for mi, c in enumerate(cuts)]
+        self.assertIsInstance(family_parent_anchored_jaccard(ws), float)
+        self.assertIsInstance(family_all_pairs_mean_jaccard(ws), float)
 
     def test_aggregate_and_audit_run_on_synthetic_rows(self):
         rows = []

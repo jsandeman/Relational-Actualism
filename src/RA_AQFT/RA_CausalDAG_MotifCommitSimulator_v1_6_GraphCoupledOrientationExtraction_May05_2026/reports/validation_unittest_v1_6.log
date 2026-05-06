@@ -1,0 +1,11 @@
+test_run_minimum_config_against_v0_9_simulator (test_v1_6_graph_coupled_orientation_extraction.EndToEndIntegrationTests.test_run_minimum_config_against_v0_9_simulator) ... ok
+test_aggregate_and_audit_run_on_synthetic_rows (test_v1_6_graph_coupled_orientation_extraction.GraphCoupledExtractionTests.test_aggregate_and_audit_run_on_synthetic_rows) ... ok
+test_family_mean_jaccard_is_all_pairs (test_v1_6_graph_coupled_orientation_extraction.GraphCoupledExtractionTests.test_family_mean_jaccard_is_all_pairs) ... ok
+test_orientation_witness_keys_are_edge_based (test_v1_6_graph_coupled_orientation_extraction.GraphCoupledExtractionTests.test_orientation_witness_keys_are_edge_based) ... ok
+test_orientation_witness_varies_with_member (test_v1_6_graph_coupled_orientation_extraction.GraphCoupledExtractionTests.test_orientation_witness_varies_with_member) ... ok
+test_parent_anchored_jaccard_is_separate_diagnostic (test_v1_6_graph_coupled_orientation_extraction.GraphCoupledExtractionTests.test_parent_anchored_jaccard_is_separate_diagnostic) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.029s
+
+OK

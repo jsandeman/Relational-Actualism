@@ -1,29 +1,24 @@
-# v0.5 active-schema upsert for v1.6 graph-coupled orientation-link extraction packet.
-# Append to docs/RA_KB/registry/claims.yaml under top-level `claims:` list.
+# v0.5 active-schema proposal for corrected v1.6 graph-coupled orientation-link extraction.
+# Translate manually into active RAKB v0.5 schema; do not run as an auto-apply script.
 
 claims:
 - id: RA-SIM-GRAPH-COUPLED-ORIENT-001
   name: v1.6 closes the v1.5 rescue/topology disconnection by extracting orientation overlap on the same v0.9 CausalDAG instance per trial
   domain: complexity
-  papers:
-  - II
+  papers: [II]
   statement: >
-    The v1.6 simulator/analysis layer imports the v0.9 simulator
-    (ra_causal_dag_native_cert_overlap, ra_causal_dag_channel_workbench,
-    ra_causal_dag_support_family_monotonicity) directly and replays a
-    constrained subset of v0.9's parameter sweep. For each v0.9 trial it
-    calls evaluate_native_overlap_certified_family on a real
-    ChannelSeedState to produce a row with certification_rescue_event and
-    v0.9 native overlap fields, then inline on the SAME state.dag computes
-    a graph_coupled_orientation_link_overlap as the mean pairwise Jaccard
-    of edge-pair-sign witnesses across the support family cuts. Rescue and
-    orientation overlap therefore come from the same CausalDAG per trial.
-    The v1.5 rescue/topology disconnection (rescue from v0.9 simulator
-    runs paired with orientation overlap from a parallel synthetic
-    corpus via a deterministic hash) is eliminated.
+    The corrected v1.6 simulator/analysis layer imports the v0.9 simulator and
+    replays a constrained matched-graph subset. For each v0.9 trial it calls
+    evaluate_native_overlap_certified_family on a real ChannelSeedState to
+    obtain certification_rescue_event and native-overlap fields, then computes
+    graph-coupled orientation-link overlap on the SAME state.dag over the same
+    support-family cuts. The primary overlap statistic is all-pairs mean Jaccard
+    across family-member edge-pair-sign witnesses; parent-anchored mean Jaccard
+    is retained as a secondary diagnostic. The v1.5 rescue/topology
+    disconnection is thereby eliminated for the tested subset.
   nature_targets:
   - methodological standard for graph-coupled orientation-rescue measurement
-  - elimination of the v1.5 rescue/topology disconnection
+  - elimination of the v1.5 rescue/topology disconnection for matched-graph subset trials
   ra_observable: graph_coupled_orientation_link_overlap
   sources:
   - RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
@@ -36,70 +31,42 @@ claims:
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-001
   - RA-MOTIF-CONCRETE-GRAPH-ORIENT-WITNESS-001
   - RA-SIM-NATIVE-CERT-OVERLAP-001
-  framing_links:
-  - RA-METHOD-001
-  - RA-METHOD-002
-  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
-  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
-  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
-  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
-  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
-  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
-  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
-  - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.6 run (assistant-side; --v0-9-simulator-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/simulator
-    --seed-start 17 --seed-stop 21 --max-targets 8). Subset config: 4 seeds
-    x 1 severance x 3 modes x 1 severity (0.5) x 1 threshold (0.5) x 2
-    semantics x 8 targets = 192 trials, ~30s wall-clock. n_per_cell_rows=24
-    (4 trials per (mode x semantics) cell); decoupled_count=12/12;
-    graph_coupled_orientation_surface_decoupled=true (max_abs_diff 1.0
-    vs all four legacy comparison surfaces; mean_abs_diff 0.536-0.743);
-    selector_guardrail_passed=true; v1_6_disconnection_closed=true.
-    Authored from scratch (not packet-installed); 5/5 unit tests pass
-    including an integration test that runs the v0.9 simulator end-to-end.
-    Honesty caveats: subset is far smaller than v0.9`s full sweep; the
-    edge-pair-sign keying scheme is one specific topological keying among
-    many; per-trial certification_rescue_event is binary (0/1) and
-    aggregates over fewer samples than v0.9`s published rates.'
+  caveats: >
+    This is a subset matched-graph diagnostic run, not a canonical 100-seed/full-sweep
+    result. Included outputs use 4 growth seeds, 1 severance seed, 3 modes, one
+    severity (0.5), one threshold (0.5), two family semantics, max_targets=8,
+    producing 192 trials and 24 per-cell rows. The orientation keying is one
+    edge-pair-sign construction. Results should be used as methodological
+    correction/provenance, not as a Nature-facing orientation-rescue claim.
   next_tasks:
-  - Build v1.7 packet that scales graph-coupled extraction to canonical v0.9 parameter coverage (50-100 seeds, all severities, all thresholds) to determine whether the small-sample reversal observed in v1.6 specificity persists or whether positive specificity emerges at scale.
+  - Scale matched-graph extraction to canonical coverage in v1.7.
   source_status:
-    ra_graph_coupled_orientation_extraction.py: simulation_validated_canonical_run_confirmed_subset
+    ra_graph_coupled_orientation_extraction.py: simulation_validated_matched_subset_run
   legacy_proof_status: DR
-  proof_status: simulation_validated_canonical_run_confirmed
+  proof_status: simulation_validated_matched_subset_run
   legacy_support_status: none
-  auxiliary_support_status: simulation_canonical_run_recorded
+  auxiliary_support_status: simulation_matched_subset_recorded
   claim_kind: derived_result
   formal_anchor: ra_graph_coupled_orientation_extraction.py ; ra_v1_6_trial_rows.csv ; ra_v1_6_per_cell_aggregated.csv ; ra_v1_6_decoupling_audit.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
 
 - id: RA-SIM-GRAPH-COUPLED-ORIENT-002
-  name: On matched graphs at v1.6 sample size, v1.5's orientation-specificity verdict does not replicate (reversed-sign rescue gap for orientation_degradation)
+  name: v1.6 matched-graph subset does not replicate the v1.5 orientation-specificity verdict
   domain: complexity
-  papers:
-  - II
+  papers: [II]
   statement: >
-    The v1.6 specificity audit on graph-coupled (rescue, orientation_overlap)
-    pairs gives reversed_or_negative verdicts for both orientation_degradation
-    family-semantics cells: low_minus_high rescue gap = -0.146 (at_least_k)
-    and -0.229 (augmented_exact_k), the OPPOSITE direction from the v1.5
-    "low orientation_overlap correlates with high rescue" finding (which
-    reported gaps +0.028 / -0.002 on the disconnected-corpus version).
-    selector_stress correctly registers not_certification_channel; ledger_failure
-    correctly registers ledger_control_not_resolved_by_graph_coupled_orientation
-    (rescue is dominated by the ledger channel, not orientation, as expected).
-    The v1.5 specificity result is therefore NOT robust to closing the
-    rescue/topology disconnection at v1.6's sample size, confirming the v1.5
-    honesty caveat that the v1.5 specificity could be a sampling artifact of
-    the hash-keyed cell-to-graph mapping. The v1.5 claim of "cross-validating
-    the v0.9.2 family-semantics asymmetry" is RETRACTED - that
-    cross-validation depended on the disconnected mapping that v1.6 has
-    eliminated.
+    In the corrected v1.6 matched-graph subset, the v1.5 orientation-specificity
+    result does not replicate. The specificity audit gives reversed_or_negative
+    verdicts for orientation_degradation under both at_least_k and
+    augmented_exact_k semantics, while selector_stress remains not_certification_channel
+    and ledger_failure remains a ledger control. This retracts the earlier use
+    of v1.5 as independent cross-validation of the v0.9.2 family-semantics
+    asymmetry. The reversed signs themselves are not promoted as robust because
+    each specificity cell has only four per-cell rows.
   nature_targets:
-  - empirical evaluation of orientation specificity on matched-graph pairs
-  - retraction of v1.5 cross-validation claim for the v0.9.2 family-semantics asymmetry
+  - matched-graph audit of orientation-specificity claims
+  - correction of v1.5 cross-validation interpretation
   ra_observable: graph_coupled_orientation_specificity
   sources:
   - RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
@@ -108,55 +75,26 @@ claims:
   proof_dependencies:
   - RA-SIM-GRAPH-COUPLED-ORIENT-001
   - RA-SIM-CONCRETE-GRAPH-ORIENT-002
-  framing_links:
-  - RA-METHOD-001
-  - RA-METHOD-002
-  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
-  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
-  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
-  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
-  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
-  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
-  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
-  - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.6 run (parameters as in
-    RA-SIM-GRAPH-COUPLED-ORIENT-001). Per-cell specificity:
-    orientation_degradation/at_least_k -> reversed_or_negative (gap -0.146);
-    orientation_degradation/augmented_exact_k -> reversed_or_negative
-    (gap -0.229); ledger_failure/at_least_k -> ledger_control_not_resolved_by_graph_coupled_orientation
-    (gap -0.375); ledger_failure/augmented_exact_k -> same verdict (gap
-    -0.292); selector_stress/both -> not_certification_channel.
-    Partial-correlation audit shows rescue_residual_std=0.0 across all six
-    cells at this sample size - support+frontier overlap explain all rescue
-    variation in the v1.6 subset. v1.5`s partial-correlation result
-    (at_least_k -0.147 / augmented_exact_k -0.070) does NOT reproduce on
-    matched graphs; this is consistent with the v1.5 caveat about
-    sampling-artifact noise but could also reflect v1.6`s smaller sample
-    size washing out fine-grained partial signal. CRITICAL HONESTY
-    CAVEATS: (a) v1.6 sample is small (24 per-cell rows from 192 trials);
-    the reversed-sign verdicts could be small-sample noise rather than a
-    robust topology-causal signal in the opposite direction. (b) The
-    edge-pair-sign keying is one specific topological keying; a different
-    keying (e.g. sign-source pairs from RA_CausalOrientation_Core, or
-    native-ledger orientation chirality from RA_D1_NativeLedgerOrientation)
-    might produce different specificity verdicts. (c) v1.6 explicitly
-    RETRACTS the v1.5 claim that v1.5 cross-validates the v0.9.2
-    family-semantics asymmetry; the asymmetry remains a v0.9-internal
-    finding, not independently confirmed by the v1.x orientation-link
-    program. v1.7+ at canonical scale (50-100 seeds, full parameter
-    coverage) is required to determine whether the reversed-sign verdict
-    is small-sample noise, robust reversal, or whether positive specificity
-    emerges at scale.'
+  caveats: >
+    Subset specificity gaps are -0.146 and -0.229 for orientation_degradation,
+    but these are small-sample diagnostics, not robust reverse-orientation
+    findings. The corrected partial-correlation table has nonzero rescue
+    residual variance for ledger/orientation cells; the earlier statement that
+    support/frontier explain all rescue variation across all six cells was
+    incorrect and applied only to selector-stress controls. Canonical v1.7
+    coverage is required before any positive or reversed orientation-specificity
+    claim is made.
   next_tasks:
-  - Run v1.7 at canonical 100-seed v0.9 parameter coverage to determine whether v1.6`s reversed-sign specificity verdict is small-sample noise or a robust finding.
-  - Try alternate topological orientation keyings (sign-source pairs, ledger-orientation chirality) on matched graphs to see whether ANY keying produces orientation specificity that survives matched-graph extraction.
+  - Run v1.7 at canonical matched-graph coverage.
+  - Compare all-pairs and parent-anchored Jaccard diagnostics.
+  - Test alternate topological orientation keyings on matched graphs.
   source_status:
-    ra_graph_coupled_orientation_extraction.py: simulation_validated_canonical_run_confirmed_subset
+    ra_graph_coupled_orientation_extraction.py: simulation_validated_matched_subset_run
   legacy_proof_status: DR
-  proof_status: simulation_validated_canonical_run_confirmed
+  proof_status: simulation_validated_matched_subset_run
   legacy_support_status: none
-  auxiliary_support_status: simulation_canonical_run_recorded
+  auxiliary_support_status: simulation_matched_subset_recorded
   claim_kind: derived_result
   formal_anchor: ra_v1_6_specificity.csv ; ra_v1_6_partial_correlation.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026

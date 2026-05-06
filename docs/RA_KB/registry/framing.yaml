@@ -1180,3 +1180,55 @@ framing_policies:
   auxiliary_support_status: modeling_discipline_recorded
   formal_anchor: ra_graph_coupled_orientation_extraction.py ; ra_v1_6_specificity.csv ; ra_v1_6_summary.md
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
+
+- id: RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  name: v1.5 concrete-graph orientation specificity is superseded by v1.6 audit; do not cite as proof dependency
+  domain: framing
+  papers:
+  - II
+  statement: >
+    The v1.5 concrete-graph orientation-link specificity result
+    (RA-SIM-CONCRETE-GRAPH-ORIENT-002, +0.028 / -0.002 specificity gap;
+    -0.147 / -0.070 partial correlations) is RETRACTED as of 2026-05-05.
+    Two independent flaws were identified by the v1.6 packet: (i) a
+    witness-keying bug shared with v1.5 source ((depth(v) + depth(p) +
+    member_idx) % 2 sign formula plus per-member tag) forced
+    intra-family Jaccard = 0 on regular topologies, so the v1.5
+    specificity reflected across-cell graph-corpus variation rather than
+    intra-family witness differences; (ii) the v1.5 audit used a
+    deterministic-hash mapping from cell metadata to a parallel synthetic
+    graph corpus, with no causal connection to the actual v0.9 DAG
+    instances that produced the rescue rates. With the keying bug fixed
+    and the disconnection closed (v1.6: rescue and orientation extracted
+    from the same v0.9 CausalDAG per trial on a v1.0-shape matched
+    subset, n=80 per (mode, semantics) cell), the +0.028 specificity
+    does NOT replicate. The v0.9.2 family-semantics asymmetry remains a
+    v0.9-internal finding; it has NOT been independently confirmed by
+    v1.x. Treat the link from v1.6 (RA-SIM-GRAPH-COUPLED-ORIENT-002) to
+    v1.5 (RA-SIM-CONCRETE-GRAPH-ORIENT-002) as a corrigendum/supersession
+    relationship, NOT a normal proof_dependency.
+  nature_targets:
+  - corrigendum discipline for retracted simulator-layer specificity claims
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_5_ConcreteGraphOrientationExtraction_May05_2026
+  - RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
+  - ra_v1_6_specificity.csv
+  - ra_v1_6_partial_correlation.csv
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Do not promote retracted v1.5 specificity numbers to active claims. When citing v1.5, cite either (a) the methodological achievement (v1.1 audit machinery runs end-to-end on concrete topology surfaces and returns the expected structural-control verdicts) or (b) the supersession itself. Any future v1.5 re-audit with the corrected keying must be filed as a NEW claim ID, not a re-promotion of the retracted RA-SIM-CONCRETE-GRAPH-ORIENT-002 numbers.'
+  next_tasks:
+  - Re-audit v1.5 with the corrected edge-pair-sign keying as a new claim ID, leaving RA-SIM-CONCRETE-GRAPH-ORIENT-002 in superseded state.
+  - When a v1.7+ packet replicates or sharpens the orientation-rescue audit on matched graphs at n>200 per cell, link it via a new corrigendum framing entry rather than re-citing v1.5.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: ra_v1_6_partial_correlation.csv ; ra_v1_6_specificity.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026

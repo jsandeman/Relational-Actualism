@@ -7,16 +7,17 @@ v0.9 simulator CausalDAG instance per trial.
 ## Summary metrics
 
 - version: v1.6
-- n_trials: 3840
+- n_trials: 192
 - n_seeds: 4
 - n_severance_seeds: 1
 - n_modes: 3
-- n_severities: 5
-- n_threshold_fractions: 4
+- n_severities: 1
+- n_threshold_fractions: 1
 - n_family_semantics: 2
 - max_targets: 8
-- v1_6_posture: rescue_and_orientation_extracted_from_same_dag_per_trial
-- n_per_cell_rows: 480
+- v1_6_posture: matched_graph_subset_extraction_complete_not_canonical
+- v1_6_run_scope: subset_matched_graph_diagnostic_run_not_canonical
+- n_per_cell_rows: 24
 - decoupled_count: 12
 - decoupled_total: 12
 - graph_coupled_orientation_surface_decoupled: True
@@ -26,6 +27,6 @@ v0.9 simulator CausalDAG instance per trial.
 
 ## Honesty caveat
 
-v1.6 uses a SUBSET of v0.9's parameter sweep to keep runtime tractable.
-Headline result is restricted to that subset. v1.7+ should expand to
+v1.6 default outputs are a SUBSET matched-graph diagnostic run, not a canonical run.
+Headline result is restricted to that subset. Larger runs should expand to
 the canonical 100-seed v0.9 parameter coverage.

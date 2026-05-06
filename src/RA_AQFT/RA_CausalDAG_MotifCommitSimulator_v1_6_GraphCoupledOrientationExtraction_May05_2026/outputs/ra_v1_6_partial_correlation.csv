@@ -1,7 +1,7 @@
 mode,family_semantics,rows,graph_coupled_residual_std,rescue_residual_std,partial_corr_with_rescue,status
-ledger_failure,at_least_k,80,0.117377,0.120169,0.014406,resolved
-ledger_failure,augmented_exact_k,80,0.147522,0.121018,0.132499,resolved
-orientation_degradation,at_least_k,80,0.117377,0.110658,-0.100995,resolved
-orientation_degradation,augmented_exact_k,80,0.147522,0.097916,0.12258,resolved
-selector_stress,at_least_k,80,0.117377,0.0,,no_independent_variation
-selector_stress,augmented_exact_k,80,0.147522,0.0,,no_independent_variation
+ledger_failure,at_least_k,4,0.020933,0.074654,0.926909,resolved
+ledger_failure,augmented_exact_k,4,0.009285,0.037028,-0.653847,resolved
+orientation_degradation,at_least_k,4,0.020933,0.090415,-0.523325,resolved
+orientation_degradation,augmented_exact_k,4,0.009285,0.077066,-0.0231,resolved
+selector_stress,at_least_k,4,0.020933,0.0,,no_independent_variation
+selector_stress,augmented_exact_k,4,0.009285,0.0,,no_independent_variation

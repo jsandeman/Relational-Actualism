@@ -1,42 +1,21 @@
-# v0.5 active-schema upsert for v1.6 framing.
-
+# v0.5 active-schema proposal for corrected v1.6 framing.
 framing_policies:
 - id: RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
-  name: v1.6 graph-coupled extraction is the methodological gold standard for orientation-rescue claims; v1.6 results retract the v1.5 cross-validation of v0.9.2 family-semantics asymmetry
+  name: Graph-coupled extraction is required for topology-causal orientation-rescue claims
   domain: framing
-  papers:
-  - II
+  papers: [II]
   statement: >
-    The v1.6 graph-coupled orientation-link extraction is the methodological
-    gold standard for any topology-causal orientation-rescue claim, because
-    rescue and orientation overlap are extracted from the SAME v0.9
-    CausalDAG instance per trial. The honesty progression now reads:
-    v1.2 hash(row metadata) -> v1.3 catalog tokens -> v1.4 simulator-state
-    tokens -> v1.5 concrete-topology corpus (still hash-keyed to v0.9
-    rescue) -> v1.6 graph-coupled (no hash key, same DAG per trial).
-
-    EMPIRICAL UPDATE FROM v1.6: the v1.5 orientation-specificity result
-    does NOT replicate when the rescue/topology disconnection is closed.
-    Both orientation_degradation cells show reversed-sign rescue gaps
-    (-0.146 / -0.229) at v1.6's sample size. The v1.5 claim of "cross-
-    validating the v0.9.2 family-semantics asymmetry" is RETRACTED -
-    that cross-validation depended on the hash-keyed mapping that v1.6
-    eliminated. Whether v1.6's reversed-sign verdict is small-sample
-    noise, a robust finding in the opposite direction, or whether
-    positive specificity emerges at canonical sample size, remains an
-    open question for v1.7+.
-
-    DISCIPLINE - any future orientation-link rescue claim must be
-    measured on matched graphs (rescue and orientation overlap from the
-    same CausalDAG per trial). Hash-keyed or independent-corpus
-    extractions are audit-machinery validation only and must not be
-    cited as topology-causal evidence. The v0.9.2 family-semantics
-    asymmetry remains a v0.9-internal finding; the v1.x orientation-link
-    program does NOT independently cross-validate it.
+    Any future topology-causal orientation-rescue claim must measure rescue and
+    orientation-link overlap on the same CausalDAG instance per trial. The v1.6
+    matched-graph diagnostic closes the v1.5 rescue/topology disconnection and
+    supersedes hash-keyed or independent-corpus orientation-overlap comparisons
+    as evidence for topology-causal claims. v1.6 is a methodological correction
+    and subset diagnostic; it retracts the use of v1.5 as independent
+    cross-validation of v0.9.2, but does not establish a robust reversed
+    orientation-specificity law.
   nature_targets:
   - methodological standard for graph-coupled orientation-rescue measurement
   - retraction discipline for hash-keyed cross-validation claims
-  - sequencing across v1.2-v1.6 progression
   ra_observable: null
   sources:
   - RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
@@ -46,20 +25,15 @@ framing_policies:
   framing_links:
   - RA-METHOD-001
   - RA-METHOD-002
-  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
-  - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
-  - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
-  - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
-  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
-  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
-  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
-  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
-  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'v1.6 is the first packet in the orientation-link program where rescue and orientation_overlap are measured on matched DAG instances - this is the methodological achievement. The empirical finding (reversed-sign specificity for orientation_degradation) is small-sample (192 trials, 24 per-cell rows) and may reflect noise rather than a robust topology-causal signal in either direction. Two cautions apply downstream. (a) Do NOT promote v1.6 reversal as a positive Nature-facing finding without v1.7+ canonical-scale replication. (b) Do NOT promote any orientation-specific rescue claim that is based on the v1.2-v1.5 hash-keyed extractions; those have been superseded by the v1.6 matched extraction and the v1.5 cross-validation claim is retracted. The v0.9.2 family-semantics asymmetry remains a v0.9-internal finding; it has NOT been independently confirmed by v1.x.'
+  caveats: >
+    v1.6 included outputs are a 192-trial subset matched-graph diagnostic.
+    They should not be cited as canonical-scale orientation specificity or
+    Nature-facing evidence. The packet corrects its original mean-pairwise
+    overlap description and partial-correlation narrative; installed/committed
+    SHAs should be recorded after local edits.
   next_tasks:
-  - v1.7 must scale matched extraction to canonical v0.9 parameter coverage (50-100 seeds, full severity/threshold coverage) to determine the robustness of v1.6's reversed-sign specificity verdict.
-  - Investigate whether alternate topological orientation keyings (sign-source pairs from RA_CausalOrientation_Core, ledger-orientation chirality from RA_D1_NativeLedgerOrientation) produce orientation specificity on matched graphs that survives the v1.6-style audit.
+  - v1.7 should scale matched extraction and compare all-pairs with parent-anchored overlap diagnostics.
   legacy_proof_status: DR
   legacy_support_status: none
   framing_kind: modeling_guardrail
