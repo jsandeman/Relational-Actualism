@@ -1370,7 +1370,13 @@ framing_policies:
     methodology and does not manufacture in-stratum orientation variation
     where the natural surface is structurally co-determined with the
     stratification axes (see RA-SIM-CONFOUND-V18-1-PACKET-001 vs
-    RA-SIM-CONFOUND-V18-1-001 for the methodological comparison).
+    RA-SIM-CONFOUND-V18-1-001 for the methodological comparison); (f)
+    fixed-bin discipline -- for orientation-overlap rescue claims, bins
+    used to define the tested signal must remain fixed across confound
+    controls. If joint strata lack both low and high bins under that
+    fixed definition, the signal is non-estimable rather than rescued by
+    local re-binning. This prevents accidentally creating a signal by
+    redefining the variable inside each control stratum.
   nature_targets:
   - methodological standard for orientation-overlap rescue audits
   ra_observable: null
@@ -1401,3 +1407,57 @@ framing_policies:
   auxiliary_support_status: methodological_guardrail_recorded
   formal_anchor: ra_support_width_family_confound.py ; ra_v1_8_1_joint_width_family_matched_gap.csv ; ra_v1_8_1_estimability_by_stratum.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+
+- id: RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  name: v1.9 synthesis is the canonical entry-point for the v0.x / v1.x simulator chain; cite the synthesis rather than reconstructing individual claims
+  domain: framing
+  papers:
+  - II
+  statement: >
+    The v1.5/v1.6/v1.7/v1.8/v1.8.1 audit chain landed a strong, cleanly-
+    documented negative result on orientation-specific certification
+    rescue under matched-graph extraction at canonical scale. That result
+    is easy to mis-cite back into a positive one if the chain is split
+    across many caveats. v1.9 collects the chain into four documents
+    that future sessions can read in any order: a confirmed-positive
+    catalog, a retracted-orientation-chain narrative, an open-native-
+    witness-requirements specification, and a per-packet epistemic-
+    status-matrix CSV generated from claims.yaml + audit_events.csv.
+    For any future citation of the orientation-overlap result -- in
+    papers, registry entries, or new packets -- cite this framing entry
+    and the appropriate v1.9 output, not the individual v1.5..v1.8.1
+    entries.
+  nature_targets:
+  - registry-discipline standard for retracted-and-superseded simulator chains
+  - methodological catalog of confirmed positive findings to prevent accidental resurrection of retracted ones
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_9_CertificationResilienceSynthesis_May06_2026
+  - ra_confirmed_resilience_signatures_v1_9.md
+  - ra_retracted_orientation_specificity_chain_v1_9.md
+  - ra_open_native_witness_requirements_v1_9.md
+  - ra_v1_series_epistemic_status_matrix.csv
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
+  - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Synthesis-only packet: no new simulator semantics, no new Lean module, no new audit. Status matrix is regenerable from claims.yaml + audit_events.csv via scripts/build_status_matrix.py whenever the underlying claims change. Full audit history: audit_events.csv EV-2026-05-06-008.'
+  next_tasks:
+  - When the v0.x/v1.x chain accumulates further audits (e.g. a v1.10 with a genuinely native orientation witness), regenerate the status matrix and append events; do not rewrite the synthesis docs from scratch.
+  - Future packets attempting orientation-specific certification rescue must satisfy the six requirements in ra_open_native_witness_requirements_v1_9.md before promotion.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: ra_confirmed_resilience_signatures_v1_9.md ; ra_retracted_orientation_specificity_chain_v1_9.md ; ra_open_native_witness_requirements_v1_9.md ; ra_v1_series_epistemic_status_matrix.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_9_CertificationResilienceSynthesis_May06_2026
