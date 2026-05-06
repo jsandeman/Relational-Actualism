@@ -1,0 +1,34 @@
+registry_version: v0.5-proposal
+framing_policies:
+- id: RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
+  name: Per-graph orientation-link witness extraction is operational until tied to
+    concrete native graph witnesses
+  domain: framing
+  papers:
+  - II
+  statement: The v1.4 per-graph orientation-link witness extraction uses simulator
+    state contexts and native theorem-catalog tokens to build per-family-member witness
+    records. It should not be treated as a final native orientation law until the
+    witnesses are extracted from concrete graph/cut/orientation structures in the
+    RA formal stack.
+  nature_targets:
+  - methodological discipline for orientation-link witness extraction
+  ra_observable: null
+  sources:
+  - README_RA_CausalDAG_MotifCommitSimulator_v1_4_PerGraphOrientationWitness_May05_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
+  restoration_preconditions: []
+  caveats: Operational extraction and identifiability diagnostics are not Nature-facing
+    predictions.
+  next_tasks:
+  - Replace simulator-context tokens with native graph/cut orientation witnesses.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: v1.4 README/report caveat discipline
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_4_PerGraphOrientationWitness_May05_2026

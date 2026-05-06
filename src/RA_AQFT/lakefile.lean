@@ -153,9 +153,17 @@ lean_lib «RelationalActualism» where
                                 -- generic orientation component;
                                 -- documentary-only Prop fields for
                                 -- CausalOrientation_Core / Ledger /
-                                -- Closure (imports omitted to avoid
-                                -- chainScore duplicate-def conflict
-                                -- between RA_D1_Core and RA_D1_NativeKernel).
+                                -- Closure (imports restored 2026-05-05
+                                -- after RA-ISSUE-LEAN-CHAINSCORE-001
+                                -- namespace fix).
+    `RA_MotifPerGraphOrientationWitness, -- (May 5 2026) v1.4 per-graph
+                                -- orientation-link witness bridge:
+                                -- DAGPerGraphOrientationWitnessContext
+                                -- + Graph variant; refines v1.3 native
+                                -- catalog evidence with abstract
+                                -- graphInstance / memberIndex /
+                                -- perGraphOrientationEvidence; Π->P
+                                -- rename applied (Π reserved by Lean).
     `RA_D3_CausalSeverance,
     `RA_D3_CosmologicalExpansion,
     `RA_D4_CausalFirewall,

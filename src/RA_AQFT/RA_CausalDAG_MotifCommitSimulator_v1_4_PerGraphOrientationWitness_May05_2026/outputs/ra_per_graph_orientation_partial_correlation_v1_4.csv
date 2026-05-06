@@ -1,0 +1,4 @@
+mode,per_graph_orientation_residual_std,legacy_orientation_residual_std,status
+ledger_failure,0.08157044934231177,5.5075762930801937e-17,per_graph_surface_independent
+orientation_degradation,0.0835123878231688,5.5075762930801937e-17,per_graph_surface_independent
+selector_stress,0.08143531138188126,5.5075762930801937e-17,per_graph_surface_independent

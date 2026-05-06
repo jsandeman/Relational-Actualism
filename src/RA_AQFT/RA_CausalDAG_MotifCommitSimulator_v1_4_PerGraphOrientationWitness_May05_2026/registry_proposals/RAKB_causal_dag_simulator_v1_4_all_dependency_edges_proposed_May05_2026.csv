@@ -1,0 +1,9 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-MOTIF-PER-GRAPH-ORIENT-WITNESS-001,RA-MOTIF-NATIVE-ORIENT-LINK-001,proof_dependency,claim,claim,Per-graph orientation-link witness evidence refines native orientation catalog evidence,RA-MOTIF-NATIVE-ORIENT-LINK-001
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-001,RA-SIM-NATIVE-ORIENT-LINK-001,proof_dependency,claim,claim,Per-graph orientation-link witness records can be extracted from simulator state contexts,RA-SIM-NATIVE-ORIENT-LINK-001
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-001,RA-MOTIF-PER-GRAPH-ORIENT-WITNESS-001,proof_dependency,claim,claim,Per-graph orientation-link witness records can be extracted from simulator state contexts,RA-MOTIF-PER-GRAPH-ORIENT-WITNESS-001
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-002,RA-SIM-PER-GRAPH-ORIENT-WITNESS-001,proof_dependency,claim,claim,Per-graph orientation-link witness overlap separates orientation diagnostics from support-frontier overlap,RA-SIM-PER-GRAPH-ORIENT-WITNESS-001
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-002,RA-SIM-NATIVE-ORIENT-LINK-002,proof_dependency,claim,claim,Per-graph orientation-link witness overlap separates orientation diagnostics from support-frontier overlap,RA-SIM-NATIVE-ORIENT-LINK-002
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001,RA-METHOD-001,interpretive_dependency,framing,framing_or_claim,Per-graph orientation-link witness extraction is operational until tied to concrete native graph witnesses,RA-METHOD-001
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001,RA-METHOD-002,interpretive_dependency,framing,framing_or_claim,Per-graph orientation-link witness extraction is operational until tied to concrete native graph witnesses,RA-METHOD-002
+RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001,RA-SIM-NATIVE-ORIENT-LINK-METHOD-001,interpretive_dependency,framing,framing_or_claim,Per-graph orientation-link witness extraction is operational until tied to concrete native graph witnesses,RA-SIM-NATIVE-ORIENT-LINK-METHOD-001

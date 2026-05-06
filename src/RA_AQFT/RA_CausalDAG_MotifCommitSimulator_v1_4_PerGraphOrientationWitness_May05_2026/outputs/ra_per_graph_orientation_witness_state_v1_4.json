@@ -1,0 +1,15 @@
+{
+  "summary": {
+    "version": "v1.4",
+    "input_rows": 480,
+    "member_witness_rows": 4800,
+    "native_manifest_rows": 45,
+    "per_graph_orientation_surface_decoupled": true,
+    "matched_orientation_variation_available": true,
+    "orientation_specificity_resolved": true,
+    "selector_guardrail_passed": true,
+    "mean_per_graph_orientation_residual_std": 0.08217271618245393,
+    "mean_legacy_orientation_residual_std": 5.5075762930801937e-17,
+    "v1_4_posture": "per_graph_member_orientation_witness_surface_ready_for_native_graph_extractor"
+  }
+}

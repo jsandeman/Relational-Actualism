@@ -1,0 +1,104 @@
+registry_version: v0.5-proposal
+claims:
+- id: RA-MOTIF-PER-GRAPH-ORIENT-WITNESS-001
+  name: Per-graph orientation-link witness evidence refines native orientation catalog
+    evidence
+  domain: matter
+  papers:
+  - II
+  statement: A per-graph/member orientation-link witness surface can be represented
+    as evidence indexed by a graph instance and support-family member, refining native
+    orientation-catalog evidence and therefore the abstract orientation-link surface.
+  nature_targets:
+  - RA-native orientation-link witness structure for support-family members
+  ra_observable: null
+  sources:
+  - RA_MotifPerGraphOrientationWitness.lean
+  proof_dependencies:
+  - RA-MOTIF-NATIVE-ORIENT-LINK-001
+  restoration_preconditions: []
+  caveats: Source-level bridge pending local Lean compile. The bridge is refinement-only
+    and does not define numerical overlap or rescue laws.
+  next_tasks:
+  - Compile RA_MotifPerGraphOrientationWitness.lean locally; replace operational simulator
+    extraction with concrete graph/cut native orientation witnesses.
+  source_status:
+    RA_MotifPerGraphOrientationWitness.lean: source_level_formal_bridge_pending_local_compile_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: source_level_formal_bridge_pending_compile
+  legacy_support_status: none
+  auxiliary_support_status: none_recorded
+  claim_kind: interpretive_bridge
+  formal_anchor: DAGPerGraphOrientationWitnessContext ; GraphPerGraphOrientationWitnessContext
+    ; DAGHasPerGraphOrientationWitness.to_native_catalog ; GraphHasPerGraphOrientationWitness.to_native_catalog
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_4_PerGraphOrientationWitness_May05_2026
+- id: RA-SIM-PER-GRAPH-ORIENT-WITNESS-001
+  name: Per-graph orientation-link witness records can be extracted from simulator
+    state contexts
+  domain: matter
+  papers:
+  - II
+  statement: The v1.4 workbench extracts per-graph/per-support-family-member orientation-link
+    witness records from simulator state contexts, keyed by graph instance, motif/site,
+    support-family member, and native orientation catalog tokens.
+  nature_targets:
+  - RA-native orientation-link witness extraction workbench
+  ra_observable: null
+  sources:
+  - ra_per_graph_orientation_witness.py
+  - ra_per_graph_orientation_witness_members_v1_4.csv
+  proof_dependencies:
+  - RA-SIM-NATIVE-ORIENT-LINK-001
+  - RA-MOTIF-PER-GRAPH-ORIENT-WITNESS-001
+  restoration_preconditions: []
+  caveats: Packet-local/canonical-run pending. Extraction uses simulator state component
+    contexts plus native catalog tokens; it is not yet extraction from concrete Lean
+    ActualizationGraph instances.
+  next_tasks:
+  - Run canonical v1.4 extraction in repository context; develop concrete graph/cut
+    extractor.
+  source_status:
+    ra_per_graph_orientation_witness.py: python_unittest_validated_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_validated
+  claim_kind: derived_result
+  formal_anchor: build_member_witnesses ; compute_row_overlap ; per_graph_orientation_link_overlap
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_4_PerGraphOrientationWitness_May05_2026
+- id: RA-SIM-PER-GRAPH-ORIENT-WITNESS-002
+  name: Per-graph orientation-link witness overlap separates orientation diagnostics
+    from support-frontier overlap
+  domain: matter
+  papers:
+  - II
+  statement: In the packet-local v1.4 extraction, per-graph orientation-link overlap
+    is decoupled from support/frontier overlap and orientation-degradation diagnostics
+    show orientation-specific sensitivity while ledger failure and selector stress
+    remain controls.
+  nature_targets:
+  - orientation-specific certification diagnostics under matched support/frontier
+    controls
+  ra_observable: null
+  sources:
+  - ra_per_graph_orientation_link_overlap_v1_4.csv
+  - ra_per_graph_orientation_specificity_v1_4.csv
+  - ra_per_graph_orientation_partial_correlation_v1_4.csv
+  proof_dependencies:
+  - RA-SIM-PER-GRAPH-ORIENT-WITNESS-001
+  - RA-SIM-NATIVE-ORIENT-LINK-002
+  restoration_preconditions: []
+  caveats: Packet-local result. Treat as an operational witness-surface prototype,
+    not a Nature-facing derivation.
+  next_tasks:
+  - Confirm on canonical repository outputs; derive witness tokens from native graph/cut/orientation
+    structures.
+  source_status:
+    ra_per_graph_orientation_witness.py: python_unittest_validated_packet_local
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_packet_local_validated
+  claim_kind: derived_result
+  formal_anchor: orientation_specificity ; partial_residual ; matched_strata
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_4_PerGraphOrientationWitness_May05_2026
