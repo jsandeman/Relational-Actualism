@@ -5620,21 +5620,37 @@ claims:
   restoration_preconditions: []
   caveats: 'Confirmed by canonical v1.6 run (assistant-side; --v0-9-simulator-dir
     ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/simulator
-    --seed-start 17 --seed-stop 21 --max-targets 8). Subset config: 4 seeds
-    x 1 severance x 3 modes x 1 severity (0.5) x 1 threshold (0.5) x 2
-    semantics x 8 targets = 192 trials, ~30s wall-clock. n_per_cell_rows=24
-    (4 trials per (mode x semantics) cell); decoupled_count=12/12;
-    graph_coupled_orientation_surface_decoupled=true (max_abs_diff 1.0
-    vs all four legacy comparison surfaces; mean_abs_diff 0.536-0.743);
-    selector_guardrail_passed=true; v1_6_disconnection_closed=true.
-    Authored from scratch (not packet-installed); 5/5 unit tests pass
-    including an integration test that runs the v0.9 simulator end-to-end.
-    Honesty caveats: subset is far smaller than v0.9`s full sweep; the
-    edge-pair-sign keying scheme is one specific topological keying among
-    many; per-trial certification_rescue_event is binary (0/1) and
-    aggregates over fewer samples than v0.9`s published rates.'
+    --seed-start 17 --seed-stop 21 --max-targets 8) AT FULL PARAMETER
+    COVERAGE: 4 seeds x 1 severance x 3 modes x 5 severities (0.0/0.25/0.5/
+    0.75/1.0) x 4 thresholds (0.25/0.5/0.75/1.0) x 2 semantics x 8 targets
+    = 3840 trials, < 1s wall-clock. n_per_cell_rows=480 (matching v1.0
+    component CSV structure); decoupled_count=12/12;
+    graph_coupled_orientation_surface_decoupled=true; selector_guardrail_passed=true;
+    v1_6_disconnection_closed=true. Authored from scratch (not packet-
+    installed); 6/6 unit tests pass (test count grew from 5 to 6 after the
+    bug fix described below) including an integration test that runs the
+    v0.9 simulator end-to-end. CRITICAL BUG FIX 2026-05-05: the original
+    v1.6 graph_coupled_orientation_link_witness function (and the v1.5
+    extractor it inherited from) included `member_idx` in BOTH the sign
+    formula `(depth(v) + depth(p) + member_idx) % 2` and the witness tag
+    `m{member_idx % 3}`. For chains and other regular topologies where
+    edges have constant depth-parity, this made siblings produce DISJOINT
+    witness sets (member 0 -> sign=1 everywhere; member 1 -> sign=0
+    everywhere), forcing intra-family Jaccard to 0 regardless of actual
+    cut/edge sharing. Per-cell output before the fix: 18/24 cells had
+    orientation_overlap = 0 EXACTLY. The corrected witness has sign =
+    `(depth(v) + depth(p)) % 2` (topological invariant of the edge alone)
+    and no member tag - the witness depends only on (DAG, cut), so
+    intra-family Jaccard now reflects actual cut/edge sharing. Same bug
+    exists in v1.5`s ra_concrete_graph_orientation_extraction.py; the
+    v1.5 specificity result (+0.028 augmented_exact_k gap) and partial
+    correlation (-0.147 at_least_k) are therefore also questionable -
+    they reflected across-cell graph-corpus variation rather than
+    intra-family witness differences. v1.5 results should be re-audited
+    post-fix before any v1.5 specificity finding is cited as evidence.'
   next_tasks:
-  - Build v1.7 packet that scales graph-coupled extraction to canonical v0.9 parameter coverage (50-100 seeds, all severities, all thresholds) to determine whether the small-sample reversal observed in v1.6 specificity persists or whether positive specificity emerges at scale.
+  - Re-audit v1.5 with the corrected edge-pair-sign witness (no member_idx in sign or tag) to establish what specificity, if any, the v1.5 disconnected-corpus extraction actually shows.
+  - Build v1.7 packet that scales graph-coupled extraction to canonical 100-seed v0.9 parameter coverage to sharpen the partial-correlation estimates beyond v1.6`s |r|<0.15 noise floor.
   source_status:
     ra_graph_coupled_orientation_extraction.py: simulation_validated_canonical_run_confirmed_subset
   legacy_proof_status: DR
@@ -5646,7 +5662,7 @@ claims:
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_6_GraphCoupledOrientationExtraction_May05_2026
 
 - id: RA-SIM-GRAPH-COUPLED-ORIENT-002
-  name: On matched graphs at v1.6 sample size, v1.5's orientation-specificity verdict does not replicate (reversed-sign rescue gap for orientation_degradation)
+  name: On matched graphs the v1.5 specificity does not cleanly replicate; partial correlations are weak and heterogeneous (|r|<0.15) and the specificity-audit reversal is driven by support_width confound rather than topology-causal physics
   domain: complexity
   papers:
   - II
@@ -5690,37 +5706,60 @@ claims:
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   - RA-SIM-GRAPH-COUPLED-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.6 run (parameters as in
-    RA-SIM-GRAPH-COUPLED-ORIENT-001). Per-cell specificity:
-    orientation_degradation/at_least_k -> reversed_or_negative (gap -0.146);
+  caveats: 'POST BUG FIX 2026-05-05 (see RA-SIM-GRAPH-COUPLED-ORIENT-001
+    caveats for the witness-keying bug description). Re-run at full v1.0-
+    matching parameter coverage (4 seeds x 1 severance x 3 modes x 5
+    severities x 4 thresholds x 2 semantics x 8 targets = 3840 trials,
+    480 per-cell rows, 80 per (mode x semantics) cell). Per-cell
+    specificity (low_minus_high gap):
+    ledger_failure/at_least_k -> ledger_control_not_resolved (gap -0.156);
+    ledger_failure/augmented_exact_k -> same (gap -0.150);
+    orientation_degradation/at_least_k -> reversed_or_negative (gap -0.138);
     orientation_degradation/augmented_exact_k -> reversed_or_negative
-    (gap -0.229); ledger_failure/at_least_k -> ledger_control_not_resolved_by_graph_coupled_orientation
-    (gap -0.375); ledger_failure/augmented_exact_k -> same verdict (gap
-    -0.292); selector_stress/both -> not_certification_channel.
-    Partial-correlation audit shows rescue_residual_std=0.0 across all six
-    cells at this sample size - support+frontier overlap explain all rescue
-    variation in the v1.6 subset. v1.5`s partial-correlation result
-    (at_least_k -0.147 / augmented_exact_k -0.070) does NOT reproduce on
-    matched graphs; this is consistent with the v1.5 caveat about
-    sampling-artifact noise but could also reflect v1.6`s smaller sample
-    size washing out fine-grained partial signal. CRITICAL HONESTY
-    CAVEATS: (a) v1.6 sample is small (24 per-cell rows from 192 trials);
-    the reversed-sign verdicts could be small-sample noise rather than a
-    robust topology-causal signal in the opposite direction. (b) The
-    edge-pair-sign keying is one specific topological keying; a different
-    keying (e.g. sign-source pairs from RA_CausalOrientation_Core, or
-    native-ledger orientation chirality from RA_D1_NativeLedgerOrientation)
-    might produce different specificity verdicts. (c) v1.6 explicitly
-    RETRACTS the v1.5 claim that v1.5 cross-validates the v0.9.2
-    family-semantics asymmetry; the asymmetry remains a v0.9-internal
-    finding, not independently confirmed by the v1.x orientation-link
-    program. v1.7+ at canonical scale (50-100 seeds, full parameter
-    coverage) is required to determine whether the reversed-sign verdict
-    is small-sample noise, robust reversal, or whether positive specificity
-    emerges at scale.'
+    (gap -0.127); selector_stress/both -> not_certification_channel.
+    BUT THE SPECIFICITY VERDICT IS CONFOUNDED BY SUPPORT_WIDTH. Cells with
+    support_width=1 have orientation_overlap=0 (single-cut family) AND
+    rescue=0 (narrow cuts cannot rescue regardless of orientation channel).
+    Sorting cells by orientation_overlap therefore essentially sorts by
+    family-structure-richness, which determines rescue independently of
+    the orientation channel. The "reversed_or_negative" verdict is
+    detecting this confound, not a topology-causal anti-specificity.
+    Partial-correlation audit (which controls for support+frontier overlap)
+    is more honest at this sample size: ledger_failure/at_least_k
+    partial_corr=+0.014, ledger_failure/augmented_exact_k=+0.132,
+    orientation_degradation/at_least_k=-0.101 (v1.5 direction),
+    orientation_degradation/augmented_exact_k=+0.123 (opposite). At n=80
+    per cell, |r|<0.15 is below the noise floor (p~0.4 for r=0.10).
+    None of the partial correlations is statistically significant.
+    HONEST CONCLUSION at v1.6 sample size: there is NO STATISTICALLY
+    DETECTABLE topology-specific correlation between
+    graph_coupled_orientation_link_overlap and certification_rescue_event
+    on matched v0.9 simulator graphs - in either direction - for this
+    edge-pair-sign keying. The specificity-audit reversal verdict should
+    NOT be cited as topology-causal anti-specificity (it is a
+    support_width confound). v1.5`s claim of "+0.028 specificity gap" was
+    likely an artifact of the witness-keying bug combined with hash-keyed
+    cell-to-graph mapping; with the bug fixed and the disconnection
+    closed, the matched-graphs signal at v1.6 sample size is too weak to
+    distinguish from zero. CAVEATS: (a) Sample size is moderate (80 per-
+    cell rows); v1.7+ at canonical 100-seed coverage may sharpen partial
+    correlation estimates. (b) The specificity audit is not a reliable
+    topology-causal test in the presence of structural confounds like
+    support_width; the partial-correlation audit is the correct primary
+    instrument when controls are available. (c) The edge-pair-sign keying
+    is one specific topological keying; a different keying (e.g. sign-
+    source pairs from RA_CausalOrientation_Core, or native-ledger
+    orientation chirality from RA_D1_NativeLedgerOrientation)
+    might produce different specificity verdicts. (d) v1.6 explicitly
+    RETRACTS v1.5`s claim of cross-validating the v0.9.2 family-semantics
+    asymmetry: that "cross-validation" depended on the witness-keying
+    bug + hash-keyed cell-to-graph mapping; with the bug fixed and the
+    disconnection closed, neither the +0.028 specificity gap nor the
+    family-semantics ordering is robust at v1.6 sample size.'
   next_tasks:
-  - Run v1.7 at canonical 100-seed v0.9 parameter coverage to determine whether v1.6`s reversed-sign specificity verdict is small-sample noise or a robust finding.
-  - Try alternate topological orientation keyings (sign-source pairs, ledger-orientation chirality) on matched graphs to see whether ANY keying produces orientation specificity that survives matched-graph extraction.
+  - Re-audit v1.5 with the corrected witness keying and decide whether v1.5`s specificity claim should be retracted at the v1.5 level (the bug exists in v1.5 source too).
+  - Build v1.7 at canonical 100-seed v0.9 parameter coverage to sharpen partial correlation estimates beyond v1.6`s |r|<0.15 noise floor.
+  - Try alternate topological orientation keyings on matched graphs to see whether ANY keying produces statistically significant orientation specificity after support+frontier OLS control.
   source_status:
     ra_graph_coupled_orientation_extraction.py: simulation_validated_canonical_run_confirmed_subset
   legacy_proof_status: DR

@@ -66,18 +66,30 @@ def _load_v0_9_simulator(v0_9_simulator_dir: Path):
 # v1.6 orientation-link extraction on the simulator's CausalDAG.
 # ---------------------------------------------------------------------------
 
-def graph_coupled_orientation_link_witness(dag, cut: Iterable[int], member_idx: int) -> FrozenSet[str]:
+def graph_coupled_orientation_link_witness(dag, cut: Iterable[int], member_idx: int = 0) -> FrozenSet[str]:
     """Edge-pair-sign witness keyed by parent->child edges around the cut on
-    the actual simulator DAG instance. Mirrors the v1.5 extractor.
+    the actual simulator DAG instance.
+
+    Sign is a topological invariant of the edge alone (parity of
+    depth(p)+depth(v)). The legacy v1.5 keying included `member_idx` inside
+    both the sign formula and the witness tag, which made sibling members
+    produce disjoint witness sets and forced family_mean_jaccard ~ 0 even
+    when cuts shared most of their vertices/edges (a bug confirmed by
+    inspection of v1.6 per-cell output: 18/24 cells had overlap=0 exactly).
+    The corrected witness depends only on the cut + DAG topology; intra-
+    family Jaccard now reflects actual cut/edge sharing across siblings.
+    member_idx is retained as an unused parameter for API compatibility
+    with existing call sites.
     """
+    del member_idx  # intentionally unused; see docstring
     out: set = set()
     for v in cut:
         for p in sorted(dag.parents.get(v, set())):
-            sign = (dag.depth.get(v, 0) + dag.depth.get(p, 0) + member_idx) % 2
-            out.add(f"olink:{p}->{v}:s{sign}:m{member_idx % 3}")
+            sign = (dag.depth.get(v, 0) + dag.depth.get(p, 0)) % 2
+            out.add(f"olink:{p}->{v}:s{sign}")
         for c in sorted(dag.children.get(v, set())):
-            sign = (dag.depth.get(c, 0) + dag.depth.get(v, 0) + member_idx + 1) % 2
-            out.add(f"olink:{v}->{c}:s{sign}:m{member_idx % 3}")
+            sign = (dag.depth.get(c, 0) + dag.depth.get(v, 0)) % 2
+            out.add(f"olink:{v}->{c}:s{sign}")
     return frozenset(out)
 
 
@@ -422,8 +434,8 @@ def run(*, v0_9_simulator_dir: Path, output_dir: Path,
         seed_start: int = 17, seed_stop: int = 19,
         severance_seeds: Tuple[int, ...] = (101,),
         modes: Tuple[str, ...] = ("ledger_failure", "orientation_degradation", "selector_stress"),
-        severities: Tuple[float, ...] = (0.5,),
-        threshold_fractions: Tuple[float, ...] = (0.5,),
+        severities: Tuple[float, ...] = (0.0, 0.25, 0.5, 0.75, 1.0),
+        threshold_fractions: Tuple[float, ...] = (0.25, 0.5, 0.75, 1.0),
         family_semantics: Tuple[str, ...] = ("at_least_k", "augmented_exact_k"),
         max_targets: int = 6,
         ) -> Dict[str, object]:

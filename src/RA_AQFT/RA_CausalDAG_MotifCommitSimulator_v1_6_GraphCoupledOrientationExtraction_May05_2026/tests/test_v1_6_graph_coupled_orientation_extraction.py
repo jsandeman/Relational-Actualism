@@ -52,11 +52,25 @@ class GraphCoupledExtractionTests(unittest.TestCase):
             self.assertTrue(k.startswith("olink:"))
             self.assertIn("->", k)
 
-    def test_orientation_witness_varies_with_member(self):
+    def test_orientation_witness_is_topology_invariant_under_member_idx(self):
+        """Corrected witness depends only on (DAG, cut), not on member_idx.
+        Intra-family Jaccard variation comes from cut differences, not from a
+        member-id-driven sign flip (which was the bug fixed 2026-05-05)."""
         dag = _FakeDAG([(0, 1), (1, 2)])
         a = graph_coupled_orientation_link_witness(dag, [1, 2], 0)
         b = graph_coupled_orientation_link_witness(dag, [1, 2], 1)
+        c = graph_coupled_orientation_link_witness(dag, [1, 2], 999)
+        self.assertEqual(a, b)
+        self.assertEqual(b, c)
+
+    def test_orientation_witness_varies_with_cut(self):
+        """Different cuts on the same DAG should give different witnesses,
+        but witnesses for cuts that share vertices should share edge keys."""
+        dag = _FakeDAG([(0, 1), (1, 2), (2, 3), (3, 4)])
+        a = graph_coupled_orientation_link_witness(dag, [1, 2])
+        b = graph_coupled_orientation_link_witness(dag, [1, 2, 3])
         self.assertNotEqual(a, b)
+        self.assertGreater(len(a & b), 0)
 
     def test_family_mean_jaccard(self):
         dag = _FakeDAG([(0, 1), (1, 2), (2, 3), (3, 4)])
