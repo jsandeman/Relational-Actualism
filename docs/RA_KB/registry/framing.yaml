@@ -1556,3 +1556,52 @@ framing_policies:
   auxiliary_support_status: methodological_guardrail_recorded
   formal_anchor: trackA_to_v1_9_synthesis_bridge.md ; RA_MotifCertificationResilienceConsolidation.lean
   packet_origin: RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026
+
+- id: RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001
+  name: Track A Certification Resilience Formal Chain - canonical synthesis of the three lake-build-confirmed Lean modules and the simulator-to-Lean correspondence
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Synthesis-only documentation of the Track A formal chain. Records
+    the layered Lean spine RA_MotifCertificationResilienceConsolidation
+    -> RA_MotifCertificateCorrelationBridge -> RA_MotifNativeOverlap-
+    CorrelationBridge with their structural payoff theorems
+    (DAGStrictParentRescueAt vs DAGFamilyInternalResilienceAt
+    separation; DAGSharedFateFamily.cert_equiv / certifies_iff_parent;
+    sharedFate_of_highEndpoint), maps each upstream simulator finding
+    to either its Lean qualitative-support module or "simulator-only",
+    and lists the open formal gaps. Designed as the "read-this-first"
+    reference for paper-writing and RAKB session bootstraps. Does not
+    add new Lean code or registry claims; the Track A modules and
+    their existing claim IDs (RA-MOTIF-CERT-RESILIENCE-CONSOL-001,
+    RA-MOTIF-CERT-CORRELATION-BRIDGE-001, RA-MOTIF-NATIVE-OVERLAP-
+    CORRELATION-BRIDGE-001) remain the controlling formal anchors.
+  nature_targets:
+  - registry-discipline standard for paper-section citation of the Track A formal chain
+  - explicit simulator-vs-Lean separation for the v0.7..v0.9.x positive line
+  ra_observable: null
+  sources:
+  - RA_TrackA_CertificationResilience_FormalChain_May06_2026
+  - RA_TrackA_CertificationResilience_FormalChain.md
+  - RA_TrackA_FormalChain_Map.csv
+  - RA_TrackA_SimulatorToLean_Correspondence.md
+  - RA_TrackA_OpenFormalGaps.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Synthesis-only: this packet does not extend Lean and does not add new positive or negative claims. The Track A formal chain itself is recorded in the three controlling claim IDs RA-MOTIF-CERT-RESILIENCE-CONSOL-001, RA-MOTIF-CERT-CORRELATION-BRIDGE-001, RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001 (each lake-build-confirmed). The orientation-specific rescue exclusion (RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001) and the v1.5..v1.8.1 retraction (RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) remain in force. Full audit history: audit_events.csv EV-2026-05-06-013.'
+  next_tasks:
+  - Recommended: stop formal expansion here and write the RA actualization-resilience technical paper section. Track A.2 (cohort-specific monotonicity formalization for at_least_k / augmented_exact_k vs exact_k) is justified only if a specific paper section needs the sharper statement.
+  - Refresh this synthesis packet whenever a new Track A module is added or a new audit event materially changes the simulator-to-Lean correspondence; do not rewrite from scratch.
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: RA_TrackA_CertificationResilience_FormalChain.md ; RA_TrackA_FormalChain_Map.csv ; RA_TrackA_SimulatorToLean_Correspondence.md ; RA_TrackA_OpenFormalGaps.md
+  packet_origin: RA_TrackA_CertificationResilience_FormalChain_May06_2026
