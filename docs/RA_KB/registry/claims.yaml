@@ -6238,3 +6238,56 @@ claims:
   claim_kind: derived_result
   formal_anchor: ra_joint_width_family_confound.py ; ra_v1_8_1_estimability_by_stratum.csv ; ra_v1_8_1_orientation_gap_decomposition.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_May06_2026
+
+- id: RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+  name: Track A Lean consolidation - strict-parent rescue and family-internal resilience separated structurally for both DAG and Graph layers
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Track A Lean consolidation introduces DAGStrictParentRescueAt /
+    GraphStrictParentRescueAt (parent support cut not ready while some
+    independently certified family member remains ready) and
+    DAGFamilyInternalResilienceAt / GraphFamilyInternalResilienceAt
+    (some independently certified family member is ready, regardless of
+    parent failure). Provides refinement theorems
+    .to_family_internal_resilience, .parent_not_ready,
+    .to_certified_family_ready, .to_family_ready (strict-parent
+    rescue → family readiness chain) and .future_mono on family-
+    internal resilience along DAG precedence / Graph reachability.
+    Encodes the v0.7.2 metric-repair distinction between strict_rescue
+    and family_internal_resilience (RA-SIM-SUPPORT-FAMILY-METRIC-001)
+    as a Type-valued formal surface, without asserting probability laws,
+    loss-rate formulas, or correlation laws.
+  nature_targets:
+  - RA-native actualization-resilience formal surface
+  - structural separation of strict rescue and family-internal resilience
+  ra_observable: null
+  sources:
+  - RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026
+  - RA_MotifCertificationResilienceConsolidation.lean
+  proof_dependencies:
+  - RA-MOTIF-SUPPORT-FAMILY-001
+  - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+  - RA-MOTIF-CERT-FAMILY-001
+  - RA-SIM-SUPPORT-FAMILY-METRIC-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Lake-build-confirmed: lake build RA_MotifCertificationResilienceConsolidation closed 8275/8275 jobs (~81s) on 2026-05-06; lexical check finds no sorry, admit, or axiom. The packet was installed against the existing RA_MotifCertifiedSupportFamilyBridge upstream (2026-05-05 namespace fix in RA_D1_NativeKernel = D1Native is propagated correctly). Module is structural only: it formalizes the workbench distinction between strict rescue and family-internal resilience without asserting any numerical or probabilistic content. Track A consolidation deliberately excludes the unsupported orientation-specific rescue branch (closed by v1.5..v1.8.1; see RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001 and RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001). Full audit history: audit_events.csv EV-2026-05-06-010.'
+  next_tasks:
+  - 'Track A: extend to a Type-valued statement of the v0.8.1 certificate-correlation decay (rescue rate monotone non-increasing in correlation parameter, reaching zero at correlation=1.0).'
+  - 'Track A: extend to a qualitative bridge from v1.0 native-overlap component context to the v0.8.1 / v0.9 certificate-correlation surface.'
+  source_status:
+    RA_MotifCertificationResilienceConsolidation.lean: lean_build_confirmed_no_sorry_no_admit_no_axiom
+  legacy_proof_status: DR
+  proof_status: lean_verified_or_compiled_native
+  legacy_support_status: none
+  auxiliary_support_status: formal_consolidation_scaffold
+  claim_kind: formalized_result
+  formal_anchor: DAGStrictParentRescueAt ; DAGFamilyInternalResilienceAt ; GraphStrictParentRescueAt ; GraphFamilyInternalResilienceAt ; DAGStrictParentRescueAt.to_family_internal_resilience ; DAGStrictParentRescueAt.parent_not_ready ; DAGStrictParentRescueAt.to_certified_family_ready ; DAGStrictParentRescueAt.to_family_ready ; DAGFamilyInternalResilienceAt.to_certified_family_ready ; DAGFamilyInternalResilienceAt.future_mono
+  packet_origin: RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026

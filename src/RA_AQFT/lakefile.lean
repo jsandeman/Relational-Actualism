@@ -129,6 +129,11 @@ lean_lib «RelationalActualism» where
                                 -- contexts; IndependentCertifiedFamilyReadyAt
                                 -- + .of_member + .to_certified_family_ready
                                 -- + .mono_certificates + .future_mono.
+    `RA_MotifCertificationResilienceConsolidation, -- (May 6 2026) Track A
+                                -- consolidation: StrictParentRescueAt +
+                                -- FamilyInternalResilienceAt for DAG and
+                                -- Graph layers; refinement theorems back to
+                                -- certified-family readiness; future_mono.
     `RA_MotifNativeCertificateOverlapBridge, -- (May 5 2026) native-overlap
                                 -- bridge: Type-valued witness data,
                                 -- overlaps relation, NativelyWitnessed

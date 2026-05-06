@@ -1,0 +1,40 @@
+registry_version: v0.5
+claims:
+  - id: RA-MOTIF-CERT-RESILIENCE-CONSOL-001
+    name: Strict-parent rescue and family-internal resilience can be separated structurally
+    domain: complexity
+    papers: [II]
+    statement: >
+      Track A formal consolidation separates strict-parent rescue, where a
+      parent support cut is not ready while some independently certified family
+      member remains ready, from family-internal resilience, where some
+      independently certified family member is ready regardless of parent failure.
+    nature_targets:
+      - RA-native actualization resilience semantics
+      - support-family and certification-family formal surfaces
+    ra_observable: null
+    sources:
+      - RA_MotifCertificationResilienceConsolidation.lean
+      - RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026.md
+    proof_dependencies:
+      - RA-MOTIF-SUPPORT-FAMILY-001
+      - RA-MOTIF-SUPPORT-FAMILY-MONO-001
+      - RA-MOTIF-CERT-FAMILY-001
+      - RA-SIM-SUPPORT-FAMILY-METRIC-001
+      - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+    restoration_preconditions: []
+    caveats: >
+      Source-level pending local compile until checked in the active RA Lean
+      environment. The module deliberately excludes the unsupported orientation-specific
+      rescue branch.
+    next_tasks:
+      - Compile RA_MotifCertificationResilienceConsolidation.lean locally.
+    source_status:
+      RA_MotifCertificationResilienceConsolidation.lean: source_level_pending_local_compile_no_sorry_no_admit_no_axiom
+    legacy_proof_status: DR
+    proof_status: source_level_formal_bridge_pending_compile
+    legacy_support_status: none
+    auxiliary_support_status: formal_consolidation_scaffold
+    claim_kind: formalized_result
+    formal_anchor: DAGStrictParentRescueAt ; DAGFamilyInternalResilienceAt ; GraphStrictParentRescueAt ; GraphFamilyInternalResilienceAt
+    packet_origin: RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026

@@ -1514,3 +1514,45 @@ framing_policies:
   auxiliary_support_status: methodological_guardrail_recorded
   formal_anchor: RA_MotifActualizationResilience_TechnicalNote_May06_2026.md
   packet_origin: RA_MotifActualizationResilience_TechnicalSynthesis_May06_2026
+
+- id: RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
+  name: Track A consolidation excludes unsupported orientation-specific rescue
+  domain: framing
+  papers:
+  - II
+  statement: >
+    Track A formal consolidation should encode only the robust support-
+    family and certification-family resilience line. Orientation-
+    specific rescue is excluded unless a future native per-graph
+    witness extractor satisfies the six requirements in
+    docs/.../v1_9_*/outputs/ra_open_native_witness_requirements_v1_9.md
+    (truly native witness extractor; within-stratum variation;
+    shuffled control; partial-correlation control; canonical scale;
+    member_idx fix re-applied) and passes fixed-bin / shuffled-control
+    / joint-confound audits per RA-SIM-CONFOUND-METHOD-001 rules a-f.
+    Until then, Track A modules must NOT introduce orientation-specific
+    formal surfaces, lemmas, or refinement theorems beyond the existing
+    v1.0/v1.2/v1.3/v1.4/v1.5 qualitative bridges.
+  nature_targets:
+  - methodological discipline for Track A formal consolidation
+  ra_observable: null
+  sources:
+  - RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026
+  - trackA_to_v1_9_synthesis_bridge.md
+  proof_dependencies: []
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-MOTIF-ACTUALIZATION-RESILIENCE-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Methodological guardrail. Future Track A extensions (e.g. correlation-decay Type-valued statement; qualitative bridge from v1.0 component context to certificate-correlation surface) must respect this exclusion until the native witness gate is satisfied. Full audit history: audit_events.csv EV-2026-05-06-010.'
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: methodological_guardrail
+  auxiliary_support_status: methodological_guardrail_recorded
+  formal_anchor: trackA_to_v1_9_synthesis_bridge.md ; RA_MotifCertificationResilienceConsolidation.lean
+  packet_origin: RA_MotifCertificationResilienceConsolidation_TrackA_May06_2026
