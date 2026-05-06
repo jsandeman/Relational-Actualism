@@ -1,0 +1,29 @@
+registry_version: v0.5-proposal
+framing_policies:
+- id: RA-SIM-ORIENT-CONFOUND-JOINT-METHOD-001
+  name: Do not promote orientation-overlap rescue gaps without joint width-family
+    matching
+  domain: framing
+  papers:
+  - II
+  statement: Orientation-overlap rescue gaps must be interpreted only after support_width
+    and family_size confounds are controlled or declared non-estimable. Raw and width-only
+    gaps are preliminary when family_size remains associated with orientation-bin
+    assignment.
+  nature_targets:
+  - RA-native modeling discipline for orientation-overlap diagnostics
+  ra_observable: null
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_Report_May06_2026.md
+  proof_dependencies: []
+  framing_links:
+  - RA-SIM-ORIENT-CONFOUND-JOINT-001
+  restoration_preconditions: []
+  caveats: This is a modeling guardrail, not a Nature-facing claim.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: "v1.8.1 joint support_width \xD7 family_size matching discipline"
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_May06_2026

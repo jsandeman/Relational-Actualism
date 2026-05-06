@@ -1,0 +1,2 @@
+version,input_rows,keying_count,width_classes,family_size_classes,selector_guardrail_passed,raw_gap_rows,width_matched_gap_rows,joint_matched_gap_rows,graph_vs_shuffled_joint_rows,estimable_joint_group_fraction_graph,mean_abs_raw_gap_graph,mean_abs_width_gap_graph,mean_abs_joint_gap_graph,mean_abs_graph_minus_shuffled_joint_gap,mean_joint_gap_reduction_from_raw_graph,v1_8_1_posture
+v1.8.1,1166400,6,1;2;3;4,1;3;4;5;7;11;15,True,324,324,324,216,0.0,0.1242669478059048,,,,,joint_width_family_matching_not_estimable_redesign_sampler_needed

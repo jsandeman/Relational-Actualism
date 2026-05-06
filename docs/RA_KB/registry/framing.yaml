@@ -1362,7 +1362,15 @@ framing_policies:
     values within stratum); (d) treat keyings with low estimability under
     joint stratification as candidates whose orientation surface is
     structurally entangled with the stratification variables and therefore
-    cannot independently support an orientation-specific inference.
+    cannot independently support an orientation-specific inference; (e)
+    prefer CELL-level tertile binning (per (keying, mode, family_semantics,
+    severity, threshold_fraction)) followed by within-(width, family_size)
+    estimability checks, rather than re-tertile-binning within each
+    structural stratum -- cell-level binning is the more conservative
+    methodology and does not manufacture in-stratum orientation variation
+    where the natural surface is structurally co-determined with the
+    stratification axes (see RA-SIM-CONFOUND-V18-1-PACKET-001 vs
+    RA-SIM-CONFOUND-V18-1-001 for the methodological comparison).
   nature_targets:
   - methodological standard for orientation-overlap rescue audits
   ra_observable: null

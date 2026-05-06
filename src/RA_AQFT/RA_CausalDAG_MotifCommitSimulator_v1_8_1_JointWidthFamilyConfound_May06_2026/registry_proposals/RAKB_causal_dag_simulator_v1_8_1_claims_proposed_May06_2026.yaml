@@ -1,0 +1,67 @@
+registry_version: v0.5-proposal
+claims:
+- id: RA-SIM-ORIENT-CONFOUND-JOINT-001
+  name: Joint width-family matching is required before promoting residual orientation-overlap
+    gaps
+  domain: complexity
+  papers:
+  - II
+  statement: "The v1.8.1 audit operationalizes joint support_width \xD7 family_size\
+    \ matching as the required next control for residual orientation-overlap rescue\
+    \ gaps identified by v1.8."
+  nature_targets:
+  - RA-native orientation-overlap diagnostics
+  - support-family confound control
+  ra_observable: null
+  sources:
+  - ra_joint_width_family_confound.py
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_Report_May06_2026.md
+  proof_dependencies:
+  - RA-SIM-ORIENT-CONFOUND-001
+  - RA-SIM-ORIENT-KEYING-002
+  restoration_preconditions: []
+  caveats: Analysis-only proposal pending canonical v1.7 output run. It does not itself
+    establish a positive or negative orientation-specificity claim.
+  next_tasks:
+  - Run v1.8.1 on canonical v1.7 outputs and classify the residual graph-derived gap.
+  source_status:
+    ra_joint_width_family_confound.py: python_tests_pass_packet_local
+  legacy_proof_status: DR
+  proof_status: analysis_packet_local_validated_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_packet_local
+  claim_kind: derived_result
+  formal_anchor: ra_joint_width_family_confound.run_analysis
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_May06_2026
+- id: RA-SIM-ORIENT-CONFOUND-JOINT-002
+  name: Joint matching has an explicit non-estimability branch
+  domain: complexity
+  papers:
+  - II
+  statement: "The v1.8.1 audit distinguishes a genuine joint-matched orientation gap\
+    \ from non-estimability caused by insufficient low/high orientation-bin support\
+    \ within support_width \xD7 family_size strata."
+  nature_targets:
+  - RA-native orientation-overlap diagnostics
+  - matched-strata estimability
+  ra_observable: null
+  sources:
+  - ra_v1_8_1_estimability_by_stratum.csv
+  - ra_v1_8_1_joint_confound_summary.md
+  proof_dependencies:
+  - RA-SIM-ORIENT-CONFOUND-JOINT-001
+  restoration_preconditions: []
+  caveats: Packet-local subset is non-estimable for graph keyings; canonical status
+    depends on the user-run v1.7 canonical outputs.
+  next_tasks:
+  - If canonical analysis is non-estimable, design a matched sampler with adequate
+    low/high orientation-bin support inside joint strata.
+  source_status:
+    ra_joint_width_family_confound.py: python_tests_pass_packet_local
+  legacy_proof_status: DR
+  proof_status: analysis_packet_local_validated_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: simulation_analysis_packet_local
+  claim_kind: derived_result
+  formal_anchor: ra_v1_8_1_estimability_by_stratum.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_May06_2026

@@ -6165,3 +6165,76 @@ claims:
   claim_kind: derived_result
   formal_anchor: ra_v1_8_1_estimability_by_stratum.csv
   packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_SupportWidthFamilyStructureConfound_May06_2026
+
+- id: RA-SIM-CONFOUND-V18-1-PACKET-001
+  name: At cell-level tertile binning, orientation_overlap is nearly a deterministic function of (support_width x family_size); joint matching is not estimable at this scale (Case C, sharper reading of the binning-artifact verdict)
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Independent v1.8.1 packet audit on the v1.7 1.17M-row keyed trial rows
+    using a stricter binning convention: tertile orientation_overlap at the
+    cell level (keying, mode, family_semantics, severity, threshold_fraction)
+    rather than within each (support_width x family_size) stratum. Headline:
+    estimable_joint_group_fraction_graph = 0.0 - no graph keying cell x
+    (support_width x family_size) stratum contains both low and high
+    orientation tertile bins. The estimability table shows the structural
+    pattern directly: (support_width=1, family_size=1) buckets contain only
+    low + medium bins; (support_width=2, family_size=3) only high + medium;
+    (support_width=3, family_size=4 or 7) high or high+medium; (support_
+    width=4, family_size=11 or 15) only high. Each (width, family_size)
+    bucket produces a narrow range of orientation_overlap values that lands
+    in one or two adjacent tertile bins, never spanning low and high. This
+    is a sharper reading than RA-SIM-CONFOUND-V18-1-001's Case A: instead
+    of "the gap collapses to ~0 within strata" (which required re-tertile
+    within stratum), the cell-level reading is "the gap is non-estimable
+    because orientation_overlap and (width, family_size) are nearly
+    co-determined at this scale". Both readings converge on no orientation-
+    specific signal under matched-graph extraction; this packet's reading
+    is the more methodologically conservative formulation.
+  nature_targets:
+  - sharper structural diagnosis of the v1.7 orientation-overlap rescue gap
+  - methodological discipline: prefer cell-level orientation tertiles over within-stratum re-binning when auditing for residual signal
+  ra_observable: estimable_joint_group_fraction
+  sources:
+  - RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_May06_2026
+  - ra_joint_width_family_confound.py
+  - ra_v1_8_1_estimability_by_stratum.csv
+  - ra_v1_8_1_orientation_gap_decomposition.csv
+  - ra_v1_8_1_joint_confound_summary.md
+  proof_dependencies:
+  - RA-SIM-ORIENT-KEYING-001
+  - RA-SIM-ORIENT-KEYING-002
+  - RA-SIM-CONFOUND-V18-1-001
+  - RA-SIM-CONFOUND-V18-1-002
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
+  - RA-SIM-ORIENT-KEYING-METHOD-001
+  - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  restoration_preconditions: []
+  caveats: >
+    Confirmed by canonical run on the v1.7 1.17M-row keyed trial rows
+    (input_rows=1166400, keying_count=6, width_classes=1;2;3;4, family_size_
+    classes=1;3;4;5;7;11;15, raw_gap_rows=324, joint_matched_gap_rows=324,
+    estimable_joint_group_fraction_graph=0.0). selector_guardrail_passed=true.
+    v1_8_1_posture: joint_width_family_matching_not_estimable_redesign_
+    sampler_needed. Complementary to RA-SIM-CONFOUND-V18-1-001 (within-
+    stratum re-binning, Case A). Both confirm no orientation-specific
+    signal but at different rigor levels: RA-SIM-CONFOUND-V18-1-PACKET-001
+    is the stricter / more honest reading. Future orientation-overlap
+    audits should adopt cell-level tertiles per RA-SIM-CONFOUND-METHOD-001.
+    Full audit history: audit_events.csv EV-2026-05-06-007.
+  next_tasks:
+  - Cite RA-SIM-CONFOUND-V18-1-PACKET-001 alongside RA-SIM-CONFOUND-V18-1-001 / -002 when discussing the v1.7 binning-artifact verdict; prefer this entry's framing for new audits.
+  source_status:
+    ra_joint_width_family_confound.py: simulation_validated_canonical_run_confirmed
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_joint_width_family_confound.py ; ra_v1_8_1_estimability_by_stratum.csv ; ra_v1_8_1_orientation_gap_decomposition.csv
+  packet_origin: RA_CausalDAG_MotifCommitSimulator_v1_8_1_JointWidthFamilyConfound_May06_2026

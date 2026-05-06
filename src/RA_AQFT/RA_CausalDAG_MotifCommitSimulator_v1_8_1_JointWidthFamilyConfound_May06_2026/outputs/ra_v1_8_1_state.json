@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "version": "v1.8.1",
+    "input_rows": 1166400,
+    "keying_count": 6,
+    "width_classes": "1;2;3;4",
+    "family_size_classes": "1;3;4;5;7;11;15",
+    "selector_guardrail_passed": true,
+    "raw_gap_rows": 324,
+    "width_matched_gap_rows": 324,
+    "joint_matched_gap_rows": 324,
+    "graph_vs_shuffled_joint_rows": 216,
+    "estimable_joint_group_fraction_graph": 0.0,
+    "mean_abs_raw_gap_graph": 0.1242669478059048,
+    "mean_abs_width_gap_graph": NaN,
+    "mean_abs_joint_gap_graph": NaN,
+    "mean_abs_graph_minus_shuffled_joint_gap": NaN,
+    "mean_joint_gap_reduction_from_raw_graph": NaN,
+    "v1_8_1_posture": "joint_width_family_matching_not_estimable_redesign_sampler_needed"
+  }
+}

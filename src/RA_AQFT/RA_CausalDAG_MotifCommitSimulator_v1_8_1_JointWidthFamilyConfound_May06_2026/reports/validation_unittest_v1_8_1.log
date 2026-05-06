@@ -1,0 +1,9 @@
+test_insufficient_joint_strata_status (test_v1_8_1_joint_width_family_confound.JointWidthFamilyConfoundTests.test_insufficient_joint_strata_status) ... ok
+test_joint_matching_detects_graph_vs_shuffled_difference (test_v1_8_1_joint_width_family_confound.JointWidthFamilyConfoundTests.test_joint_matching_detects_graph_vs_shuffled_difference) ... ok
+test_load_assigns_bins (test_v1_8_1_joint_width_family_confound.JointWidthFamilyConfoundTests.test_load_assigns_bins) ... ok
+test_outputs_exist (test_v1_8_1_joint_width_family_confound.JointWidthFamilyConfoundTests.test_outputs_exist) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.501s
+
+OK

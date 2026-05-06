@@ -1,0 +1,5 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-ORIENT-CONFOUND-JOINT-001,RA-SIM-ORIENT-CONFOUND-001,proof_dependency,claim,claim,Joint width-family matching is required before promoting residual orientation-overlap gaps,v1.8 support-width confound audit
+RA-SIM-ORIENT-CONFOUND-JOINT-001,RA-SIM-ORIENT-KEYING-002,proof_dependency,claim,claim,Joint width-family matching is required before promoting residual orientation-overlap gaps,v1.7 keying/binning interpretation
+RA-SIM-ORIENT-CONFOUND-JOINT-002,RA-SIM-ORIENT-CONFOUND-JOINT-001,proof_dependency,claim,claim,Joint matching has an explicit non-estimability branch,Joint width-family matching is required before promoting residual orientation-overlap gaps
+RA-SIM-ORIENT-CONFOUND-JOINT-METHOD-001,RA-SIM-ORIENT-CONFOUND-JOINT-001,interpretive_dependency,framing,claim,Do not promote orientation-overlap rescue gaps without joint width-family matching,Joint width-family matching is required before promoting residual orientation-overlap gaps
