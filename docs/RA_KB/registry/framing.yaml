@@ -834,7 +834,18 @@ framing_policies:
   - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
   - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
   restoration_preconditions: []
-  caveats: 'Component attribution is proxy-level until native surfaces are formally derived or independently generated. Treat the v1.1 verdict (ledger resolved with weak specificity within a certification-exposure bundle, orientation confounded with support/frontier) as a faithful diagnostic, not a defect - it is the audit functioning as designed. Do not state orientation-specific native-overlap claims in any v1.x or BDG-LLC layer until the simulator or formal layer derives a distinct orientation-link surface from orientation-link / sign-source data, not from support/frontier membership proxy. Consider whether the certification-exposure bundle (ledger / causal_past / bdg_kernel-proxy / firewall-exposure) should be treated as a single composite surface rather than as four pseudo-independent components, since v1.1 shows them tightly coupled in the canonical run.'
+  caveats: >
+    Component attribution is proxy-level until native surfaces are
+    formally derived or independently generated. Treat the v1.1 verdict
+    (ledger resolved with weak specificity within a certification-exposure
+    bundle; orientation confounded with support/frontier) as a faithful
+    diagnostic, not a defect -- it is the audit functioning as designed.
+    Do not state orientation-specific native-overlap claims until the
+    simulator or formal layer derives a distinct orientation-link surface
+    from sign-source data, not from support/frontier membership proxy.
+    Consider whether the certification-exposure bundle (ledger /
+    causal_past / bdg_kernel / firewall) should be treated as a single
+    composite surface rather than four pseudo-independent components.
   next_tasks: []
   legacy_proof_status: DR
   legacy_support_status: none
@@ -1061,7 +1072,20 @@ framing_policies:
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   restoration_preconditions: []
-  caveats: 'Reference-corpus extraction is a real advance over v1.4 (per-member token-based extraction from simulator state) on the audit-machinery side - the v1.1 audit infrastructure runs end-to-end on topology-derived data and returns the expected structural-control verdicts. But v1.5 has a rescue/topology disconnection: rescue rates come from v0.9 simulator runs, orientation overlaps come from independent corpus graphs, and the deterministic-hash mapping between cells and graphs means cross-correlations could be sampling artifacts. Apparent family-semantics asymmetry preservation (augmented_exact_k specific in v1.5 specificity audit) and the inverted ordering in the v1.5 partial correlation (at_least_k stronger post-control) are both consistent with hash-sampling artifacts and do not constitute independent confirmation of the v0.9.2 family-semantics finding. Operational extraction and topology-derived identifiability diagnostics are NOT Nature-facing predictions. Do not promote any orientation-specific Nature claim - or any "v1.5 cross-validates v0.9.2" claim - until v1.6+ ties orientation extraction to the SAME graph instances that produced the rescue rates.'
+  caveats: >
+    Reference-corpus extraction is a real advance over v1.4 on the
+    audit-machinery side -- v1.1 audit infrastructure runs end-to-end on
+    topology-derived data. But v1.5 has a rescue/topology disconnection
+    (rescue from v0.9 simulator runs, orientation from independent corpus
+    graphs via deterministic-hash mapping), so cross-correlations could be
+    sampling artifacts. The v1.5 family-semantics asymmetry and inverted
+    partial-correlation ordering are consistent with hash-sampling
+    artifacts and are NOT independent confirmation of v0.9.2. v1.6+ ties
+    orientation extraction to the SAME graph instances that produced the
+    rescue rates; v1.7 + v1.8.1 confirm v1.5's +0.028 specificity does not
+    survive joint stratification (binning artifact). Do not promote
+    orientation-specific Nature claims or any 'v1.5 cross-validates
+    v0.9.2' claim.
   next_tasks:
   - Build v1.6 extractor that consumes v0.9 simulator's actual ActualizationDAG instances and verify the v1.5 specificity verdict persists.
   legacy_proof_status: DR
@@ -1169,7 +1193,21 @@ framing_policies:
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'v1.6 (POST BUG FIX 2026-05-05) is the first packet in the orientation-link program where rescue and orientation_overlap are measured on matched DAG instances - this is the methodological achievement. The empirical finding at v1.6 sample size (n=80 per cell, |r|<0.15 partial correlations) is BELOW THE NOISE FLOOR. Both the original v1.6 "specificity reversal" conclusion (driven by support_width confound) and the v1.5 "specificity +0.028" conclusion (driven by the keying bug + hash-keyed mapping) are now retracted. (a) Do NOT cite v1.6 specificity reversal as topology-causal anti-specificity - it reflects support_width confound, not orientation channel signal. (b) Do NOT cite v1.5 specificity gap as topology-causal evidence - the witness-keying bug forced intra-family Jaccard to 0 in most cells regardless of actual edge sharing. (c) Use the partial-correlation audit (with support+frontier OLS controls) as the primary instrument for matched-graph orientation-rescue claims; specificity-by-quantile is unreliable when cell structure correlates with rescue. The v0.9.2 family-semantics asymmetry remains a v0.9-internal finding; it has NOT been independently confirmed by v1.x.'
+  caveats: >
+    v1.6 is the first packet in the orientation-link program where rescue
+    and orientation_overlap are measured on matched DAG instances -- the
+    methodological achievement. v1.6's empirical reading was later updated
+    by v1.7 + v1.8.1: do NOT cite v1.6 specificity reversal as
+    topology-causal anti-specificity (joint width x family-size matching
+    collapses the gap to |0.003|; v1.8.1 confirms binning artifact), and
+    do NOT cite v1.5 +0.028 as topology-causal evidence (also collapses
+    under joint matching; original concern was the member_idx
+    witness-keying bug + rescue/topology disconnection). Use
+    partial-correlation with shuffled-control AND joint stratification as
+    the primary instrument for any matched-graph orientation-rescue claim
+    (see RA-SIM-CONFOUND-METHOD-001). The v0.9.2 family-semantics
+    asymmetry remains a v0.9-internal finding, NOT cross-validated by
+    v1.x.
   next_tasks:
   - Re-audit v1.5 with the corrected witness keying (the bug exists in v1.5 source); decide whether v1.5 specificity claim should be retracted at the v1.5 entry level too.
   - v1.7 must scale matched extraction to n>200 per cell to resolve the |r|<0.15 noise floor v1.6 cannot distinguish from zero.

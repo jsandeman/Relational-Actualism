@@ -119,6 +119,33 @@ for e in claim_artifact_edges:
     if e["artifact_id"] not in artifact_ids:
         fail(f"claim_artifact edge references missing artifact: {e['artifact_id']}")
 
+# audit_events.csv referential-integrity check (added by comprehensive
+# migration to support trimmed caveats that point at structured event
+# rows instead of inlining audit prose).
+audit_events_path = Path("registry/audit_events.csv")
+audit_events = load_csv(audit_events_path) if audit_events_path.exists() else []
+audit_event_ids = set()
+for e in audit_events:
+    eid = e.get("event_id", "")
+    if not eid:
+        warn("audit_events row missing event_id")
+        continue
+    if eid in audit_event_ids:
+        fail(f"duplicate event_id in registry/audit_events.csv: {eid}")
+    audit_event_ids.add(eid)
+    # claim_ids: ;-joined; each must exist in typed node sets
+    claim_ids_field = (e.get("claim_ids") or "").strip()
+    if claim_ids_field:
+        for cid in [s.strip() for s in claim_ids_field.split(";") if s.strip()]:
+            if cid not in all_ids:
+                warn(f"audit_events {eid}: claim_id {cid!r} not in typed node sets")
+    # evidence_artifact_ids: ;-joined; each must exist in artifacts.csv
+    evidence_field = (e.get("evidence_artifact_ids") or "").strip()
+    if evidence_field:
+        for aid in [s.strip() for s in evidence_field.split(";") if s.strip()]:
+            if aid not in artifact_ids:
+                warn(f"audit_events {eid}: evidence_artifact_id {aid!r} not in artifacts.csv")
+
 print("RAKB v0.5 structural validation passed.")
 print(f"claims={len(claims)} issues={len(issues)} targets={len(targets)} framing={len(framing)} archived={len(archived)}")
-print(f"claim_edges={len(claim_edges)} all_dependency_edges={len(edges)} artifacts={len(artifacts)} claim_artifact_edges={len(claim_artifact_edges)}")
+print(f"claim_edges={len(claim_edges)} all_dependency_edges={len(edges)} artifacts={len(artifacts)} claim_artifact_edges={len(claim_artifact_edges)} audit_events={len(audit_events)}")

@@ -61,8 +61,28 @@ The RAKB is the source of truth that ties Lean files, Python scripts, and TeX se
 - `all_dependency_edges.csv` — full edge set incl. issue/target edges
 - `source_text_references.csv` — TeX section ↔ claim mapping (drives `% RAKB:` regeneration)
 - `restoration_candidates.csv` — content not yet promoted to active claims
+- `audit_events.csv` — append-only chronological log of audits, retractions, supersessions, regressions, etc. (added 2026-05-06; see "Audit-events architecture" below)
 
 The `*.bak_YYYYMMDD_HHMMSS` files in `registry/` are upsert-script backups, not active state. `archive/` holds prior monolithic registries (legacy `RA_results_master_v0_*.yaml`).
+
+### Audit-events architecture (added 2026-05-06)
+
+Long claim caveats slow every editing cycle: each new audit means re-reading and rewriting a multi-K-character YAML blob just to add one paragraph at the bottom. The `audit_events.csv` append-only event log fixes this. Each row is one structured event with fields:
+
+```
+event_id, date, claim_ids, kind, summary, body, evidence_artifact_ids, source_commit
+```
+
+- `event_id` is `EV-YYYY-MM-DD-NNN` (zero-padded order within the day).
+- `claim_ids` and `evidence_artifact_ids` are `;`-joined lists of registry IDs.
+- `kind` is one of: `original_release`, `status_change`, `retraction`, `supersession`, `corrigendum`, `keying_taint`, `witness_keying_bug`, `regression`, `sample_size_caveat`, `canonical_run`, `canonical_resolution`, `canonical_retraction`. (Add new kinds as needed; the validator does not enforce a whitelist.)
+- `source_commit` is the short or full git SHA when known.
+
+When a claim accumulates audit history, factor each event into its own `audit_events.csv` row and trim the claim's `caveats:` to a current-state summary (≤ ~600 chars) plus a single line `Full audit history: audit_events.csv EV-YYYY-MM-DD-NNN, ...`. New audits then add one row to `audit_events.csv` (~200 chars) instead of rewriting the entire caveat.
+
+`scripts/migrate_caveats_to_audit_events.py` is a helper that takes a JSON `{entity_id: new_caveat}` map and rewrites the corresponding `caveats:` block in `claims.yaml`, `framing.yaml`, or `issues.yaml` in place, preserving the `>` block-scalar form.
+
+`validate_rakb_v0_5.py` checks `audit_events.csv` referential integrity: every `claim_id` must exist in the typed node sets, every `evidence_artifact_id` must exist in `artifacts.csv`. Duplicate `event_id`s fail; missing references warn.
 
 ### Epistemic status taxonomy (from `RAKB_New_Session_Prompt`)
 When classifying a result, use these tags — they encode how strongly Nature backs the claim:

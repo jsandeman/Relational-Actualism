@@ -2370,10 +2370,18 @@ claims:
   - RA-SIM-MOTIF-SEVERANCE-001
   - RA-SIM-MOTIF-ENSEMBLE-001
   restoration_preconditions: []
-  caveats: Reconfirmed by assistant-side rerun against the committed canonical 100-seed v0.5.1 outputs (seeds 17-117, 32 steps, 4 workers, 120000 evaluations). Saturating-loss modes (edge_dropout, frontier_dropout,
-    ledger_failure, orientation_degradation) and the strict-channel (selector_stress) and graded-delay (support_delay) classifications all reproduce on the larger run; separability scores TIGHTEN (e.g.
-    edge_dropout vs frontier-cluster Euclidean distance grows from 3.14 -> 6.31; cosine drops from 0.78 -> 0.52). The frontier_dropout / ledger_failure / orientation_degradation trio remains nearly_degenerate
-    (cosine=1, distance=0) which is a structural finding, not a sampling artifact. Only support_width=1 appears in the ensemble so width-stratified fragility is still ungeneralizable (RA-SIM-SEVERANCE-SIGNATURE-005).
+  caveats: >
+    Canonical 100-seed v0.5.1 reconfirmation (seeds 17-117, 32 steps, 4
+    workers, 120,000 evaluations). Saturating-loss modes (edge_dropout,
+    frontier_dropout, ledger_failure, orientation_degradation),
+    strict-channel (selector_stress), and graded-delay (support_delay)
+    classifications all reproduce; separability tightens (e.g.
+    edge_dropout vs frontier-cluster Euclidean distance 3.14 -> 6.31;
+    cosine 0.78 -> 0.52). frontier_dropout / ledger_failure /
+    orientation_degradation trio remains nearly_degenerate (cosine=1,
+    distance=0) -- structural, not sampling artifact. Only support_width=1
+    in the ensemble, so width-stratified fragility is still
+    ungeneralizable (see RA-SIM-SEVERANCE-SIGNATURE-005).
   next_tasks:
   - Rerun v0.5.2 analyzer on committed 100-seed outputs and compare signatures with packet-local demo.
   source_status: &id001
@@ -2410,10 +2418,18 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-001
   - RA-SIM-MOTIF-SEVERANCE-002
   restoration_preconditions: []
-  caveats: Reconfirmed by assistant-side rerun against the committed canonical 100-seed v0.5.1 outputs (seeds 17-117, 32 steps, 4 workers, 120000 evaluations). Saturating-loss modes (edge_dropout, frontier_dropout,
-    ledger_failure, orientation_degradation) and the strict-channel (selector_stress) and graded-delay (support_delay) classifications all reproduce on the larger run; separability scores TIGHTEN (e.g.
-    edge_dropout vs frontier-cluster Euclidean distance grows from 3.14 -> 6.31; cosine drops from 0.78 -> 0.52). The frontier_dropout / ledger_failure / orientation_degradation trio remains nearly_degenerate
-    (cosine=1, distance=0) which is a structural finding, not a sampling artifact. Only support_width=1 appears in the ensemble so width-stratified fragility is still ungeneralizable (RA-SIM-SEVERANCE-SIGNATURE-005).
+  caveats: >
+    Canonical 100-seed v0.5.1 reconfirmation (seeds 17-117, 32 steps, 4
+    workers, 120,000 evaluations). Saturating-loss modes (edge_dropout,
+    frontier_dropout, ledger_failure, orientation_degradation),
+    strict-channel (selector_stress), and graded-delay (support_delay)
+    classifications all reproduce; separability tightens (e.g.
+    edge_dropout vs frontier-cluster Euclidean distance 3.14 -> 6.31;
+    cosine 0.78 -> 0.52). frontier_dropout / ledger_failure /
+    orientation_degradation trio remains nearly_degenerate (cosine=1,
+    distance=0) -- structural, not sampling artifact. Only support_width=1
+    in the ensemble, so width-stratified fragility is still
+    ungeneralizable (see RA-SIM-SEVERANCE-SIGNATURE-005).
   next_tasks:
   - Confirm threshold-saturation scores on the committed 100-seed run.
   source_status: *id001
@@ -2448,10 +2464,18 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-001
   - RA-MOTIF-SEVERANCE-003
   restoration_preconditions: []
-  caveats: Reconfirmed by assistant-side rerun against the committed canonical 100-seed v0.5.1 outputs (seeds 17-117, 32 steps, 4 workers, 120000 evaluations). Saturating-loss modes (edge_dropout, frontier_dropout,
-    ledger_failure, orientation_degradation) and the strict-channel (selector_stress) and graded-delay (support_delay) classifications all reproduce on the larger run; separability scores TIGHTEN (e.g.
-    edge_dropout vs frontier-cluster Euclidean distance grows from 3.14 -> 6.31; cosine drops from 0.78 -> 0.52). The frontier_dropout / ledger_failure / orientation_degradation trio remains nearly_degenerate
-    (cosine=1, distance=0) which is a structural finding, not a sampling artifact. Only support_width=1 appears in the ensemble so width-stratified fragility is still ungeneralizable (RA-SIM-SEVERANCE-SIGNATURE-005).
+  caveats: >
+    Canonical 100-seed v0.5.1 reconfirmation (seeds 17-117, 32 steps, 4
+    workers, 120,000 evaluations). Saturating-loss modes (edge_dropout,
+    frontier_dropout, ledger_failure, orientation_degradation),
+    strict-channel (selector_stress), and graded-delay (support_delay)
+    classifications all reproduce; separability tightens (e.g.
+    edge_dropout vs frontier-cluster Euclidean distance 3.14 -> 6.31;
+    cosine 0.78 -> 0.52). frontier_dropout / ledger_failure /
+    orientation_degradation trio remains nearly_degenerate (cosine=1,
+    distance=0) -- structural, not sampling artifact. Only support_width=1
+    in the ensemble, so width-stratified fragility is still
+    ungeneralizable (see RA-SIM-SEVERANCE-SIGNATURE-005).
   next_tasks:
   - Check whether support-delay finality shifts remain monotone in the canonical 100-seed output.
   source_status: *id001
@@ -2486,10 +2510,18 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-001
   - RA-MOTIF-SELECTOR-003
   restoration_preconditions: []
-  caveats: Reconfirmed by assistant-side rerun against the committed canonical 100-seed v0.5.1 outputs (seeds 17-117, 32 steps, 4 workers, 120000 evaluations). Saturating-loss modes (edge_dropout, frontier_dropout,
-    ledger_failure, orientation_degradation) and the strict-channel (selector_stress) and graded-delay (support_delay) classifications all reproduce on the larger run; separability scores TIGHTEN (e.g.
-    edge_dropout vs frontier-cluster Euclidean distance grows from 3.14 -> 6.31; cosine drops from 0.78 -> 0.52). The frontier_dropout / ledger_failure / orientation_degradation trio remains nearly_degenerate
-    (cosine=1, distance=0) which is a structural finding, not a sampling artifact. Only support_width=1 appears in the ensemble so width-stratified fragility is still ungeneralizable (RA-SIM-SEVERANCE-SIGNATURE-005).
+  caveats: >
+    Canonical 100-seed v0.5.1 reconfirmation (seeds 17-117, 32 steps, 4
+    workers, 120,000 evaluations). Saturating-loss modes (edge_dropout,
+    frontier_dropout, ledger_failure, orientation_degradation),
+    strict-channel (selector_stress), and graded-delay (support_delay)
+    classifications all reproduce; separability tightens (e.g.
+    edge_dropout vs frontier-cluster Euclidean distance 3.14 -> 6.31;
+    cosine 0.78 -> 0.52). frontier_dropout / ledger_failure /
+    orientation_degradation trio remains nearly_degenerate (cosine=1,
+    distance=0) -- structural, not sampling artifact. Only support_width=1
+    in the ensemble, so width-stratified fragility is still
+    ungeneralizable (see RA-SIM-SEVERANCE-SIGNATURE-005).
   next_tasks:
   - Confirm selector-stress separability on the committed 100-seed output.
   source_status: *id001
@@ -2524,10 +2556,18 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-001
   - RA-SIM-MOTIF-SEVERANCE-005
   restoration_preconditions: []
-  caveats: Reconfirmed by assistant-side rerun against the committed canonical 100-seed v0.5.1 outputs (seeds 17-117, 32 steps, 4 workers, 120000 evaluations). Saturating-loss modes (edge_dropout, frontier_dropout,
-    ledger_failure, orientation_degradation) and the strict-channel (selector_stress) and graded-delay (support_delay) classifications all reproduce on the larger run; separability scores TIGHTEN (e.g.
-    edge_dropout vs frontier-cluster Euclidean distance grows from 3.14 -> 6.31; cosine drops from 0.78 -> 0.52). The frontier_dropout / ledger_failure / orientation_degradation trio remains nearly_degenerate
-    (cosine=1, distance=0) which is a structural finding, not a sampling artifact. Only support_width=1 appears in the ensemble so width-stratified fragility is still ungeneralizable (RA-SIM-SEVERANCE-SIGNATURE-005).
+  caveats: >
+    Canonical 100-seed v0.5.1 reconfirmation (seeds 17-117, 32 steps, 4
+    workers, 120,000 evaluations). Saturating-loss modes (edge_dropout,
+    frontier_dropout, ledger_failure, orientation_degradation),
+    strict-channel (selector_stress), and graded-delay (support_delay)
+    classifications all reproduce; separability tightens (e.g.
+    edge_dropout vs frontier-cluster Euclidean distance 3.14 -> 6.31;
+    cosine 0.78 -> 0.52). frontier_dropout / ledger_failure /
+    orientation_degradation trio remains nearly_degenerate (cosine=1,
+    distance=0) -- structural, not sampling artifact. Only support_width=1
+    in the ensemble, so width-stratified fragility is still
+    ungeneralizable.
   next_tasks:
   - Develop or run ensembles with broader support-frontier widths.
   source_status: *id001
@@ -2566,10 +2606,16 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-004
   - RA-SIM-MOTIF-SEVERANCE-002
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.6 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000): 72000 evaluations in 272s, support_width_classes=[1,2,3,4].
-    Channel separation confirmed at scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484; frontier_dropout vs orientation_degradation distance=1.726 cosine=0.484; ledger_failure vs orientation_degradation
-    distance=0.832 cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2). Width-stratified fragility curves emerge for edge_dropout (rises from 0.72 -> 0.97 as width 1->4 at severity 0.5) and support_delay
-    (recovery_length grows slightly with width).'
+  caveats: >
+    Canonical 100-seed v0.6 run: 72,000 evaluations in 272s;
+    support_width_classes=[1,2,3,4]. Channel separation confirmed at
+    scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484;
+    frontier_dropout vs orientation_degradation distance=1.726
+    cosine=0.484; ledger_failure vs orientation_degradation distance=0.832
+    cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2).
+    Width-stratified fragility curves emerge for edge_dropout (rises 0.72
+    -> 0.97 as width 1->4 at severity 0.5) and support_delay
+    (recovery_length grows slightly with width).
   next_tasks:
   - Run canonical v0.6 ensemble at 100 seeds × 32 steps and compare zero-distance pairs.
   source_status:
@@ -2608,10 +2654,16 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-005
   - RA-MOTIF-SEVERANCE-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.6 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000): 72000 evaluations in 272s, support_width_classes=[1,2,3,4].
-    Channel separation confirmed at scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484; frontier_dropout vs orientation_degradation distance=1.726 cosine=0.484; ledger_failure vs orientation_degradation
-    distance=0.832 cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2). Width-stratified fragility curves emerge for edge_dropout (rises from 0.72 -> 0.97 as width 1->4 at severity 0.5) and support_delay
-    (recovery_length grows slightly with width).'
+  caveats: >
+    Canonical 100-seed v0.6 run: 72,000 evaluations in 272s;
+    support_width_classes=[1,2,3,4]. Channel separation confirmed at
+    scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484;
+    frontier_dropout vs orientation_degradation distance=1.726
+    cosine=0.484; ledger_failure vs orientation_degradation distance=0.832
+    cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2).
+    Width-stratified fragility curves emerge for edge_dropout (rises 0.72
+    -> 0.97 as width 1->4 at severity 0.5) and support_delay
+    (recovery_length grows slightly with width).
   next_tasks:
   - Run canonical support-width ensemble and estimate loss curves by width and mode.
   source_status:
@@ -2650,10 +2702,16 @@ claims:
   - RA-SIM-MOTIF-SEVERANCE-003
   - RA-SIM-SEVERANCE-SIGNATURE-004
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.6 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000): 72000 evaluations in 272s, support_width_classes=[1,2,3,4].
-    Channel separation confirmed at scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484; frontier_dropout vs orientation_degradation distance=1.726 cosine=0.484; ledger_failure vs orientation_degradation
-    distance=0.832 cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2). Width-stratified fragility curves emerge for edge_dropout (rises from 0.72 -> 0.97 as width 1->4 at severity 0.5) and support_delay
-    (recovery_length grows slightly with width).'
+  caveats: >
+    Canonical 100-seed v0.6 run: 72,000 evaluations in 272s;
+    support_width_classes=[1,2,3,4]. Channel separation confirmed at
+    scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484;
+    frontier_dropout vs orientation_degradation distance=1.726
+    cosine=0.484; ledger_failure vs orientation_degradation distance=0.832
+    cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2).
+    Width-stratified fragility curves emerge for edge_dropout (rises 0.72
+    -> 0.97 as width 1->4 at severity 0.5) and support_delay
+    (recovery_length grows slightly with width).
   next_tasks:
   - Map channel diagnostics to any future Lean severance refinements.
   source_status:
@@ -2692,10 +2750,16 @@ claims:
   - RA-SIM-SEVERANCE-CHANNEL-002
   - RA-SIM-SEVERANCE-CHANNEL-003
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.6 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000): 72000 evaluations in 272s, support_width_classes=[1,2,3,4].
-    Channel separation confirmed at scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484; frontier_dropout vs orientation_degradation distance=1.726 cosine=0.484; ledger_failure vs orientation_degradation
-    distance=0.832 cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2). Width-stratified fragility curves emerge for edge_dropout (rises from 0.72 -> 0.97 as width 1->4 at severity 0.5) and support_delay
-    (recovery_length grows slightly with width).'
+  caveats: >
+    Canonical 100-seed v0.6 run: 72,000 evaluations in 272s;
+    support_width_classes=[1,2,3,4]. Channel separation confirmed at
+    scale: frontier_dropout vs ledger_failure distance=1.726 cosine=0.484;
+    frontier_dropout vs orientation_degradation distance=1.726
+    cosine=0.484; ledger_failure vs orientation_degradation distance=0.832
+    cosine=0.734 (formerly all distance=0 cosine=1 in v0.5.2).
+    Width-stratified fragility curves emerge for edge_dropout (rises 0.72
+    -> 0.97 as width 1->4 at severity 0.5) and support_delay
+    (recovery_length grows slightly with width).
   next_tasks:
   - Run canonical v0.6 ensemble and update claim statuses if signatures remain stable.
   source_status:
@@ -2854,11 +2918,19 @@ claims:
   - RA-MOTIF-SUPPORT-FAMILY-001
   - RA-SIM-SEVERANCE-CHANNEL-003
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7 run (assistant-side; 288000 evaluations across 4 thresholds in 19.3s, 14912 eval/s on this machine). All 5 README success criteria reproduce: (1) threshold=1.0
-    family loss = strict loss exactly across all modes/severities; (2) threshold<1.0 rescues 30-56% of strict losses for reachability/availability disruption; (3) rescue rates differ sharply by mode — edge_dropout
-    30-44%, frontier_dropout up to 56%, ledger_failure / orientation_degradation 0%; (4) selector_stress is NOT counted as rescue (rescue_rate exactly 0 across all thresholds/severities); (5) resilience
-    appears only where the failure channel is reachability/availability-local — certification-channel modes (ledger/orientation) gain nothing from threshold subfamilies because all cuts share the same parent
-    certificates.'
+  caveats: >
+    Canonical 100-seed v0.7 run: 288,000 evaluations across 4 thresholds
+    in 19.3s. All 5 README success criteria reproduce: threshold=1.0
+    family loss = strict loss exactly across all modes/severities;
+    threshold<1.0 rescues 30-56% of strict losses for
+    reachability/availability disruption; rescue rates differ sharply by
+    mode (edge_dropout 30-44%, frontier_dropout up to 56%, ledger_failure
+    / orientation_degradation 0%); selector_stress is NOT counted as
+    rescue (0 across all thresholds/severities); resilience appears only
+    where the failure channel is reachability/availability-local --
+    certification-channel modes (ledger/orientation) gain nothing from
+    threshold subfamilies because all cuts share the same parent
+    certificates.
   next_tasks:
   - Run canonical v0.7 ensemble and promote only robust findings.
   source_status:
@@ -2894,11 +2966,19 @@ claims:
   - RA-SIM-SEVERANCE-SIGNATURE-004
   - RA-SIM-SUPPORT-FAMILY-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7 run (assistant-side; 288000 evaluations across 4 thresholds in 19.3s, 14912 eval/s on this machine). All 5 README success criteria reproduce: (1) threshold=1.0
-    family loss = strict loss exactly across all modes/severities; (2) threshold<1.0 rescues 30-56% of strict losses for reachability/availability disruption; (3) rescue rates differ sharply by mode — edge_dropout
-    30-44%, frontier_dropout up to 56%, ledger_failure / orientation_degradation 0%; (4) selector_stress is NOT counted as rescue (rescue_rate exactly 0 across all thresholds/severities); (5) resilience
-    appears only where the failure channel is reachability/availability-local — certification-channel modes (ledger/orientation) gain nothing from threshold subfamilies because all cuts share the same parent
-    certificates.'
+  caveats: >
+    Canonical 100-seed v0.7 run: 288,000 evaluations across 4 thresholds
+    in 19.3s. All 5 README success criteria reproduce: threshold=1.0
+    family loss = strict loss exactly across all modes/severities;
+    threshold<1.0 rescues 30-56% of strict losses for
+    reachability/availability disruption; rescue rates differ sharply by
+    mode (edge_dropout 30-44%, frontier_dropout up to 56%, ledger_failure
+    / orientation_degradation 0%); selector_stress is NOT counted as
+    rescue (0 across all thresholds/severities); resilience appears only
+    where the failure channel is reachability/availability-local --
+    certification-channel modes (ledger/orientation) gain nothing from
+    threshold subfamilies because all cuts share the same parent
+    certificates.
   next_tasks: []
   source_status:
     test_v0_7_support_family.py: simulation_tests_pass
@@ -2934,11 +3014,19 @@ claims:
   proof_dependencies:
   - RA-SIM-SUPPORT-FAMILY-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7 run (assistant-side; 288000 evaluations across 4 thresholds in 19.3s, 14912 eval/s on this machine). All 5 README success criteria reproduce: (1) threshold=1.0
-    family loss = strict loss exactly across all modes/severities; (2) threshold<1.0 rescues 30-56% of strict losses for reachability/availability disruption; (3) rescue rates differ sharply by mode — edge_dropout
-    30-44%, frontier_dropout up to 56%, ledger_failure / orientation_degradation 0%; (4) selector_stress is NOT counted as rescue (rescue_rate exactly 0 across all thresholds/severities); (5) resilience
-    appears only where the failure channel is reachability/availability-local — certification-channel modes (ledger/orientation) gain nothing from threshold subfamilies because all cuts share the same parent
-    certificates.'
+  caveats: >
+    Canonical 100-seed v0.7 run: 288,000 evaluations across 4 thresholds
+    in 19.3s. All 5 README success criteria reproduce: threshold=1.0
+    family loss = strict loss exactly across all modes/severities;
+    threshold<1.0 rescues 30-56% of strict losses for
+    reachability/availability disruption; rescue rates differ sharply by
+    mode (edge_dropout 30-44%, frontier_dropout up to 56%, ledger_failure
+    / orientation_degradation 0%); selector_stress is NOT counted as
+    rescue (0 across all thresholds/severities); resilience appears only
+    where the failure channel is reachability/availability-local --
+    certification-channel modes (ledger/orientation) gain nothing from
+    threshold subfamilies because all cuts share the same parent
+    certificates.
   next_tasks:
   - Run 100-seed canonical v0.7 ensemble.
   source_status:
@@ -3237,11 +3325,18 @@ claims:
   - RA-MOTIF-SUPPORT-FAMILY-MONO-001
   - RA-SIM-SUPPORT-FAMILY-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.7.1 monotonicity audit (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25
-    --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared): 1,728,000 evaluations in 104.4s, 16554 eval/s. monotone_semantics_no_worse_violations=0; total_no_worse_violations=9888
-    (all from exact_k under cut_level certification). Per-(semantics, cert_regime) violation counts: at_least_k 0/0; augmented_exact_k 0/0; exact_k cut_level 9887, parent_shared 0. The 9887 exact_k/cut_level
-    violations come entirely from ledger_failure (4943) and orientation_degradation (4944), at violation_rate 0.103 each — i.e. ~10% of those cohorts have family_loss > strict_loss when exact_k replaces
-    the parent cut and cut-level certification fails some family members. All 5 README success criteria reproduce on canonical scale.'
+  caveats: >
+    Canonical 100-seed v0.7.1 monotonicity audit: 1,728,000 evaluations in
+    104.4s. monotone_semantics_no_worse_violations=0;
+    total_no_worse_violations=9,888 (all from exact_k under cut_level
+    certification). Per-(semantics, cert_regime) breakdown: at_least_k
+    0/0; augmented_exact_k 0/0; exact_k cut_level 9,887; exact_k
+    parent_shared 0. The 9,887 exact_k/cut_level violations come entirely
+    from ledger_failure (4,943) and orientation_degradation (4,944) at
+    violation_rate 0.103 each -- ~10% of those cohorts have family_loss >
+    strict_loss when exact_k replaces the parent cut and cut-level
+    certification fails some family members. All 5 README success criteria
+    reproduce.
   next_tasks:
   - Run canonical v0.7.1 audit and promote if the exact-k / cut-level pattern persists.
   source_status:
@@ -3282,11 +3377,18 @@ claims:
   - RA-MOTIF-SUPPORT-FAMILY-MONO-002
   - RA-SIM-SUPPORT-FAMILY-MONO-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.7.1 monotonicity audit (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25
-    --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared): 1,728,000 evaluations in 104.4s, 16554 eval/s. monotone_semantics_no_worse_violations=0; total_no_worse_violations=9888
-    (all from exact_k under cut_level certification). Per-(semantics, cert_regime) violation counts: at_least_k 0/0; augmented_exact_k 0/0; exact_k cut_level 9887, parent_shared 0. The 9887 exact_k/cut_level
-    violations come entirely from ledger_failure (4943) and orientation_degradation (4944), at violation_rate 0.103 each — i.e. ~10% of those cohorts have family_loss > strict_loss when exact_k replaces
-    the parent cut and cut-level certification fails some family members. All 5 README success criteria reproduce on canonical scale.'
+  caveats: >
+    Canonical 100-seed v0.7.1 monotonicity audit: 1,728,000 evaluations in
+    104.4s. monotone_semantics_no_worse_violations=0;
+    total_no_worse_violations=9,888 (all from exact_k under cut_level
+    certification). Per-(semantics, cert_regime) breakdown: at_least_k
+    0/0; augmented_exact_k 0/0; exact_k cut_level 9,887; exact_k
+    parent_shared 0. The 9,887 exact_k/cut_level violations come entirely
+    from ledger_failure (4,943) and orientation_degradation (4,944) at
+    violation_rate 0.103 each -- ~10% of those cohorts have family_loss >
+    strict_loss when exact_k replaces the parent cut and cut-level
+    certification fails some family members. All 5 README success criteria
+    reproduce.
   next_tasks:
   - Run canonical v0.7.1 audit and check monotone_semantics_no_worse_violations remains zero.
   source_status:
@@ -3326,11 +3428,18 @@ claims:
   - RA-MOTIF-SUPPORT-FAMILY-MONO-001
   - RA-SIM-SUPPORT-FAMILY-003
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.7.1 monotonicity audit (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25
-    --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared): 1,728,000 evaluations in 104.4s, 16554 eval/s. monotone_semantics_no_worse_violations=0; total_no_worse_violations=9888
-    (all from exact_k under cut_level certification). Per-(semantics, cert_regime) violation counts: at_least_k 0/0; augmented_exact_k 0/0; exact_k cut_level 9887, parent_shared 0. The 9887 exact_k/cut_level
-    violations come entirely from ledger_failure (4943) and orientation_degradation (4944), at violation_rate 0.103 each — i.e. ~10% of those cohorts have family_loss > strict_loss when exact_k replaces
-    the parent cut and cut-level certification fails some family members. All 5 README success criteria reproduce on canonical scale.'
+  caveats: >
+    Canonical 100-seed v0.7.1 monotonicity audit: 1,728,000 evaluations in
+    104.4s. monotone_semantics_no_worse_violations=0;
+    total_no_worse_violations=9,888 (all from exact_k under cut_level
+    certification). Per-(semantics, cert_regime) breakdown: at_least_k
+    0/0; augmented_exact_k 0/0; exact_k cut_level 9,887; exact_k
+    parent_shared 0. The 9,887 exact_k/cut_level violations come entirely
+    from ledger_failure (4,943) and orientation_degradation (4,944) at
+    violation_rate 0.103 each -- ~10% of those cohorts have family_loss >
+    strict_loss when exact_k replaces the parent cut and cut-level
+    certification fails some family members. All 5 README success criteria
+    reproduce.
   next_tasks:
   - Extend to independent witness support families once orientation/ledger witness construction is formalized.
   source_status:
@@ -3374,12 +3483,19 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-006
   - RA-SIM-SUPPORT-FAMILY-007
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
-    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
-    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
-    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
-    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
-    by ~2.76x.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.7.2 metric-repair audit:
+    1,728,000 evaluations in ~107s (16,121 eval/s).
+    comparison_valid_rate=0.982; metric_artifact_risk_rate=0.0145 (25,056
+    events). Flagged rows are exactly the cohorts predicted by the v0.7
+    audit corrigendum (SF-006/007): exact_k semantics + cut_level
+    certification + ledger_failure or orientation_degradation + threshold
+    <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049
+    (when comparison is valid, family loss is on average 5% LOWER than
+    strict; the v0.7 apples-to-apples discipline confirms the family
+    helps, not amplifies). family_internal_resilience_events=228,766 vs
+    strict_rescues=82,732 -- the v0.7 strict_rescue metric undercounts
+    family resilience by ~2.76x.
   next_tasks:
   - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
   source_status:
@@ -3425,12 +3541,19 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-006
   - RA-SIM-SUPPORT-FAMILY-007
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
-    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
-    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
-    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
-    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
-    by ~2.76x.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.7.2 metric-repair audit:
+    1,728,000 evaluations in ~107s (16,121 eval/s).
+    comparison_valid_rate=0.982; metric_artifact_risk_rate=0.0145 (25,056
+    events). Flagged rows are exactly the cohorts predicted by the v0.7
+    audit corrigendum (SF-006/007): exact_k semantics + cut_level
+    certification + ledger_failure or orientation_degradation + threshold
+    <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049
+    (when comparison is valid, family loss is on average 5% LOWER than
+    strict; the v0.7 apples-to-apples discipline confirms the family
+    helps, not amplifies). family_internal_resilience_events=228,766 vs
+    strict_rescues=82,732 -- the v0.7 strict_rescue metric undercounts
+    family resilience by ~2.76x.
   next_tasks:
   - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
   source_status:
@@ -3476,12 +3599,19 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-006
   - RA-SIM-SUPPORT-FAMILY-007
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
-    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
-    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
-    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
-    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
-    by ~2.76x.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.7.2 metric-repair audit:
+    1,728,000 evaluations in ~107s (16,121 eval/s).
+    comparison_valid_rate=0.982; metric_artifact_risk_rate=0.0145 (25,056
+    events). Flagged rows are exactly the cohorts predicted by the v0.7
+    audit corrigendum (SF-006/007): exact_k semantics + cut_level
+    certification + ledger_failure or orientation_degradation + threshold
+    <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049
+    (when comparison is valid, family loss is on average 5% LOWER than
+    strict; the v0.7 apples-to-apples discipline confirms the family
+    helps, not amplifies). family_internal_resilience_events=228,766 vs
+    strict_rescues=82,732 -- the v0.7 strict_rescue metric undercounts
+    family resilience by ~2.76x.
   next_tasks:
   - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
   source_status:
@@ -3526,12 +3656,19 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-006
   - RA-SIM-SUPPORT-FAMILY-007
   restoration_preconditions: []
-  caveats: 'Reconfirmed by the canonical 100-seed v0.7.2 metric-repair audit (assistant-side; same params as v0.7.1: --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions
-    1.0,0.75,0.5,0.25 --family-semantics exact_k,at_least_k,augmented_exact_k --certification-regimes cut_level,parent_shared). 1,728,000 evaluations in ~107s, 16121 eval/s. comparison_valid_rate=0.982;
-    metric_artifact_risk_rate=0.0145 (25056 events); flagged rows are exactly the cohorts predicted by the v0.7 audit corrigendum (SF-006/007): exact_k semantics + cut_level certification + ledger_failure
-    or orientation_degradation + threshold <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049 (when comparison is valid, family loss is on average ~5%% LOWER than strict; the v0.7 audit''s
-    apples-to-apples discipline confirms the family helps, not amplifies). family_internal_resilience_events=228766 vs strict_rescues=82732 — the v0.7 strict_rescue metric undercounts family resilience
-    by ~2.76x.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.7.2 metric-repair audit:
+    1,728,000 evaluations in ~107s (16,121 eval/s).
+    comparison_valid_rate=0.982; metric_artifact_risk_rate=0.0145 (25,056
+    events). Flagged rows are exactly the cohorts predicted by the v0.7
+    audit corrigendum (SF-006/007): exact_k semantics + cut_level
+    certification + ledger_failure or orientation_degradation + threshold
+    <= 0.5 + width >= 2. mean_valid_apples_to_apples_loss_delta = -0.049
+    (when comparison is valid, family loss is on average 5% LOWER than
+    strict; the v0.7 apples-to-apples discipline confirms the family
+    helps, not amplifies). family_internal_resilience_events=228,766 vs
+    strict_rescues=82,732 -- the v0.7 strict_rescue metric undercounts
+    family resilience by ~2.76x.
   next_tasks:
   - Run canonical v0.7.2 audit over the committed 100-seed v0.7 support-family baseline.
   source_status:
@@ -3658,12 +3795,21 @@ claims:
   - RA-SIM-SUPPORT-FAMILY-METRIC-001
   - RA-MOTIF-CERT-FAMILY-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.8 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics
-    at_least_k,augmented_exact_k --certification-regimes parent_shared,cut_level,independent_member --certificate-correlations 0.0,0.25,0.5,0.75,1.0). 4,032,000 evaluations in 235.6s, 17,114 eval/s. comparison_valid_rate=1.0,
-    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline holds at scale when monotone family semantics are used). certification_rescues=129,249; family_certification_resilience_events=778,581;
-    strict_rescues=192,567 (support-route); strict_parent_losses=2,321,100. All 5 README success criteria reproduce: (1) parent_shared rescue=0 across all rows; (2) independent_member rescue is positive
-    in cert modes; (3) cert rescue declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger / at_least_k / sev 0.5 / thresh 0.25: rescue 0.221 -> 0.176 -> 0.121 -> 0.091 -> 0.000); (4) selector_guardrail_passed=True
-    across all selector_stress rows; (5) support-route resilience and certification-witness resilience remain distinct diagnostics.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.8 run: 4,032,000 evaluations in
+    235.6s (17,114 eval/s). comparison_valid_rate=1.0,
+    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline
+    holds at scale when monotone family semantics are used). Counts:
+    certification_rescues=129,249;
+    family_certification_resilience_events=778,581; strict_rescues=192,567
+    (support-route); strict_parent_losses=2,321,100. All 5 README success
+    criteria reproduce: parent_shared rescue=0 across all rows;
+    independent_member rescue is positive in cert modes; cert rescue
+    declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger /
+    at_least_k / sev=0.5 / thresh=0.25: 0.221 -> 0.176 -> 0.121 -> 0.091
+    -> 0.000); selector_guardrail_passed=true across all selector_stress
+    rows; support-route resilience and certification-witness resilience
+    remain distinct diagnostics.
   next_tasks:
   - Run canonical v0.8 ensemble and promote only confirmed claims.
   source_status:
@@ -3705,12 +3851,21 @@ claims:
   proof_dependencies:
   - RA-SIM-CERT-FAMILY-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.8 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics
-    at_least_k,augmented_exact_k --certification-regimes parent_shared,cut_level,independent_member --certificate-correlations 0.0,0.25,0.5,0.75,1.0). 4,032,000 evaluations in 235.6s, 17,114 eval/s. comparison_valid_rate=1.0,
-    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline holds at scale when monotone family semantics are used). certification_rescues=129,249; family_certification_resilience_events=778,581;
-    strict_rescues=192,567 (support-route); strict_parent_losses=2,321,100. All 5 README success criteria reproduce: (1) parent_shared rescue=0 across all rows; (2) independent_member rescue is positive
-    in cert modes; (3) cert rescue declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger / at_least_k / sev 0.5 / thresh 0.25: rescue 0.221 -> 0.176 -> 0.121 -> 0.091 -> 0.000); (4) selector_guardrail_passed=True
-    across all selector_stress rows; (5) support-route resilience and certification-witness resilience remain distinct diagnostics.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.8 run: 4,032,000 evaluations in
+    235.6s (17,114 eval/s). comparison_valid_rate=1.0,
+    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline
+    holds at scale when monotone family semantics are used). Counts:
+    certification_rescues=129,249;
+    family_certification_resilience_events=778,581; strict_rescues=192,567
+    (support-route); strict_parent_losses=2,321,100. All 5 README success
+    criteria reproduce: parent_shared rescue=0 across all rows;
+    independent_member rescue is positive in cert modes; cert rescue
+    declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger /
+    at_least_k / sev=0.5 / thresh=0.25: 0.221 -> 0.176 -> 0.121 -> 0.091
+    -> 0.000); selector_guardrail_passed=true across all selector_stress
+    rows; support-route resilience and certification-witness resilience
+    remain distinct diagnostics.
   next_tasks:
   - Run canonical v0.8 ensemble and promote only confirmed claims.
   source_status:
@@ -3751,12 +3906,21 @@ claims:
   proof_dependencies:
   - RA-SIM-SUPPORT-FAMILY-METRIC-004
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.8 run (assistant-side; --seed-start 17 --seed-stop 117 --steps 32 --max-targets 12 --sample-limit 5000 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics
-    at_least_k,augmented_exact_k --certification-regimes parent_shared,cut_level,independent_member --certificate-correlations 0.0,0.25,0.5,0.75,1.0). 4,032,000 evaluations in 235.6s, 17,114 eval/s. comparison_valid_rate=1.0,
-    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline holds at scale when monotone family semantics are used). certification_rescues=129,249; family_certification_resilience_events=778,581;
-    strict_rescues=192,567 (support-route); strict_parent_losses=2,321,100. All 5 README success criteria reproduce: (1) parent_shared rescue=0 across all rows; (2) independent_member rescue is positive
-    in cert modes; (3) cert rescue declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger / at_least_k / sev 0.5 / thresh 0.25: rescue 0.221 -> 0.176 -> 0.121 -> 0.091 -> 0.000); (4) selector_guardrail_passed=True
-    across all selector_stress rows; (5) support-route resilience and certification-witness resilience remain distinct diagnostics.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.8 run: 4,032,000 evaluations in
+    235.6s (17,114 eval/s). comparison_valid_rate=1.0,
+    metric_artifact_risk_events=0 (the v0.7.2 metric-repair discipline
+    holds at scale when monotone family semantics are used). Counts:
+    certification_rescues=129,249;
+    family_certification_resilience_events=778,581; strict_rescues=192,567
+    (support-route); strict_parent_losses=2,321,100. All 5 README success
+    criteria reproduce: parent_shared rescue=0 across all rows;
+    independent_member rescue is positive in cert modes; cert rescue
+    declines monotonically as correlation 0.0 -> 1.0 (e.g. ledger /
+    at_least_k / sev=0.5 / thresh=0.25: 0.221 -> 0.176 -> 0.121 -> 0.091
+    -> 0.000); selector_guardrail_passed=true across all selector_stress
+    rows; support-route resilience and certification-witness resilience
+    remain distinct diagnostics.
   next_tasks:
   - Run canonical v0.8 ensemble and promote only confirmed claims.
   source_status:
@@ -3799,14 +3963,18 @@ claims:
   - RA-SIM-CERT-FAMILY-002
   - RA-SIM-CERT-FAMILY-003
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
-    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
-    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
-    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
-    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
-    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
-    thresh 0.25 (0.313 -> 0).'
+  caveats: >
+    Reconfirmed by canonical v0.8.1 analysis on the 4M-evaluation v0.8
+    ensemble (64 correlation decay curves). 61/64 strictly non-increasing;
+    the 3 deviations (all in orientation_degradation) are finite-sample
+    (max step-increase 0.0146; all reach zero rescue at correlation=1.0).
+    Aggregate AUC ~0.044-0.050 across both monotone family semantics.
+    Endpoint cert-rescue -> 0 at correlation=1.0 is universal. Full
+    endpoint-equivalence to parent_shared is partial under strict 1e-9
+    tolerance (32/80 rows; max delta 0.116). Selector-stress passed across
+    all rows. Highest decay curves: orientation_degradation / at_least_k /
+    sev=0.75 / thresh=0.25 (0.319 -> 0); ledger_failure / at_least_k /
+    sev=0.75 / thresh=0.25 (0.313 -> 0).
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -3848,14 +4016,18 @@ claims:
   - RA-SIM-CERT-FAMILY-002
   - RA-MOTIF-CERT-FAMILY-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
-    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
-    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
-    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
-    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
-    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
-    thresh 0.25 (0.313 -> 0).'
+  caveats: >
+    Reconfirmed by canonical v0.8.1 analysis on the 4M-evaluation v0.8
+    ensemble (64 correlation decay curves). 61/64 strictly non-increasing;
+    the 3 deviations (all in orientation_degradation) are finite-sample
+    (max step-increase 0.0146; all reach zero rescue at correlation=1.0).
+    Aggregate AUC ~0.044-0.050 across both monotone family semantics.
+    Endpoint cert-rescue -> 0 at correlation=1.0 is universal. Full
+    endpoint-equivalence to parent_shared is partial under strict 1e-9
+    tolerance (32/80 rows; max delta 0.116). Selector-stress passed across
+    all rows. Highest decay curves: orientation_degradation / at_least_k /
+    sev=0.75 / thresh=0.25 (0.319 -> 0); ledger_failure / at_least_k /
+    sev=0.75 / thresh=0.25 (0.313 -> 0).
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -3896,14 +4068,18 @@ claims:
   proof_dependencies:
   - RA-SIM-CERT-CORRELATION-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
-    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
-    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
-    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
-    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
-    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
-    thresh 0.25 (0.313 -> 0).'
+  caveats: >
+    Reconfirmed by canonical v0.8.1 analysis on the 4M-evaluation v0.8
+    ensemble (64 correlation decay curves). 61/64 strictly non-increasing;
+    the 3 deviations (all in orientation_degradation) are finite-sample
+    (max step-increase 0.0146; all reach zero rescue at correlation=1.0).
+    Aggregate AUC ~0.044-0.050 across both monotone family semantics.
+    Endpoint cert-rescue -> 0 at correlation=1.0 is universal. Full
+    endpoint-equivalence to parent_shared is partial under strict 1e-9
+    tolerance (32/80 rows; max delta 0.116). Selector-stress passed across
+    all rows. Highest decay curves: orientation_degradation / at_least_k /
+    sev=0.75 / thresh=0.25 (0.319 -> 0); ledger_failure / at_least_k /
+    sev=0.75 / thresh=0.25 (0.313 -> 0).
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -3945,14 +4121,18 @@ claims:
   - RA-SIM-CERT-FAMILY-003
   - RA-SIM-SUPPORT-FAMILY-METRIC-004
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical v0.8.1 analysis (assistant-side; --input-dir ../v0.8/outputs --output-dir outputs) on the canonical 4,032,000-evaluation v0.8 ensemble. Diagnostics: 64 correlation decay
-    curves analyzed. Monotonicity is confirmed at the signature level: 61/64 fine-grained curves are strictly non-increasing; the remaining 3 (all in orientation_degradation) show small finite-sample
-    deviations with maximum step-increase 0.0146, all reaching zero rescue at correlation=1.0. Aggregate AUC is comparable across both monotone family semantics (~0.044-0.050). Endpoint reading:
-    correlation=1.0 yields zero certification rescue across all analyzed curves; this part is universal in the data. Full endpoint equivalence to the parent_shared regime across all aggregate diagnostics is
-    only partial under strict 1e-9 tolerance (32/80 rows within tolerance; max endpoint delta 0.116). The cert-rescue->0 result is therefore the robust signature; finer-grained "exactly equals parent_shared
-    in every diagnostic" claims are not supported at strict tolerance and would require a follow-up endpoint audit. Selector-stress guardrail passed across all rows (zero certification rescue, zero family
-    certification resilience, zero strict rescue). Highest rescue-decay curves: orientation_degradation / at_least_k / sev 0.75 / thresh 0.25 (0.319 -> 0); ledger_failure / at_least_k / sev 0.75 /
-    thresh 0.25 (0.313 -> 0).'
+  caveats: >
+    Reconfirmed by canonical v0.8.1 analysis on the 4M-evaluation v0.8
+    ensemble (64 correlation decay curves). 61/64 strictly non-increasing;
+    the 3 deviations (all in orientation_degradation) are finite-sample
+    (max step-increase 0.0146; all reach zero rescue at correlation=1.0).
+    Aggregate AUC ~0.044-0.050 across both monotone family semantics.
+    Endpoint cert-rescue -> 0 at correlation=1.0 is universal. Full
+    endpoint-equivalence to parent_shared is partial under strict 1e-9
+    tolerance (32/80 rows; max delta 0.116). Selector-stress passed across
+    all rows. Highest decay curves: orientation_degradation / at_least_k /
+    sev=0.75 / thresh=0.25 (0.319 -> 0); ledger_failure / at_least_k /
+    sev=0.75 / thresh=0.25 (0.313 -> 0).
   next_tasks:
   - Rerun v0.8.1 analysis on the canonical v0.8 output directory and promote confirmed signatures.
   source_status:
@@ -4083,7 +4263,23 @@ claims:
   - RA-SIM-NATIVE-CERT-OVERLAP-001
   - RA-SIM-CERT-CORRELATION-001
   restoration_preconditions: []
-  caveats: 'Reconfirmed by canonical 100-seed v0.9 run (parameters as in RA-SIM-NATIVE-CERT-OVERLAP-001). All 4 overlap-signature rows are monotone non-increasing across populated bins. Overlap-induced rescue curves: ledger_failure / augmented_exact_k 0.218 (low) -> 0.138 (medium) -> 0.001 (high), low_minus_high 0.218; orientation_degradation / augmented_exact_k 0.215 (low) -> 0.138 (medium) -> 0.001 (high), low_minus_high 0.214; the at_least_k semantics produces only medium/high bins (low-overlap families absent at this run scale) and remains monotone (medium 0.157/0.160 -> high 0.001). Parent-shared baseline shows 0 certification rescue across the entire comparison table (criterion 3 holds). selector_stress remains outside support/certification-family rescue with selector_guardrail_passed=true (criterion 4). native_certification_rescue_rate=0.052 across all bins; high-overlap-dominated aggregate. Overlap signature is operationally driven by member-witness components (support, frontier, orientation, ledger, causal-past + proxies); not yet a derived RA-native law.'
+  caveats: >
+    Reconfirmed by canonical 100-seed v0.9 run (parameters as in
+    RA-SIM-NATIVE-CERT-OVERLAP-001). All 4 overlap-signature rows are
+    monotone non-increasing across populated bins. Overlap-induced rescue
+    curves: ledger_failure / augmented_exact_k 0.218 (low) -> 0.138
+    (medium) -> 0.001 (high), low_minus_high 0.218;
+    orientation_degradation / augmented_exact_k 0.215 (low) -> 0.138
+    (medium) -> 0.001 (high), low_minus_high 0.214; at_least_k semantics
+    produces only medium/high bins (low-overlap families absent at this
+    run scale) and remains monotone (medium 0.157/0.160 -> high 0.001).
+    Parent-shared baseline shows 0 certification rescue across the entire
+    comparison table. selector_stress remains outside
+    support/certification-family rescue;
+    native_certification_rescue_rate=0.052 across all bins
+    (high-overlap-dominated aggregate). Overlap signature is operationally
+    driven by member-witness components (support, frontier, orientation,
+    ledger, causal-past + proxies); not yet a derived RA-native law.
   next_tasks:
   - Decompose witness-overlap components to identify which channels (support / frontier / orientation / ledger / causal-past) dominate the rescue signature.
   source_status:
@@ -4138,27 +4334,20 @@ claims:
   - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
   - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v0.9.1 analysis (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs
-    --external-correlation-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026/outputs)
-    against the canonical 480,000-evaluation v0.9 component-overlap rows.
-    component_rows=480, ablation_rows=48 (7 components + baseline x 6 mode/semantics
-    cells), ablation_monotone_pass_rate=1.0. Endpoint audit shows native-overlap
-    certification rescue substantially separates from the parent-shared baseline:
-    endpoint_rescue_max_delta_native_minus_parent=0.5,
-    endpoint_resilience_max_delta_native_minus_parent=0.667. Selector-stress
-    guardrail passed (selector_guardrail_passed=true). Note: the
-    ledger_failure / at_least_k cell collapses to a 0 baseline low-high gap and
-    0 across all ablations - the rescue signal lives in augmented_exact_k
-    semantics for both modes, consistent with the family-semantics asymmetry
-    seen in prior v0.7.x audits. The semantics asymmetry is a semantics-resolved
-    finding rather than a defect: support-family semantics remain physically
-    meaningful (not implementation detail), so the disciplined formulation is
-    "native overlap controls certification rescue in the tested workbench, with
-    the clearest signal under augmented_exact_k semantics" rather than a uniform
-    cross-semantics statement. Operational diagnostic; component weights are
-    proxy-level operational choices pending native/BDG-LLC formal anchoring.'
+  caveats: >
+    Canonical v0.9.1 analysis on the 480,000-evaluation v0.9 component
+    rows plus v0.8.1 external curves. component_rows=480, ablation_rows=48
+    (7 components + baseline x 6 cells), ablation_monotone_pass_rate=1.0.
+    Native overlap separates from parent_shared:
+    endpoint_rescue_max_delta=0.5; endpoint_resilience_max_delta=0.667.
+    Selector-stress passed. ledger_failure / at_least_k collapses to zero
+    baseline low-high gap (rescue signal lives in augmented_exact_k for
+    both modes, consistent with the v0.7.x family-semantics asymmetry).
+    Disciplined formulation: native overlap controls certification rescue
+    in the tested workbench, with the clearest signal under
+    augmented_exact_k semantics, rather than a uniform cross-semantics
+    statement. Operational diagnostic; component weights are proxy-level
+    operational choices pending native/BDG-LLC formal anchoring.
   next_tasks:
   - Tighten witness-overlap formalization beyond Type-valued opaque witnesses in the v0.9 Lean bridge.
   - Promote a per-component native-overlap definition into a derived RA-native bridge with formal anchor.
@@ -4201,25 +4390,20 @@ claims:
   - RA-SIM-NATIVE-CERT-OVERLAP-METHOD-001
   - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v0.9.1 run (parameters as in
-    RA-SIM-NATIVE-CERT-ROBUST-001). weight_sensitivity_rows=36 (6 profiles x 6
-    mode/semantics cells), weight_sensitivity_monotone_pass_rate=1.0,
-    balanced_low_high_gap_mean=0.0576 (range [0.0, 0.175]). External-correlation
-    alignment loaded for both modes and both family semantics; native rescue
-    AUC proxies (range 0.079-0.105) sit slightly above v0.8.1 external AUCs
-    (range 0.044-0.049); native rescue decays (0.157-0.218) exceed external
+  caveats: >
+    Canonical v0.9.1 run. weight_sensitivity_rows=36 (6 profiles x 6
+    cells), monotone_pass_rate=1.0, balanced_low_high_gap_mean=0.058
+    (range 0.0-0.175). External-correlation alignment loaded; native
+    rescue AUC proxies (0.079-0.105) sit above v0.8.1 external AUCs
+    (0.044-0.049); native rescue decays (0.157-0.218) exceed external
     decays (0.089-0.100). Qualitative direction matches; native curves are
-    steeper than the external-correlation baseline. The native-overlap bins
-    (low/medium/high) are structural bins, not numerical equivalents of
-    external correlation values; absolute calibration to the v0.8.1 external
-    correlation scale is not yet established (qualitative alignment confirmed,
-    absolute calibration pending). Endpoint-vs-parent_shared distinction (per
-    RA-SIM-NATIVE-CERT-ROBUST-001 endpoint deltas): high native overlap
-    suppresses rescue strongly but is not identical to parent_shared
-    certification unless witness overlap is total - parent_shared remains
-    zero-rescue across the comparison while native high-overlap retains
-    residual rescue capacity from non-shared witness structure. Weight profiles
-    are diagnostic; no profile is claimed as the derived RA-native overlap law.'
+    steeper. Native bins are structural, not numerical equivalents of
+    external correlation values; absolute calibration is not yet
+    established. Endpoint distinction: high native overlap suppresses
+    rescue strongly but is not identical to parent_shared - parent_shared
+    remains zero-rescue while native high-overlap retains residual rescue
+    capacity from non-shared witness structure. Weight profiles are
+    diagnostic; no profile is the derived RA-native overlap law.
   next_tasks:
   - Decompose witness-overlap components beyond proxy-level definitions; close the BDG-LLC kernel-overlap proxy with native bridge.
   source_status:
@@ -4308,28 +4492,21 @@ claims:
   - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
   - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v0.9.2 analysis (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs
-    --external-correlation-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_8_1_CertCorrelationAnalysis_May05_2026/outputs)
-    against the canonical 100-seed v0.9 run plus v0.8.1 external curves.
-    native_rows=10, aggregate_rows=375, component_rows=480, semantics_rows=4
-    (2 modes x 2 semantics). Per-cell results: ledger_failure /
-    augmented_exact_k low_high_gap=0.2175, signal_status=strong_low_overlap_rescue_signal,
-    recommendation=primary_candidate_for_native_cert_overlap_v1;
-    orientation_degradation / augmented_exact_k low_high_gap=0.2139, same
-    classification; both at_least_k cells signal_status=insufficient_bins
-    (only medium and high bins populated, no low bin). Important refinement
-    over v0.9.1: at_least_k is NOT zero-baseline collapsed - its medium->high
-    rescue rates (0.157->0.0007 ledger; 0.160->0.0007 orientation) remain
-    monotone non-increasing. The lack of a "low" bin is structural: at_least_k
-    families are larger (mean_family_size=2.91 vs augmented_exact_k 2.12),
-    inclusive enough that members share more witness structure and the family
-    overlap distribution does not populate the low bin at this run scale.
-    The disciplined formulation is "at_least_k is the broader-inclusion guardrail
-    semantics; augmented_exact_k carries the strong native-overlap rescue
-    signal." selector_guardrail_passed=true. Operational diagnostic; semantics
-    recommendations are candidate modeling guidance, not a derived RA-native law.'
+  caveats: >
+    Canonical v0.9.2 analysis on the v0.9 100-seed run plus v0.8.1
+    external curves. native_rows=10, aggregate_rows=375,
+    component_rows=480, semantics_rows=4. Per-cell results: ledger_failure
+    / augmented_exact_k low_high_gap=0.218 ->
+    strong_low_overlap_rescue_signal (primary candidate for
+    native_cert_overlap_v1); orientation_degradation / augmented_exact_k
+    0.214 same classification; both at_least_k cells
+    signal_status=insufficient_bins (only medium/high populated;
+    at_least_k families are larger so distribution does not populate the
+    low bin at this scale, but medium->high remains monotone
+    non-increasing). Disciplined formulation: at_least_k is the
+    broader-inclusion guardrail semantics; augmented_exact_k carries the
+    strong native-overlap rescue signal. selector_guardrail_passed=true.
+    Operational diagnostic; not a derived RA-native law.
   next_tasks:
   - Use the per-cell signal classification to seed v1.0 native-certificate anchoring; treat at_least_k as guardrail rather than primary signal carrier.
   source_status:
@@ -4376,21 +4553,22 @@ claims:
   - RA-SIM-NATIVE-CERT-ROBUST-METHOD-001
   - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v0.9.2 run (parameters as in
-    RA-SIM-NATIVE-CERT-CALIB-001). calibration_rows=10, mapping_rows=4.
-    Calibration regime breakdown: 4 cells close_rate_match (all high-overlap
-    bins, native rescue ~0.0007 vs external corr=1.0 endpoint),
-    4 cells qualitative_rate_match (all medium bins, residual 0.043-0.060),
-    2 cells steeper_or_uncalibrated_native_curve (both augmented_exact_k low
-    bins, residuals 0.1204 / 0.1288). Mean external_calibration_residual_abs=0.0464,
-    max=0.1288. Mapping table: all 4 (mode, family_semantics) cells show
-    qualitative_alignment=true; native AUC proxies (0.079-0.105) exceed external
-    AUCs (0.044-0.049); native rescue decays (0.157-0.218) exceed external
-    decays (0.089-0.100). All AUC and decay deltas are positive, confirming
-    that native curves are uniformly steeper than the external-correlation
-    baseline. Native bins remain structural rather than numerical equivalents
-    of external correlation parameters; absolute calibration of the
-    low-overlap end is not yet established.'
+  caveats: >
+    Canonical v0.9.2 run (parameters as in RA-SIM-NATIVE-CERT-CALIB-001).
+    calibration_rows=10, mapping_rows=4. Calibration regime breakdown: 4
+    cells close_rate_match (all high-overlap bins, native rescue ~0.0007
+    vs external corr=1.0 endpoint); 4 cells qualitative_rate_match (all
+    medium bins, residual 0.043-0.060); 2 cells
+    steeper_or_uncalibrated_native_curve (both augmented_exact_k low bins,
+    residuals 0.120 / 0.129). Mean
+    external_calibration_residual_abs=0.046, max=0.129. Mapping table: all
+    4 (mode, family_semantics) cells show qualitative_alignment=true;
+    native AUC proxies (0.079-0.105) exceed external AUCs (0.044-0.049);
+    native rescue decays (0.157-0.218) exceed external decays
+    (0.089-0.100). All AUC and decay deltas are positive, confirming
+    native curves are uniformly steeper than the external-correlation
+    baseline. Native bins remain structural; absolute calibration of the
+    low-overlap end is not yet established.
   next_tasks:
   - Use the steeper-curve residuals at the low-overlap end to constrain v1.0 BDG-LLC overlap-map design.
   source_status:
@@ -4546,26 +4724,20 @@ claims:
   - RA-SIM-NATIVE-CERT-CALIB-METHOD-001
   - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.0 anchoring run (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs
-    --calibration-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_2_NativeOverlapCalibration_May05_2026/outputs).
-    component_rows=480, native_overlap_profile_rows=10, native_overlap_bin_count=3
-    (low/medium/high). Component attribution is currently proxy-level: ledger
-    overlap separates cleanly for ledger_failure (highest-mean component:
-    0.857 at_least_k / 0.839 augmented_exact_k); orientation attribution is
-    NOT yet isolated because orientation, support, and frontier overlap
-    components coincide numerically in the v0.9/v1.0 component construction
-    (mean_orientation_overlap=mean_support_overlap=mean_frontier_overlap at
-    0.742 at_least_k / 0.710 augmented_exact_k). v1.0 records this faithfully
-    (expected_component_mean_overlap reflects the joint support/frontier/
-    orientation triplet, not asserted orientation-channel specificity). The
-    disciplined formulation is: v1.0 fairly claims a component-anchored
-    native-overlap proxy exists; v1.0 does NOT yet claim that
+  caveats: >
+    Canonical v1.0 anchoring run on v0.9 outputs + v0.9.2 calibration.
+    component_rows=480, native_overlap_profile_rows=10, low/medium/high
+    bins. Component attribution is proxy-level: ledger separates cleanly
+    for ledger_failure (highest-mean component 0.857 / 0.839 across
+    semantics); orientation attribution is NOT yet isolated because
+    orientation, support, and frontier overlap components coincide
+    numerically (mean 0.742 / 0.710). v1.0 records this faithfully
+    (expected_component_mean_overlap reflects the joint triplet, not
+    asserted orientation-channel specificity). v1.0 fairly claims a
+    component-anchored native-overlap proxy exists; it does NOT yet claim
     orientation_degradation is specifically controlled by an independently
-    measured orientation-overlap surface. Disentangling the orientation
-    channel requires a v1.1 simulator component-layer revision (not a v1.0
-    anchoring change) before stronger orientation-specific claims are made.'
+    measured orientation surface. Disentangling orientation requires the
+    v1.1+ component-layer revision (handled in v1.1 / v1.2 / v1.5-v1.8.1).
   next_tasks:
   - Build v1.1 Native Component Decoupling packet to separate orientation-link overlap from the joint support/frontier/orientation triplet via matched-strata diagnostics; defer BDG-LLC native formalization until decoupling is complete to avoid formalizing a confounded proxy.
   source_status:
@@ -4715,31 +4887,22 @@ claims:
   - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
   - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.1 run (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs)
-    over 480 v1.0 component rows. Triplet decoupling status:
-    orientation_confounded_with_support_frontier (max_abs_diff=0.0 across all
-    three pairwise comparisons - support/frontier, support/orientation,
-    frontier/orientation). Ledger overlap is decoupled from the support/frontier
-    proxy: ledger_orientation max_abs_diff=0.383, mean_abs_diff=0.121, corr=0.999;
-    ablation residual after support control mean_abs=0.085-0.095 across all
-    cells. Orientation overlap is confounded: ablation residual=0.0 across all
-    six (mode, semantics) cells; partial correlation after support+frontier
-    control reports no_independent_component_variation_after_support_frontier_control
-    for orientation in all six cells (residual_std~3e-17, floating-point noise).
-    Implementation note: the packet original ra_native_component_decoupling.py
-    used a strict == 0.0 check on residual_std which numpy.linalg.lstsq does
-    not satisfy when columns are linearly dependent (returns ~1e-17 instead of
-    exact zero); installed source uses a 1e-12 tolerance so confounded components
-    are correctly classified. The packet test
+  caveats: >
+    Canonical v1.1 audit over 480 v1.0 component rows. Triplet decoupling
+    status: orientation_confounded_with_support_frontier (max_abs_diff=0.0
+    across all three pairwise comparisons; ablation residual=0.0 in all
+    six (mode, family_semantics) cells; partial correlation reports
+    no_independent_component_variation_after_support_frontier_control with
+    residual_std around 3e-17). Ledger is decoupled from support/frontier
+    (max_abs_diff 0.383, mean 0.121, ablation residual 0.085-0.095).
+    selector_stress correctly classifies as not_certification_channel.
+    Implementation note: residual_std == 0.0 strict check was replaced
+    with a 1e-12 tolerance to handle lstsq floating-point noise; the
+    packet test
     test_partial_correlation_has_no_orientation_variation_when_confounded
-    explicitly required this behavior. selector_stress correctly classifies
-    as not_certification_channel. All 5 unit tests pass post-fix. The v1.1
-    audit confirms that orientation overlap is not independently resolved
-    from support/frontier overlap in the v0.9/v1.0 component construction;
-    the audit succeeded as a negative/diagnostic result by refusing to
-    manufacture a component-specific signal where the component surface
-    does not exist. Operational diagnostic; not a derived RA-native law.'
+    explicitly required this. Operational diagnostic; v1.1 confirms the
+    audit machinery as a negative result, refusing to manufacture a
+    component-specific signal where the surface does not exist.
   next_tasks:
   - Build v1.2 Distinct Orientation-Link Surface packet that generates or derives orientation_overlap from orientation-link / sign-source data rather than from support/frontier membership proxy; then test under matched support/frontier strata whether orientation_degradation rescue becomes orientation-specific. Defer BDG-LLC formal anchoring until orientation decoupling succeeds.
   source_status:
@@ -4785,30 +4948,23 @@ claims:
   - RA-SIM-NATIVE-CERT-ANCHOR-METHOD-001
   - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.1 run (parameters as in
+  caveats: >
+    Canonical v1.1 run (parameters as in
     RA-SIM-NATIVE-COMPONENT-DECOUPLE-001). Per-mode/semantics specificity:
-    ledger_failure / at_least_k -> weak_or_tied_specificity (ledger margin
-    0.0458; ledger 0.893 vs next-highest 0.847); ledger_failure /
-    augmented_exact_k -> weak_or_tied_specificity (ledger margin 0.0473;
-    ledger 0.879 vs next-highest 0.832); orientation_degradation /
-    at_least_k -> orientation_confounded_with_support_frontier (margin
-    -0.0853, support/frontier/orientation all 0.808; ledger 0.893);
-    orientation_degradation / augmented_exact_k ->
-    orientation_confounded_with_support_frontier (margin -0.0954,
-    support/frontier/orientation all 0.784; ledger 0.879). selector_stress
-    correctly classifies as not_certification_channel for both semantics.
-    Important framing - ledger is decoupled from support/frontier overlap
-    (max_abs_diff=0.383, ablation residual 0.085-0.095) but remains tightly
-    coupled to the broader certification-exposure bundle: causal_past 0.83-0.85,
-    bdg_kernel 0.82-0.84, firewall 0.83-0.85 vs ledger 0.88-0.89. Ledger
-    attribution is resolved but not strongly dominant - the v1.0 component
-    layer is not yet a clean causal-factor decomposition; ledger sits within
-    a broader certification-exposure bundle rather than as a singular
-    dominant component. The disciplined v1.1 statement is: orientation
-    rescue must be described as carried by a joint support/frontier/orientation
-    proxy until a distinct orientation-link surface is generated; ledger
-    rescue is component-resolved with weak specificity margin within a
-    larger certification-exposure bundle.'
+    ledger_failure (both semantics) -> weak_or_tied_specificity (ledger
+    margin 0.046-0.047; ledger 0.879-0.893 vs next 0.832-0.847);
+    orientation_degradation (both semantics) ->
+    orientation_confounded_with_support_frontier (margin -0.085 / -0.095,
+    support/frontier/orientation all 0.78-0.81; ledger 0.88-0.89).
+    selector_stress -> not_certification_channel. Important framing:
+    ledger is decoupled from support/frontier overlap but remains tightly
+    coupled to the broader certification-exposure bundle (causal_past,
+    bdg_kernel, firewall ~0.83-0.85 vs ledger 0.88-0.89). Ledger
+    attribution is resolved but not strongly dominant. Disciplined v1.1
+    statement: orientation rescue must be described as carried by a joint
+    support/frontier/orientation proxy until a distinct orientation-link
+    surface exists; ledger rescue is component-resolved with weak
+    specificity margin within a larger certification-exposure bundle.
   next_tasks:
   - Build v1.2 Distinct Orientation-Link Surface packet, sourcing orientation_overlap from orientation-link / sign-source data rather than from support-cut membership; align with existing native vocabulary (RA_CausalOrientation_Core, RA_D1_NativeLedgerOrientation, RA_D1_NativeClosure) where possible.
   - Consider whether the certification-exposure bundle (ledger / causal_past / bdg_kernel / firewall) should be treated as a single composite surface in v1.2 rather than four pseudo-independent components, since v1.1 reveals tight coupling.
@@ -4852,7 +5008,16 @@ claims:
   - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
   - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
   restoration_preconditions: []
-  caveats: 'Lake-build-confirmed (assistant-side `lake build RA_MotifOrientationLinkSurface` closed with 8277/8277 jobs, ~171s; no sorry/admit/axiom). The module imports only RA_MotifNativeCertificateComponents and adds DAGOrientationLinkSurfaceContext / GraphOrientationLinkSurfaceContext (Type-valued orientationLinkEvidence + orientationLinkRefinesComponent morphism into the v1.0 component context), DAGHasOrientationLinkSurface / GraphHasOrientationLinkSurface predicates, and refinement theorems .to_orientation_component (DAG + Graph parallel pair) plus qualitative DAGOrientationLinkOverlapProfile / GraphOrientationLinkOverlapProfile structures. Two fixes were required to compile against the installed v1.0 module: (1) the packet original referenced a field name `orientationEvidence` but v1.0 uses `orientationComponent`; (2) the packet original applied `DAGNativeCertificateComponentContext G Γ M F Ξ Ω` with all six arguments explicit, but v1.0 only takes Ω explicit (the rest are inferred). Installed SHA differs from packet original; documented in artifacts.csv notes. The bridge is qualitative - it adds a witness-refinement structure but asserts no numerical orientation-rescue law or probability.'
+  caveats: >
+    Lake-build-confirmed (8277/8277 jobs, no sorry/admit/axiom). Adds
+    DAG/Graph parallel pair of OrientationLinkSurfaceContext (Type-valued
+    orientationLinkEvidence + orientationLinkRefinesComponent morphism
+    into the v1.0 component context) plus refinement theorems and
+    qualitative overlap-profile structures. Two packet-source fixes at
+    install: orientationEvidence -> orientationComponent rename (v1.0
+    component module uses the latter); v1.0 component-context parameter
+    shape (only Omega explicit). Bridge is qualitative; no numerical
+    orientation-rescue law asserted.
   next_tasks:
   - Constrain or replace the abstract orientationLinkEvidence with concrete native orientation-link / sign-source structures sourced from RA_CausalOrientation_Core, RA_D1_NativeLedgerOrientation, RA_D1_NativeClosure rather than treating it as opaque Type-valued evidence.
   source_status:
@@ -4906,32 +5071,18 @@ claims:
   - RA-SIM-NATIVE-COMPONENT-DECOUPLE-METHOD-001
   - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.2 run (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs)
-    over the 480 v1.0 component rows. orientation_link_overlap is decoupled
-    from support/frontier overlap (max_abs_diff 0.82-0.92 by mode,
-    mean_abs_diff 0.37-0.40); matched_orientation_variation_available=true
-    with all 3 (low/medium/high) orientation_link_bins populated in every
-    support_frontier_bin; orientation_specificity_resolved=true with
-    rescue_gap +0.116 to +0.153 (augmented_exact_k) / +0.117 to +0.233
-    (at_least_k) for orientation_degradation; component_rank confirms
-    orientation_link_overlap has independent variation after support/frontier
-    control (residual_std=0.222) while legacy orientation_overlap has
-    residual_std=1.2e-15 (still confounded as expected, since v1.0 input
-    is unchanged); ledger_overlap remains decoupled (residual_std=0.009).
-    selector_stress remains not_certification_channel. CRITICAL HONESTY
-    CAVEAT - v1.2 result is demonstrative, not derivative. The
-    orientation_link_overlap surface is SYNTHESIZED from row metadata
-    (mode/severity/threshold/support_width hash), not derived from actual
-    orientation-link witness data. v1.2 therefore confirms that the v1.1
-    audit machinery is sound and would correctly resolve orientation
-    specificity IF a real distinct orientation-link surface were provided;
-    v1.2 does NOT prove that orientation_degradation rescue in Nature is
-    controlled by orientation-link overlap. The blocker has shifted from
-    "is the audit machinery sound?" (yes, demonstrated) to "produce a real
-    orientation-link surface from native witness data". Until that real
-    surface is in place, no orientation-specific Nature claim should be
-    promoted.'
+  caveats: >
+    Canonical v1.2 run over 480 v1.0 component rows.
+    orientation_link_overlap decoupled from support/frontier (max_abs_diff
+    0.82-0.92); orientation_specificity_resolved=true with rescue gaps
+    +0.12 to +0.23 by mode/semantics; residual_std=0.222 after
+    support/frontier control. SYNTHESIZED surface:
+    orientation_link_overlap is derived from a row-metadata hash, not from
+    actual orientation-link witnesses. v1.2 confirms v1.1 audit machinery
+    would resolve orientation specificity IF a real surface existed; does
+    NOT prove a Nature claim. The v1.2 positive specificity is superseded
+    by the v1.5/v1.6/v1.7/v1.8.1 chain (see
+    RA-SIM-V1-5-CORRIGENDUM-METHOD-001 and RA-SIM-CONFOUND-METHOD-001).
   next_tasks:
   - Build v1.3 packet that derives orientation_link_overlap from genuine native orientation/sign-source witness data (sourced from RA_CausalOrientation_Core, RA_D1_NativeLedgerOrientation, RA_D1_NativeClosure) rather than synthesizing from row metadata; rerun the v1.1/v1.2 audits against the derived surface; defer BDG-LLC formal anchoring until the real-surface result is in.
   source_status:
@@ -4977,7 +5128,19 @@ claims:
   - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   restoration_preconditions: []
-  caveats: 'Lake-build-confirmed (assistant-side `lake build RA_MotifNativeOrientationLinkDerivation` closed with 8278/8278 jobs, ~65s; no sorry/admit/axiom). The module imports only RA_MotifOrientationLinkSurface and adds DAGNativeOrientationLinkCatalogContext / GraphNativeOrientationLinkCatalogContext (Type-valued nativeOrientationEvidence + nativeEvidenceRefinesLink morphism into the v1.2 orientation-link surface), DAGHasNativeOrientationLinkCatalog / GraphHasNativeOrientationLinkCatalog predicates, refinement theorems .to_orientation_link_surface and .to_orientation_component (DAG + Graph parallel pair), and qualitative DAGNativeOrientationCatalogOverlapProfile / GraphNativeOrientationCatalogOverlapProfile structures. Three fixes were required vs packet original: (1) orientationEvidence -> orientationComponent (same field-name mismatch with v1.0 module as v1.2 had); (2) DAGNativeCertificateComponentContext G Γ M F Ξ Ω -> DAGNativeCertificateComponentContext Ω (only Ω is explicit in v1.0; same parameter-passing fix as v1.2); (3) NEW - dropped imports of RA_CausalOrientation_Core, RA_D1_NativeLedgerOrientation, RA_D1_NativeClosure due to a transitive `chainScore` duplicate-definition conflict (RA_D1_Core defines chainScore at line 80 and RA_D1_NativeKernel defines chainScore at line 32; the two transitive import chains together fail with "environment already contains chainScore.match_1"). Dropping the imports preserves semantics because the `usesCausalOrientationCore`, `usesNativeLedgerOrientation`, `usesNativeClosure` fields are pure Prop placeholders that do not depend on the imported modules` content - they are documentary obligations for downstream instantiations. The chainScore conflict is an upstream repo-level issue worth flagging in CLAUDE.md as a known recurring import hazard. Installed SHA differs from packet original; documented in artifacts.csv notes. The bridge is qualitative - it adds catalog-witness refinement structure but asserts no numerical orientation-rescue law or probability.'
+  caveats: >
+    Lake-build-confirmed (8278/8278 jobs, no sorry/admit/axiom). Adds
+    DAG/Graph parallel pair of NativeOrientationLinkCatalogContext
+    (Type-valued nativeOrientationEvidence + nativeEvidenceRefinesLink
+    morphism into the v1.2 surface), refinement theorems, and qualitative
+    overlap-profile structures. Three packet-source fixes at install:
+    orientationEvidence -> orientationComponent rename; v1.0
+    component-context parameter shape (only Omega explicit); transitive
+    imports of RA_CausalOrientation_Core / RA_D1_NativeLedgerOrientation /
+    RA_D1_NativeClosure dropped during a chainScore duplicate-definition
+    conflict, since resolved by RA-ISSUE-LEAN-CHAINSCORE-001 (the
+    Prop-placeholder fields do not depend on the imports). Bridge is
+    qualitative; no numerical orientation-rescue law asserted.
   next_tasks:
   - Constrain the abstract nativeOrientationEvidence with concrete native orientation-link / sign-source structures sourced per-graph from RA_CausalOrientation_Core / RA_D1_NativeLedgerOrientation / RA_D1_NativeClosure (the chainScore upstream conflict was resolved 2026-05-05 via RA-ISSUE-LEAN-CHAINSCORE-001 namespace fix; full native catalog now imports cleanly).
   - 'POST-RESOLUTION UPDATE 2026-05-05: RA_MotifNativeOrientationLinkDerivation now imports RA_CausalOrientation_Core / RA_D1_NativeLedgerOrientation / RA_D1_NativeClosure directly (the v1.3 import-drop workaround was removed once RA-ISSUE-LEAN-CHAINSCORE-001 was resolved by namespacing RA_D1_NativeKernel content in `namespace D1Native`). Re-built lake build closed 8285/8285 jobs (vs 8278 pre-resolution; 7 new jobs from the restored native catalog deps), 0 sorry/admit/axiom. Installed SHA updated.'
@@ -5031,24 +5194,20 @@ claims:
   - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.3 run (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v1_0_NativeCertificateAnchoring_May05_2026/outputs
-    --native-lean-dir /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT)
-    over the 480 v1.0 component rows.
-    native_orientation_catalog_manifest_used=true (Lean files were actually
-    parsed; theorem manifest extracted with role tags and weights, e.g.
+  caveats: >
+    Canonical v1.3 run over 480 v1.0 component rows.
+    native_orientation_catalog_manifest_used=true (Lean files parsed;
+    theorem manifest extracted with role tags + weights, e.g.
     RA_CausalOrientation_Core::one_way_precedence weight 2.05,
-    RA_CausalOrientation_Core::reverse_winding_filtered weight 2.0).
-    native_orientation_surface_decoupled=true: per-mode native orientation
-    vs support max_abs_diff = 0.708 (ledger_failure) / 0.957
-    (orientation_degradation) / 0.773 (selector_stress); mean_abs_diff
-    0.385-0.403. matched_orientation_variation_available=true; component
-    rank confirms native_orientation_link_overlap is distinctly lower-mean
-    (0.41-0.50) than the support/frontier/orientation triplet (~0.74) and
-    the ledger/causal/bdg/firewall bundle (~0.76-0.86) - quantitatively
-    distinct from all existing components. Surface is derived from a native
-    Lean declaration / theorem-role catalogue, not from per-graph
-    orientation-link witness instances.'
+    reverse_winding_filtered weight 2.0).
+    native_orientation_surface_decoupled=true: per-mode max_abs_diff vs
+    support 0.708 / 0.957 / 0.773 across modes; mean_abs_diff 0.385-0.403.
+    Component rank confirms native_orientation_link_overlap is distinctly
+    lower-mean (0.41-0.50) than the support/frontier/orientation triplet
+    (~0.74) and the ledger/causal/bdg/firewall bundle (~0.76-0.86).
+    Surface is derived from a Lean declaration / theorem-role catalogue,
+    not from per-graph orientation-link witness instances. Positive
+    specificity reading is superseded by the v1.5/v1.6/v1.7/v1.8.1 chain.
   next_tasks:
   - Replace theorem-catalog surface with per-graph native orientation-link extraction in v1.4 once the upstream chainScore conflict is resolved so the full native catalog can be loaded simultaneously.
   source_status:
@@ -5096,25 +5255,19 @@ claims:
   - RA-SIM-ORIENTATION-LINK-SURFACE-METHOD-001
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.3 run (parameters as in
-    RA-SIM-NATIVE-ORIENT-LINK-001).
-    native_orientation_residual_std=0.174 (independent variation after
-    support/frontier control); legacy_orientation_residual_std=1.2e-15
-    (still confounded as expected from unchanged v1.0 input);
-    selector_guardrail_passed=true; orientation_specificity_resolved=true.
-    Per-mode/semantics specificity:
-    orientation_degradation / at_least_k -> native_orientation_specific_surface_detected
-    (rescue gap +0.124, native sensitivity 0.515 vs ledger 0.022);
-    orientation_degradation / augmented_exact_k -> native_orientation_specific_surface_detected
-    (rescue gap +0.147, native sensitivity 0.507 vs ledger 0.024);
-    ledger_failure / both semantics -> ledger_control_not_resolved (correct;
-    native orientation-link does not drive ledger rescue);
-    selector_stress / both semantics -> not_certification_channel.
-    The v1.1 audit machinery gives the same orientation-specificity verdict
-    on the catalog-derived surface that it did on the v1.2 row-hash surface,
-    confirming the audit infrastructure is robust to the underlying surface
-    construction. Diagnostic remains catalog-level; not yet a final native
-    orientation-overlap law.'
+  caveats: >
+    Canonical v1.3 run. native_orientation_residual_std=0.174 vs
+    legacy_orientation_residual_std=1.2e-15. orientation_degradation /
+    both semantics -> native_orientation_specific_surface_detected (rescue
+    gaps +0.124 / +0.147; native sensitivity 0.51 vs ledger 0.022-0.024);
+    ledger_failure -> ledger_control_not_resolved (correct);
+    selector_stress -> not_certification_channel. v1.1 audit machinery
+    gives the same orientation-specificity verdict on the catalog-derived
+    surface as on the v1.2 row-hash surface, confirming the audit
+    infrastructure is robust to surface construction. Diagnostic remains
+    catalog-level; not a final native orientation-overlap law. Positive
+    specificity reading is superseded by the v1.5/v1.6/v1.7/v1.8.1 chain
+    (RA-SIM-V1-5-CORRIGENDUM-METHOD-001, RA-SIM-CONFOUND-METHOD-001).
   next_tasks:
   - Run v1.3 audits against per-graph native orientation-link witness extraction in v1.4 to complete the catalog -> per-graph progression.
   source_status:
@@ -5161,7 +5314,17 @@ claims:
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   restoration_preconditions: []
-  caveats: 'Lake-build-confirmed (assistant-side `lake build RA_MotifPerGraphOrientationWitness` closed with 8286/8286 jobs, ~72s; no sorry/admit/axiom). The module imports only RA_MotifNativeOrientationLinkDerivation and adds DAGPerGraphOrientationWitnessContext / GraphPerGraphOrientationWitnessContext (with abstract `graphInstance`, `memberIndex`, `perGraphOrientationEvidence` fields plus a `refinesNativeCatalog` morphism into the v1.3 native catalog evidence), DAGHasPerGraphOrientationWitness / GraphHasPerGraphOrientationWitness predicates, refinement theorems .to_native_catalog and .to_orientation_link_surface (DAG + Graph parallel pair), plus qualitative DAGPerGraphOrientationWitnessProfile / GraphPerGraphOrientationWitnessProfile structures. Three fixes were required vs packet original: (1) DAGNativeCertificateComponentContext G Γ M F Ξ Ω -> DAGNativeCertificateComponentContext Ω (recurring v1.x parameter-passing fix; CLAUDE.md item 7); (2) GraphNativeCertificateComponentContext G Γ M F Ξ Ω -> ... Ω (same fix for Graph variant); (3) NEW VARIANT - the packet author used `Π` (capital pi) as the parameter name for the per-graph witness context binding, but `Π` is reserved by Lean 4 for the dependent-product / `Pi` binder and produced "unexpected token" errors at every use. Renamed `Π -> P` across the file (same family as the `Σ -> S` rename in CLAUDE.md item 1). Installed SHA differs from packet original; documented in artifacts.csv notes. The bridge is qualitative; it adds per-graph witness-refinement structure but asserts no numerical orientation-rescue law or probability.'
+  caveats: >
+    Lake-build-confirmed (8286/8286 jobs, no sorry/admit/axiom). Adds
+    DAG/Graph parallel pair of PerGraphOrientationWitnessContext (abstract
+    graphInstance / memberIndex / perGraphOrientationEvidence +
+    refinesNativeCatalog morphism into the v1.3 native catalog evidence)
+    and qualitative profile structures. Three packet-source fixes at
+    install: DAG and Graph variants of NativeCertificateComponentContext
+    parameter-shape (only Omega explicit; CLAUDE.md item 7); rename Pi ->
+    P (capital pi is reserved by Lean 4 for the dependent-product binder;
+    same family as the Sigma -> S rename in CLAUDE.md item 1). Bridge is
+    qualitative; no numerical orientation-rescue law asserted.
   next_tasks:
   - Replace the abstract perGraphOrientationEvidence with concrete native graph/cut/orientation witness data extracted from RA_GraphCore / RA_CausalOrientation_Core / RA_D1_NativeLedgerOrientation rather than treating it as opaque Type-valued evidence indexed by abstract graphInstance / memberIndex.
   source_status:
@@ -5213,27 +5376,19 @@ claims:
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.4 run (assistant-side; --input-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/outputs
-    --native-manifest-dir
-    ../RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026/outputs
-    --native-lean-dir /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT)
-    over 480 v0.9 input rows, producing 4800 member witness rows
-    (10 members x 480 rows) and using a 45-row native theorem catalog
-    manifest (v1.3 manifest reused). Sample member tokens combine native
-    catalog declarations (RA_CausalOrientation_Core::fixed_point_orientation_symmetric,
-    RA_CausalOrientation_Core::no_reverse_precedence) with graph-local
-    per-member tokens (graph:run_seed:seed:motif:NAME:site:N:orientation-cut-role:0/1
-    varies per member, providing the within-family-cell variation that
-    matches support/frontier strata require). Implementation note: the
-    packet test file hardcoded /mnt/data/... paths from the packet
-    author`s environment; replaced with Path(__file__).resolve().parents[2]
-    relative path so the test runs in this repo. Test file installed SHA
-    therefore differs from packet original. The witness extraction is
-    operational: it is per-graph/per-member keyed but uses simulator state
-    rows + native catalog tokens, NOT extraction from concrete RA_GraphCore /
-    ActualizationGraph instances. v1.5+ should replace simulator-state
-    extraction with concrete graph-side extraction.'
+  caveats: >
+    Canonical v1.4 run over 480 v0.9 input rows producing 4800 member
+    witness rows (10 members x 480) using a 45-row v1.3 native theorem
+    catalog manifest. Sample tokens combine native catalog declarations
+    (RA_CausalOrientation_Core::fixed_point_orientation_symmetric,
+    no_reverse_precedence) with graph-local per-member tokens
+    (graph:run_seed:seed:motif:NAME:site:N:orientation-cut-role:0/1,
+    providing within-stratum variation). Implementation note: packet test
+    file hardcoded /mnt/data/... paths; replaced with relative path so it
+    runs in this repo (test SHA differs from packet original). v1.5+
+    should replace simulator-state extraction with concrete graph-side
+    extraction. Positive specificity reading is superseded by the
+    v1.5/v1.6/v1.7/v1.8.1 chain.
   next_tasks:
   - Replace simulator-state extraction with concrete RA_GraphCore / ActualizationGraph orientation-link witness extraction in v1.5 (or later); validate that the per-member orientation tokens carry through the graph bridge.
   source_status:
@@ -5289,33 +5444,20 @@ claims:
   - RA-SIM-NATIVE-ORIENT-LINK-METHOD-001
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   restoration_preconditions: []
-  caveats: 'Confirmed by canonical v1.4 run (parameters as in
-    RA-SIM-PER-GRAPH-ORIENT-WITNESS-001).
-    per_graph_orientation_surface_decoupled=true (decoupling audit:
-    per_graph orientation vs support_overlap max_abs_diff 0.818
-    [ledger_failure] / 0.814 [orientation_degradation] / 0.823
-    [selector_stress]; per_graph orientation vs frontier_overlap and vs
-    legacy_orientation_overlap show identical max_abs_diff per mode;
-    legacy_orientation vs support_frontier remains confounded at 0.0
-    across all modes). matched_orientation_variation_available=true.
-    orientation_specificity_resolved=true:
-    orientation_degradation / at_least_k -> per_graph_orientation_specific_surface_detected
-    (low_minus_medium rescue gap +0.039);
-    orientation_degradation / augmented_exact_k -> per_graph_orientation_specific_surface_detected
-    (low_minus_medium rescue gap +0.041);
-    ledger_failure / both semantics -> ledger_control_not_resolved_by_orientation
-    (rescue gap +0.014 / +0.014; correctly attributed to ledger not
-    orientation channel); selector_stress / both -> not_certification_channel.
-    mean_per_graph_orientation_residual_std=0.0822 (independent variation
-    after support/frontier OLS control); mean_legacy_orientation_residual_std=5.5e-17
-    (still confounded as expected). selector_guardrail_passed=true. The
-    per-graph specificity gap is smaller than v1.3`s catalog-only gap
-    because v1.4 splits each row into 10 member witnesses, increasing
-    sample resolution but reducing per-cell signal magnitude. Per-member
-    orientation tokens vary across siblings via graph-local cut-role
-    indices, providing the within-stratum variation source. Diagnostic
-    remains operational - v1.4 is per-graph keyed but not yet a final
-    derivation from concrete ActualizationGraph instances.'
+  caveats: >
+    Canonical v1.4 run. per_graph_orientation_surface_decoupled=true
+    (max_abs_diff 0.81-0.82 across modes vs
+    support/frontier/legacy_orientation; legacy still confounded at 0.0).
+    orientation_specificity_resolved=true: orientation_degradation
+    low_minus_medium rescue gap +0.039-0.041 across both semantics;
+    ledger_failure -> ledger_control_not_resolved_by_orientation;
+    selector_stress -> not_certification_channel. residual_std=0.082
+    (per_graph) vs 5.5e-17 (legacy). v1.4 splits each row into 10 member
+    witnesses with graph-local cut-role indices providing within-stratum
+    variation. Diagnostic remains operational; uses simulator state +
+    catalog tokens, not concrete ActualizationGraph extraction. Positive
+    specificity reading is superseded by the v1.5/v1.6/v1.7/v1.8.1 chain
+    (see RA-SIM-V1-5-CORRIGENDUM-METHOD-001).
   next_tasks:
   - Validate that per-graph orientation-specificity persists when witnesses are extracted from concrete RA_GraphCore / ActualizationGraph instances (v1.5+).
   source_status:
@@ -5366,7 +5508,18 @@ claims:
   - RA-SIM-PER-GRAPH-ORIENT-WITNESS-METHOD-001
   - RA-SIM-CONCRETE-GRAPH-ORIENT-METHOD-001
   restoration_preconditions: []
-  caveats: 'Lake-build-confirmed (assistant-side `lake build RA_MotifConcreteGraphOrientationWitness` closed with 8287/8287 jobs, ~70s; no sorry/admit/axiom). The module imports only RA_MotifPerGraphOrientationWitness and adds DAGConcreteEdgePairSignContext / GraphConcreteEdgePairSignContext (Type-valued concreteEdgePairSignEvidence + concreteRefinesPerGraph morphism into the v1.4 per-graph evidence), DAGHasConcreteEdgePairSignWitness / GraphHasConcreteEdgePairSignWitness predicates, refinement theorems .to_per_graph (DAG + Graph parallel pair) plus the composed .to_native_catalog and .to_orientation_link_surface theorems for the DAG layer, and qualitative DAGConcreteEdgePairSignOverlapProfile / GraphConcreteEdgePairSignOverlapProfile structures with `topologyDerived` and `refinesPerGraphOverlap` Prop fields. The bridge is qualitative; it does not assert any numerical orientation-rescue law, probability, or BDG-LLC derivation. This is the first author-built (vs packet-installed) module in the orientation-link line; it built clean on the first try after the previous v1.0/v1.2/v1.3/v1.4 patterns were applied correctly (orientationComponent vs orientationEvidence, only-Ω-explicit, no Π identifiers).'
+  caveats: >
+    Lake-build-confirmed (8287/8287 jobs, no sorry/admit/axiom). Adds
+    DAG/Graph parallel pair of ConcreteEdgePairSignContext (Type-valued
+    concreteEdgePairSignEvidence + concreteRefinesPerGraph morphism into
+    v1.4 evidence) plus refinement theorems and qualitative
+    overlap-profile structures with topologyDerived /
+    refinesPerGraphOverlap Prop fields. First author-built (vs
+    packet-installed) module in the orientation-link line; built clean on
+    first try after the v1.0/v1.2/v1.3/v1.4 fix patterns were applied
+    (orientationComponent vs orientationEvidence, only-Omega-explicit, no
+    Pi identifiers). Bridge is qualitative; no numerical
+    orientation-rescue law asserted.
   next_tasks:
   - Replace the abstract concreteEdgePairSignEvidence with concrete RA_GraphCore-derived edge-pair-sign data once an RA_GraphCore-side extractor exists; alternatively, integrate with the v0.9 simulator's saved ActualizationDAG instances.
   source_status:
@@ -5568,24 +5721,19 @@ claims:
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
   caveats: >
-    SUBSET matched-graph diagnostic run (NOT canonical): 192 trials,
-    24 per-cell rows. The matched-graph extraction methodology
-    (rescue and orientation_overlap from the same v0.9 CausalDAG
-    instance per trial) is the real methodological achievement here
-    and is confirmed at canonical scale by v1.7
-    (RA-SIM-ORIENT-KEYING-001). decoupled_count=12/12;
-    graph_coupled_orientation_surface_decoupled=true;
-    selector_guardrail_passed=true; v1_6_disconnection_closed=true.
-    Primary statistic v1_6_overlap_statistic = "all_pairs_mean_jaccard";
-    parent-anchored recorded separately. Note the v1.6 witness function
-    (lines 76–80) still includes member_idx; v1.7 has shown this is
-    methodologically poor (it ties orientation_overlap to support
-    structure) but is NOT the cause of the reversed-sign verdict. The
-    reversed-sign verdict (see RA-SIM-GRAPH-COUPLED-ORIENT-002) is a
-    binning/family-structure artifact, not a topology-causal effect.
-    Full audit history: audit_events.csv EV-2026-05-05-002,
-    EV-2026-05-05-003, EV-2026-05-05-004, EV-2026-05-06-001,
-    EV-2026-05-06-002, EV-2026-05-06-003, EV-2026-05-06-004.
+    SUBSET matched-graph diagnostic run (NOT canonical): 192 trials, 24
+    per-cell rows. The matched-graph extraction methodology (rescue and
+    orientation_overlap from the same v0.9 CausalDAG instance per trial)
+    is the methodological achievement here and is confirmed at canonical
+    scale by v1.7 (RA-SIM-ORIENT-KEYING-001). decoupled_count=12/12;
+    selector_guardrail_passed=true; v1_6_disconnection_closed=true. v1.6
+    witness still includes member_idx (lines 76-80); v1.7 + v1.8.1 show
+    this is methodologically poor but is NOT the cause of the
+    reversed-sign verdict. The reversed-sign verdict
+    (RA-SIM-GRAPH-COUPLED-ORIENT-002) is a binning/family-structure
+    artifact, not a topology-causal effect. Full audit history:
+    audit_events.csv EV-2026-05-05-002, EV-2026-05-05-003,
+    EV-2026-05-05-004, EV-2026-05-06-001 through EV-2026-05-06-006.
   next_tasks:
   - Treat v1.6 as the first matched-graph extraction packet; cite RA-SIM-ORIENT-KEYING-001 / RA-SIM-ORIENT-KEYING-002 for the canonical orientation-specificity reading.
   source_status:
@@ -5735,21 +5883,17 @@ claims:
   - RA-SIM-ORIENT-KEYING-METHOD-001
   restoration_preconditions: []
   caveats: >
-    Confirmed by canonical v1.7 run (assistant-side; --seed-start 17
-    --seed-stop 117 = 100 seeds; --severance-seeds 101,103,107; --max-targets
-    12; --severities 0.25,0.5,0.75; --threshold-fractions 0.25,0.5,0.75;
-    --family-semantics at_least_k,augmented_exact_k; --keyings = all six)
-    producing 194,400 base matched trials × 6 keyings = 1,166,400 keyed rows,
-    1,296 per-cell rows, 36 cells per (keying, mode, family_semantics).
-    selector_guardrail_passed=true; any_positive_non_member_orientation_specificity
-    =false; v1_7_posture=keying_ablation_diagnostic_not_canonical_physical_claim.
-    This claim retracts the v1.5 positive orientation-specificity
-    interpretation (RA-SIM-CONCRETE-GRAPH-ORIENT-002, +0.028 augmented_exact_k
-    gap) as non-robust under canonical matched-graph keying ablation. It does
-    NOT establish robust negative orientation specificity (see
-    RA-SIM-ORIENT-KEYING-002 for the binning/family-structure confound
-    finding). Full audit history: audit_events.csv EV-2026-05-06-003,
-    EV-2026-05-06-004.
+    Canonical v1.7 run: 100 seeds × 3 severance × 3 modes × 3 severities ×
+    3 thresholds × 2 semantics × 12 targets × 6 keyings = 1,166,400 keyed
+    rows; 1,296 per-cell rows; 36 cells per (keying, mode,
+    family_semantics). selector_guardrail_passed=true;
+    any_positive_non_member_orientation_specificity=false. Retracts the
+    v1.5 +0.028 positive orientation-specificity
+    (RA-SIM-CONCRETE-GRAPH-ORIENT-002) under canonical matched-graph
+    keying ablation. Does NOT establish negative orientation specificity
+    (see RA-SIM-ORIENT-KEYING-002 for the binning/family-structure
+    confound finding, confirmed by v1.8.1 joint matching). Full audit
+    history: audit_events.csv EV-2026-05-06-003, EV-2026-05-06-004.
   next_tasks:
   - Build v1.8 support-width / family-structure / binning confound audit (see issues.yaml RA-ISSUE-V1-8-WIDTH-CONFOUND-AUDIT-001).
   source_status:
@@ -5802,22 +5946,18 @@ claims:
   - RA-SIM-V1-5-CORRIGENDUM-METHOD-001
   restoration_preconditions: []
   caveats: >
-    Canonical-scale finding (n=36 per (keying, mode, family_semantics) cell;
-    1,296 total per-cell rows; 1.17M keyed rows). Shuffled-control matching
-    graph-derived keyings at the v1.7 aggregation level is suggestive of a
-    binning artifact; v1.8.1 joint (support_width × family_size × threshold
-    × severity) stratification CONFIRMS this directly: the orientation gap
-    collapses to |0.003| under joint matching, with graph keyings (where
-    estimable) matching the shuffled control to within 0.012. Three of the
-    five non-member graph keyings are non-estimable under joint matching
-    because their orientation_overlap is structurally constant within a
-    fixed (mode, semantics, threshold, severity, support_width, family_size)
-    stratum - which itself confirms that "orientation overlap" was a
-    function of structural variables for those keyings. v1.8 width-only
-    matching produced a misleading "Case B residual" reading; v1.8.1 is
-    the controlling result. Full audit history: audit_events.csv
-    EV-2026-05-06-003, EV-2026-05-06-004, EV-2026-05-06-005,
-    EV-2026-05-06-006.
+    Canonical-scale finding (n=36 per (keying, mode, family_semantics)
+    cell; 1,296 per-cell rows; 1.17M keyed rows). Shuffled-control
+    matching graph-derived keyings at the v1.7 aggregation level was
+    suggestive of a binning artifact; v1.8.1 joint (support_width x
+    family_size x threshold x severity) stratification confirms this
+    directly: orientation gap collapses to |0.003| under joint matching,
+    with graph keyings (where estimable) matching the shuffled control to
+    within 0.012. Three of five non-member graph keyings are non-estimable
+    under joint matching because their orientation_overlap is structurally
+    constant within a fixed joint stratum. v1.8 width-only matching gave a
+    misleading 'Case B residual'; v1.8.1 is controlling. Full audit
+    history: audit_events.csv EV-2026-05-06-003 through EV-2026-05-06-006.
   next_tasks:
   - Confound audit complete via v1.8.1 (see RA-SIM-CONFOUND-V18-1-001 / -002 and RA-SIM-CONFOUND-METHOD-001). No further orientation-overlap audits warranted at this scale.
   source_status:
