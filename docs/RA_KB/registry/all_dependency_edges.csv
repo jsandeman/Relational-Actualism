@@ -555,3 +555,4 @@ RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001,RA-MOTIF-SUPPORT-FAMILY-RESCU
 RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-MOTIF-CERT-RESILIENCE-CONSOL-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,Track A Lean consolidation
 RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,Track A.2 support-family rescue taxonomy
 RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,RA-SIM-SUPPORT-FAMILY-METRIC-001,proof_dependency,claim,claim,Track A.3 Lean comparison-domain validity,v0.7.2 metric-repair audit
+RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001,RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001,interpretive_dependency,framing,claim,Track A formal resilience chain (compile-confirmed) - canonical synthesis,Layer 5 - Track A.3 comparison-domain validity

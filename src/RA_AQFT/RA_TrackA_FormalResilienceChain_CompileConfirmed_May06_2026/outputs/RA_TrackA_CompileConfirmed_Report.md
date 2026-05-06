@@ -1,8 +1,8 @@
-# Track A — Compile-Confirmed Report (May 06 2026)
+# Track A — Compile-Confirmed Report (May 06 2026, refreshed for Layer 5)
 
 ## Summary
 
-Four lake-build-confirmed Lean modules form the Track A formal resilience chain:
+Five lake-build-confirmed Lean modules form the Track A formal resilience chain:
 
 | # | Module | Claim ID | Build receipt | Lex check |
 |---|---|---|---|---|
@@ -10,15 +10,16 @@ Four lake-build-confirmed Lean modules form the Track A formal resilience chain:
 | 2 | `RA_MotifCertificateCorrelationBridge` | `RA-MOTIF-CERT-CORRELATION-BRIDGE-001` | 8276/8276 jobs, ~87s | no sorry/admit/axiom |
 | 3 | `RA_MotifNativeOverlapCorrelationBridge` | `RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001` | 8279/8279 jobs, ~83s | no sorry/admit/axiom |
 | 4 | `RA_MotifSupportFamilyRescueTaxonomy` | `RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001` | 8276/8276 jobs, ~82s | no sorry/admit/axiom |
+| 5 | `RA_MotifComparisonDomainValidity` | `RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001` | 8277/8277 jobs, ~78s | no sorry/admit/axiom |
 
-**Total**: ~33,106 jobs, ~5.6 minutes wall-clock, 0 issues across all four modules.
+**Total**: ~41,383 jobs, ~6.9 minutes wall-clock, 0 issues across all five modules.
 
 ## Environment
 
 - **Lean toolchain**: `leanprover/lean4:v4.29.0` (pinned in `src/RA_AQFT/lean-toolchain`).
 - **Lake build root**: `src/RA_AQFT/lakefile.lean`.
 - **Builder**: `/Users/jsandeman/.elan/bin/lake build <module>`.
-- **Audit events**: `EV-2026-05-06-010` (Layer 1), `EV-2026-05-06-011` (Layer 2), `EV-2026-05-06-012` (Layer 3), `EV-2026-05-06-014` (Layer 4) in `docs/RA_KB/registry/audit_events.csv`.
+- **Audit events**: `EV-2026-05-06-010` (Layer 1), `EV-2026-05-06-011` (Layer 2), `EV-2026-05-06-012` (Layer 3), `EV-2026-05-06-014` (Layer 4), `EV-2026-05-06-016` (Layer 5), `EV-2026-05-06-017` (this synthesis refresh) in `docs/RA_KB/registry/audit_events.csv`.
 
 ## Toolchain dependencies
 
@@ -45,6 +46,7 @@ cd /Users/jsandeman/projects/Relational-Actualism/src/RA_AQFT
 /Users/jsandeman/.elan/bin/lake build RA_MotifCertificateCorrelationBridge
 /Users/jsandeman/.elan/bin/lake build RA_MotifNativeOverlapCorrelationBridge
 /Users/jsandeman/.elan/bin/lake build RA_MotifSupportFamilyRescueTaxonomy
+/Users/jsandeman/.elan/bin/lake build RA_MotifComparisonDomainValidity
 ```
 
 Each command should report `Build completed successfully (NNNN jobs)` with no warnings; `grep -nE "sorry|admit|^axiom\b" <module>.lean` should return empty.

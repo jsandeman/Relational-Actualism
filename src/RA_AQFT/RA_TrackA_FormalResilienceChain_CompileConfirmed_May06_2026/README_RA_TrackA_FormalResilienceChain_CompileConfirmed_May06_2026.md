@@ -1,18 +1,19 @@
 # RA Track A — Formal Resilience Chain (Compile-Confirmed, May 06 2026)
 
-**Synthesis-only.** No new Lean code. No new simulator runs. Records the four-module compile-confirmed Track A spine as a coherent formal chain so future paper drafts and RAKB sessions can cite it as a unit.
+**Synthesis-only.** No new Lean code. No new simulator runs. Records the **five-module** compile-confirmed Track A spine as a coherent formal chain so future paper drafts and RAKB sessions can cite it as a unit.
 
-This packet supersedes (in scope) the earlier `RA_TrackA_CertificationResilience_FormalChain_May06_2026/` (which covered the first three modules); the earlier synthesis remains in the registry as provenance. After installing the Track A.2 taxonomy module, Track A reached a natural four-module milestone, hence this fresh synthesis.
+**Refreshed 2026-05-06 (audit_events EV-2026-05-06-017)** to add Layer 5 (Track A.3 comparison-domain validity, `RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001`). The original four-module synthesis is preserved by this same packet; only the five output documents and this README were updated to reflect the new layer. The earlier `RA_TrackA_CertificationResilience_FormalChain_May06_2026/` (three-module synthesis) remains in the registry as provenance.
 
 ## Outputs
 
 ```
 outputs/RA_TrackA_FormalResilienceChain.md
-  Narrative across all four Lean modules:
+  Narrative across all five Lean modules:
   Layer 1 — RA_MotifCertificationResilienceConsolidation
   Layer 2 — RA_MotifCertificateCorrelationBridge
   Layer 3 — RA_MotifNativeOverlapCorrelationBridge
   Layer 4 — RA_MotifSupportFamilyRescueTaxonomy
+  Layer 5 — RA_MotifComparisonDomainValidity
 
 outputs/RA_TrackA_LeanModuleMap.csv
   One row per module: layer, claim_id, key structures, key
@@ -34,7 +35,7 @@ outputs/RA_TrackA_CompileConfirmed_Report.md
 
 ## Anchor
 
-`RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001` (framing) registers this packet as the canonical paper-citation reference for the four-module Track A spine. Cross-references the earlier `RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001` (three-module synthesis).
+`RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001` (framing) registers this packet as the canonical paper-citation reference for the **five-module** Track A spine. Cross-references the earlier `RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001` (three-module synthesis, preserved as provenance).
 
 ## Discipline
 

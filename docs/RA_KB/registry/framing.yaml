@@ -1607,12 +1607,12 @@ framing_policies:
   packet_origin: RA_TrackA_CertificationResilience_FormalChain_May06_2026
 
 - id: RA-MOTIF-TRACKA-FORMAL-RESILIENCE-CHAIN-METHOD-001
-  name: RA Track A Formal Resilience Chain (compile-confirmed) - canonical four-module synthesis with build receipts and simulator-lesson map
+  name: RA Track A Formal Resilience Chain (compile-confirmed) - canonical five-module synthesis with build receipts and simulator-lesson map
   domain: framing
   papers:
   - II
   statement: >
-    Synthesis-only documentation of the four-module compile-confirmed
+    Synthesis-only documentation of the five-module compile-confirmed
     Track A spine: Layer 1 RA_MotifCertificationResilienceConsolidation
     (strict-parent rescue vs family-internal resilience); Layer 2
     RA_MotifCertificateCorrelationBridge (CertificateFateContext;
@@ -1620,20 +1620,25 @@ framing_policies:
     OverlapCorrelationBridge (sharedFate_of_highEndpoint structural
     payoff); Layer 4 RA_MotifSupportFamilyRescueTaxonomy (augmentation
     vs replacement; CertifiedFamilyAugments;
-    FamilyAugmentationRescueAt). Five output documents: narrative
-    (FormalResilienceChain.md), per-module map (LeanModuleMap.csv),
-    per-simulator-lesson correspondence (SimulatorLessonMap.csv),
-    open formal gaps (OpenFormalGaps.md), build receipts and
-    reproduction (CompileConfirmed_Report.md). Total build cost
-    across the four modules: 33,106 jobs in ~5.6 minutes; lex-clean
-    on every module. Cross-references the earlier three-module
-    synthesis RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001 (preserved as
-    provenance; superseded only in scope by this packet's inclusion
-    of Layer 4 / Track A.2).
+    FamilyAugmentationRescueAt); Layer 5 RA_MotifComparisonDomain-
+    Validity (ValidFamilyComparison / ValidAugmentationComparison /
+    ReplacementComparisonDomain / CertificateAgreementOnOverlap; the
+    apples-to-apples comparison criterion as a Lean-typed predicate).
+    Five output documents: narrative (FormalResilienceChain.md),
+    per-module map (LeanModuleMap.csv), per-simulator-lesson
+    correspondence (SimulatorLessonMap.csv), open formal gaps
+    (OpenFormalGaps.md), build receipts and reproduction
+    (CompileConfirmed_Report.md). Total build cost across the five
+    modules: 41,383 jobs in ~6.9 minutes; lex-clean on every module.
+    Cross-references the earlier three-module synthesis
+    RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001 (preserved as
+    provenance). Originally installed as a four-module synthesis on
+    EV-2026-05-06-015; refreshed to five modules on
+    EV-2026-05-06-017 after Layer 5 (Track A.3) compiled clean.
   nature_targets:
   - registry-discipline standard for Track A formal chain citation
   - explicit simulator-vs-Lean separation across the v0.7..v0.9.x positive line
-  - paper-stage compile-confirmed reference for the four-module Lean spine
+  - paper-stage compile-confirmed reference for the five-module Lean spine
   ra_observable: null
   sources:
   - RA_TrackA_FormalResilienceChain_CompileConfirmed_May06_2026
@@ -1651,10 +1656,11 @@ framing_policies:
   - RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001
   - RA-MOTIF-TRACKA-FORMAL-CHAIN-METHOD-001
   restoration_preconditions: []
-  caveats: 'Synthesis-only: the four Track A controlling claim IDs (RA-MOTIF-CERT-RESILIENCE-CONSOL-001, RA-MOTIF-CERT-CORRELATION-BRIDGE-001, RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001, RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001) hold the formal anchors; this packet records the chain. The orientation-specific rescue exclusion (RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001) and the v1.5..v1.8.1 retraction (RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) remain in force. Recommended next step: write the technical paper section. Track A.3 (comparison-domain validity predicate) only if a specific paper section needs it. Full audit history: audit_events.csv EV-2026-05-06-015.'
+  caveats: 'Synthesis-only: the five Track A controlling claim IDs (RA-MOTIF-CERT-RESILIENCE-CONSOL-001, RA-MOTIF-CERT-CORRELATION-BRIDGE-001, RA-MOTIF-NATIVE-OVERLAP-CORRELATION-BRIDGE-001, RA-MOTIF-SUPPORT-FAMILY-RESCUE-TAXONOMY-001, RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001) hold the formal anchors; this packet records the chain. The orientation-specific rescue exclusion (RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001) and the v1.5..v1.8.1 retraction (RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) remain in force. Recommended next step: write the technical paper section. Track A.4 (cohort-specific monotonicity violation lift) and Track B (native per-graph witness extraction, gated by RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) only if a specific paper section needs them. Full audit history: audit_events.csv EV-2026-05-06-015 (initial four-module install), EV-2026-05-06-017 (Layer 5 refresh).'
   next_tasks:
-  - 'Recommended: write the RA actualization-resilience technical paper section now that the four-module Track A chain is compile-confirmed and documented.'
-  - 'Optional Track A.3 if a paper section requires it: comparison-domain validity predicate (ValidFamilyComparison / ValidRescueComparison / SameTargetingDomain / CertificatePreservationDomain / ComparableSupportFamilies) to formalize the v0.7.2 apples-to-apples acceptance criterion.'
+  - 'Recommended: write the RA actualization-resilience technical paper section now that the five-module Track A chain is compile-confirmed and documented.'
+  - 'Track A.4 (speculative): cohort-specific monotonicity violation lift (the 9,887 exact_k x cut_level x ledger/orientation pattern); only if a paper section needs the cohort-level statement.'
+  - 'Track B (deferred): native per-graph witness extractor; gated until the v1.9 native-witness six-requirement gate is satisfied.'
   - Refresh this synthesis whenever a new Track A module is added; cross-reference rather than rewrite.
   legacy_proof_status: DR
   legacy_support_status: none

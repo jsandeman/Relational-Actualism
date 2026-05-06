@@ -1,16 +1,19 @@
-# Open formal gaps after the four-module Track A spine
+# Open formal gaps after the five-module Track A spine
 
-This document lists what is **not** Lean-derived after Track A.2. It supersedes (in scope) the gap list in the earlier `RA_TrackA_CertificationResilience_FormalChain_May06_2026/outputs/RA_TrackA_OpenFormalGaps.md`, by the addition of Layer 4 (Track A.2 taxonomy). The earlier list is still correct for the items it covered; this document tracks the four-module state.
+This document lists what is **not** Lean-derived after Track A.3. It supersedes (in scope) the gap list in the earlier `RA_TrackA_CertificationResilience_FormalChain_May06_2026/outputs/RA_TrackA_OpenFormalGaps.md`, by the addition of Layers 4 and 5 (Track A.2 taxonomy and Track A.3 comparison-domain validity).
 
-## What Track A.2 closed
+## What Tracks A.2 and A.3 closed
 
-Compared to the three-module gap list, the addition of `RA_MotifSupportFamilyRescueTaxonomy` closes:
+Compared to the three-module gap list, the addition of `RA_MotifSupportFamilyRescueTaxonomy` (Layer 4) and `RA_MotifComparisonDomainValidity` (Layer 5) closes:
 
 - The augmentation vs replacement formal distinction (`FamilyStrictlyAugments` vs `FamilyIncomparable`).
 - The certified-augmentation no-worse statement at the structural level (`FamilyInternalResilienceAt.mono_certified_augmentation`).
 - The augmentation-rescue refinement into strict-parent rescue (`FamilyAugmentationRescueAt.to_strict_parent_rescue`).
+- The apples-to-apples comparison criterion at the structural level (`ValidFamilyComparison` packaging targetingAligned + exposureAligned + FamilyComparable + CertificateAgreementOnOverlap).
+- The replacement-regime failure mode (`ReplacementComparisonDomain` capturing FamilyIncomparable explicitly so it can be cited as the case where no inclusion-based no-worse theorem follows).
+- The augmentation-comparison refinement chain into resilience and rescue (`ValidAugmentationComparison.to_family_internal_resilience` / `.to_augmentation_rescue`).
 
-These were "Track A.2" gaps in the earlier note; they are now formal theorems.
+These were "Track A.2" and "Track A.3" gaps in earlier notes; they are now formal theorems.
 
 ## What remains simulator-only (numerical content)
 
@@ -73,10 +76,8 @@ These have **no** Lean counterpart and are unlikely to acquire one without a ded
 
 Listed in order of how immediately they support a paper section:
 
-1. **Track A.3: Comparison-domain validity predicate.** Formalize the apples-to-apples condition: `ValidFamilyComparison`, `ValidRescueComparison`, `SameTargetingDomain`, `CertificatePreservationDomain`, `ComparableSupportFamilies`. This would give the v0.7.2 `comparison_valid_rate=0.982` simulator-side acceptance criterion a Lean-typed predicate. Useful only if a specific paper section needs it.
+1. **Track A.4 (speculative): Cohort-specific monotonicity violation lift.** Formalize the 9,887-violation pattern at the cohort level. Requires encoding the certification regime distinction (cut_level vs parent_shared) on the Lean side as a separate field, then proving that exact_k under cut_level admits structural counterexamples in the certification-channel cohort. High effort, low marginal gain unless the paper specifically argues from this cohort.
 
-2. **Track A.4 (speculative): Cohort-specific monotonicity violation lift.** Formalize the 9,887-violation pattern at the cohort level. Requires encoding the certification regime distinction (cut_level vs parent_shared) on the Lean side as a separate field, then proving that exact_k under cut_level admits structural counterexamples in the certification-channel cohort. High effort, low marginal gain unless the paper specifically argues from this cohort.
+2. **Track B (deferred): Native per-graph witness extraction.** Closed by `RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001` until the v1.9 native-witness gate is satisfied.
 
-3. **Track B (deferred): Native per-graph witness extraction.** Closed by `RA-MOTIF-CERT-RESILIENCE-CONSOL-METHOD-001` until the v1.9 native-witness gate is satisfied.
-
-The recommendation in `RA_TrackA_FormalResilienceChain.md` is to **stop formal expansion here and write the technical paper section**. Track A.3 / A.4 / B are right only if a specific paper section requires them.
+The recommendation in `RA_TrackA_FormalResilienceChain.md` is to **stop formal expansion here and write the technical paper section**. Track A.4 / B are right only if a specific paper section requires them. Track A.3 (comparison-domain validity) is now closed by Layer 5 (`RA-MOTIF-COMPARISON-DOMAIN-VALIDITY-001`).
