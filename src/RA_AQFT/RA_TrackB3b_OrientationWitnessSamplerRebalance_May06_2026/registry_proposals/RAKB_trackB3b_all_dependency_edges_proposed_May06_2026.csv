@@ -1,0 +1,3 @@
+src,dst,kind,src_node_type,dst_node_type,src_name,dst_name
+RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001,RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001,proof_dependency,claim,claim,Legitimate native-witness keying coverage requires sampler or topology rebalancing,Active simulator graph witness extraction validated
+RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001,RA-SIM-ORIENT-CONFOUND-JOINT-001,proof_dependency,claim,claim,Legitimate native-witness keying coverage requires sampler or topology rebalancing,Joint width-family confound discipline

@@ -1,0 +1,37 @@
+registry_version: 0.5-proposal
+claims:
+- id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001
+  name: Legitimate native-witness keying coverage requires sampler or topology rebalancing
+  domain: complexity
+  papers:
+  - II
+  statement: Track B.3b searches available simulator configurations for v1.8.1-valid
+    comparison domains using legitimate native-witness keyings only. Packet-local
+    results demonstrate the audit machinery and preserve the rule that tainted/member-indexed
+    and shuffled/null keyings do not count as legitimate coverage. Canonical promotion
+    requires a local full sweep.
+  nature_targets:
+  - RA-native orientation-witness coverage diagnostics
+  - valid comparison-domain support for future orientation-rescue tests
+  ra_observable: null
+  sources:
+  - RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026
+  proof_dependencies:
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001
+  - RA-SIM-ORIENT-CONFOUND-JOINT-001
+  restoration_preconditions: []
+  caveats: Coverage sufficiency excludes member_indexed_edge_pair and shuffled_overlap_control.
+    The packet makes no orientation-rescue claim. Packet-local outputs are a small
+    demo; canonical status requires the full local sweep.
+  next_tasks:
+  - Run canonical B.3b sweep; if no legitimate keying reaches coverage sufficiency,
+    design an orientation-diverse graph/family generator.
+  source_status:
+    ra_trackB3b_sampler_rebalance.py: python_unit_tests_passed_packet_local_demo_generated
+  legacy_proof_status: DR
+  proof_status: simulation_validated_packet_local_pending_canonical
+  legacy_support_status: none
+  auxiliary_support_status: packet_local_demo_recorded
+  claim_kind: derived_result
+  formal_anchor: ra_trackB3b_sampler_rebalance.py ; ra_trackB3b_coverage_sufficiency_by_config.csv
+  packet_origin: RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026

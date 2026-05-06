@@ -1,0 +1,12 @@
+{
+  "config_count": 108,
+  "coverage_sufficient_cells_excluding_tainted_and_null": 108,
+  "legitimate_coverage_sufficient_cells": 108,
+  "legitimate_keying_count": 5,
+  "max_estimable_joint_strata_count": 2,
+  "max_high_bin_presence_rate": 0.5541666666666667,
+  "max_sufficient_joint_strata_count": 2,
+  "orientation_rescue_claim_made": false,
+  "posture": "valid_trackB_orientation_coverage_candidate_found",
+  "trial_rows": 9576000
+}

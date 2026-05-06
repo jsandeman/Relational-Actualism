@@ -1,0 +1,9 @@
+test_all_pairs_vs_parent (test_trackB3b_sampler_rebalance.TrackB3bSamplerRebalanceTests.test_all_pairs_vs_parent) ... ok
+test_coverage_sufficiency_excludes_by_construction (test_trackB3b_sampler_rebalance.TrackB3bSamplerRebalanceTests.test_coverage_sufficiency_excludes_by_construction) ... ok
+test_non_estimable_without_high (test_trackB3b_sampler_rebalance.TrackB3bSamplerRebalanceTests.test_non_estimable_without_high) ... ok
+test_overlap_bins (test_trackB3b_sampler_rebalance.TrackB3bSamplerRebalanceTests.test_overlap_bins) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.399s
+
+OK

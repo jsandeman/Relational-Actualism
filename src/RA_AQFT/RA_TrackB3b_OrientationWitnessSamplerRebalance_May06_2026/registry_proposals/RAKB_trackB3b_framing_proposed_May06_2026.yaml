@@ -1,0 +1,28 @@
+registry_version: 0.5-proposal
+framing_policies:
+- id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-METHOD-001
+  name: Coverage sufficiency excludes tainted and null keyings
+  domain: framing
+  papers:
+  - II
+  statement: Track B orientation-witness coverage sufficiency must be evaluated only
+    after excluding tainted member-indexed keyings and shuffled/null controls. Coverage
+    in those diagnostic keyings does not count as legitimate native-witness coverage.
+  nature_targets:
+  - modeling discipline for RA-native orientation-witness extraction
+  ra_observable: null
+  sources:
+  - RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026
+  proof_dependencies: []
+  framing_links:
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  restoration_preconditions: []
+  caveats: This is a modeling guardrail, not a scientific prediction.
+  next_tasks: []
+  legacy_proof_status: DR
+  legacy_support_status: none
+  framing_kind: modeling_guardrail
+  auxiliary_support_status: modeling_discipline_recorded
+  formal_anchor: Track B.3b exclusion rule for coverage sufficiency
+  packet_origin: RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026

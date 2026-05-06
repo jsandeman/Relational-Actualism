@@ -6785,3 +6785,82 @@ claims:
   claim_kind: derived_result
   formal_anchor: load_normalized_inputs ; compute_bin_coverage ; compute_joint_strata ; compute_estimability_by_config ; compute_sampler_recommendation
   packet_origin: RA_TrackB_v1_8_1_CompliantWitnessCoverageSweep_May06_2026
+- id: RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-001
+  name: Track B.3b sampler/topology rebalance; only `incidence_role_signed` reaches v1.8.1 coverage sufficiency, narrowly
+  domain: complexity
+  papers:
+  - II
+  statement: >
+    Track B.3b is an analysis-only sampler/topology rebalance that
+    searches v0.9 simulator configurations (steps × max_targets ×
+    branch_probability × wide_join_probability) against five
+    legitimate native-witness keyings only
+    (`edge_pair_signed_no_member`, `edge_direction_only`,
+    `incidence_role_signed`, `catalog_augmented_edge_pair`,
+    `graph_cut_member_index_free`), with the tainted/member-indexed
+    keying and the shuffled control deliberately excluded from
+    sufficiency counts. Coverage sufficiency requires (i) a
+    legitimate keying, (ii) low and high orientation-overlap bins
+    co-present in support_width × family_size joint strata under
+    fixed absolute-third bins, (iii) ≥25 rows per estimable stratum,
+    (iv) no rescue claim. Canonical sweep result: 9,576,000 trial
+    rows across 108 configs × 5 keyings × 2 family_semantics × 4
+    threshold_fractions = 4,320 cells; 108 of 4,320 cells reach
+    coverage sufficiency. Of the 5 legitimate keyings, ONLY
+    `incidence_role_signed` reaches sufficiency (108 of its 864
+    cells); the other four (`catalog_augmented_edge_pair`,
+    `edge_direction_only`, `edge_pair_signed_no_member`,
+    `graph_cut_member_index_free`) all 864/864 receive
+    `increase_high_overlap_coverage`. The 108 sufficient cells span
+    every (steps, max_targets, branch_probability,
+    wide_join_probability) combination but are concentrated in a
+    single semantics × threshold envelope: `family_semantics =
+    augmented_exact_k`, `threshold_fraction = 0.25` only. Joint-strata
+    depth is shallow: 88/108 sufficient cells have 2 sufficient
+    joint strata, 20/108 have 1; max_sufficient_joint_strata_count =
+    2. High-bin presence rate within sufficient cells: median 0.172,
+    range 0.063 – 0.311. Posture string:
+    `valid_trackB_orientation_coverage_candidate_found`.
+  nature_targets:
+  - RA-native orientation-witness coverage diagnostics
+  - narrow comparison-domain support for a future orientation-rescue test
+  ra_observable: null
+  sources:
+  - RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026
+  - ra_trackB3b_sampler_rebalance.py
+  - ra_trackB3b_summary.csv
+  - ra_trackB3b_coverage_sufficiency_by_config.csv
+  - ra_trackB3b_recommended_configurations.csv
+  - canonical_run_trackB3b.log
+  proof_dependencies:
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-001
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-001
+  framing_links:
+  - RA-METHOD-001
+  - RA-METHOD-002
+  - RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001
+  - RA-SIM-CONFOUND-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-ACTIVE-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-METHOD-001
+  - RA-SIM-GRAPH-CUT-WITNESS-COVERAGE-REBALANCE-METHOD-001
+  restoration_preconditions: []
+  caveats: 'Canonical-run-confirmed: python scripts/run_trackB3b_sampler_rebalance.py --v0-9-simulator-dir ../RA_CausalDAG_MotifCommitSimulator_v0_9_NativeCertificateOverlap_May05_2026/simulator --native-manifest-dir ../RA_CausalDAG_MotifCommitSimulator_v1_3_NativeOrientationLinkDerivation_May05_2026/outputs --output-dir outputs --seed-start 17 --seed-stop 117 --steps-values 32,48,64 --max-targets-values 12,18,24,36 --branch-probabilities 0.35,0.42,0.55 --wide-join-probabilities 0.55,0.72,0.85 --threshold-fractions 1.0,0.75,0.5,0.25 --family-semantics augmented_exact_k,at_least_k --min-rows-per-stratum 25 completed on 2026-05-06; 9,576,000 trial rows; 108 configs; six-bullet acceptance criterion technically met. NARROW-SUCCESS DISCIPLINE: the headline `valid_trackB_orientation_coverage_candidate_found` is honest but its working envelope is one keying (incidence_role_signed) x one family_semantics (augmented_exact_k) x one threshold_fraction (0.25) x shallow joint-strata depth (max 2 sufficient strata per cell) x modest high-bin presence (median 0.172). The other four legitimate keyings produce 0 sufficient cells. Cite this packet as a NARROW coverage candidate, not as a broad-spectrum rescue-readiness result. Track B.4 rescue analysis is now (per memory project_track_b_work_order.md) gate-eligible but only against the 108 sufficient cells under incidence_role_signed; any B.4 design must restrict to that working envelope, treat the shallow joint-strata depth as a power-limit, and pre-register the configurations from ra_trackB3b_recommended_configurations.csv. Demo outputs from the original packet (16 small configs, 0 sufficient legitimate cells, max_high_bin_presence 0.45) were overwritten by this canonical run; the original packet README + Report.md describe the demo. PACKET INTEGRITY: 4 packet-local pytests pass; source audit log clean (no sorry/admit/etc); no installation-time source fixes were required. Per controlling-standard discipline (EV-2026-05-06-020): v0.9 + native-orientation manifest are graph-state substrate; v1.8.1 fixed-bin discipline is the audit standard; this packet operates the standard against a parameter sweep over the substrate. Per coverage-sufficiency rule (EV-2026-05-06-022): tainted/member-indexed and shuffled-control coverage are excluded by construction (LEGITIMATE_KEYINGS module constant). No orientation-rescue claim is made or restored; v1.9 native-witness six-requirement gate (RA-SIM-V1-SERIES-SYNTHESIS-METHOD-001) remains binding. Full audit history: audit_events.csv EV-2026-05-06-023.'
+  next_tasks:
+  - 'AUTHORIZED B.4 SCOPE (locked EV-2026-05-06-023): any future Track B.4 matched-graph orientation-rescue analysis must (i) restrict its comparison domain to incidence_role_signed keying x augmented_exact_k semantics x threshold_fraction = 0.25; (ii) consume the 108 specific config_ids from ra_trackB3b_recommended_configurations.csv where coverage_sufficient_legitimate is true; (iii) pre-register the shallow joint-strata depth (max 2 per cell) as a power constraint; (iv) report null/no-effect outcomes as readily as positive outcomes. Broad-spectrum orientation-rescue claims across keyings or thresholds are NOT licensed by Track B.3b.'
+  - 'Optional Track B.3c expansion: if the narrow envelope is too thin for B.4 power, run a follow-up sweep that varies only within the working envelope (incidence_role_signed; augmented_exact_k; threshold=0.25) but adds knobs not exercised here (max_parents, target_frontier_min, conflict_rate, defect_rate, orientation_defect_rate, family-construction breadth) to deepen joint-strata coverage. Still infrastructure only; no rescue claim.'
+  - 'If B.4 power is judged inadequate even with B.3c, defer to Track B.4a orientation-diverse graph/family generator redesign. Do NOT attempt B.4 rescue analysis on inadequate power.'
+  - 'Investigate why incidence_role_signed alone reaches sufficiency: structurally it is the only keying that does NOT include the through-link `through:p->v->c:turn:parity` token, and depends only on per-edge sign-and-depth-delta tokens. The other four keyings include the through-link family which dominates token volume and reduces overlap variance. This may be a sampler-design lesson rather than a discovery about orientation rescue.'
+  source_status:
+    ra_trackB3b_sampler_rebalance.py: simulation_validated_canonical_run_confirmed
+    ra_trackB3b_summary.csv: canonical_run_recorded
+    ra_trackB3b_coverage_sufficiency_by_config.csv: canonical_run_recorded
+    ra_trackB3b_recommended_configurations.csv: canonical_run_recorded
+    canonical_run_trackB3b.log: provenance_recorded
+  legacy_proof_status: DR
+  proof_status: simulation_validated_canonical_run_confirmed
+  legacy_support_status: none
+  auxiliary_support_status: simulation_canonical_run
+  claim_kind: derived_result
+  formal_anchor: tokens_for_keying ; extract_config_rows ; build_configs ; fixed_bin_coverage ; joint_strata ; coverage_by_config ; recommendations ; LEGITIMATE_KEYINGS ; TAINTED_OR_NULL_KEYINGS
+  packet_origin: RA_TrackB3b_OrientationWitnessSamplerRebalance_May06_2026
